@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace 'com.safetyheads.androidacademy2023'
+    namespace 'com.safetyheads.androidacademy'
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.safetyheads.androidacademy2023"
+        applicationId "com.safetyheads.androidacademy"
         minSdk 24
         targetSdk 33
         versionCode 1
