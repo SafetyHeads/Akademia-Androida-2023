@@ -7,4 +7,42 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <!-- First-order colors -->
+    <color name="n_120">#1b2116</color>
+    <color name="p_100">#2f3b24</color>
+    <color name="p_90">#455833</color>
+    <color name="p_80" >#5b7742</color>
+    <color name="p_70">#739752</color>
+    <color name="p_60">#8bb863</color>
+    <color name="p_50">#9fc47c</color>
+    <color name="p_40">#b2d096</color>
+    <color name="p_30">#c6dbb0</color>
+    <color name="p_20">#d9e7ca</color>
+    <color name="p_10">#ecf3e4</color>
+    <color name="n_0">#ffffff</color>
+
+    <!-- Second-order colors -->
+    <color name="s_110">#0d0518</color>
+    <color name="s_100">#140b27</color>
+    <color name="s_90">#170f38</color>
+    <color name="s_80">#191249</color>
+    <color name="s_70">#19135b</color>
+    <color name="s_60">#18156e</color>
+    <color name="s_50">#473786</color>
+    <color name="s_40">#6d5c9d</color>
+    <color name="s_30">#9182b5</color>
+    <color name="s_20">#b5aace</color>
+    <color name="s_10">#dad4e6</color>
+
+    <!-- Third-order colors -->
+    <color name="n_110">#272727</color>
+    <color name="n_100">#4a4a4b</color>
+    <color name="n_90">#707071</color>
+    <color name="n_80">#98999a</color>
+    <color name="n_70">#c3c4c4</color>
+    <color name="n_60">#eff0f1</color>
+    
+    <!-- Error color -->
+    <color name="e_60">#a70000</color>
 </resources>
