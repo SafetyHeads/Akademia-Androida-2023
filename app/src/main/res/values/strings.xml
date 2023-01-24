@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Akademia Androida</string>
+    <string name="sign_in">Sign in</string>
+    <string name="txt_welcome">Welcome to SafetyHeads</string>
+    <string name="txt_subtext">Create mobile and web apps for any screen</string>
+    <string name="get_started">Get started</string>
+    <string name="company_name">SafetyHeads</string>
+    <string name="launch_image">launch image</string>
 </resources>
