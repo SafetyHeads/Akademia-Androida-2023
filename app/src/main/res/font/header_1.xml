@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<font-family xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <!-- Header 1 -->
+    <font
+        android:font="@font/comfortaa_regular"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:textColor="@color/black"
+        android:letterSpacing="0.15"
+        android:lineSpacingExtra="4sp" />
+
+</font-family>
