@@ -9,6 +9,6 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        findViewById<View>(R.id.back_arrow_view).setOnClickListener { Log.d("tag","Arrowclicked") }
+        findViewById<View>(R.id.back_arrow_view).setOnClickListener{ Log.d("tag","Arrowclicked") }
     }
 }
