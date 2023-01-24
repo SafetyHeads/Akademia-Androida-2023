@@ -1,4 +1,4 @@
-package com.safetyheads.akademiaandroida
+package com.safetyheads.akademiaandroida.font
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,11 +6,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.safetyheads.akademiaandroida.databinding.FontStylesFragmentBinding
+import com.safetyheads.akademiaandroida.R
+import com.safetyheads.akademiaandroida.databinding.FragmentFontStylesBinding
 
 class FontSylesFragment: Fragment() {
 
-    private lateinit var binding: FontStylesFragmentBinding
+    private lateinit var binding: FragmentFontStylesBinding
     private lateinit var rvAdapter: FontStylesAdapter
 
     private var description: ArrayList<String> = arrayListOf()
@@ -21,7 +22,7 @@ class FontSylesFragment: Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FontStylesFragmentBinding.inflate(inflater, container, false)
+        binding = FragmentFontStylesBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -51,15 +52,15 @@ class FontSylesFragment: Fragment() {
         description.add("Button")
         description.add("Footer")
 
-        listFont.add(R.font.header_1)
-        listFont.add(R.font.header_2)
-        listFont.add(R.font.header_3)
-        listFont.add(R.font.subtitle)
-        listFont.add(R.font.text)
-        listFont.add(R.font.text_semi_bold)
-        listFont.add(R.font.text_2)
-        listFont.add(R.font.text_2_semi_bold)
-        listFont.add(R.font.button)
-        listFont.add(R.font.footer)
+        listFont.add(R.style.H1)
+        listFont.add(R.style.H2)
+        listFont.add(R.style.H3)
+        listFont.add(R.style.Subtitle)
+        listFont.add(R.style.Text)
+        listFont.add(R.style.Text_semibold)
+        listFont.add(R.style.Text2)
+        listFont.add(R.style.Text2_semibold)
+        listFont.add(R.style.Button)
+        listFont.add(R.style.Footer)
     }
 }

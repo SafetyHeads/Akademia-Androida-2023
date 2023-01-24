@@ -1,11 +1,10 @@
-package com.safetyheads.akademiaandroida
+package com.safetyheads.akademiaandroida.font
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.content.res.ResourcesCompat
 import androidx.recyclerview.widget.RecyclerView
-import com.safetyheads.akademiaandroida.databinding.FontStylesItemBinding
+import com.safetyheads.akademiaandroida.databinding.ItemFontStylesBinding
 
 class FontStylesAdapter(
     private var description: ArrayList<String>,
@@ -14,12 +13,12 @@ class FontStylesAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val binding =
-            FontStylesItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            ItemFontStylesBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return MyViewHolder(binding)
 
     }
 
-    private inner class MyViewHolder(val binding: FontStylesItemBinding) :
+    private inner class MyViewHolder(val binding: ItemFontStylesBinding) :
         RecyclerView.ViewHolder(binding.root) {
         val containerView: View
             get() = binding.root
@@ -28,7 +27,7 @@ class FontStylesAdapter(
     private fun MyFont(viewHolder: MyViewHolder, position: Int) {
         viewHolder.binding.name.text = description[position]
         viewHolder.binding.text.text = "This is " + description[position] + " font."
-        viewHolder.binding.text.typeface = ResourcesCompat.getFont(viewHolder.binding.text.context, listFonts[position])
+        viewHolder.binding.text.setTextAppearance(listFonts[position])
     }
 
     override fun getItemCount(): Int {

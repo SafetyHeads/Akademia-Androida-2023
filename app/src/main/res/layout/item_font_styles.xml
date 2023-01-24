@@ -26,8 +26,7 @@
                 android:layout_marginStart="150dp"
                 android:padding="3dp"
                 android:text="text"
-                android:textStyle="bold"
-                android:fontFamily="@font/footer"
+                android:textStyle="normal"
                 app:layout_constraintStart_toStartOf="parent" />
 
             <TextView
