@@ -9,7 +9,6 @@
     <color name="white">#FFFFFFFF</color>
 
     <!-- First-order colors -->
-    <color name="n_120">#1b2116</color>
     <color name="p_100">#2f3b24</color>
     <color name="p_90">#455833</color>
     <color name="p_80" >#5b7742</color>
@@ -20,7 +19,6 @@
     <color name="p_30">#c6dbb0</color>
     <color name="p_20">#d9e7ca</color>
     <color name="p_10">#ecf3e4</color>
-    <color name="n_0">#ffffff</color>
 
     <!-- Second-order colors -->
     <color name="s_110">#0d0518</color>
@@ -36,12 +34,14 @@
     <color name="s_10">#dad4e6</color>
 
     <!-- Third-order colors -->
+    <color name="n_120">#1b2116</color>
     <color name="n_110">#272727</color>
     <color name="n_100">#4a4a4b</color>
     <color name="n_90">#707071</color>
     <color name="n_80">#98999a</color>
     <color name="n_70">#c3c4c4</color>
     <color name="n_60">#eff0f1</color>
+    <color name="n_0">#ffffff</color>
     
     <!-- Error color -->
     <color name="e_60">#a70000</color>
