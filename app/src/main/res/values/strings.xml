@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Akademia Androida</string>
+    <string name="about_company_tab_layout">About</string>
+    <string name="in_numbers_company_tab_layout">In numbers</string>
 </resources>
