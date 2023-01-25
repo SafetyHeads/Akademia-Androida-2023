@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-<<<<<<< task/14
     <style name="companyTabLayout">
         <item name="tabIndicatorColor">@color/p_60</item>
         <item name="tabRippleColor">@color/n_60</item>
@@ -11,7 +10,6 @@
     <style name="tabLabelText">
         <item name="android:textSize">14sp</item>
     </style>
-=======
 
     <!-- Header 1 -->
     <style name="H1" parent="@android:style/TextAppearance.Small">
