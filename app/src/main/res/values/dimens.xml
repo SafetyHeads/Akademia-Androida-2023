@@ -10,4 +10,8 @@
     <dimen name="margin_4x">32dp</dimen>
     <dimen name="margin_4.5x">36dp</dimen>
     <dimen name="margin_5x">40dp</dimen>
+    <dimen name="margin_5.5x">48dp</dimen>
+    <dimen name="margin_6x">48dp</dimen>
+    <dimen name="margin_6.5x">52dp</dimen>
+    <dimen name="margin_7x">56dp</dimen>
 </resources>

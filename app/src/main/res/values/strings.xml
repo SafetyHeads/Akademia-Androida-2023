@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Akademia Androida</string>
+    <string name="label_first_tier_color">Kolor I rzędu</string>
+    <string name="label_second_tier_color">Kolor II rzędu</string>
+    <string name="label_third_tier_color">Kolor III rzędu</string>
+    <string name="label_error_color">Kolor błędu</string>
 </resources>
