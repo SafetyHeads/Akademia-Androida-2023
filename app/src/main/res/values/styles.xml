@@ -110,6 +110,4 @@
         <item name="android:lineSpacingExtra">12sp</item>
         <item name="android:textStyle">normal</item>
     </style>
-
->>>>>>> master
 </resources>
