@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Akademia Androida</string>
+    <string name="h2_image_view_description">straight line before H2</string>
 </resources>
