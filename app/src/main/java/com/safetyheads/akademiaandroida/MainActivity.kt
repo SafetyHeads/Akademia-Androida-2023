@@ -2,6 +2,12 @@ package com.safetyheads.akademiaandroida
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
+import com.safetyheads.akademiaandroida.databinding.ActivityMainBinding
+import com.safetyheads.akademiaandroida.font.FontSylesFragment
+
 
 class MainActivity : AppCompatActivity() {
 

@@ -7,11 +7,16 @@ import android.text.Spanned
 import android.text.TextPaint
 import android.text.style.ClickableSpan
 import android.view.View
+
 // Utility class suitable for creating colored and clickable spans.
-class TextUtils {
+object TextUtils {
     // This fun creates a SpannableString with specified colors and links applied
     // to specific substrings.
-    fun createColoredLinks(text: String, pairs: List<Pair<String, String>>, color: Int): SpannableString {
+    fun createColoredLinks(
+        text: String,
+        pairs: List<Pair<String, String>>,
+        color: Int
+    ): SpannableString {
         val spannableString = SpannableString(text)
 
         pairs.forEach { pair ->
