@@ -23,10 +23,10 @@ class LaunchScreenActivity : AppCompatActivity() {
 //                .commitAllowingStateLoss()
 //        }
 
-        // color SafetyHeads string in welcome message
         val shColor = ContextCompat.getColor(this, R.color.p_60)
         val sfStart = welcomeMessageTxT.indexOf(resources.getString(R.string.launch_screen_txt_company_name))
         val sfEnd = sfStart + resources.getString(R.string.launch_screen_txt_company_name).length
+
 
         val spannable: Spannable = SpannableString(welcomeMessage.text)
         spannable.setSpan(ForegroundColorSpan(shColor), sfStart, sfEnd, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
