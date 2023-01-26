@@ -25,7 +25,10 @@ class H2View @JvmOverloads constructor(
     private val view: View = View.inflate(context, R.layout.h2_view, this)
 
     init {
-        view.findViewById<TextView>(R.id.text_view_h2).text =
-            attributes.getString(R.styleable.H2View_text)
+        val textH2 = view.findViewById<TextView>(R.id.text_view_h2)
+        textH2.text = attributes.getString(R.styleable.H2View_text)
+
+
     }
+
 }
