@@ -1,5 +1,9 @@
 <resources>
     <string name="app_name">Akademia Androida</string>
+    <string name="label_first_tier_color">Kolor I rzędu</string>
+    <string name="label_second_tier_color">Kolor II rzędu</string>
+    <string name="label_third_tier_color">Kolor III rzędu</string>
+    <string name="label_error_color">Kolor błędu</string>
     <string name="in_numbers_founded">Founded</string>
     <string name="in_numbers_founded_year">2019</string>
     <string name="in_numbers_employes">Employes</string>
