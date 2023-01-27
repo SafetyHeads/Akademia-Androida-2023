@@ -22,13 +22,11 @@ class H2View @JvmOverloads constructor(
 ) : LinearLayout(context, attrs, defStyleAttr) {
 
     private val attributes: TypedArray = context.obtainStyledAttributes(attrs, R.styleable.H2View)
-    private val view: View = View.inflate(context, R.layout.h2_view, this)
+    private val view: View = View.inflate(context, R.layout.view_h2, this)
 
     init {
         val textH2 = view.findViewById<TextView>(R.id.text_view_h2)
         textH2.text = attributes.getString(R.styleable.H2View_text)
-
-
     }
 
 }

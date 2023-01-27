@@ -11,7 +11,7 @@
         android:layout_marginStart="24dp"
         android:drawablePadding="8dp"
         android:textColor="@color/s_60"
-        app:drawableStartCompat="@drawable/line_2422"
+        app:drawableStartCompat="@drawable/h2_view_line"
         tools:text="Company" />
 
 </merge>
