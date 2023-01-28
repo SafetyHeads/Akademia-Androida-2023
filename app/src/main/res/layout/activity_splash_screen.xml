@@ -6,6 +6,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/n_0">
 
+
     <ImageView
         android:id="@+id/imageViewSplashScreen"
         android:layout_width="wrap_content"
@@ -38,5 +39,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="SafetyHeads"
-        style="@style/ComfortaaBold20" />
+        android:textColor="@color/p_60"
+        style="@style/Text2_semibold"
+        android:height="20sp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
