@@ -4,6 +4,8 @@
     <string name="label_second_tier_color">Kolor II rzędu</string>
     <string name="label_third_tier_color">Kolor III rzędu</string>
     <string name="label_error_color">Kolor błędu</string>
+    <string name="about_company_tab_layout">About</string>
+    <string name="in_numbers_company_tab_layout">In numbers</string>
     <string name="in_numbers_founded">Founded</string>
     <string name="in_numbers_founded_year">2019</string>
     <string name="in_numbers_employes">Employes</string>
