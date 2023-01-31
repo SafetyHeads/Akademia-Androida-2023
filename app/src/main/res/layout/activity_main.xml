@@ -20,6 +20,14 @@
             android:text="Preview font's"
             android:layout_gravity="center_horizontal"/>
 
+        <Button
+            android:id="@+id/we_are_hiring"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="150dp"
+            android:text="Preview we are hiring fragment" />
+
     </FrameLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

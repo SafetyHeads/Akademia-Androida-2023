@@ -7,6 +7,7 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import com.safetyheads.akademiaandroida.databinding.ActivityMainBinding
 import com.safetyheads.akademiaandroida.font.FontSylesFragment
+import com.safetyheads.akademiaandroida.fragments.WeAreHiringFragment
 
 
 class MainActivity : AppCompatActivity() {
@@ -24,6 +25,17 @@ class MainActivity : AppCompatActivity() {
             fragmentTransaction.replace(binding.frameLayout.id, fragment)
             fragmentTransaction.commit()
             binding.button.visibility = View.GONE
+            binding.weAreHiring.visibility = View.GONE
+        }
+
+        binding.weAreHiring.setOnClickListener {
+            val fragmentManager: FragmentManager = supportFragmentManager
+            val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
+            val fragment = WeAreHiringFragment()
+            fragmentTransaction.replace(binding.frameLayout.id, fragment)
+            fragmentTransaction.commit()
+            binding.button.visibility = View.GONE
+            binding.weAreHiring.visibility = View.GONE
         }
     }
 }
