@@ -112,7 +112,7 @@
     </style>
 
     <!-- Default app button -->
-    <style name="App_button" parent="@android:style/Widget.Material.Button">
+    <style name="App_button" parent="@android:style/Widget.Button">
         <item name="android:textColor">@color/n_0</item>
         <item name="android:textSize">14sp</item>
         <item name="android:background" >@drawable/button_ripple</item>

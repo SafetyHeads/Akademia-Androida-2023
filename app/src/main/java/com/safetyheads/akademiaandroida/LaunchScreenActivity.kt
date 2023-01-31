@@ -13,17 +13,12 @@ class LaunchScreenActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_launch_screen)
 
-        supportActionBar?.hide()
-
         val welcomeMessage = findViewById<TextView>(R.id.txt_welcome)
         val welcomeMessageTxT = welcomeMessage.text
 
-        val footer = Footer()
-        if(savedInstanceState == null) {
-            supportFragmentManager.beginTransaction()
-                .replace(R.id.footer, footer)
-                .commitAllowingStateLoss()
-        }
+        supportFragmentManager.beginTransaction()
+            .add(R.id.parent_layout, Footer())
+            .commit()
 
         val shColor = ContextCompat.getColor(this, R.color.p_60)
         val sfStart = welcomeMessageTxT.indexOf(resources.getString(R.string.launch_screen_txt_company_name))
