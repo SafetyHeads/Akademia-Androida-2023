@@ -25,17 +25,17 @@ class MainActivity : AppCompatActivity() {
             fragmentTransaction.replace(binding.frameLayout.id, fragment)
             fragmentTransaction.commit()
             binding.previevFont.visibility = View.GONE
-            binding.hiringFragment.visibility = View.GONE
+            binding.contactWithUs.visibility = View.GONE
         }
 
-        binding.hiringFragment.setOnClickListener {
+        binding.contactWithUs.setOnClickListener {
             val fragmentManager: FragmentManager = supportFragmentManager
             val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
             val fragment = ContactWithUsFragment()
             fragmentTransaction.replace(binding.frameLayout.id, fragment)
             fragmentTransaction.commit()
             binding.previevFont.visibility = View.GONE
-            binding.hiringFragment.visibility = View.GONE
+            binding.contactWithUs.visibility = View.GONE
         }
     }
 }

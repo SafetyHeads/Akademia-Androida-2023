@@ -155,8 +155,8 @@ class ContactWithUsFragment : Fragment() {
         val GooglePlayPackage = "com.android.vending"
 
         val FacebookGooglePlay = "https://play.google.com/store/apps/details?id=com.facebook.katana"
-        val InstagramGooglePlay = "https://play.google.com/store/apps/details?id=com.linkedin.android"
-        val LinkedinGooglePlay = "https://play.google.com/store/apps/details?id=com.instagram.android"
+        val LinkedinGooglePlay = "https://play.google.com/store/apps/details?id=com.linkedin.android"
+        val InstagramGooglePlay = "https://play.google.com/store/apps/details?id=com.instagram.android"
         val YouTubeGooglePlay = "https://play.google.com/store/apps/details?id=com.google.android.youtube"
 
         val FacebookSH = "https://www.facebook.com/SafetyHeads"
