@@ -4,16 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SplashScreenActivity">
+    tools:context=".SplashScreenActivity"
+    android:background="@color/n_0">
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/imageViewLogo"
         android:layout_width="228dp"
         android:layout_height="118dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
+        android:layout_marginStart="72dp"
+        android:layout_marginTop="192dp"
+        android:layout_marginEnd="72dp"
+        android:layout_marginBottom="320dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.437"
@@ -30,11 +35,18 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
+        android:layout_marginStart="112dp"
+        android:layout_marginTop="352dp"
+        android:layout_marginEnd="112dp"
+        android:layout_marginBottom="264dp"
+        android:textSize="20sp"
         android:gravity="center"
         android:text="@string/safetyheads"
+        style="@style/ComfortaaBold18"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.683" />
+        app:layout_constraintVertical_bias="0.683"
+        android:textColor="@color/p_60" />
 </androidx.constraintlayout.widget.ConstraintLayout>
