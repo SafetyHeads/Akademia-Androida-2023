@@ -11,8 +11,12 @@ android {
         applicationId "com.safetyheads.akademiaandroida"
         minSdk 24
         targetSdk 33
-        versionCode 1
-        versionName "0.1.0"
+        def VERSION_NAME_MAJOR = 1
+        def VERSION_NAME_MINOR = 0
+        def VERSION_NAME_PATCH = 0
+        def NAME_APPLICATION = "SafetyHeads"
+        versionName = "$NAME_APPLICATION $VERSION_NAME_MAJOR.$VERSION_NAME_MINOR.$VERSION_NAME_PATCH"
+        versionCode = generateVersionCode(VERSION_NAME_MAJOR, VERSION_NAME_MINOR, VERSION_NAME_PATCH)
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -46,14 +50,7 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
 }
 
-
-private String generateVersionName() {
-    String aplicationName = "SH"
-    String versionName = "$aplicationName $generateVersionName()"
-    return versionName;
-}
-
-private String generateVersionCode() {
-    String versionCode = generateVersionCode()
+private static Integer generateVersionCode(Integer VERSION_NAME_MAJOR, Integer VERSION_NAME_MINOR, Integer VERSION_NAME_PATCH) {
+    Integer versionCode = VERSION_NAME_MAJOR * 10000 + VERSION_NAME_MINOR * 100 + VERSION_NAME_PATCH
     return versionCode
 }
