@@ -100,9 +100,10 @@ class ContactWithUsFragment : Fragment() {
         var Intent = Intent(Intent.ACTION_VIEW).apply {
             when (currentlyOpen) {
                 Facebook -> {
-                    data = Uri.parse(FacebookSH)
                     if (requireContext().packageManager.getLaunchIntentForPackage(FacebookPackage) != null)
-                        setPackage(FacebookPackage)
+                        data = Uri.parse(FacebookAppSH)
+                    else
+                        data = Uri.parse(FacebookSH)
                 }
 
                 Linkedin -> {
@@ -159,7 +160,8 @@ class ContactWithUsFragment : Fragment() {
         val InstagramGooglePlay = "https://play.google.com/store/apps/details?id=com.instagram.android"
         val YouTubeGooglePlay = "https://play.google.com/store/apps/details?id=com.google.android.youtube"
 
-        val FacebookSH = "https://www.facebook.com/SafetyHeads"
+        val FacebookAppSH = "fb://page/"
+        val FacebookSH = "https://www.facebook.com/search/top?q=safetyheads"
         val InstagramSH = "https://www.instagram.com/safety_heads/"
         val LinkedinSH = "https://www.linkedin.com/company/safetyheads"
         val YouTubeSH = "https://www.youtube.com/@safetyheads8094"
