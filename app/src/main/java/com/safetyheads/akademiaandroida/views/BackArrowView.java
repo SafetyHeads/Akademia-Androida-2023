@@ -3,6 +3,7 @@ package com.safetyheads.akademiaandroida.views;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 
 import androidx.annotation.DrawableRes;
@@ -12,7 +13,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.safetyheads.akademiaandroida.R;
 
-public class BackArrowView extends ConstraintLayout {
+public class BackArrowView extends FrameLayout {
     private ImageView arrow;
 
     public BackArrowView(@NonNull Context context) {
@@ -33,6 +34,9 @@ public class BackArrowView extends ConstraintLayout {
     private void initView() {
         final View view = inflate(getContext(), R.layout.view_arrow, this);
         arrow = findViewById(R.id.arrow);
+    }
+
+    private void setOnClickListener() {
     }
 
     public void setImage(@DrawableRes int imageRes) {
