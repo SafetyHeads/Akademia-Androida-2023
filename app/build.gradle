@@ -7,6 +7,22 @@ android {
     namespace 'com.safetyheads.akademiaandroida'
     compileSdk 33
 
+    flavorDimensions += "version"
+    productFlavors {
+        create("development") {
+            dimension = "version"
+            applicationIdSuffix = ".development"
+        }
+        create("qa") {
+            dimension = "version"
+            applicationIdSuffix = ".qa"
+        }
+        create("production") {
+            dimension = "version"
+            applicationIdSuffix = ".production"
+        }
+    }
+
     defaultConfig {
         applicationId "com.safetyheads.akademiaandroida"
         minSdk 24
@@ -14,7 +30,7 @@ android {
         versionCode 1
         versionName "1.0"
 
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
     }
 
     buildTypes {
