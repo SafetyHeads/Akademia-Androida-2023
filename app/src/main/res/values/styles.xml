@@ -110,4 +110,9 @@
         <item name="android:lineSpacingExtra">12sp</item>
         <item name="android:textStyle">normal</item>
     </style>
+
+    <style name="default_card_style">
+        <item name="cardElevation">6dp</item>
+        <item name="cardCornerRadius">@dimen/default_card_radius</item>
+    </style>
 </resources>
