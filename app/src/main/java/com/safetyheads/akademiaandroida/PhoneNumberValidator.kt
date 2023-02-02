@@ -13,10 +13,6 @@ object PhoneNumberValidator {
         }
     }
 
-    private fun isValid(phoneNumber: String): Boolean {
-        return phoneNumberRegex.matches(phoneNumber)
-    }
-
     private fun validatePhoneNumber(phoneNumber: String, editText: EditText, context: Context) {
         if (!isValid(phoneNumber)) {
             editText.error = context.getString(R.string.invalid_phone_message)
@@ -24,4 +20,9 @@ object PhoneNumberValidator {
             editText.error = null
         }
     }
+
+    private fun isValid(phoneNumber: String): Boolean {
+        return phoneNumberRegex.matches(phoneNumber)
+    }
+
 }
