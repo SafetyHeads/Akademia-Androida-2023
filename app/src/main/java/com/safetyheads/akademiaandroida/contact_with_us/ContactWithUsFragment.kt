@@ -10,6 +10,34 @@ import androidx.fragment.app.Fragment
 import com.safetyheads.akademiaandroida.databinding.FragmentContactWithUsBinding
 
 class ContactWithUsFragment : Fragment() {
+    companion object {
+        val TAG = "ContactWithUsFragment"
+
+        val Facebook = "Facebook"
+        val Instagram = "Instagram"
+        val Linkedin = "Linkedin"
+        val YouTube = "YouTube"
+
+        val FacebookPackage = "com.facebook.katana"
+        val InstagramPackage = "com.instagram.android"
+        val YouTubePackage = "com.google.android.youtube"
+        val LinkedinPackage = "com.linkedin.android"
+        val GooglePlayPackage = "com.android.vending"
+
+        val FacebookGooglePlay = "https://play.google.com/store/apps/details?id=com.facebook.katana"
+        val LinkedinGooglePlay = "https://play.google.com/store/apps/details?id=com.linkedin.android"
+        val InstagramGooglePlay = "https://play.google.com/store/apps/details?id=com.instagram.android"
+        val YouTubeGooglePlay = "https://play.google.com/store/apps/details?id=com.google.android.youtube"
+
+        val FacebookSH = "https://www.facebook.com/SafetyHeads"
+        val InstagramSH = "https://www.instagram.com/safety_heads/"
+        val LinkedinSH = "https://www.linkedin.com/company/safetyheads"
+        val YouTubeSH = "https://www.youtube.com/@safetyheads8094"
+
+        val FacebookAppNewSH = "fb://facewebmodal/f?href="
+        val FacebookAppOldSH = "fb://page/2927034007521523"
+        val FacebookVersionApp = 3002850
+    }
 
     private lateinit var binding: FragmentContactWithUsBinding
     private lateinit var currentlyOpen: String
@@ -101,7 +129,10 @@ class ContactWithUsFragment : Fragment() {
             when (currentlyOpen) {
                 Facebook -> {
                     if (requireContext().packageManager.getLaunchIntentForPackage(FacebookPackage) != null)
-                        data = Uri.parse(FacebookAppSH)
+                        if((requireContext().packageManager.getPackageInfo(FacebookPackage, 0).versionCode) >= FacebookVersionApp)
+                            data = Uri.parse(FacebookAppNewSH + FacebookSH)
+                        else
+                            data = Uri.parse(FacebookAppOldSH)
                     else
                         data = Uri.parse(FacebookSH)
                 }
@@ -139,31 +170,5 @@ class ContactWithUsFragment : Fragment() {
             goToInstal = false
             startActivity(openActivity())
         }
-    }
-    
-    companion object {
-        val TAG = "ContactWithUsFragment"
-
-        val Facebook = "Facebook"
-        val Instagram = "Instagram"
-        val Linkedin = "Linkedin"
-        val YouTube = "YouTube"
-        
-        val FacebookPackage = "com.facebook.katana"
-        val InstagramPackage = "com.instagram.android"
-        val YouTubePackage = "com.google.android.youtube"
-        val LinkedinPackage = "com.linkedin.android"
-        val GooglePlayPackage = "com.android.vending"
-
-        val FacebookGooglePlay = "https://play.google.com/store/apps/details?id=com.facebook.katana"
-        val LinkedinGooglePlay = "https://play.google.com/store/apps/details?id=com.linkedin.android"
-        val InstagramGooglePlay = "https://play.google.com/store/apps/details?id=com.instagram.android"
-        val YouTubeGooglePlay = "https://play.google.com/store/apps/details?id=com.google.android.youtube"
-
-        val FacebookAppSH = "fb://page/"
-        val FacebookSH = "https://www.facebook.com/search/top?q=safetyheads"
-        val InstagramSH = "https://www.instagram.com/safety_heads/"
-        val LinkedinSH = "https://www.linkedin.com/company/safetyheads"
-        val YouTubeSH = "https://www.youtube.com/@safetyheads8094"
     }
 }

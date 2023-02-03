@@ -5,6 +5,7 @@ import android.app.Dialog
 import android.content.DialogInterface
 import android.os.Bundle
 import androidx.fragment.app.DialogFragment
+import com.safetyheads.akademiaandroida.R
 
 class ContactWithUsDialogFragment(
     private val callback: ContactWithUsCallback,
@@ -12,10 +13,10 @@ class ContactWithUsDialogFragment(
 ) : DialogFragment() {
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         return AlertDialog.Builder(activity)
-            .setMessage("Czy chcesz zainstalować aplikację $dialogName?")
+            .setMessage(getString(R.string.would_you_like_to_install) + " $dialogName " + getString(R.string.app))
             .setCancelable(false)
-            .setPositiveButton("Tak") { _: DialogInterface?, _: Int -> callback.setPositiveButton() }
-            .setNegativeButton("Nie") { _: DialogInterface?, _: Int -> callback.setNegativeButton() }
+            .setPositiveButton(R.string.yes) { _: DialogInterface?, _: Int -> callback.setPositiveButton() }
+            .setNegativeButton(R.string.no) { _: DialogInterface?, _: Int -> callback.setNegativeButton() }
             .create()
     }
 }
