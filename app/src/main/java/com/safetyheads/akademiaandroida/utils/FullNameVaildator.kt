@@ -13,7 +13,7 @@ import com.safetyheads.akademiaandroida.R
 
 object FullNameValidator {
 
-    private const val maxTextLength = 10
+    private const val maxTextLength = 100
     private const val minNameAndSurnameLength = 2
     fun attach(editText: EditText, context: Context) {
         val regexFilter =
@@ -26,12 +26,22 @@ object FullNameValidator {
                 null
             }
         val lengthFilter = InputFilter.LengthFilter(maxTextLength)
-        editText.filters = arrayOf<InputFilter>(lengthFilter, regexFilter)
+        val bigOnlyFirstLetterFilter = InputFilter { source, start, end, _, _, _ ->
+            var upperCase = 0
+            for (i in start until end) {
+                if (Character.isUpperCase(source[i]) && source[i] != ' ' && upperCase > 1)
+                    return@InputFilter source.dropLast(1)
+                upperCase++
+            }
+            null
+        }
+        editText.filters = arrayOf(lengthFilter, regexFilter, bigOnlyFirstLetterFilter)
         editText.addTextChangedListener { text ->
             val splitNames = text.toString().split("\\s".toRegex())
             val spacesAmount = text.toString().count { it == ' ' }
+            val surname = if (splitNames.size > 1) splitNames[1] else ""
             if (validateName(splitNames.first(), splitNames, editText, context) &&
-                validateSurname(splitNames.last(), splitNames, spacesAmount, editText, context)
+                validateSurname(surname, splitNames, spacesAmount, editText, context)
             )
                 editText.error = null
         }
@@ -47,6 +57,9 @@ object FullNameValidator {
         } else if (name.isEmpty()) {
             editText.error = context.getString(R.string.invalid_empty_message)
             return false
+        } else if (!name[0].isUpperCase()) {
+            editText.error = context.getString(R.string.invalid_name_message)
+            return false
         }
         return true
     }
@@ -60,6 +73,12 @@ object FullNameValidator {
             return false
         } else if (spacesAmount > 1) {
             editText.error = context.getString(R.string.invalid_spaces_message)
+            return false
+        } else if (surname.isEmpty()) {
+            editText.error = context.getString(R.string.invalid_surname_message)
+            return false
+        } else if (!surname[0].isUpperCase()) {
+            editText.error = context.getString(R.string.invalid_surname_message)
             return false
         }
         return true
