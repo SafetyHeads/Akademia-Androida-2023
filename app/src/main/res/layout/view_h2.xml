@@ -8,8 +8,8 @@
         style="@style/H2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:drawablePadding="8dp"
+        android:layout_marginStart="@dimen/size_3x"
+        android:drawablePadding="@dimen/size"
         android:textColor="@color/s_60"
         app:drawableStartCompat="@drawable/h2_view_line"
         tools:text="Company" />
