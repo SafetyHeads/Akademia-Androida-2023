@@ -6,8 +6,7 @@
     tools:context=".ExperienceStructureFragment"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    app:cardCornerRadius="@dimen/margin"
-    app:cardUseCompatPadding="true">
+    style="@style/default_card_style">
 
     <LinearLayout
         android:layout_width="match_parent"
