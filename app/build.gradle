@@ -7,14 +7,34 @@ android {
     namespace 'com.safetyheads.akademiaandroida'
     compileSdk 33
 
+    flavorDimensions += "version"
+    productFlavors {
+        create("development") {
+            dimension = "version"
+            applicationIdSuffix = ".development"
+        }
+        create("qa") {
+            dimension = "version"
+            applicationIdSuffix = ".qa"
+        }
+        create("production") {
+            dimension = "version"
+            applicationIdSuffix = ".production"
+        }
+    }
+
     defaultConfig {
         applicationId "com.safetyheads.akademiaandroida"
         minSdk 24
         targetSdk 33
-        versionCode 1
-        versionName "1.0"
+        def VERSION_NAME_MAJOR = 1
+        def VERSION_NAME_MINOR = 0
+        def VERSION_NAME_PATCH = 0
+        def NAME_APPLICATION = "SafetyHeads"
+        versionName = "$NAME_APPLICATION $VERSION_NAME_MAJOR.$VERSION_NAME_MINOR.$VERSION_NAME_PATCH"
+        versionCode = generateVersionCode(VERSION_NAME_MAJOR, VERSION_NAME_MINOR, VERSION_NAME_PATCH)
 
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
     }
 
     buildTypes {
@@ -45,4 +65,9 @@ dependencies {
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+}
+
+private static Integer generateVersionCode(Integer VERSION_NAME_MAJOR, Integer VERSION_NAME_MINOR, Integer VERSION_NAME_PATCH) {
+    Integer versionCode = VERSION_NAME_MAJOR * 10000 + VERSION_NAME_MINOR * 100 + VERSION_NAME_PATCH
+    return versionCode
 }

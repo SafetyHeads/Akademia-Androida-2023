@@ -12,10 +12,13 @@
         android:theme="@style/Theme.AkademiaAndroida"
         tools:targetApi="31">
         <activity
-            android:name=".MainActivity"
+            android:name=".TabLayoutActivity"
             android:exported="false" />
         <activity
-            android:name=".TabLayoutActivity"
+            android:name=".LaunchScreenActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
