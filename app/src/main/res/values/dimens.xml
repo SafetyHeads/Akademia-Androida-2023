@@ -14,5 +14,5 @@
     <dimen name="size_6x">48dp</dimen>
     <dimen name="size_6.5x">52dp</dimen>
     <dimen name="size_7x">56dp</dimen>
-
+    <dimen name="radius_3x">24dp</dimen>
 </resources>
