@@ -24,4 +24,10 @@
     <string name="invalid_surname_message">Incorrect surname</string>
     <string name="invalid_empty_message">This field is required</string>
     <string name="invalid_spaces_message">Too much spaces</string>
+    <string name="launch_screen_txt_sign_in">Sign in</string>
+    <string name="launch_screen_txt_welcome">Welcome to SafetyHeads</string>
+    <string name="launch_screen_txt_subtext">Create mobile and web apps for any screen</string>
+    <string name="launch_screen_btn_get_started">Get started</string>
+    <string name="launch_screen_txt_company_name">SafetyHeads</string>
+    <string name="launch_screen_image_launch">launch screen image</string>
 </resources>
