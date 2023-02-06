@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/bottom_sheet"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="@dimen/margin">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/n_0">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:layout_marginStart="@dimen/margin_14.5x"
+            android:layout_marginTop="@dimen/margin_1.5x"
+            android:layout_marginEnd="@dimen/margin_14.5x"
+            android:background="@drawable/divider"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.safetyheads.akademiaandroida.H2View
+            android:id="@+id/title_component"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_5.5x"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:text="Write to us" />
+
+        <LinearLayout
+            android:id="@+id/info_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_3x"
+            android:layout_marginTop="@dimen/margin_3x"
+            android:layout_marginRight="@dimen/margin_3x"
+            android:orientation="vertical"
+            app:layout_constraintTop_toBottomOf="@+id/title_component">
+
+            <TextView
+                android:id="@+id/txt_full_name"
+                style="@style/Text2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/margin_0.5x"
+                android:text="@string/bottom_sheet_full_name"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/title_component" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/layout_full_name"
+                style="@style/MyTextInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:theme="@style/MyTextInputLayout"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edit_full_name"
+                    style="@style/MyTextInputEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/bottom_sheet_enter_full_name" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/txt_phone_number"
+                style="@style/Text2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/margin_0.5x"
+                android:text="@string/bottom_sheet_phone_number"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/title_component" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/layout_phone_number"
+                style="@style/MyTextInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:theme="@style/MyTextInputLayout"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edit_phone_number"
+                    style="@style/MyTextInputEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/bottom_sheet_phone_number_value" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/txt_email"
+                style="@style/Text2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/margin_0.5x"
+                android:text="@string/bottom_sheet_e_mail"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/title_component" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/layout_email"
+                style="@style/MyTextInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:theme="@style/MyTextInputLayout"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edit_email"
+                    style="@style/MyTextInputEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/bottom_sheet_enter_e_mail" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/txt_message"
+                style="@style/Text2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/margin_0.5x"
+                android:text="@string/bottom_sheet_message"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/title_component" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/layout_message"
+                style="@style/MyTextInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:theme="@style/MyTextInputLayout"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edit_message"
+                    style="@style/MyTextInputEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="top|start"
+                    android:hint="@string/bottom_sheet_enter_message"
+                    android:inputType="textMultiLine"
+                    android:lines="3"
+                    android:maxLines="3"
+                    app:lineHeight="21dp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/txt_nda"
+            style="@style/Text2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_3x"
+            android:layout_marginTop="@dimen/margin"
+            android:text="@string/bottom_sheet_nda"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/info_container" />
+
+        <RadioGroup
+            android:id="@+id/radio_group"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_3x"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="@+id/txt_nda"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/txt_nda"
+            app:layout_constraintTop_toTopOf="@+id/txt_nda">
+
+            <RadioButton
+                android:id="@+id/radio_no"
+                style="@style/Text2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/margin_2x"
+                android:checked="true"
+                android:text="@string/bottom_sheet_no"
+                android:textColor="@color/s_60"
+                app:buttonTint="@color/s_60" />
+
+            <RadioButton
+                android:id="@+id/radio_yes"
+                style="@style/Text2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/bottom_sheet_yes"
+                android:textColor="@color/s_60"
+                app:buttonTint="@color/s_60" />
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/txt_privacy_policy"
+            style="@style/Footer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_3x"
+            android:layout_marginTop="@dimen/margin_1.5x"
+            android:layout_marginEnd="@dimen/margin_3x"
+            android:letterSpacing="0.04"
+            android:lineSpacingExtra="0sp"
+            android:text="@string/bottom_sheet_privacy_policy"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txt_nda"
+            app:lineHeight="12sp" />
+
+        <Button
+            android:id="@+id/btn_send_message"
+            style="@style/App_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_3x"
+            android:layout_marginTop="@dimen/margin_4.5x"
+            android:layout_marginEnd="@dimen/margin_3x"
+            android:layout_marginBottom="@dimen/margin_11x"
+            android:text="@string/bottom_sheet_send_message"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txt_privacy_policy"
+            app:layout_constraintVertical_bias="0.0" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>

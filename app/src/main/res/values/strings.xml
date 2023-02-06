@@ -26,4 +26,17 @@
     <string name="launch_screen_btn_get_started">Get started</string>
     <string name="launch_screen_txt_company_name">SafetyHeads</string>
     <string name="launch_screen_image_launch">launch screen image</string>
+    <string name="bottom_sheet_full_name">Full name*</string>
+    <string name="bottom_sheet_enter_full_name">Enter full name</string>
+    <string name="bottom_sheet_phone_number">Phone number</string>
+    <string name="bottom_sheet_phone_number_value">+48 555 555 555</string>
+    <string name="bottom_sheet_e_mail">E-mail*</string>
+    <string name="bottom_sheet_enter_e_mail">Enter e-mail</string>
+    <string name="bottom_sheet_message">Message*</string>
+    <string name="bottom_sheet_enter_message">Enter your message here</string>
+    <string name="bottom_sheet_nda">Do you need NDA first?</string>
+    <string name="bottom_sheet_no">No</string>
+    <string name="bottom_sheet_yes">Yes</string>
+    <string name="bottom_sheet_privacy_policy">I hereby consent to the processing my data by SafetyHeads. \nFor more information, see our privacy policy. Privacy policy.</string>
+    <string name="bottom_sheet_send_message">Send your message</string>
 </resources>
