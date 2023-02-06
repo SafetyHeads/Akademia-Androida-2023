@@ -8,14 +8,50 @@
     <fragment
         android:id="@+id/splashScreenFragment"
         android:name="com.safetyheads.akademiaandroida.SplashScreenFragment"
-        android:label="SplashScreenFragment">
+        android:label="SplashScreenFragment"
+        tools:layout="@layout/fragment_splash_placeholder" >
         <action
-            android:id="@+id/action_splashScreenFragment_to_launchScreenActivity"
-            app:destination="@id/launchScreenActivity" />
+            android:id="@+id/action_splash_placeholder_to_mainscreen_placeholder"
+            app:destination="@id/mainscreen_placeholder"
+            app:popUpTo="@null"/>
     </fragment>
-    <activity
-        android:id="@+id/launchScreenActivity"
-        android:name="com.safetyheads.akademiaandroida.LaunchScreenActivity"
-        android:label="activity_launch_screen"
-        tools:layout="@layout/activity_launch_screen" />
+    <fragment
+        android:id="@+id/mainscreen_placeholder"
+        android:name="com.safetyheads.akademiaandroida.mainscreen_placeholder"
+        android:label="fragment_mainscreen_placeholder"
+        tools:layout="@layout/fragment_mainscreen_placeholder" >
+        <action
+            android:id="@+id/action_mainscreen_placeholder_to_notlogged_placeholder"
+            app:destination="@id/notlogged_placeholder" />
+        <action
+            android:id="@+id/action_mainscreen_placeholder_to_login_placeholder"
+            app:destination="@id/login_placeholder" />
+    </fragment>
+    <fragment
+        android:id="@+id/notlogged_placeholder"
+        android:name="com.safetyheads.akademiaandroida.notlogged_placeholder"
+        android:label="fragment_notlogged_placeholder"
+        tools:layout="@layout/fragment_notlogged_placeholder">
+        <action
+            android:id="@+id/action_notlogged_placeholder_to_mainscreen_placeholder"
+            app:destination="@id/mainscreen_placeholder"/>
+    </fragment>
+    <fragment
+        android:id="@+id/login_placeholder"
+        android:name="com.safetyheads.akademiaandroida.login_placeholder"
+        android:label="fragment_login_placeholder"
+        tools:layout="@layout/fragment_login_placeholder" >
+        <action
+            android:id="@+id/action_login_placeholder_to_dashboard_placeholder"
+            app:destination="@id/dashboard_placeholder"
+            app:popUpTo="@null"/>
+        <action
+            android:id="@+id/action_login_placeholder_to_mainscreen_placeholder"
+            app:destination="@id/mainscreen_placeholder"/>
+    </fragment>
+    <fragment
+        android:id="@+id/dashboard_placeholder"
+        android:name="com.safetyheads.akademiaandroida.dashboard_placeholder"
+        android:label="fragment_dashboard_placeholder"
+        tools:layout="@layout/fragment_dashboard_placeholder" />
 </navigation>
