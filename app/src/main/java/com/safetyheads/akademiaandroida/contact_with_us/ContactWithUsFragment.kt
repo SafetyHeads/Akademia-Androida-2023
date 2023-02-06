@@ -10,34 +10,8 @@ import androidx.fragment.app.Fragment
 import com.safetyheads.akademiaandroida.databinding.FragmentContactWithUsBinding
 
 class ContactWithUsFragment : Fragment() {
-    companion object {
-        val TAG = "ContactWithUsFragment"
 
-        val Facebook = "Facebook"
-        val Instagram = "Instagram"
-        val Linkedin = "Linkedin"
-        val YouTube = "YouTube"
-
-        val FacebookPackage = "com.facebook.katana"
-        val InstagramPackage = "com.instagram.android"
-        val YouTubePackage = "com.google.android.youtube"
-        val LinkedinPackage = "com.linkedin.android"
-        val GooglePlayPackage = "com.android.vending"
-
-        val FacebookGooglePlay = "https://play.google.com/store/apps/details?id=com.facebook.katana"
-        val LinkedinGooglePlay = "https://play.google.com/store/apps/details?id=com.linkedin.android"
-        val InstagramGooglePlay = "https://play.google.com/store/apps/details?id=com.instagram.android"
-        val YouTubeGooglePlay = "https://play.google.com/store/apps/details?id=com.google.android.youtube"
-
-        val FacebookSH = "https://www.facebook.com/SafetyHeads"
-        val InstagramSH = "https://www.instagram.com/safety_heads/"
-        val LinkedinSH = "https://www.linkedin.com/company/safetyheads"
-        val YouTubeSH = "https://www.youtube.com/@safetyheads8094"
-
-        val FacebookAppNewSH = "fb://facewebmodal/f?href="
-        val FacebookAppOldSH = "fb://page/2927034007521523"
-        val FacebookVersionApp = 3002850
-    }
+    private val TAG = "ContactWithUsFragment" 
 
     private lateinit var binding: FragmentContactWithUsBinding
     private lateinit var currentlyOpen: String
@@ -59,16 +33,16 @@ class ContactWithUsFragment : Fragment() {
 
     private fun initUI() {
         binding.facebookFill.setOnClickListener {
-            currentlyOpen = Facebook
-            if (requireContext().packageManager.getLaunchIntentForPackage(FacebookPackage) != null)
+            currentlyOpen = "Facebook"
+            if (requireContext().packageManager.getLaunchIntentForPackage(ContactWithUsObject.facebookPackage) != null)
                 startActivity(openActivity())
             else
                 openDialog()
         }
 
         binding.linkedinFill.setOnClickListener {
-            currentlyOpen = Linkedin
-            if (requireContext().packageManager.getLaunchIntentForPackage(LinkedinPackage) != null)
+            currentlyOpen = "Linkedin"
+            if (requireContext().packageManager.getLaunchIntentForPackage(ContactWithUsObject.linkedinPackage) != null)
                 startActivity(openActivity())
             else
                 openDialog()
@@ -76,8 +50,8 @@ class ContactWithUsFragment : Fragment() {
         }
 
         binding.instagramFill.setOnClickListener {
-            currentlyOpen = Instagram
-            if (requireContext().packageManager.getLaunchIntentForPackage(InstagramPackage) != null)
+            currentlyOpen = "Instagram"
+            if (requireContext().packageManager.getLaunchIntentForPackage(ContactWithUsObject.instagramPackage) != null)
                 startActivity(openActivity())
             else
                 openDialog()
@@ -85,8 +59,8 @@ class ContactWithUsFragment : Fragment() {
         }
 
         binding.youtubeFill.setOnClickListener {
-            currentlyOpen = YouTube
-            if (requireContext().packageManager.getLaunchIntentForPackage(YouTubePackage) != null)
+            currentlyOpen = "YouTube"
+            if (requireContext().packageManager.getLaunchIntentForPackage(ContactWithUsObject.youTubePackage) != null)
                 startActivity(openActivity())
             else
                 openDialog()
@@ -99,19 +73,19 @@ class ContactWithUsFragment : Fragment() {
             override fun setPositiveButton() {
                 val googlePlayToIntent = Intent(Intent.ACTION_VIEW).apply {
                     when (currentlyOpen) {
-                        Facebook -> data =
-                            Uri.parse(FacebookGooglePlay)
+                        "Facebook" -> data =
+                            Uri.parse(ContactWithUsObject.facebookGooglePlay)
 
-                        Linkedin -> data =
-                            Uri.parse(LinkedinGooglePlay)
+                        "Linkedin" -> data =
+                            Uri.parse(ContactWithUsObject.linkedinGooglePlay)
 
-                        Instagram -> data =
-                            Uri.parse(InstagramGooglePlay)
+                        "Instagram" -> data =
+                            Uri.parse(ContactWithUsObject.instagramGooglePlay)
 
-                        YouTube -> data =
-                            Uri.parse(YouTubeGooglePlay)
+                        "YouTube" -> data =
+                            Uri.parse(ContactWithUsObject.youTubeGooglePlay)
                     }
-                    setPackage(GooglePlayPackage)
+                    setPackage(ContactWithUsObject.googlePlayPackage)
                 }
                 goToInstal = true
                 startActivity(googlePlayToIntent)
@@ -127,32 +101,32 @@ class ContactWithUsFragment : Fragment() {
     private fun openActivity(): Intent {
         var Intent = Intent(Intent.ACTION_VIEW).apply {
             when (currentlyOpen) {
-                Facebook -> {
-                    if (requireContext().packageManager.getLaunchIntentForPackage(FacebookPackage) != null)
-                        if((requireContext().packageManager.getPackageInfo(FacebookPackage, 0).versionCode) >= FacebookVersionApp)
-                            data = Uri.parse(FacebookAppNewSH + FacebookSH)
+                "Facebook" -> {
+                    if (requireContext().packageManager.getLaunchIntentForPackage(ContactWithUsObject.facebookPackage) != null)
+                        if((requireContext().packageManager.getPackageInfo(ContactWithUsObject.facebookPackage, 0).versionCode) >= ContactWithUsObject.facebookVersionApp)
+                            data = Uri.parse(ContactWithUsObject.facebookAppNewSH + ContactWithUsObject.facebookSH)
                         else
-                            data = Uri.parse(FacebookAppOldSH)
+                            data = Uri.parse(ContactWithUsObject.facebookAppOldSH)
                     else
-                        data = Uri.parse(FacebookSH)
+                        data = Uri.parse(ContactWithUsObject.facebookSH)
                 }
 
-                Linkedin -> {
-                    data = Uri.parse(LinkedinSH)
-                    if (requireContext().packageManager.getLaunchIntentForPackage(LinkedinPackage) != null)
-                        setPackage(LinkedinPackage)
+                "Linkedin" -> {
+                    data = Uri.parse(ContactWithUsObject.linkedinSH)
+                    if (requireContext().packageManager.getLaunchIntentForPackage(ContactWithUsObject.linkedinPackage) != null)
+                        setPackage(ContactWithUsObject.linkedinPackage)
                 }
 
-                Instagram -> {
-                    data = Uri.parse(InstagramSH)
-                    if (requireContext().packageManager.getLaunchIntentForPackage(InstagramPackage) != null)
-                        setPackage(InstagramPackage)
+                "Instagram" -> {
+                    data = Uri.parse(ContactWithUsObject.instagramSH)
+                    if (requireContext().packageManager.getLaunchIntentForPackage(ContactWithUsObject.instagramPackage) != null)
+                        setPackage(ContactWithUsObject.instagramPackage)
                 }
 
-                YouTube -> {
-                    data = Uri.parse(YouTubeSH)
-                    if (requireContext().packageManager.getLaunchIntentForPackage(YouTubePackage) != null)
-                        setPackage(YouTubePackage)
+                "YouTube" -> {
+                    data = Uri.parse(ContactWithUsObject.youTubeSH)
+                    if (requireContext().packageManager.getLaunchIntentForPackage(ContactWithUsObject.youTubePackage) != null)
+                        setPackage(ContactWithUsObject.youTubePackage)
                 }
             }
         }

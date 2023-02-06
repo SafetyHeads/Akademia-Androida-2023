@@ -13,10 +13,10 @@ class ContactWithUsDialogFragment(
 ) : DialogFragment() {
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         return AlertDialog.Builder(activity)
-            .setMessage(getString(R.string.would_you_like_to_install) + " $dialogName " + getString(R.string.app))
+            .setMessage(getString(R.string.do_you_want_to_install_app, dialogName))
             .setCancelable(false)
-            .setPositiveButton(R.string.yes) { _: DialogInterface?, _: Int -> callback.setPositiveButton() }
-            .setNegativeButton(R.string.no) { _: DialogInterface?, _: Int -> callback.setNegativeButton() }
+            .setPositiveButton(R.string.yes) { _, _ -> callback.setPositiveButton() }
+            .setNegativeButton(R.string.no) { _, _ -> callback.setNegativeButton() }
             .create()
     }
 }
