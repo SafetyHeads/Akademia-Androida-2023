@@ -1,8 +1,9 @@
-package com.safetyheads.akademiaandroida
+package com.safetyheads.akademiaandroida.utils
 
 import android.content.Context
 import android.widget.EditText
 import androidx.core.widget.addTextChangedListener
+import com.safetyheads.akademiaandroida.R
 
 object PhoneNumberValidator {
     private val phoneNumberRegex = "^(\\+\\d{2}[- ]?)?\\d{9}\$".toRegex()
