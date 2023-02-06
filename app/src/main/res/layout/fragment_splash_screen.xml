@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/SplashLayout"
     xmlns:tools="http://schemas.android.com/tools">
 
     <ImageView
@@ -17,8 +18,7 @@
         android:layout_marginTop="195dp"
         android:layout_marginEnd="66dp"
         android:layout_marginBottom="327dp"
-        app:srcCompat="@drawable/group_12708"
-      />
+        app:srcCompat="@drawable/image_logo" />
 
     <TextView
         android:id="@+id/TextViewSplashScreen"
@@ -37,3 +37,4 @@
 
 
 </RelativeLayout>
+
