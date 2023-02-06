@@ -12,5 +12,7 @@
     <string name="in_numbers_deployments_number">+20</string>
     <string name="in_numbers_min_project_size">Min. Project Size</string>
     <string name="in_numbers_min_project_size_amount">5000$</string>
-    <string name="apply_now">Apply now...</string>
+    <string name="apply_now">Apply now</string>
+    <string name="we_are_hiring">We\'re Hiring!</string>
+    <string name="join_our_team">Join our team</string>
 </resources>
