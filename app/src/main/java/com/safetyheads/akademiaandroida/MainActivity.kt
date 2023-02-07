@@ -1,8 +1,8 @@
 package com.safetyheads.akademiaandroida
 
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import com.safetyheads.akademiaandroida.contact_with_us.ContactWithUsFragment
@@ -37,5 +37,10 @@ class MainActivity : AppCompatActivity() {
             binding.previevFont.visibility = View.GONE
             binding.contactWithUs.visibility = View.GONE
         }
+        setContentView(R.layout.activity_main)
+        // testing Footer
+        supportFragmentManager.beginTransaction()
+            .add(R.id.footer_container, Footer())
+            .commit()
     }
 }
