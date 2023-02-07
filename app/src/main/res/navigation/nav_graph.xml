@@ -12,14 +12,13 @@
         tools:layout="@layout/fragment_splash_placeholder" >
         <action
             android:id="@+id/action_splash_placeholder_to_mainscreen_placeholder"
-            app:destination="@id/mainscreen_placeholder"
-            app:popUpTo="@null"/>
+            app:destination="@id/mainscreen_placeholder" />
     </fragment>
     <fragment
         android:id="@+id/mainscreen_placeholder"
-        android:name="com.safetyheads.akademiaandroida.mainscreen_placeholder"
+        android:name="com.safetyheads.akademiaandroida.MainscreenPlaceholder"
         android:label="fragment_mainscreen_placeholder"
-        tools:layout="@layout/fragment_mainscreen_placeholder" >
+        tools:layout="@layout/fragment_mainscreen_placeholder">
         <action
             android:id="@+id/action_mainscreen_placeholder_to_notlogged_placeholder"
             app:destination="@id/notlogged_placeholder" />
@@ -29,29 +28,28 @@
     </fragment>
     <fragment
         android:id="@+id/notlogged_placeholder"
-        android:name="com.safetyheads.akademiaandroida.notlogged_placeholder"
+        android:name="com.safetyheads.akademiaandroida.NotloggedPlaceholder"
         android:label="fragment_notlogged_placeholder"
         tools:layout="@layout/fragment_notlogged_placeholder">
         <action
             android:id="@+id/action_notlogged_placeholder_to_mainscreen_placeholder"
-            app:destination="@id/mainscreen_placeholder"/>
+            app:destination="@id/mainscreen_placeholder" />
     </fragment>
     <fragment
         android:id="@+id/login_placeholder"
-        android:name="com.safetyheads.akademiaandroida.login_placeholder"
+        android:name="com.safetyheads.akademiaandroida.LoginPlaceholder"
         android:label="fragment_login_placeholder"
-        tools:layout="@layout/fragment_login_placeholder" >
+        tools:layout="@layout/fragment_login_placeholder">
         <action
             android:id="@+id/action_login_placeholder_to_dashboard_placeholder"
-            app:destination="@id/dashboard_placeholder"
-            app:popUpTo="@null"/>
+            app:destination="@id/dashboard_placeholder" />
         <action
             android:id="@+id/action_login_placeholder_to_mainscreen_placeholder"
-            app:destination="@id/mainscreen_placeholder"/>
+            app:destination="@id/mainscreen_placeholder" />
     </fragment>
     <fragment
         android:id="@+id/dashboard_placeholder"
-        android:name="com.safetyheads.akademiaandroida.dashboard_placeholder"
+        android:name="com.safetyheads.akademiaandroida.DashboardPlaceholder"
         android:label="fragment_dashboard_placeholder"
         tools:layout="@layout/fragment_dashboard_placeholder" />
 </navigation>
