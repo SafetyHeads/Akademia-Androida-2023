@@ -4,6 +4,8 @@
     <string name="label_second_tier_color">Kolor II rzędu</string>
     <string name="label_third_tier_color">Kolor III rzędu</string>
     <string name="label_error_color">Kolor błędu</string>
+    <string name="about_company_tab_layout">About</string>
+    <string name="in_numbers_company_tab_layout">In numbers</string>
     <string name="in_numbers_founded">Founded</string>
     <string name="in_numbers_founded_year">2019</string>
     <string name="in_numbers_employes">Employes</string>
@@ -15,4 +17,16 @@
     <string name="apply_now">Apply now</string>
     <string name="we_are_hiring">We\'re Hiring!</string>
     <string name="join_our_team">Join our team</string>
+    <string name="footer_text_down">Copyright 2023 SafetyHeads</string>
+    <string name="footer_text_up">SafetyHeads.com - Privacy policy and Cookie policy</string>
+    <string name="privacy_policy">Privacy policy</string>
+    <string name="privacy_policy_url">https://safetyheads.com/android-academy</string>
+    <string name="cookie_policy">Cookie policy</string>
+    <string name="cookie_policy_url">https://safetyheads.com/contact-us</string>
+    <string name="launch_screen_txt_sign_in">Sign in</string>
+    <string name="launch_screen_txt_welcome">Welcome to SafetyHeads</string>
+    <string name="launch_screen_txt_subtext">Create mobile and web apps for any screen</string>
+    <string name="launch_screen_btn_get_started">Get started</string>
+    <string name="launch_screen_txt_company_name">SafetyHeads</string>
+    <string name="launch_screen_image_launch">launch screen image</string>
 </resources>
