@@ -26,4 +26,10 @@
     <string name="launch_screen_btn_get_started">Get started</string>
     <string name="launch_screen_txt_company_name">SafetyHeads</string>
     <string name="launch_screen_image_launch">launch screen image</string>
+    <string name="login_prompt_email">E-mail address</string>
+    <string name="login_prompt_password">Password</string>
+    <string name="login_forgot_password">Forgot password?</string>
+    <string name="login_hint_email">Jan Kowalski</string>
+    <string name="login_not_a_member">Not a member?</string>
+    <string name="login_sign_up_now">Sign up now</string>
 </resources>
