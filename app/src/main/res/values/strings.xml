@@ -20,10 +20,14 @@
     <string name="privacy_policy_url">https://safetyheads.com/android-academy</string>
     <string name="cookie_policy">Cookie policy</string>
     <string name="cookie_policy_url">https://safetyheads.com/contact-us</string>
+    
     <string name="invalid_name_message">Incorrect name</string>
     <string name="invalid_surname_message">Incorrect surname</string>
     <string name="invalid_empty_message">This field is required</string>
     <string name="invalid_spaces_message">Too much spaces</string>
+    
+    <string name="experience_structure_image">Experience Structure image</string>
+
     <string name="launch_screen_txt_sign_in">Sign in</string>
     <string name="launch_screen_txt_welcome">Welcome to SafetyHeads</string>
     <string name="launch_screen_txt_subtext">Create mobile and web apps for any screen</string>
