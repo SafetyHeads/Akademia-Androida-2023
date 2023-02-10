@@ -115,7 +115,7 @@
     <style name="App_button" parent="@android:style/Widget.Button">
         <item name="android:textColor">@color/n_0</item>
         <item name="android:textSize">14sp</item>
-        <item name="android:background" >@drawable/button_ripple</item>
+        <item name="android:background">@drawable/button_ripple</item>
         <item name="android:stateListAnimator">@null</item>
         <item name="android:height">48dp</item>
         <item name="android:fontFamily">@font/poppins_semibold</item>
@@ -123,5 +123,21 @@
         <item name="android:insetBottom">0dp</item>
         <item name="android:letterSpacing">0</item>
         <item name="android:textAllCaps">false</item>
+    </style>
+
+    <style name="PoppinsRegular14" parent="@android:style/TextAppearance.Small">
+        <item name="android:fontFamily">@font/poppins_regular</item>
+        <item name="android:textColor">@color/s_60</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:lineSpacingExtra">6sp</item>
+    </style>
+
+    <style name="PoppinsSBold14" parent="@android:style/TextAppearance.Small">
+        <item name="android:fontFamily">@font/poppins_semibold</item>
+        <item name="android:textColor">@color/s_60</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:lineSpacingExtra">-2sp</item>
     </style>
 </resources>
