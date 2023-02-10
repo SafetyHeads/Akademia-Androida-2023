@@ -14,7 +14,7 @@ class ContactWithUsFragment : Fragment() {
     private val TAG = "ContactWithUsFragment" 
 
     private lateinit var binding: FragmentContactWithUsBinding
-    private lateinit var currentlyOpen: String
+    private lateinit var currentlyOpen: SocialEnumClass
     private var goToInstal = false
 
     override fun onCreateView(
@@ -33,38 +33,23 @@ class ContactWithUsFragment : Fragment() {
 
     private fun initUI() {
         binding.facebookFill.setOnClickListener {
-            currentlyOpen = "Facebook"
-            if (requireContext().packageManager.getLaunchIntentForPackage(ContactWithUsObject.facebookPackage) != null)
-                startActivity(openActivity())
-            else
-                openDialog()
+            currentlyOpen = SocialEnumClass.Facebook
+            socialOpen()
         }
 
         binding.linkedinFill.setOnClickListener {
-            currentlyOpen = "Linkedin"
-            if (requireContext().packageManager.getLaunchIntentForPackage(ContactWithUsObject.linkedinPackage) != null)
-                startActivity(openActivity())
-            else
-                openDialog()
-
+            currentlyOpen = SocialEnumClass.Linkedin
+            socialOpen()
         }
 
         binding.instagramFill.setOnClickListener {
-            currentlyOpen = "Instagram"
-            if (requireContext().packageManager.getLaunchIntentForPackage(ContactWithUsObject.instagramPackage) != null)
-                startActivity(openActivity())
-            else
-                openDialog()
-
+            currentlyOpen = SocialEnumClass.Instagram
+            socialOpen()
         }
 
         binding.youtubeFill.setOnClickListener {
-            currentlyOpen = "YouTube"
-            if (requireContext().packageManager.getLaunchIntentForPackage(ContactWithUsObject.youTubePackage) != null)
-                startActivity(openActivity())
-            else
-                openDialog()
-
+            currentlyOpen = SocialEnumClass.YouTube
+            socialOpen()
         }
     }
 
@@ -72,20 +57,8 @@ class ContactWithUsFragment : Fragment() {
         val callback = object : ContactWithUsCallback {
             override fun setPositiveButton() {
                 val googlePlayToIntent = Intent(Intent.ACTION_VIEW).apply {
-                    when (currentlyOpen) {
-                        "Facebook" -> data =
-                            Uri.parse(ContactWithUsObject.facebookGooglePlay)
-
-                        "Linkedin" -> data =
-                            Uri.parse(ContactWithUsObject.linkedinGooglePlay)
-
-                        "Instagram" -> data =
-                            Uri.parse(ContactWithUsObject.instagramGooglePlay)
-
-                        "YouTube" -> data =
-                            Uri.parse(ContactWithUsObject.youTubeGooglePlay)
-                    }
-                    setPackage(ContactWithUsObject.googlePlayPackage)
+                    data = Uri.parse(currentlyOpen.downloadGooglePlay)
+                    setPackage(SocialEnumClass.GooglePlay.applicationPackage)
                 }
                 goToInstal = true
                 startActivity(googlePlayToIntent)
@@ -99,42 +72,37 @@ class ContactWithUsFragment : Fragment() {
     }
 
     private fun openActivity(): Intent {
-        var Intent = Intent(Intent.ACTION_VIEW).apply {
+        val openAplicationIntent = Intent(Intent.ACTION_VIEW).apply {
             when (currentlyOpen) {
-                "Facebook" -> {
-                    if (requireContext().packageManager.getLaunchIntentForPackage(ContactWithUsObject.facebookPackage) != null)
-                        if((requireContext().packageManager.getPackageInfo(ContactWithUsObject.facebookPackage, 0).versionCode) >= ContactWithUsObject.facebookVersionApp)
-                            data = Uri.parse(ContactWithUsObject.facebookAppNewSH + ContactWithUsObject.facebookSH)
+                SocialEnumClass.Facebook -> {
+                    if (requireContext().packageManager.getLaunchIntentForPackage(currentlyOpen.applicationPackage) != null)
+                        if((requireContext().packageManager.getPackageInfo(currentlyOpen.applicationPackage, 0).versionCode) >= ContactWithUsObject.facebookVersionApp)
+                            data = Uri.parse(ContactWithUsObject.facebookAppNewSH + currentlyOpen.socialName)
                         else
                             data = Uri.parse(ContactWithUsObject.facebookAppOldSH)
                     else
-                        data = Uri.parse(ContactWithUsObject.facebookSH)
+                        data = Uri.parse(currentlyOpen.socialName)
                 }
-
-                "Linkedin" -> {
-                    data = Uri.parse(ContactWithUsObject.linkedinSH)
-                    if (requireContext().packageManager.getLaunchIntentForPackage(ContactWithUsObject.linkedinPackage) != null)
-                        setPackage(ContactWithUsObject.linkedinPackage)
-                }
-
-                "Instagram" -> {
-                    data = Uri.parse(ContactWithUsObject.instagramSH)
-                    if (requireContext().packageManager.getLaunchIntentForPackage(ContactWithUsObject.instagramPackage) != null)
-                        setPackage(ContactWithUsObject.instagramPackage)
-                }
-
-                "YouTube" -> {
-                    data = Uri.parse(ContactWithUsObject.youTubeSH)
-                    if (requireContext().packageManager.getLaunchIntentForPackage(ContactWithUsObject.youTubePackage) != null)
-                        setPackage(ContactWithUsObject.youTubePackage)
+                
+                else -> {
+                    data = Uri.parse(currentlyOpen.socialName)
+                    if (requireContext().packageManager.getLaunchIntentForPackage(currentlyOpen.applicationPackage) != null)
+                        setPackage(currentlyOpen.applicationPackage)
                 }
             }
         }
-        return Intent
+        return openAplicationIntent
+    }
+
+    private fun socialOpen() {
+        if (requireContext().packageManager.getLaunchIntentForPackage(currentlyOpen.applicationPackage) != null)
+            startActivity(openActivity())
+        else
+            openDialog()
     }
 
     private fun openDialog() {
-        val dialog = ContactWithUsDialogFragment(openCallback(), currentlyOpen)
+        val dialog = ContactWithUsDialogFragment(openCallback(), currentlyOpen.name)
         dialog.show(parentFragmentManager, TAG)
     }
 

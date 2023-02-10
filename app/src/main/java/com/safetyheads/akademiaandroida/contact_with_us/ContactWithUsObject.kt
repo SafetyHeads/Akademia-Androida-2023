@@ -7,10 +7,7 @@ object ContactWithUsObject {
     val linkedinPackage = "com.linkedin.android"
     val googlePlayPackage = "com.android.vending"
 
-    val facebookGooglePlay = "https://play.google.com/store/apps/details?id=com.facebook.katana"
-    val linkedinGooglePlay = "https://play.google.com/store/apps/details?id=com.linkedin.android"
-    val instagramGooglePlay = "https://play.google.com/store/apps/details?id=com.instagram.android"
-    val youTubeGooglePlay = "https://play.google.com/store/apps/details?id=com.google.android.youtube"
+    val googlePlayDownloadLink = "https://play.google.com/store/apps/details?id="
 
     val facebookSH = "https://www.facebook.com/SafetyHeads"
     val instagramSH = "https://www.instagram.com/safety_heads/"

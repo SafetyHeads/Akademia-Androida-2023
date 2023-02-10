@@ -3,6 +3,8 @@ package com.safetyheads.akademiaandroida
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import androidx.core.view.isVisible
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import com.safetyheads.akademiaandroida.contact_with_us.ContactWithUsFragment
@@ -19,28 +21,27 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.previevFont.setOnClickListener {
-            val fragmentManager: FragmentManager = supportFragmentManager
-            val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
-            val fragment = FontSylesFragment()
-            fragmentTransaction.replace(binding.frameLayout.id, fragment)
-            fragmentTransaction.commit()
-            binding.previevFont.visibility = View.GONE
-            binding.contactWithUs.visibility = View.GONE
+            openFragment(FontSylesFragment())
+            binding.previevFont.isVisible = false
+            binding.contactWithUs.isVisible = false
         }
 
         binding.contactWithUs.setOnClickListener {
-            val fragmentManager: FragmentManager = supportFragmentManager
-            val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
-            val fragment = ContactWithUsFragment()
-            fragmentTransaction.replace(binding.frameLayout.id, fragment)
-            fragmentTransaction.commit()
-            binding.previevFont.visibility = View.GONE
-            binding.contactWithUs.visibility = View.GONE
+            openFragment(ContactWithUsFragment())
+            binding.previevFont.isVisible = false
+            binding.contactWithUs.isVisible = false
         }
-        setContentView(R.layout.activity_main)
+
         // testing Footer
         supportFragmentManager.beginTransaction()
             .add(R.id.footer_container, Footer())
             .commit()
+    }
+
+    private fun openFragment(fragment: Fragment) {
+        supportFragmentManager.beginTransaction().apply {
+            replace(binding.frameLayout.id, fragment)
+            commit()
+        }
     }
 }
