@@ -25,10 +25,11 @@ class MainActivity : AppCompatActivity() {
             fragmentTransaction.commit()
             binding.button.visibility = View.GONE
         }
-        setContentView(R.layout.activity_main)
+      //  setContentView(R.layout.activity_main)
         // testing Footer
         supportFragmentManager.beginTransaction()
             .add(R.id.footer_container, Footer())
             .commit()
+
     }
 }
