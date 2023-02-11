@@ -27,4 +27,5 @@
     <string name="launch_screen_btn_get_started">Get started</string>
     <string name="launch_screen_txt_company_name">SafetyHeads</string>
     <string name="launch_screen_image_launch">launch screen image</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
