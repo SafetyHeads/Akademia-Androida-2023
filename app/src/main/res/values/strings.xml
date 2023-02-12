@@ -20,6 +20,14 @@
     <string name="privacy_policy_url">https://safetyheads.com/android-academy</string>
     <string name="cookie_policy">Cookie policy</string>
     <string name="cookie_policy_url">https://safetyheads.com/contact-us</string>
+    <string name="invalid_name_message">Incorrect name</string>
+    <string name="invalid_surname_message">Incorrect surname</string>
+    <string name="invalid_empty_message">This field is required</string>
+    <string name="invalid_spaces_message">Too much spaces</string>
+    <string name="invalid_password">Invalid password</string>
+    <string name="invalid_phone_message">Invalid phone number</string>
+    <string name="experience_structure_image">Experience Structure image</string>
+
     <string name="launch_screen_txt_sign_in">Sign in</string>
     <string name="launch_screen_txt_welcome">Welcome to SafetyHeads</string>
     <string name="launch_screen_txt_subtext">Create mobile and web apps for any screen</string>
@@ -33,4 +41,6 @@
     <string name="contact_us_address_text">Plac Konstytucji 3 Maja\n50-048 Wrocław</string>
     <string name="contact_us_fill_form_button_text">Fill the contact form</string>
     <string name="contact_us_social_text">Check our Social Media</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 </resources>
