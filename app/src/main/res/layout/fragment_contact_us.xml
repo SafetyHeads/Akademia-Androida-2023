@@ -8,29 +8,6 @@
     tools:context="com.safetyheads.ContactUsFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout_top"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="@dimen/size_1.5x"
-        android:background="@drawable/rounded_layout_bg"
-        app:layout_constraintBottom_toTopOf="@+id/constraintLayout_bottom"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHeight_min="500dp"
-        app:layout_constraintStart_toStartOf="parent">
-
-        <ImageView
-            android:id="@+id/imageView_top"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:background="@drawable/rounded_layout_bg"
-            android:scaleType="centerCrop"
-            android:src="@drawable/contact_us_top_image"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout_bottom"
         android:layout_width="0dp"
         android:layout_height="0dp"
