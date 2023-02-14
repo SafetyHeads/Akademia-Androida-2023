@@ -1,5 +1,6 @@
 package com.safetyheads.akademiaandroida
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -24,6 +25,11 @@ class MainActivity : AppCompatActivity() {
             openFragment(FontSylesFragment())
             binding.previevFont.isVisible = false
             binding.contactWithUs.isVisible = false
+        }
+
+        val rootActivityIntent = Intent(this, RootActivity::class.java)
+        binding.rootActivityButton.setOnClickListener {
+            startActivity(rootActivityIntent)
         }
 
         binding.contactWithUs.setOnClickListener {
