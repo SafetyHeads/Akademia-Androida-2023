@@ -1,11 +1,10 @@
-package com.safetyheads
+package com.safetyheads.akademiaandroida
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.safetyheads.akademiaandroida.R
 
 class ContactUsFragment : Fragment() {
 
