@@ -113,8 +113,9 @@
 
     <style name="default_card_style">
         <item name="cardElevation">6dp</item>
-        <item name="cardCornerRadius">@dimen/default_card_radius</item>
+        <item name="cardCornerRadius">@dimen/size</item>
     </style>
+
     <!-- Default app button -->
     <style name="App_button" parent="@android:style/Widget.Button">
         <item name="android:textColor">@color/n_0</item>
