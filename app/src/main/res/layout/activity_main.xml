@@ -21,7 +21,7 @@
         android:layout_height="match_parent">
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/previev_font"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
@@ -33,6 +33,15 @@
             android:layout_height="wrap_content"
             android:id="@+id/back_arrow_view"
             android:layout_marginTop="@dimen/margin_4x"/>
+
+        <Button
+            android:id="@+id/contact_with_us"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="80dp"
+            android:text="Preview Contact with us social fragment"
+            android:layout_gravity="center_horizontal"/>
+
     </FrameLayout>
 
 
