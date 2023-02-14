@@ -1,5 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <dimen name="margin_0.5x">4dp</dimen>
+    <dimen name="margin">8dp</dimen>
+    <dimen name="margin_1.5x">12dp</dimen>
+    <dimen name="margin_2x">16dp</dimen>
+    <dimen name="margin_2.5x">20dp</dimen>
+    <dimen name="margin_3x">24dp</dimen>
+    <dimen name="margin_3.5x">28dp</dimen>
+    <dimen name="margin_4x">32dp</dimen>
+    <dimen name="margin_4.5x">36dp</dimen>
+    <dimen name="margin_5x">40dp</dimen>
+    <dimen name="margin_5.5x">48dp</dimen>
+    <dimen name="margin_6x">48dp</dimen>
+    <dimen name="margin_6.5x">52dp</dimen>
+    <dimen name="margin_7x">56dp</dimen>
+    <dimen name="margin_7.5x">60dp</dimen>
+    <dimen name="margin_8x">64dp</dimen>
+    <dimen name="margin_8.5x">68dp</dimen>
+    <dimen name="margin_9x">72dp</dimen>
+    <dimen name="margin_9.5x">76dp</dimen>
+    <dimen name="margin_10x">80dp</dimen>
+
+    <dimen name="padding_0.5x">4dp</dimen>
+    <dimen name="padding">8dp</dimen>
+    <dimen name="padding_2x">16dp</dimen>
+    <dimen name="padding_3x">24dp</dimen>
+    <dimen name="default_card_radius">8dp</dimen>
+
     <dimen name="size_0.5x">4dp</dimen>
     <dimen name="size">8dp</dimen>
     <dimen name="size_1.5x">12dp</dimen>
@@ -22,5 +49,5 @@
     <dimen name="size_10x">80dp</dimen>
     <dimen name="radius_3x">24dp</dimen>
 
-    <dimen name="size_deflaut_start">75dp</dimen>
+    <dimen name="margin_deflaut_start">75dp</dimen>
 </resources>
