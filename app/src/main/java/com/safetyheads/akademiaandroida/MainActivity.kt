@@ -1,11 +1,9 @@
 package com.safetyheads.akademiaandroida
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentTransaction
 import com.safetyheads.akademiaandroida.databinding.ActivityMainBinding
 import com.safetyheads.akademiaandroida.font.FontSylesFragment
 import com.safetyheads.akademiaandroida.fragments.WeAreHiringFragment
@@ -21,14 +19,14 @@ class MainActivity : AppCompatActivity() {
 
         binding.button.setOnClickListener {
             openFragment(FontSylesFragment())
-            binding.button.visibility = View.GONE
-            binding.weAreHiring.visibility = View.GONE
+            binding.button.isVisible = false
+            binding.weAreHiring.isVisible = false
         }
 
         binding.weAreHiring.setOnClickListener {
             openFragment(WeAreHiringFragment())
-            binding.button.visibility = View.GONE
-            binding.weAreHiring.visibility = View.GONE
+            binding.button.isVisible = false
+            binding.weAreHiring.isVisible = false
         }
 
         // testing Footer
