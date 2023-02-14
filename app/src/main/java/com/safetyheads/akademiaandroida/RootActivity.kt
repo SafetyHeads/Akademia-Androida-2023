@@ -6,26 +6,24 @@ import android.os.Looper
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
-import androidx.navigation.Navigation
 import androidx.navigation.fragment.NavHostFragment
 
 class RootActivity : AppCompatActivity() {
 
     private lateinit var navController: NavController
+    private val navigationAction = R.id.action_splashScreen_to_launchScreen
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_root)
-        val host =
-            supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment?
-                ?: return
-        navController = host.navController
-        Navigation.setViewNavController(findViewById(R.id.nav_host_fragment), navController)
-        val splashTime = 3000L // time in milliseconds
-        //splash->main after specified time
+
+        val navHostFragment =
+            supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
+        navController = navHostFragment.navController
+
         Handler(Looper.getMainLooper()).postDelayed({
-            navController.navigate(R.id.mainscreen_placeholder)
-        }, splashTime)
+            navController.navigate(navigationAction)
+        }, SPLASH_TIME)
 
         val onBackPressedCallback = object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
@@ -37,5 +35,9 @@ class RootActivity : AppCompatActivity() {
             }
         }
         onBackPressedDispatcher.addCallback(this, onBackPressedCallback)
+    }
+
+    companion object {
+        private const val SPLASH_TIME = 3000L
     }
 }

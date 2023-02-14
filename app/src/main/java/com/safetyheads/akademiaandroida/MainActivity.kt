@@ -30,9 +30,5 @@ class MainActivity : AppCompatActivity() {
         binding.rootActivityButton.setOnClickListener {
             startActivity(rootActivityIntent)
         }
-        // testing Footer
-        supportFragmentManager.beginTransaction()
-            .add(R.id.footer_container, Footer())
-            .commit()
     }
 }

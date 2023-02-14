@@ -9,9 +9,9 @@
         android:id="@+id/splashScreenFragment"
         android:name="com.safetyheads.akademiaandroida.SplashScreenFragment"
         android:label="SplashScreenFragment"
-        tools:layout="@layout/fragment_splash_placeholder" >
+        tools:layout="@layout/fragment_splash_screen" >
         <action
-            android:id="@+id/action_splash_placeholder_to_mainscreen_placeholder"
+            android:id="@+id/action_splashScreen_to_launchScreen"
             app:destination="@id/mainscreen_placeholder" />
     </fragment>
     <fragment
