@@ -1,5 +1,6 @@
 package com.safetyheads.akademiaandroida
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -25,11 +26,13 @@ class MainActivity : AppCompatActivity() {
             fragmentTransaction.commit()
             binding.button.visibility = View.GONE
         }
-      //  setContentView(R.layout.activity_main)
+        val rootActivityIntent = Intent(this, RootActivity::class.java)
+        binding.rootActivityButton.setOnClickListener {
+            startActivity(rootActivityIntent)
+        }
         // testing Footer
         supportFragmentManager.beginTransaction()
             .add(R.id.footer_container, Footer())
             .commit()
-
     }
 }
