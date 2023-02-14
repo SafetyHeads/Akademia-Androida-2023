@@ -36,6 +36,7 @@ class MainActivity : AppCompatActivity() {
         supportFragmentManager.beginTransaction()
             .add(R.id.footer_container, Footer())
             .commit()
+
     }
 
     private fun openFragment(fragment: Fragment) {
@@ -44,4 +45,5 @@ class MainActivity : AppCompatActivity() {
             commit()
         }
     }
+    
 }
