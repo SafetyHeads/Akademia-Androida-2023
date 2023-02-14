@@ -28,6 +28,12 @@
             android:layout_marginTop="16dp"
             android:text="Preview font's" />
 
+        <com.safetyheads.akademiaandroida.views.BackArrowView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/back_arrow_view"
+            android:layout_marginTop="@dimen/margin_4x"/>
+
         <Button
             android:id="@+id/contact_with_us"
             android:layout_width="wrap_content"
