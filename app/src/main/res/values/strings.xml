@@ -14,6 +14,10 @@
     <string name="in_numbers_deployments_number">+20</string>
     <string name="in_numbers_min_project_size">Min. Project Size</string>
     <string name="in_numbers_min_project_size_amount">5000$</string>
+    <string name="apply_now">Apply now</string>
+    <string name="do_you_want_to_install_app">Do you want to install the %s app?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
     <string name="footer_text_down">Copyright 2023 SafetyHeads</string>
     <string name="footer_text_up">SafetyHeads.com - Privacy policy and Cookie policy</string>
     <string name="privacy_policy">Privacy policy</string>
