@@ -124,4 +124,23 @@
         <item name="android:letterSpacing">0</item>
         <item name="android:textAllCaps">false</item>
     </style>
+
+    <!-- Comforta-bold 18sp Green text color -->
+    <style name="Text_comforta_bold_18sp" parent="TextAppearance.AppCompat">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:fontFamily">@font/comfortaa_bold</item>
+        <item name="android:textColor">@color/p_60</item>
+        <item name="android:lineSpacingExtra">2sp</item>
+    </style>
+
+    <!-- Comforta-bold 32sp White text color -->
+    <style name="Text_comforta_bold_32sp" parent="TextAppearance.AppCompat">
+        <item name="android:textSize">32sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:fontFamily">@font/comfortaa_bold</item>
+        <item name="android:textColor">@color/n_0</item>
+        <item name="android:lineSpacingExtra">3sp</item>
+    </style>
+
 </resources>

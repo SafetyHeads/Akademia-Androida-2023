@@ -32,28 +32,20 @@
 
     <TextView
         android:id="@+id/textView"
+        style="@style/Text_comforta_bold_18sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/size_5x"
-        android:fontFamily="@font/comfortaa_bold"
-        android:lineSpacingExtra="2sp"
         android:text="@string/join_our_team"
-        android:textColor="@color/p_60"
-        android:textSize="18sp"
-        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/textView2"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView2"
+        style="@style/Text_comforta_bold_32sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/comfortaa_bold"
-        android:lineSpacingExtra="3sp"
         android:text="@string/we_are_hiring"
-        android:textColor="@color/n_0"
-        android:textSize="32sp"
-        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
