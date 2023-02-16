@@ -21,14 +21,47 @@
         android:layout_height="match_parent">
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/previev_font"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="16dp"
             android:text="Preview font's" />
 
+        <Button
+            android:id="@+id/we_are_hiring"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="150dp"
+            android:text="Preview we are hiring fragment" />
+            
+        <com.safetyheads.akademiaandroida.views.BackArrowView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/back_arrow_view"
+            android:layout_marginTop="@dimen/margin_4x"/>
+
+        <Button
+            android:id="@+id/contact_with_us"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="80dp"
+            android:text="Preview Contact with us social fragment"
+            android:layout_gravity="center_horizontal"/>
+
     </FrameLayout>
+
+    <Button
+        android:id="@+id/rootActivityButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
+        android:text="Take me to the Root Activity!"
+        app:layout_constraintBottom_toBottomOf="@+id/frame_layout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
