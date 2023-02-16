@@ -130,19 +130,4 @@
         <item name="android:textAllCaps">false</item>
     </style>
 
-    <style name="PoppinsRegular14" parent="@android:style/TextAppearance.Small">
-        <item name="android:fontFamily">@font/poppins_regular</item>
-        <item name="android:textColor">@color/s_60</item>
-        <item name="android:textStyle">normal</item>
-        <item name="android:textSize">14sp</item>
-        <item name="android:lineSpacingExtra">6sp</item>
-    </style>
-
-    <style name="PoppinsSBold14" parent="@android:style/TextAppearance.Small">
-        <item name="android:fontFamily">@font/poppins_semibold</item>
-        <item name="android:textColor">@color/s_60</item>
-        <item name="android:textStyle">normal</item>
-        <item name="android:textSize">14sp</item>
-        <item name="android:lineSpacingExtra">-2sp</item>
-    </style>
 </resources>
