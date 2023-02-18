@@ -1,17 +1,10 @@
 package com.safetyheads.akademiaandroida
 
-import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.isVisible
-import androidx.fragment.app.Fragment
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentTransaction
 import com.safetyheads.akademiaandroida.contact_with_us.ContactWithUsFragment
 import com.safetyheads.akademiaandroida.databinding.ActivityMainBinding
 import com.safetyheads.akademiaandroida.font.FontSylesFragment
@@ -27,18 +20,19 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
 
-        binding.previev_font.setOnClickListener {
+        binding.previevFont.setOnClickListener {
             openFragment(FontSylesFragment())
-            binding.previev_font.isVisible = false
-            binding.contact_with_us.isVisible = false
+            binding.previevFont.isVisible = false
+            binding.contactWithUs.isVisible = false
             binding.weAreHiring.isVisible = false
         }
 
         binding.weAreHiring.setOnClickListener {
             openFragment(WeAreHiringFragment())
-            binding.previev_font.isVisible = false
-            binding.contact_with_us.isVisible = false
+            binding.previevFont.isVisible = false
+            binding.contactWithUs.isVisible = false
             binding.weAreHiring.isVisible = false
+        }
             
         binding.contactWithUs.setOnClickListener {
             openFragment(ContactWithUsFragment())

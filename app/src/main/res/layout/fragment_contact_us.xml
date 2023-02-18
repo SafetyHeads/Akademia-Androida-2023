@@ -67,12 +67,11 @@
 
         <TextView
             android:id="@+id/textView_email"
-            style="@style/Text"
+            style="@style/Text7"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/size_2x"
             android:text="@string/contact_us_email_text"
-            android:textColor="@color/s_60"
             app:layout_constraintBottom_toBottomOf="@+id/imageView_at_sign"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -81,12 +80,11 @@
 
         <TextView
             android:id="@+id/textView_phone"
-            style="@style/Text"
+            style="@style/Text7"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/size_2x"
             android:text="@string/contact_us_phone_text"
-            android:textColor="@color/s_60"
             app:layout_constraintBottom_toBottomOf="@+id/imageView_phone_symbol"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -95,12 +93,11 @@
 
         <TextView
             android:id="@+id/textView_company"
-            style="@style/Text_semibold"
+            style="@style/Text7_semibold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/size_2x"
             android:text="@string/contact_us_company_text"
-            android:textColor="@color/s_60"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@+id/imageView_pin"
             app:layout_constraintEnd_toEndOf="parent"
@@ -110,12 +107,11 @@
 
         <TextView
             android:id="@+id/textView_address"
-            style="@style/Text"
+            style="@style/Text7"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/size_0.5x"
             android:text="@string/contact_us_address_text"
-            android:textColor="@color/s_60"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/textView_company"
