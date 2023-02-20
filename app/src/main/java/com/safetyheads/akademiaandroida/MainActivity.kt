@@ -33,7 +33,7 @@ class MainActivity : AppCompatActivity() {
             binding.contactWithUs.isVisible = false
             binding.weAreHiring.isVisible = false
         }
-            
+
         binding.contactWithUs.setOnClickListener {
             openFragment(ContactWithUsFragment())
             binding.previevFont.isVisible = false
