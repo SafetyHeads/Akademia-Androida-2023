@@ -29,13 +29,16 @@ class FragmentsAdapter(private val list: List<Fragment>, private val context: Co
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val itemFragment = list[position]
+        val blankFragment = BlankFragment()
         val name = list[position]::class.java.simpleName
         holder.textViewCard.text = name
+
         val fragmentManager = (context as AppCompatActivity).supportFragmentManager
 
         holder.itemView.setOnClickListener {
             val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
             fragmentTransaction.replace(R.id.frame_layout2, itemFragment)
+            fragmentTransaction.replace(R.id.frame_layout3, blankFragment)
             fragmentTransaction.commit()
             holder.itemView.isVisible = false
         }

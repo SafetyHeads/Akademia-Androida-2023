@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
+import com.safetyheads.akademiaandroida.databinding.CardBinding
 
 class ActivitiesAdapter(private val list: List<String>, private val context: Context) :
     RecyclerView.Adapter<ActivitiesAdapter.MyViewHolder>() {
@@ -26,7 +27,6 @@ class ActivitiesAdapter(private val list: List<String>, private val context: Con
         holder.textViewCard.text = item
 
         holder.itemView.setOnClickListener {
-
             val activityClass = Class.forName(item)
             val intentOpenActivity = Intent(context, activityClass)
             context.startActivity(intentOpenActivity)

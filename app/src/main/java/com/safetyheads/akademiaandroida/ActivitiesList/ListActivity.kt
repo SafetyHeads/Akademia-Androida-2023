@@ -4,8 +4,13 @@ import android.content.pm.PackageManager
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.safetyheads.akademiaandroida.ClientsFragment
+import com.safetyheads.akademiaandroida.ExperienceStructureFragment
+import com.safetyheads.akademiaandroida.SplashScreenFragment
+import com.safetyheads.akademiaandroida.contact_with_us.ContactWithUsFragment
 import com.safetyheads.akademiaandroida.databinding.ActivityListBinding
 import com.safetyheads.akademiaandroida.font.FontSylesFragment
+import com.safetyheads.akademiaandroida.fragments.WeAreHiringFragment
 
 class ListActivity : AppCompatActivity() {
     private lateinit var binding: ActivityListBinding
@@ -18,13 +23,10 @@ class ListActivity : AppCompatActivity() {
         val adapter = ActivitiesAdapter(createListActivity(), this)
         binding.recyclerView.layoutManager = LinearLayoutManager(applicationContext)
         binding.recyclerView.adapter = adapter
-        binding.recyclerView.setOnClickListener { }
 
         val adapterFragment = FragmentsAdapter(dataListFragments, this)
         binding.recyclerView2.layoutManager = LinearLayoutManager(applicationContext)
         binding.recyclerView2.adapter = adapterFragment
-        binding.recyclerView2.setOnClickListener { }
-
     }
 
     private fun createListActivity(): List<String> = buildList {
@@ -45,12 +47,17 @@ class ListActivity : AppCompatActivity() {
         }
     }
 
-    // tworzenie recznie listy z fragmentami
-    // val newFragment = newFragment()
-    // dataListFragments = listOf(FontSylesFragment, ColorsPalettteFragment, newFragment)
     val fontSylesFragment = FontSylesFragment()
+    val contactWithUsFragment = ContactWithUsFragment()
+    val weAreHiringBinding = WeAreHiringFragment()
+    val clientsFragment = ClientsFragment()
+    val experienceStructureFragment = ExperienceStructureFragment()
+    val splashScreenFragment = SplashScreenFragment()
 
-    val dataListFragments = listOf(fontSylesFragment)
+    val dataListFragments = listOf(
+        fontSylesFragment, contactWithUsFragment,
+        weAreHiringBinding, clientsFragment, experienceStructureFragment, splashScreenFragment
+    )
 }
 
 
