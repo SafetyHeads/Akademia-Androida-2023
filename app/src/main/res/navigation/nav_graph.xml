@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/mainscreen_placeholder"
-        android:name="com.safetyheads.akademiaandroida.MainscreenPlaceholder"
+        android:name="com.safetyheads.akademiaandroida.launchScreen.LaunchScreenFragment"
         android:label="fragment_mainscreen_placeholder"
         tools:layout="@layout/fragment_mainscreen_placeholder">
         <action
