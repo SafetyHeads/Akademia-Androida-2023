@@ -3,7 +3,6 @@ package com.safetyheads.akademiaandroida
 import android.content.Context
 import android.widget.EditText
 import com.safetyheads.akademiaandroida.utils.PhoneNumberValidator
-import io.mockk.every
 import io.mockk.mockk
 import io.mockk.verify
 import org.assertj.core.api.AssertionsForInterfaceTypes.assertThat
@@ -29,14 +28,13 @@ class PhoneNumberValidatorTest {
         // Given
         val editText = mockk<EditText>(relaxed = true)
         val context = mockk<Context>()
-        every { context.getString(R.string.invalid_phone_message) } returns "Invalid phone number"
         val invalidPhoneNumber = "+4812345678910"
 
         // When
         PhoneNumberValidator.validatePhoneNumber(invalidPhoneNumber, editText, context)
 
         // Then
-        verify { editText.error = context.getString(R.string.invalid_phone_message) }
+        verify { editText.error = "Invalid phone number" }
     }
 
     @Test
