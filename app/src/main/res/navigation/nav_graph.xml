@@ -18,7 +18,7 @@
         android:id="@+id/mainscreen_placeholder"
         android:name="com.safetyheads.akademiaandroida.launchScreen.LaunchScreenFragment"
         android:label="fragment_mainscreen_placeholder"
-        tools:layout="@layout/fragment_mainscreen_placeholder">
+        tools:layout="@layout/fragment_launch_screen">
         <action
             android:id="@+id/action_mainscreen_placeholder_to_notlogged_placeholder"
             app:destination="@id/notlogged_placeholder" />
