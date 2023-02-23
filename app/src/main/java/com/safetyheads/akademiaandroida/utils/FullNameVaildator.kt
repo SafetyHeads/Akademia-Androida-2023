@@ -51,26 +51,26 @@ object FullNameValidator {
         }
     }
 
-    private fun checkIsNotSpace(source: Char): Boolean {
+    fun checkIsNotSpace(source: Char): Boolean {
         if (source.isWhitespace())
             return false
         return true
     }
 
-    private fun isNotFirstChar(upperCase: Int): Boolean {
+    fun isNotFirstChar(upperCase: Int): Boolean {
         if (upperCase > 1)
             return true
         return false
     }
 
 
-    private fun checkListSizeIsTwo(splitNames: List<String>): Boolean {
+    fun checkListSizeIsTwo(splitNames: List<String>): Boolean {
         if (splitNames.size >= 2)
             return true
         return false
     }
 
-    private fun validateName(
+    fun validateName(
         name: String, splitNames: List<String>, editText: EditText,
         context: Context
     ): Boolean {
@@ -87,7 +87,7 @@ object FullNameValidator {
         return true
     }
 
-    private fun validateSurname(
+    fun validateSurname(
         surname: String, splitNames: List<String>, spacesAmount: Int,
         editText: EditText, context: Context
     ): Boolean {
