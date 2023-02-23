@@ -51,7 +51,7 @@
         android:layout_marginTop="@dimen/size_3x"
         android:layout_marginRight="@dimen/size_3x"
         android:adjustViewBounds="true"
-        app:lottie_rawRes="@raw/animacja_launchscreen"
+        app:lottie_rawRes="@raw/animation_launcherscreen"
         app:lottie_loop="true"
         app:lottie_autoPlay="true"
         app:layout_constraintEnd_toEndOf="parent"
