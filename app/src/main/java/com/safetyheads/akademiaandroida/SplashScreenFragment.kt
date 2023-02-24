@@ -24,6 +24,8 @@ class SplashScreenFragment : Fragment() {
 */
 
 
+
+
         return view
     }
 

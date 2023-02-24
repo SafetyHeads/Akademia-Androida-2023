@@ -38,6 +38,6 @@ class RootActivity : AppCompatActivity() {
     }
 
     companion object {
-        private const val SPLASH_TIME = 3000L
+        private const val SPLASH_TIME = 10000L
     }
 }
