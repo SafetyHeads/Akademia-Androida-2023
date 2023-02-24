@@ -2,7 +2,9 @@ package com.safetyheads.akademiaandroida
 
 import android.content.Context
 import android.widget.EditText
+import androidx.core.widget.addTextChangedListener
 import com.safetyheads.akademiaandroida.utils.FullNameValidator
+import io.mockk.every
 import io.mockk.mockk
 import io.mockk.verify
 import org.assertj.core.api.AssertionsForInterfaceTypes.assertThat
@@ -82,11 +84,13 @@ class FullNameVaildatorTest {
         val name: String = "J"
         val splitNames: List<String> = arrayListOf("J", "Abramovich")
         val editText = mockk<EditText>(relaxed = true)
-        val context = mockk<Context>()
+        val context = mockk<Context>() {
+            every { getString(R.string.invalid_name_message) } returns "error"
+        }
 
         FullNameValidator.validateName(name, splitNames, editText, context)
 
-        verify { editText.error = context.getString(R.string.invalid_name_message) }
+        verify { editText.error = "error" }
     }
 
     @Test
@@ -94,11 +98,13 @@ class FullNameVaildatorTest {
         val name = ""
         val splitNames: List<String> = arrayListOf("", "Abramovich")
         val editText = mockk<EditText>(relaxed = true)
-        val context = mockk<Context>()
+        val context = mockk<Context>() {
+            every { getString(R.string.invalid_empty_message) } returns "error"
+        }
 
         FullNameValidator.validateName(name, splitNames, editText, context)
 
-        verify { editText.error = "This field is required" }
+        verify { editText.error = "error" }
     }
 
     @Test
@@ -106,11 +112,13 @@ class FullNameVaildatorTest {
         val name = "john"
         val splitNames: List<String> = arrayListOf("john", "Abramovich")
         val editText = mockk<EditText>(relaxed = true)
-        val context = mockk<Context>()
+        val context = mockk<Context>() {
+            every { getString(R.string.invalid_name_message) } returns "error"
+        }
 
         FullNameValidator.validateName(name, splitNames, editText, context)
 
-        verify { editText.error = context.getString(R.string.invalid_name_message) }
+        verify { editText.error = "error" }
     }
 
     @Test
@@ -119,11 +127,13 @@ class FullNameVaildatorTest {
         val splitNames: List<String> = arrayListOf("John", "Abramovich")
         val spacesAmount = 1
         val editText = mockk<EditText>(relaxed = true)
-        val context = mockk<Context>()
+        val context = mockk<Context>() {
+            every { getString(R.string.invalid_surname_message) } returns "error"
+        }
 
         FullNameValidator.validateSurname(surname, splitNames, spacesAmount, editText, context)
 
-        verify { editText.error = context.getString(R.string.invalid_surname_message) }
+        verify { editText.error = "error" }
     }
 
     @Test
@@ -132,11 +142,13 @@ class FullNameVaildatorTest {
         val splitNames: List<String> = arrayListOf("John", "Abramovich")
         val spacesAmount = 2
         val editText = mockk<EditText>(relaxed = true)
-        val context = mockk<Context>()
+        val context = mockk<Context>() {
+            every { getString(R.string.invalid_spaces_message) } returns "error"
+        }
 
         FullNameValidator.validateSurname(surname, splitNames, spacesAmount, editText, context)
 
-        verify { editText.error = context.getString(R.string.invalid_spaces_message) }
+        verify { editText.error = "error" }
     }
 
     @Test
@@ -145,11 +157,13 @@ class FullNameVaildatorTest {
         val splitNames: List<String> = arrayListOf("John", "Abramovich")
         val spacesAmount = 1
         val editText = mockk<EditText>(relaxed = true)
-        val context = mockk<Context>()
+        val context = mockk<Context>() {
+            every { getString(R.string.invalid_surname_message) } returns "error"
+        }
 
         FullNameValidator.validateSurname(surname, splitNames, spacesAmount, editText, context)
 
-        verify { editText.error = context.getString(R.string.invalid_surname_message) }
+        verify { editText.error = "error" }
     }
 
     @Test
@@ -158,11 +172,13 @@ class FullNameVaildatorTest {
         val splitNames: List<String> = arrayListOf("John", "Abramovich")
         val spacesAmount = 1
         val editText = mockk<EditText>(relaxed = true)
-        val context = mockk<Context>()
+        val context = mockk<Context>() {
+            every { getString(R.string.invalid_surname_message) } returns "error"
+        }
 
         FullNameValidator.validateSurname(surname, splitNames, spacesAmount, editText, context)
 
-        verify { editText.error = context.getString(R.string.invalid_surname_message) }
+        verify { editText.error = "error" }
     }
 
     @Test
@@ -176,5 +192,15 @@ class FullNameVaildatorTest {
         val result = FullNameValidator.validateSurname(surname, splitNames, spacesAmount, editText, context)
 
         assertThat(result).isTrue
+    }
+
+    @Test
+    fun validateAttach() {
+        val editText = mockk<EditText>(relaxed = true)
+        val context = mockk<Context>()
+
+        FullNameValidator.attach(editText, context)
+
+        verify { editText.addTextChangedListener(any()) }
     }
 }
