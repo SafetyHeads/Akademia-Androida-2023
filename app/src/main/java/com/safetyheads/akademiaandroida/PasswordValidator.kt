@@ -21,14 +21,14 @@ class PasswordValidator {
     }
 
      fun validatePassword(password: String, editText: EditText, context: Context) {
-         if (!isValid(password)) {
+         if (!isValid(password, editText, context)) {
              editText.error = context.getString(R.string.invalid_password)
          } else {
              editText.error = null
          }
      }
 
-    fun isValid(password: String): Boolean {
+    fun isValid(password: String, editText: EditText, context: Context): Boolean {
         return PasswordRegex.matches(password)
     }
 }
