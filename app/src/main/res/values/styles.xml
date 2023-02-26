@@ -130,13 +130,22 @@
         <item name="android:textAllCaps">false</item>
     </style>
 
-    <!-- Button style -->
-    <style name="Button_style" parent="@android:style/TextAppearance.Small">
-        <item name="layoutWidth">match_parent</item>
-        <item name="android:height">48dp</item>
-        <item name="android:textSize">14sp</item>
-        <item name="android:background">@drawable/button_style</item>
-        <item name="android:fontFamily">@font/poppins_semibold</item>
-        <item name="android:textColor">@color/white</item>
+    <!-- Comforta-bold 18sp Green text color -->
+    <style name="Text_comforta_bold_18sp" parent="TextAppearance.AppCompat">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:fontFamily">@font/comfortaa_bold</item>
+        <item name="android:textColor">@color/p_60</item>
+        <item name="android:lineSpacingExtra">2sp</item>
     </style>
+
+    <!-- Comforta-bold 32sp White text color -->
+    <style name="Text_comforta_bold_32sp" parent="TextAppearance.AppCompat">
+        <item name="android:textSize">32sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:fontFamily">@font/comfortaa_bold</item>
+        <item name="android:textColor">@color/n_0</item>
+        <item name="android:lineSpacingExtra">3sp</item>
+    </style>
+
 </resources>

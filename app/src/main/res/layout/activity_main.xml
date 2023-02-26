@@ -28,11 +28,19 @@
             android:layout_marginTop="16dp"
             android:text="Preview font's" />
 
+        <Button
+            android:id="@+id/we_are_hiring"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="150dp"
+            android:text="Preview we are hiring fragment" />
+            
         <com.safetyheads.akademiaandroida.views.BackArrowView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/back_arrow_view"
-            android:layout_marginTop="@dimen/margin_4x"/>
+            android:layout_marginTop="@dimen/margin_4x" />
 
         <Button
             android:id="@+id/contact_with_us"
@@ -40,10 +48,21 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="80dp"
             android:text="Preview Contact with us social fragment"
-            android:layout_gravity="center_horizontal"/>
+            android:layout_gravity="center_horizontal" />
+
 
     </FrameLayout>
 
+    <Button
+        android:id="@+id/activityList"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="88dp"
+        android:text="Preview activityList"
+        app:layout_constraintBottom_toBottomOf="@+id/frame_layout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/rootActivityButton"

@@ -41,7 +41,13 @@
     <dimen name="size_6x">48dp</dimen>
     <dimen name="size_6.5x">52dp</dimen>
     <dimen name="size_7x">56dp</dimen>
-
+    <dimen name="size_7_5x">60dp</dimen>
+    <dimen name="size_8x">64dp</dimen>
+    <dimen name="size_8.5x">68dp</dimen>
+    <dimen name="size_9x">72dp</dimen>
+    <dimen name="size_9_5x">76dp</dimen>
+    <dimen name="size_10x">80dp</dimen>
     <dimen name="radius_3x">24dp</dimen>
 
+    <dimen name="margin_deflaut_start">75dp</dimen>
 </resources>
