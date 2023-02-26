@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/splashScreenFragment"
-        android:name="com.safetyheads.akademiaandroida.SplashScreenFragment"
+        android:name="com.safetyheads.akademiaandroida.splashscreen.SplashScreenFragment"
         android:label="SplashScreenFragment"
         tools:layout="@layout/fragment_splash_screen" >
         <action

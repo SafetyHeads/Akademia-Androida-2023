@@ -1,17 +1,17 @@
 package com.safetyheads.akademiaandroida
 
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import androidx.activity.OnBackPressedCallback
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
+import com.safetyheads.akademiaandroida.splashscreen.SplashScreenViewModel
 
 class RootActivity : AppCompatActivity() {
 
     private lateinit var navController: NavController
-    private val navigationAction = R.id.action_splashScreen_to_launchScreen
+    private val splashScreenViewModel: SplashScreenViewModel by viewModels { SplashScreenViewModel.factory }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,9 +21,7 @@ class RootActivity : AppCompatActivity() {
             supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         navController = navHostFragment.navController
 
-        Handler(Looper.getMainLooper()).postDelayed({
-            navController.navigate(navigationAction)
-        }, SPLASH_TIME)
+        splashScreenViewModel.delaySplashScreen(navController)
 
         val onBackPressedCallback = object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
@@ -37,7 +35,4 @@ class RootActivity : AppCompatActivity() {
         onBackPressedDispatcher.addCallback(this, onBackPressedCallback)
     }
 
-    companion object {
-        private const val SPLASH_TIME = 3000L
-    }
 }
