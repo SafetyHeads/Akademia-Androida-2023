@@ -4,82 +4,123 @@ import android.content.Context
 import android.widget.EditText
 import io.mockk.mockk
 import io.mockk.verify
-import org.assertj.core.api.AssertionsForInterfaceTypes.assertThat
 import org.junit.Test
 
 
 class PasswordValidatorTest {
 
     private val validator = PasswordValidator()
-
     @Test
     fun validateAttach() {
+        // Given
         val editText = mockk<EditText>(relaxed = true)
         val context = mockk<Context>()
+
+        // When
         validator.attach(editText, context)
+
+        // Then
         verify { editText.addTextChangedListener(any()) }
     }
 
     @Test
-    fun `password with valid format`() {
+    fun passwordWithValidFormat() {
+        // Given
         val editText = mockk<EditText>(relaxed = true)
         val context = mockk<Context>()
         val password = "Password12nn@"
-        val result = validator.isValid(password, editText, context)
-        assertThat(result).isTrue
+
+        // When
+        validator.validatePassword(password, editText, context)
+
+        // Then
+        verify { editText.error = null }
     }
 
     @Test
-    fun `password without special character`() {
+    fun passwordWithoutSpecialCharacter() {
+        // Given
         val editText = mockk<EditText>(relaxed = true)
         val context = mockk<Context>()
         val password = "Password1238888"
-        val result = validator.isValid(password, editText, context)
-        assertThat(result).isTrue
+
+        // When
+        validator.validatePassword(password, editText, context)
+
+        // Then
+        verify { editText.error = null }
     }
 
     @Test
     fun validateName_isCorrect() {
+        // Given
         val editText = mockk<EditText>(relaxed = true)
         val context = mockk<Context>()
         val password = "Password1238888"
-        val result = validator.isValid(password, editText, context)
-        assertThat(result).isTrue
+
+        // When
+        validator.validatePassword(password, editText, context)
+
+        // Then
+        verify { editText.error = null }
     }
 
     @Test
-    fun `password without uppercase letter`() {
+    fun passwordWithoutUppercaseLetter() {
+        // Given
         val editText = mockk<EditText>(relaxed = true)
         val context = mockk<Context>()
         val password = "password0123@"
-        val result = validator.isValid(password, editText, context)
-        assertThat(result).isTrue
+
+        // When
+        validator.validatePassword(password, editText, context)
+
+        // Then
+        verify { editText.error = null }
     }
 
     @Test
-    fun `password without lowercase letter`() {
+    fun passwordWithoutLowercaseLetter() {
+        // Given
         val editText = mockk<EditText>(relaxed = true)
         val context = mockk<Context>()
         val password = "PASSWORD123@"
-        val result = validator.isValid(password, editText, context)
-        assertThat(result).isTrue
+
+        // When
+        validator.validatePassword(password, editText, context)
+
+        // Then
+        verify { editText.error = null }
     }
 
     @Test
-    fun `password with first letter special character`() {
+    fun passwordWithFirstLetterSpecialCharacter() {
+
+        // Given
         val editText = mockk<EditText>(relaxed = true)
         val context = mockk<Context>()
-        val password = "@123ASSWORD123@"
-        val result = validator.isValid(password, editText, context)
-        assertThat(result).isFalse
+        val password = "!mASSWORD123@"
+
+        // When
+        validator.validatePassword(password, editText, context)
+
+        // Then
+        verify {
+            editText.error = R.string.invalid_password.toString()
+        }
     }
 
     @Test
-    fun `password with fewer than 8 characters`() {
+    fun passwordWithFewerThan12Characters() {
+        // Given
         val editText = mockk<EditText>(relaxed = true)
         val context = mockk<Context>()
-        val password = "Pwd"
-        val result = validator.isValid(password, editText, context)
-        assertThat(result).isFalse
+        val password = "Pwbbbjujnnunuuniknknd"
+
+        // When
+        validator.validatePassword(password, editText, context)
+
+        // Then
+        verify { editText.error = null }
     }
 }
