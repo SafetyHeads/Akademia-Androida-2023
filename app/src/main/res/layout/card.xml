@@ -9,6 +9,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="name_activity"
-        android:textSize="@dimen/margin_2x" />
+        android:textSize="@dimen/size_2x" />
 
 </androidx.cardview.widget.CardView>
