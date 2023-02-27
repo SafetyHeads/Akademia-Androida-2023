@@ -40,7 +40,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/back_arrow_view"
-            android:layout_marginTop="@dimen/margin_4x" />
+            android:layout_marginTop="@dimen/size_4x" />
 
         <Button
             android:id="@+id/contact_with_us"
