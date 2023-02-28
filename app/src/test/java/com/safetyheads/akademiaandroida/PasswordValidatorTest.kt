@@ -95,7 +95,6 @@ class PasswordValidatorTest {
 
     @Test
     fun passwordWithFirstLetterSpecialCharacter() {
-
         // Given
         val editText = mockk<EditText>(relaxed = true)
         val context = mockk<Context>()
