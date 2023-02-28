@@ -8,8 +8,8 @@
         android:id="@+id/facebook_fill"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/margin_3x"
-        android:layout_marginTop="@dimen/margin_3x"
+        android:layout_marginStart="@dimen/size_3x"
+        android:layout_marginTop="@dimen/size_3x"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/facebook_fill" />
@@ -18,8 +18,8 @@
         android:id="@+id/linkedin_fill"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/margin_2x"
-        android:layout_marginTop="@dimen/margin_3x"
+        android:layout_marginStart="@dimen/size_2x"
+        android:layout_marginTop="@dimen/size_3x"
         app:layout_constraintStart_toEndOf="@+id/facebook_fill"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/linkedin_fill" />
@@ -28,8 +28,8 @@
         android:id="@+id/instagram_fill"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/margin_2x"
-        android:layout_marginTop="@dimen/margin_3x"
+        android:layout_marginStart="@dimen/size_2x"
+        android:layout_marginTop="@dimen/size_3x"
         app:layout_constraintStart_toEndOf="@+id/linkedin_fill"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/instagram_fill" />
@@ -38,8 +38,8 @@
         android:id="@+id/youtube_fill"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/margin_2x"
-        android:layout_marginTop="@dimen/margin_3x"
+        android:layout_marginStart="@dimen/size_2x"
+        android:layout_marginTop="@dimen/size_3x"
         app:layout_constraintStart_toEndOf="@+id/instagram_fill"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/youtube_fill" />
