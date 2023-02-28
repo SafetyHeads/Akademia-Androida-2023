@@ -148,4 +148,14 @@
         <item name="android:lineSpacingExtra">3sp</item>
     </style>
 
+    <!-- Button style -->
+    <style name="button_background" parent="@android:style/TextAppearance.Small">
+        <item name="layoutWidth">match_parent</item>
+        <item name="android:height">48dp</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:background">@drawable/button_background</item>
+        <item name="android:fontFamily">@font/poppins_semibold</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
 </resources>
