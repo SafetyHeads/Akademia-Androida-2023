@@ -12,20 +12,29 @@
         android:theme="@style/Theme.AkademiaAndroida"
         tools:targetApi="31">
         <activity
-            android:name=".TabLayoutActivity"
-            android:exported="false" />
-        <activity
-            android:name=".LaunchScreenActivity"
-            android:exported="false" />
-        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-    </application>
+        <activity
+            android:name=".TabLayoutActivity"
+            android:exported="true"></activity>
+        <activity
+            android:name=".RootActivity"
+            android:exported="true"></activity>
+        <activity
+            android:name=".ActivitiesList.ListActivity"
+            android:exported="true"></activity>
 
+    </application>
+    <queries>
+        <package android:name="com.facebook.katana" />
+        <package android:name="com.instagram.android"/>
+        <package android:name="com.google.android.youtube"/>
+        <package android:name="com.linkedin.android"/>
+        <package android:name="com.android.vending"/>
+    </queries>
 </manifest>
