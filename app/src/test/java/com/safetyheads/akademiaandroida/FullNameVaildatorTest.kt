@@ -23,7 +23,7 @@ class FullNameVaildatorTest {
     }
 
     @Test
-    fun checkIsNotSpace_isUnCorrect() {
+    fun checkIsNotSpace_isInCorrect() {
         val source = ' '
 
         val result = FullNameValidator.checkIsNotSpace(source)
@@ -32,7 +32,7 @@ class FullNameVaildatorTest {
     }
 
     @Test
-    fun checkIsNotFirstChar_isCorrect() {
+    fun checkFirstLetterIsNotSpace_isCorrect() {
         val upperCase = 2
 
         val result = FullNameValidator.isNotFirstChar(upperCase)
@@ -41,7 +41,7 @@ class FullNameVaildatorTest {
     }
 
     @Test
-    fun checkIsNotFirstChar_isUnCorrect() {
+    fun checkFirstLetterIsNotSpace_isInCorrect() {
         val upperCase = 1
 
         val result = FullNameValidator.isNotFirstChar(upperCase)
@@ -59,7 +59,7 @@ class FullNameVaildatorTest {
     }
 
     @Test
-    fun checkListSizeIsTwo_isUnCorrect() {
+    fun checkListSizeIsTwo_isInCorrect() {
         val splitNames: List<String> = arrayListOf("First")
 
         val result = FullNameValidator.checkListSizeIsTwo(splitNames)
@@ -80,7 +80,7 @@ class FullNameVaildatorTest {
     }
 
     @Test
-    fun validateName_invalidateName_isUnCorrect() {
+    fun validateName_invalidateName_isInCorrect() {
         val name: String = "J"
         val splitNames: List<String> = arrayListOf("J", "Abramovich")
         val editText = mockk<EditText>(relaxed = true)
@@ -94,7 +94,7 @@ class FullNameVaildatorTest {
     }
 
     @Test
-    fun validateName_invalidateEmpty_isUnCorrect() {
+    fun validateName_invalidateEmpty_isInCorrect() {
         val name = ""
         val splitNames: List<String> = arrayListOf("", "Abramovich")
         val editText = mockk<EditText>(relaxed = true)
@@ -108,7 +108,7 @@ class FullNameVaildatorTest {
     }
 
     @Test
-    fun validateName_invalidateNameFirstIsNotUpperCase_isUnCorrect() {
+    fun validateName_invalidateNameFirstIsNotUpperCase_isInCorrect() {
         val name = "john"
         val splitNames: List<String> = arrayListOf("john", "Abramovich")
         val editText = mockk<EditText>(relaxed = true)
@@ -122,7 +122,7 @@ class FullNameVaildatorTest {
     }
 
     @Test
-    fun validateSurname_invalidateSurnameMessage_isUnCorrect() {
+    fun validateSurname_invalidateSurnameMessage_isInCorrect() {
         val surname = "A"
         val splitNames: List<String> = arrayListOf("John", "Abramovich")
         val spacesAmount = 1
@@ -137,7 +137,7 @@ class FullNameVaildatorTest {
     }
 
     @Test
-    fun validateSurname_invalidateTooMuchSpaces_isUnCorrect() {
+    fun validateSurname_invalidateTooMuchSpaces_isInCorrect() {
         val surname = "Abramovich"
         val splitNames: List<String> = arrayListOf("John", "Abramovich")
         val spacesAmount = 2
@@ -152,7 +152,7 @@ class FullNameVaildatorTest {
     }
 
     @Test
-    fun validateSurname_invalidateSurnameIsEmpty_isUnCorrect() {
+    fun validateSurname_invalidateSurnameIsEmpty_isInCorrect() {
         val surname = ""
         val splitNames: List<String> = arrayListOf("John", "Abramovich")
         val spacesAmount = 1
@@ -167,7 +167,7 @@ class FullNameVaildatorTest {
     }
 
     @Test
-    fun validateSurname_invalidateSurnameIsNotUpperCase_isUnCorrect() {
+    fun validateSurname_invalidateSurnameIsNotUpperCase_isInCorrect() {
         val surname = "abramovich"
         val splitNames: List<String> = arrayListOf("John", "Abramovich")
         val spacesAmount = 1
