@@ -135,7 +135,7 @@
     </style>
 
     <!-- Button background -->
-    <style name="button_background" parent="@android:style/TextAppearance.Small">
+    <style name="StyledButton" parent="@android:style/TextAppearance.Small">
         <item name="layoutWidth">match_parent</item>
         <item name="android:height">48dp</item>
         <item name="android:textSize">14sp</item>
