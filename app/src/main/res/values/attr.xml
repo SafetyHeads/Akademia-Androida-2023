@@ -3,4 +3,10 @@
     <declare-styleable name="H2View">
         <attr name="text" format="string"/>
     </declare-styleable>
+
+    <attr name="layoutWidth" format="dimension">
+        <enum name="fill_parent" value="-1" />
+        <enum name="match_parent" value="-1" />
+        <enum name="wrap_content" value="-2" />
+    </attr>
 </resources>
