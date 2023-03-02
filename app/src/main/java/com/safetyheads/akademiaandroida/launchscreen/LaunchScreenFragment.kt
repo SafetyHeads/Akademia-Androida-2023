@@ -1,4 +1,4 @@
-package com.safetyheads.akademiaandroida.launchScreen
+package com.safetyheads.akademiaandroida.launchscreen
 import android.os.Bundle
 import android.text.Spannable
 import android.text.SpannableString
@@ -12,11 +12,17 @@ import androidx.fragment.app.Fragment
 import com.safetyheads.akademiaandroida.R
 import com.safetyheads.akademiaandroida.Footer
 import com.safetyheads.akademiaandroida.databinding.FragmentLaunchScreenBinding
+
 class LaunchScreenFragment : Fragment() {
     private lateinit var binding: FragmentLaunchScreenBinding
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = FragmentLaunchScreenBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         val welcomeMessage = binding.txtWelcome
         val welcomeMessageTxT = welcomeMessage.text
 
@@ -31,7 +37,6 @@ class LaunchScreenFragment : Fragment() {
         childFragmentManager.beginTransaction()
             .add(R.id.parent_layout, Footer())
             .commit()
-
-        return binding.root
     }
 }
+

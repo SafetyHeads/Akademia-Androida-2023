@@ -11,7 +11,7 @@ import androidx.navigation.fragment.NavHostFragment
 class RootActivity : AppCompatActivity() {
 
     private lateinit var navController: NavController
-    private val navigationAction = R.id.action_splashScreen_to_launchScreen
+    private val navigationAction = R.id.action_splashScreen_to_launchScreenFragment
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,7 +27,7 @@ class RootActivity : AppCompatActivity() {
 
         val onBackPressedCallback = object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
-                if (navController.currentDestination?.id == R.id.mainscreen_placeholder || navController.currentDestination?.id == R.id.dashboard_placeholder) {
+                if (navController.currentDestination?.id == R.id.launchScreenFragment || navController.currentDestination?.id == R.id.dashboard_placeholder) {
                     // do nothing
                 } else {
                     navController.popBackStack()
