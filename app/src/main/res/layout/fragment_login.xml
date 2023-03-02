@@ -7,21 +7,21 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".LoginFragment"
-    android:layout_margin="@dimen/margin_3x">
+    android:layout_margin="@dimen/size_3x">
 
-    <Button
+    <ImageView
+        style="@style/Back_arrow"
         android:id="@+id/button_back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Back"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
 
     <ImageView
-        android:id="@+id/imageView_logo"
+        style="@style/Logo_safetyheads"
+        android:id="@+id/imageView_logo_safetyheads"
         android:layout_width="128dp"
         android:layout_height="96dp"
-        android:src="@color/p_80"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -32,57 +32,70 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="184dp"
-        android:text="@string/login_prompt_email"
+        android:text="@string/email_address"
+        style="@style/Text2"
         android:textSize="10sp"
         android:textColor="@color/n_120"
         android:fontFamily="@font/poppins_regular"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
 
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/textInput_email_address"
-        android:layout_width="364dp"
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Layout_eText_email_address"
+        android:id="@+id/layout_email_address"
+        android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:layout_marginTop="200dp"
-        android:inputType="textPassword"
-        android:paddingLeft="8dp"
-        android:background="@drawable/text_input_style_login_fragment"
-        android:hint="@string/login_hint_email"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="202dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/eText_email_address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress" />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
         android:id="@+id/textView_password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="280dp"
-        android:text="@string/login_prompt_password"
+        android:text="@string/password"
+        style="@style/Text2"
         android:textSize="10sp"
         android:textColor="@color/n_120"
         android:fontFamily="@font/poppins_regular"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
 
-
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInput_password"
-        android:layout_width="364dp"
+        style="@style/Layout_eText_password"
+        android:id="@+id/layout_password"
+        android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:background="@drawable/text_input_style_login_fragment"
         android:layout_marginTop="296dp"
-        android:paddingLeft="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:passwordToggleEnabled="true"/>
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/eText_password"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:inputType="textPassword" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+
 
     <TextView
-        android:id="@+id/textView_forgot_password"
+        android:id="@+id/forgot_password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="344dp"
-        android:text="@string/login_forgot_password"
+        android:text="@string/forgot_password"
+        style="@style/Text2_semibold"
         android:textSize="10sp"
         android:textColor="@color/n_120"
         android:fontFamily="@font/poppins_semibold"
@@ -94,7 +107,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="448dp"
-        android:text="Sign up"
+        android:text="@string/sign_up"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
@@ -106,7 +119,8 @@
         android:layout_marginTop="504dp"
         android:layout_marginLeft="80dp"
         android:fontFamily="@font/poppins_regular"
-        android:text="@string/login_not_a_member"
+        android:text="@string/not_a_member"
+        style="@style/Text2"
         android:textColor="@color/n_120"
         android:textSize="10sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -119,7 +133,8 @@
         android:layout_marginTop="504dp"
         android:layout_marginRight="80dp"
         android:fontFamily="@font/poppins_regular"
-        android:text="@string/login_sign_up_now"
+        android:text="@string/sign_up_now"
+        style="@style/Poppins_regular_green_10sp"
         android:textColor="@color/p_60"
         android:textSize="10sp"
         app:layout_constraintEnd_toEndOf="parent"

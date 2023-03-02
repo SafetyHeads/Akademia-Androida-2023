@@ -148,4 +148,51 @@
         <item name="android:lineSpacingExtra">3sp</item>
     </style>
 
+    <!-- Logo SafetyHeads -->
+    <style name="Logo_safetyheads">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:src">@drawable/logo_safetyheads</item>
+    </style>
+
+    <!-- Back arrow -->
+    <style name="Back_arrow">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:src">@drawable/ic_back_arrow</item>
+    </style>
+
+    <!-- Poppins-regular 10sp Green text color -->
+    <style name="Poppins_regular_green_10sp" parent="TextAppearance.AppCompat">
+        <item name="android:textSize">10sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:fontFamily">@font/poppins_regular</item>
+        <item name="android:textColor">@color/p_60</item>
+        <item name="android:lineSpacingExtra">2sp</item>
+    </style>
+
+    <!-- Layout eText email address -->
+    <style name="Layout_eText_email_address" parent="Widget.Design.TextInputLayout">
+        <item name="android:background">@drawable/text_input_style_login_fragment</item>
+        <item name="android:inputType">textEmailAddress</item>
+
+    </style>
+
+    <!-- eText email address -->
+    <style name="EText_email_address" parent="Widget.AppCompat.EditText">
+
+    </style>
+
+    <!-- Layout eText password -->
+    <style name="Layout_eText_password" parent="Widget.Design.TextInputLayout">
+        <item name="android:background">@drawable/text_input_style_login_fragment</item>
+        <item name="android:inputType">textPassword</item>
+    </style>
+
+    <!-- eText password -->
+    <style name="EText_password" parent="Widget.AppCompat.EditText">
+
+    </style>
+
+
 </resources>

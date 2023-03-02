@@ -38,10 +38,15 @@
     <string name="launch_screen_txt_welcome">Welcome to SafetyHeads</string>
     <string name="launch_screen_txt_subtext">Create mobile and web apps for any screen</string>
     <string name="launch_screen_btn_get_started">Get started</string>
-    <string name="launch_screen_txt_company_name">SafetyHeads</string>
+    <string name="launch_screen_txt_company_name">SafetyHeads <u>underline</u> </string>
     <string name="launch_screen_image_launch">launch screen image</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="activities">activities</string>
     <string name="fragments">fragments</string>
-
+    <string name="not_a_member">Not a member?</string>
+    <string name="sign_up_now">Sign up now</string>
+    <string name="sign_up">Sign up</string>
+    <string name="email_address">Email address</string>
+    <string name="password">Password</string>
+    <string name="forgot_password"> <u>Forgot password?</u> </string>
 </resources>
