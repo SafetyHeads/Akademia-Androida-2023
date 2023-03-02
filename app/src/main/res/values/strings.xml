@@ -44,5 +44,7 @@
     <string name="mobile_apps_development">Mobile Apps Development</string>
     <string name="web_apps_development">Web Apps Development</string>
     <string name="low_code_development">Low-code Development</string>
+    <string name="activities">activities</string>
+    <string name="fragments">fragments</string>
 
 </resources>
