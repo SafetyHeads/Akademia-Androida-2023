@@ -2,19 +2,28 @@ package com.safetyheads.akademiaandroida
 
 import android.content.Intent
 import android.os.Bundle
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import com.safetyheads.akademiaandroida.contact_with_us.ContactWithUsFragment
 import com.safetyheads.akademiaandroida.databinding.ActivityMainBinding
 import com.safetyheads.akademiaandroida.font.FontSylesFragment
 import com.safetyheads.akademiaandroida.fragments.WeAreHiringFragment
+import com.safetyheads.akademiaandroida.splashscreen.SplashScreenViewModel
 
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
+    private val splashScreenViewModel: SplashScreenViewModel by viewModels { SplashScreenViewModel.factory }
     override fun onCreate(savedInstanceState: Bundle?) {
+        installSplashScreen()
+        val splashScreen = installSplashScreen()
+        splashScreen.setKeepOnScreenCondition {
+            splashScreenViewModel.delay.isActive
+        }
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)

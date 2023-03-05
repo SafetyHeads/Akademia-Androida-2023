@@ -77,6 +77,9 @@ dependencies {
     implementation 'androidx.navigation:navigation-ui-ktx:2.5.3'
     implementation 'androidx.navigation:navigation-fragment-ktx:2.5.3'
 
+    // SplashScreen
+    implementation 'androidx.core:core-splashscreen:1.0.0'
+
 }
 
 private static Integer generateVersionCode(Integer VERSION_NAME_MAJOR, Integer VERSION_NAME_MINOR, Integer VERSION_NAME_PATCH) {
