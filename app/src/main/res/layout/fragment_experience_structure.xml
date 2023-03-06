@@ -16,7 +16,7 @@
         <com.safetyheads.akademiaandroida.H2View
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_2x"
+            android:layout_marginTop="@dimen/size_2x"
             app:text="Experience Structure"/>
 
         <ImageView
@@ -24,8 +24,8 @@
             android:layout_height="wrap_content"
             android:src="@mipmap/experience_structure"
             android:contentDescription="@string/experience_structure_image"
-            android:layout_marginTop="@dimen/margin_2.5x"
-            android:layout_marginBottom="@dimen/margin_2x"
+            android:layout_marginTop="@dimen/size_2.5x"
+            android:layout_marginBottom="@dimen/size_2x"
             android:layout_gravity="center" />
 
     </LinearLayout>

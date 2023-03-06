@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import com.safetyheads.akademiaandroida.ActivitiesList.ListActivity
 import com.safetyheads.akademiaandroida.contact_with_us.ContactWithUsFragment
 import com.safetyheads.akademiaandroida.databinding.ActivityMainBinding
 import com.safetyheads.akademiaandroida.font.FontSylesFragment
@@ -53,6 +54,11 @@ class MainActivity : AppCompatActivity() {
         val rootActivityIntent = Intent(this, RootActivity::class.java)
         binding.rootActivityButton.setOnClickListener {
             startActivity(rootActivityIntent)
+        }
+
+        val activityListIntent = Intent(this, ListActivity::class.java)
+        binding.activityList.setOnClickListener {
+            startActivity(activityListIntent)
         }
 
         // testing Footer
