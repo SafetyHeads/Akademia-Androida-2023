@@ -1,46 +1,38 @@
-package com.safetyheads.akademiaandroida.views;
+package com.safetyheads.akademiaandroida.views
 
-import android.content.Context;
-import android.util.AttributeSet;
-import android.view.View;
-import android.widget.FrameLayout;
-import android.widget.ImageView;
+import android.content.Context
+import android.util.AttributeSet
+import android.view.LayoutInflater
+import android.widget.FrameLayout
+import androidx.annotation.DrawableRes
+import com.safetyheads.akademiaandroida.databinding.ViewArrowBinding
 
-import androidx.annotation.DrawableRes;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
+class BackArrowView : FrameLayout {
 
-import com.safetyheads.akademiaandroida.R;
+    private lateinit var binding: ViewArrowBinding
 
-public class BackArrowView extends FrameLayout {
-    private ImageView arrow;
-
-    public BackArrowView(@NonNull Context context) {
-        super(context);
-        initView();
+    constructor(context: Context) : super(context) {
+        initView()
     }
 
-    public BackArrowView(@NonNull Context context, @Nullable AttributeSet attrs) {
-        super(context, attrs);
-        initView();
+    constructor(context: Context, attrs: AttributeSet?) : super(context, attrs) {
+        initView()
     }
 
-    public BackArrowView(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
-        super(context, attrs, defStyleAttr);
-        initView();
+    constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : super(
+        context,
+        attrs,
+        defStyleAttr
+    ) {
+        initView()
     }
 
-    private void initView() {
-        final View view = inflate(getContext(), R.layout.view_arrow, this);
-        arrow = findViewById(R.id.arrow);
+    private fun initView() {
+        binding = ViewArrowBinding.inflate(LayoutInflater.from(context), this, true)
     }
 
-    private void setOnClickListener() {
+    private fun setOnClickListener() {}
+    fun setImage(@DrawableRes imageRes: Int) {
+        binding.arrow.setImageResource(imageRes)
     }
-
-    public void setImage(@DrawableRes int imageRes) {
-        arrow.setImageResource(imageRes);
-    }
-
-
 }
