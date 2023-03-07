@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/facebook_fill"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/size_3x"
+        android:layout_marginTop="@dimen/size_3x"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/facebook_fill" />
+
+    <ImageView
+        android:id="@+id/linkedin_fill"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/size_2x"
+        android:layout_marginTop="@dimen/size_3x"
+        app:layout_constraintStart_toEndOf="@+id/facebook_fill"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/linkedin_fill" />
+
+    <ImageView
+        android:id="@+id/instagram_fill"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/size_2x"
+        android:layout_marginTop="@dimen/size_3x"
+        app:layout_constraintStart_toEndOf="@+id/linkedin_fill"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/instagram_fill" />
+
+    <ImageView
+        android:id="@+id/youtube_fill"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/size_2x"
+        android:layout_marginTop="@dimen/size_3x"
+        app:layout_constraintStart_toEndOf="@+id/instagram_fill"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/youtube_fill" />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,7 +4,7 @@
     android:layout_height="wrap_content"
     android:gravity="center"
     android:orientation="vertical"
-    android:paddingVertical="@dimen/padding_3x">
+    android:paddingVertical="@dimen/size_3x">
 
     <TextView
         android:layout_width="wrap_content"
@@ -16,7 +16,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/margin_1.5x"
+        android:layout_marginBottom="@dimen/size_1.5x"
         android:fontFamily="@font/poppins_semibold"
         android:text="@string/in_numbers_founded_year"
         android:textColor="@color/p_60" />
@@ -31,7 +31,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/margin_1.5x"
+        android:layout_marginBottom="@dimen/size_1.5x"
         android:fontFamily="@font/poppins_semibold"
         android:text="@string/in_numbers_employes_number"
         android:textColor="@color/p_60" />
@@ -46,7 +46,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/margin_1.5x"
+        android:layout_marginBottom="@dimen/size_1.5x"
         android:fontFamily="@font/poppins_semibold"
         android:text="@string/in_numbers_deployments_number"
         android:textColor="@color/p_60" />
