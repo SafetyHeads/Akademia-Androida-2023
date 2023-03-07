@@ -12,8 +12,8 @@
     <ImageView
         style="@style/Back_arrow"
         android:id="@+id/button_back"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
 
@@ -28,15 +28,14 @@
         android:layout_marginTop="48dp"/>
 
     <TextView
+        style="@style/Text2"
         android:id="@+id/textView_email_address"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="184dp"
         android:text="@string/email_address"
-        style="@style/Text2"
         android:textSize="10sp"
         android:textColor="@color/n_120"
-        android:fontFamily="@font/poppins_regular"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
 
@@ -45,28 +44,27 @@
         android:id="@+id/layout_email_address"
         android:layout_width="match_parent"
         android:layout_height="48dp"
+        android:paddingLeft="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="202dp">
 
         <com.google.android.material.textfield.TextInputEditText
+            style="@style/EText_email_address"
             android:id="@+id/eText_email_address"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="48dp"
             android:inputType="textEmailAddress" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
+        style="@style/Text2"
         android:id="@+id/textView_password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="280dp"
         android:text="@string/password"
-        style="@style/Text2"
-        android:textSize="10sp"
-        android:textColor="@color/n_120"
-        android:fontFamily="@font/poppins_regular"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
 
@@ -76,36 +74,37 @@
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_marginTop="296dp"
+        app:endIconMode="password_toggle"
+        android:paddingLeft="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.textfield.TextInputEditText
+            style="@style/EText_password"
             android:id="@+id/eText_password"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:inputType="textPassword" />
     </com.google.android.material.textfield.TextInputLayout>
 
-
-
     <TextView
+        style="@style/Text2_semibold"
         android:id="@+id/forgot_password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="344dp"
         android:text="@string/forgot_password"
-        style="@style/Text2_semibold"
-        android:textSize="10sp"
         android:textColor="@color/n_120"
         android:fontFamily="@font/poppins_semibold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
 
     <Button
+        style="@style/StyledButton"
         android:id="@+id/button_sign_up"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
         android:layout_marginTop="448dp"
         android:text="@string/sign_up"
         app:layout_constraintEnd_toEndOf="parent"
@@ -113,30 +112,24 @@
         app:layout_constraintTop_toTopOf="parent"/>
 
     <TextView
+        style="@style/Text2"
         android:id="@+id/textView_not_a_member"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="504dp"
         android:layout_marginLeft="80dp"
-        android:fontFamily="@font/poppins_regular"
         android:text="@string/not_a_member"
-        style="@style/Text2"
-        android:textColor="@color/n_120"
-        android:textSize="10sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
 
     <TextView
+        style="@style/Poppins_regular_green_10sp"
         android:id="@+id/textView_sign_up_now"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="504dp"
         android:layout_marginRight="80dp"
-        android:fontFamily="@font/poppins_regular"
         android:text="@string/sign_up_now"
-        style="@style/Poppins_regular_green_10sp"
-        android:textColor="@color/p_60"
-        android:textSize="10sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
 
