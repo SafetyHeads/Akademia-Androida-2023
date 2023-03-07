@@ -87,7 +87,7 @@
         android:layout_marginBottom="@dimen/size_7_5x"
         android:enabled="true"
         android:gravity="center"
-        android:padding="@dimen/size_2x"
+        android:padding="14dp"
         android:text="@string/launch_screen_btn_get_started"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
