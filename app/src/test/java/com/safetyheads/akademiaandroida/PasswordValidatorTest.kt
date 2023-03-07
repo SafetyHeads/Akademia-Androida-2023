@@ -122,4 +122,18 @@ class PasswordValidatorTest {
         // Then
         verify { editText.error = null }
     }
+
+    @Test
+    fun passwordWithInvalidFormat() {
+        // Given
+        val editText = mockk<EditText>(relaxed = true)
+        val context = mockk<Context>()
+        val password = "1@"
+
+        // When
+        validator.validatePassword(password, editText, context)
+
+        // Then
+        verify { editText.error = R.string.invalid_password.toString() }
+    }
 }
