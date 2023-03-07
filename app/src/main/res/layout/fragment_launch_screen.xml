@@ -76,7 +76,7 @@
 
     <Button
         android:id="@+id/button"
-        style="@style/App_button"
+        style="@style/Button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/size_3x"
