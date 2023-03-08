@@ -5,25 +5,35 @@ import android.text.method.LinkMovementMethod
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
+import com.safetyheads.akademiaandroida.databinding.FragmentFooterBinding
 import com.safetyheads.akademiaandroida.utils.TextUtils
 
 class Footer : Fragment() {
+
+    private lateinit var binding: FragmentFooterBinding
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        val view = inflater.inflate(R.layout.fragment_footer, container, false)
-        val textFooterUp = view.findViewById<TextView>(R.id.footerTextUp)
-        val textFooterDown = view.findViewById<TextView>(R.id.footerTextDown)
-        textFooterDown.text = resources.getString(R.string.footer_text_down)
-        textFooterUp.text = resources.getString(R.string.footer_text_up)
+    ): View {
+        binding = FragmentFooterBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        initUI()
+    }
+
+    private fun initUI() {
+        binding.footerTextDown.text = resources.getString(R.string.footer_text_down)
+        binding.footerTextUp.text = resources.getString(R.string.footer_text_up)
         val poppinsRegular = context?.let { ResourcesCompat.getFont(it, R.font.poppins_regular) }
-        textFooterUp.typeface = poppinsRegular
-        textFooterDown.typeface = poppinsRegular
+        binding.footerTextUp.typeface = poppinsRegular
+        binding.footerTextDown.typeface = poppinsRegular
         // Create a list of pairs for the substrings to be colored and linked
         val pairList = listOf(
             Pair(
@@ -39,13 +49,10 @@ class Footer : Fragment() {
         val footerUpText =
             context?.let {
                 TextUtils.createColoredLinks(
-                    textFooterUp.text.toString(), pairList, it.getColor(R.color.p_60)
+                    binding.footerTextUp.text.toString(), pairList, it.getColor(R.color.p_60)
                 )
             }
-        textFooterUp.text = footerUpText
-        textFooterUp.movementMethod = LinkMovementMethod.getInstance()
-
-        // Return the inflated view
-        return view
+        binding.footerTextUp.text = footerUpText
+        binding.footerTextUp.movementMethod = LinkMovementMethod.getInstance()
     }
 }

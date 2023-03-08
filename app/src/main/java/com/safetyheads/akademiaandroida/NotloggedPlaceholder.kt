@@ -5,14 +5,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.safetyheads.akademiaandroida.databinding.FragmentNotloggedPlaceholderBinding
 
 class NotloggedPlaceholder : Fragment() {
+
+    private lateinit var binding: FragmentNotloggedPlaceholderBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_notlogged_placeholder, container, false)
+    ): View {
+        binding = FragmentNotloggedPlaceholderBinding.inflate(inflater, container, false)
+        return binding.root
     }
 }
