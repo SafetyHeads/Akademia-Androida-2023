@@ -117,7 +117,7 @@
 
             <Button
                 android:id="@+id/button_fill_form"
-                style="@style/App_button"
+                style="@style/StyledButton"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/size_3x"
@@ -128,18 +128,13 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView_address" />
 
-            <TextView
+            <com.safetyheads.akademiaandroida.H2View
                 android:id="@+id/textView_social"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/size_3x"
                 android:layout_marginTop="@dimen/size_9x"
-                android:background="@drawable/left_border_line"
-                android:paddingStart="@dimen/size"
                 android:paddingEnd="@dimen/size"
-                android:text="@string/contact_us_social_text"
-                android:textAppearance="@style/H2"
-                android:textColor="@color/s_60"
+                app:text="@string/contact_us_social_text"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
