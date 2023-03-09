@@ -24,7 +24,7 @@
             app:destination="@id/notlogged_placeholder" />
         <action
             android:id="@+id/action_LaunchScreenFragment_to_login_placeholder"
-            app:destination="@id/login_placeholder" />
+            app:destination="@id/login_fragment" />
     </fragment>
     <fragment
         android:id="@+id/notlogged_placeholder"
@@ -36,10 +36,10 @@
             app:destination="@id/launchScreenFragment" />
     </fragment>
     <fragment
-        android:id="@+id/login_placeholder"
-        android:name="com.safetyheads.akademiaandroida.LoginPlaceholder"
-        android:label="fragment_login_placeholder"
-        tools:layout="@layout/fragment_login_placeholder">
+        android:id="@+id/login_fragment"
+        android:name="com.safetyheads.akademiaandroida.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login">
         <action
             android:id="@+id/action_login_placeholder_to_dashboard_placeholder"
             app:destination="@id/dashboard_placeholder" />
