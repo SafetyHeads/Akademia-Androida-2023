@@ -171,7 +171,7 @@
     <style name="Layout_eText_email_address" parent="Widget.Design.TextInputLayout">
         <item name="layoutWidth">match_parent</item>
         <item name="android:height">48dp</item>
-        <item name="android:background">@drawable/text_input_style_login_fragment</item>
+        <item name="android:background">@drawable/text_input_style</item>
         <item name="android:inputType">textEmailAddress</item>
         <item name="android:paddingLeft">8dp</item>
     </style>
@@ -187,7 +187,7 @@
     <style name="Layout_eText_password" parent="Widget.Design.TextInputLayout">
         <item name="layoutWidth">match_parent</item>
         <item name="android:height">48dp</item>
-        <item name="android:background">@drawable/text_input_style_login_fragment</item>
+        <item name="android:background">@drawable/text_input_style</item>
         <item name="android:inputType">textPassword</item>
         <item name="android:paddingLeft">8dp</item>
     </style>
