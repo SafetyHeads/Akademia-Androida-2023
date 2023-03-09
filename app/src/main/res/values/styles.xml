@@ -71,6 +71,16 @@
         <item name="android:textStyle">normal</item>
     </style>
 
+    <!-- Text 7-->
+    <style name="Text7" parent="@android:style/TextAppearance.Small">
+        <item name="android:fontFamily">@font/poppins_regular</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/s_60</item>
+        <item name="android:letterSpacing">0.1</item>
+        <item name="android:lineSpacingExtra">10sp</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
     <!-- Text semibold -->
     <style name="Text_semibold" parent="@android:style/TextAppearance.Small">
         <item name="android:fontFamily">@font/poppins_semibold</item>
@@ -89,6 +99,16 @@
         <item name="android:letterSpacing">0.07</item>
         <item name="android:lineSpacingExtra">14sp</item>
         <item name="android:textStyle">normal</item>
+    </style>
+
+    <!-- Text 7 semibold -->
+    <style name="Text7_semibold" parent="@android:style/TextAppearance.Small">
+        <item name="android:fontFamily">@font/poppins_semibold</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/s_60</item>
+        <item name="android:letterSpacing">0.03</item>
+        <item name="android:lineSpacingExtra">10sp</item>
+        <item name="android:textStyle">bold</item>
     </style>
 
     <!-- Button -->
