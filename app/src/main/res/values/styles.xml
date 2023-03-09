@@ -173,6 +173,7 @@
         <item name="android:height">48dp</item>
         <item name="android:background">@drawable/text_input_style_login_fragment</item>
         <item name="android:inputType">textEmailAddress</item>
+        <item name="android:paddingLeft">8dp</item>
     </style>
 
     <!-- eText email address -->
@@ -188,6 +189,7 @@
         <item name="android:height">48dp</item>
         <item name="android:background">@drawable/text_input_style_login_fragment</item>
         <item name="android:inputType">textPassword</item>
+        <item name="android:paddingLeft">8dp</item>
     </style>
 
     <!-- eText password -->
