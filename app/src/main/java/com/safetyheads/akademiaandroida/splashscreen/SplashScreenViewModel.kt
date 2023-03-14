@@ -10,18 +10,6 @@ import kotlinx.coroutines.launch
 
 class SplashScreenViewModel(private val splashScreen: SplashScreen): ViewModel() {
 
-    companion object {
-        val factory: ViewModelProvider.Factory = viewModelFactory {
-            initializer {
-                val splashScreen = (
-                        this[ViewModelProvider.AndroidViewModelFactory.APPLICATION_KEY] as AndroidAcademyApplication
-                        ).splashScreen
-                SplashScreenViewModel(splashScreen = splashScreen)
-
-            }
-        }
-    }
-
     val delay = viewModelScope.launch {
         splashScreen.delay()
     }
