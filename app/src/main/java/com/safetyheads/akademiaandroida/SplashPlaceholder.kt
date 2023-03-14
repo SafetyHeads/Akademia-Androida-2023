@@ -5,14 +5,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.safetyheads.akademiaandroida.databinding.FragmentSplashPlaceholderBinding
 
 class SplashPlaceholder : Fragment() {
+
+    private lateinit var binding: FragmentSplashPlaceholderBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_splash_placeholder, container, false)
+    ): View {
+        binding = FragmentSplashPlaceholderBinding.inflate(inflater, container, false)
+        return binding.root
     }
 }

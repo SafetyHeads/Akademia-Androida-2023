@@ -3,9 +3,8 @@ package com.safetyheads.akademiaandroida
 import android.content.Context
 import android.content.res.TypedArray
 import android.util.AttributeSet
-import android.view.View
 import android.widget.LinearLayout
-import android.widget.TextView
+import com.safetyheads.akademiaandroida.databinding.ViewH2Binding
 
 /* Example of use in XML:
          <com.safetyheads.akademiaandroida.H2View
@@ -22,11 +21,9 @@ class H2View @JvmOverloads constructor(
 ) : LinearLayout(context, attrs, defStyleAttr) {
 
     private val attributes: TypedArray = context.obtainStyledAttributes(attrs, R.styleable.H2View)
-    private val view: View = View.inflate(context, R.layout.view_h2, this)
+    private lateinit var binding: ViewH2Binding
 
     init {
-        val textH2 = view.findViewById<TextView>(R.id.text_view_h2)
-        textH2.text = attributes.getString(R.styleable.H2View_text)
+        binding.textViewH2.text = attributes.getString(R.styleable.H2View_text)
     }
-
 }
