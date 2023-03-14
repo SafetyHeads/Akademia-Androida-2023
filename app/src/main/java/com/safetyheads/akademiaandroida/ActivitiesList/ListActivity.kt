@@ -6,7 +6,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.safetyheads.akademiaandroida.ClientsFragment
 import com.safetyheads.akademiaandroida.ExperienceStructureFragment
-import com.safetyheads.akademiaandroida.SplashScreenFragment
 import com.safetyheads.akademiaandroida.contact_with_us.ContactWithUsFragment
 import com.safetyheads.akademiaandroida.databinding.ActivityListBinding
 import com.safetyheads.akademiaandroida.font.FontSylesFragment
@@ -52,11 +51,10 @@ class ListActivity : AppCompatActivity() {
     val weAreHiringBinding = WeAreHiringFragment()
     val clientsFragment = ClientsFragment()
     val experienceStructureFragment = ExperienceStructureFragment()
-    val splashScreenFragment = SplashScreenFragment()
 
     val dataListFragments = listOf(
         fontSylesFragment, contactWithUsFragment,
-        weAreHiringBinding, clientsFragment, experienceStructureFragment, splashScreenFragment
+        weAreHiringBinding, clientsFragment, experienceStructureFragment
     )
 }
 
