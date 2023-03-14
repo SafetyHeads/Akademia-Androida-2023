@@ -9,7 +9,7 @@
 
     <Button
         android:id="@+id/apply_now"
-        style="@style/Button"
+        style="@style/StyledButton"
         android:layout_width="0dp"
         android:layout_height="48dp"
         android:layout_marginStart="@dimen/size_3x"
