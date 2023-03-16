@@ -22,7 +22,7 @@ class PasswordValidator {
 
      fun validatePassword(password: String, editText: EditText, context: Context) {
          if (!isValid(password)) {
-             editText.error = R.string.invalid_password.toString()
+                 editText.error = context.getString(R.string.invalid_password)
          } else {
              editText.error = null
          }
