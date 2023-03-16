@@ -32,6 +32,7 @@
     <string name="invalid_spaces_message">Too much spaces</string>
     <string name="invalid_password">Invalid password</string>
     <string name="invalid_phone_message">Invalid phone number</string>
+    <string name="invalid_email">Invalid email</string>
     <string name="experience_structure_image">Experience Structure image</string>
     <string name="cd_arrow">Back Arrow</string>
     <string name="launch_screen_txt_sign_in">Sign in</string>
