@@ -11,19 +11,19 @@
         android:label="SplashScreenFragment"
         tools:layout="@layout/fragment_splash_screen" >
         <action
-            android:id="@+id/action_splashScreen_to_launchScreen"
-            app:destination="@id/mainscreen_placeholder" />
+            android:id="@+id/action_splashScreen_to_launchScreenFragment"
+            app:destination="@id/launchScreenFragment" />
     </fragment>
     <fragment
-        android:id="@+id/mainscreen_placeholder"
-        android:name="com.safetyheads.akademiaandroida.MainscreenPlaceholder"
-        android:label="fragment_mainscreen_placeholder"
-        tools:layout="@layout/fragment_mainscreen_placeholder">
+        android:id="@+id/launchScreenFragment"
+        android:name="com.safetyheads.akademiaandroida.launchscreen.LaunchScreenFragment"
+        android:label="fragment_launchScreen"
+        tools:layout="@layout/fragment_launch_screen">
         <action
-            android:id="@+id/action_mainscreen_placeholder_to_notlogged_placeholder"
+            android:id="@+id/action_LaunchScreenFragment_to_notlogged_placeholder"
             app:destination="@id/notlogged_placeholder" />
         <action
-            android:id="@+id/action_mainscreen_placeholder_to_login_placeholder"
+            android:id="@+id/action_LaunchScreenFragment_to_login_placeholder"
             app:destination="@id/login_placeholder" />
     </fragment>
     <fragment
@@ -32,8 +32,8 @@
         android:label="fragment_notlogged_placeholder"
         tools:layout="@layout/fragment_notlogged_placeholder">
         <action
-            android:id="@+id/action_notlogged_placeholder_to_mainscreen_placeholder"
-            app:destination="@id/mainscreen_placeholder" />
+            android:id="@+id/action_notlogged_placeholder_to_launchScreenFragment"
+            app:destination="@id/launchScreenFragment" />
     </fragment>
     <fragment
         android:id="@+id/login_placeholder"
@@ -44,8 +44,8 @@
             android:id="@+id/action_login_placeholder_to_dashboard_placeholder"
             app:destination="@id/dashboard_placeholder" />
         <action
-            android:id="@+id/action_login_placeholder_to_mainscreen_placeholder"
-            app:destination="@id/mainscreen_placeholder" />
+            android:id="@+id/action_login_placeholder_to_launchScreenFragment"
+            app:destination="@id/launchScreenFragment" />
     </fragment>
     <fragment
         android:id="@+id/dashboard_placeholder"

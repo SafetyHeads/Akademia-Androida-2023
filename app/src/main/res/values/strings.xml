@@ -32,6 +32,7 @@
     <string name="invalid_spaces_message">Too much spaces</string>
     <string name="invalid_password">Invalid password</string>
     <string name="invalid_phone_message">Invalid phone number</string>
+    <string name="invalid_email">Invalid email</string>
     <string name="experience_structure_image">Experience Structure image</string>
     <string name="cd_arrow">Back Arrow</string>
     <string name="launch_screen_txt_sign_in">Sign in</string>
@@ -40,7 +41,26 @@
     <string name="launch_screen_btn_get_started">Get started</string>
     <string name="launch_screen_txt_company_name">SafetyHeads</string>
     <string name="launch_screen_image_launch">launch screen image</string>
+    <string name="contact_us_main_text">Contact us!\nWe’d love to hear from you</string>
+    <string name="contact_us_email_text">contact@safetyheads.com</string>
+    <string name="contact_us_phone_text"><u>+48 665 606 024</u></string>
+    <string name="contact_us_company_text">SafetyHeads</string>
+    <string name="contact_us_address_text">Plac Konstytucji 3 Maja\n50-048 Wrocław</string>
+    <string name="contact_us_fill_form_button_text">Fill the contact form</string>
+    <string name="contact_us_social_text">Check our Social Media</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="mobile_apps_development">Mobile Apps Development</string>
+    <string name="web_apps_development">Web Apps Development</string>
+    <string name="low_code_development">Low-code Development</string>
+    <string name="team_augmentation">Team Augmentation</string>
+    <string name="project_team_leasing">Project Team Leasing</string>
+    <string name="support_and_maintenance">Support and Maintenance</string>
+    <string name="cybersecurity">CyberSecurity</string>
+    <string name="it_audits">IT Audits</string>
+    <string name="digital_transformation">Digital Transformation</string>
+    <string name="ai_machine_learning_nlp">AI &amp; Machine Learning &amp; NLP</string>
+    <string name="internet_of_things">Internet of Things</string>
+    <string name="cloud_devops">Cloud &amp; DevOps</string>
     <string name="activities">activities</string>
     <string name="fragments">fragments</string>
 
