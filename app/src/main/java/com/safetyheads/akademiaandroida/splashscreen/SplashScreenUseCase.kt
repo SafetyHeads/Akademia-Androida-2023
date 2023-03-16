@@ -1,7 +1,7 @@
 package com.safetyheads.akademiaandroida.splashscreen
 
 
-interface SplashScreen {
+interface SplashScreenUseCase {
 
     suspend fun delay()
 }

@@ -1,4 +1,4 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <!-- Base application theme. -->
     <style name="Theme.AkademiaAndroida" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Primary brand color. -->
@@ -15,7 +15,7 @@
         <!-- Customize your theme here. -->
     </style>
 
-    <style name="Theme.App.Starting" parent="Theme.SplashScreen">
+    <style name="Theme.AkademiaAndroida.withSplash" parent="Theme.SplashScreen">
         <item name="windowSplashScreenBackground">@color/white</item>
         <item name="windowSplashScreenAnimatedIcon">@mipmap/ic_splash_screen</item>
         <item name="postSplashScreenTheme">@style/Theme.AkademiaAndroida</item>

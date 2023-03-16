@@ -3,11 +3,9 @@ package com.safetyheads.akademiaandroida.splashscreen
 import kotlinx.coroutines.delay
 
 
-class SplashScreenImpl: SplashScreen {
+class SplashScreenUseCaseImpl: SplashScreenUseCase {
 
     override suspend fun delay() {
         delay(3000)
     }
-
-
 }
