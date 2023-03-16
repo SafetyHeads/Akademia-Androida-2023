@@ -82,6 +82,10 @@ dependencies {
     androidTestImplementation "io.mockk:mockk-android:1.12.0"
     testImplementation "org.assertj:assertj-core:3.20.2"
 
+
+    // SplashScreen
+    implementation 'androidx.core:core-splashscreen:1.0.0'
+
     //MoccK library
     testImplementation "io.mockk:mockk:1.12.0"
     androidTestImplementation "io.mockk:mockk-android:1.11.0"

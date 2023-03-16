@@ -3,17 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/splashScreenFragment">
+    app:startDestination="@id/launchScreenFragment">
 
-    <fragment
-        android:id="@+id/splashScreenFragment"
-        android:name="com.safetyheads.akademiaandroida.SplashScreenFragment"
-        android:label="SplashScreenFragment"
-        tools:layout="@layout/fragment_splash_screen" >
-        <action
-            android:id="@+id/action_splashScreen_to_launchScreenFragment"
-            app:destination="@id/launchScreenFragment" />
-    </fragment>
     <fragment
         android:id="@+id/launchScreenFragment"
         android:name="com.safetyheads.akademiaandroida.launchscreen.LaunchScreenFragment"
