@@ -6,7 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import com.safetyheads.akademiaandroida.ActivitiesList.ListActivity
-import com.safetyheads.akademiaandroida.contact_with_us.ContactWithUsFragment
+import com.safetyheads.akademiaandroida.contactusform.ContactUsFragment
 import com.safetyheads.akademiaandroida.databinding.ActivityMainBinding
 import com.safetyheads.akademiaandroida.font.FontSylesFragment
 import com.safetyheads.akademiaandroida.fragments.WeAreHiringFragment
@@ -36,7 +36,8 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.contactWithUs.setOnClickListener {
-            openFragment(ContactWithUsFragment())
+            //openFragment(ContactWithUsFragment())
+            openFragment(ContactUsFragment())
             binding.previevFont.isVisible = false
             binding.contactWithUs.isVisible = false
             binding.weAreHiring.isVisible = false

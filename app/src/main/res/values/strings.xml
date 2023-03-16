@@ -41,6 +41,13 @@
     <string name="launch_screen_btn_get_started">Get started</string>
     <string name="launch_screen_txt_company_name">SafetyHeads</string>
     <string name="launch_screen_image_launch">launch screen image</string>
+    <string name="contact_us_main_text">Contact us!\nWe’d love to hear from you</string>
+    <string name="contact_us_email_text">contact@safetyheads.com</string>
+    <string name="contact_us_phone_text"><u>+48 665 606 024</u></string>
+    <string name="contact_us_company_text">SafetyHeads</string>
+    <string name="contact_us_address_text">Plac Konstytucji 3 Maja\n50-048 Wrocław</string>
+    <string name="contact_us_fill_form_button_text">Fill the contact form</string>
+    <string name="contact_us_social_text">Check our Social Media</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="mobile_apps_development">Mobile Apps Development</string>
     <string name="web_apps_development">Web Apps Development</string>
