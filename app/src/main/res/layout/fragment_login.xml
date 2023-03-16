@@ -25,50 +25,63 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/button_back"
-        android:layout_marginTop="6dp"/>
+        android:layout_marginTop="@dimen/size"/>
 
     <TextView
         android:id="@+id/email_address"
         style="@style/Text2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="@dimen/size_4x"
         android:text="@string/email_address"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/logo_safetyheads"/>
 
-    <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/eText_email_address"
-        style="@style/eText_email_address"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/layout_eText_email_address"
+        style="@style/Layout_eText_email_address"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_marginTop="2dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/email_address">
-    </androidx.appcompat.widget.AppCompatEditText>
+        app:layout_constraintTop_toBottomOf="@+id/email_address">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/eText_email_address"
+            style="@style/EText_email_address"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="@null"/>
+    </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
         android:id="@+id/password"
         style="@style/Text2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="@dimen/size_2x"
         android:text="@string/password"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/eText_email_address"/>
+        app:layout_constraintTop_toBottomOf="@id/layout_eText_email_address"/>
 
-    <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/eText_password"
-        style="@style/eText_password"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/layout_eText_password"
+        style="@style/Layout_eText_password"
         android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:drawableRight="@drawable/ic_password_toggle_on"
         android:layout_marginTop="2dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/password">
-    </androidx.appcompat.widget.AppCompatEditText>
+        app:layout_constraintTop_toBottomOf="@+id/password">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/eText_password"
+            style="@style/EText_password"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="@null"/>
+    </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
         android:id="@+id/forgot_password"
@@ -78,14 +91,14 @@
         android:layout_marginTop="2dp"
         android:text="@string/forgot_password"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/eText_password"/>
+        app:layout_constraintTop_toBottomOf="@id/layout_eText_password"/>
 
     <Button
         android:id="@+id/button_sign_in"
         style="@style/StyledButton"
         android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:layout_marginTop="62dp"
+        android:layout_marginTop="@dimen/size_8x"
         android:text="@string/sign_in"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -96,7 +109,7 @@
         style="@style/Text2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="@dimen/size_4x"
         android:layout_marginLeft="88dp"
         android:text="@string/not_a_member"
         app:layout_constraintStart_toStartOf="parent"
@@ -107,7 +120,7 @@
         style="@style/Poppins_regular_green_10sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="@dimen/size_4x"
         android:layout_marginRight="88dp"
         android:text="@string/sign_up_now"
         app:layout_constraintEnd_toEndOf="parent"

@@ -167,22 +167,33 @@
         <item name="android:lineSpacingExtra">2sp</item>
     </style>
 
-    <!-- Layout editText email address -->
-    <style name="eText_email_address" parent="Widget.AppCompat.EditText">
-        <item name="android:background">@drawable/text_input_style</item>
+    <!-- TextInputLayout email address -->
+    <style name="Layout_eText_email_address" parent="TextAppearance.AppCompat">
         <item name="layoutWidth">match_parent</item>
         <item name="android:height">48dp</item>
+        <item name="android:background">@drawable/text_input_style</item>
+        <item name="hintEnabled">false</item>
         <item name="android:paddingLeft">8dp</item>
     </style>
 
-    <!-- Layout editText password -->
-    <style name="eText_password" parent="Widget.AppCompat.EditText">
-        <item name="android:background">@drawable/text_input_style</item>
+    <!-- TextInputEditText email address -->
+    <style name="EText_email_address" parent="TextAppearance.AppCompat">
+        <item name="android:inputType">textEmailAddress</item>
+    </style>
+
+    <!-- TextInputLayout password -->
+    <style name="Layout_eText_password" parent="TextAppearance.AppCompat">
         <item name="layoutWidth">match_parent</item>
         <item name="android:height">48dp</item>
-        <item name="android:inputType">textPassword</item>
+        <item name="android:background">@drawable/text_input_style</item>
+        <item name="hintEnabled">false</item>
+        <item name="passwordToggleEnabled">true</item>
         <item name="android:paddingLeft">8dp</item>
-        <item name="android:paddingRight">8dp</item>
+    </style>
+
+    <!-- TextInputEditText password -->
+    <style name="EText_password" parent="TextAppearance.AppCompat">
+        <item name="android:inputType">textPassword</item>
     </style>
 
 </resources>
