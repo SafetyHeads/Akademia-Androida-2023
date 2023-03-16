@@ -4,6 +4,7 @@ import android.content.Context
 import android.widget.EditText
 import io.mockk.mockk
 import io.mockk.verify
+import io.mockk.every
 import org.junit.Test
 
 
@@ -97,16 +98,16 @@ class PasswordValidatorTest {
     fun passwordWithFirstLetterSpecialCharacter() {
         // Given
         val editText = mockk<EditText>(relaxed = true)
-        val context = mockk<Context>()
+        val context = mockk<Context> {
+            every { getString(R.string.invalid_password) } returns "Invalid password"
+        }
         val password = "!mASSWORD123@"
 
         // When
         validator.validatePassword(password, editText, context)
 
         // Then
-        verify {
-            editText.error = R.string.invalid_password.toString()
-        }
+         verify { editText.error = "Invalid password" }
     }
 
     @Test
@@ -127,13 +128,15 @@ class PasswordValidatorTest {
     fun passwordWithInvalidFormat() {
         // Given
         val editText = mockk<EditText>(relaxed = true)
-        val context = mockk<Context>()
+         val context = mockk<Context> {
+            every { getString(R.string.invalid_password) } returns "Invalid password"
+        }
         val password = "1@"
 
         // When
         validator.validatePassword(password, editText, context)
 
         // Then
-        verify { editText.error = R.string.invalid_password.toString() }
+        verify { editText.error = "Invalid password" }
     }
 }
