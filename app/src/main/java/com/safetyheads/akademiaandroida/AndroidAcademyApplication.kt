@@ -1,6 +1,8 @@
 package com.safetyheads.akademiaandroida
 
 import android.app.Application
+import com.safetyheads.akademiaandroida.dropdownlist.DropDownListViewModel
+import com.safetyheads.akademiaandroida.dropdownlist.LoadItemsToDropDownListUseCase
 import com.safetyheads.akademiaandroida.splashscreen.SplashScreenUseCase
 import com.safetyheads.akademiaandroida.splashscreen.SplashScreenUseCaseImpl
 import com.safetyheads.akademiaandroida.splashscreen.SplashScreenViewModel
@@ -23,8 +25,12 @@ class AndroidAcademyApplication: Application() {
     }
 
     private val appModule = module {
+        //usecases
         single<SplashScreenUseCase> { SplashScreenUseCaseImpl() }
+        single { LoadItemsToDropDownListUseCase() }
 
+        //viewmodels
         viewModel{ SplashScreenViewModel(get()) }
+        viewModel{ DropDownListViewModel(get()) }
     }
 }

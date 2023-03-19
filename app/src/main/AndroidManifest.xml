@@ -10,11 +10,12 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/Theme.AkademiaAndroida.withSplash"
+        android:theme="@style/Theme.AkademiaAndroida"
         tools:targetApi="31">
         <activity
             android:name=".MainActivity"
-            android:exported="true">
+            android:exported="true"
+            android:theme="@style/Theme.AkademiaAndroida.withSplash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -22,23 +23,20 @@
         </activity>
         <activity
             android:name=".TabLayoutActivity"
-            android:exported="true">
-        </activity>
+            android:exported="true" />
         <activity
             android:name=".RootActivity"
-            android:theme="@style/Theme.AkademiaAndroida"
-            android:exported="true">
-        </activity>
+
+            android:exported="true" />
         <activity
             android:name=".ActivitiesList.ListActivity"
-            android:exported="true">
-        </activity>
+            android:exported="true" />
     </application>
     <queries>
         <package android:name="com.facebook.katana" />
-        <package android:name="com.instagram.android"/>
-        <package android:name="com.google.android.youtube"/>
-        <package android:name="com.linkedin.android"/>
-        <package android:name="com.android.vending"/>
+        <package android:name="com.instagram.android" />
+        <package android:name="com.google.android.youtube" />
+        <package android:name="com.linkedin.android" />
+        <package android:name="com.android.vending" />
     </queries>
 </manifest>
