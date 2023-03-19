@@ -1,11 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <style name="companyTabLayout">
+        <item name="tabIndicatorColor">@color/p_60</item>
+        <item name="tabRippleColor">@color/n_60</item>
+        <item name="tabSelectedTextColor">@color/p_60</item>
+        <item name="tabTextColor">@color/n_120</item>
+        <item name="tabMode">scrollable</item>
+    </style>
+    <style name="tabLabelText">
+        <item name="android:textSize">14sp</item>
+    </style>
 
     <!-- Header 1 -->
     <style name="H1" parent="@android:style/TextAppearance.Small">
         <item name="android:fontFamily">@font/comfortaa_regular</item>
         <item name="android:textSize">20sp</item>
-        <item name="android:textColor">@color/black</item>
+        <item name="android:textColor">@color/n_120</item>
         <item name="android:letterSpacing">0.15</item>
         <item name="android:lineSpacingExtra">4sp</item>
         <item name="android:textStyle">bold</item>
@@ -15,7 +25,7 @@
     <style name="H2" parent="@android:style/TextAppearance.Small">
         <item name="android:fontFamily">@font/comfortaa_regular</item>
         <item name="android:textSize">18sp</item>
-        <item name="android:textColor">@color/black</item>
+        <item name="android:textColor">@color/n_120</item>
         <item name="android:letterSpacing">0.14</item>
         <item name="android:lineSpacingExtra">6sp</item>
         <item name="android:textStyle">bold</item>
@@ -25,7 +35,7 @@
     <style name="H3" parent="@android:style/TextAppearance.Small">
         <item name="android:fontFamily">@font/comfortaa_regular</item>
         <item name="android:textSize">16sp</item>
-        <item name="android:textColor">@color/black</item>
+        <item name="android:textColor">@color/n_120</item>
         <item name="android:letterSpacing">0.14</item>
         <item name="android:lineSpacingExtra">8sp</item>
         <item name="android:textStyle">bold</item>
@@ -35,7 +45,7 @@
     <style name="Subtitle" parent="@android:style/TextAppearance.Small">
         <item name="android:fontFamily">@font/poppins_regular</item>
         <item name="android:textSize">16sp</item>
-        <item name="android:textColor">@color/black</item>
+        <item name="android:textColor">@color/n_120</item>
         <item name="android:letterSpacing">0.11</item>
         <item name="android:lineSpacingExtra">8sp</item>
         <item name="android:textStyle">normal</item>
@@ -45,7 +55,7 @@
     <style name="Text" parent="@android:style/TextAppearance.Small">
         <item name="android:fontFamily">@font/poppins_regular</item>
         <item name="android:textSize">14sp</item>
-        <item name="android:textColor">@color/black</item>
+        <item name="android:textColor">@color/n_120</item>
         <item name="android:letterSpacing">0.1</item>
         <item name="android:lineSpacingExtra">10sp</item>
         <item name="android:textStyle">normal</item>
@@ -55,9 +65,19 @@
     <style name="Text2" parent="@android:style/TextAppearance.Small">
         <item name="android:fontFamily">@font/poppins_regular</item>
         <item name="android:textSize">10sp</item>
-        <item name="android:textColor">@color/black</item>
+        <item name="android:textColor">@color/n_120</item>
         <item name="android:letterSpacing">0.07</item>
         <item name="android:lineSpacingExtra">14sp</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <!-- Text 7-->
+    <style name="Text7" parent="@android:style/TextAppearance.Small">
+        <item name="android:fontFamily">@font/poppins_regular</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/s_60</item>
+        <item name="android:letterSpacing">0.1</item>
+        <item name="android:lineSpacingExtra">10sp</item>
         <item name="android:textStyle">normal</item>
     </style>
 
@@ -65,7 +85,7 @@
     <style name="Text_semibold" parent="@android:style/TextAppearance.Small">
         <item name="android:fontFamily">@font/poppins_semibold</item>
         <item name="android:textSize">14sp</item>
-        <item name="android:textColor">@color/black</item>
+        <item name="android:textColor">@color/n_120</item>
         <item name="android:letterSpacing">0.03</item>
         <item name="android:lineSpacingExtra">10sp</item>
         <item name="android:textStyle">bold</item>
@@ -75,17 +95,27 @@
     <style name="Text2_semibold" parent="@android:style/TextAppearance.Small">
         <item name="android:fontFamily">@font/poppins_semibold</item>
         <item name="android:textSize">10sp</item>
-        <item name="android:textColor">@color/black</item>
+        <item name="android:textColor">@color/n_120</item>
         <item name="android:letterSpacing">0.07</item>
         <item name="android:lineSpacingExtra">14sp</item>
         <item name="android:textStyle">normal</item>
+    </style>
+
+    <!-- Text 7 semibold -->
+    <style name="Text7_semibold" parent="@android:style/TextAppearance.Small">
+        <item name="android:fontFamily">@font/poppins_semibold</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/s_60</item>
+        <item name="android:letterSpacing">0.03</item>
+        <item name="android:lineSpacingExtra">10sp</item>
+        <item name="android:textStyle">bold</item>
     </style>
 
     <!-- Button -->
     <style name="Button" parent="@android:style/TextAppearance.Small">
         <item name="android:fontFamily">@font/poppins_regular</item>
         <item name="android:textSize">14sp</item>
-        <item name="android:textColor">@color/black</item>
+        <item name="android:textColor">@color/n_120</item>
         <item name="android:letterSpacing">0.1</item>
         <item name="android:lineSpacingExtra">10sp</item>
         <item name="android:textStyle">bold</item>
@@ -95,10 +125,95 @@
     <style name="Footer" parent="@android:style/TextAppearance.Small">
         <item name="android:fontFamily">@font/poppins_regular</item>
         <item name="android:textSize">8sp</item>
-        <item name="android:textColor">@color/black</item>
+        <item name="android:textColor">@color/n_120</item>
         <item name="android:letterSpacing">0.14</item>
         <item name="android:lineSpacingExtra">12sp</item>
         <item name="android:textStyle">normal</item>
+    </style>
+
+    <style name="default_card_style">
+        <item name="cardElevation">6dp</item>
+        <item name="cardCornerRadius">@dimen/size</item>
+    </style>
+
+    <!-- Comforta-bold 18sp Green text color -->
+    <style name="Text_comforta_bold_18sp" parent="TextAppearance.AppCompat">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:fontFamily">@font/comfortaa_bold</item>
+        <item name="android:textColor">@color/p_60</item>
+        <item name="android:lineSpacingExtra">2sp</item>
+    </style>
+
+    <!-- Comforta-bold 32sp White text color -->
+    <style name="Text_comforta_bold_32sp" parent="TextAppearance.AppCompat">
+        <item name="android:textSize">32sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:fontFamily">@font/comfortaa_bold</item>
+        <item name="android:textColor">@color/n_0</item>
+        <item name="android:lineSpacingExtra">3sp</item>
+    </style>
+
+    <!-- Button background -->
+    <style name="StyledButton" parent="@android:style/TextAppearance.Small">
+        <item name="layoutWidth">match_parent</item>
+        <item name="android:height">48dp</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:background">@drawable/button_background</item>
+        <item name="android:fontFamily">@font/poppins_semibold</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <!-- Logo SafetyHeads -->
+    <style name="Logo_safetyheads">
+        <item name="android:layout_width">24dp</item>
+        <item name="android:layout_height">24dp</item>
+        <item name="android:src">@drawable/logo_safetyheads</item>
+    </style>
+
+    <!-- Back arrow -->
+    <style name="Back_arrow">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:src">@drawable/ic_back_arrow</item>
+    </style>
+
+    <!-- Poppins-regular 10sp Green text color -->
+    <style name="Poppins_regular_green_10sp" parent="TextAppearance.AppCompat">
+        <item name="android:textSize">10sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:fontFamily">@font/poppins_regular</item>
+        <item name="android:textColor">@color/p_60</item>
+        <item name="android:lineSpacingExtra">2sp</item>
+    </style>
+
+    <!-- TextInputLayout email address -->
+    <style name="Layout_eText_email_address" parent="TextAppearance.AppCompat">
+        <item name="layoutWidth">match_parent</item>
+        <item name="android:height">48dp</item>
+        <item name="android:background">@drawable/text_input_style</item>
+        <item name="hintEnabled">false</item>
+        <item name="android:paddingLeft">8dp</item>
+    </style>
+
+    <!-- TextInputEditText email address -->
+    <style name="EText_email_address" parent="TextAppearance.AppCompat">
+        <item name="android:inputType">textEmailAddress</item>
+    </style>
+
+    <!-- TextInputLayout password -->
+    <style name="Layout_eText_password" parent="TextAppearance.AppCompat">
+        <item name="layoutWidth">match_parent</item>
+        <item name="android:height">48dp</item>
+        <item name="android:background">@drawable/text_input_style</item>
+        <item name="hintEnabled">false</item>
+        <item name="passwordToggleEnabled">true</item>
+        <item name="android:paddingLeft">8dp</item>
+    </style>
+
+    <!-- TextInputEditText password -->
+    <style name="EText_password" parent="TextAppearance.AppCompat">
+        <item name="android:inputType">textPassword</item>
     </style>
 
 </resources>

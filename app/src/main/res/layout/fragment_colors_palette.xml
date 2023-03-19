@@ -1,0 +1,421 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constraintLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ColorsPalettteFragment">
+
+    <TextView
+        android:id="@+id/textview_ft_color"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/size_1.5x"
+        android:layout_marginTop="@dimen/size_5x"
+        android:layout_marginEnd="@dimen/size_2.5x"
+        android:text="@string/label_first_tier_color"
+        app:layout_constraintEnd_toStartOf="@+id/textview_st_color"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textview_st_color"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/size_5x"
+        android:layout_marginEnd="@dimen/size_2.5x"
+        android:text="@string/label_second_tier_color"
+        app:layout_constraintEnd_toStartOf="@+id/textview_tt_color"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textview_tt_color"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/size_5x"
+        android:layout_marginEnd="@dimen/size_2.5x"
+        android:text="@string/label_third_tier_color"
+        app:layout_constraintEnd_toStartOf="@+id/textview_err_color"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textview_err_color"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/size_5x"
+        android:layout_marginEnd="@dimen/size_1.5x"
+        android:text="@string/label_error_color"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- kolor I rzędu-->
+
+    <View
+        android:id="@+id/view_color_p60"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="@dimen/size_2x"
+        android:layout_marginTop="@dimen/size_5x"
+        android:background="@color/p_60"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textview_ft_color" />
+
+    <View
+        android:id="@+id/view_color_p50"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="@dimen/size_2x"
+        android:layout_marginTop="@dimen/size_5x"
+        android:background="@color/p_50"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view_color_p60" />
+
+    <View
+        android:id="@+id/view_color_p40"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="@dimen/size_2x"
+        android:layout_marginTop="@dimen/size_5x"
+        android:background="@color/p_40"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view_color_p50" />
+
+    <View
+        android:id="@+id/view_color_p30"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="@dimen/size_2x"
+        android:layout_marginTop="@dimen/size_5x"
+        android:background="@color/p_30"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view_color_p40" />
+
+    <View
+        android:id="@+id/view_color_p20"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="@dimen/size_2x"
+        android:layout_marginTop="@dimen/size_5x"
+        android:background="@color/p_20"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view_color_p30" />
+
+    <View
+        android:id="@+id/view_color_p10"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="@dimen/size_2x"
+        android:layout_marginTop="@dimen/size_5x"
+        android:background="@color/p_10"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view_color_p20" />
+
+    <View
+        android:id="@+id/view_color_n0"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="@dimen/size_2x"
+        android:layout_marginTop="@dimen/size_5x"
+        android:background="@color/n_0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view_color_p10" />
+
+    <View
+        android:id="@+id/view_color2_p60"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="@dimen/size"
+        android:layout_marginTop="@dimen/size_5x"
+        android:background="@color/p_60"
+        app:layout_constraintStart_toEndOf="@+id/view_color_p60"
+        app:layout_constraintTop_toBottomOf="@+id/textview_ft_color" />
+
+    <View
+        android:id="@+id/view_color2_p70"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="@dimen/size"
+        android:layout_marginTop="@dimen/size_5x"
+        android:background="@color/p_70"
+        app:layout_constraintStart_toEndOf="@+id/view_color_p50"
+        app:layout_constraintTop_toBottomOf="@+id/view_color2_p60" />
+
+    <View
+        android:id="@+id/view_color2_p80"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="@dimen/size"
+        android:layout_marginTop="@dimen/size_5x"
+        android:background="@color/p_80"
+        app:layout_constraintStart_toEndOf="@+id/view_color_p40"
+        app:layout_constraintTop_toBottomOf="@+id/view_color2_p70" />
+
+    <View
+        android:id="@+id/view_color2_p90"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="@dimen/size"
+        android:layout_marginTop="@dimen/size_5x"
+        android:background="@color/p_90"
+        app:layout_constraintStart_toEndOf="@+id/view_color_p30"
+        app:layout_constraintTop_toBottomOf="@+id/view_color2_p80" />
+
+    <View
+        android:id="@+id/view_color2_p100"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="@dimen/size"
+        android:layout_marginTop="@dimen/size_5x"
+        android:background="@color/p_100"
+        app:layout_constraintStart_toEndOf="@+id/view_color_p20"
+        app:layout_constraintTop_toBottomOf="@+id/view_color2_p90" />
+
+    <View
+        android:id="@+id/view_color2_n120"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="@dimen/size"
+        android:layout_marginTop="@dimen/size_5x"
+        android:background="@color/n_120"
+        app:layout_constraintStart_toEndOf="@+id/view_color_p10"
+        app:layout_constraintTop_toBottomOf="@+id/view_color2_p100" />
+
+    <View
+        android:id="@+id/view_color2_0"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="@dimen/size"
+        android:layout_marginTop="@dimen/size_5x"
+        android:background="#000000"
+        app:layout_constraintStart_toEndOf="@+id/view_color_n0"
+        app:layout_constraintTop_toBottomOf="@+id/view_color2_n120" />
+
+    <!-- kolor II rzędu-->
+
+    <View
+        android:id="@+id/view_color3_s60"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="@dimen/size_2x"
+        android:layout_marginTop="@dimen/size_5x"
+        android:background="@color/s_60"
+        app:layout_constraintStart_toEndOf="@+id/view_color2_p60"
+        app:layout_constraintTop_toBottomOf="@+id/textview_st_color" />
+
+    <View
+        android:id="@+id/view_color3_s50"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="@dimen/size_2x"
+        android:layout_marginTop="@dimen/size_5x"
+        android:background="@color/s_50"
+        app:layout_constraintStart_toEndOf="@+id/view_color2_p70"
+        app:layout_constraintTop_toBottomOf="@+id/view_color3_s60" />
+
+    <View
+        android:id="@+id/view_color3_s40"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="@dimen/size_2x"
+        android:layout_marginTop="@dimen/size_5x"
+        android:background="@color/s_40"
+        app:layout_constraintStart_toEndOf="@+id/view_color2_p80"
+        app:layout_constraintTop_toBottomOf="@+id/view_color3_s50" />
+
+    <View
+        android:id="@+id/view_color3_s30"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="@dimen/size_2x"
+        android:layout_marginTop="@dimen/size_5x"
+        android:background="@color/s_30"
+        app:layout_constraintStart_toEndOf="@+id/view_color2_p90"
+        app:layout_constraintTop_toBottomOf="@+id/view_color3_s40" />
+
+    <View
+        android:id="@+id/view_color3_s20"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="@dimen/size_2x"
+        android:layout_marginTop="@dimen/size_5x"
+        android:background="@color/s_20"
+        app:layout_constraintStart_toEndOf="@+id/view_color2_p100"
+        app:layout_constraintTop_toBottomOf="@+id/view_color3_s30" />
+
+    <View
+        android:id="@+id/view_color3_s10"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="@dimen/size_2x"
+        android:layout_marginTop="@dimen/size_5x"
+        android:background="@color/s_10"
+        app:layout_constraintStart_toEndOf="@+id/view_color2_n120"
+        app:layout_constraintTop_toBottomOf="@+id/view_color3_s20" />
+
+    <View
+        android:id="@+id/view_color3_n0"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="@dimen/size_2x"
+        android:layout_marginTop="@dimen/size_5x"
+        android:background="@color/n_0"
+        app:layout_constraintStart_toEndOf="@+id/view_color2_0"
+        app:layout_constraintTop_toBottomOf="@+id/view_color3_s10" />
+
+    <View
+        android:id="@+id/view_color4_s60"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="@dimen/size"
+        android:layout_marginTop="@dimen/size_5x"
+        android:background="@color/s_60"
+        app:layout_constraintStart_toEndOf="@+id/view_color3_s60"
+        app:layout_constraintTop_toBottomOf="@+id/textview_st_color" />
+
+    <View
+        android:id="@+id/view_color4_s70"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="@dimen/size"
+        android:layout_marginTop="@dimen/size_5x"
+        android:background="@color/s_70"
+        app:layout_constraintStart_toEndOf="@+id/view_color3_s50"
+        app:layout_constraintTop_toBottomOf="@+id/view_color4_s60" />
+
+    <View
+        android:id="@+id/view_color4_s80"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="@dimen/size"
+        android:layout_marginTop="@dimen/size_5x"
+        android:background="@color/s_80"
+        app:layout_constraintStart_toEndOf="@+id/view_color3_s40"
+        app:layout_constraintTop_toBottomOf="@+id/view_color4_s70" />
+
+    <View
+        android:id="@+id/view_color4_s90"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="@dimen/size"
+        android:layout_marginTop="@dimen/size_5x"
+        android:background="@color/s_90"
+        app:layout_constraintStart_toEndOf="@+id/view_color3_s30"
+        app:layout_constraintTop_toBottomOf="@+id/view_color4_s80" />
+
+    <View
+        android:id="@+id/view_color4_s100"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="@dimen/size"
+        android:layout_marginTop="@dimen/size_5x"
+        android:background="@color/s_100"
+        app:layout_constraintStart_toEndOf="@+id/view_color3_s20"
+        app:layout_constraintTop_toBottomOf="@+id/view_color4_s90" />
+
+    <View
+        android:id="@+id/view_color4_s110"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="@dimen/size"
+        android:layout_marginTop="@dimen/size_5x"
+        android:background="@color/s_110"
+        app:layout_constraintStart_toEndOf="@+id/view_color3_s10"
+        app:layout_constraintTop_toBottomOf="@+id/view_color4_s100" />
+
+    <View
+        android:id="@+id/view_color4_0"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="@dimen/size"
+        android:layout_marginTop="@dimen/size_5x"
+        android:background="#000000"
+        app:layout_constraintStart_toEndOf="@+id/view_color3_n0"
+        app:layout_constraintTop_toBottomOf="@+id/view_color4_s110" />
+
+    <!-- kolor III rzędu-->
+
+    <View
+        android:id="@+id/view_color5_n60"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="@dimen/size_5x"
+        android:layout_marginTop="@dimen/size_5x"
+        android:background="@color/n_60"
+        app:layout_constraintStart_toEndOf="@+id/view_color4_s60"
+        app:layout_constraintTop_toBottomOf="@+id/textview_tt_color" />
+
+    <View
+        android:id="@+id/view_color5_n70"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="@dimen/size_5x"
+        android:layout_marginTop="@dimen/size_5x"
+        android:background="@color/n_70"
+        app:layout_constraintStart_toEndOf="@+id/view_color4_s70"
+        app:layout_constraintTop_toBottomOf="@+id/view_color5_n60" />
+
+    <View
+        android:id="@+id/view_color5_n80"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="@dimen/size_5x"
+        android:layout_marginTop="@dimen/size_5x"
+        android:background="@color/n_80"
+        app:layout_constraintStart_toEndOf="@+id/view_color4_s80"
+        app:layout_constraintTop_toBottomOf="@+id/view_color5_n70" />
+
+    <View
+        android:id="@+id/view_color5_n90"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="@dimen/size_5x"
+        android:layout_marginTop="@dimen/size_5x"
+        android:background="@color/n_90"
+        app:layout_constraintStart_toEndOf="@+id/view_color4_s90"
+        app:layout_constraintTop_toBottomOf="@+id/view_color5_n80" />
+
+    <View
+        android:id="@+id/view_color5_n100"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="@dimen/size_5x"
+        android:layout_marginTop="@dimen/size_5x"
+        android:background="@color/n_100"
+        app:layout_constraintStart_toEndOf="@+id/view_color4_s100"
+        app:layout_constraintTop_toBottomOf="@+id/view_color5_n90" />
+
+    <View
+        android:id="@+id/view_color5_n110"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="@dimen/size_5x"
+        android:layout_marginTop="@dimen/size_5x"
+        android:background="@color/n_110"
+        app:layout_constraintStart_toEndOf="@+id/view_color4_s110"
+        app:layout_constraintTop_toBottomOf="@+id/view_color5_n100" />
+
+    <View
+        android:id="@+id/view_color5_0"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="@dimen/size_5x"
+        android:layout_marginTop="@dimen/size_5x"
+        android:background="#000000"
+        app:layout_constraintStart_toEndOf="@+id/view_color4_0"
+        app:layout_constraintTop_toBottomOf="@+id/view_color5_n110" />
+
+    <!-- kolor błędu-->
+
+    <View
+        android:id="@+id/view_color6_e60"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="@dimen/size_6.5x"
+        android:layout_marginTop="@dimen/size_5x"
+        android:background="@color/e_60"
+        app:layout_constraintStart_toEndOf="@+id/view_color5_n60"
+        app:layout_constraintTop_toBottomOf="@+id/textview_err_color" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
