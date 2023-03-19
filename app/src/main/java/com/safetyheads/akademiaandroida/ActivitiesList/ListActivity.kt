@@ -8,6 +8,7 @@ import com.safetyheads.akademiaandroida.ClientsFragment
 import com.safetyheads.akademiaandroida.ExperienceStructureFragment
 import com.safetyheads.akademiaandroida.contact_with_us.ContactWithUsFragment
 import com.safetyheads.akademiaandroida.databinding.ActivityListBinding
+import com.safetyheads.akademiaandroida.dropdownlist.FragmentDropDownList
 import com.safetyheads.akademiaandroida.font.FontSylesFragment
 import com.safetyheads.akademiaandroida.fragments.WeAreHiringFragment
 
@@ -53,8 +54,12 @@ class ListActivity : AppCompatActivity() {
     val experienceStructureFragment = ExperienceStructureFragment()
 
     val dataListFragments = listOf(
-        fontSylesFragment, contactWithUsFragment,
-        weAreHiringBinding, clientsFragment, experienceStructureFragment
+        fontSylesFragment,
+        contactWithUsFragment,
+        weAreHiringBinding,
+        clientsFragment,
+        experienceStructureFragment,
+        FragmentDropDownList()
     )
 }
 
