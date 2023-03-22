@@ -2,6 +2,8 @@ package com.safetyheads.akademiaandroida
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.ViewGroup
+import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.isVisible
@@ -29,7 +31,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
 
         binding.previevFont.setOnClickListener {
             openFragment(FontSylesFragment())
@@ -67,6 +68,20 @@ class MainActivity : AppCompatActivity() {
         supportFragmentManager.beginTransaction()
             .add(R.id.footer_container, Footer())
             .commit()
+
+        //testting firebase.crashlytics
+        val crashButton = Button(this)
+        crashButton.text = "Test Crash"
+        crashButton.setOnClickListener {
+            throw RuntimeException("Test Crash") // Force a crash
+        }
+
+        addContentView(
+            crashButton, ViewGroup.LayoutParams(
+                ViewGroup.LayoutParams.WRAP_CONTENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT
+            )
+        )
     }
 
     private fun openFragment(fragment: Fragment) {

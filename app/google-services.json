@@ -1,0 +1,70 @@
+{
+  "project_info": {
+    "project_number": "414171406445",
+    "project_id": "akademiaandroida2023",
+    "storage_bucket": "akademiaandroida2023.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:414171406445:android:1bcb2334399b123107df64",
+        "android_client_info": {
+          "package_name": "com.safetyheads.akademiaandroida",
+          "version_name": "${defaultConfig.versionName}",
+          "api_url": "https://safetyheads.com/"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "414171406445-reskeljd9s3ufs0561mgukm75rcr7hev.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAzlMQ1JiGKxkA028MWmOpqJ-UKMQBd8V8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "414171406445-reskeljd9s3ufs0561mgukm75rcr7hev.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:414171406445:android:b17bd8c701076a8107df64",
+        "android_client_info": {
+          "package_name": "com.safetyheads.akademiaandroida.development"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "414171406445-reskeljd9s3ufs0561mgukm75rcr7hev.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAzlMQ1JiGKxkA028MWmOpqJ-UKMQBd8V8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "414171406445-reskeljd9s3ufs0561mgukm75rcr7hev.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
