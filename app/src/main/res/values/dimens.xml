@@ -24,4 +24,6 @@
     
     <dimen name="radius_3x">24dp</dimen>
     <dimen name="margin_default_start">75dp</dimen>
+
+    <dimen name="expandable_item_padding">3dp</dimen>
 </resources>
