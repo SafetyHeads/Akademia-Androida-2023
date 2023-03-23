@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.safetyheads.akademiaandroida.R
 import com.safetyheads.akademiaandroida.Footer
 import com.safetyheads.akademiaandroida.databinding.FragmentLaunchScreenBinding
@@ -37,6 +38,18 @@ class LaunchScreenFragment : Fragment() {
         childFragmentManager.beginTransaction()
             .add(R.id.parent_layout, Footer())
             .commit()
+
+        navigation()
+    }
+
+    private fun navigation() {
+        binding.txtSign.setOnClickListener {
+            findNavController().navigate(R.id.action_LaunchScreenFragment_to_login_fragment)
+        }
+
+        binding.button.setOnClickListener {
+            findNavController().navigate(R.id.action_LaunchScreenFragment_to_notlogged_placeholder)
+        }
     }
 }
 

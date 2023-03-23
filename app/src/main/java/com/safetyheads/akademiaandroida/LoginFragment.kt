@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import com.safetyheads.akademiaandroida.databinding.FragmentLoginBinding
 
 class LoginFragment : Fragment() {
@@ -18,5 +19,29 @@ class LoginFragment : Fragment() {
     ): View {
         binding = FragmentLoginBinding.inflate(inflater, container, false)
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        navigation()
+    }
+
+    private fun navigation() {
+        binding.buttonBack.setOnClickListener {
+            findNavController().navigateUp()
+        }
+
+        binding.buttonSignIn.setOnClickListener {
+            // authorization
+        }
+
+        binding.forgotPassword.setOnClickListener {
+            // forgot password view
+        }
+
+        binding.signUpNow.setOnClickListener {
+            // registration view
+        }
     }
 }

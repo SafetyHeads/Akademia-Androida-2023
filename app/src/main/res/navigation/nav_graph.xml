@@ -14,7 +14,7 @@
             android:id="@+id/action_LaunchScreenFragment_to_notlogged_placeholder"
             app:destination="@id/notlogged_placeholder" />
         <action
-            android:id="@+id/action_LaunchScreenFragment_to_login_placeholder"
+            android:id="@+id/action_LaunchScreenFragment_to_login_fragment"
             app:destination="@id/login_fragment" />
     </fragment>
     <fragment
