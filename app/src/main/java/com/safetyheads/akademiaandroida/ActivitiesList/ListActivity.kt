@@ -52,6 +52,7 @@ class ListActivity : AppCompatActivity() {
     val weAreHiringBinding = WeAreHiringFragment()
     val clientsFragment = ClientsFragment()
     val experienceStructureFragment = ExperienceStructureFragment()
+    val fragmentDropDownList = FragmentDropDownList()
 
     val dataListFragments = listOf(
         fontSylesFragment,
@@ -59,7 +60,7 @@ class ListActivity : AppCompatActivity() {
         weAreHiringBinding,
         clientsFragment,
         experienceStructureFragment,
-        FragmentDropDownList()
+        fragmentDropDownList
     )
 }
 
