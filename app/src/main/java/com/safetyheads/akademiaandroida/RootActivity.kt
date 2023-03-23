@@ -13,7 +13,6 @@ class RootActivity : AppCompatActivity() {
 
     private lateinit var navController: NavController
     private lateinit var binding: ActivityRootBinding
-    private val navigationAction = R.id.action_splashScreen_to_launchScreenFragment
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,9 +23,6 @@ class RootActivity : AppCompatActivity() {
             supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         navController = navHostFragment.navController
 
-        Handler(Looper.getMainLooper()).postDelayed({
-            navController.navigate(navigationAction)
-        }, SPLASH_TIME)
 
         val onBackPressedCallback = object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
@@ -40,7 +36,4 @@ class RootActivity : AppCompatActivity() {
         onBackPressedDispatcher.addCallback(this, onBackPressedCallback)
     }
 
-    companion object {
-        private const val SPLASH_TIME = 3000L
-    }
 }

@@ -67,7 +67,11 @@
     <string name="already_have_an_account">Already have an account?</string>
     <string name="sign_in_now">Sign in now</string>
     <string name="full_name">Full name</string>
+    <string name="confirm_password">Confirm password</string>
+    <string name="not_a_member">Not a member?</string>
+    <string name="sign_up_now">Sign up now</string>
+    <string name="sign_in">Sign in</string>
     <string name="email_address">Email address</string>
     <string name="password">Password</string>
-    <string name="confirm_password">Confirm password</string>
+    <string name="forgot_password"> <u>Forgot password?</u> </string>
 </resources>

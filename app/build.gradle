@@ -82,13 +82,19 @@ dependencies {
     androidTestImplementation "io.mockk:mockk-android:1.12.0"
     testImplementation "org.assertj:assertj-core:3.20.2"
 
+
+    // SplashScreen
+    implementation 'androidx.core:core-splashscreen:1.0.0'
+
     //MoccK library
     testImplementation "io.mockk:mockk:1.12.0"
     androidTestImplementation "io.mockk:mockk-android:1.11.0"
     testImplementation "org.assertj:assertj-core:3.20.2"
 
+
     // Koin
     implementation('io.insert-koin:koin-android:3.3.2')
+
 }
 
 private static Integer generateVersionCode(Integer VERSION_NAME_MAJOR, Integer VERSION_NAME_MINOR, Integer VERSION_NAME_PATCH) {
