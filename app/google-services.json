@@ -1,0 +1,97 @@
+{
+  "project_info": {
+    "project_number": "414171406445",
+    "project_id": "akademiaandroida2023",
+    "storage_bucket": "akademiaandroida2023.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:414171406445:android:b17bd8c701076a8107df64",
+        "android_client_info": {
+          "package_name": "com.safetyheads.akademiaandroida.development"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "414171406445-reskeljd9s3ufs0561mgukm75rcr7hev.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAzlMQ1JiGKxkA028MWmOpqJ-UKMQBd8V8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "414171406445-reskeljd9s3ufs0561mgukm75rcr7hev.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:414171406445:android:ffaba6698f64356607df64",
+        "android_client_info": {
+          "package_name": "com.safetyheads.akademiaandroida.production"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "414171406445-reskeljd9s3ufs0561mgukm75rcr7hev.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAzlMQ1JiGKxkA028MWmOpqJ-UKMQBd8V8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "414171406445-reskeljd9s3ufs0561mgukm75rcr7hev.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:414171406445:android:ec9c64af68f011fe07df64",
+        "android_client_info": {
+          "package_name": "com.safetyheads.akademiaandroida.qa"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "414171406445-reskeljd9s3ufs0561mgukm75rcr7hev.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAzlMQ1JiGKxkA028MWmOpqJ-UKMQBd8V8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "414171406445-reskeljd9s3ufs0561mgukm75rcr7hev.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
