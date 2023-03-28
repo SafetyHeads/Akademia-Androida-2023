@@ -3,6 +3,9 @@ package com.safetyheads.akademiaandroida
 import android.app.Application
 import com.safetyheads.akademiaandroida.dropdownlist.DropDownListViewModel
 import com.safetyheads.akademiaandroida.dropdownlist.LoadItemsToDropDownListUseCase
+import com.safetyheads.akademiaandroida.network.ApiClient
+import com.safetyheads.akademiaandroida.network.RetrofitInterceptor
+import com.safetyheads.akademiaandroida.network.YouTubeApi
 import com.safetyheads.akademiaandroida.splashscreen.SplashScreenUseCase
 import com.safetyheads.akademiaandroida.splashscreen.SplashScreenUseCaseImpl
 import com.safetyheads.akademiaandroida.splashscreen.SplashScreenViewModel
@@ -32,5 +35,14 @@ class AndroidAcademyApplication: Application() {
         //viewmodels
         viewModel{ SplashScreenViewModel(get()) }
         viewModel{ DropDownListViewModel(get()) }
+    }
+
+    private val retrofitModule = module {
+        // Singleton Retrofit Interceptor and ApiClient
+        single { ApiClient() }
+        single { RetrofitInterceptor() }
+
+        // YouTube API
+        single { YouTubeApi }
     }
 }
