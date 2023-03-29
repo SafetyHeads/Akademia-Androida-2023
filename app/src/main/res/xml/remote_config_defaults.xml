@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<defaultsMap>
+
+    <entry>
+        <key>versionCode</key>
+        <value>0.0.1</value>
+    </entry>
+
+    <entry>
+        <key>apiUrl</key>
+        <value>https://safetyheads.com/</value>
+    </entry>
+
+
+</defaultsMap>
