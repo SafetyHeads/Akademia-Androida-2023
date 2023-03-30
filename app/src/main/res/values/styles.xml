@@ -183,6 +183,13 @@
         <item name="android:textColor">@color/white</item>
     </style>
 
+    <!-- Logo SafetyHeads -->
+    <style name="Logo_safetyheads">
+        <item name="android:layout_width">24dp</item>
+        <item name="android:layout_height">24dp</item>
+        <item name="android:src">@drawable/logo_safetyheads</item>
+    </style>
+
     <!-- Back arrow -->
     <style name="Back_arrow">
         <item name="android:layout_width">wrap_content</item>
