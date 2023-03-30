@@ -65,6 +65,9 @@ android {
 
 dependencies {
 
+    // Modules implementations
+    implementation project(':domain')
+
     implementation 'com.airbnb.android:lottie:6.0.0'
     implementation 'androidx.core:core-ktx:1.9.0'
     implementation 'androidx.navigation:navigation-fragment-ktx:2.5.3'
