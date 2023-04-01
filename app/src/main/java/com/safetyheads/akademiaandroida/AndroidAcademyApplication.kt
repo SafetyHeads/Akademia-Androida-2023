@@ -6,6 +6,8 @@ import com.safetyheads.akademiaandroida.dropdownlist.LoadItemsToDropDownListUseC
 import com.safetyheads.akademiaandroida.splashscreen.SplashScreenUseCase
 import com.safetyheads.akademiaandroida.splashscreen.SplashScreenUseCaseImpl
 import com.safetyheads.akademiaandroida.splashscreen.SplashScreenViewModel
+import com.safetyheads.akademiaandroida.data.ConfigRepositoryUseCaseImpl
+import com.safetyheads.domain.usecases.GetConfigUseCase
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.androidx.viewmodel.dsl.viewModel
@@ -28,9 +30,10 @@ class AndroidAcademyApplication: Application() {
         //usecases
         single<SplashScreenUseCase> { SplashScreenUseCaseImpl() }
         single { LoadItemsToDropDownListUseCase() }
+        single { GetConfigUseCase(ConfigRepositoryUseCaseImpl()) }
 
         //viewmodels
-        viewModel{ SplashScreenViewModel(get()) }
+        viewModel{ SplashScreenViewModel(get(), get()) }
         viewModel{ DropDownListViewModel(get()) }
     }
 }

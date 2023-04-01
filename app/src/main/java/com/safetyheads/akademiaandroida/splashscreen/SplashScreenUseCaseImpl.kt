@@ -6,6 +6,6 @@ import kotlinx.coroutines.delay
 class SplashScreenUseCaseImpl: SplashScreenUseCase {
 
     override suspend fun delay() {
-        delay(3000)
+        delay(1000)
     }
 }

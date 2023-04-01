@@ -1,18 +1,14 @@
 package com.safetyheads.akademiaandroida
 
-import android.content.ContentValues.TAG
+
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
-import com.google.firebase.remoteconfig.FirebaseRemoteConfig
-import com.google.firebase.remoteconfig.FirebaseRemoteConfigSettings
 import com.safetyheads.akademiaandroida.ActivitiesList.ListActivity
 import com.safetyheads.akademiaandroida.contactusform.ContactUsFragment
 import com.safetyheads.akademiaandroida.databinding.ActivityMainBinding
@@ -30,7 +26,7 @@ class MainActivity : AppCompatActivity() {
         installSplashScreen()
         val splashScreen = installSplashScreen()
         splashScreen.setKeepOnScreenCondition {
-            splashScreenViewModel.delay.isActive
+            splashScreenViewModel.getConfig.isActive
         }
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -87,36 +83,36 @@ class MainActivity : AppCompatActivity() {
         )
 
         //create instance Remote Config to firebase and download data
-        val remoteConfig = FirebaseRemoteConfig.getInstance()
-        val configSettings = FirebaseRemoteConfigSettings.Builder()
-            .setFetchTimeoutInSeconds(60)
-            .build()
-        remoteConfig.setConfigSettingsAsync(configSettings)
-        remoteConfig.setDefaultsAsync(R.xml.remote_config_defaults)
-
-        val versionCode = remoteConfig.getString("versionCode")
-        val apiUrl = remoteConfig.getString("apiUrl")
-
-        remoteConfig.fetchAndActivate()
-            .addOnCompleteListener(this) { task ->
-                if (task.isSuccessful) {
-                    val updated = task.result
-                    Log.d(TAG, "Config params updated: $updated")
-
-                    Toast.makeText(
-                        this,
-                        "versionCode:" + versionCode +
-                                "apiUrl:" + apiUrl,
-                        Toast.LENGTH_LONG
-                    ).show()
-
-                } else {
-                    Toast.makeText(
-                        this, "Fetch failed",
-                        Toast.LENGTH_SHORT
-                    ).show()
-                }
-            }
+//        val remoteConfig = FirebaseRemoteConfig.getInstance()
+//        val configSettings = FirebaseRemoteConfigSettings.Builder()
+//            .setFetchTimeoutInSeconds(60)
+//            .build()
+//        remoteConfig.setConfigSettingsAsync(configSettings)
+//        remoteConfig.setDefaultsAsync(R.xml.remote_config_defaults)
+//
+//        val versionCode = remoteConfig.getString("versionCode")
+//        val apiUrl = remoteConfig.getString("apiUrl")
+//
+//        remoteConfig.fetchAndActivate()
+//            .addOnCompleteListener(this) { task ->
+//                if (task.isSuccessful) {
+//                    val updated = task.result
+//                    Log.d(TAG, "Config params updated: $updated")
+//
+//                    Toast.makeText(
+//                        this,
+//                        "versionCode:" + versionCode +
+//                                "apiUrl:" + apiUrl,
+//                        Toast.LENGTH_LONG
+//                    ).show()
+//
+//                } else {
+//                    Toast.makeText(
+//                        this, "Fetch failed",
+//                        Toast.LENGTH_SHORT
+//                    ).show()
+//                }
+//            }
     }
 
     private fun openFragment(fragment: Fragment) {
