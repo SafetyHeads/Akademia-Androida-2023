@@ -2,11 +2,11 @@ name: Android CI
 
 on:
   push:
-    branches: [ "master" ]
+    branches:
+      - master
   pull_request:
-    branches: [ "master" ]
-
-
+    branches:
+      - '*'
 
 jobs:
   build:
@@ -24,6 +24,12 @@ jobs:
 
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
-      - name: Build with Gradle
-        run: ./gradlew build
+
+      - name: Build QA version
+        if: github.ref == 'refs/heads/master'
+        run: ./gradlew assembleQa
+
+      - name: Build QA and Production and Development versions for PR
+        if: github.event.pull_request
+        run: ./gradlew assembleQa assembleProduction assembleDevelopment
 
