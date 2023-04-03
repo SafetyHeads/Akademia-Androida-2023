@@ -81,38 +81,6 @@ class MainActivity : AppCompatActivity() {
                 ViewGroup.LayoutParams.WRAP_CONTENT
             )
         )
-
-        //create instance Remote Config to firebase and download data
-//        val remoteConfig = FirebaseRemoteConfig.getInstance()
-//        val configSettings = FirebaseRemoteConfigSettings.Builder()
-//            .setFetchTimeoutInSeconds(60)
-//            .build()
-//        remoteConfig.setConfigSettingsAsync(configSettings)
-//        remoteConfig.setDefaultsAsync(R.xml.remote_config_defaults)
-//
-//        val versionCode = remoteConfig.getString("versionCode")
-//        val apiUrl = remoteConfig.getString("apiUrl")
-//
-//        remoteConfig.fetchAndActivate()
-//            .addOnCompleteListener(this) { task ->
-//                if (task.isSuccessful) {
-//                    val updated = task.result
-//                    Log.d(TAG, "Config params updated: $updated")
-//
-//                    Toast.makeText(
-//                        this,
-//                        "versionCode:" + versionCode +
-//                                "apiUrl:" + apiUrl,
-//                        Toast.LENGTH_LONG
-//                    ).show()
-//
-//                } else {
-//                    Toast.makeText(
-//                        this, "Fetch failed",
-//                        Toast.LENGTH_SHORT
-//                    ).show()
-//                }
-//            }
     }
 
     private fun openFragment(fragment: Fragment) {
