@@ -3,12 +3,15 @@ package com.safetyheads.akademiaandroida
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import com.safetyheads.akademiaandroida.ActivitiesList.ListActivity
 import com.safetyheads.akademiaandroida.contactusform.ContactUsFragment
 import com.safetyheads.akademiaandroida.databinding.ActivityMainBinding
@@ -23,11 +26,18 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private val splashScreenViewModel: SplashScreenViewModel by viewModel()
     override fun onCreate(savedInstanceState: Bundle?) {
+        splashScreenViewModel.getConfig
         installSplashScreen()
         val splashScreen = installSplashScreen()
         splashScreen.setKeepOnScreenCondition {
             splashScreenViewModel.getConfig.isActive
         }
+
+        splashScreenViewModel.config.observe(this) { config ->
+            Log.d("main", "$config")
+            Toast.makeText(applicationContext,"Version Code: ${config.versionCode} \n Api Url: ${config.apiUrl}",Toast.LENGTH_SHORT).show()
+        }
+
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)

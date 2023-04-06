@@ -1,5 +1,6 @@
 package com.safetyheads.akademiaandroida.data
 
+import android.util.Log
 import com.google.firebase.remoteconfig.FirebaseRemoteConfig
 import com.google.firebase.remoteconfig.FirebaseRemoteConfigSettings
 import com.safetyheads.domain.entities.Config
@@ -18,17 +19,27 @@ class ConfigRepositoryUseCaseImpl: ConfigRepository {
     override suspend fun getConfig(): Flow<Config> {
         remoteConfig.setConfigSettingsAsync(configSettings)
 
-        val versionCode = remoteConfig.getString("versionCode")
-        val apiUrl = remoteConfig.getString("apiUrl")
-        val config = Config("","")
+        var versionCode = "smth"
+        var apiUrl = "smth"
 
-        remoteConfig.fetchAndActivate().await()
-        config.versionCode = versionCode
-        config.apiUrl = apiUrl
+        Log.d("repo", "przed fecthowaniem")
+
+        remoteConfig.fetchAndActivate().addOnCompleteListener {
+            if(it.isSuccessful) {
+                Log.d("repo", "przed przypisaniem: $versionCode")
+                Log.d("repo", "przed przypisaniem: $apiUrl")
+
+                versionCode = remoteConfig.getString("versionCode")
+                apiUrl = remoteConfig.getString("apiUrl")
+                Log.d("repo", "po przypisaniu: $versionCode")
+                Log.d("repo", "po przypisaniu: $apiUrl")
+            }
+        }.await()
+
+        Log.d("repo", "przy returnie: ${Config(versionCode, apiUrl)}")
 
         return flow {
-            this.emit(config)
+            this.emit(Config(versionCode, apiUrl))
         }
-
     }
 }
