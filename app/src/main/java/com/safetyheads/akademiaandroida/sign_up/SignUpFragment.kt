@@ -6,6 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.safetyheads.akademiaandroida.databinding.FragmentSignUpBinding
+import com.safetyheads.akademiaandroida.utils.EmailValidator
+import com.safetyheads.akademiaandroida.utils.FullNameValidator
 import com.safetyheads.akademiaandroida.utils.PasswordValidator
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -20,12 +22,6 @@ class SignUpFragment : Fragment() {
     ): View {
         binding = FragmentSignUpBinding.inflate(inflater, container, false)
 
-        binding.buttonSignUp.setOnClickListener() {
-
-            //przypinanie powinno byc w onViewCreate
-            viewModel.signUp(binding.eTextFullName, binding.eTextEmailAddress, binding.eTextPassword, binding.eTextConfirmPassword)
-        }
-
         return binding.root
     }
 
@@ -33,20 +29,15 @@ class SignUpFragment : Fragment() {
 
         super.onViewCreated(view, savedInstanceState)
 
-        //Reszte validatorów podpiąć
-
-        //UserReposytory to interface w niej createUser podaje email i haslo
-
-        //ProgressBar dorobic powinien sie pojawiac i znikac na podstawie LiveDate
-
-        //Livedata Regisistration Complete
-
-        //ScrollView
-
-
+        binding.buttonSignUp.setOnClickListener() {
+            viewModel.signUp(binding.eTextFullName, binding.eTextEmailAddress, binding.eTextPassword, binding.eTextConfirmPassword)
+        }
+        FullNameValidator.attach(binding.eTextFullName, requireContext())
+        EmailValidator.attach(binding.eTextEmailAddress)
         PasswordValidator.attach(binding.eTextPassword, requireContext())
-
-
+        PasswordValidator.attach(binding.eTextConfirmPassword, requireContext())
     }
-
 }
+//ProgressBar dorobic powinien sie pojawiac i znikac na podstawie LiveDate
+
+//ScrollView
