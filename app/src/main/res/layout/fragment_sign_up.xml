@@ -154,6 +154,7 @@
     <Button
         android:id="@+id/button_sign_up"
         style="@style/StyledButton"
+        android:enabled="false"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_marginTop="@dimen/size_5x"
