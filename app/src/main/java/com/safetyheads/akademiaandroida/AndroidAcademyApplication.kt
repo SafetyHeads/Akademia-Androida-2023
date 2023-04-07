@@ -3,10 +3,10 @@ package com.safetyheads.akademiaandroida
 import android.app.Application
 import com.safetyheads.akademiaandroida.dropdownlist.DropDownListViewModel
 import com.safetyheads.akademiaandroida.dropdownlist.LoadItemsToDropDownListUseCase
-import com.safetyheads.akademiaandroida.splashscreen.SplashScreenUseCase
-import com.safetyheads.akademiaandroida.splashscreen.SplashScreenUseCaseImpl
+import com.safetyheads.domain.usecases.DelaySplashScreenUseCase
 import com.safetyheads.akademiaandroida.splashscreen.SplashScreenViewModel
-import com.safetyheads.akademiaandroida.data.ConfigRepositoryUseCaseImpl
+import com.safetyheads.akademiaandroida.data.FirebaseConfigRepository
+import com.safetyheads.domain.repositories.ConfigRepository
 import com.safetyheads.domain.usecases.GetConfigUseCase
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
@@ -27,10 +27,13 @@ class AndroidAcademyApplication: Application() {
     }
 
     private val appModule = module {
+        //repositories
+        single<ConfigRepository> { FirebaseConfigRepository() }
+
         //usecases
-        single<SplashScreenUseCase> { SplashScreenUseCaseImpl() }
+        single { DelaySplashScreenUseCase() }
         single { LoadItemsToDropDownListUseCase() }
-        single { GetConfigUseCase(ConfigRepositoryUseCaseImpl()) }
+        single { GetConfigUseCase(get()) }
 
         //viewmodels
         viewModel{ SplashScreenViewModel(get(), get()) }

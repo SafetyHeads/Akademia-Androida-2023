@@ -3,7 +3,6 @@ package com.safetyheads.akademiaandroida
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.Toast
@@ -11,7 +10,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.lifecycleScope
 import com.safetyheads.akademiaandroida.ActivitiesList.ListActivity
 import com.safetyheads.akademiaandroida.contactusform.ContactUsFragment
 import com.safetyheads.akademiaandroida.databinding.ActivityMainBinding
@@ -32,11 +30,8 @@ class MainActivity : AppCompatActivity() {
         splashScreen.setKeepOnScreenCondition {
             splashScreenViewModel.getConfig.isActive
         }
+        fetchDataFromRemoteConfig()
 
-        splashScreenViewModel.config.observe(this) { config ->
-            Log.d("main", "$config")
-            Toast.makeText(applicationContext,"Version Code: ${config.versionCode} \n Api Url: ${config.apiUrl}",Toast.LENGTH_SHORT).show()
-        }
 
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -97,6 +92,24 @@ class MainActivity : AppCompatActivity() {
         supportFragmentManager.beginTransaction().apply {
             replace(binding.frameLayout.id, fragment)
             commit()
+        }
+    }
+
+    private fun fetchDataFromRemoteConfig() {
+        splashScreenViewModel.config.observe(this) { config ->
+            Toast.makeText(
+                applicationContext,
+                "Version Code: ${config.versionCode} \n Api Url: ${config.apiUrl}",
+                Toast.LENGTH_LONG)
+                .show()
+        }
+
+        splashScreenViewModel.failureText.observe(this) { failureText ->
+            Toast.makeText(
+                applicationContext,
+                failureText,
+                Toast.LENGTH_LONG)
+                .show()
         }
     }
 }
