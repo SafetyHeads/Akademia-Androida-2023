@@ -70,4 +70,6 @@
     <string name="password">Password</string>
     <string name="forgot_password"> <u>Forgot password?</u> </string>
     <string name="dot_enumeration">•</string>
+    <string name="forgot_password_without_underline">Forgot password?</string>
+    <string name="forgot_password_text">Enter your e-mail address and we’ll send you a link to return to your account.</string>
 </resources>
