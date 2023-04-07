@@ -3,6 +3,7 @@ package com.safetyheads.akademiaandroida
 import android.content.Context
 import android.content.res.TypedArray
 import android.util.AttributeSet
+import android.view.LayoutInflater
 import android.widget.LinearLayout
 import com.safetyheads.akademiaandroida.databinding.ViewH2Binding
 
@@ -24,6 +25,7 @@ class H2View @JvmOverloads constructor(
     private lateinit var binding: ViewH2Binding
 
     init {
+        binding = ViewH2Binding.inflate(LayoutInflater.from(context), this)
         binding.textViewH2.text = attributes.getString(R.styleable.H2View_text)
     }
 }
