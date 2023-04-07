@@ -72,4 +72,8 @@
     <string name="dot_enumeration">•</string>
     <string name="forgot_password_without_underline">Forgot password?</string>
     <string name="forgot_password_text">Enter your e-mail address and we’ll send you a link to return to your account.</string>
+    <string name="e_mail">E-mail</string>
+    <string name="request_reset_link">Request reset link</string>
+    <string name="or">Or</string>
+    <string name="sign_in_now">Sign in now</string>
 </resources>
