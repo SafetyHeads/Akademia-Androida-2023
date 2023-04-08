@@ -30,7 +30,7 @@ class MainActivity : AppCompatActivity() {
         splashScreen.setKeepOnScreenCondition {
             splashScreenViewModel.getConfig.isActive
         }
-        fetchDataFromRemoteConfig()
+        observeConfigChanges()
 
 
         super.onCreate(savedInstanceState)
@@ -95,7 +95,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun fetchDataFromRemoteConfig() {
+    private fun observeConfigChanges() {
         splashScreenViewModel.config.observe(this) { config ->
             Toast.makeText(
                 applicationContext,

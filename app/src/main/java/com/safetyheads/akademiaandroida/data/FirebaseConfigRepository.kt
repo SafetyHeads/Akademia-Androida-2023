@@ -16,13 +16,13 @@ class FirebaseConfigRepository: ConfigRepository {
         .build()
 
     override suspend fun getConfig(): Flow<Config> = flow {
-        remoteConfig.setConfigSettingsAsync(configSettings)
+        remoteConfig.setConfigSettingsAsync(configSettings).await()
 
         val isSuccess = remoteConfig.fetchAndActivate().await()
         val versionCode = remoteConfig.getString("versionCode")
         val apiUrl = remoteConfig.getString("apiUrl")
 
-        val isDataDownloaded = versionCode != "" && apiUrl != ""
+        val isDataDownloaded = versionCode.isNotBlank() && apiUrl.isNotBlank()
 
         if (isSuccess || isDataDownloaded) {
             emit(Config(versionCode, apiUrl))
