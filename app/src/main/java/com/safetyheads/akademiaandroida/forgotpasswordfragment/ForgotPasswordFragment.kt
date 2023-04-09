@@ -1,4 +1,4 @@
-package com.safetyheads.akademiaandroida
+package com.safetyheads.akademiaandroida.forgotpasswordfragment
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
