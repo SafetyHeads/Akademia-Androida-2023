@@ -3,6 +3,8 @@ package com.safetyheads.akademiaandroida
 import android.app.Application
 import com.safetyheads.akademiaandroida.dropdownlist.DropDownListViewModel
 import com.safetyheads.akademiaandroida.dropdownlist.LoadItemsToDropDownListUseCase
+import com.safetyheads.akademiaandroida.forgotpasswordfragment.ForgotPasswordUseCase
+import com.safetyheads.akademiaandroida.forgotpasswordfragment.ForgotPasswordUseCaseImpl
 import com.safetyheads.akademiaandroida.forgotpasswordfragment.ForgotPasswordViewModel
 import com.safetyheads.akademiaandroida.splashscreen.SplashScreenUseCase
 import com.safetyheads.akademiaandroida.splashscreen.SplashScreenUseCaseImpl
@@ -29,6 +31,7 @@ class AndroidAcademyApplication: Application() {
         //usecases
         single<SplashScreenUseCase> { SplashScreenUseCaseImpl() }
         single { LoadItemsToDropDownListUseCase() }
+        single<ForgotPasswordUseCase> { ForgotPasswordUseCaseImpl() }
 
         //viewmodels
         viewModel{ SplashScreenViewModel(get()) }
