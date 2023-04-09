@@ -3,12 +3,12 @@ package com.safetyheads.akademiaandroida
 import android.app.Application
 import com.safetyheads.akademiaandroida.dropdownlist.DropDownListViewModel
 import com.safetyheads.akademiaandroida.dropdownlist.LoadItemsToDropDownListUseCase
-import com.safetyheads.akademiaandroida.forgotpasswordfragment.ForgotPasswordUseCase
-import com.safetyheads.akademiaandroida.forgotpasswordfragment.ForgotPasswordUseCaseImpl
-import com.safetyheads.akademiaandroida.forgotpasswordfragment.ForgotPasswordViewModel
 import com.safetyheads.akademiaandroida.splashscreen.SplashScreenUseCase
 import com.safetyheads.akademiaandroida.splashscreen.SplashScreenUseCaseImpl
 import com.safetyheads.akademiaandroida.splashscreen.SplashScreenViewModel
+import com.safetyheads.domain.repositories.UserRepository
+import com.safetyheads.domain.repositories.UserRepositoryImpl
+import com.safetyheads.domain.usecases.ResetPasswordUseCase
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.androidx.viewmodel.dsl.viewModel
@@ -28,14 +28,17 @@ class AndroidAcademyApplication: Application() {
     }
 
     private val appModule = module {
+        //repository
+        single<UserRepository> { UserRepositoryImpl() }
+
         //usecases
         single<SplashScreenUseCase> { SplashScreenUseCaseImpl() }
         single { LoadItemsToDropDownListUseCase() }
-        single<ForgotPasswordUseCase> { ForgotPasswordUseCaseImpl() }
+        single { ResetPasswordUseCase(get()) }
 
         //viewmodels
-        viewModel{ SplashScreenViewModel(get()) }
-        viewModel{ DropDownListViewModel(get()) }
-        viewModel{ ForgotPasswordViewModel(get()) }
+        viewModel { SplashScreenViewModel(get()) }
+        viewModel { DropDownListViewModel(get()) }
+
     }
 }

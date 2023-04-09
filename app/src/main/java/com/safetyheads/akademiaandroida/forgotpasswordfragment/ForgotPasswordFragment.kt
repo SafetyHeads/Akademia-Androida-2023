@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import com.safetyheads.akademiaandroida.R
 import com.safetyheads.akademiaandroida.databinding.FragmentForgotPasswordBinding
 import com.safetyheads.akademiaandroida.utils.EmailValidator
@@ -22,7 +21,7 @@ class ForgotPasswordFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentForgotPasswordBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -38,13 +37,13 @@ class ForgotPasswordFragment : Fragment() {
             forgotPasswordViewModel.setError(etEmail.error?.toString() ?: "")
         }
 
-        forgotPasswordViewModel.error.observe(viewLifecycleOwner, Observer { errorMsg ->
+        forgotPasswordViewModel.error.observe(viewLifecycleOwner) { errorMsg ->
             if (errorMsg.isNullOrEmpty().not()) {
                 requestBtn.backgroundTintList = getColor(R.color.p_30)
             } else {
                 requestBtn.backgroundTintList = getColor(R.color.p_60)
             }
-        })
+        }
         super.onViewCreated(view, savedInstanceState)
     }
 
