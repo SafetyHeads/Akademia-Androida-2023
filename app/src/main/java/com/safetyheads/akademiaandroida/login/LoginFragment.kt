@@ -1,4 +1,4 @@
-package com.safetyheads.akademiaandroida
+package com.safetyheads.akademiaandroida.login
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -19,4 +19,6 @@ class LoginFragment : Fragment() {
         binding = FragmentLoginBinding.inflate(inflater, container, false)
         return binding.root
     }
+
+
 }
