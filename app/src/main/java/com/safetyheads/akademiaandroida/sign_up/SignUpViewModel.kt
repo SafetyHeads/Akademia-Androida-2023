@@ -7,7 +7,7 @@ import javax.inject.Inject
 class SignUpViewModel @Inject constructor (
     private val registerUseCase: RegisterUseCase
     ) : ViewModel() {
-    fun signUp(eTextFullName: TextInputEditText, eTextEmailAddress: TextInputEditText, eTextPassword: TextInputEditText, eTextConfirmPassword: TextInputEditText) {
+    fun signUp(fullName: String, emailAddress: String, password: String, confirmedPassword: String) {
 
     }
 }

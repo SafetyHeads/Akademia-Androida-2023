@@ -11,6 +11,9 @@ import com.safetyheads.akademiaandroida.utils.FullNameValidator
 import com.safetyheads.akademiaandroida.utils.PasswordValidator
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
+//TODO:
+// https://trello.com/c/tbEmpUyh/112-podpiąć-progressbar-do-ekranu-rejestracji
+
 class SignUpFragment : Fragment() {
 
     private lateinit var binding: FragmentSignUpBinding
@@ -30,7 +33,7 @@ class SignUpFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.buttonSignUp.setOnClickListener() {
-            viewModel.signUp(binding.eTextFullName, binding.eTextEmailAddress, binding.eTextPassword, binding.eTextConfirmPassword)
+            viewModel.signUp(binding.eTextFullName.toString(), binding.eTextEmailAddress.toString(), binding.eTextPassword.toString(), binding.eTextConfirmPassword.toString())
         }
         FullNameValidator.attach(binding.eTextFullName, requireContext())
         EmailValidator.attach(binding.eTextEmailAddress)
@@ -38,6 +41,4 @@ class SignUpFragment : Fragment() {
         PasswordValidator.attach(binding.eTextConfirmPassword, requireContext())
     }
 }
-//ProgressBar dorobic powinien sie pojawiac i znikac na podstawie LiveDate
 
-//ScrollView
