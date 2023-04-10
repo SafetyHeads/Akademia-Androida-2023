@@ -1,6 +1,7 @@
-package com.safetyheads.akademiaandroida.sign_up
+package com.safetyheads.domain.usecases
 
-import com.safetyheads.domain.usecases.BaseUseCase
+import com.safetyheads.domain.entities.User
+import com.safetyheads.domain.repositories.UserRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
@@ -8,7 +9,7 @@ class RegisterUseCase(
     private val repository: UserRepository
 ) : BaseUseCase<RegisterUseCase.UserParams, User> {
     class UserParams(val fullName: String, val email: String, val password: String): BaseUseCase.Params
-    override suspend fun invoke(parameter: RegisterUseCase.UserParams): Flow<Result<User>> {
+    override suspend fun invoke(parameter: UserParams): Flow<Result<User>> {
 
             return flow {
                 try {

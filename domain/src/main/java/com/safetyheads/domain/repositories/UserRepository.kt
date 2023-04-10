@@ -1,5 +1,6 @@
-package com.safetyheads.akademiaandroida.sign_up
+package com.safetyheads.domain.repositories
 
+import com.safetyheads.domain.entities.User
 import kotlinx.coroutines.flow.Flow
 
 interface UserRepository {

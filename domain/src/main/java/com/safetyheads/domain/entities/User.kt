@@ -1,4 +1,4 @@
-package com.safetyheads.akademiaandroida.sign_up
+package com.safetyheads.domain.entities
 
 data class User(
     val fullName: String,

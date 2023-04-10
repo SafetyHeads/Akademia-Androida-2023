@@ -1,7 +1,12 @@
 package com.safetyheads.akademiaandroida.sign_up
 
-//TODO:
-// implementacja createUser z interfejsu UserRepository
-class UserRepositoryImpl {
+import com.safetyheads.domain.entities.User
+import com.safetyheads.domain.repositories.UserRepository
+import kotlinx.coroutines.flow.Flow
+
+class UserRepositoryImpl : UserRepository {
+    override fun createUser(fullName: String, email: String, password: String): Flow<User> {
+        TODO("Not yet implemented")
+    }
 
 }

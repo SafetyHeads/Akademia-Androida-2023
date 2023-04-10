@@ -1,7 +1,9 @@
 package com.safetyheads.akademiaandroida.sign_up
 
 import androidx.lifecycle.ViewModel
-import com.google.android.material.textfield.TextInputEditText
+import androidx.lifecycle.viewModelScope
+import com.safetyheads.domain.usecases.RegisterUseCase
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class SignUpViewModel @Inject constructor (
@@ -9,5 +11,8 @@ class SignUpViewModel @Inject constructor (
     ) : ViewModel() {
     fun signUp(fullName: String, emailAddress: String, password: String, confirmedPassword: String) {
 
+        val createUser = viewModelScope.launch {
+            registerUseCase.invoke(RegisterUseCase.UserParams(fullName, emailAddress, password))
+        }
     }
 }
