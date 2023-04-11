@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ExperienceStructureFragment"
+    tools:context="com.safetyheads.presentation.customviews.ExperienceStructureFragment"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     style="@style/default_card_style">
@@ -13,11 +13,11 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <com.safetyheads.akademiaandroida.H2View
+        <com.safetyheads.presentation.androidcomponents.H2View
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/size_2x"
-            app:text="Experience Structure"/>
+            app:text="Experience Structure" />
 
         <ImageView
             android:layout_width="wrap_content"

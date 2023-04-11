@@ -69,6 +69,7 @@ dependencies {
 
     // Modules implementations
     implementation project(':domain')
+    implementation project(':presentation')
 
     implementation 'com.airbnb.android:lottie:6.0.0'
     implementation 'androidx.core:core-ktx:1.9.0'
