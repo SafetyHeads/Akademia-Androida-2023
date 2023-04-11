@@ -15,3 +15,4 @@ dependencyResolutionManagement {
 rootProject.name = "Akademia Androida"
 include ':app'
 include ':domain'
+include ':presentation'

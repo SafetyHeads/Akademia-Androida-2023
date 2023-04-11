@@ -2,7 +2,7 @@ package com.safetyheads.akademiaandroida
 
 import android.content.Context
 import android.widget.EditText
-import com.safetyheads.akademiaandroida.utils.PhoneNumberValidator
+import com.safetyheads.presentation.utils.PhoneNumberValidator
 import io.mockk.mockk
 import io.mockk.verify
 import org.assertj.core.api.AssertionsForInterfaceTypes.assertThat
@@ -72,6 +72,6 @@ class PhoneNumberValidatorTest {
         val result = PhoneNumberValidator.isValid(invalidPhoneNumber)
 
         // Then
-        assertThat(result).isFalse()
+        assertThat(result).isFalse
     }
 }
