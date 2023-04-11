@@ -10,4 +10,7 @@ java {
 dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.0")
     testImplementation 'junit:junit:4.13.2'
+
+    // firebase auth
+//    implementation 'com.google.firebase:firebase-auth-ktx:21.2.1'
 }

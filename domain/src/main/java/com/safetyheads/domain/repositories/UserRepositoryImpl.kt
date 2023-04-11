@@ -2,9 +2,15 @@ package com.safetyheads.domain.repositories
 
 import com.safetyheads.domain.entities.ResetPassword
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
 
-class UserRepositoryImpl : UserRepository {
+class UserRepositoryImpl
+    : UserRepository {
     override fun resetPassword(): Flow<ResetPassword> {
-        TODO("Not yet implemented")
+        val test = flow {
+            emit(ResetPassword("test"))
+        }
+//        Firebase
+        return test
     }
 }
