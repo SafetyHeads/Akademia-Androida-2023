@@ -1,4 +1,4 @@
-package com.safetyheads.akademiaandroida.network
+package com.safetyheads.data.objects
 
 object YouTubeApi {
     const val YOUTUBE_API_BASE_URL = "https://www.googleapis.com/youtube/v3/"

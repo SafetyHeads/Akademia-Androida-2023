@@ -31,9 +31,10 @@ class ApiClient {
     }
 
     private fun OkHttpClient.Builder.addDebugInterceptor(): OkHttpClient.Builder {
-        if (BuildConfig.DEBUG) {
+//        if (BuildConfig.DEBUG) {
             addInterceptor(RetrofitInterceptor())
-        }
+//        }
         return this
     }
+
 }
