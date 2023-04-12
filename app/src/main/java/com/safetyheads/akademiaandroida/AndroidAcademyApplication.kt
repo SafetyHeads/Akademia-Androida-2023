@@ -1,14 +1,28 @@
 package com.safetyheads.akademiaandroida
 
 import android.app.Application
+import com.safetyheads.akademiaandroida.YouTube.repository.ChannelRepository
+import com.safetyheads.akademiaandroida.YouTube.repository.ChannelRepositoryImpl
+import com.safetyheads.akademiaandroida.YouTube.repository.VideoRepositoryImpl
+import com.safetyheads.akademiaandroida.YouTube.repository.VideoRepository
+import com.safetyheads.akademiaandroida.YouTube.useCases.ChannelUseCase
+import com.safetyheads.akademiaandroida.YouTube.useCases.ChannelUseCaseImpl
+import com.safetyheads.akademiaandroida.YouTube.useCases.DateUseCase
+import com.safetyheads.akademiaandroida.YouTube.useCases.DateUseCaseImpl
+import com.safetyheads.akademiaandroida.YouTube.useCases.VideoUseCase
+import com.safetyheads.akademiaandroida.YouTube.useCases.VideoUseCaseImpl
+import com.safetyheads.akademiaandroida.YouTube.viewModel.VideoViewModel
+import com.safetyheads.akademiaandroida.YouTube.viewModel.ChannelViewModel
 import com.safetyheads.akademiaandroida.dropdownlist.DropDownListViewModel
 import com.safetyheads.akademiaandroida.dropdownlist.LoadItemsToDropDownListUseCase
+import com.safetyheads.akademiaandroida.network.YouTubeService
 import com.safetyheads.akademiaandroida.splashscreen.SplashScreenUseCase
 import com.safetyheads.akademiaandroida.splashscreen.SplashScreenUseCaseImpl
 import com.safetyheads.akademiaandroida.splashscreen.SplashScreenViewModel
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.androidx.viewmodel.dsl.viewModel
+import org.koin.androidx.viewmodel.dsl.viewModelOf
 import org.koin.core.context.startKoin
 import org.koin.dsl.module
 
@@ -21,6 +35,7 @@ class AndroidAcademyApplication: Application() {
             androidLogger()
             androidContext(this@AndroidAcademyApplication)
             modules(appModule)
+            modules(youtubeModule)
         }
     }
 
@@ -32,5 +47,20 @@ class AndroidAcademyApplication: Application() {
         //viewmodels
         viewModel{ SplashScreenViewModel(get()) }
         viewModel{ DropDownListViewModel(get()) }
+    }
+
+    private val youtubeModule = module {
+        //repository
+        single<VideoRepository>{ VideoRepositoryImpl() }
+        single<ChannelRepository>{ ChannelRepositoryImpl() }
+
+        //usecases
+        single<VideoUseCase>{ VideoUseCaseImpl(get()) }
+        single<DateUseCase>{ DateUseCaseImpl() }
+        single<ChannelUseCase>{ ChannelUseCaseImpl(get()) }
+
+        //viewmodels
+        viewModelOf(::ChannelViewModel)
+        viewModelOf(::VideoViewModel)
     }
 }

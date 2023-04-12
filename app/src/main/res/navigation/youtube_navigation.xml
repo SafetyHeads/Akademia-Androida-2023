@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@id/youTubeVideoFragment">
+    <fragment
+        android:id="@+id/youTubeVideoFragment"
+        android:name="com.safetyheads.akademiaandroida.YouTube.fragments.YouTubeVideoFragment"
+        android:label="YouTubeVideoFragment"
+        tools:layout="@layout/fragment_video" />
+    <fragment
+        android:id="@+id/youTubeChanelFragment"
+        android:name="com.safetyheads.akademiaandroida.YouTube.fragments.YouTubeChanelFragment"
+        android:label="YouTubeChanelFragment"
+        tools:layout="@layout/fragment_channel" />
+</navigation>

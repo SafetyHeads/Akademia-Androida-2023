@@ -26,10 +26,12 @@
             android:exported="true" />
         <activity
             android:name=".RootActivity"
-
             android:exported="true" />
         <activity
             android:name=".ActivitiesList.ListActivity"
+            android:exported="true" />
+        <activity
+            android:name=".YouTube.YouTubeActivity"
             android:exported="true" />
     </application>
     <queries>
