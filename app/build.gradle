@@ -36,7 +36,10 @@ android {
         versionName = "$NAME_APPLICATION $VERSION_NAME_MAJOR.$VERSION_NAME_MINOR.$VERSION_NAME_PATCH"
         versionCode = generateVersionCode(VERSION_NAME_MAJOR, VERSION_NAME_MINOR, VERSION_NAME_PATCH)
 
+        Properties properties = new Properties()
+        properties.load(project.rootProject.file("local.properties").newDataInputStream())
 
+        buildConfigField("String", "YOUTUBE_DATA_API_KEY", "\"${properties.getProperty("YOUTUBE_DATA_API_KEY")}\"")
     }
 
     buildTypes {
