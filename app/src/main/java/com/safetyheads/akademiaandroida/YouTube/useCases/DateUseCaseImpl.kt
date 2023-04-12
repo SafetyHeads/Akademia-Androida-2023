@@ -17,7 +17,7 @@ class DateUseCaseImpl: DateUseCase {
     override fun updateDate(actualVideoDate: String): String {
         val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss'Z'")
         val inputDate = LocalDateTime.parse(actualVideoDate, formatter)
-        val modifiedDate = inputDate.minusSeconds(1)
+        val modifiedDate = inputDate.minusDays(2)
         return formatter.format(modifiedDate)
     }
 }
