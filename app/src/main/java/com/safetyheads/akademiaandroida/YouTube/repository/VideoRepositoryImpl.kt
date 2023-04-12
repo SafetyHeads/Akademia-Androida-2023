@@ -1,5 +1,6 @@
 package com.safetyheads.akademiaandroida.YouTube.repository
 
+import com.safetyheads.akademiaandroida.BuildConfig
 import com.safetyheads.akademiaandroida.YouTube.entities.video.YouTubeVideoDataClass
 import com.safetyheads.akademiaandroida.network.ApiClient
 import com.safetyheads.akademiaandroida.network.NetworkResult
@@ -17,7 +18,7 @@ class VideoRepositoryImpl() : VideoRepository {
             val retrofitYouTubeVideo =
                 ApiClient().create(YouTubeApi.YOUTUBE_API_BASE_URL, YouTubeService::class.java)
                     .getVideo(
-                        "",
+                        BuildConfig.YOUTUBE_DATA_API_KEY,
                         YouTubeApi.YOUTUBE_CHANNEL_ID,
                         YouTubeApi.YOUTUBE_API_PART_VIDEO,
                         YouTubeApi.YOUTUBE_API_ORDER,

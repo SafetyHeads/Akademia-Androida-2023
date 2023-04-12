@@ -1,5 +1,6 @@
 package com.safetyheads.akademiaandroida.YouTube.repository
 
+import com.safetyheads.akademiaandroida.BuildConfig
 import com.safetyheads.akademiaandroida.YouTube.entities.channel.ChannelDataClass
 import com.safetyheads.akademiaandroida.network.ApiClient
 import com.safetyheads.akademiaandroida.network.NetworkResult
@@ -16,7 +17,7 @@ class ChannelRepositoryImpl() : ChannelRepository {
             val retrofitYouTubeChannel =
                 ApiClient().create(YouTubeApi.YOUTUBE_API_BASE_URL, YouTubeService::class.java)
                     .getChannel(
-                        "",
+                        BuildConfig.YOUTUBE_DATA_API_KEY,
                         YouTubeApi.YOUTUBE_API_PART_CHANNEL,
                         YouTubeApi.YOUTUBE_CHANNEL_ID
                     )
