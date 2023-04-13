@@ -59,10 +59,13 @@ class AndroidAcademyApplication: Application() {
     }
 
     private val youtubeModule = module {
+        //YouTubeService Singleton
+        single { ApiClient().create(YouTubeApi.YOUTUBE_API_BASE_URL, YouTubeService::class.java) }
+
         //repository
-        single<VideoRepository>{ VideoRepositoryImpl() }
-        single<ChannelRepository>{ ChannelRepositoryImpl() }
-        single<PlaylistRepository>{ PlaylistRepositoryImpl() }
+        single<VideoRepository>{ VideoRepositoryImpl(get()) }
+        single<ChannelRepository>{ ChannelRepositoryImpl(get()) }
+        single<PlaylistRepository>{ PlaylistRepositoryImpl(get()) }
 
         //usecases
         single<VideoUseCase>{ VideoUseCaseImpl(get()) }

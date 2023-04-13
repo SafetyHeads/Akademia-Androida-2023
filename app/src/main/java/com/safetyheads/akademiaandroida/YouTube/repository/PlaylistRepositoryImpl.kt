@@ -11,12 +11,12 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flow
 
-class PlaylistRepositoryImpl : PlaylistRepository {
+class PlaylistRepositoryImpl(private val youTubeService: YouTubeService) : PlaylistRepository {
 
     override suspend fun getYouTubePlayLists(): Flow<NetworkResult<PlayListsDataClass>> =
         flow {
             val retrofitYouTubePlayLists =
-                ApiClient().create(YouTubeApi.YOUTUBE_API_BASE_URL, YouTubeService::class.java)
+                youTubeService
                     .getPlayLists(
                         BuildConfig.YOUTUBE_DATA_API_KEY,
                         YouTubeApi.YOUTUBE_API_PART_PLAYLISTS,

@@ -10,12 +10,12 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flow
 
-class VideoRepositoryImpl() : VideoRepository {
+class VideoRepositoryImpl(private val youTubeService: YouTubeService) : VideoRepository {
 
     override suspend fun getYouTubeVideo(previousFilmDate: String): Flow<NetworkResult<YouTubeVideoDataClass>> =
         flow {
             val retrofitYouTubeVideo =
-                ApiClient().create(YouTubeApi.YOUTUBE_API_BASE_URL, YouTubeService::class.java)
+                youTubeService
                     .getVideo(
                         BuildConfig.YOUTUBE_DATA_API_KEY,
                         YouTubeApi.YOUTUBE_CHANNEL_ID,

@@ -10,12 +10,12 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flow
 
-class ChannelRepositoryImpl() : ChannelRepository {
+class ChannelRepositoryImpl(private val youTubeService: YouTubeService) : ChannelRepository {
 
     override suspend fun getYouTubeChannel(): Flow<NetworkResult<ChannelDataClass>> =
         flow {
             val retrofitYouTubeChannel =
-                ApiClient().create(YouTubeApi.YOUTUBE_API_BASE_URL, YouTubeService::class.java)
+                youTubeService
                     .getChannel(
                         BuildConfig.YOUTUBE_DATA_API_KEY,
                         YouTubeApi.YOUTUBE_API_PART_CHANNEL,
