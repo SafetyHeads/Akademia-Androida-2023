@@ -22,7 +22,7 @@ class H2View @JvmOverloads constructor(
 ) : LinearLayout(context, attrs, defStyleAttr) {
 
     private val attributes: TypedArray = context.obtainStyledAttributes(attrs, R.styleable.H2View)
-    private lateinit var binding: ViewH2Binding
+    private var binding: ViewH2Binding
 
     init {
         binding = ViewH2Binding.inflate(LayoutInflater.from(context), this)
