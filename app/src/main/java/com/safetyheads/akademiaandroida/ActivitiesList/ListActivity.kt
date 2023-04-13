@@ -6,7 +6,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.safetyheads.akademiaandroida.ClientsFragment
 import com.safetyheads.akademiaandroida.ExperienceStructureFragment
-import com.safetyheads.akademiaandroida.LoginFragment
 import com.safetyheads.akademiaandroida.contact_with_us.ContactWithUsFragment
 import com.safetyheads.akademiaandroida.databinding.ActivityListBinding
 import com.safetyheads.akademiaandroida.dropdownlist.FragmentDropDownList
@@ -55,7 +54,6 @@ class ListActivity : AppCompatActivity() {
     val clientsFragment = ClientsFragment()
     val experienceStructureFragment = ExperienceStructureFragment()
     val fragmentDropDownList = FragmentDropDownList()
-    val loginFragment = LoginFragment()
     val forgotPasswordFragment = ForgotPasswordFragment()
 
     val dataListFragments = listOf(
@@ -65,7 +63,6 @@ class ListActivity : AppCompatActivity() {
         clientsFragment,
         experienceStructureFragment,
         fragmentDropDownList,
-        loginFragment,
         forgotPasswordFragment
     )
 }
