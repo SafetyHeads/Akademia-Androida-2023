@@ -13,8 +13,11 @@ class ResetPasswordUseCase(private val repository: UserRepository) :
     override suspend fun invoke(parameter: ResetParam): Flow<Result<ResetPassword>> {
         return flow {
             try {
-                repository.resetPassword().collect { resetPasswordDto ->
-                    emit(Result.success(resetPasswordDto))
+                repository.resetPassword(parameter.email).collect { resetPasswordEntity ->
+                    if (resetPasswordEntity.isSuccess)
+                        emit(Result.success(resetPasswordEntity))
+                    else
+                        emit(Result.failure(resetPasswordEntity.error ?: Exception()))
                 }
             } catch (error: java.lang.Exception) {
                 emit(Result.failure(error))

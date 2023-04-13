@@ -4,11 +4,11 @@ import android.app.Application
 import com.safetyheads.akademiaandroida.dropdownlist.DropDownListViewModel
 import com.safetyheads.akademiaandroida.dropdownlist.LoadItemsToDropDownListUseCase
 import com.safetyheads.akademiaandroida.forgotpasswordfragment.ForgotPasswordViewModel
+import com.safetyheads.akademiaandroida.forgotpasswordfragment.data.UserRepositoryImpl
 import com.safetyheads.akademiaandroida.splashscreen.SplashScreenUseCase
 import com.safetyheads.akademiaandroida.splashscreen.SplashScreenUseCaseImpl
 import com.safetyheads.akademiaandroida.splashscreen.SplashScreenViewModel
 import com.safetyheads.domain.repositories.UserRepository
-import com.safetyheads.domain.repositories.UserRepositoryImpl
 import com.safetyheads.domain.usecases.ResetPasswordUseCase
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger

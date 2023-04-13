@@ -44,6 +44,19 @@ class ForgotPasswordFragment : Fragment() {
                 requestBtn.backgroundTintList = getColor(R.color.p_60)
             }
         }
+        forgotPasswordViewModel.isSuccess.observe(viewLifecycleOwner) { isSuccess ->
+            if (isSuccess) {
+
+            } else {
+
+            }
+        }
+
+        requestBtn.setOnClickListener {
+            if (forgotPasswordViewModel.error.value.isNullOrEmpty()) {
+                forgotPasswordViewModel.resetPassword(etEmail.text.toString())
+            }
+        }
         super.onViewCreated(view, savedInstanceState)
     }
 

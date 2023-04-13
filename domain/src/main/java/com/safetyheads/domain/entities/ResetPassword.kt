@@ -1,5 +1,6 @@
 package com.safetyheads.domain.entities
 
 data class ResetPassword(
-    val response: String,
+    val isSuccess: Boolean,
+    val error: Throwable?
 )

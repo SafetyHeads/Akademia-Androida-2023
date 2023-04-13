@@ -16,10 +16,19 @@ class ForgotPasswordViewModel(private val resetPasswordUseCase: ResetPasswordUse
         _error.value = errorMsg
     }
 
+    private val _isSuccess = MutableLiveData<Boolean>()
+    val isSuccess: LiveData<Boolean> get() = _isSuccess
+
     fun resetPassword(email: String) {
-        //TODO: change on network result
         viewModelScope.launch {
-            resetPasswordUseCase.invoke(ResetPasswordUseCase.ResetParam(email))
+
+            resetPasswordUseCase.invoke(ResetPasswordUseCase.ResetParam(email)).collect { result ->
+                if (result.isSuccess) {
+                    _isSuccess.postValue(true)
+                } else {
+                    _isSuccess.postValue(false)
+                }
+            }
         }
 
     }
