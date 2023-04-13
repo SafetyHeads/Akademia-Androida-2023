@@ -30,8 +30,5 @@ class ForgotPasswordViewModel(private val resetPasswordUseCase: ResetPasswordUse
                 }
             }
         }
-
     }
-
-
 }

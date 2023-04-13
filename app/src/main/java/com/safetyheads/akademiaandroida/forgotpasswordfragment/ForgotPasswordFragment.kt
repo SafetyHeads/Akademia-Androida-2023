@@ -46,9 +46,9 @@ class ForgotPasswordFragment : Fragment() {
         }
         forgotPasswordViewModel.isSuccess.observe(viewLifecycleOwner) { isSuccess ->
             if (isSuccess) {
-
+                TODO("Success of sent reset Password on email")
             } else {
-
+                TODO("Failed of sent reset Password on email")
             }
         }
 
