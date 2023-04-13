@@ -14,7 +14,7 @@ import com.safetyheads.akademiaandroida.YouTube.viewModel.VideoViewModel
 import com.safetyheads.akademiaandroida.databinding.FragmentVideoBinding
 import org.koin.androidx.viewmodel.ext.android.activityViewModel
 
-class YouTubeVideoFragment: Fragment() {
+class YouTubeVideoFragment: Fragment(), VideoAdapter.ClickListener {
 
     private val TAG = "YouTubeVideoFragment"
 
@@ -58,6 +58,7 @@ class YouTubeVideoFragment: Fragment() {
     private fun initList() {
         binding.rvVideo.adapter = videoAdapter
         binding.rvVideo.layoutManager = LinearLayoutManager(requireContext())
+        videoAdapter.setClickListener(this)
     }
 
     private fun initUI() {
@@ -66,5 +67,9 @@ class YouTubeVideoFragment: Fragment() {
             if (!binding.progressBar.isVisible)
                 videoViewModel.getVideo()
         }
+    }
+
+    override fun onClick() {
+        videoViewModel.getVideo()
     }
 }

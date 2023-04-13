@@ -73,4 +73,5 @@
     <string name="video">Video</string>
     <string name="channel">Channel</string>
     <string name="add_video">ADD VIDEO</string>
+    <string name="playlist">Playlist</string>
 </resources>

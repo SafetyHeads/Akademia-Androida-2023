@@ -9,12 +9,13 @@ import com.safetyheads.akademiaandroida.YouTube.entities.video.YouTubeVideoDataC
 import com.safetyheads.akademiaandroida.YouTube.useCases.DateUseCase
 import com.safetyheads.akademiaandroida.YouTube.useCases.VideoUseCase
 import com.safetyheads.akademiaandroida.network.NetworkResult
+import com.safetyheads.akademiaandroida.network.YouTubeApi
 import kotlinx.coroutines.launch
 
 class VideoViewModel(
     private val videoUseCase: VideoUseCase,
     private val dateUseCase: DateUseCase
-): ViewModel() {
+) : ViewModel() {
 
     private val TAG = "VideoViewModel"
 
@@ -30,7 +31,7 @@ class VideoViewModel(
     fun getVideo() {
         viewModelScope.launch {
             videoUseCase.execute(previousFilmDate.value.orEmpty()).collect() { networkResult ->
-                when(networkResult) {
+                when (networkResult) {
                     is NetworkResult.Success -> {
                         isLoading.postValue(false)
                         addElementToList(networkResult.data)
@@ -53,9 +54,13 @@ class VideoViewModel(
     }
 
     private fun addElementToList(element: YouTubeVideoDataClass) {
-        val tempListVideo: ArrayList<YouTubeVideoDataClass> = videosList.value ?: arrayListOf()
-        tempListVideo.add(element)
-        videosList.postValue(tempListVideo)
+        if (element.items[0].snippet.thumbnails.high.url != YouTubeApi.YOUTUBE_DEFAULT_URL) {
+            val tempListVideo: ArrayList<YouTubeVideoDataClass> = videosList.value ?: arrayListOf()
+            tempListVideo.add(element)
+            videosList.postValue(tempListVideo)
+        } else {
+            getVideo()
+        }
     }
 
     private fun updateDate(actualVideoDate: String) {

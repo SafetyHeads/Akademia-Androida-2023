@@ -6,7 +6,6 @@ import com.safetyheads.akademiaandroida.network.ApiClient
 import com.safetyheads.akademiaandroida.network.NetworkResult
 import com.safetyheads.akademiaandroida.network.YouTubeApi
 import com.safetyheads.akademiaandroida.network.YouTubeService
-import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flow
@@ -22,7 +21,7 @@ class VideoRepositoryImpl() : VideoRepository {
                         YouTubeApi.YOUTUBE_CHANNEL_ID,
                         YouTubeApi.YOUTUBE_API_PART_VIDEO,
                         YouTubeApi.YOUTUBE_API_ORDER,
-                        YouTubeApi.YOUTUBE_API_MAX_RESULTS,
+                        YouTubeApi.YOUTUBE_API_VIDEO_MAX_RESULTS,
                         previousFilmDate
                     )
             emit(NetworkResult.success(retrofitYouTubeVideo))

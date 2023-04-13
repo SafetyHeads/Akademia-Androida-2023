@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.text.HtmlCompat
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
@@ -58,8 +59,8 @@ class YouTubeChanelFragment : Fragment() {
 
     private fun initChannel() {
         channelInformation.items.forEach { channel ->
-            binding.tvChannelName.text = channel.snippet.title
-            binding.tvChannelDescription.text = channel.snippet.description
+            binding.tvChannelName.text = HtmlCompat.fromHtml(channel.snippet.title, HtmlCompat.FROM_HTML_MODE_LEGACY).toString()
+            binding.tvChannelDescription.text = HtmlCompat.fromHtml(channel.snippet.description, HtmlCompat.FROM_HTML_MODE_LEGACY).toString()
             Glide.with(requireContext()).load(channel.brandingSettings.image.bannerExternalUrl)
                 .into(binding.imageChannel)
             Glide.with(requireContext()).load(channel.snippet.thumbnails.high.url)

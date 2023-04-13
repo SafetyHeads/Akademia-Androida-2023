@@ -7,4 +7,8 @@
     <item
         android:id="@+id/channel"
         android:title="@string/channel" />
+
+    <item
+        android:id="@+id/playlist"
+        android:title="@string/playlist" />
 </menu>
