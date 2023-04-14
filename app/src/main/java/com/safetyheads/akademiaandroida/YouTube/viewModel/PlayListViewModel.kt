@@ -5,8 +5,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.safetyheads.akademiaandroida.BuildConfig
-import com.safetyheads.akademiaandroida.YouTube.entities.playlistitems.PlayListItemsDataClass
-import com.safetyheads.akademiaandroida.YouTube.entities.playlists.PlayListsDataClass
+import com.safetyheads.data.network.entities.playlistitems.PlayListItemsDataClass
+import com.safetyheads.data.network.entities.playlists.PlayListsDataClass
 import com.safetyheads.akademiaandroida.YouTube.useCases.PlayListItemsUseCase
 import com.safetyheads.akademiaandroida.YouTube.useCases.PlayListsUseCase
 import com.safetyheads.akademiaandroida.network.NetworkResult
@@ -20,11 +20,11 @@ class PlayListViewModel(
     private val TAG = "PlayListViewModel"
 
     val isLoadingPlayLists: MutableLiveData<Boolean> = MutableLiveData(false)
-    val listPlayLists: MutableLiveData<PlayListsDataClass> = MutableLiveData()
+    val listPlayLists: MutableLiveData<com.safetyheads.data.network.entities.playlists.PlayListsDataClass> = MutableLiveData()
     val errorMessagePlayLists: MutableLiveData<Throwable> = MutableLiveData()
 
     val isLoadingPlayListItems: MutableLiveData<Boolean> = MutableLiveData(false)
-    val listPlayListItems: MutableLiveData<PlayListItemsDataClass?> = MutableLiveData()
+    val listPlayListItems: MutableLiveData<com.safetyheads.data.network.entities.playlistitems.PlayListItemsDataClass?> = MutableLiveData()
     val errorMessagePlayListItems: MutableLiveData<Throwable> = MutableLiveData()
 
     init {
@@ -37,7 +37,7 @@ class PlayListViewModel(
                 when(networkResult) {
                     is NetworkResult.Success -> {
                         isLoadingPlayLists.postValue(false)
-                        listPlayLists.postValue(networkResult.data ?: PlayListsDataClass())
+                        listPlayLists.postValue(networkResult.data ?: com.safetyheads.data.network.entities.playlists.PlayListsDataClass())
                     }
 
                     is NetworkResult.Error -> {

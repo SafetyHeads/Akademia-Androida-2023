@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.safetyheads.akademiaandroida.BuildConfig
-import com.safetyheads.akademiaandroida.YouTube.entities.channel.ChannelDataClass
+import com.safetyheads.data.network.entities.channel.ChannelDataClass
 import com.safetyheads.akademiaandroida.YouTube.useCases.ChannelUseCase
 import com.safetyheads.akademiaandroida.network.NetworkResult
 import kotlinx.coroutines.launch
@@ -17,7 +17,7 @@ class ChannelViewModel(
     private val TAG = "ChannelViewModel"
 
     val isLoading: MutableLiveData<Boolean> = MutableLiveData(false)
-    val channelInformation: MutableLiveData<ChannelDataClass?> = MutableLiveData()
+    val channelInformation: MutableLiveData<com.safetyheads.data.network.entities.channel.ChannelDataClass?> = MutableLiveData()
     val errorMessage: MutableLiveData<Throwable> = MutableLiveData()
 
     init {

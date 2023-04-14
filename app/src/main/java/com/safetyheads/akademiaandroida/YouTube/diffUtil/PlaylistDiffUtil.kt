@@ -1,11 +1,11 @@
 package com.safetyheads.akademiaandroida.YouTube.diffUtil
 
 import androidx.recyclerview.widget.DiffUtil
-import com.safetyheads.akademiaandroida.YouTube.entities.playlists.PlayListsDataClass
+import com.safetyheads.data.network.entities.playlists.PlayListsDataClass
 
 class PlaylistDiffUtil(
-    private val oldList: PlayListsDataClass,
-    private val newList: PlayListsDataClass
+    private val oldList: com.safetyheads.data.network.entities.playlists.PlayListsDataClass,
+    private val newList: com.safetyheads.data.network.entities.playlists.PlayListsDataClass
 ) : DiffUtil.Callback() {
     override fun getOldListSize(): Int {
         return oldList.items.size

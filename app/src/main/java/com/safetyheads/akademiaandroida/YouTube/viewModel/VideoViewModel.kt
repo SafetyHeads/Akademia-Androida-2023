@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.safetyheads.akademiaandroida.BuildConfig
-import com.safetyheads.akademiaandroida.YouTube.entities.video.YouTubeVideoDataClass
+import com.safetyheads.data.network.entities.video.YouTubeVideoDataClass
 import com.safetyheads.akademiaandroida.YouTube.useCases.DateUseCase
 import com.safetyheads.akademiaandroida.YouTube.useCases.VideoUseCase
 import com.safetyheads.akademiaandroida.network.NetworkResult
@@ -20,7 +20,7 @@ class VideoViewModel(
     private val TAG = "VideoViewModel"
 
     val isLoading: MutableLiveData<Boolean> = MutableLiveData(false)
-    val videosList: MutableLiveData<ArrayList<YouTubeVideoDataClass>> = MutableLiveData(ArrayList())
+    val videosList: MutableLiveData<ArrayList<com.safetyheads.data.network.entities.video.YouTubeVideoDataClass>> = MutableLiveData(ArrayList())
     val errorMessage: MutableLiveData<Throwable> = MutableLiveData()
     private val previousFilmDate: MutableLiveData<String> = MutableLiveData(dateUseCase.actualDate())
 
@@ -53,9 +53,9 @@ class VideoViewModel(
         }
     }
 
-    private fun addElementToList(element: YouTubeVideoDataClass) {
+    private fun addElementToList(element: com.safetyheads.data.network.entities.video.YouTubeVideoDataClass) {
         if (element.items[0].snippet.thumbnails.high.url != YouTubeApi.YOUTUBE_DEFAULT_URL) {
-            val tempListVideo: ArrayList<YouTubeVideoDataClass> = videosList.value ?: arrayListOf()
+            val tempListVideo: ArrayList<com.safetyheads.data.network.entities.video.YouTubeVideoDataClass> = videosList.value ?: arrayListOf()
             tempListVideo.add(element)
             videosList.postValue(tempListVideo)
         } else {

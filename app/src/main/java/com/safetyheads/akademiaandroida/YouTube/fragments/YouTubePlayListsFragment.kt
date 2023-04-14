@@ -10,7 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.safetyheads.akademiaandroida.YouTube.YouTubeActivity
 import com.safetyheads.akademiaandroida.YouTube.adapters.PlaylistAdapter
-import com.safetyheads.akademiaandroida.YouTube.entities.playlists.Item
+import com.safetyheads.data.network.entities.playlists.Item
 import com.safetyheads.akademiaandroida.YouTube.viewModel.PlayListViewModel
 import com.safetyheads.akademiaandroida.databinding.FragmentPlaylistBinding
 import org.koin.androidx.viewmodel.ext.android.activityViewModel
@@ -64,7 +64,7 @@ class YouTubePlayListsFragment: Fragment(), PlaylistAdapter.ClickListener {
         binding.progressBar.isVisible = false
     }
 
-    override fun onClick(item: Item, position: Int) {
+    override fun onClick(item: com.safetyheads.data.network.entities.playlists.Item, position: Int) {
         playListViewModel.getPlayListItems(item.id)
         val activity = requireActivity() as YouTubeActivity
         activity.goToPlayList()

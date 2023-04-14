@@ -9,7 +9,7 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.safetyheads.akademiaandroida.YouTube.adapters.VideoAdapter
-import com.safetyheads.akademiaandroida.YouTube.entities.video.YouTubeVideoDataClass
+import com.safetyheads.data.network.entities.video.YouTubeVideoDataClass
 import com.safetyheads.akademiaandroida.YouTube.viewModel.VideoViewModel
 import com.safetyheads.akademiaandroida.databinding.FragmentVideoBinding
 import org.koin.androidx.viewmodel.ext.android.activityViewModel
@@ -21,7 +21,7 @@ class YouTubeVideoFragment: Fragment(), VideoAdapter.ClickListener {
     private lateinit var binding: FragmentVideoBinding
     private val videoViewModel: VideoViewModel by activityViewModel()
 
-    private var videoList: ArrayList<YouTubeVideoDataClass> = ArrayList()
+    private var videoList: ArrayList<com.safetyheads.data.network.entities.video.YouTubeVideoDataClass> = ArrayList()
     private val videoAdapter = VideoAdapter()
 
     override fun onCreateView(

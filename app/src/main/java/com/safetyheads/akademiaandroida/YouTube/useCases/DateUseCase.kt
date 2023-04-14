@@ -1,6 +1,6 @@
 package com.safetyheads.akademiaandroida.YouTube.useCases
 
-import com.safetyheads.akademiaandroida.YouTube.entities.video.YouTubeVideoDataClass
+import com.safetyheads.data.network.entities.video.YouTubeVideoDataClass
 import com.safetyheads.akademiaandroida.network.NetworkResult
 import kotlinx.coroutines.flow.Flow
 

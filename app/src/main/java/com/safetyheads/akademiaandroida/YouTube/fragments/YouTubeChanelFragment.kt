@@ -9,7 +9,7 @@ import androidx.core.text.HtmlCompat
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
-import com.safetyheads.akademiaandroida.YouTube.entities.channel.ChannelDataClass
+import com.safetyheads.data.network.entities.channel.ChannelDataClass
 import com.safetyheads.akademiaandroida.YouTube.viewModel.ChannelViewModel
 import com.safetyheads.akademiaandroida.databinding.FragmentChannelBinding
 import org.koin.androidx.viewmodel.ext.android.activityViewModel
@@ -19,7 +19,7 @@ class YouTubeChanelFragment : Fragment() {
     private lateinit var binding: FragmentChannelBinding
     private val channelViewModel: ChannelViewModel by activityViewModel()
 
-    private lateinit var channelInformation: ChannelDataClass
+    private lateinit var channelInformation: com.safetyheads.data.network.entities.channel.ChannelDataClass
 
     override fun onCreateView(
         inflater: LayoutInflater,
