@@ -8,7 +8,8 @@ import kotlinx.coroutines.flow.flow
 class ResetPasswordUseCase(private val repository: UserRepository) :
     BaseUseCase<ResetPasswordUseCase.ResetParam, ResetPassword> {
 
-    class ResetParam(val email: String) : BaseUseCase.Params
+    @JvmInline
+    value class ResetParam(val email: String) : BaseUseCase.Params
 
     override suspend fun invoke(parameter: ResetParam): Flow<Result<ResetPassword>> {
         return flow {
@@ -17,9 +18,13 @@ class ResetPasswordUseCase(private val repository: UserRepository) :
                     if (resetPasswordEntity.isSuccess)
                         emit(Result.success(resetPasswordEntity))
                     else
-                        emit(Result.failure(resetPasswordEntity.error ?: Exception()))
+                        emit(
+                            Result.failure(
+                                resetPasswordEntity.error ?: Exception("Reset password failed")
+                            )
+                        )
                 }
-            } catch (error: java.lang.Exception) {
+            } catch (error: Exception) {
                 emit(Result.failure(error))
             }
         }

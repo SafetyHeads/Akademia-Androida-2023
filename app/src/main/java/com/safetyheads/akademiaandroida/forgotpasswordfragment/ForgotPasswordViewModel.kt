@@ -23,11 +23,7 @@ class ForgotPasswordViewModel(private val resetPasswordUseCase: ResetPasswordUse
         viewModelScope.launch {
 
             resetPasswordUseCase.invoke(ResetPasswordUseCase.ResetParam(email)).collect { result ->
-                if (result.isSuccess) {
-                    _isSuccess.postValue(true)
-                } else {
-                    _isSuccess.postValue(false)
-                }
+                _isSuccess.postValue(result.isSuccess)
             }
         }
     }

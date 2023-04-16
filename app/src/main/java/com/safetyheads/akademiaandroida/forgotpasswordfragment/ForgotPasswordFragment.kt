@@ -34,14 +34,14 @@ class ForgotPasswordFragment : Fragment() {
         EmailValidator.attach(etEmail)
 
         etEmail.addTextChangedListener {
-            forgotPasswordViewModel.setError(etEmail.error?.toString() ?: "")
+            forgotPasswordViewModel.setError(etEmail.error?.toString().orEmpty())
         }
 
         forgotPasswordViewModel.error.observe(viewLifecycleOwner) { errorMsg ->
-            if (errorMsg.isNullOrEmpty().not()) {
-                requestBtn.backgroundTintList = getColor(R.color.p_30)
-            } else {
+            if (errorMsg.isNullOrEmpty()) {
                 requestBtn.backgroundTintList = getColor(R.color.p_60)
+            } else {
+                requestBtn.backgroundTintList = getColor(R.color.p_30)
             }
         }
         forgotPasswordViewModel.isSuccess.observe(viewLifecycleOwner) { isSuccess ->
