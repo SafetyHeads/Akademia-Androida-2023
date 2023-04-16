@@ -42,6 +42,10 @@
             app:destination="@id/forgot_password_fragment" />
     </fragment>
     <fragment
+        android:id="@+id/dashboard_fragment"
+        android:name="com.safetyheads.akademiaandroida.DashboardFragment"
+        android:label="fragment_dashboard_fragment"
+        tools:layout="@layout/fragment_dashboard" />
         android:id="@+id/dashboard_placeholder"
         android:name="com.safetyheads.akademiaandroida.DashboardPlaceholder"
         android:label="fragment_dashboard_placeholder"
