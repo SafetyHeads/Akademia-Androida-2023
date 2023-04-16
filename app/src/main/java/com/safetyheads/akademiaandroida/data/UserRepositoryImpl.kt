@@ -1,7 +1,8 @@
-package com.safetyheads.akademiaandroida.forgotpasswordfragment.data
+package com.safetyheads.akademiaandroida.data
 
 import com.google.firebase.auth.FirebaseAuth
 import com.safetyheads.domain.entities.ResetPassword
+import com.safetyheads.domain.entities.User
 import com.safetyheads.domain.repositories.UserRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
@@ -16,5 +17,9 @@ class UserRepositoryImpl : UserRepository {
         emit(ResetPassword(true, null))
     }.catch { error ->
         emit(ResetPassword(false, error))
+    }
+
+    override fun createUser(fullName: String, email: String, password: String): Flow<User> {
+        TODO("Not yet implemented")
     }
 }

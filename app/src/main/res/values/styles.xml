@@ -111,6 +111,16 @@
         <item name="android:textStyle">bold</item>
     </style>
 
+    <!-- Text 8 comfortaa bold -->
+    <style name="Text8_comfortaa_bold" parent="@android:style/TextAppearance.Small">
+        <item name="android:fontFamily">@font/comfortaa_bold</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/s_60</item>
+        <item name="android:letterSpacing">0.03</item>
+        <item name="android:lineSpacingExtra">10sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
     <!-- Button -->
     <style name="Button" parent="@android:style/TextAppearance.Small">
         <item name="android:fontFamily">@font/poppins_regular</item>
@@ -154,6 +164,15 @@
         <item name="android:lineSpacingExtra">3sp</item>
     </style>
 
+    <!-- Poppins-regular 10sp Green text color -->
+    <style name="Poppins_regular_green_10sp" parent="TextAppearance.AppCompat">
+        <item name="android:textSize">10sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:fontFamily">@font/poppins_regular</item>
+        <item name="android:textColor">@color/p_60</item>
+        <item name="android:lineSpacingExtra">2sp</item>
+    </style>
+
     <!-- Button background -->
     <style name="StyledButton" parent="@android:style/TextAppearance.Small">
         <item name="layoutWidth">match_parent</item>
@@ -178,14 +197,17 @@
         <item name="android:src">@drawable/ic_back_arrow</item>
     </style>
 
-    <!-- Poppins-regular 10sp Green text color -->
-    <style name="Poppins_regular_green_10sp" parent="TextAppearance.AppCompat">
-        <item name="android:textSize">10sp</item>
-        <item name="android:textStyle">normal</item>
-        <item name="android:fontFamily">@font/poppins_regular</item>
-        <item name="android:textColor">@color/p_60</item>
-        <item name="android:lineSpacingExtra">2sp</item>
+    <!-- TextInputLayout full name -->
+    <style name="Layout_eText_full_name" parent="TextAppearance.AppCompat">
+        <item name="layoutWidth">match_parent</item>
+        <item name="android:height">48dp</item>
+        <item name="android:background">@drawable/text_input_style</item>
+        <item name="hintEnabled">false</item>
+        <item name="android:paddingLeft">8dp</item>
     </style>
+
+    <!-- TextInputEditText full name -->
+    <style name="EText_full_name" parent="TextAppearance.AppCompat"></style>
 
     <!-- TextInputLayout email address -->
     <style name="Layout_eText_email_address" parent="TextAppearance.AppCompat">
