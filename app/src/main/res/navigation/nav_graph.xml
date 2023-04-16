@@ -32,15 +32,16 @@
         android:label="fragment_login"
         tools:layout="@layout/fragment_login">
         <action
-            android:id="@+id/action_login_placeholder_to_dashboard_placeholder"
-            app:destination="@id/dashboard_placeholder" />
+            android:id="@+id/action_login_fragment_to_dashboard_fragment"
+            app:destination="@id/dashboard_fragment" />
         <action
             android:id="@+id/action_login_placeholder_to_launchScreenFragment"
             app:destination="@id/launchScreenFragment" />
     </fragment>
+
     <fragment
-        android:id="@+id/dashboard_placeholder"
-        android:name="com.safetyheads.akademiaandroida.DashboardPlaceholder"
-        android:label="fragment_dashboard_placeholder"
-        tools:layout="@layout/fragment_dashboard_placeholder" />
+        android:id="@+id/dashboard_fragment"
+        android:name="com.safetyheads.akademiaandroida.DashboardFragment"
+        android:label="fragment_dashboard_fragment"
+        tools:layout="@layout/fragment_dashboard" />
 </navigation>
