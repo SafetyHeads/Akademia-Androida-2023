@@ -24,8 +24,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private val splashScreenViewModel: SplashScreenViewModel by viewModel()
     override fun onCreate(savedInstanceState: Bundle?) {
-        splashScreenViewModel.getConfig
-        installSplashScreen()
+
         val splashScreen = installSplashScreen()
         splashScreen.setKeepOnScreenCondition {
             splashScreenViewModel.getConfig.isActive
