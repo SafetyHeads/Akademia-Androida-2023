@@ -173,6 +173,15 @@
         <item name="android:lineSpacingExtra">2sp</item>
     </style>
 
+    <!-- Poppins-regular 10sp Gray text color -->
+    <style name="Poppins_regular_gray_10sp" parent="TextAppearance.AppCompat">
+        <item name="android:textSize">10sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:fontFamily">@font/poppins_regular</item>
+        <item name="android:textColor">@color/n_100</item>
+        <item name="android:lineSpacingExtra">2sp</item>
+    </style>
+
     <!-- Button background -->
     <style name="StyledButton" parent="@android:style/TextAppearance.Small">
         <item name="layoutWidth">match_parent</item>
