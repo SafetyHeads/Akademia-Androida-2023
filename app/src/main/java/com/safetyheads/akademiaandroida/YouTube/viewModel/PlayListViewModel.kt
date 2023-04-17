@@ -5,26 +5,25 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.safetyheads.akademiaandroida.BuildConfig
-import com.safetyheads.data.network.entities.playlistitems.PlayListItemsDataClass
-import com.safetyheads.data.network.entities.playlists.PlayListsDataClass
-import com.safetyheads.akademiaandroida.YouTube.useCases.PlayListItemsUseCase
-import com.safetyheads.akademiaandroida.YouTube.useCases.PlayListsUseCase
-import com.safetyheads.akademiaandroida.network.NetworkResult
+import com.safetyheads.domain.entities.Playlist
+import com.safetyheads.domain.entities.Video
+import com.safetyheads.domain.usecases.GetPlayListItemsUseCase
+import com.safetyheads.domain.usecases.GetPlayListsUseCase
 import kotlinx.coroutines.launch
 
 class PlayListViewModel(
-    private val playListsUseCase: PlayListsUseCase,
-    private val playListItemsUseCase: PlayListItemsUseCase
+    private val playListsUseCase: GetPlayListsUseCase,
+    private val playListItemsUseCase: GetPlayListItemsUseCase
 ): ViewModel() {
 
     private val TAG = "PlayListViewModel"
 
     val isLoadingPlayLists: MutableLiveData<Boolean> = MutableLiveData(false)
-    val listPlayLists: MutableLiveData<com.safetyheads.data.network.entities.playlists.PlayListsDataClass> = MutableLiveData()
+    val listPlayLists: MutableLiveData<ArrayList<Playlist>> = MutableLiveData(ArrayList())
     val errorMessagePlayLists: MutableLiveData<Throwable> = MutableLiveData()
 
     val isLoadingPlayListItems: MutableLiveData<Boolean> = MutableLiveData(false)
-    val listPlayListItems: MutableLiveData<com.safetyheads.data.network.entities.playlistitems.PlayListItemsDataClass?> = MutableLiveData()
+    val listPlayListItems: MutableLiveData<ArrayList<Video>> = MutableLiveData(ArrayList())
     val errorMessagePlayListItems: MutableLiveData<Throwable> = MutableLiveData()
 
     init {
@@ -32,54 +31,40 @@ class PlayListViewModel(
     }
 
     fun getPlayLists() {
+        isLoadingPlayLists.postValue(true)
         viewModelScope.launch {
-            playListsUseCase.execute().collect { networkResult ->
-                when(networkResult) {
-                    is NetworkResult.Success -> {
-                        isLoadingPlayLists.postValue(false)
-                        listPlayLists.postValue(networkResult.data ?: com.safetyheads.data.network.entities.playlists.PlayListsDataClass())
-                    }
-
-                    is NetworkResult.Error -> {
-                        isLoadingPlayLists.postValue(false)
-                        errorMessagePlayLists.postValue(networkResult.exception)
-                        if (BuildConfig.DEBUG)
-                            Log.i(TAG, networkResult.exception.message ?: "Unknown error")
-                    }
-
-                    is NetworkResult.Loading -> {
-                        isLoadingPlayLists.postValue(true)
-                    }
+            playListsUseCase.invoke(GetPlayListsUseCase.PlayListsParam()).collect { networkResult ->
+                if (networkResult.isSuccess) {
+                    isLoadingPlayLists.postValue(false)
+                    listPlayLists.postValue(networkResult.getOrNull())
+                } else {
+                    isLoadingPlayLists.postValue(false)
+                    errorMessagePlayLists.postValue(networkResult.exceptionOrNull())
+                    if (BuildConfig.DEBUG)
+                        Log.i(TAG, networkResult.exceptionOrNull()?.message ?: "Unknown error")
                 }
             }
         }
     }
 
-    fun getPlayListItems(playListID: String) {
+    fun getPlayListItems(playListId: String) {
+        isLoadingPlayListItems.postValue(true)
         viewModelScope.launch {
-            playListItemsUseCase.execute(playListID).collect { networkResult ->
-                when(networkResult) {
-                    is NetworkResult.Success -> {
-                        isLoadingPlayListItems.postValue(false)
-                        listPlayListItems.postValue(networkResult.data)
-                    }
-
-                    is NetworkResult.Error -> {
-                        isLoadingPlayListItems.postValue(false)
-                        errorMessagePlayListItems.postValue(networkResult.exception)
-                        if (BuildConfig.DEBUG)
-                            Log.i(TAG, networkResult.exception.message ?: "Unknown error")
-                    }
-
-                    is NetworkResult.Loading -> {
-                        isLoadingPlayListItems.postValue(true)
-                    }
+            playListItemsUseCase.invoke(GetPlayListItemsUseCase.PlayListItemsParams(playListId)).collect { networkResult ->
+                if (networkResult.isSuccess) {
+                    isLoadingPlayListItems.postValue(false)
+                    listPlayListItems.postValue(networkResult.getOrNull())
+                } else {
+                    isLoadingPlayListItems.postValue(false)
+                    errorMessagePlayListItems.postValue(networkResult.exceptionOrNull())
+                    if (BuildConfig.DEBUG)
+                        Log.i(TAG, networkResult.exceptionOrNull()?.message ?: "Unknown error")
                 }
             }
         }
     }
 
     fun cleanPlayListItems() {
-        listPlayListItems.postValue(null)
+        listPlayListItems.postValue(ArrayList())
     }
 }

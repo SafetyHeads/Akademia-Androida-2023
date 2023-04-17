@@ -1,9 +1,9 @@
-package com.safetyheads.data.service
+package com.safetyheads.data.network.service
 
-import com.safetyheads.data.network.entities.channel.ChannelDataClass
-import com.safetyheads.data.network.entities.playlistitems.PlayListItemsDataClass
-import com.safetyheads.data.network.entities.playlists.PlayListsDataClass
-import com.safetyheads.data.network.entities.video.YouTubeVideoDataClass
+import com.safetyheads.data.network.entities.channel.ChannelInfo
+import com.safetyheads.data.network.entities.playlistitems.PlayListItems
+import com.safetyheads.data.network.entities.playlists.PlayLists
+import com.safetyheads.data.network.entities.video.YouTubeVideo
 import retrofit2.http.GET
 import retrofit2.http.Query
 
@@ -17,21 +17,21 @@ interface YouTubeService {
         @Query("order") order: String,
         @Query("maxResults") maxResults: Int,
         @Query("publishedBefore") date: String
-    ) : YouTubeVideoDataClass
+    ) : YouTubeVideo
 
     @GET("channels")
     suspend fun getChannel(
         @Query("key") apiKey: String,
         @Query("part") part: String,
         @Query("id") id: String
-    ) : ChannelDataClass
+    ) : ChannelInfo
 
     @GET("playlists")
     suspend fun getPlayLists(
         @Query("key") apiKey: String,
         @Query("part") part: String,
         @Query("channelId") id: String
-    ) : PlayListsDataClass
+    ) : PlayLists
 
     @GET("playlistItems")
     suspend fun getPlayListItems(
@@ -39,5 +39,5 @@ interface YouTubeService {
         @Query("part") part: String,
         @Query("playlistId") id: String,
         @Query("maxResults") maxResult: Int
-    ) : PlayListItemsDataClass
+    ) : PlayListItems
 }

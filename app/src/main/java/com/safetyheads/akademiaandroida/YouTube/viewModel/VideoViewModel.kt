@@ -5,22 +5,20 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.safetyheads.akademiaandroida.BuildConfig
-import com.safetyheads.data.network.entities.video.YouTubeVideoDataClass
-import com.safetyheads.akademiaandroida.YouTube.useCases.DateUseCase
-import com.safetyheads.akademiaandroida.YouTube.useCases.VideoUseCase
-import com.safetyheads.akademiaandroida.network.NetworkResult
-import com.safetyheads.akademiaandroida.network.YouTubeApi
+import com.safetyheads.domain.entities.Video
+import com.safetyheads.domain.usecases.DateUseCase
+import com.safetyheads.domain.usecases.GetVideoUseCase
 import kotlinx.coroutines.launch
 
 class VideoViewModel(
-    private val videoUseCase: VideoUseCase,
+    private val getVideoUseCase: GetVideoUseCase,
     private val dateUseCase: DateUseCase
 ) : ViewModel() {
 
     private val TAG = "VideoViewModel"
 
     val isLoading: MutableLiveData<Boolean> = MutableLiveData(false)
-    val videosList: MutableLiveData<ArrayList<com.safetyheads.data.network.entities.video.YouTubeVideoDataClass>> = MutableLiveData(ArrayList())
+    val videosList: MutableLiveData<ArrayList<Video>> = MutableLiveData(ArrayList())
     val errorMessage: MutableLiveData<Throwable> = MutableLiveData()
     private val previousFilmDate: MutableLiveData<String> = MutableLiveData(dateUseCase.actualDate())
 
@@ -29,33 +27,26 @@ class VideoViewModel(
     }
 
     fun getVideo() {
+        isLoading.postValue(true)
         viewModelScope.launch {
-            videoUseCase.execute(previousFilmDate.value.orEmpty()).collect() { networkResult ->
-                when (networkResult) {
-                    is NetworkResult.Success -> {
-                        isLoading.postValue(false)
-                        addElementToList(networkResult.data)
-                        updateDate(networkResult.data.items[0].snippet.publishTime)
-                    }
-
-                    is NetworkResult.Error -> {
-                        isLoading.postValue(false)
-                        errorMessage.postValue(networkResult.exception)
-                        if (BuildConfig.DEBUG)
-                            Log.i(TAG, networkResult.exception.message ?: "Unknown error")
-                    }
-
-                    is NetworkResult.Loading -> {
-                        isLoading.postValue(true)
-                    }
+            getVideoUseCase.invoke(GetVideoUseCase.VideoParam(previousFilmDate.value.orEmpty())).collect { networkResult ->
+                if (networkResult.isSuccess) {
+                    isLoading.postValue(false)
+                    networkResult.getOrNull()?.let { addElementToList(it) }
+                    networkResult.getOrNull()?.publishTime?.let { updateDate(it) }
+                } else {
+                    isLoading.postValue(false)
+                    errorMessage.postValue(networkResult.exceptionOrNull())
+                    if (BuildConfig.DEBUG)
+                        Log.i(TAG, networkResult.exceptionOrNull()?.message ?: "Unknown error")
                 }
             }
         }
     }
 
-    private fun addElementToList(element: com.safetyheads.data.network.entities.video.YouTubeVideoDataClass) {
-        if (element.items[0].snippet.thumbnails.high.url != YouTubeApi.YOUTUBE_DEFAULT_URL) {
-            val tempListVideo: ArrayList<com.safetyheads.data.network.entities.video.YouTubeVideoDataClass> = videosList.value ?: arrayListOf()
+    private fun addElementToList(element: Video) {
+        if (element.videoId.isNotEmpty()) {
+            val tempListVideo: ArrayList<Video> = videosList.value ?: arrayListOf()
             tempListVideo.add(element)
             videosList.postValue(tempListVideo)
         } else {

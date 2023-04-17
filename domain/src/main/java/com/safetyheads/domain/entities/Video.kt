@@ -1,6 +1,8 @@
 package com.safetyheads.domain.entities
 
 data class Video(
-    val id: String,
-    val title: String,
+    val videoId: String = "",
+    val videoTitle: String = "",
+    val publishTime: String = "",
+    val thumbnailsUrl: String = ""
 )

@@ -1,16 +1,6 @@
 package com.safetyheads.akademiaandroida
 
 import android.app.Application
-import com.safetyheads.akademiaandroida.YouTube.useCases.ChannelUseCase
-import com.safetyheads.akademiaandroida.YouTube.useCases.ChannelUseCaseImpl
-import com.safetyheads.akademiaandroida.YouTube.useCases.DateUseCase
-import com.safetyheads.akademiaandroida.YouTube.useCases.DateUseCaseImpl
-import com.safetyheads.akademiaandroida.YouTube.useCases.PlayListItemsUseCase
-import com.safetyheads.akademiaandroida.YouTube.useCases.PlayListItemsUseCaseImpl
-import com.safetyheads.akademiaandroida.YouTube.useCases.PlayListsUseCase
-import com.safetyheads.akademiaandroida.YouTube.useCases.PlayListsUseCaseImpl
-import com.safetyheads.akademiaandroida.YouTube.useCases.VideoUseCase
-import com.safetyheads.akademiaandroida.YouTube.useCases.VideoUseCaseImpl
 import com.safetyheads.akademiaandroida.YouTube.viewModel.ChannelViewModel
 import com.safetyheads.akademiaandroida.YouTube.viewModel.PlayListViewModel
 import com.safetyheads.akademiaandroida.YouTube.viewModel.VideoViewModel
@@ -19,15 +9,25 @@ import com.safetyheads.akademiaandroida.dropdownlist.LoadItemsToDropDownListUseC
 import com.safetyheads.akademiaandroida.splashscreen.SplashScreenUseCase
 import com.safetyheads.akademiaandroida.splashscreen.SplashScreenUseCaseImpl
 import com.safetyheads.akademiaandroida.splashscreen.SplashScreenViewModel
+import com.safetyheads.data.network.mapper.ChannelMapper
+import com.safetyheads.data.network.mapper.PlayListVideoMapper
+import com.safetyheads.data.network.mapper.PlaylistMapper
+import com.safetyheads.data.network.mapper.VideoMapper
+import com.safetyheads.data.network.`object`.YouTubeApi
+import com.safetyheads.data.network.repository.ChannelRepositoryImpl
+import com.safetyheads.data.network.repository.PlaylistRepositoryImpl
+import com.safetyheads.data.network.repository.VideoRepositoryImpl
 import com.safetyheads.data.network.retrofit.ApiClient
-import com.safetyheads.data.`object`.YouTubeApi
-import com.safetyheads.data.repository.ChannelRepository
-import com.safetyheads.data.repository.ChannelRepositoryImpl
-import com.safetyheads.data.repository.PlaylistRepository
-import com.safetyheads.data.repository.PlaylistRepositoryImpl
-import com.safetyheads.data.repository.VideoRepository
-import com.safetyheads.data.repository.VideoRepositoryImpl
-import com.safetyheads.data.service.YouTubeService
+import com.safetyheads.data.network.service.YouTubeService
+import com.safetyheads.domain.repositories.ChannelRepository
+import com.safetyheads.domain.repositories.PlaylistRepository
+import com.safetyheads.domain.repositories.VideoRepository
+import com.safetyheads.domain.usecases.DateUseCase
+import com.safetyheads.domain.usecases.DateUseCaseImpl
+import com.safetyheads.domain.usecases.GetChannelUseCase
+import com.safetyheads.domain.usecases.GetPlayListItemsUseCase
+import com.safetyheads.domain.usecases.GetPlayListsUseCase
+import com.safetyheads.domain.usecases.GetVideoUseCase
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.androidx.viewmodel.dsl.viewModel
@@ -62,17 +62,23 @@ class AndroidAcademyApplication: Application() {
         //YouTubeService Singleton
         single { ApiClient().create(YouTubeApi.YOUTUBE_API_BASE_URL, YouTubeService::class.java) }
 
+        //mapper
+        single { ChannelMapper() }
+        single { PlaylistMapper() }
+        single { PlayListVideoMapper() }
+        single { VideoMapper() }
+
         //repository
-        single<VideoRepository>{ VideoRepositoryImpl(get()) }
-        single<ChannelRepository>{ ChannelRepositoryImpl(get()) }
-        single<PlaylistRepository>{ PlaylistRepositoryImpl(get()) }
+        single<VideoRepository>{ VideoRepositoryImpl(get(), get()) }
+        single<ChannelRepository>{ ChannelRepositoryImpl(get(), get()) }
+        single<PlaylistRepository>{ PlaylistRepositoryImpl(get(), get(), get()) }
 
         //usecases
-        single<VideoUseCase>{ VideoUseCaseImpl(get()) }
+        single { GetChannelUseCase(get()) }
+        single { GetPlayListItemsUseCase(get()) }
+        single { GetPlayListsUseCase(get()) }
+        single { GetVideoUseCase(get()) }
         single<DateUseCase>{ DateUseCaseImpl() }
-        single<ChannelUseCase>{ ChannelUseCaseImpl(get()) }
-        single<PlayListsUseCase>{ PlayListsUseCaseImpl(get()) }
-        single<PlayListItemsUseCase>{ PlayListItemsUseCaseImpl(get()) }
 
         //viewmodels
         viewModelOf(::ChannelViewModel)

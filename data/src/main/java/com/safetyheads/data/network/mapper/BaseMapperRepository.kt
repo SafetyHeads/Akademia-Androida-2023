@@ -1,4 +1,4 @@
-package com.safetyheads.data.mapper
+package com.safetyheads.data.network.mapper
 /**
  * Interface for model mappers. It provides helper methods that facilitate
  * retrieving of models from outer data source layers

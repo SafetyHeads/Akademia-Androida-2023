@@ -2,28 +2,26 @@ package com.safetyheads.akademiaandroida.YouTube.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.core.text.HtmlCompat
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.safetyheads.akademiaandroida.YouTube.diffUtil.PlaylistDiffUtil
-import com.safetyheads.data.network.entities.playlists.Item
-import com.safetyheads.data.network.entities.playlists.PlayListsDataClass
 import com.safetyheads.akademiaandroida.databinding.ItemPlaylistBinding
+import com.safetyheads.domain.entities.Playlist
 
 class PlaylistAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    private var oldItems = com.safetyheads.data.network.entities.playlists.PlayListsDataClass()
+    private var oldItems = ArrayList<Playlist>()
     private var clickListener: ClickListener? = null
 
     class PlaylistHolder(itemView: ItemPlaylistBinding) :
         RecyclerView.ViewHolder(itemView.root) {
         private val binding = itemView
 
-        fun setData(data: com.safetyheads.data.network.entities.playlists.Item, position: Int, clickListener: ClickListener?) {
-            binding.tvPlaylistTitle.text = HtmlCompat.fromHtml(data.snippet.title, HtmlCompat.FROM_HTML_MODE_LEGACY).toString()
-            binding.tvVideoCount.text = HtmlCompat.fromHtml("${data.contentDetails.itemCount} videos", HtmlCompat.FROM_HTML_MODE_LEGACY).toString()
-            Glide.with(binding.root).load(data.snippet.thumbnails.high.url)
+        fun setData(data: Playlist, position: Int, clickListener: ClickListener?) {
+            binding.tvPlaylistTitle.text = data.playlistTitle
+            binding.tvVideoCount.text = "${data.playlistVideoCount} videos"
+            Glide.with(binding.root).load(data.playlistUrl)
                 .into(binding.thumbnail)
             binding.thumbnail.setOnClickListener {
                 clickListener?.onClick(data, position)
@@ -37,17 +35,16 @@ class PlaylistAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        (holder as PlaylistHolder).setData(oldItems.items[position], position, clickListener)
+        (holder as PlaylistHolder).setData(oldItems[position], position, clickListener)
     }
 
     override fun getItemCount(): Int {
-        return oldItems.items.size
+        return oldItems.size
     }
 
-    fun setData(newItems: com.safetyheads.data.network.entities.playlists.PlayListsDataClass) {
+    fun setData(newItems: ArrayList<Playlist>) {
         val playlistDiff = PlaylistDiffUtil(oldItems, newItems)
         val diff = DiffUtil.calculateDiff(playlistDiff)
-        newItems.items = newItems.items.filter { it.contentDetails.itemCount != 0 }
         oldItems = newItems
         diff.dispatchUpdatesTo(this)
     }
@@ -57,6 +54,6 @@ class PlaylistAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     }
 
     interface ClickListener {
-        fun onClick(item: com.safetyheads.data.network.entities.playlists.Item, position: Int)
+        fun onClick(item: Playlist, position: Int)
     }
 }

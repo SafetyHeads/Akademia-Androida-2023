@@ -5,21 +5,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.core.text.HtmlCompat
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
-import com.safetyheads.data.network.entities.channel.ChannelDataClass
 import com.safetyheads.akademiaandroida.YouTube.viewModel.ChannelViewModel
 import com.safetyheads.akademiaandroida.databinding.FragmentChannelBinding
+import com.safetyheads.domain.entities.Channel
 import org.koin.androidx.viewmodel.ext.android.activityViewModel
 
 class YouTubeChanelFragment : Fragment() {
 
     private lateinit var binding: FragmentChannelBinding
     private val channelViewModel: ChannelViewModel by activityViewModel()
-
-    private lateinit var channelInformation: com.safetyheads.data.network.entities.channel.ChannelDataClass
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -37,15 +34,12 @@ class YouTubeChanelFragment : Fragment() {
     }
 
     private fun initObserver() {
-        channelViewModel.isLoading.observe(viewLifecycleOwner) {
-            binding.progressBar.isVisible = it
+        channelViewModel.isLoading.observe(viewLifecycleOwner) { show ->
+            binding.progressBar.isVisible = show
         }
 
-        channelViewModel.channelInformation.observe(viewLifecycleOwner) {
-            if (it != null) {
-                channelInformation = it
-                initChannel()
-            }
+        channelViewModel.channelInfoInformation.observe(viewLifecycleOwner) { channelInformation ->
+            initChannel(channelInformation)
         }
 
         channelViewModel.errorMessage.observe(viewLifecycleOwner) {
@@ -57,14 +51,12 @@ class YouTubeChanelFragment : Fragment() {
         binding.progressBar.isVisible = false
     }
 
-    private fun initChannel() {
-        channelInformation.items.forEach { channel ->
-            binding.tvChannelName.text = HtmlCompat.fromHtml(channel.snippet.title, HtmlCompat.FROM_HTML_MODE_LEGACY).toString()
-            binding.tvChannelDescription.text = HtmlCompat.fromHtml(channel.snippet.description, HtmlCompat.FROM_HTML_MODE_LEGACY).toString()
-            Glide.with(requireContext()).load(channel.brandingSettings.image.bannerExternalUrl)
+    private fun initChannel(channelInformation: Channel) {
+            binding.tvChannelName.text = channelInformation.channelName
+            binding.tvChannelDescription.text = channelInformation.channelDescription
+            Glide.with(requireContext()).load(channelInformation.channelBannerUrl)
                 .into(binding.imageChannel)
-            Glide.with(requireContext()).load(channel.snippet.thumbnails.high.url)
+            Glide.with(requireContext()).load(channelInformation.channelAvatarUrl)
                 .into(binding.imageLogo)
-        }
     }
 }

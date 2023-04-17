@@ -9,19 +9,17 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.safetyheads.akademiaandroida.YouTube.adapters.VideoAdapter
-import com.safetyheads.data.network.entities.video.YouTubeVideoDataClass
 import com.safetyheads.akademiaandroida.YouTube.viewModel.VideoViewModel
 import com.safetyheads.akademiaandroida.databinding.FragmentVideoBinding
 import org.koin.androidx.viewmodel.ext.android.activityViewModel
 
-class YouTubeVideoFragment: Fragment(), VideoAdapter.ClickListener {
+class YouTubeVideoFragment: Fragment() {
 
     private val TAG = "YouTubeVideoFragment"
 
     private lateinit var binding: FragmentVideoBinding
     private val videoViewModel: VideoViewModel by activityViewModel()
 
-    private var videoList: ArrayList<com.safetyheads.data.network.entities.video.YouTubeVideoDataClass> = ArrayList()
     private val videoAdapter = VideoAdapter()
 
     override fun onCreateView(
@@ -41,12 +39,11 @@ class YouTubeVideoFragment: Fragment(), VideoAdapter.ClickListener {
     }
 
     private fun initObserver() {
-        videoViewModel.isLoading.observe(viewLifecycleOwner) {
-            binding.progressBar.isVisible = it
+        videoViewModel.isLoading.observe(viewLifecycleOwner) { show ->
+            binding.progressBar.isVisible = show
         }
 
-        videoViewModel.videosList.observe(viewLifecycleOwner) {
-            videoList = it
+        videoViewModel.videosList.observe(viewLifecycleOwner) { videoList ->
             videoAdapter.setData(videoList)
         }
 
@@ -58,7 +55,6 @@ class YouTubeVideoFragment: Fragment(), VideoAdapter.ClickListener {
     private fun initList() {
         binding.rvVideo.adapter = videoAdapter
         binding.rvVideo.layoutManager = LinearLayoutManager(requireContext())
-        videoAdapter.setClickListener(this)
     }
 
     private fun initUI() {
@@ -67,9 +63,5 @@ class YouTubeVideoFragment: Fragment(), VideoAdapter.ClickListener {
             if (!binding.progressBar.isVisible)
                 videoViewModel.getVideo()
         }
-    }
-
-    override fun onClick() {
-        videoViewModel.getVideo()
     }
 }

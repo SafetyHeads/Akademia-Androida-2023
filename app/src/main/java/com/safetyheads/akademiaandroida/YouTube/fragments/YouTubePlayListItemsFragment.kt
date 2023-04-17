@@ -8,7 +8,7 @@ import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.safetyheads.akademiaandroida.YouTube.adapters.PlayListItemsAdapter
+import com.safetyheads.akademiaandroida.YouTube.adapters.VideoAdapter
 import com.safetyheads.akademiaandroida.YouTube.viewModel.PlayListViewModel
 import com.safetyheads.akademiaandroida.databinding.FragmentPlaylistItemsBinding
 import org.koin.androidx.viewmodel.ext.android.activityViewModel
@@ -20,7 +20,7 @@ class YouTubePlayListItemsFragment: Fragment() {
     private lateinit var binding: FragmentPlaylistItemsBinding
     private val playListViewModel: PlayListViewModel by activityViewModel()
 
-    private val adapter = PlayListItemsAdapter()
+    private val videoAdapter = VideoAdapter()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -39,14 +39,12 @@ class YouTubePlayListItemsFragment: Fragment() {
     }
 
     private fun initObserver() {
-        playListViewModel.isLoadingPlayListItems.observe(viewLifecycleOwner) {
-            binding.progressBar.isVisible = it
+        playListViewModel.isLoadingPlayListItems.observe(viewLifecycleOwner) { show ->
+            binding.progressBar.isVisible = show
         }
 
-        playListViewModel.listPlayListItems.observe(viewLifecycleOwner) {
-            if (it != null) {
-                adapter.setData(it)
-            }
+        playListViewModel.listPlayListItems.observe(viewLifecycleOwner) { playListItems ->
+            videoAdapter.setData(playListItems)
         }
 
         playListViewModel.errorMessagePlayListItems.observe(viewLifecycleOwner) {
@@ -55,12 +53,12 @@ class YouTubePlayListItemsFragment: Fragment() {
     }
 
     private fun initList() {
-        binding.rvPlaylistItems.adapter = adapter
+        binding.rvPlaylistItems.adapter = videoAdapter
         binding.rvPlaylistItems.layoutManager = LinearLayoutManager(requireContext())
     }
 
     private fun initUI() {
-        adapter.clearAll()
+        videoAdapter.clearAll()
         playListViewModel.cleanPlayListItems()
         binding.progressBar.isVisible = false
     }

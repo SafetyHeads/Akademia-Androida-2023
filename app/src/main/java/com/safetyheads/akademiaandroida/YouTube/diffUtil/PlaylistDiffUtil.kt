@@ -1,27 +1,27 @@
 package com.safetyheads.akademiaandroida.YouTube.diffUtil
 
 import androidx.recyclerview.widget.DiffUtil
-import com.safetyheads.data.network.entities.playlists.PlayListsDataClass
+import com.safetyheads.domain.entities.Playlist
 
 class PlaylistDiffUtil(
-    private val oldList: com.safetyheads.data.network.entities.playlists.PlayListsDataClass,
-    private val newList: com.safetyheads.data.network.entities.playlists.PlayListsDataClass
+    private val oldList: ArrayList<Playlist>,
+    private val newList: ArrayList<Playlist>
 ) : DiffUtil.Callback() {
     override fun getOldListSize(): Int {
-        return oldList.items.size
+        return oldList.size
     }
 
     override fun getNewListSize(): Int {
-        return newList.items.size
+        return newList.size
     }
 
     override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
-        return oldList.items[oldItemPosition] == newList.items[newItemPosition]
+        return oldList[oldItemPosition] == newList[newItemPosition]
     }
 
     override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
-        val oldVideo = oldList.items[oldItemPosition]
-        val newVideo = newList.items[newItemPosition]
-        return oldVideo.id == newVideo.id
+        val oldVideo = oldList[oldItemPosition]
+        val newVideo = newList[newItemPosition]
+        return oldVideo.playlistId == newVideo.playlistId
     }
 }

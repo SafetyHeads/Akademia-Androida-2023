@@ -1,7 +1,7 @@
 package com.safetyheads.data.network.retrofit
 
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
-import com.safetyheads.akademiaandroida.BuildConfig
+import com.safetyheads.datamodule.BuildConfig
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -29,9 +29,9 @@ class ApiClient {
     }
 
     private fun OkHttpClient.Builder.addDebugInterceptor(): OkHttpClient.Builder {
-//        if (BuildConfig.DEBUG) {
+        if (BuildConfig.DEBUG) {
             addInterceptor(RetrofitInterceptor())
-//        }
+        }
         return this
     }
 

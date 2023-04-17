@@ -1,19 +1,16 @@
-package com.safetyheads.akademiaandroida.YouTube.useCases
+package com.safetyheads.domain.usecases
 
-import android.annotation.SuppressLint
-import java.time.LocalDateTime
-import java.time.format.DateTimeFormatter
+import org.threeten.bp.LocalDateTime
+import org.threeten.bp.format.DateTimeFormatter
 
-class DateUseCaseImpl: DateUseCase {
+class DateUseCaseImpl : DateUseCase {
 
-    @SuppressLint("NewApi")
     override fun actualDate(): String {
         val data = LocalDateTime.now()
         val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss'Z'")
         return data.format(formatter)
     }
 
-    @SuppressLint("NewApi")
     override fun updateDate(actualVideoDate: String): String {
         val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss'Z'")
         val inputDate = LocalDateTime.parse(actualVideoDate, formatter)

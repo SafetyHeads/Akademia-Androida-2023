@@ -1,6 +1,6 @@
 package com.safetyheads.data.network.entities.playlistitems
 
-data class PlayListItemsDataClass(
+data class PlayListItems(
     val etag: String = "",
     var items: List<com.safetyheads.data.network.entities.playlistitems.Item> = arrayListOf(),
     val kind: String = "",

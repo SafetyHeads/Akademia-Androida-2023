@@ -1,6 +1,6 @@
 package com.safetyheads.data.network.entities.playlists
 
-data class PlayListsDataClass(
+data class PlayLists(
     val etag: String = "",
     var items: List<com.safetyheads.data.network.entities.playlists.Item> = mutableListOf(),
     val kind: String = "",

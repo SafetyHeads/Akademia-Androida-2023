@@ -1,6 +1,6 @@
 package com.safetyheads.data.network.entities.channel
 
-data class ChannelDataClass(
+data class ChannelInfo(
     val etag: String,
     val items: List<com.safetyheads.data.network.entities.channel.Item>,
     val kind: String,

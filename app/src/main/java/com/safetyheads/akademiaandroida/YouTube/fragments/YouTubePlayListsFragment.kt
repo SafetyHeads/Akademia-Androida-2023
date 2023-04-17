@@ -10,9 +10,9 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.safetyheads.akademiaandroida.YouTube.YouTubeActivity
 import com.safetyheads.akademiaandroida.YouTube.adapters.PlaylistAdapter
-import com.safetyheads.data.network.entities.playlists.Item
 import com.safetyheads.akademiaandroida.YouTube.viewModel.PlayListViewModel
 import com.safetyheads.akademiaandroida.databinding.FragmentPlaylistBinding
+import com.safetyheads.domain.entities.Playlist
 import org.koin.androidx.viewmodel.ext.android.activityViewModel
 
 class YouTubePlayListsFragment: Fragment(), PlaylistAdapter.ClickListener {
@@ -22,7 +22,7 @@ class YouTubePlayListsFragment: Fragment(), PlaylistAdapter.ClickListener {
     private lateinit var binding: FragmentPlaylistBinding
     private val playListViewModel: PlayListViewModel by activityViewModel()
 
-    private val adapter = PlaylistAdapter()
+    private val playlistAdapter = PlaylistAdapter()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -41,12 +41,12 @@ class YouTubePlayListsFragment: Fragment(), PlaylistAdapter.ClickListener {
     }
 
     private fun initObserver() {
-        playListViewModel.isLoadingPlayLists.observe(viewLifecycleOwner) {
-            binding.progressBar.isVisible = it
+        playListViewModel.isLoadingPlayLists.observe(viewLifecycleOwner) { show ->
+            binding.progressBar.isVisible = show
         }
 
-        playListViewModel.listPlayLists.observe(viewLifecycleOwner) {
-            adapter.setData(it)
+        playListViewModel.listPlayLists.observe(viewLifecycleOwner) { playLists ->
+            playlistAdapter.setData(playLists)
         }
 
         playListViewModel.errorMessagePlayLists.observe(viewLifecycleOwner) {
@@ -55,20 +55,18 @@ class YouTubePlayListsFragment: Fragment(), PlaylistAdapter.ClickListener {
     }
 
     private fun initList() {
-        binding.rvPlaylist.adapter = adapter
+        binding.rvPlaylist.adapter = playlistAdapter
         binding.rvPlaylist.layoutManager = LinearLayoutManager(requireContext())
-        adapter.setClickListener(this)
+        playlistAdapter.setClickListener(this)
     }
 
     private fun initUI() {
         binding.progressBar.isVisible = false
     }
 
-    override fun onClick(item: com.safetyheads.data.network.entities.playlists.Item, position: Int) {
-        playListViewModel.getPlayListItems(item.id)
+    override fun onClick(item: Playlist, position: Int) {
+        playListViewModel.getPlayListItems(item.playlistId)
         val activity = requireActivity() as YouTubeActivity
         activity.goToPlayList()
     }
-
-
 }

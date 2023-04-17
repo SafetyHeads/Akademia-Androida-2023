@@ -5,19 +5,18 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.safetyheads.akademiaandroida.BuildConfig
-import com.safetyheads.data.network.entities.channel.ChannelDataClass
-import com.safetyheads.akademiaandroida.YouTube.useCases.ChannelUseCase
-import com.safetyheads.akademiaandroida.network.NetworkResult
+import com.safetyheads.domain.entities.Channel
+import com.safetyheads.domain.usecases.GetChannelUseCase
 import kotlinx.coroutines.launch
 
 class ChannelViewModel(
-    private val channelUseCase: ChannelUseCase
+    private val channelUseCase: GetChannelUseCase
 ) : ViewModel() {
 
     private val TAG = "ChannelViewModel"
 
     val isLoading: MutableLiveData<Boolean> = MutableLiveData(false)
-    val channelInformation: MutableLiveData<com.safetyheads.data.network.entities.channel.ChannelDataClass?> = MutableLiveData()
+    val channelInfoInformation: MutableLiveData<Channel> = MutableLiveData()
     val errorMessage: MutableLiveData<Throwable> = MutableLiveData()
 
     init {
@@ -25,26 +24,17 @@ class ChannelViewModel(
     }
 
     fun getChannel() {
+        isLoading.postValue(true)
         viewModelScope.launch {
-            channelUseCase.execute().collect() { networkResult ->
-                when (networkResult) {
-                    is NetworkResult.Success -> {
-                        isLoading.postValue(false)
-                        if (networkResult.data.items.isNotEmpty()) {
-                            channelInformation.postValue(networkResult.data)
-                        }
-                    }
-
-                    is NetworkResult.Error -> {
-                        isLoading.postValue(false)
-                        errorMessage.postValue(networkResult.exception)
-                        if (BuildConfig.DEBUG)
-                            Log.i(TAG, networkResult.exception.message ?: "Unknown error")
-                    }
-
-                    is NetworkResult.Loading -> {
-                        isLoading.postValue(true)
-                    }
+            channelUseCase.invoke(GetChannelUseCase.ChannelParam()).collect { networkResult ->
+                if (networkResult.isSuccess) {
+                    isLoading.postValue(false)
+                    channelInfoInformation.postValue(networkResult.getOrNull())
+                } else {
+                    isLoading.postValue(false)
+                    errorMessage.postValue(networkResult.exceptionOrNull())
+                    if (BuildConfig.DEBUG)
+                        Log.i(TAG, networkResult.exceptionOrNull()?.message ?: "Unknown error")
                 }
             }
         }

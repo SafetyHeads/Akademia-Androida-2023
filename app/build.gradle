@@ -37,9 +37,14 @@ android {
         versionCode = generateVersionCode(VERSION_NAME_MAJOR, VERSION_NAME_MINOR, VERSION_NAME_PATCH)
 
         Properties properties = new Properties()
-        properties.load(project.rootProject.file("local.properties").newDataInputStream())
+        File localPropertiesFile = project.rootProject.file("local.properties")
 
-        buildConfigField("String", "YOUTUBE_DATA_API_KEY", "\"${properties.getProperty("YOUTUBE_DATA_API_KEY")}\"")
+        if (localPropertiesFile.exists()) {
+            properties.load(localPropertiesFile.newDataInputStream())
+            buildConfigField("String", "YOUTUBE_DATA_API_KEY", "\"${properties.getProperty("YOUTUBE_DATA_API_KEY")}\"")
+        } else {
+            buildConfigField("String", "YOUTUBE_DATA_API_KEY", "\"\"")
+        }
     }
 
     buildTypes {
