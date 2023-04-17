@@ -2,7 +2,6 @@ package com.safetyheads.akademiaandroida
 
 import android.content.Context
 import android.widget.EditText
-import androidx.core.widget.addTextChangedListener
 import com.safetyheads.akademiaandroida.utils.FullNameValidator
 import io.mockk.every
 import io.mockk.mockk

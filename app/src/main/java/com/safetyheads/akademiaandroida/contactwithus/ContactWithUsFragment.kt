@@ -1,4 +1,4 @@
-package com.safetyheads.akademiaandroida.contact_with_us
+package com.safetyheads.akademiaandroida.contactwithus
 
 import android.content.Intent
 import android.net.Uri
@@ -11,16 +11,14 @@ import com.safetyheads.akademiaandroida.databinding.FragmentContactWithUsBinding
 
 class ContactWithUsFragment : Fragment() {
 
-    private val TAG = "ContactWithUsFragment" 
+    private val tag = "ContactWithUsFragment"
 
     private lateinit var binding: FragmentContactWithUsBinding
     private lateinit var currentlyOpen: SocialEnumClass
     private var goToInstal = false
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
         binding = FragmentContactWithUsBinding.inflate(inflater, container, false)
         return binding.root
@@ -75,19 +73,30 @@ class ContactWithUsFragment : Fragment() {
         val openAplicationIntent = Intent(Intent.ACTION_VIEW).apply {
             when (currentlyOpen) {
                 SocialEnumClass.Facebook -> {
-                    if (requireContext().packageManager.getLaunchIntentForPackage(currentlyOpen.applicationPackage) != null)
-                        if((requireContext().packageManager.getPackageInfo(currentlyOpen.applicationPackage, 0).versionCode) >= ContactWithUsObject.facebookVersionApp)
-                            data = Uri.parse(ContactWithUsObject.facebookAppNewSH + currentlyOpen.socialName)
-                        else
-                            data = Uri.parse(ContactWithUsObject.facebookAppOldSH)
-                    else
-                        data = Uri.parse(currentlyOpen.socialName)
+                    if (requireContext().packageManager.getLaunchIntentForPackage(
+                            currentlyOpen.applicationPackage
+                        ) != null
+                    ) if (
+                        (requireContext().packageManager.getPackageInfo(
+                            currentlyOpen.applicationPackage, 0
+                        ).versionCode) >= ContactWithUsObject.facebookVersionApp
+                    ) data =
+                        Uri.parse(
+                            ContactWithUsObject.facebookAppNewSH
+                                    + currentlyOpen.socialName
+                        )
+                    else data = Uri.parse(ContactWithUsObject.facebookAppOldSH)
+                    else data = Uri.parse(currentlyOpen.socialName)
                 }
-                
+
                 else -> {
                     data = Uri.parse(currentlyOpen.socialName)
-                    if (requireContext().packageManager.getLaunchIntentForPackage(currentlyOpen.applicationPackage) != null)
-                        setPackage(currentlyOpen.applicationPackage)
+                    if (requireContext().packageManager.getLaunchIntentForPackage(
+                            currentlyOpen.applicationPackage
+                        ) != null
+                    ) setPackage(
+                        currentlyOpen.applicationPackage
+                    )
                 }
             }
         }
@@ -95,15 +104,16 @@ class ContactWithUsFragment : Fragment() {
     }
 
     private fun socialOpen() {
-        if (requireContext().packageManager.getLaunchIntentForPackage(currentlyOpen.applicationPackage) != null)
-            startActivity(openActivity())
-        else
-            openDialog()
+        if (requireContext().packageManager.getLaunchIntentForPackage(
+                currentlyOpen.applicationPackage
+            ) != null
+        ) startActivity(openActivity())
+        else openDialog()
     }
 
     private fun openDialog() {
         val dialog = ContactWithUsDialogFragment(openCallback(), currentlyOpen.name)
-        dialog.show(parentFragmentManager, TAG)
+        dialog.show(parentFragmentManager, tag)
     }
 
     override fun onResume() {

@@ -1,4 +1,4 @@
-package com.safetyheads.akademiaandroida.sign_up
+package com.safetyheads.akademiaandroida.signup
 
 import com.safetyheads.domain.entities.User
 import com.safetyheads.domain.repositories.UserRepository

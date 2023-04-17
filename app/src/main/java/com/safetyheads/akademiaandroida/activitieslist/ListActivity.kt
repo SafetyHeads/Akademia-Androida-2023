@@ -1,4 +1,4 @@
-package com.safetyheads.akademiaandroida.ActivitiesList
+package com.safetyheads.akademiaandroida.activitieslist
 
 import android.content.pm.PackageManager
 import android.os.Bundle
@@ -6,7 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.safetyheads.akademiaandroida.ClientsFragment
 import com.safetyheads.akademiaandroida.ExperienceStructureFragment
-import com.safetyheads.akademiaandroida.contact_with_us.ContactWithUsFragment
+import com.safetyheads.akademiaandroida.contactwithus.ContactWithUsFragment
 import com.safetyheads.akademiaandroida.databinding.ActivityListBinding
 import com.safetyheads.akademiaandroida.dropdownlist.FragmentDropDownList
 import com.safetyheads.akademiaandroida.font.FontSylesFragment

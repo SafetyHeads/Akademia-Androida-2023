@@ -1,12 +1,12 @@
 package com.safetyheads.akademiaandroida
 
 import android.app.Application
+import com.safetyheads.akademiaandroida.data.FirebaseConfigRepository
 import com.safetyheads.akademiaandroida.dropdownlist.DropDownListViewModel
 import com.safetyheads.akademiaandroida.dropdownlist.LoadItemsToDropDownListUseCase
-import com.safetyheads.domain.usecases.DelaySplashScreenUseCase
 import com.safetyheads.akademiaandroida.splashscreen.SplashScreenViewModel
-import com.safetyheads.akademiaandroida.data.FirebaseConfigRepository
 import com.safetyheads.domain.repositories.ConfigRepository
+import com.safetyheads.domain.usecases.DelaySplashScreenUseCase
 import com.safetyheads.domain.usecases.GetConfigUseCase
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger

@@ -27,7 +27,7 @@ class WeAreHiringFragment: Fragment() {
 
     private fun initUI() {
         binding.applyNow.setOnClickListener {
-            // TODO: Apply now button click 
+            // TODO: Apply now button click
         }
     }
 }

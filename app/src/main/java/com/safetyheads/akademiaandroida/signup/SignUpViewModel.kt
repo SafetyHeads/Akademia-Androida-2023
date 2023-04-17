@@ -1,10 +1,9 @@
-package com.safetyheads.akademiaandroida.sign_up
+package com.safetyheads.akademiaandroida.signup
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.safetyheads.domain.usecases.RegisterUseCase
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
 class SignUpViewModel (
     private val registerUseCase: RegisterUseCase
