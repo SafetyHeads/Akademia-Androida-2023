@@ -1,6 +1,6 @@
-package com.safetyheads.domain.repositories
+package com.safetyheads.data.repositories
 
-import com.safetyheads.domain.entities.Video
+import com.safetyheads.data.entities.Video
 import kotlinx.coroutines.flow.Flow
 
 interface VideoRepository {

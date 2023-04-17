@@ -1,4 +1,4 @@
-package com.safetyheads.domain.usecases
+package com.safetyheads.data.usecases
 
 import kotlinx.coroutines.flow.Flow
 

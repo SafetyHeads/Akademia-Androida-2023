@@ -1,5 +1,6 @@
-package com.safetyheads.data.retrofit
+package com.safetyheads.data.network.retrofit
 
+import androidx.viewbinding.BuildConfig
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
@@ -28,9 +29,9 @@ class ApiClient {
     }
 
     private fun OkHttpClient.Builder.addDebugInterceptor(): OkHttpClient.Builder {
-//        if (BuildConfig.DEBUG) {
+        if (BuildConfig.DEBUG) {
             addInterceptor(RetrofitInterceptor())
-//        }
+        }
         return this
     }
 

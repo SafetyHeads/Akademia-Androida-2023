@@ -1,4 +1,4 @@
-package com.safetyheads.data.objects
+package com.safetyheads.data.network.objects
 
 object YouTubeApi {
 
