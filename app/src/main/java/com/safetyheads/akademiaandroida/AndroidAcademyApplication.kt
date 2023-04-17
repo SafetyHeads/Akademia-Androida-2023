@@ -6,8 +6,7 @@ import com.safetyheads.akademiaandroida.YouTube.viewModel.PlayListViewModel
 import com.safetyheads.akademiaandroida.YouTube.viewModel.VideoViewModel
 import com.safetyheads.akademiaandroida.dropdownlist.DropDownListViewModel
 import com.safetyheads.akademiaandroida.dropdownlist.LoadItemsToDropDownListUseCase
-import com.safetyheads.akademiaandroida.splashscreen.SplashScreenUseCase
-import com.safetyheads.akademiaandroida.splashscreen.SplashScreenUseCaseImpl
+import com.safetyheads.domain.usecases.DelaySplashScreenUseCase
 import com.safetyheads.akademiaandroida.splashscreen.SplashScreenViewModel
 import com.safetyheads.data.network.mapper.ChannelMapper
 import com.safetyheads.data.network.mapper.PlayListVideoMapper
@@ -28,6 +27,9 @@ import com.safetyheads.domain.usecases.GetChannelUseCase
 import com.safetyheads.domain.usecases.GetPlayListItemsUseCase
 import com.safetyheads.domain.usecases.GetPlayListsUseCase
 import com.safetyheads.domain.usecases.GetVideoUseCase
+import com.safetyheads.akademiaandroida.data.FirebaseRepository
+import com.safetyheads.domain.repositories.ConfigRepository
+import com.safetyheads.domain.usecases.GetConfigUseCase
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.androidx.viewmodel.dsl.viewModel
@@ -49,12 +51,16 @@ class AndroidAcademyApplication: Application() {
     }
 
     private val appModule = module {
+        //repositories
+        single<ConfigRepository> { FirebaseConfigRepository() }
+
         //usecases
-        single<SplashScreenUseCase> { SplashScreenUseCaseImpl() }
+        single { DelaySplashScreenUseCase() }
         single { LoadItemsToDropDownListUseCase() }
+        single { GetConfigUseCase(get()) }
 
         //viewmodels
-        viewModel{ SplashScreenViewModel(get()) }
+        viewModel{ SplashScreenViewModel(get(), get()) }
         viewModel{ DropDownListViewModel(get()) }
     }
 
