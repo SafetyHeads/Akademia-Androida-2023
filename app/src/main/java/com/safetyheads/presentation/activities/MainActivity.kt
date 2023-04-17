@@ -11,17 +11,12 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
-import com.google.firebase.remoteconfig.FirebaseRemoteConfig
-import com.google.firebase.remoteconfig.FirebaseRemoteConfigSettings
-import com.safetyheads.akademiaandroida.R
+import com.safetyheads.akademiaandroida.ActivitiesList.ListActivity
+import com.safetyheads.akademiaandroida.contactusform.ContactUsFragment
 import com.safetyheads.akademiaandroida.databinding.ActivityMainBinding
-import com.safetyheads.presentation.activities.activitieslist.ListActivity
-import com.safetyheads.presentation.activities.activitieslist.RootActivity
-import com.safetyheads.presentation.activities.splashscreen.SplashScreenViewModel
-import com.safetyheads.presentation.androidcomponents.Footer
-import com.safetyheads.presentation.fragments.contact_with_us.ContactUsFragment
-import com.safetyheads.presentation.fragments.font_style.FontSylesFragment
-import com.safetyheads.presentation.fragments.we_are_hiring.WeAreHiringFragment
+import com.safetyheads.akademiaandroida.font.FontSylesFragment
+import com.safetyheads.akademiaandroida.fragments.WeAreHiringFragment
+import com.safetyheads.akademiaandroida.splashscreen.SplashScreenViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
@@ -33,8 +28,11 @@ class MainActivity : AppCompatActivity() {
         installSplashScreen()
         val splashScreen = installSplashScreen()
         splashScreen.setKeepOnScreenCondition {
-            splashScreenViewModel.delay.isActive
+            splashScreenViewModel.getConfig.isActive
         }
+        observeConfigChanges()
+
+
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -126,6 +124,24 @@ class MainActivity : AppCompatActivity() {
         supportFragmentManager.beginTransaction().apply {
             replace(binding.frameLayout.id, fragment)
             commit()
+        }
+    }
+
+    private fun observeConfigChanges() {
+        splashScreenViewModel.config.observe(this) { config ->
+            Toast.makeText(
+                applicationContext,
+                "Version Code: ${config.versionCode} \n Api Url: ${config.apiUrl}",
+                Toast.LENGTH_LONG)
+                .show()
+        }
+
+        splashScreenViewModel.failureText.observe(this) { failureText ->
+            Toast.makeText(
+                applicationContext,
+                failureText,
+                Toast.LENGTH_LONG)
+                .show()
         }
     }
 }
