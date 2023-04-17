@@ -6,9 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.safetyheads.akademiaandroida.databinding.FragmentSignUpBinding
-import com.safetyheads.akademiaandroida.utils.EmailValidator
-import com.safetyheads.akademiaandroida.utils.FullNameValidator
-import com.safetyheads.akademiaandroida.utils.PasswordValidator
+import com.safetyheads.presentation.utils.EmailValidator
+import com.safetyheads.presentation.utils.FullNameValidator
+import com.safetyheads.presentation.utils.PasswordValidator
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 //TODO:
@@ -32,7 +32,7 @@ class SignUpFragment : Fragment() {
 
         super.onViewCreated(view, savedInstanceState)
 
-        binding.buttonSignUp.setOnClickListener() {
+        binding.buttonSignUp.setOnClickListener {
             viewModel.signUp(
                 binding.eTextFullName.toString(),
                 binding.eTextEmailAddress.toString(),

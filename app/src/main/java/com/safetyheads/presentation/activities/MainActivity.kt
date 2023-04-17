@@ -22,6 +22,7 @@ import com.safetyheads.presentation.androidcomponents.Footer
 import com.safetyheads.presentation.fragments.contact_with_us.ContactUsFragment
 import com.safetyheads.presentation.fragments.font_style.FontSylesFragment
 import com.safetyheads.presentation.fragments.we_are_hiring.WeAreHiringFragment
+
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
@@ -33,8 +34,11 @@ class MainActivity : AppCompatActivity() {
         installSplashScreen()
         val splashScreen = installSplashScreen()
         splashScreen.setKeepOnScreenCondition {
-            splashScreenViewModel.delay.isActive
+            splashScreenViewModel.getConfig.isActive
         }
+        observeConfigChanges()
+
+
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -126,6 +130,24 @@ class MainActivity : AppCompatActivity() {
         supportFragmentManager.beginTransaction().apply {
             replace(binding.frameLayout.id, fragment)
             commit()
+        }
+    }
+
+    private fun observeConfigChanges() {
+        splashScreenViewModel.config.observe(this) { config ->
+            Toast.makeText(
+                applicationContext,
+                "Version Code: ${config.versionCode} \n Api Url: ${config.apiUrl}",
+                Toast.LENGTH_LONG)
+                .show()
+        }
+
+        splashScreenViewModel.failureText.observe(this) { failureText ->
+            Toast.makeText(
+                applicationContext,
+                failureText,
+                Toast.LENGTH_LONG)
+                .show()
         }
     }
 }
