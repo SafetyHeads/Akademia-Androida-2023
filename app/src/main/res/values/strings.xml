@@ -70,4 +70,8 @@
     <string name="password">Password</string>
     <string name="forgot_password"> <u>Forgot password?</u> </string>
     <string name="dot_enumeration">•</string>
+    <string name="technology_stack">Technology Stack</string>
+    <string name="mobile_app">Mobile app</string>
+    <string name="web_app">Web app</string>
+    <string name="others">Others</string>
 </resources>

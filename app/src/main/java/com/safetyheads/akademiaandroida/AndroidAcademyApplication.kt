@@ -3,6 +3,8 @@ package com.safetyheads.akademiaandroida
 import android.app.Application
 import com.safetyheads.akademiaandroida.dropdownlist.DropDownListViewModel
 import com.safetyheads.akademiaandroida.dropdownlist.LoadItemsToDropDownListUseCase
+import com.safetyheads.akademiaandroida.fragments.technologystack.TechnologyStackUseCase
+import com.safetyheads.akademiaandroida.fragments.technologystack.TechnologyStackViewModel
 import com.safetyheads.akademiaandroida.splashscreen.SplashScreenUseCase
 import com.safetyheads.akademiaandroida.splashscreen.SplashScreenUseCaseImpl
 import com.safetyheads.akademiaandroida.splashscreen.SplashScreenViewModel
@@ -28,9 +30,11 @@ class AndroidAcademyApplication: Application() {
         //usecases
         single<SplashScreenUseCase> { SplashScreenUseCaseImpl() }
         single { LoadItemsToDropDownListUseCase() }
+        single { TechnologyStackUseCase()}
 
         //viewmodels
         viewModel{ SplashScreenViewModel(get()) }
         viewModel{ DropDownListViewModel(get()) }
+        viewModel{ TechnologyStackViewModel(get())}
     }
 }

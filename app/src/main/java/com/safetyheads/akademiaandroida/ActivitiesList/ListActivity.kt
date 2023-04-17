@@ -10,6 +10,7 @@ import com.safetyheads.akademiaandroida.contact_with_us.ContactWithUsFragment
 import com.safetyheads.akademiaandroida.databinding.ActivityListBinding
 import com.safetyheads.akademiaandroida.dropdownlist.FragmentDropDownList
 import com.safetyheads.akademiaandroida.font.FontSylesFragment
+import com.safetyheads.akademiaandroida.fragments.technologystack.TechnologyStackFragment
 import com.safetyheads.akademiaandroida.fragments.WeAreHiringFragment
 
 class ListActivity : AppCompatActivity() {
@@ -53,6 +54,7 @@ class ListActivity : AppCompatActivity() {
     val clientsFragment = ClientsFragment()
     val experienceStructureFragment = ExperienceStructureFragment()
     val fragmentDropDownList = FragmentDropDownList()
+    val technolgyStackFragment = TechnologyStackFragment()
 
     val dataListFragments = listOf(
         fontSylesFragment,
@@ -60,7 +62,8 @@ class ListActivity : AppCompatActivity() {
         weAreHiringBinding,
         clientsFragment,
         experienceStructureFragment,
-        fragmentDropDownList
+        fragmentDropDownList,
+        technolgyStackFragment
     )
 }
 
