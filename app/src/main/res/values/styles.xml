@@ -206,6 +206,9 @@
         <item name="android:paddingLeft">8dp</item>
     </style>
 
+    <!-- TextInputEditText full name -->
+    <style name="EText_full_name" parent="TextAppearance.AppCompat"></style>
+
     <!-- TextInputLayout email address -->
     <style name="Layout_eText_email_address" parent="TextAppearance.AppCompat">
         <item name="layoutWidth">match_parent</item>

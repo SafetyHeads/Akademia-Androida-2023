@@ -50,9 +50,12 @@
         android:id="@+id/forgot_password_fragment"
         android:name="com.safetyheads.akademiaandroida.forgotpasswordfragment.ForgotPasswordFragment"
         android:label="fragment_dashboard_placeholder"
-        tools:layout="@layout/fragment_dashboard_placeholder" >
+        tools:layout="@layout/fragment_dashboard_placeholder">
         <action
             android:id="@+id/action_forgot_password_fragment_to_login_fragment"
             app:destination="@id/login_fragment" />
+        <argument
+            android:name="isSuccess"
+            app:argType="boolean" />
     </fragment>
 </navigation>
