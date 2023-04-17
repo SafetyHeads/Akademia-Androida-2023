@@ -10,6 +10,7 @@ import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import com.safetyheads.akademiaandroida.R
 import com.safetyheads.akademiaandroida.databinding.FragmentForgotPasswordBinding
+import com.safetyheads.akademiaandroida.forgotpasswordfragment.snackbar.LoginSnackBar
 import com.safetyheads.akademiaandroida.utils.EmailValidator
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -46,7 +47,10 @@ class ForgotPasswordFragment : Fragment() {
         }
         forgotPasswordViewModel.isSuccess.observe(viewLifecycleOwner) { isSuccess ->
             if (isSuccess) {
-                TODO("Success of sent reset Password on email")
+                LoginSnackBar.make(
+                    binding.root,
+                    message = requireActivity().getString(R.string.we_have_emailed_your_password_reset_link)
+                ).show()
             } else {
                 TODO("Failed of sent reset Password on email")
             }
