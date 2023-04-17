@@ -11,6 +11,7 @@ import org.junit.Test
 class PasswordValidatorTest {
 
     private val validator = PasswordValidator()
+
     @Test
     fun validateAttach() {
         // Given
@@ -107,7 +108,7 @@ class PasswordValidatorTest {
         validator.validatePassword(password, editText, context)
 
         // Then
-         verify { editText.error = "Invalid password" }
+        verify { editText.error = "Invalid password" }
     }
 
     @Test
@@ -128,7 +129,7 @@ class PasswordValidatorTest {
     fun passwordWithInvalidFormat() {
         // Given
         val editText = mockk<EditText>(relaxed = true)
-         val context = mockk<Context> {
+        val context = mockk<Context> {
             every { getString(R.string.invalid_password) } returns "Invalid password"
         }
         val password = "1@"

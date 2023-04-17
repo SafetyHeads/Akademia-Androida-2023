@@ -1,4 +1,4 @@
-package com.safetyheads.presentation.utils
+package com.safetyheads.akademiaandroida
 
 import android.app.Application
 import com.safetyheads.presentation.activities.splashscreen.SplashScreenUseCase
@@ -12,8 +12,7 @@ import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.context.startKoin
 import org.koin.dsl.module
 
-
-class AndroidAcademyApplication: Application() {
+class AndroidAcademyApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()
@@ -30,7 +29,7 @@ class AndroidAcademyApplication: Application() {
         single { LoadItemsToDropDownListUseCase() }
 
         //viewmodels
-        viewModel{ SplashScreenViewModel(get()) }
-        viewModel{ DropDownListViewModel(get()) }
+        viewModel { SplashScreenViewModel(get()) }
+        viewModel { DropDownListViewModel(get()) }
     }
 }
