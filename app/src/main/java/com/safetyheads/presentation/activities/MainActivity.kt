@@ -11,12 +11,18 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
-import com.safetyheads.akademiaandroida.ActivitiesList.ListActivity
-import com.safetyheads.akademiaandroida.contactusform.ContactUsFragment
+import com.google.firebase.remoteconfig.FirebaseRemoteConfig
+import com.google.firebase.remoteconfig.FirebaseRemoteConfigSettings
+import com.safetyheads.akademiaandroida.R
 import com.safetyheads.akademiaandroida.databinding.ActivityMainBinding
-import com.safetyheads.akademiaandroida.font.FontSylesFragment
-import com.safetyheads.akademiaandroida.fragments.WeAreHiringFragment
-import com.safetyheads.akademiaandroida.splashscreen.SplashScreenViewModel
+import com.safetyheads.presentation.activities.activitieslist.ListActivity
+import com.safetyheads.presentation.activities.activitieslist.RootActivity
+import com.safetyheads.presentation.activities.splashscreen.SplashScreenViewModel
+import com.safetyheads.presentation.androidcomponents.Footer
+import com.safetyheads.presentation.fragments.contact_with_us.ContactUsFragment
+import com.safetyheads.presentation.fragments.font_style.FontSylesFragment
+import com.safetyheads.presentation.fragments.we_are_hiring.WeAreHiringFragment
+
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 

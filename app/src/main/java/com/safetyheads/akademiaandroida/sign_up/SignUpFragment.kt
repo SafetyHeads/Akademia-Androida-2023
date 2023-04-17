@@ -1,14 +1,14 @@
 package com.safetyheads.akademiaandroida.sign_up
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import com.safetyheads.akademiaandroida.databinding.FragmentSignUpBinding
-import com.safetyheads.akademiaandroida.utils.EmailValidator
-import com.safetyheads.akademiaandroida.utils.FullNameValidator
-import com.safetyheads.akademiaandroida.utils.PasswordValidator
+import com.safetyheads.presentation.utils.EmailValidator
+import com.safetyheads.presentation.utils.FullNameValidator
+import com.safetyheads.presentation.utils.PasswordValidator
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 //TODO:
@@ -32,8 +32,13 @@ class SignUpFragment : Fragment() {
 
         super.onViewCreated(view, savedInstanceState)
 
-        binding.buttonSignUp.setOnClickListener() {
-            viewModel.signUp(binding.eTextFullName.toString(), binding.eTextEmailAddress.toString(), binding.eTextPassword.toString(), binding.eTextConfirmPassword.toString())
+        binding.buttonSignUp.setOnClickListener {
+            viewModel.signUp(
+                binding.eTextFullName.toString(),
+                binding.eTextEmailAddress.toString(),
+                binding.eTextPassword.toString(),
+                binding.eTextConfirmPassword.toString()
+            )
         }
         FullNameValidator.attach(binding.eTextFullName, requireContext())
         EmailValidator.attach(binding.eTextEmailAddress)
