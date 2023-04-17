@@ -1,5 +1,5 @@
 plugins {
-    id 'com.android.application'
+    id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
 }
 
@@ -8,7 +8,6 @@ android {
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.safetyheads.akademiaandroida"
         minSdk 24
         targetSdk 33
         def VERSION_NAME_MAJOR = 1
@@ -18,23 +17,11 @@ android {
         versionName = "$NAME_APPLICATION $VERSION_NAME_MAJOR.$VERSION_NAME_MINOR.$VERSION_NAME_PATCH"
         versionCode = generateVersionCode(VERSION_NAME_MAJOR, VERSION_NAME_MINOR, VERSION_NAME_PATCH)
     }
+}
 
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-        }
-    }
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
-    kotlinOptions {
-        jvmTarget = '1.8'
-    }
-    buildFeatures {
-        viewBinding = true
-    }
+java {
+    sourceCompatibility JavaVersion.VERSION_1_8
+    targetCompatibility JavaVersion.VERSION_1_8
 }
 
 dependencies {
