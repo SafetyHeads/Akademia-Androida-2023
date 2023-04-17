@@ -2,12 +2,14 @@ package com.safetyheads.akademiaandroida.contactwithus
 
 import android.content.Intent
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.safetyheads.akademiaandroida.databinding.FragmentContactWithUsBinding
+import com.safetyheads.akademiaandroida.utils.getPackageInfoCompat
 
 class ContactWithUsFragment : Fragment() {
 
@@ -73,18 +75,22 @@ class ContactWithUsFragment : Fragment() {
         val openAplicationIntent = Intent(Intent.ACTION_VIEW).apply {
             when (currentlyOpen) {
                 SocialEnumClass.Facebook -> {
+                    val versionCode = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+                        (requireContext().packageManager.getPackageInfoCompat(
+                            currentlyOpen.applicationPackage, 0
+                        ).longVersionCode)
+                    } else {
+                        @Suppress("DEPRECATION")
+                        (requireContext().packageManager.getPackageInfoCompat(
+                            currentlyOpen.applicationPackage, 0
+                        ).versionCode.toLong())
+                    }
                     if (requireContext().packageManager.getLaunchIntentForPackage(
                             currentlyOpen.applicationPackage
                         ) != null
-                    ) if (
-                        (requireContext().packageManager.getPackageInfo(
-                            currentlyOpen.applicationPackage, 0
-                        ).versionCode) >= ContactWithUsObject.facebookVersionApp
-                    ) data =
-                        Uri.parse(
-                            ContactWithUsObject.facebookAppNewSH
-                                    + currentlyOpen.socialName
-                        )
+                    ) if (versionCode >= ContactWithUsObject.facebookVersionApp) data = Uri.parse(
+                        ContactWithUsObject.facebookAppNewSH + currentlyOpen.socialName
+                    )
                     else data = Uri.parse(ContactWithUsObject.facebookAppOldSH)
                     else data = Uri.parse(currentlyOpen.socialName)
                 }

@@ -41,16 +41,18 @@ class FragmentDropDownList : Fragment() {
             .root
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        val rotatedHalf = 180f
+        val rotatedEmpty = 0f
         binding?.apply {
             expendableListView.apply {
                 setAdapter(this@FragmentDropDownList.expandableListAdapter)
                 setOnGroupClickListener { parent, view, groupPosition, _ ->
                     if (parent.isGroupExpanded(groupPosition)) {
-                        view.findViewById<ImageView>(R.id.arrow).rotation = 0f
+                        view.findViewById<ImageView>(R.id.arrow).rotation = rotatedEmpty
                         view.findViewById<TextView>(R.id.dropdown_list_title)
                             .setTextColor(context.getColor(R.color.s_60))
                     } else {
-                        view.findViewById<ImageView>(R.id.arrow).rotation = 180f
+                        view.findViewById<ImageView>(R.id.arrow).rotation = rotatedHalf
                         view.findViewById<TextView>(R.id.dropdown_list_title)
                             .setTextColor(context.getColor(R.color.p_60))
                     }

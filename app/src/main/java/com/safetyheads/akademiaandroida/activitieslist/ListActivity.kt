@@ -11,6 +11,7 @@ import com.safetyheads.akademiaandroida.databinding.ActivityListBinding
 import com.safetyheads.akademiaandroida.dropdownlist.FragmentDropDownList
 import com.safetyheads.akademiaandroida.font.FontSylesFragment
 import com.safetyheads.akademiaandroida.fragments.WeAreHiringFragment
+import com.safetyheads.akademiaandroida.utils.getPackageInfoCompat
 
 class ListActivity : AppCompatActivity() {
     private lateinit var binding: ActivityListBinding
@@ -30,7 +31,8 @@ class ListActivity : AppCompatActivity() {
     }
 
     private fun createListActivity(): List<String> = buildList {
-        val packageInfo = packageManager.getPackageInfo(packageName, PackageManager.GET_ACTIVITIES)
+        val packageInfo =
+            packageManager.getPackageInfoCompat(packageName, PackageManager.GET_ACTIVITIES)
         val activities = packageInfo.activities
         val activityList = ArrayList<String>()
 
