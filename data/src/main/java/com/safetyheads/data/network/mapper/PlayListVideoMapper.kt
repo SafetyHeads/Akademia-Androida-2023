@@ -1,8 +1,8 @@
 package com.safetyheads.data.network.mapper
 
-import androidx.core.text.HtmlCompat
 import com.safetyheads.data.network.entities.playlistitems.PlayListItems
 import com.safetyheads.domain.entities.Video
+import org.jsoup.Jsoup
 
 class PlayListVideoMapper : BaseMapperRepository<PlayListItems, ArrayList<Video>> {
 
@@ -11,8 +11,8 @@ class PlayListVideoMapper : BaseMapperRepository<PlayListItems, ArrayList<Video>
 
         type.items.forEach { playlistItems ->
             val videoId: String = playlistItems.id
-            val videoTitle: String = HtmlCompat.fromHtml(playlistItems.snippet.title, HtmlCompat.FROM_HTML_MODE_LEGACY).toString()
-            val publishTime: String = HtmlCompat.fromHtml(playlistItems.snippet.publishedAt, HtmlCompat.FROM_HTML_MODE_LEGACY).toString()
+            val videoTitle: String = Jsoup.parse(playlistItems.snippet.title).text()
+            val publishTime: String = Jsoup.parse(playlistItems.snippet.publishedAt).text()
             val thumbnailsUrl: String = playlistItems.snippet.thumbnails.high.url
 
             val tempPlaylistItem = Video(

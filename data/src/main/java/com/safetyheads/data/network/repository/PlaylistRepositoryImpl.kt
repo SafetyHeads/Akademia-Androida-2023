@@ -4,7 +4,6 @@ import com.safetyheads.data.network.mapper.PlayListVideoMapper
 import com.safetyheads.data.network.mapper.PlaylistMapper
 import com.safetyheads.data.network.`object`.YouTubeApi
 import com.safetyheads.data.network.service.YouTubeService
-import com.safetyheads.datamodule.BuildConfig
 import com.safetyheads.domain.entities.Playlist
 import com.safetyheads.domain.entities.Video
 import com.safetyheads.domain.repositories.PlaylistRepository
@@ -15,7 +14,8 @@ import kotlinx.coroutines.flow.flow
 class PlaylistRepositoryImpl(
     private val youTubeService: YouTubeService,
     private val playListVideoMapper: PlayListVideoMapper,
-    private val playlistMapper: PlaylistMapper
+    private val playlistMapper: PlaylistMapper,
+    private val apiKey: String
 ) : PlaylistRepository {
 
     override suspend fun getPlayLists(): Flow<Result<ArrayList<Playlist>>> =
@@ -23,7 +23,7 @@ class PlaylistRepositoryImpl(
             val retrofitYouTubePlayLists =
                 youTubeService
                     .getPlayLists(
-                        BuildConfig.YOUTUBE_DATA_API_KEY,
+                        apiKey,
                         YouTubeApi.YOUTUBE_API_PART_PLAYLISTS,
                         YouTubeApi.YOUTUBE_CHANNEL_ID
                     )
@@ -38,7 +38,7 @@ class PlaylistRepositoryImpl(
             val retrofitYouTubePlayListItems =
                 youTubeService
                     .getPlayListItems(
-                        BuildConfig.YOUTUBE_DATA_API_KEY,
+                        apiKey,
                         YouTubeApi.YOUTUBE_API_PART_PLAYLIST_ITEMS,
                         playListID,
                         YouTubeApi.YOUTUBE_API_PLAYLIST_ITEMS_MAX_RESULT

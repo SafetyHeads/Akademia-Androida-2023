@@ -4,6 +4,7 @@ import android.app.Application
 import com.safetyheads.akademiaandroida.YouTube.viewModel.ChannelViewModel
 import com.safetyheads.akademiaandroida.YouTube.viewModel.PlayListViewModel
 import com.safetyheads.akademiaandroida.YouTube.viewModel.VideoViewModel
+import com.safetyheads.akademiaandroida.customlog.Log
 import com.safetyheads.akademiaandroida.dropdownlist.DropDownListViewModel
 import com.safetyheads.akademiaandroida.dropdownlist.LoadItemsToDropDownListUseCase
 import com.safetyheads.akademiaandroida.splashscreen.SplashScreenUseCase
@@ -13,6 +14,7 @@ import com.safetyheads.data.network.mapper.ChannelMapper
 import com.safetyheads.data.network.mapper.PlayListVideoMapper
 import com.safetyheads.data.network.mapper.PlaylistMapper
 import com.safetyheads.data.network.mapper.VideoMapper
+import com.safetyheads.data.network.`object`.CustomLog
 import com.safetyheads.data.network.`object`.YouTubeApi
 import com.safetyheads.data.network.repository.ChannelRepositoryImpl
 import com.safetyheads.data.network.repository.PlaylistRepositoryImpl
@@ -59,8 +61,11 @@ class AndroidAcademyApplication: Application() {
     }
 
     private val youtubeModule = module {
+        //customLog
+        single<CustomLog>{ Log() }
+
         //YouTubeService Singleton
-        single { ApiClient().create(YouTubeApi.YOUTUBE_API_BASE_URL, YouTubeService::class.java) }
+        single { ApiClient(BuildConfig.DEBUG, get()).create(YouTubeApi.YOUTUBE_API_BASE_URL, YouTubeService::class.java) }
 
         //mapper
         single { ChannelMapper() }
@@ -69,9 +74,9 @@ class AndroidAcademyApplication: Application() {
         single { VideoMapper() }
 
         //repository
-        single<VideoRepository>{ VideoRepositoryImpl(get(), get()) }
-        single<ChannelRepository>{ ChannelRepositoryImpl(get(), get()) }
-        single<PlaylistRepository>{ PlaylistRepositoryImpl(get(), get(), get()) }
+        single<VideoRepository>{ VideoRepositoryImpl(get(), get(), BuildConfig.YOUTUBE_DATA_API_KEY) }
+        single<ChannelRepository>{ ChannelRepositoryImpl(get(), get(), BuildConfig.YOUTUBE_DATA_API_KEY) }
+        single<PlaylistRepository>{ PlaylistRepositoryImpl(get(), get(), get(), BuildConfig.YOUTUBE_DATA_API_KEY) }
 
         //usecases
         single { GetChannelUseCase(get()) }
