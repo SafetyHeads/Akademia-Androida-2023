@@ -1,9 +1,8 @@
 package com.safetyheads.akademiaandroida
 
-import android.content.ContentValues.TAG
+
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.Toast
@@ -11,8 +10,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
-import com.google.firebase.remoteconfig.FirebaseRemoteConfig
-import com.google.firebase.remoteconfig.FirebaseRemoteConfigSettings
 import com.safetyheads.akademiaandroida.ActivitiesList.ListActivity
 import com.safetyheads.akademiaandroida.contactusform.ContactUsFragment
 import com.safetyheads.akademiaandroida.databinding.ActivityMainBinding
@@ -27,11 +24,14 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private val splashScreenViewModel: SplashScreenViewModel by viewModel()
     override fun onCreate(savedInstanceState: Bundle?) {
-        installSplashScreen()
+
         val splashScreen = installSplashScreen()
         splashScreen.setKeepOnScreenCondition {
-            splashScreenViewModel.delay.isActive
+            splashScreenViewModel.getConfig.isActive
         }
+        observeConfigChanges()
+
+
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -85,44 +85,30 @@ class MainActivity : AppCompatActivity() {
                 ViewGroup.LayoutParams.WRAP_CONTENT
             )
         )
-
-        //create instance Remote Config to firebase and download data
-        val remoteConfig = FirebaseRemoteConfig.getInstance()
-        val configSettings = FirebaseRemoteConfigSettings.Builder()
-            .setFetchTimeoutInSeconds(60)
-            .build()
-        remoteConfig.setConfigSettingsAsync(configSettings)
-        remoteConfig.setDefaultsAsync(R.xml.remote_config_defaults)
-
-        val versionCode = remoteConfig.getString("versionCode")
-        val apiUrl = remoteConfig.getString("apiUrl")
-
-        remoteConfig.fetchAndActivate()
-            .addOnCompleteListener(this) { task ->
-                if (task.isSuccessful) {
-                    val updated = task.result
-                    Log.d(TAG, "Config params updated: $updated")
-
-                    Toast.makeText(
-                        this,
-                        "versionCode:" + versionCode +
-                                "apiUrl:" + apiUrl,
-                        Toast.LENGTH_LONG
-                    ).show()
-
-                } else {
-                    Toast.makeText(
-                        this, "Fetch failed",
-                        Toast.LENGTH_SHORT
-                    ).show()
-                }
-            }
     }
 
     private fun openFragment(fragment: Fragment) {
         supportFragmentManager.beginTransaction().apply {
             replace(binding.frameLayout.id, fragment)
             commit()
+        }
+    }
+
+    private fun observeConfigChanges() {
+        splashScreenViewModel.config.observe(this) { config ->
+            Toast.makeText(
+                applicationContext,
+                "Version Code: ${config.versionCode} \n Api Url: ${config.apiUrl}",
+                Toast.LENGTH_LONG)
+                .show()
+        }
+
+        splashScreenViewModel.failureText.observe(this) { failureText ->
+            Toast.makeText(
+                applicationContext,
+                failureText,
+                Toast.LENGTH_LONG)
+                .show()
         }
     }
 }
