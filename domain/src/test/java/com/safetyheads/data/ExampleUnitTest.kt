@@ -1,4 +1,4 @@
-package com.safetyheads.domain
+package com.safetyheads.data
 
 import org.junit.Test
 

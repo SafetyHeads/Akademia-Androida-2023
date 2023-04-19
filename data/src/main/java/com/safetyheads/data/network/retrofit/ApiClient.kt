@@ -1,15 +1,11 @@
 package com.safetyheads.data.network.retrofit
 
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
-import com.safetyheads.data.network.`object`.CustomLog
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-class ApiClient(
-    private val buildConfigDebug: Boolean,
-    private val customLog: CustomLog
-) {
+class ApiClient(private val isDebug:Boolean, private val appLogger: AppLogger) {
 
     private val retrofitBuilders = mutableMapOf<String, Retrofit.Builder>()
 
@@ -32,8 +28,8 @@ class ApiClient(
     }
 
     private fun OkHttpClient.Builder.addDebugInterceptor(): OkHttpClient.Builder {
-        if (buildConfigDebug) {
-            addInterceptor(RetrofitInterceptor(customLog))
+        if (isDebug) {
+            addInterceptor(RetrofitInterceptor(appLogger))
         }
         return this
     }
