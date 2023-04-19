@@ -1,15 +1,14 @@
 package com.safetyheads.data.network.retrofit
 
-import android.util.Log
 import okhttp3.Interceptor
 import okhttp3.Response
 
-class RetrofitInterceptor: Interceptor {
+class RetrofitInterceptor(private val appLogger: AppLogger) : Interceptor {
     override fun intercept(chain: Interceptor.Chain): Response {
         val request = chain.request()
-        Log.d("Retrofit", "Sending request: $request")
+        appLogger.d("Retrofit", "Sending request: $request")
         val response = chain.proceed(request)
-        Log.d("Retrofit", "Received response: ${response.body()?.string()}")
+        appLogger.d("Retrofit", "Received response: ${response.body()?.string()}")
         return response
     }
 }
