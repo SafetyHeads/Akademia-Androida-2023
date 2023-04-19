@@ -9,5 +9,6 @@ java {
 }
 dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.0")
+    implementation 'com.google.firebase:firebase-config-ktx:21.3.0'
     testImplementation 'junit:junit:4.13.2'
 }

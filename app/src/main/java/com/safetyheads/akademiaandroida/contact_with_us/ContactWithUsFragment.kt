@@ -97,8 +97,10 @@ class ContactWithUsFragment : Fragment() {
     private fun socialOpen() {
         if (requireContext().packageManager.getLaunchIntentForPackage(currentlyOpen.applicationPackage) != null)
             startActivity(openActivity())
-        else
+        else if (requireContext().packageManager.getLaunchIntentForPackage(ContactWithUsObject.googlePlayPackage) != null)
             openDialog()
+        else
+            startActivity(openActivity())
     }
 
     private fun openDialog() {
