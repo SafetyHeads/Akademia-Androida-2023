@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <style name="companyTabLayout">
         <item name="tabIndicatorColor">@color/p_60</item>
         <item name="tabRippleColor">@color/n_60</item>
@@ -7,6 +8,7 @@
         <item name="tabTextColor">@color/n_120</item>
         <item name="tabMode">scrollable</item>
     </style>
+
     <style name="tabLabelText">
         <item name="android:textSize">14sp</item>
     </style>
@@ -164,6 +166,17 @@
         <item name="android:textColor">@color/white</item>
     </style>
 
+    <style name="StyledButton2" parent="@android:style/TextAppearance.Small">
+        <item name="layoutWidth">match_parent</item>
+        <item name="android:height">40dp</item>
+        <item name="android:textSize">10sp</item>
+        <item name="android:textColor">@color/s_60</item>
+        <item name ="android:background">@drawable/border</item>
+        <item name="android:fontFamily">@font/poppins_semibold</item>
+        <item name="cornerRadius">@dimen/size_3x</item>
+        <item name="rippleColor">@color/n_90</item>
+    </style>
+
     <!-- Logo SafetyHeads -->
     <style name="Logo_safetyheads">
         <item name="android:layout_width">24dp</item>
@@ -214,6 +227,11 @@
     <!-- TextInputEditText password -->
     <style name="EText_password" parent="TextAppearance.AppCompat">
         <item name="android:inputType">textPassword</item>
+    </style>
+
+    <style name="Widget.Theme.AkademiaAndroida.MyView" parent="">
+        <item name="android:background">@color/gray_400</item>
+        <item name="exampleColor">@color/light_blue_400</item>
     </style>
 
 </resources>

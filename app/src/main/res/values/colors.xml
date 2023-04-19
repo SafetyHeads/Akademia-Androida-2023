@@ -11,7 +11,7 @@
     <!-- First-order colors -->
     <color name="p_100">#2f3b24</color>
     <color name="p_90">#455833</color>
-    <color name="p_80" >#5b7742</color>
+    <color name="p_80">#5b7742</color>
     <color name="p_70">#739752</color>
     <color name="p_60">#8bb863</color>
     <color name="p_50">#9fc47c</color>
@@ -42,7 +42,11 @@
     <color name="n_70">#c3c4c4</color>
     <color name="n_60">#eff0f1</color>
     <color name="n_0">#ffffff</color>
-    
+
     <!-- Error color -->
     <color name="e_60">#a70000</color>
+    <color name="light_blue_400">#FF29B6F6</color>
+    <color name="light_blue_600">#FF039BE5</color>
+    <color name="gray_400">#FFBDBDBD</color>
+    <color name="gray_600">#FF757575</color>
 </resources>
