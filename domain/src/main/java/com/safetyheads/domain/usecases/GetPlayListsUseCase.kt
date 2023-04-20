@@ -6,11 +6,9 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
 class GetPlayListsUseCase(private val playlistRepository: PlaylistRepository):
-    BaseUseCase<GetPlayListsUseCase.PlayListsParam, ArrayList<Playlist>> {
+    ParameterlessBaseUseCase<ArrayList<Playlist>> {
 
-    class PlayListsParam : BaseUseCase.Params
-
-    override suspend fun invoke(parameter: PlayListsParam): Flow<Result<ArrayList<Playlist>>> {
+    override suspend fun invoke(): Flow<Result<ArrayList<Playlist>>> {
         return flow {
             try {
                 playlistRepository.getPlayLists().collect { playlists ->

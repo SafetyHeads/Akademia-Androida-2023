@@ -6,11 +6,9 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
 class GetChannelUseCase(private val channelRepository: ChannelRepository):
-    BaseUseCase<GetChannelUseCase.ChannelParam, Channel> {
+    ParameterlessBaseUseCase<Channel> {
 
-    class ChannelParam: BaseUseCase.Params
-
-    override suspend fun invoke(parameter: ChannelParam): Flow<Result<Channel>> {
+    override suspend fun invoke(): Flow<Result<Channel>> {
         return flow {
             try {
                 channelRepository.getChannel().collect { channel ->
