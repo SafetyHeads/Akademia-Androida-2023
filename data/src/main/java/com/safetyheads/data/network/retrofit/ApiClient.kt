@@ -5,7 +5,9 @@ import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-class ApiClient(private val isDebug:Boolean, private val appLogger: AppLogger) {
+class ApiClient(private val isDebug: Boolean,
+                private val appLogger: AppLogger
+) {
 
     private val retrofitBuilders = mutableMapOf<String, Retrofit.Builder>()
 

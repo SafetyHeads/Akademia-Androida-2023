@@ -1,16 +1,41 @@
 package com.safetyheads.akademiaandroida
 
 import android.app.Application
+import android.util.Log
+import com.safetyheads.akademiaandroida.YouTube.viewModel.ChannelViewModel
+import com.safetyheads.akademiaandroida.YouTube.viewModel.PlayListViewModel
+import com.safetyheads.akademiaandroida.YouTube.viewModel.VideoViewModel
+import com.safetyheads.akademiaandroida.data.FirebaseConfigRepository
 import com.safetyheads.akademiaandroida.dropdownlist.DropDownListViewModel
 import com.safetyheads.akademiaandroida.dropdownlist.LoadItemsToDropDownListUseCase
-import com.safetyheads.domain.usecases.DelaySplashScreenUseCase
 import com.safetyheads.akademiaandroida.splashscreen.SplashScreenViewModel
-import com.safetyheads.akademiaandroida.data.FirebaseConfigRepository
+import com.safetyheads.data.network.mapper.ChannelMapper
+import com.safetyheads.data.network.mapper.PlayListVideoMapper
+import com.safetyheads.data.network.mapper.PlaylistMapper
+import com.safetyheads.data.network.mapper.VideoMapper
+import com.safetyheads.data.network.`object`.YouTubeApi
+import com.safetyheads.data.network.repository.ChannelRepositoryImpl
+import com.safetyheads.data.network.repository.PlaylistRepositoryImpl
+import com.safetyheads.data.network.repository.VideoRepositoryImpl
+import com.safetyheads.data.network.retrofit.ApiClient
+import com.safetyheads.data.network.retrofit.AppLogger
+import com.safetyheads.data.network.service.YouTubeService
+import com.safetyheads.domain.repositories.ChannelRepository
 import com.safetyheads.domain.repositories.ConfigRepository
+import com.safetyheads.domain.repositories.PlaylistRepository
+import com.safetyheads.domain.repositories.VideoRepository
+import com.safetyheads.domain.usecases.DateUseCase
+import com.safetyheads.domain.usecases.DateUseCaseImpl
+import com.safetyheads.domain.usecases.DelaySplashScreenUseCase
+import com.safetyheads.domain.usecases.GetChannelUseCase
 import com.safetyheads.domain.usecases.GetConfigUseCase
+import com.safetyheads.domain.usecases.GetPlayListItemsUseCase
+import com.safetyheads.domain.usecases.GetPlayListsUseCase
+import com.safetyheads.domain.usecases.GetVideoUseCase
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.androidx.viewmodel.dsl.viewModel
+import org.koin.androidx.viewmodel.dsl.viewModelOf
 import org.koin.core.context.startKoin
 import org.koin.dsl.module
 
@@ -24,18 +49,6 @@ class AndroidAcademyApplication: Application() {
             androidContext(this@AndroidAcademyApplication)
             modules(listOf(appModule, networkModule))
         }
-    }
-
-    private val networkModule = module {
-        single<AppLogger> {
-            object : AppLogger {
-                override fun d(tag: String, message: String) {
-                    Log.d(tag, message)
-                }
-
-            }
-        }
-        single { ApiClient(BuildConfig.DEBUG, get()) }
     }
 
     private val appModule = module {
@@ -52,9 +65,15 @@ class AndroidAcademyApplication: Application() {
         viewModel{ DropDownListViewModel(get()) }
     }
 
-    private val youtubeModule = module {
-        //customLog
-        single<CustomLog>{ Log() }
+    private val networkModule = module {
+        //AppLogger
+        single<AppLogger> {
+            object : AppLogger {
+                override fun d(tag: String, message: String) {
+                    Log.d(tag, message)
+                }
+            }
+        }
 
         //YouTubeService Singleton
         single { ApiClient(BuildConfig.DEBUG, get()).create(YouTubeApi.YOUTUBE_API_BASE_URL, YouTubeService::class.java) }

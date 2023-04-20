@@ -5,7 +5,8 @@ import com.safetyheads.domain.repositories.PlaylistRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
-class GetPlayListItemsUseCase(private val playlistRepository: PlaylistRepository): BaseUseCase<GetPlayListItemsUseCase.PlayListItemsParams, ArrayList<Video>> {
+class GetPlayListItemsUseCase(private val playlistRepository: PlaylistRepository):
+    BaseUseCase<GetPlayListItemsUseCase.PlayListItemsParams, ArrayList<Video>> {
 
     class PlayListItemsParams(val playListId: String): BaseUseCase.Params
 

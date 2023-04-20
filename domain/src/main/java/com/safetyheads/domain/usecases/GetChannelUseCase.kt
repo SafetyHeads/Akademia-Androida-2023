@@ -5,7 +5,8 @@ import com.safetyheads.domain.repositories.ChannelRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
-class GetChannelUseCase(private val channelRepository: ChannelRepository): BaseUseCase<GetChannelUseCase.ChannelParam, Channel> {
+class GetChannelUseCase(private val channelRepository: ChannelRepository):
+    BaseUseCase<GetChannelUseCase.ChannelParam, Channel> {
 
     class ChannelParam: BaseUseCase.Params
 

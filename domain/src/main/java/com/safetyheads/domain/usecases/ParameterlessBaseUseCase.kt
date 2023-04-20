@@ -1,6 +1,5 @@
 package com.safetyheads.domain.usecases
 
-import com.safetyheads.data.usecases.BaseUseCase
 import kotlinx.coroutines.flow.Flow
 
 

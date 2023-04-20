@@ -8,7 +8,7 @@ class RetrofitInterceptor(private val appLogger: AppLogger) : Interceptor {
         val request = chain.request()
         appLogger.d("Retrofit", "Sending request: $request")
         val response = chain.proceed(request)
-        appLogger.d("Retrofit", "Received response: ${response.body()?.string()}")
+        appLogger.d("Retrofit", "Received response: ${response.body()}")
         return response
     }
 }

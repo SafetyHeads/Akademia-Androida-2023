@@ -1,4 +1,4 @@
-package com.safetyheads.data.entities
+package com.safetyheads.domain.entities
 
 data class Video(
     val videoId: String = "",
