@@ -15,7 +15,7 @@ class GetConfigUseCase(private val repository: ConfigRepository):
                 repository.getConfig().collect { config ->
                     emit(Result.success(config))
                 }
-            } catch (error: Exception) {
+            } catch (error: IllegalStateException) {
                 emit(
                     Result.failure(error)
                 )

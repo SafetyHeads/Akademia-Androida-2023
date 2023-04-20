@@ -12,10 +12,10 @@ class GetVideoUseCase(private val repository: VideoRepository): BaseUseCase<GetV
     override suspend fun invoke(parameter: VideoParam): Flow<Result<Video>> {
         return flow {
             try {
-                repository.getVideo(parameter.videoId).collect{ video ->
+                repository.getVideo(parameter.videoId).collect { video ->
                     emit(Result.success(video))
                 }
-            }   catch (error: Exception) {
+            } catch (error: IllegalStateException) {
                 emit(Result.failure(error))
             }
         }
