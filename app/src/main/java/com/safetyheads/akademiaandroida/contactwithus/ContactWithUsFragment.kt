@@ -20,7 +20,9 @@ class ContactWithUsFragment : Fragment() {
     private var goToInstal = false
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View {
         binding = FragmentContactWithUsBinding.inflate(inflater, container, false)
         return binding.root
@@ -110,11 +112,12 @@ class ContactWithUsFragment : Fragment() {
     }
 
     private fun socialOpen() {
-        if (requireContext().packageManager.getLaunchIntentForPackage(
-                currentlyOpen.applicationPackage
-            ) != null
-        ) startActivity(openActivity())
-        else openDialog()
+        if (requireContext().packageManager.getLaunchIntentForPackage(currentlyOpen.applicationPackage) != null)
+            startActivity(openActivity())
+        else if (requireContext().packageManager.getLaunchIntentForPackage(ContactWithUsObject.googlePlayPackage) != null)
+            openDialog()
+        else
+            startActivity(openActivity())
     }
 
     private fun openDialog() {
