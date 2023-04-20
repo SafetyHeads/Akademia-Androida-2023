@@ -17,22 +17,18 @@ class VideoRepositoryImpl(
 
     override suspend fun getVideo(previousFilmDate: String): Flow<Result<Video>> =
         flow {
-            try {
-                val retrofitYouTubeVideo =
-                    youTubeService
-                        .getVideo(
-                            apiKey,
-                            YouTubeApi.YOUTUBE_CHANNEL_ID,
-                            YouTubeApi.YOUTUBE_API_PART_VIDEO,
-                            YouTubeApi.YOUTUBE_API_ORDER,
-                            YouTubeApi.YOUTUBE_API_VIDEO_MAX_RESULTS,
-                            previousFilmDate
-                        )
-                val video: Video = videoMapper.transform(retrofitYouTubeVideo)
-                emit(Result.success(video))
-            } catch (e: Exception) {
-                e.printStackTrace()
-            }
+            val retrofitYouTubeVideo =
+                youTubeService
+                    .getVideo(
+                        apiKey,
+                        YouTubeApi.YOUTUBE_CHANNEL_ID,
+                        YouTubeApi.YOUTUBE_API_PART_VIDEO,
+                        YouTubeApi.YOUTUBE_API_ORDER,
+                        YouTubeApi.YOUTUBE_API_VIDEO_MAX_RESULTS,
+                        previousFilmDate
+                    )
+            val video: Video = videoMapper.transform(retrofitYouTubeVideo)
+            emit(Result.success(video))
         }.catch { exception ->
             emit(Result.failure(exception))
         }
