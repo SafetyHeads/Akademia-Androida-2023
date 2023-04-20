@@ -12,6 +12,7 @@ import com.safetyheads.akademiaandroida.dropdownlist.FragmentDropDownList
 import com.safetyheads.akademiaandroida.font.FontSylesFragment
 import com.safetyheads.akademiaandroida.forgotpasswordfragment.ForgotPasswordFragment
 import com.safetyheads.akademiaandroida.fragments.WeAreHiringFragment
+import com.safetyheads.akademiaandroida.login.LoginFragment
 
 class ListActivity : AppCompatActivity() {
     private lateinit var binding: ActivityListBinding
@@ -55,6 +56,7 @@ class ListActivity : AppCompatActivity() {
     val experienceStructureFragment = ExperienceStructureFragment()
     val fragmentDropDownList = FragmentDropDownList()
     val forgotPasswordFragment = ForgotPasswordFragment()
+    val loginFragment = LoginFragment()
 
     val dataListFragments = listOf(
         fontSylesFragment,
@@ -63,6 +65,7 @@ class ListActivity : AppCompatActivity() {
         clientsFragment,
         experienceStructureFragment,
         fragmentDropDownList,
+        loginFragment,
         forgotPasswordFragment
     )
 }
