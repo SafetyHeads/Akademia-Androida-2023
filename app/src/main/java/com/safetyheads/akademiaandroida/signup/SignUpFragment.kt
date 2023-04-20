@@ -34,7 +34,6 @@ class SignUpFragment : Fragment() {
                 binding.eTextFullName.toString(),
                 binding.eTextEmailAddress.toString(),
                 binding.eTextPassword.toString(),
-                binding.eTextConfirmPassword.toString()
             )
         }
         FullNameValidator.attach(binding.eTextFullName, requireContext())
