@@ -29,17 +29,18 @@ class LoginFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val isSuccessFromForgotPass = arguments?.getBoolean("isSuccess")
 
-        if (isSuccessFromForgotPass != null)
-            if (isSuccessFromForgotPass) {
-                LoginSnackBar.make(
-                    binding.root,
-                    message = requireActivity().getString(R.string.we_have_emailed_your_password_reset_link)
-                ).show()
-            }
+        if (isSuccessFromForgotPass == true) {
+            LoginSnackBar.make(
+                binding.root,
+                message = requireActivity().getString(R.string.we_have_emailed_your_password_reset_link)
+            ).show()
+        }
+        
         EmailValidator.attach(binding.eTextEmailAddress)
         PasswordValidator.attach(binding.eTextPassword, requireContext())
         binding.forgotPassword.setOnClickListener {
-            val action = LoginFragmentDirections.actionLoginFragmentToForgotPasswordFragment(false)
+            val action =
+                LoginFragmentDirections.actionLoginFragmentToForgotPasswordFragment(false)
             findNavController().navigate(action)
         }
     }
