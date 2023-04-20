@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:context=".sign_up.SignUpFragment"
+        tools:context="com.safetyheads.presentation.fragments.SignUpFragment"
         android:layout_margin="@dimen/size_3x">
 
         <ImageView

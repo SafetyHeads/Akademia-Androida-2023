@@ -22,7 +22,6 @@ import com.safetyheads.presentation.androidcomponents.Footer
 import com.safetyheads.presentation.fragments.contact_with_us.ContactUsFragment
 import com.safetyheads.presentation.fragments.font_style.FontSylesFragment
 import com.safetyheads.presentation.fragments.we_are_hiring.WeAreHiringFragment
-
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 

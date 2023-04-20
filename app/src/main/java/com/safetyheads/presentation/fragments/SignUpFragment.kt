@@ -1,4 +1,4 @@
-package com.safetyheads.akademiaandroida.sign_up
+package com.safetyheads.presentation.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.safetyheads.akademiaandroida.databinding.FragmentSignUpBinding
+import com.safetyheads.akademiaandroida.sign_up.SignUpViewModel
 import com.safetyheads.presentation.utils.EmailValidator
 import com.safetyheads.presentation.utils.FullNameValidator
 import com.safetyheads.presentation.utils.PasswordValidator
