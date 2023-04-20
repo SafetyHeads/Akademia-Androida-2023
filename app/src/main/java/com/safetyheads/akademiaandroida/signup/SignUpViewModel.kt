@@ -8,7 +8,7 @@ import kotlinx.coroutines.launch
 class SignUpViewModel (
     private val registerUseCase: RegisterUseCase
     ) : ViewModel() {
-    fun signUp(fullName: String, emailAddress: String, password: String, confirmedPassword: String) {
+    fun signUp(fullName: String, emailAddress: String, password: String) {
 
         val createUser = viewModelScope.launch {
             registerUseCase.invoke(RegisterUseCase.UserParams(fullName, emailAddress, password))
