@@ -77,7 +77,7 @@ class MainActivity : AppCompatActivity() {
         val crashButton = Button(this)
         crashButton.text = "Test Crash"
         crashButton.setOnClickListener {
-            throw RuntimeException("Test Crash") // Force a crash
+            throw IllegalStateException("Test Crash") // Force a crash
         }
         addContentView(
             crashButton, ViewGroup.LayoutParams(

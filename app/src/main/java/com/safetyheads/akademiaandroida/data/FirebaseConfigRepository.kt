@@ -28,7 +28,7 @@ class FirebaseConfigRepository: ConfigRepository {
         if (isSuccess || isDataDownloaded) {
             emit(Config(versionCode, apiUrl))
         } else {
-            throw Exception("Cannot access Config")
+            error("Cannot access Config")
         }
     }
 }
