@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/launchScreenFragment">
+
+    <fragment
+        android:id="@+id/launchScreenFragment"
+        android:name="com.safetyheads.presentation.fragments.launchsreen.LaunchScreenFragment"
+        android:label="fragment_launchScreen"
+        tools:layout="@layout/fragment_launch_screen">
+        <action
+            android:id="@+id/action_LaunchScreenFragment_to_notlogged_placeholder"
+            app:destination="@id/notlogged_placeholder" />
+        <action
+            android:id="@+id/action_LaunchScreenFragment_to_login_placeholder"
+            app:destination="@id/login_fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/notlogged_placeholder"
+        android:name="com.safetyheads.presentation.customviews.NotloggedPlaceholder"
+        android:label="fragment_notlogged_placeholder"
+        tools:layout="@layout/fragment_notlogged_placeholder">
+        <action
+            android:id="@+id/action_notlogged_placeholder_to_launchScreenFragment"
+            app:destination="@id/launchScreenFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/login_fragment"
+        android:name="com.safetyheads.presentation.fragments.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login">
+        <action
+            android:id="@+id/action_login_placeholder_to_dashboard_placeholder"
+            app:destination="@id/dashboard_placeholder" />
+        <action
+            android:id="@+id/action_login_placeholder_to_launchScreenFragment"
+            app:destination="@id/launchScreenFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/dashboard_placeholder"
+        android:name="com.safetyheads.presentation.customviews.DashboardPlaceholder"
+        android:label="fragment_dashboard_placeholder"
+        tools:layout="@layout/fragment_dashboard_placeholder" />
+</navigation>

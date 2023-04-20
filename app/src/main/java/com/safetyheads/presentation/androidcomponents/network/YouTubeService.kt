@@ -1,3 +1,0 @@
-package com.safetyheads.presentation.androidcomponents.network
-
-interface YouTubeService

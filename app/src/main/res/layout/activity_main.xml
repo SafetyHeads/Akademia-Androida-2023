@@ -5,7 +5,7 @@
     android:id="@+id/footer_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.safetyheads.presentation.activities.MainActivity">
+    tools:context=".presentation.ui.MainActivity">
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragmentContainerView"
@@ -36,7 +36,7 @@
             android:layout_marginTop="150dp"
             android:text="Preview we are hiring fragment" />
 
-        <com.safetyheads.presentation.androidcomponents.BackArrowView
+        <com.safetyheads.akademiaandroida.presentation.ui.components.BackArrowView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/back_arrow_view"

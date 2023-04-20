@@ -4,7 +4,6 @@ plugins {
     id 'com.google.gms.google-services'
     id 'com.google.firebase.crashlytics'
     id 'io.gitlab.arturbosch.detekt'
-    id 'androidx.navigation.safeargs.kotlin'
 }
 
 android {
@@ -81,7 +80,6 @@ dependencies {
 
     implementation 'com.google.firebase:firebase-crashlytics-ktx:18.3.6'
     implementation 'com.google.firebase:firebase-analytics-ktx:21.2.1'
-    implementation 'com.google.firebase:firebase-auth-ktx:21.2.0'
 
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.0'
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4'
@@ -123,7 +121,6 @@ dependencies {
     // coroutine
     implementation('org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4')
     implementation('org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.2')
-
 
 }
 
