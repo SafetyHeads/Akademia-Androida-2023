@@ -20,7 +20,7 @@ class TextExpandableListAdapter(private val context: Context, list: List<ParentM
     override fun getGroupView(parentPosition: Int, isExpanded: Boolean, convertView: View?, parent: ViewGroup): View {
         val parentInfo = getGroup(parentPosition)
 
-        return convertView ?: LayoutInflater.from(context).inflate(R.layout.dropdown_list_parent_item, null).apply {
+        return (convertView ?: LayoutInflater.from(context).inflate(R.layout.dropdown_list_parent_item, null)).apply {
             findViewById<TextView>(R.id.dropdown_list_title).text = parentInfo.name
         }
     }
@@ -28,7 +28,7 @@ class TextExpandableListAdapter(private val context: Context, list: List<ParentM
     override fun getChildView(parentPosition: Int, childPosition: Int, isLastChild: Boolean, convertView: View?, parent: ViewGroup): View {
         val childInfo = getChild(parentPosition, childPosition)
 
-        return convertView ?: LayoutInflater.from(context).inflate(R.layout.dropdown_list_child_item, null).apply {
+        return (convertView ?: LayoutInflater.from(context).inflate(R.layout.dropdown_list_child_item, null)).apply {
             findViewById<TextView>(R.id.itemList).text = childInfo.name
         }
     }
