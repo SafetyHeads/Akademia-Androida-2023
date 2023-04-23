@@ -185,15 +185,15 @@
         <item name="android:textColor">@color/white</item>
     </style>
 
-    <style name="StyledButton2" parent="@android:style/TextAppearance.Small">
+    <style name="JobOfferButton" parent="@android:style/TextAppearance.Small">
         <item name="layoutWidth">match_parent</item>
         <item name="android:height">40dp</item>
         <item name="android:textSize">10sp</item>
         <item name="android:textColor">@color/s_60</item>
-        <item name ="android:background">@drawable/border</item>
+        <item name ="android:background">@drawable/job_offer_border</item>
         <item name="android:fontFamily">@font/poppins_semibold</item>
         <item name="cornerRadius">@dimen/size_3x</item>
-        <item name="rippleColor">@color/n_90</item>
+
     </style>
 
     <!-- Logo SafetyHeads -->

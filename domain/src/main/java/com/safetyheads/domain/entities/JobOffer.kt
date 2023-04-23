@@ -5,5 +5,6 @@ data class JobOffer(
     val jobTitle: String,
     val jobTechnology: String,
     val jobExperience: String,
-    val jobSalary: String
+    val jobSalary: String,
+    val jobUrl: String
 )

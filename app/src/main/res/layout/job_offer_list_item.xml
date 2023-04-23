@@ -5,6 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     app:cardCornerRadius="8dp"
+    android:layout_marginTop="@dimen/size"
+    android:outlineSpotShadowColor="@color/white"
     android:backgroundTint="@color/n_60">
 
     <LinearLayout
@@ -25,8 +27,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/size_0.5x"
                 style="@style/Text"
-                android:textColor="@color/s_60"
-                android:text="Frontend Developer" />
+                android:textColor="@color/s_60" />
 
             <TextView
                 android:id="@+id/jobTechnologies"
@@ -34,8 +35,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/size_0.5x"
                 style="@style/Text2"
-                android:textColor="@color/s_60"
-                android:text="(Angular, Azure, JS/TS)" />
+                android:textColor="@color/s_60" />
 
             <TextView
                 android:id="@+id/jobExperience"
@@ -43,30 +43,25 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/size_0.5x"
                 style="@style/Text2"
-                android:textColor="@color/n_120"
-                android:text="Regular / Senior" />
+                android:textColor="@color/n_120" />
 
             <TextView
                 android:id="@+id/jobSalary"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 style="@style/Text2"
-                android:textColor="@color/n_120"
-                android:text="B2B: 80 - 160 zł" />
+                android:textColor="@color/n_120" />
 
         </LinearLayout>
 
         <Button
+            android:id="@+id/button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="4"
-            style="@style/StyledButton2"
-            android:text="See the offer"/>
-
-
+            style="@style/JobOfferButton"
+            android:text="@string/see_the_offer"/>
 
     </LinearLayout>
-
-
 
 </androidx.cardview.widget.CardView>

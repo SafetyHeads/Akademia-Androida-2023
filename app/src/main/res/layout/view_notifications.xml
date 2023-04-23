@@ -48,8 +48,7 @@
         android:layout_height="wrap_content"
         android:paddingStart="@dimen/size_4.5x"
         android:paddingEnd="0dp"
-        android:paddingBottom="@dimen/size_3x"
-        android:visibility="gone">
+        android:paddingBottom="@dimen/size_3x">
 
         <LinearLayout
             android:id="@+id/linearLayout3"
@@ -65,7 +64,7 @@
                 style="@style/Text2_semibold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Stay up to date with"
+                android:text="@string/stay_up_to_date_with"
                 android:textColor="@color/p_60"
                 android:textSize="16sp" />
 
@@ -75,14 +74,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="-15dp"
-                android:text="our job offers"
+                android:text="@string/our_job_offers"
                 android:textColor="@color/p_60"
                 android:textSize="24sp" />
 
         </LinearLayout>
 
-
         <Switch
+            android:id="@+id/switchButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:scaleX="1.5"
@@ -95,12 +94,5 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     </LinearLayout>
-
-
-
-
-
-
-
 
 </androidx.cardview.widget.CardView>

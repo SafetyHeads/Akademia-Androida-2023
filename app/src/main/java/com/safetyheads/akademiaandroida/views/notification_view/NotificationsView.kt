@@ -1,4 +1,4 @@
-package com.safetyheads.akademiaandroida
+package com.safetyheads.akademiaandroida.views.notification_view
 
 import android.animation.LayoutTransition
 import android.content.Context
@@ -7,8 +7,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.widget.FrameLayout
 import com.safetyheads.akademiaandroida.databinding.ViewNotificationsBinding
-import com.safetyheads.domain.entities.Settings
-import com.safetyheads.domain.repositories.SettingsRepository
 
 
 class NotificationsView @JvmOverloads constructor(
@@ -23,7 +21,8 @@ class NotificationsView @JvmOverloads constructor(
         true
     )
 
-    fun setOnClickListener() {
+
+    fun initOnClickListeners() {
         binding.arrow.setOnClickListener {
             val contentVisibility = binding.expandableContent.visibility
             if(contentVisibility == View.GONE) {
@@ -40,5 +39,15 @@ class NotificationsView @JvmOverloads constructor(
 
     fun setText(resIdText: Int) {
         binding.titleText.text = resources.getString(resIdText)
+    }
+
+    fun switchButtonListener(x: (isChecked: Boolean) -> Any) {
+        binding.switchButton.setOnCheckedChangeListener { _, isChecked ->
+            x(isChecked)
+        }
+    }
+
+    fun setSwitchButton(value: Boolean) {
+        binding.switchButton.isChecked = value
     }
 }

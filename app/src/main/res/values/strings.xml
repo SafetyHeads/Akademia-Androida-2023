@@ -75,4 +75,9 @@
     <string name="password">Password</string>
     <string name="forgot_password"> <u>Forgot password?</u> </string>
     <string name="dot_enumeration">•</string>
+    <string name="job_offers">Job offers</string>
+    <string name="we_are_waiting_for_you_check_out_our_open_positions_and_join_us">We are waiting for you! Check out our open positions and join us.</string>
+    <string name="stay_up_to_date_with">Stay up to date with</string>
+    <string name="our_job_offers">our job offers</string>
+    <string name="see_the_offer">See the offer</string>
 </resources>
