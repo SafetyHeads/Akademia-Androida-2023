@@ -37,10 +37,25 @@
         <action
             android:id="@+id/action_login_placeholder_to_launchScreenFragment"
             app:destination="@id/launchScreenFragment" />
+        <action
+            android:id="@+id/action_login_fragment_to_forgot_password_fragment"
+            app:destination="@id/forgot_password_fragment" />
     </fragment>
     <fragment
         android:id="@+id/dashboard_placeholder"
         android:name="com.safetyheads.akademiaandroida.DashboardPlaceholder"
         android:label="fragment_dashboard_placeholder"
         tools:layout="@layout/fragment_dashboard_placeholder" />
+    <fragment
+        android:id="@+id/forgot_password_fragment"
+        android:name="com.safetyheads.akademiaandroida.forgotpasswordfragment.ForgotPasswordFragment"
+        android:label="fragment_dashboard_placeholder"
+        tools:layout="@layout/fragment_dashboard_placeholder">
+        <action
+            android:id="@+id/action_forgot_password_fragment_to_login_fragment"
+            app:destination="@id/login_fragment" />
+        <argument
+            android:name="isSuccess"
+            app:argType="boolean" />
+    </fragment>
 </navigation>

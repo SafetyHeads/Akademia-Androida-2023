@@ -207,8 +207,7 @@
     </style>
 
     <!-- TextInputEditText full name -->
-    <style name="EText_full_name" parent="TextAppearance.AppCompat">
-    </style>
+    <style name="EText_full_name" parent="TextAppearance.AppCompat"></style>
 
     <!-- TextInputLayout email address -->
     <style name="Layout_eText_email_address" parent="TextAppearance.AppCompat">
@@ -239,4 +238,14 @@
         <item name="android:inputType">textPassword</item>
     </style>
 
+    <!-- Snackbar_text_style -->
+    <style name="Snackbar_text_style">
+        <item name="android:fontFamily">@font/poppins_regular</item>
+        <item name="android:textColor">@color/n_0</item>
+        <item name="android:textAlignment">textStart</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:alpha">0.87</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:lineSpacingExtra">2sp</item>
+    </style>
 </resources>

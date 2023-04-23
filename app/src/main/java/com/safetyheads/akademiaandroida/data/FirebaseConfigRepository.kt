@@ -8,7 +8,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.tasks.await
 
-class FirebaseConfigRepository: ConfigRepository {
+class FirebaseConfigRepository : ConfigRepository {
 
     private val remoteConfig = FirebaseRemoteConfig.getInstance()
     private val configSettings = FirebaseRemoteConfigSettings.Builder()
