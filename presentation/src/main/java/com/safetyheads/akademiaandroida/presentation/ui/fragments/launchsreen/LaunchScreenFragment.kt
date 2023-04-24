@@ -1,5 +1,4 @@
-package com.safetyheads.akademiaandroida.presentation.ui.fragments.launchsreen
-
+package com.safetyheads.akademiaandroida.launchscreen
 import android.os.Bundle
 import android.text.Spannable
 import android.text.SpannableString
@@ -10,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.navigation.Navigation.findNavController
 import com.safetyheads.akademiaandroida.R
 import com.safetyheads.akademiaandroida.databinding.FragmentLaunchScreenBinding
 import com.safetyheads.akademiaandroida.presentation.ui.components.Footer
@@ -17,11 +17,7 @@ import com.safetyheads.akademiaandroida.presentation.ui.components.Footer
 class LaunchScreenFragment : Fragment() {
     private lateinit var binding: FragmentLaunchScreenBinding
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = FragmentLaunchScreenBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -48,5 +44,11 @@ class LaunchScreenFragment : Fragment() {
         childFragmentManager.beginTransaction()
             .add(R.id.parent_layout, Footer())
             .commit()
+        binding.txtSign.setOnClickListener {
+            val action =
+                LaunchScreenFragmentDirections.actionLaunchScreenFragmentToLoginPlaceholder()
+            findNavController().navigate(action)
+        }
     }
 }
+

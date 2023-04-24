@@ -1,11 +1,14 @@
-package com.safetyheads.akademiaandroida.presentation.ui.fragments.login
+package com.safetyheads.akademiaandroida.login
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.Navigation.findNavController
+import com.safetyheads.akademiaandroida.R
 import com.safetyheads.akademiaandroida.databinding.FragmentLoginBinding
+import com.safetyheads.akademiaandroida.presentation.ui.components.snackbar.LoginSnackBar
 import com.safetyheads.akademiaandroida.presentation.ui.utils.EmailValidator
 import com.safetyheads.akademiaandroida.presentation.ui.utils.PasswordValidator
 
@@ -23,10 +26,22 @@ class LoginFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-
         super.onViewCreated(view, savedInstanceState)
+        val isSuccessFromForgotPass = arguments?.getBoolean("isSuccess")
 
+        if (isSuccessFromForgotPass == true) {
+            LoginSnackBar.make(
+                binding.root,
+                message = requireActivity().getString(R.string.we_have_emailed_your_password_reset_link)
+            ).show()
+        }
+        
         EmailValidator.attach(binding.eTextEmailAddress)
         PasswordValidator.attach(binding.eTextPassword, requireContext())
+        binding.forgotPassword.setOnClickListener {
+            val action =
+                LoginFragmentDirections.actionLoginFragmentToForgotPasswordFragment(false)
+            findNavController().navigate(action)
+        }
     }
 }
