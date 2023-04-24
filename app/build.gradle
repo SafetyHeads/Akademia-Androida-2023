@@ -4,7 +4,8 @@ plugins {
     id 'com.google.gms.google-services'
     id 'com.google.firebase.crashlytics'
 }
-
+def localProperties = new Properties()
+localProperties.load(new FileInputStream(rootProject.file("local.properties")))
 android {
     namespace 'com.safetyheads.akademiaandroida'
     compileSdk 33
@@ -35,8 +36,7 @@ android {
         def NAME_APPLICATION = "SafetyHeads"
         versionName = "$NAME_APPLICATION $VERSION_NAME_MAJOR.$VERSION_NAME_MINOR.$VERSION_NAME_PATCH"
         versionCode = generateVersionCode(VERSION_NAME_MAJOR, VERSION_NAME_MINOR, VERSION_NAME_PATCH)
-
-
+        resValue "string", "MAPS_API_KEY", localProperties['mapsApiKey']
     }
 
     buildTypes {
@@ -78,6 +78,7 @@ dependencies {
 
     implementation 'com.google.firebase:firebase-crashlytics-ktx:18.3.6'
     implementation 'com.google.firebase:firebase-analytics-ktx:21.2.1'
+    implementation 'com.google.android.gms:play-services-maps:18.1.0'
 
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.0'
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4'
