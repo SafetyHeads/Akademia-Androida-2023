@@ -99,7 +99,8 @@ class MainActivity : AppCompatActivity() {
             Toast.makeText(
                 applicationContext,
                 "Version Code: ${config.versionCode} \n Api Url: ${config.apiUrl}",
-                Toast.LENGTH_LONG)
+                Toast.LENGTH_LONG
+            )
                 .show()
         }
 
@@ -107,7 +108,8 @@ class MainActivity : AppCompatActivity() {
             Toast.makeText(
                 applicationContext,
                 failureText,
-                Toast.LENGTH_LONG)
+                Toast.LENGTH_LONG
+            )
                 .show()
         }
     }

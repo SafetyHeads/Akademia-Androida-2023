@@ -5,7 +5,7 @@ import com.safetyheads.domain.repositories.ConfigRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
-class GetConfigUseCase(private val repository: ConfigRepository):
+class GetConfigUseCase(private val repository: ConfigRepository) :
     ParameterlessBaseUseCase<Config> {
 
     override suspend fun invoke(): Flow<Result<Config>> {

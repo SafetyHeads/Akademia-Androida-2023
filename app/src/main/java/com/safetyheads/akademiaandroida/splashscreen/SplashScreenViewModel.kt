@@ -12,7 +12,7 @@ import kotlinx.coroutines.launch
 class SplashScreenViewModel(
     private val splashScreenUseCase: DelaySplashScreenUseCase,
     private val getConfigUseCase: GetConfigUseCase
-    ): ViewModel() {
+) : ViewModel() {
 
     private val _config: MutableLiveData<Config> = MutableLiveData()
     var config: LiveData<Config> = _config
