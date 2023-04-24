@@ -13,13 +13,10 @@ import com.safetyheads.data.network.mapper.ChannelMapper
 import com.safetyheads.data.network.mapper.PlayListVideoMapper
 import com.safetyheads.data.network.mapper.PlaylistMapper
 import com.safetyheads.data.network.mapper.VideoMapper
-import com.safetyheads.data.network.`object`.YouTubeApi
 import com.safetyheads.data.network.repository.ChannelRepositoryImpl
 import com.safetyheads.data.network.repository.PlaylistRepositoryImpl
 import com.safetyheads.data.network.repository.VideoRepositoryImpl
 import com.safetyheads.data.network.retrofit.ApiClient
-import com.safetyheads.data.network.retrofit.AppLogger
-import com.safetyheads.data.network.service.YouTubeService
 import com.safetyheads.domain.repositories.ChannelRepository
 import com.safetyheads.domain.repositories.ConfigRepository
 import com.safetyheads.domain.repositories.PlaylistRepository
@@ -28,6 +25,7 @@ import com.safetyheads.domain.usecases.DateUseCase
 import com.safetyheads.domain.usecases.DateUseCaseImpl
 import com.safetyheads.domain.usecases.DelaySplashScreenUseCase
 import com.safetyheads.domain.usecases.GetChannelUseCase
+import com.safetyheads.domain.repositories.UserRepository
 import com.safetyheads.domain.usecases.GetConfigUseCase
 import com.safetyheads.domain.usecases.GetPlayListItemsUseCase
 import com.safetyheads.domain.usecases.GetPlayListsUseCase
@@ -40,7 +38,7 @@ import org.koin.core.context.startKoin
 import org.koin.dsl.module
 
 
-class AndroidAcademyApplication: Application() {
+class AndroidAcademyApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()
@@ -54,29 +52,23 @@ class AndroidAcademyApplication: Application() {
     private val appModule = module {
         //repositories
         single<ConfigRepository> { FirebaseConfigRepository() }
+        single<UserRepository> { UserRepositoryImpl() }
 
         //usecases
         single { DelaySplashScreenUseCase() }
         single { LoadItemsToDropDownListUseCase() }
         single { GetConfigUseCase(get()) }
+        single { ResetPasswordUseCase(get()) }
 
         //viewmodels
-        viewModel{ SplashScreenViewModel(get(), get()) }
-        viewModel{ DropDownListViewModel(get()) }
+        viewModel { SplashScreenViewModel(get(), get()) }
+        viewModel { DropDownListViewModel(get()) }
+        viewModel { ForgotPasswordViewModel(get()) }
     }
 
     private val networkModule = module {
-        //AppLogger
-        single<AppLogger> {
-            object : AppLogger {
-                override fun d(tag: String, message: String) {
-                    Log.d(tag, message)
-                }
-            }
-        }
-
         //YouTubeService Singleton
-        single { ApiClient(BuildConfig.DEBUG, get()).create(YouTubeApi.YOUTUBE_API_BASE_URL, YouTubeService::class.java) }
+        single { ApiClient(BuildConfig.DEBUG)).create(YouTubeApi.YOUTUBE_API_BASE_URL, YouTubeService::class.java) }
 
         //mapper
         single { ChannelMapper() }

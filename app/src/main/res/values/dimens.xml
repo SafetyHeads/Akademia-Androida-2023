@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="default_card_radius">8dp</dimen>
+    <dimen name="size_0.25x">2dp</dimen>
     <dimen name="size_0.5x">4dp</dimen>
     <dimen name="size">8dp</dimen>
     <dimen name="size_1.5x">12dp</dimen>
