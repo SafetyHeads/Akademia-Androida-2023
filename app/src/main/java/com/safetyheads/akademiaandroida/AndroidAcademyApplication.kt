@@ -14,7 +14,8 @@ import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.context.startKoin
 import org.koin.dsl.module
 
-class AndroidAcademyApplication : Application() {
+
+class AndroidAcademyApplication: Application() {
 
     override fun onCreate() {
         super.onCreate()
@@ -26,12 +27,16 @@ class AndroidAcademyApplication : Application() {
     }
 
     private val appModule = module {
+        //repositories
+        single<ConfigRepository> { FirebaseConfigRepository() }
+
         //usecases
-        single<SplashScreenUseCase> { SplashScreenUseCaseImpl() }
+        single { DelaySplashScreenUseCase() }
         single { LoadItemsToDropDownListUseCase() }
+        single { GetConfigUseCase(get()) }
 
         //viewmodels
-        viewModel { SplashScreenViewModel(get()) }
-        viewModel { DropDownListViewModel(get()) }
+        viewModel{ SplashScreenViewModel(get(), get()) }
+        viewModel{ DropDownListViewModel(get()) }
     }
 }
