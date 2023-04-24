@@ -1,4 +1,4 @@
-package com.safetyheads.akademiaandroida.forgotpasswordfragment.snackbar
+package com.safetyheads.akademiaandroida.presentation.ui.components.snackbar
 
 import android.view.LayoutInflater
 import android.view.View

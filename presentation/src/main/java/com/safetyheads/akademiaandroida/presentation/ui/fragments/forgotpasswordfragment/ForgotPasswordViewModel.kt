@@ -1,4 +1,4 @@
-package com.safetyheads.akademiaandroida.forgotpasswordfragment
+package com.safetyheads.akademiaandroida.presentation.ui.fragments.forgotpasswordfragment
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
