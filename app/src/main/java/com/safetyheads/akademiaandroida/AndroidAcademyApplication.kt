@@ -2,6 +2,7 @@ package com.safetyheads.akademiaandroida
 
 import android.app.Application
 import com.safetyheads.akademiaandroida.data.FirebaseConfigRepository
+import com.safetyheads.akademiaandroida.data.TechnologyStackRepositoryImpl
 import com.safetyheads.akademiaandroida.data.UserRepositoryImpl
 import com.safetyheads.akademiaandroida.dropdownlist.DropDownListViewModel
 import com.safetyheads.akademiaandroida.dropdownlist.LoadItemsToDropDownListUseCase
@@ -10,6 +11,7 @@ import com.safetyheads.akademiaandroida.fragments.technologystack.TechnologyStac
 import com.safetyheads.akademiaandroida.fragments.technologystack.TechnologyStackViewModel
 import com.safetyheads.akademiaandroida.splashscreen.SplashScreenViewModel
 import com.safetyheads.domain.repositories.ConfigRepository
+import com.safetyheads.domain.repositories.TechnologyStackRepository
 import com.safetyheads.domain.repositories.UserRepository
 import com.safetyheads.domain.usecases.DelaySplashScreenUseCase
 import com.safetyheads.domain.usecases.GetConfigUseCase
@@ -36,13 +38,14 @@ class AndroidAcademyApplication: Application() {
         //repositories
         single<ConfigRepository> { FirebaseConfigRepository() }
         single<UserRepository> { UserRepositoryImpl() }
+        single<TechnologyStackRepository> {TechnologyStackRepositoryImpl()}
 
         //usecases
         single { DelaySplashScreenUseCase() }
         single { LoadItemsToDropDownListUseCase() }
         single { GetConfigUseCase(get()) }
         single { ResetPasswordUseCase(get()) }
-        single { TechnologyStackUseCase() }
+        single { TechnologyStackUseCase(get()) }
         //viewmodels
         viewModel { SplashScreenViewModel(get(), get()) }
         viewModel { DropDownListViewModel(get()) }
