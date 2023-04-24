@@ -65,7 +65,6 @@
     <string name="fragments">fragments</string>
     <string name="sign_up">Sign up</string>
     <string name="already_have_an_account">Already have an account?</string>
-    <string name="sign_in_now">Sign in now</string>
     <string name="full_name">Full name</string>
     <string name="confirm_password">Confirm password</string>
     <string name="not_a_member">Not a member?</string>
@@ -75,4 +74,12 @@
     <string name="password">Password</string>
     <string name="forgot_password"> <u>Forgot password?</u> </string>
     <string name="dot_enumeration">•</string>
+    <string name="forgot_password_without_underline">Forgot password?</string>
+    <string name="forgot_password_text">Enter your e-mail address and we’ll send you a link to return to your account.</string>
+    <string name="e_mail">E-mail</string>
+    <string name="request_reset_link">Request reset link</string>
+    <string name="or">Or</string>
+    <string name="sign_in_now">Sign in now</string>
+    <string name="we_have_emailed_your_password_reset_link">We have e-mailed your password reset link.</string>
+    <string name="failed_sent_forgot_password">Failed sent e-mail. Please try again later</string>
 </resources>
