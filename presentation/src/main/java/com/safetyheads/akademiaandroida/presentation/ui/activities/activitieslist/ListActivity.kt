@@ -1,15 +1,19 @@
-package com.safetyheads.akademiaandroida.presentation.ui.activities.activitieslist
+package com.safetyheads.akademiaandroida.ActivitiesList
 
 import android.content.pm.PackageManager
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.safetyheads.akademiaandroida.databinding.ActivityListBinding
+import com.safetyheads.akademiaandroida.login.LoginFragment
+import com.safetyheads.akademiaandroida.presentation.ui.activities.activitieslist.ActivitiesAdapter
+import com.safetyheads.akademiaandroida.presentation.ui.activities.activitieslist.FragmentsAdapter
 import com.safetyheads.akademiaandroida.presentation.ui.customviews.ExperienceStructureFragment
 import com.safetyheads.akademiaandroida.presentation.ui.customviews.dropdown.FragmentDropDownList
 import com.safetyheads.akademiaandroida.presentation.ui.fragments.clients.ClientsFragment
 import com.safetyheads.akademiaandroida.presentation.ui.fragments.contact_with_us.ContactWithUsFragment
 import com.safetyheads.akademiaandroida.presentation.ui.fragments.font_style.FontSylesFragment
+import com.safetyheads.akademiaandroida.presentation.ui.fragments.forgotpasswordfragment.ForgotPasswordFragment
 import com.safetyheads.akademiaandroida.presentation.ui.fragments.we_are_hiring.WeAreHiringFragment
 
 class ListActivity : AppCompatActivity() {
@@ -20,11 +24,7 @@ class ListActivity : AppCompatActivity() {
         binding = ActivityListBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val adapter =
-            ActivitiesAdapter(
-                createListActivity(),
-                this
-            )
+        val adapter = ActivitiesAdapter(createListActivity(), this)
         binding.recyclerView.layoutManager = LinearLayoutManager(applicationContext)
         binding.recyclerView.adapter = adapter
 
@@ -57,6 +57,8 @@ class ListActivity : AppCompatActivity() {
     val clientsFragment = ClientsFragment()
     val experienceStructureFragment = ExperienceStructureFragment()
     val fragmentDropDownList = FragmentDropDownList()
+    val forgotPasswordFragment = ForgotPasswordFragment()
+    val loginFragment = LoginFragment()
 
     val dataListFragments = listOf(
         fontSylesFragment,
@@ -64,6 +66,14 @@ class ListActivity : AppCompatActivity() {
         weAreHiringBinding,
         clientsFragment,
         experienceStructureFragment,
-        fragmentDropDownList
+        fragmentDropDownList,
+        loginFragment,
+        forgotPasswordFragment
     )
 }
+
+
+
+
+
+

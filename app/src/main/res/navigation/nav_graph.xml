@@ -48,7 +48,7 @@
         tools:layout="@layout/fragment_dashboard_placeholder" />
     <fragment
         android:id="@+id/forgot_password_fragment"
-        android:name="com.safetyheads.akademiaandroida.forgotpasswordfragment.ForgotPasswordFragment"
+        android:name="com.safetyheads.akademiaandroida.presentation.ui.fragments.forgotpasswordfragment.ForgotPasswordFragment"
         android:label="fragment_dashboard_placeholder"
         tools:layout="@layout/fragment_dashboard_placeholder">
         <action
