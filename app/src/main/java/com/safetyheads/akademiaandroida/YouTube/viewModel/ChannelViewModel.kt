@@ -26,7 +26,7 @@ class ChannelViewModel(
     fun getChannel() {
         isLoading.postValue(true)
         viewModelScope.launch {
-            channelUseCase.invoke(GetChannelUseCase.ChannelParam()).collect { networkResult ->
+            channelUseCase.invoke().collect { networkResult ->
                 if (networkResult.isSuccess) {
                     isLoading.postValue(false)
                     channelInfoInformation.postValue(networkResult.getOrNull())

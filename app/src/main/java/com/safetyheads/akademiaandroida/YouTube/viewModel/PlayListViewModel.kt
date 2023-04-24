@@ -33,7 +33,7 @@ class PlayListViewModel(
     fun getPlayLists() {
         isLoadingPlayLists.postValue(true)
         viewModelScope.launch {
-            playListsUseCase.invoke(GetPlayListsUseCase.PlayListsParam()).collect { networkResult ->
+            playListsUseCase.invoke().collect { networkResult ->
                 if (networkResult.isSuccess) {
                     isLoadingPlayLists.postValue(false)
                     listPlayLists.postValue(networkResult.getOrNull())
