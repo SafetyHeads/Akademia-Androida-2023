@@ -1,4 +1,4 @@
-package com.safetyheads.akademiaandroida.splashscreen
+package com.safetyheads.akademiaandroida.presentation.ui.activities.splashscreen
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

@@ -3,10 +3,10 @@ package com.safetyheads.akademiaandroida
 import android.app.Application
 import com.safetyheads.akademiaandroida.data.FirebaseConfigRepository
 import com.safetyheads.akademiaandroida.data.UserRepositoryImpl
+import com.safetyheads.akademiaandroida.presentation.ui.activities.splashscreen.SplashScreenViewModel
 import com.safetyheads.akademiaandroida.presentation.ui.customviews.dropdown.DropDownListViewModel
 import com.safetyheads.akademiaandroida.presentation.ui.customviews.dropdown.LoadItemsToDropDownListUseCase
 import com.safetyheads.akademiaandroida.presentation.ui.fragments.forgotpasswordfragment.ForgotPasswordViewModel
-import com.safetyheads.akademiaandroida.splashscreen.SplashScreenViewModel
 import com.safetyheads.domain.repositories.ConfigRepository
 import com.safetyheads.domain.repositories.UserRepository
 import com.safetyheads.domain.usecases.DelaySplashScreenUseCase
