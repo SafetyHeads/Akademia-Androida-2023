@@ -14,7 +14,6 @@ import com.safetyheads.akademiaandroida.databinding.FragmentContactUsBinding
 class ContactUsFragment : Fragment() {
 
     private lateinit var binding: FragmentContactUsBinding
-    private val EMAIL = ""
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

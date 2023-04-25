@@ -14,17 +14,17 @@ class FontStylesAdapter(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val binding =
             ItemFontStylesBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return MyViewHolder(binding)
+        return myViewHolder(binding)
 
     }
 
-    private inner class MyViewHolder(val binding: ItemFontStylesBinding) :
+    private inner class myViewHolder(val binding: ItemFontStylesBinding) :
         RecyclerView.ViewHolder(binding.root) {
         val containerView: View
             get() = binding.root
     }
 
-    private fun MyFont(viewHolder: MyViewHolder, position: Int) {
+    private fun myFont(viewHolder: myViewHolder, position: Int) {
         viewHolder.binding.name.text = description[position]
         viewHolder.binding.text.text = "This is " + description[position] + " font."
         viewHolder.binding.text.setTextAppearance(listFonts[position])
@@ -35,6 +35,6 @@ class FontStylesAdapter(
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        return MyFont(holder as MyViewHolder, position)
+        return myFont(holder as myViewHolder, position)
     }
 }

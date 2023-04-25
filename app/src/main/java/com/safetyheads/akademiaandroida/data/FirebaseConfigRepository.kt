@@ -8,14 +8,14 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.tasks.await
 
-class FirebaseConfigRepository : ConfigRepository {
+class FirebaseConfigRepository: ConfigRepository {
 
     private val remoteConfig = FirebaseRemoteConfig.getInstance()
     private val configSettings = FirebaseRemoteConfigSettings.Builder()
-        .setFetchTimeoutInSeconds(60)
+        .setFetchTimeoutInSeconds(60L)
         .build()
 
-    override suspend fun getConfig(): Flow<Config> = flow {
+    override fun getConfig(): Flow<Config> = flow {
         remoteConfig.setConfigSettingsAsync(configSettings).await()
 
         val isSuccess = remoteConfig.fetchAndActivate().await()
@@ -27,7 +27,7 @@ class FirebaseConfigRepository : ConfigRepository {
         if (isSuccess || isDataDownloaded) {
             emit(Config(versionCode, apiUrl))
         } else {
-            throw Exception("Cannot access Config")
+            error("Cannot access Config")
         }
     }
 }

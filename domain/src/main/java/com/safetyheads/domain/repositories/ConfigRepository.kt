@@ -5,5 +5,5 @@ import kotlinx.coroutines.flow.Flow
 
 interface ConfigRepository {
 
-    suspend fun getConfig(): Flow<Config>
+    fun getConfig(): Flow<Config>
 }

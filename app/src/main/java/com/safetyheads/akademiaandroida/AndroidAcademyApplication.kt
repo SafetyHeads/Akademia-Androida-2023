@@ -2,13 +2,13 @@ package com.safetyheads.akademiaandroida
 
 import android.app.Application
 import com.safetyheads.akademiaandroida.data.FirebaseConfigRepository
+import com.safetyheads.akademiaandroida.data.UserRepositoryImpl
 import com.safetyheads.akademiaandroida.dropdownlist.DropDownListViewModel
 import com.safetyheads.akademiaandroida.dropdownlist.LoadItemsToDropDownListUseCase
+import com.safetyheads.akademiaandroida.forgotpasswordfragment.ForgotPasswordViewModel
 import com.safetyheads.akademiaandroida.splashscreen.SplashScreenViewModel
 import com.safetyheads.data.network.retrofit.ApiClient
 import com.safetyheads.domain.repositories.ConfigRepository
-import com.safetyheads.akademiaandroida.data.UserRepositoryImpl
-import com.safetyheads.akademiaandroida.forgotpasswordfragment.ForgotPasswordViewModel
 import com.safetyheads.domain.repositories.UserRepository
 import com.safetyheads.domain.usecases.DelaySplashScreenUseCase
 import com.safetyheads.domain.usecases.GetConfigUseCase

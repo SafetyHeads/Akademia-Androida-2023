@@ -1,8 +1,7 @@
-package com.safetyheads.akademiaandroida.contact_with_us
+package com.safetyheads.akademiaandroida.contactwithus
 
 import android.app.AlertDialog
 import android.app.Dialog
-import android.content.DialogInterface
 import android.os.Bundle
 import androidx.fragment.app.DialogFragment
 import com.safetyheads.akademiaandroida.R

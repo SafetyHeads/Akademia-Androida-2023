@@ -74,38 +74,40 @@ object FullNameValidator {
         name: String, splitNames: List<String>, editText: EditText,
         context: Context
     ): Boolean {
+        var isCorrect = true
         if (name.length < MIN_NAME_AND_SURNAME_LENGTH && splitNames.first().isNotEmpty()) {
             editText.error = context.getString(R.string.invalid_name_message)
-            return false
+            isCorrect = false
         } else if (name.isEmpty()) {
             editText.error = context.getString(R.string.invalid_empty_message)
-            return false
+            isCorrect = false
         } else if (!name.first().isUpperCase()) {
             editText.error = context.getString(R.string.invalid_name_message)
-            return false
+            isCorrect = false
         }
-        return true
+        return isCorrect
     }
 
     fun validateSurname(
         surname: String, splitNames: List<String>, spacesAmount: Int,
         editText: EditText, context: Context
     ): Boolean {
+        var isCorrect = true
         if (surname.length < MIN_NAME_AND_SURNAME_LENGTH && checkListSizeIsTwo(splitNames)
             && spacesAmount == MIN_SPACE_AMOUNT
         ) {
             editText.error = context.getString(R.string.invalid_surname_message)
-            return false
+            isCorrect = false
         } else if (spacesAmount > MIN_SPACE_AMOUNT) {
             editText.error = context.getString(R.string.invalid_spaces_message)
-            return false
+            isCorrect = false
         } else if (surname.isEmpty()) {
             editText.error = context.getString(R.string.invalid_surname_message)
-            return false
+            isCorrect = false
         } else if (!surname[0].isUpperCase()) {
             editText.error = context.getString(R.string.invalid_surname_message)
-            return false
+            isCorrect = false
         }
-        return true
+        return isCorrect
     }
 }
