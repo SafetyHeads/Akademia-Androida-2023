@@ -1,4 +1,4 @@
-package com.safetyheads.akademiaandroida.network
+package com.safetyheads.data.network.objects
 
 object YouTubeApi {
 
