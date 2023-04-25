@@ -1,7 +1,7 @@
 package com.safetyheads.akademiaandroida
 
 import android.app.Application
-import android.util.Log
+import com.jakewharton.threetenabp.AndroidThreeTen
 import com.safetyheads.akademiaandroida.YouTube.viewModel.ChannelViewModel
 import com.safetyheads.akademiaandroida.YouTube.viewModel.PlayListViewModel
 import com.safetyheads.akademiaandroida.YouTube.viewModel.VideoViewModel
@@ -24,12 +24,12 @@ import com.safetyheads.data.network.service.YouTubeService
 import com.safetyheads.domain.repositories.ChannelRepository
 import com.safetyheads.domain.repositories.ConfigRepository
 import com.safetyheads.domain.repositories.PlaylistRepository
+import com.safetyheads.domain.repositories.UserRepository
 import com.safetyheads.domain.repositories.VideoRepository
 import com.safetyheads.domain.usecases.DateUseCase
 import com.safetyheads.domain.usecases.DateUseCaseImpl
 import com.safetyheads.domain.usecases.DelaySplashScreenUseCase
 import com.safetyheads.domain.usecases.GetChannelUseCase
-import com.safetyheads.domain.repositories.UserRepository
 import com.safetyheads.domain.usecases.GetConfigUseCase
 import com.safetyheads.domain.usecases.GetPlayListItemsUseCase
 import com.safetyheads.domain.usecases.GetPlayListsUseCase
@@ -47,11 +47,14 @@ class AndroidAcademyApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()
+
         startKoin {
             androidLogger()
             androidContext(this@AndroidAcademyApplication)
             modules(listOf(appModule, networkModule))
         }
+
+        AndroidThreeTen.init(this)
     }
 
     private val appModule = module {
