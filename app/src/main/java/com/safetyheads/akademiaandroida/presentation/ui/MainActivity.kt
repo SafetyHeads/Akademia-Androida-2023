@@ -11,12 +11,12 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
-import com.example.presentation.safetyheads.akademiaandroida.presentation.ui.activites.activitieslist.ListActivity
-import com.example.presentation.safetyheads.akademiaandroida.presentation.ui.activites.splashscreen.SplashScreenViewModel
 import com.google.firebase.remoteconfig.FirebaseRemoteConfig
 import com.google.firebase.remoteconfig.FirebaseRemoteConfigSettings
 import com.safetyheads.akademiaandroida.R
 import com.safetyheads.akademiaandroida.databinding.ActivityMainBinding
+import com.safetyheads.akademiaandroida.presentation.ui.activities.activitieslist.ListActivity
+import com.safetyheads.akademiaandroida.presentation.ui.activities.splashscreen.SplashScreenViewModel
 import com.safetyheads.akademiaandroida.presentation.ui.components.Footer
 import com.safetyheads.akademiaandroida.presentation.ui.fragments.contact_with_us.ContactUsFragment
 import com.safetyheads.akademiaandroida.presentation.ui.fragments.font_style.FontSylesFragment
@@ -96,7 +96,7 @@ class MainActivity : AppCompatActivity() {
             .setFetchTimeoutInSeconds(60)
             .build()
         remoteConfig.setConfigSettingsAsync(configSettings)
-        remoteConfig.setDefaultsAsync(R.xml.remote_config_defaults)
+        remoteConfig.setDefaultsAsync(R.xml.remote_config_defaults1)
 
         val versionCode = remoteConfig.getString("versionCode")
         val apiUrl = remoteConfig.getString("apiUrl")

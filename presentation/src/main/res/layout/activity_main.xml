@@ -36,7 +36,7 @@
             android:layout_marginTop="150dp"
             android:text="Preview we are hiring fragment" />
 
-        <com.example.presentation.safetyheads.akademiaandroida.presentation.ui.components.BackArrowView
+        <com.safetyheads.akademiaandroida.presentation.ui.components.BackArrowView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/back_arrow_view"

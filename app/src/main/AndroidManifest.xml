@@ -29,7 +29,7 @@
 
             android:exported="true" />
         <activity
-            android:name=".ActivitiesList.ListActivity"
+            android:name=".presentation.ui.activities.activitieslist.ListActivity"
             android:exported="true" />
     </application>
     <queries>
