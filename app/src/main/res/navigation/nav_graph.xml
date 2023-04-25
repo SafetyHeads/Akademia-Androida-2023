@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/launchScreenFragment"
-        android:name="com.safetyheads.presentation.fragments.launchsreen.LaunchScreenFragment"
+        android:name="com.safetyheads.akademiaandroida.launchscreen.LaunchScreenFragment"
         android:label="fragment_launchScreen"
         tools:layout="@layout/fragment_launch_screen">
         <action
@@ -19,7 +19,7 @@
     </fragment>
     <fragment
         android:id="@+id/notlogged_placeholder"
-        android:name="com.safetyheads.presentation.customviews.NotloggedPlaceholder"
+        android:name="com.safetyheads.akademiaandroida.presentation.ui.customviews.NotloggedPlaceholder"
         android:label="fragment_notlogged_placeholder"
         tools:layout="@layout/fragment_notlogged_placeholder">
         <action
@@ -28,7 +28,7 @@
     </fragment>
     <fragment
         android:id="@+id/login_fragment"
-        android:name="com.safetyheads.presentation.fragments.LoginFragment"
+        android:name="com.safetyheads.akademiaandroida.login.LoginFragment"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login">
         <action
@@ -43,7 +43,7 @@
     </fragment>
     <fragment
         android:id="@+id/dashboard_placeholder"
-        android:name="com.safetyheads.presentation.customviews.DashboardPlaceholder"
+        android:name="com.safetyheads.akademiaandroida.presentation.ui.customviews.DashboardPlaceholder"
         android:label="fragment_dashboard_placeholder"
         tools:layout="@layout/fragment_dashboard_placeholder" />
     <fragment
