@@ -11,6 +11,7 @@ import com.safetyheads.akademiaandroida.databinding.FragmentLoginBinding
 import com.safetyheads.akademiaandroida.presentation.ui.components.snackbar.LoginSnackBar
 import com.safetyheads.akademiaandroida.presentation.ui.utils.EmailValidator
 import com.safetyheads.akademiaandroida.presentation.ui.utils.PasswordValidator
+import com.safetyheads.akademiaandroida.presentationlogin.LoginFragmentDirections
 
 class LoginFragment : Fragment() {
 
