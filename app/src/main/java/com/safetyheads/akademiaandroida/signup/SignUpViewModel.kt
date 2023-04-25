@@ -10,6 +10,7 @@ class SignUpViewModel (
     ) : ViewModel() {
     fun signUp(fullName: String, emailAddress: String, password: String) {
 
+        @SuppressWarnings("UnusedPrivateMember")
         val createUser = viewModelScope.launch {
             registerUseCase.invoke(RegisterUseCase.UserParams(fullName, emailAddress, password))
         }
