@@ -9,11 +9,10 @@ import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.tasks.await
 
 class FirebaseConfigRepository: ConfigRepository {
-    private val secondsTimeout = 60L
 
     private val remoteConfig = FirebaseRemoteConfig.getInstance()
     private val configSettings = FirebaseRemoteConfigSettings.Builder()
-        .setFetchTimeoutInSeconds(secondsTimeout)
+        .setFetchTimeoutInSeconds(60L)
         .build()
 
     override fun getConfig(): Flow<Config> = flow {

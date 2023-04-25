@@ -10,6 +10,7 @@ import com.safetyheads.akademiaandroida.contactwithus.ContactWithUsFragment
 import com.safetyheads.akademiaandroida.databinding.ActivityListBinding
 import com.safetyheads.akademiaandroida.dropdownlist.FragmentDropDownList
 import com.safetyheads.akademiaandroida.font.FontSylesFragment
+import com.safetyheads.akademiaandroida.forgotpasswordfragment.ForgotPasswordFragment
 import com.safetyheads.akademiaandroida.fragments.WeAreHiringFragment
 import com.safetyheads.akademiaandroida.login.LoginFragment
 import com.safetyheads.akademiaandroida.utils.getPackageInfoCompat
@@ -56,6 +57,7 @@ class ListActivity : AppCompatActivity() {
     val clientsFragment = ClientsFragment()
     val experienceStructureFragment = ExperienceStructureFragment()
     val fragmentDropDownList = FragmentDropDownList()
+    val forgotPasswordFragment = ForgotPasswordFragment()
     val loginFragment = LoginFragment()
 
     val dataListFragments = listOf(
@@ -65,7 +67,8 @@ class ListActivity : AppCompatActivity() {
         clientsFragment,
         experienceStructureFragment,
         fragmentDropDownList,
-        loginFragment
+        loginFragment,
+        forgotPasswordFragment
     )
 }
 
