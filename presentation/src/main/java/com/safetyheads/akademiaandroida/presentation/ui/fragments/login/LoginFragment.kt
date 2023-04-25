@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.navigation.Navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import com.safetyheads.akademiaandroida.R
 import com.safetyheads.akademiaandroida.databinding.FragmentLoginBinding
 import com.safetyheads.akademiaandroida.presentation.ui.components.snackbar.LoginSnackBar
