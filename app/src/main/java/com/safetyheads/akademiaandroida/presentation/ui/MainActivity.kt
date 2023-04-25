@@ -96,7 +96,7 @@ class MainActivity : AppCompatActivity() {
             .setFetchTimeoutInSeconds(60)
             .build()
         remoteConfig.setConfigSettingsAsync(configSettings)
-        remoteConfig.setDefaultsAsync(R.xml.remote_config_defaults1)
+        remoteConfig.setDefaultsAsync(R.xml.remote_config_defaults)
 
         val versionCode = remoteConfig.getString("versionCode")
         val apiUrl = remoteConfig.getString("apiUrl")
