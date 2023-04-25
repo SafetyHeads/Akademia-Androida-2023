@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/launchScreenFragment"
-        android:name="com.safetyheads.akademiaandroida.launchscreen.LaunchScreenFragment"
+        android:name="com.safetyheads.akademiaandroida.presentation.ui.fragments.launchsreen.LaunchScreenFragment"
         android:label="fragment_launchScreen"
         tools:layout="@layout/fragment_launch_screen">
         <action

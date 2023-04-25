@@ -1,4 +1,4 @@
-package com.safetyheads.akademiaandroida.launchscreen
+package com.safetyheads.akademiaandroida.presentation.ui.fragments.launchsreen
 import android.os.Bundle
 import android.text.Spannable
 import android.text.SpannableString
