@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import android.widget.FrameLayout
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 
-
+@SuppressWarnings("ReturnCount")
 internal fun View?.findSuitableParent(): ViewGroup? {
     var view = this
     var fallback: ViewGroup? = null
