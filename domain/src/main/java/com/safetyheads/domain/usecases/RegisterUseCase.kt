@@ -1,5 +1,6 @@
 package com.safetyheads.domain.usecases
 
+import com.safetyheads.data.usecases.BaseUseCase
 import com.safetyheads.domain.entities.User
 import com.safetyheads.domain.repositories.UserRepository
 import kotlinx.coroutines.flow.Flow
