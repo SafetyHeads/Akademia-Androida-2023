@@ -27,9 +27,9 @@ jobs:
 
       - name: Build QA version
         if: github.ref == 'refs/heads/master'
-        run: ./gradlew assembleQa
+        run: ./gradlew clean assembleQa
 
       - name: Build QA and Production and Development versions for PR
         if: github.event.pull_request
-        run: ./gradlew assembleQa assembleProduction assembleDevelopment
+        run: ./gradlew clean assembleQa assembleProduction assembleDevelopment
 
