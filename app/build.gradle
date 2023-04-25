@@ -79,8 +79,9 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
 
     implementation 'com.google.firebase:firebase-crashlytics-ktx:18.3.6'
-    implementation 'com.google.firebase:firebase-analytics-ktx:21.2.1'
-    implementation 'com.google.firebase:firebase-auth-ktx:21.2.0'
+    implementation 'com.google.firebase:firebase-analytics-ktx:21.2.2'
+    implementation 'com.google.firebase:firebase-auth-ktx:21.3.0'
+    implementation 'com.google.firebase:firebase-firestore-ktx:24.5.0'
 
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.0'
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4'
@@ -122,8 +123,6 @@ dependencies {
     // coroutine
     implementation('org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4')
     implementation('org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.2')
-
-
 }
 
 private static Integer generateVersionCode(Integer VERSION_NAME_MAJOR, Integer VERSION_NAME_MINOR, Integer VERSION_NAME_PATCH) {

@@ -2,6 +2,8 @@ plugins {
     id 'java-library'
     id 'org.jetbrains.kotlin.jvm'
     id 'io.gitlab.arturbosch.detekt'
+    id 'com.google.gms.google-services'
+    id 'com.google.firebase.crashlytics'
 }
 
 java {
@@ -18,4 +20,10 @@ dependencies {
     implementation('org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4')
     implementation('org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.0')
     implementation('com.squareup.okhttp3:logging-interceptor:4.9.0')
+
+    // Firebase
+    implementation 'com.google.firebase:firebase-crashlytics-ktx:18.3.6'
+    implementation 'com.google.firebase:firebase-analytics-ktx:21.2.2'
+    implementation 'com.google.firebase:firebase-config-ktx:21.3.0'
+    implementation 'com.google.firebase:firebase-firestore-ktx:24.5.0'
 }
