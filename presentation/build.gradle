@@ -44,6 +44,7 @@ dependencies {
 
     //navigation
     implementation 'androidx.navigation:navigation-ui-ktx:2.5.3'
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.5.3'
 
     // Koin
     implementation('io.insert-koin:koin-android:3.3.3')
@@ -53,7 +54,7 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4")
     implementation('org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4')
 
-//viewmodel
+    //viewmodel
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.0'
 
 
