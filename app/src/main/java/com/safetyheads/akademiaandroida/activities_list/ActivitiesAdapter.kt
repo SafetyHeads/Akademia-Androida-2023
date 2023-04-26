@@ -1,4 +1,4 @@
-package com.safetyheads.akademiaandroida.ActivitiesList
+package com.safetyheads.akademiaandroida.activities_list
 
 import android.content.Context
 import android.content.Intent

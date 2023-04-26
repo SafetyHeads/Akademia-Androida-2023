@@ -7,7 +7,7 @@ import kotlinx.coroutines.flow.flow
 
 class GetJobOfferUseCase(private val repository: CareerRepository): ParameterlessBaseUseCase<List<JobOffer>> {
 
-    override suspend fun invoke(): Flow<Result<ArrayList<JobOffer>>> {
+    override suspend fun invoke(): Flow<Result<List<JobOffer>>> {
         return flow {
             try {
                 repository.getJobOffersList().collect{ jobOffers ->

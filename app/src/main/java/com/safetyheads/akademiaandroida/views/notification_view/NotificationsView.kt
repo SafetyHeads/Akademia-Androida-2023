@@ -2,10 +2,12 @@ package com.safetyheads.akademiaandroida.views.notification_view
 
 import android.animation.LayoutTransition
 import android.content.Context
+import android.content.res.TypedArray
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.FrameLayout
+import com.safetyheads.akademiaandroida.R
 import com.safetyheads.akademiaandroida.databinding.ViewNotificationsBinding
 
 
@@ -20,9 +22,10 @@ class NotificationsView @JvmOverloads constructor(
         this,
         true
     )
+    private val attributes: TypedArray = context.obtainStyledAttributes(attrs, R.styleable.NotificationsView)
+    init {
+        binding.titleText.text = attributes.getString(R.styleable.NotificationsView_title_text)
 
-
-    fun initOnClickListeners() {
         binding.arrow.setOnClickListener {
             val contentVisibility = binding.expandableContent.visibility
             if(contentVisibility == View.GONE) {
@@ -37,13 +40,14 @@ class NotificationsView @JvmOverloads constructor(
         }
     }
 
-    fun setText(resIdText: Int) {
-        binding.titleText.text = resources.getString(resIdText)
-    }
 
-    fun switchButtonListener(x: (isChecked: Boolean) -> Any) {
+//    fun initOnClickListeners() {
+//
+//    }
+
+    fun switchButtonListener(callbackFunction: (isChecked: Boolean) -> Any) {
         binding.switchButton.setOnCheckedChangeListener { _, isChecked ->
-            x(isChecked)
+            callbackFunction(isChecked)
         }
     }
 

@@ -10,7 +10,8 @@
     <com.safetyheads.akademiaandroida.views.notification_view.NotificationsView
         android:id="@+id/notificationView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        app:title_text="@string/our_job_offers"/>
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
@@ -53,11 +54,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/size_2x"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 tools:listitem="@layout/job_offer_list_item"/>
 
         </LinearLayout>
-
-
 
     </androidx.cardview.widget.CardView>
 

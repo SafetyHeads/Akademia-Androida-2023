@@ -1,21 +1,19 @@
 package com.safetyheads.akademiaandroida.career
 
+import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.Toast
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.fragment.app.Fragment
+import com.safetyheads.akademiaandroida.WebViewActivity
 import com.safetyheads.akademiaandroida.databinding.FragmentCareerBinding
-import com.safetyheads.domain.entities.Settings
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class CareerFragment : Fragment(), OnButtonClickListener {
+class CareerFragment : Fragment() {
 
     private lateinit var binding: FragmentCareerBinding
     private val viewModel: CareerViewModel by viewModel()
-    private val jobOffersListAdapter = JobOffersAdapter(this)
+    private val jobOffersListAdapter = JobOffersAdapter(::onButtonClick)
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -27,13 +25,10 @@ class CareerFragment : Fragment(), OnButtonClickListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.notificationView.initOnClickListeners()
-        binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
         binding.recyclerView.adapter = jobOffersListAdapter
 
         observeJobOffersList()
         initNotificationView()
-
     }
 
     private fun observeJobOffersList() {
@@ -52,19 +47,18 @@ class CareerFragment : Fragment(), OnButtonClickListener {
     }
 
     private fun initNotificationView() {
-        val notificationsState = viewModel.readSetting(Settings.SEND_NOTIFICATIONS)
-        binding.notificationView.setSwitchButton(notificationsState)
+        val shouldSendNotifications = viewModel.readSetting()
+        binding.notificationView.setSwitchButton(shouldSendNotifications)
 
         binding.notificationView.switchButtonListener {
-            viewModel.writeSetting(Settings.SEND_NOTIFICATIONS, it)
+            viewModel.writeSetting(it)
         }
     }
 
-    override fun onButtonClick(jobUrl: String, position: Int) {
-        val myWebView = binding.webView
-        myWebView.loadUrl(jobUrl)
-        binding.notificationView.visibility = View.GONE
-        binding.recyclerView.visibility = View.GONE
-        binding.linearlayout.visibility = View.GONE
+    private fun onButtonClick(jobUrl: String, position: Int) {
+        val intent = Intent(requireActivity(), WebViewActivity::class.java)
+        intent.putExtra("job_url", jobUrl)
+        startActivity(intent)
+
     }
 }

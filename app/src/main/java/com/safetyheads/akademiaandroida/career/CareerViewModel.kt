@@ -15,15 +15,15 @@ class CareerViewModel(
     private val settingsRepository: SettingsRepository
     ): ViewModel() {
 
-    private val _jobOffersList: MutableLiveData<ArrayList<JobOffer>> = MutableLiveData()
-    var jobOffersList: LiveData<ArrayList<JobOffer>> = _jobOffersList
+    private val _jobOffersList: MutableLiveData<List<JobOffer>> = MutableLiveData()
+    var jobOffersList: LiveData<List<JobOffer>> = _jobOffersList
 
     private val _failureText: MutableLiveData<String> = MutableLiveData()
     var failureText: LiveData<String> = _failureText
 
-    fun readSetting(settings: Settings) = settingsRepository.readSetting(settings)
+    fun readSetting() = settingsRepository.readSetting(Settings.SEND_NOTIFICATIONS)
 
-    fun writeSetting(settings: Settings, value: Boolean) = settingsRepository.writeSetting(settings, value)
+    fun writeSetting(value: Boolean) = settingsRepository.writeSetting(Settings.SEND_NOTIFICATIONS, value)
 
     fun getJobOffersList() {
     viewModelScope.launch {

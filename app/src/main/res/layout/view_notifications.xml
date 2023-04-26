@@ -11,87 +11,88 @@
         android:orientation="vertical"
         android:animateLayoutChanges="true">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingTop="@dimen/size_3x"
-        android:paddingBottom="@dimen/size_2x">
-
-        <com.safetyheads.akademiaandroida.H2View
-            android:id="@+id/h2View2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:text="Turn on noifications" />
-
-        <ImageButton
-            android:id="@+id/arrow"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:padding="@dimen/size_1.5x"
-            android:src="@drawable/ic_arrow"
-            app:tint="@color/n_100"
-            android:backgroundTint="@color/white"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/expandableContent"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingStart="@dimen/size_4.5x"
-        android:paddingEnd="0dp"
-        android:paddingBottom="@dimen/size_3x">
-
         <LinearLayout
-            android:id="@+id/linearLayout3"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="vertical"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            android:orientation="horizontal"
+            android:paddingTop="@dimen/size_3x"
+            android:paddingBottom="@dimen/size">
 
-            <TextView
-                style="@style/Text2_semibold"
+            <com.safetyheads.akademiaandroida.H2View
+                android:id="@+id/h2View2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                app:text="Turn on noifications"
+                android:layout_weight="5"/>
+
+            <ImageButton
+                android:id="@+id/arrow"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/stay_up_to_date_with"
-                android:textColor="@color/p_60"
-                android:textSize="16sp" />
-
-            <TextView
-                android:id="@+id/titleText"
-                style="@style/Text2_semibold"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="-15dp"
-                android:text="@string/our_job_offers"
-                android:textColor="@color/p_60"
-                android:textSize="24sp" />
+                android:layout_gravity="center_vertical"
+                android:padding="@dimen/size_1.5x"
+                android:layout_marginEnd="@dimen/size_2x"
+                android:src="@drawable/ic_arrow"
+                app:tint="@color/n_100"
+                android:backgroundTint="@color/white"
+                android:contentDescription="@string/arrow_notifications" />
 
         </LinearLayout>
 
-        <Switch
-            android:id="@+id/switchButton"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:id="@+id/expandableContent"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:scaleX="1.5"
-            android:scaleY="1.5"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/linearLayout3"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:orientation="horizontal">
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <LinearLayout
+                android:id="@+id/linearLayout3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:layout_weight="1">
+
+                <TextView
+                    style="@style/Text2_semibold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/stay_up_to_date_with"
+                    android:textColor="@color/p_60"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/titleText"
+                    style="@style/Text2_semibold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="-15dp"
+                    android:text="Example text"
+                    android:textColor="@color/p_60"
+                    android:textSize="24sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:gravity="center">
+
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/switchButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:scaleX="1.5"
+                    android:scaleY="1.5"
+                    app:trackTint="@color/s_60"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
 
     </LinearLayout>
 

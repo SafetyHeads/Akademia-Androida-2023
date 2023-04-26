@@ -5,6 +5,6 @@ import kotlinx.coroutines.flow.Flow
 
 interface CareerRepository {
 
-    suspend fun getJobOffersList(): Flow<ArrayList<JobOffer>>
+    suspend fun getJobOffersList(): Flow<List<JobOffer>>
 
 }

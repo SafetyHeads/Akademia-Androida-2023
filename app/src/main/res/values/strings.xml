@@ -87,4 +87,8 @@
     <string name="sign_in_now">Sign in now</string>
     <string name="we_have_emailed_your_password_reset_link">We have e-mailed your password reset link.</string>
     <string name="failed_sent_forgot_password">Failed sent e-mail. Please try again later</string>
+    <string name="title_activity_web_view">WebViewActivity</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+    <string name="arrow_notifications">Arrow notifications</string>
 </resources>

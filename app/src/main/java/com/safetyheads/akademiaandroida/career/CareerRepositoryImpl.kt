@@ -24,7 +24,7 @@ class CareerRepositoryImpl: CareerRepository {
         )
     )
 
-    override suspend fun getJobOffersList(): Flow<ArrayList<JobOffer>> = flow {
+    override suspend fun getJobOffersList(): Flow<List<JobOffer>> = flow {
         emit(jobOffersList)
     }
 }
