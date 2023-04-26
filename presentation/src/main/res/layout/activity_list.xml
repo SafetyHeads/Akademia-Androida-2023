@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     tools:context="com.safetyheads.presentation.activities.activitieslist.ListActivity">
 
-    <FrameLayout
+
+<FrameLayout
         android:id="@+id/frame_layout2"
         android:layout_width="match_parent"
         android:layout_height="match_parent">

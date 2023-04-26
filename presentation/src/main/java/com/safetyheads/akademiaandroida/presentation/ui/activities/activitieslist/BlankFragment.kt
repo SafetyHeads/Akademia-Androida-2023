@@ -1,5 +1,6 @@
 package com.safetyheads.akademiaandroida.presentation.ui.activities.activitieslist
 
+
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View

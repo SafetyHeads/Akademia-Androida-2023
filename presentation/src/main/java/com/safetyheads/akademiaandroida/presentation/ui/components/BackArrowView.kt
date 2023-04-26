@@ -31,7 +31,6 @@ class BackArrowView : FrameLayout {
         binding = ViewArrowBinding.inflate(LayoutInflater.from(context), this, true)
     }
 
-    private fun setOnClickListener() {}
     fun setImage(@DrawableRes imageRes: Int) {
         binding.arrow.setImageResource(imageRes)
     }

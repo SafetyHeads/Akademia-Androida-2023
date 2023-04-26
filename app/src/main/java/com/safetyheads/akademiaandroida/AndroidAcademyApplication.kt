@@ -7,6 +7,7 @@ import com.safetyheads.akademiaandroida.presentation.ui.activities.splashscreen.
 import com.safetyheads.akademiaandroida.presentation.ui.customviews.dropdown.DropDownListViewModel
 import com.safetyheads.akademiaandroida.presentation.ui.customviews.dropdown.LoadItemsToDropDownListUseCase
 import com.safetyheads.akademiaandroida.presentation.ui.fragments.forgotpasswordfragment.ForgotPasswordViewModel
+import com.safetyheads.data.network.retrofit.ApiClient
 import com.safetyheads.domain.repositories.ConfigRepository
 import com.safetyheads.domain.repositories.UserRepository
 import com.safetyheads.domain.usecases.DelaySplashScreenUseCase
@@ -19,15 +20,19 @@ import org.koin.core.context.startKoin
 import org.koin.dsl.module
 
 
-class AndroidAcademyApplication: Application() {
+class AndroidAcademyApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()
         startKoin {
             androidLogger()
             androidContext(this@AndroidAcademyApplication)
-            modules(appModule)
+            modules(listOf(appModule, networkModule))
         }
+    }
+
+    private val networkModule = module {
+        single { ApiClient(BuildConfig.DEBUG) }
     }
 
     private val appModule = module {

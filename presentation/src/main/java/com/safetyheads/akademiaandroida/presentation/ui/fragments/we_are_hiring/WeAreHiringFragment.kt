@@ -29,5 +29,7 @@ class WeAreHiringFragment : Fragment() {
         binding.applyNow.setOnClickListener {
             // TODO: Apply now button click
         }
+
+        binding.applyNow.setOnClickListener { }
     }
 }

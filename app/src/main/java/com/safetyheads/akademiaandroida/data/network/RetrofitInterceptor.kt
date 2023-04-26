@@ -9,7 +9,7 @@ class RetrofitInterceptor : Interceptor {
         val request = chain.request()
         Log.d("Retrofit", "Sending request: $request")
         val response = chain.proceed(request)
-        Log.d("Retrofit", "Received response: ${response.body()?.string()}")
+        Log.d("Retrofit", "Received response: ${response.body?.string()}")
         return response
     }
 }

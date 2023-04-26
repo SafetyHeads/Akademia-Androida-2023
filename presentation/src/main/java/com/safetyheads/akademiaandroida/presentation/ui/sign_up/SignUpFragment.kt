@@ -1,4 +1,4 @@
-package com.safetyheads.akademiaandroida.sign_up
+package com.safetyheads.akademiaandroida.signup
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -12,9 +12,6 @@ import com.safetyheads.akademiaandroida.presentation.ui.utils.FullNameValidator
 import com.safetyheads.akademiaandroida.presentation.ui.utils.PasswordValidator
 
 import org.koin.androidx.viewmodel.ext.android.viewModel
-
-//TODO:
-// https://trello.com/c/tbEmpUyh/112-podpiąć-progressbar-do-ekranu-rejestracji
 
 class SignUpFragment : Fragment() {
 
@@ -39,7 +36,6 @@ class SignUpFragment : Fragment() {
                 binding.eTextFullName.toString(),
                 binding.eTextEmailAddress.toString(),
                 binding.eTextPassword.toString(),
-                binding.eTextConfirmPassword.toString()
             )
         }
         FullNameValidator.attach(binding.eTextFullName, requireContext())
