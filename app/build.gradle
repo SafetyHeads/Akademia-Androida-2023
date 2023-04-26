@@ -86,6 +86,7 @@ dependencies {
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4'
     implementation 'com.google.firebase:firebase-config-ktx:21.3.0'
     implementation 'com.google.firebase:firebase-auth-ktx:21.3.0'
+    implementation project(path: ':presentation')
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
