@@ -2,7 +2,9 @@ package com.safetyheads.akademiaandroida.career
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.*
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.safetyheads.akademiaandroida.WebViewActivity
@@ -55,7 +57,7 @@ class CareerFragment : Fragment() {
         }
     }
 
-    private fun onButtonClick(jobUrl: String, position: Int) {
+    private fun onButtonClick(jobUrl: String) {
         val intent = Intent(requireActivity(), WebViewActivity::class.java)
         intent.putExtra("job_url", jobUrl)
         startActivity(intent)

@@ -7,7 +7,7 @@
     android:orientation="vertical"
     tools:context=".career.CareerFragment">
 
-    <com.safetyheads.akademiaandroida.views.notification_view.NotificationsView
+    <com.safetyheads.akademiaandroida.views.notificationview.NotificationsView
         android:id="@+id/notificationView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

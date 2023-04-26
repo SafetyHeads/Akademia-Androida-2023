@@ -1,4 +1,4 @@
-package com.safetyheads.akademiaandroida.views.notification_view
+package com.safetyheads.akademiaandroida.views.notificationview
 
 import android.animation.LayoutTransition
 import android.content.Context

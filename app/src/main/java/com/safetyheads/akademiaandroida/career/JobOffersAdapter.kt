@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.safetyheads.akademiaandroida.databinding.JobOfferListItemBinding
 import com.safetyheads.domain.entities.JobOffer
 
-class JobOffersAdapter(val onButtonClick: (String, Int) -> Unit): RecyclerView.Adapter<JobOffersAdapter.JobOffersViewHolder>() {
+class JobOffersAdapter(val onButtonClick: (String) -> Unit): RecyclerView.Adapter<JobOffersAdapter.JobOffersViewHolder>() {
 
     private val jobOfferList = ArrayList<JobOffer>()
 
@@ -44,7 +44,7 @@ class JobOffersAdapter(val onButtonClick: (String, Int) -> Unit): RecyclerView.A
         holder.jobExperience.text = jobOfferList[position].jobExperience
         holder.jobSalary.text = jobOfferList[position].jobSalary
         holder.button.setOnClickListener {
-            onButtonClick(jobOfferList[position].jobUrl, position)
+            onButtonClick(jobOfferList[position].jobUrl)
         }
     }
 }
