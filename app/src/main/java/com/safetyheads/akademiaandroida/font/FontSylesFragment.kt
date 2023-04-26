@@ -14,8 +14,8 @@ class FontSylesFragment: Fragment() {
     private lateinit var binding: FragmentFontStylesBinding
     private lateinit var rvAdapter: FontStylesAdapter
 
-    private var description: ArrayList<String> = arrayListOf()
-    private var listFont: ArrayList<Int> = arrayListOf()
+    private val description: ArrayList<String> = arrayListOf()
+    private val listFont: ArrayList<Int> = arrayListOf()
 
     override fun onCreateView(
         inflater: LayoutInflater,

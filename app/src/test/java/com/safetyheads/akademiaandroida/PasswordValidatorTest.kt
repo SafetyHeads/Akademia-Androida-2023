@@ -2,15 +2,16 @@ package com.safetyheads.akademiaandroida
 
 import android.content.Context
 import android.widget.EditText
+import com.safetyheads.akademiaandroida.utils.PasswordValidator
+import io.mockk.every
 import io.mockk.mockk
 import io.mockk.verify
-import io.mockk.every
 import org.junit.Test
 
 
 class PasswordValidatorTest {
 
-    private val validator = PasswordValidator()
+    private val validator = PasswordValidator
     @Test
     fun validateAttach() {
         // Given
