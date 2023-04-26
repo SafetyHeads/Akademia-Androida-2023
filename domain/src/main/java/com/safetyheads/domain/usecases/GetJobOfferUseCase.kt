@@ -13,7 +13,7 @@ class GetJobOfferUseCase(private val repository: CareerRepository): Parameterles
                 repository.getJobOffersList().collect{ jobOffers ->
                     emit(Result.success(jobOffers))
                 }
-            } catch (error: Exception) {
+            } catch (error: IllegalStateException) {
                 emit(Result.failure(error))
             }
         }
