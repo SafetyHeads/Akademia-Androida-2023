@@ -1,5 +1,6 @@
 package com.safetyheads.domain.usecases
 
+import com.safetyheads.data.usecases.BaseUseCase
 import com.safetyheads.domain.entities.User
 import com.safetyheads.domain.repositories.UserRepository
 import kotlinx.coroutines.flow.Flow
@@ -19,9 +20,9 @@ class RegisterUseCase(
                     .collect { user ->
                         emit(Result.success(user))
                     }
-            } catch (error: Exception) {
-                emit(Result.failure(error))
+            } catch (error: IllegalStateException) {
+                    emit(Result.failure(error))
+                }
             }
-        }
     }
 }
