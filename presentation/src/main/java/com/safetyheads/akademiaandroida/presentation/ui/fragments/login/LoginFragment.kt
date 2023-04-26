@@ -1,4 +1,4 @@
-package com.safetyheads.akademiaandroida.login
+package com.safetyheads.akademiaandroida.presentation.ui.fragments.login
 
 import android.os.Bundle
 import android.view.LayoutInflater

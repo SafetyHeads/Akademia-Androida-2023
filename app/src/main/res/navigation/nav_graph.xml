@@ -28,7 +28,7 @@
     </fragment>
     <fragment
         android:id="@+id/login_fragment"
-        android:name="com.safetyheads.akademiaandroida.login.LoginFragment"
+        android:name="com.safetyheads.akademiaandroida.presentation.ui.fragments.login.LoginFragment"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login">
         <action
