@@ -46,6 +46,7 @@ class FragmentDropDownList : Fragment() {
                 setOnGroupClickListener { parent, view, groupPosition, _ ->
                     if (parent.isGroupExpanded(groupPosition)) {
                         view.findViewById<ImageView>(R.id.arrow).rotation = 0f
+
                         view.findViewById<TextView>(R.id.dropdown_list_title).setTextColor(
                             context.getColor(
                                 R.color.s_60
@@ -53,11 +54,8 @@ class FragmentDropDownList : Fragment() {
                         )
                     } else {
                         view.findViewById<ImageView>(R.id.arrow).rotation = 180f
-                        view.findViewById<TextView>(R.id.dropdown_list_title).setTextColor(
-                            context.getColor(
-                                R.color.p_60
-                            )
-                        )
+                        view.findViewById<TextView>(R.id.dropdown_list_title)
+                            .setTextColor(context.getColor(R.color.p_60))
                     }
                     false
                 }

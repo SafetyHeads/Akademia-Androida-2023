@@ -36,7 +36,7 @@ class LoginFragment : Fragment() {
                 message = requireActivity().getString(R.string.we_have_emailed_your_password_reset_link)
             ).show()
         }
-        
+
         EmailValidator.attach(binding.eTextEmailAddress)
         PasswordValidator.attach(binding.eTextPassword, requireContext())
         binding.forgotPassword.setOnClickListener {

@@ -48,7 +48,10 @@ dependencies {
 
     //viewmodel
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.0'
-
+    //mokk
+    testImplementation "io.mockk:mockk:1.12.0"
+    androidTestImplementation "io.mockk:mockk-android:1.11.0"
+    testImplementation "org.assertj:assertj-core:3.20.2"
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'

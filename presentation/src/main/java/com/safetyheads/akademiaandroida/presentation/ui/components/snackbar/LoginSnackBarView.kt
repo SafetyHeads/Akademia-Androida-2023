@@ -24,7 +24,11 @@ class LoginSnackBarView @JvmOverloads constructor(
         this.closeIcon = findViewById(R.id.close_icon_login_snackbar)
     }
 
-    override fun animateContentIn(delay: Int, duration: Int) {}
+    override fun animateContentIn(delay: Int, duration: Int) {
+        //no-op
+    }
 
-    override fun animateContentOut(delay: Int, duration: Int) {}
+    override fun animateContentOut(delay: Int, duration: Int) {
+        //no-op
+    }
 }

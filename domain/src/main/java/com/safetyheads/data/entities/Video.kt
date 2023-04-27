@@ -1,4 +1,4 @@
-package com.safetyheads.domain.entities
+package com.safetyheads.data.entities
 
 data class Video(
     val id: String,

@@ -1,13 +1,18 @@
-package com.safetyheads.akademiaandroida
+package com.safetyheads.presentation
 
 import android.content.Context
 import android.widget.EditText
-import com.safetyheads.presentation.utils.FullNameValidator
+import com.safetyheads.akademiaandroida.R
+import com.safetyheads.akademiaandroida.presentation.ui.utils.FullNameValidator
 import io.mockk.every
 import io.mockk.mockk
 import io.mockk.verify
+
 import org.assertj.core.api.AssertionsForInterfaceTypes.assertThat
 import org.junit.Test
+
+
+
 
 
 class FullNameVaildatorTest {

@@ -1,7 +1,7 @@
-package com.safetyheads.domain.usecases
+package com.safetyheads.data.usecases
 
-import com.safetyheads.domain.entities.Video
-import com.safetyheads.domain.repositories.VideoRepository
+import com.safetyheads.data.entities.Video
+import com.safetyheads.data.repositories.VideoRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
@@ -12,10 +12,10 @@ class GetVideoUseCase(private val repository: VideoRepository): BaseUseCase<GetV
     override suspend fun invoke(parameter: VideoParam): Flow<Result<Video>> {
         return flow {
             try {
-                repository.getVideo(parameter.videoId).collect{ video ->
+                repository.getVideo(parameter.videoId).collect { video ->
                     emit(Result.success(video))
                 }
-            }   catch (error: Exception) {
+            } catch (error: IllegalStateException) {
                 emit(Result.failure(error))
             }
         }
