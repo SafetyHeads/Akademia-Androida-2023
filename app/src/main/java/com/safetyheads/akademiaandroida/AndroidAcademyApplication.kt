@@ -7,7 +7,7 @@ import com.safetyheads.akademiaandroida.dropdownlist.DropDownListViewModel
 import com.safetyheads.akademiaandroida.dropdownlist.LoadItemsToDropDownListUseCase
 import com.safetyheads.akademiaandroida.forgotpasswordfragment.ForgotPasswordViewModel
 import com.safetyheads.akademiaandroida.splashscreen.SplashScreenViewModel
-import com.safetyheads.data.network.retrofit.ApiClient
+import com.safetyheads.data.akademiaandroida.network.retrofit.ApiClient
 import com.safetyheads.domain.repositories.ConfigRepository
 import com.safetyheads.domain.repositories.UserRepository
 import com.safetyheads.domain.usecases.DelaySplashScreenUseCase
