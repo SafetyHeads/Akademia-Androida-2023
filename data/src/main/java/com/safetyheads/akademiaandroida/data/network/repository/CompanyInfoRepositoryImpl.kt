@@ -13,7 +13,8 @@ import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
 
-class CompanyInfoRepositoryImpl(firebaseFirestore: FirebaseFirestore) : CompanyInfoRepository {
+class CompanyInfoRepositoryImpl(firebaseFirestore: FirebaseFirestore) :
+    CompanyInfoRepository {
 
     private val companyInfoRef = firebaseFirestore.collection("applicationData").document("companyInfo")
 
