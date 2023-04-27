@@ -1,4 +1,4 @@
-package com.safetyheads.data.network.repository
+package com.safetyheads.akademiaandroida.data.network.repository
 
 import com.google.firebase.firestore.FirebaseFirestore
 import com.safetyheads.domain.entities.firebasefirestore.About

@@ -1,4 +1,4 @@
-package com.safetyheads.data.network.objects
+package com.safetyheads.akademiaandroida.data.network.objects
 
 @SuppressWarnings("UnusedPrivateMember")
 object YouTubeApi {
