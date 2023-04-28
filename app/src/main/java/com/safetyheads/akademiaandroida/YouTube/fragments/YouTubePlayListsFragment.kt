@@ -12,7 +12,7 @@ import com.safetyheads.akademiaandroida.YouTube.YouTubeActivity
 import com.safetyheads.akademiaandroida.YouTube.adapters.PlaylistAdapter
 import com.safetyheads.akademiaandroida.YouTube.viewModel.PlayListViewModel
 import com.safetyheads.akademiaandroida.databinding.FragmentPlaylistBinding
-import com.safetyheads.domain.entities.Playlist
+import com.safetyheads.akademiaandroida.domain.entities.Playlist
 import org.koin.androidx.viewmodel.ext.android.activityViewModel
 
 class YouTubePlayListsFragment: Fragment(), PlaylistAdapter.ClickListener {
@@ -64,7 +64,7 @@ class YouTubePlayListsFragment: Fragment(), PlaylistAdapter.ClickListener {
         binding.progressBar.isVisible = false
     }
 
-    override fun onClick(item: Playlist, position: Int) {
+    override fun onClick(item: com.safetyheads.akademiaandroida.domain.entities.Playlist, position: Int) {
         playListViewModel.getPlayListItems(item.playlistId)
         val activity = requireActivity() as YouTubeActivity
         activity.goToPlayList()

@@ -10,7 +10,7 @@ import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
 import com.safetyheads.akademiaandroida.YouTube.viewModel.ChannelViewModel
 import com.safetyheads.akademiaandroida.databinding.FragmentChannelBinding
-import com.safetyheads.domain.entities.Channel
+import com.safetyheads.akademiaandroida.domain.entities.Channel
 import org.koin.androidx.viewmodel.ext.android.activityViewModel
 
 class YouTubeChanelFragment : Fragment() {
@@ -51,7 +51,7 @@ class YouTubeChanelFragment : Fragment() {
         binding.progressBar.isVisible = false
     }
 
-    private fun initChannel(channelInformation: Channel) {
+    private fun initChannel(channelInformation: com.safetyheads.akademiaandroida.domain.entities.Channel) {
             binding.tvChannelName.text = channelInformation.channelName
             binding.tvChannelDescription.text = channelInformation.channelDescription
             Glide.with(requireContext()).load(channelInformation.channelBannerUrl)

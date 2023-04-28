@@ -1,13 +1,13 @@
 package com.safetyheads.data.network.mapper
 
 import com.safetyheads.data.network.entities.playlistitems.PlayListItems
-import com.safetyheads.domain.entities.Video
+import com.safetyheads.akademiaandroida.domain.entities.Video
 import org.jsoup.Jsoup
 
-class PlayListVideoMapper : BaseMapperRepository<PlayListItems, ArrayList<Video>> {
+class PlayListVideoMapper : BaseMapperRepository<PlayListItems, ArrayList<com.safetyheads.akademiaandroida.domain.entities.Video>> {
 
-    override fun transform(type: PlayListItems): ArrayList<Video> {
-        val playlistList: ArrayList<Video> = ArrayList()
+    override fun transform(type: PlayListItems): ArrayList<com.safetyheads.akademiaandroida.domain.entities.Video> {
+        val playlistList: ArrayList<com.safetyheads.akademiaandroida.domain.entities.Video> = ArrayList()
 
         type.items.forEach { playlistItems ->
             val videoId: String = playlistItems.id
@@ -15,7 +15,7 @@ class PlayListVideoMapper : BaseMapperRepository<PlayListItems, ArrayList<Video>
             val publishTime: String = Jsoup.parse(playlistItems.snippet.publishedAt).text()
             val thumbnailsUrl: String = playlistItems.snippet.thumbnails.high.url
 
-            val tempPlaylistItem = Video(
+            val tempPlaylistItem = com.safetyheads.akademiaandroida.domain.entities.Video(
                 videoId,
                 videoTitle,
                 publishTime,
@@ -27,7 +27,7 @@ class PlayListVideoMapper : BaseMapperRepository<PlayListItems, ArrayList<Video>
         return playlistList
     }
 
-    override fun transformToRepository(type: ArrayList<Video>): PlayListItems {
+    override fun transformToRepository(type: ArrayList<com.safetyheads.akademiaandroida.domain.entities.Video>): PlayListItems {
         TODO("Not yet implemented")
     }
 }

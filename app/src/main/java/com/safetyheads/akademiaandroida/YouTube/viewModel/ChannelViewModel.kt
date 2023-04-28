@@ -5,8 +5,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.safetyheads.akademiaandroida.BuildConfig
-import com.safetyheads.domain.entities.Channel
-import com.safetyheads.domain.usecases.GetChannelUseCase
+import com.safetyheads.akademiaandroida.domain.entities.Channel
+import com.safetyheads.akademiaandroida.domain.usecases.GetChannelUseCase
 import kotlinx.coroutines.launch
 
 class ChannelViewModel(

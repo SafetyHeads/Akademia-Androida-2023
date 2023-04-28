@@ -1,12 +1,11 @@
-package com.safetyheads.domain.usecases
+package com.safetyheads.akademiaandroida.domain.usecases
 
-import com.safetyheads.domain.entities.User
-import com.safetyheads.domain.repositories.UserRepository
+import com.safetyheads.akademiaandroida.domain.entities.User
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
 class RegisterUseCase(
-    private val repository: UserRepository
+    private val repository: com.safetyheads.akademiaandroida.domain.repositories.UserRepository
 ) : BaseUseCase<RegisterUseCase.UserParams, User> {
     class UserParams(val fullName: String, val email: String, val password: String) :
         BaseUseCase.Params

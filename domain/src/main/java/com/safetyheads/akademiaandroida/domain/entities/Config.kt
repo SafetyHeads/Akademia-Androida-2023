@@ -1,4 +1,4 @@
-package com.safetyheads.domain.entities
+package com.safetyheads.akademiaandroida.domain.entities
 
 data class Config(
     var versionCode: String,

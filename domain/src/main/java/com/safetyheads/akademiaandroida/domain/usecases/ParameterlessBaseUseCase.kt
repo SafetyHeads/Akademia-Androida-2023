@@ -1,10 +1,11 @@
-package com.safetyheads.domain.usecases
+package com.safetyheads.akademiaandroida.domain.usecases
 
 import kotlinx.coroutines.flow.Flow
 
 
 interface ParameterlessBaseUseCase<out DataType : Any>
-    : BaseUseCase<ParameterlessBaseUseCase.NoParameter, DataType> {
+    :
+    BaseUseCase<ParameterlessBaseUseCase.NoParameter, DataType> {
 
     object NoParameter : BaseUseCase.Params
 

@@ -1,11 +1,10 @@
-package com.safetyheads.domain.usecases
+package com.safetyheads.akademiaandroida.domain.usecases
 
-import com.safetyheads.domain.entities.Video
-import com.safetyheads.domain.repositories.VideoRepository
+import com.safetyheads.akademiaandroida.domain.entities.Video
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
-class GetVideoUseCase(private val videoRepository: VideoRepository):
+class GetVideoUseCase(private val videoRepository: com.safetyheads.akademiaandroida.domain.repositories.VideoRepository):
     BaseUseCase<GetVideoUseCase.VideoParam, Video> {
 
     class VideoParam(val previousFilmDate: String): BaseUseCase.Params

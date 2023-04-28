@@ -1,11 +1,10 @@
-package com.safetyheads.domain.usecases
+package com.safetyheads.akademiaandroida.domain.usecases
 
-import com.safetyheads.domain.entities.Video
-import com.safetyheads.domain.repositories.PlaylistRepository
+import com.safetyheads.akademiaandroida.domain.entities.Video
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
-class GetPlayListItemsUseCase(private val playlistRepository: PlaylistRepository):
+class GetPlayListItemsUseCase(private val playlistRepository: com.safetyheads.akademiaandroida.domain.repositories.PlaylistRepository):
     BaseUseCase<GetPlayListItemsUseCase.PlayListItemsParams, ArrayList<Video>> {
 
     class PlayListItemsParams(val playListId: String): BaseUseCase.Params

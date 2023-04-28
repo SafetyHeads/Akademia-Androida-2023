@@ -1,7 +1,7 @@
 package com.safetyheads.data.network.mapper
 
 import com.safetyheads.data.network.entities.channel.ChannelInfo
-import com.safetyheads.domain.entities.Channel
+import com.safetyheads.akademiaandroida.domain.entities.Channel
 import org.jsoup.Jsoup
 
 
@@ -22,7 +22,8 @@ class ChannelMapper : BaseMapperRepository<ChannelInfo, Channel> {
                 channelName,
                 channelDescription,
                 channelBannerUrl,
-                channelAvatarUrl)
+                channelAvatarUrl
+            )
         }
 
         return channel

@@ -5,9 +5,9 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.safetyheads.akademiaandroida.BuildConfig
-import com.safetyheads.domain.entities.Video
-import com.safetyheads.domain.usecases.DateUseCase
-import com.safetyheads.domain.usecases.GetVideoUseCase
+import com.safetyheads.akademiaandroida.domain.entities.Video
+import com.safetyheads.akademiaandroida.domain.usecases.DateUseCase
+import com.safetyheads.akademiaandroida.domain.usecases.GetVideoUseCase
 import kotlinx.coroutines.launch
 
 class VideoViewModel(

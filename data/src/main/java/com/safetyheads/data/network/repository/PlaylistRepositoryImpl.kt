@@ -4,9 +4,9 @@ import com.safetyheads.data.network.mapper.PlayListVideoMapper
 import com.safetyheads.data.network.mapper.PlaylistMapper
 import com.safetyheads.data.network.`object`.YouTubeApi
 import com.safetyheads.data.network.service.YouTubeService
-import com.safetyheads.domain.entities.Playlist
-import com.safetyheads.domain.entities.Video
-import com.safetyheads.domain.repositories.PlaylistRepository
+import com.safetyheads.akademiaandroida.domain.entities.Playlist
+import com.safetyheads.akademiaandroida.domain.entities.Video
+import com.safetyheads.akademiaandroida.domain.repositories.PlaylistRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flow
@@ -16,9 +16,9 @@ class PlaylistRepositoryImpl(
     private val playListVideoMapper: PlayListVideoMapper,
     private val playlistMapper: PlaylistMapper,
     private val apiKey: String
-) : PlaylistRepository {
+) : com.safetyheads.akademiaandroida.domain.repositories.PlaylistRepository {
 
-    override suspend fun getPlayLists(): Flow<Result<ArrayList<Playlist>>> =
+    override suspend fun getPlayLists(): Flow<Result<ArrayList<com.safetyheads.akademiaandroida.domain.entities.Playlist>>> =
         flow {
             val retrofitYouTubePlayLists =
                 youTubeService
@@ -33,7 +33,7 @@ class PlaylistRepositoryImpl(
             emit(Result.failure(exception))
         }
 
-    override suspend fun getPlayListItems(playListID: String): Flow<Result<ArrayList<Video>>> =
+    override suspend fun getPlayListItems(playListID: String): Flow<Result<ArrayList<com.safetyheads.akademiaandroida.domain.entities.Video>>> =
         flow {
             val retrofitYouTubePlayListItems =
                 youTubeService

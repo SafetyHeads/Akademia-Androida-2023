@@ -5,10 +5,10 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.safetyheads.akademiaandroida.BuildConfig
-import com.safetyheads.domain.entities.Playlist
-import com.safetyheads.domain.entities.Video
-import com.safetyheads.domain.usecases.GetPlayListItemsUseCase
-import com.safetyheads.domain.usecases.GetPlayListsUseCase
+import com.safetyheads.akademiaandroida.domain.entities.Playlist
+import com.safetyheads.akademiaandroida.domain.entities.Video
+import com.safetyheads.akademiaandroida.domain.usecases.GetPlayListItemsUseCase
+import com.safetyheads.akademiaandroida.domain.usecases.GetPlayListsUseCase
 import kotlinx.coroutines.launch
 
 class PlayListViewModel(
