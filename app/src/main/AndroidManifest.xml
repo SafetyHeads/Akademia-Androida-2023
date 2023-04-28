@@ -28,7 +28,7 @@
             android:name=".RootActivity"
             android:exported="true" />
         <activity
-            android:name=".ActivitiesList.ListActivity"
+            android:name=".activitieslist.ListActivity"
             android:exported="true" />
         <activity
             android:name=".YouTube.YouTubeActivity"

@@ -1,8 +1,6 @@
 package com.safetyheads.akademiaandroida
 
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
@@ -26,7 +24,9 @@ class RootActivity : AppCompatActivity() {
 
         val onBackPressedCallback = object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
-                if (navController.currentDestination?.id == R.id.launchScreenFragment || navController.currentDestination?.id == R.id.dashboard_placeholder) {
+                if (navController.currentDestination?.id == R.id.launchScreenFragment ||
+                    navController.currentDestination?.id == R.id.dashboard_placeholder
+                ) {
                     // do nothing
                 } else {
                     navController.popBackStack()

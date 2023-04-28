@@ -1,4 +1,4 @@
-package com.safetyheads.akademiaandroida.ActivitiesList
+package com.safetyheads.akademiaandroida.activitieslist
 
 import android.content.pm.PackageManager
 import android.os.Bundle
@@ -6,13 +6,14 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.safetyheads.akademiaandroida.ClientsFragment
 import com.safetyheads.akademiaandroida.ExperienceStructureFragment
-import com.safetyheads.akademiaandroida.contact_with_us.ContactWithUsFragment
+import com.safetyheads.akademiaandroida.contactwithus.ContactWithUsFragment
 import com.safetyheads.akademiaandroida.databinding.ActivityListBinding
 import com.safetyheads.akademiaandroida.dropdownlist.FragmentDropDownList
 import com.safetyheads.akademiaandroida.font.FontSylesFragment
 import com.safetyheads.akademiaandroida.forgotpasswordfragment.ForgotPasswordFragment
 import com.safetyheads.akademiaandroida.fragments.WeAreHiringFragment
 import com.safetyheads.akademiaandroida.login.LoginFragment
+import com.safetyheads.akademiaandroida.utils.getPackageInfoCompat
 
 class ListActivity : AppCompatActivity() {
     private lateinit var binding: ActivityListBinding
@@ -32,7 +33,8 @@ class ListActivity : AppCompatActivity() {
     }
 
     private fun createListActivity(): List<String> = buildList {
-        val packageInfo = packageManager.getPackageInfo(packageName, PackageManager.GET_ACTIVITIES)
+        val packageInfo =
+            packageManager.getPackageInfoCompat(packageName, PackageManager.GET_ACTIVITIES)
         val activities = packageInfo.activities
         val activityList = ArrayList<String>()
 

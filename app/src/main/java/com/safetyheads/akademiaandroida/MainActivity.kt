@@ -10,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
-import com.safetyheads.akademiaandroida.ActivitiesList.ListActivity
+import com.safetyheads.akademiaandroida.activitieslist.ListActivity
 import com.safetyheads.akademiaandroida.contactusform.ContactUsFragment
 import com.safetyheads.akademiaandroida.databinding.ActivityMainBinding
 import com.safetyheads.akademiaandroida.font.FontSylesFragment
@@ -77,7 +77,7 @@ class MainActivity : AppCompatActivity() {
         val crashButton = Button(this)
         crashButton.text = "Test Crash"
         crashButton.setOnClickListener {
-            throw RuntimeException("Test Crash") // Force a crash
+            throw IllegalStateException("Test Crash") // Force a crash
         }
         addContentView(
             crashButton, ViewGroup.LayoutParams(

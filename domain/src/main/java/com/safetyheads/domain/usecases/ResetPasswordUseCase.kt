@@ -24,7 +24,7 @@ class ResetPasswordUseCase(private val repository: UserRepository) :
                             )
                         )
                 }
-            } catch (error: Exception) {
+            } catch (error: IllegalStateException) {
                 emit(Result.failure(error))
             }
         }
