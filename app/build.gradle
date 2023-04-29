@@ -40,11 +40,13 @@ android {
         Properties properties = new Properties()
         File localPropertiesFile = project.rootProject.file("local.properties")
 
+        resValue "string", "MAPS_API_KEY", ""
+
         if (localPropertiesFile.exists()) {
             properties.load(localPropertiesFile.newDataInputStream())
-            resValue "string", "MAPS_API_KEY", properties['mapsApiKey']
-        } else {
-            resValue "string", "MAPS_API_KEY", ""
+            if (properties.contains('mapsApiKey')) {
+                resValue "string", "MAPS_API_KEY", properties['mapsApiKey']
+            }
         }
     }
 
