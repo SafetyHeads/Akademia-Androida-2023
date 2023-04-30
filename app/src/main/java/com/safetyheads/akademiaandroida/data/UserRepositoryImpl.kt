@@ -1,9 +1,9 @@
 package com.safetyheads.akademiaandroida.data
 
 import com.google.firebase.auth.FirebaseAuth
-import com.safetyheads.domain.entities.ResetPassword
-import com.safetyheads.domain.entities.User
-import com.safetyheads.domain.repositories.UserRepository
+import com.safetyheads.akademiaandroida.domain.entities.ResetPassword
+import com.safetyheads.akademiaandroida.domain.entities.User
+import com.safetyheads.akademiaandroida.domain.repositories.UserRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flow

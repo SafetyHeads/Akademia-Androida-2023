@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.safetyheads.domain.usecases.ResetPasswordUseCase
+import com.safetyheads.akademiaandroida.domain.usecases.ResetPasswordUseCase
 import kotlinx.coroutines.launch
 
 class ForgotPasswordViewModel(private val resetPasswordUseCase: ResetPasswordUseCase) :

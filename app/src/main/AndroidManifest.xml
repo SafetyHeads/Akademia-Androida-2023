@@ -32,10 +32,12 @@
             android:exported="true" />
         <activity
             android:name=".RootActivity"
-
             android:exported="true" />
         <activity
             android:name=".activitieslist.ListActivity"
+            android:exported="true" />
+        <activity
+            android:name=".youtube.YouTubeActivity"
             android:exported="true" />
     </application>
     <queries>

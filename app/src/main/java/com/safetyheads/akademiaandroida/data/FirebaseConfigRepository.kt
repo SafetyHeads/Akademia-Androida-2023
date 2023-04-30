@@ -2,13 +2,14 @@ package com.safetyheads.akademiaandroida.data
 
 import com.google.firebase.remoteconfig.FirebaseRemoteConfig
 import com.google.firebase.remoteconfig.FirebaseRemoteConfigSettings
-import com.safetyheads.domain.entities.Config
-import com.safetyheads.domain.repositories.ConfigRepository
+import com.safetyheads.akademiaandroida.domain.entities.Config
+import com.safetyheads.akademiaandroida.domain.repositories.ConfigRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.tasks.await
 
-class FirebaseConfigRepository: ConfigRepository {
+class FirebaseConfigRepository :
+    ConfigRepository {
 
     private val remoteConfig = FirebaseRemoteConfig.getInstance()
     private val configSettings = FirebaseRemoteConfigSettings.Builder()

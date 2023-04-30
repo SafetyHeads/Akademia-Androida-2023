@@ -4,9 +4,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.safetyheads.domain.entities.Config
-import com.safetyheads.domain.usecases.DelaySplashScreenUseCase
-import com.safetyheads.domain.usecases.GetConfigUseCase
+import com.safetyheads.akademiaandroida.domain.entities.Config
+import com.safetyheads.akademiaandroida.domain.usecases.DelaySplashScreenUseCase
+import com.safetyheads.akademiaandroida.domain.usecases.GetConfigUseCase
 import kotlinx.coroutines.launch
 
 class SplashScreenViewModel(
