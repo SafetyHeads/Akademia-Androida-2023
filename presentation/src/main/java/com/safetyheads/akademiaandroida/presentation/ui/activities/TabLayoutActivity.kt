@@ -28,8 +28,8 @@ class TabLayoutActivity : AppCompatActivity() {
                 //no-op
             }
 
-            override fun onTabReselected(tab: TabLayout.Tab?) {
-
+            override fun onTabReselected(tab: TabLayout.Tab) {
+                //no-op
             }
 
         })
