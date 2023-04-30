@@ -8,7 +8,10 @@ import android.widget.BaseExpandableListAdapter
 import android.widget.TextView
 import com.safetyheads.akademiaandroida.R
 
-class TextExpandableListAdapter(private val context: Context, list: List<ParentModel> = emptyList()) : BaseExpandableListAdapter() {
+class TextExpandableListAdapter(
+    private val context: Context,
+    list: List<ParentModel> = emptyList()
+) : BaseExpandableListAdapter() {
 
     private val parentModels: MutableList<ParentModel> = list.toMutableList()
     fun updateList(newList: List<ParentModel>) {
@@ -17,20 +20,33 @@ class TextExpandableListAdapter(private val context: Context, list: List<ParentM
         notifyDataSetChanged()
     }
 
-    override fun getGroupView(parentPosition: Int, isExpanded: Boolean, convertView: View?, parent: ViewGroup): View {
+    override fun getGroupView(
+        parentPosition: Int,
+        isExpanded: Boolean,
+        convertView: View?,
+        parent: ViewGroup
+    ): View {
         val parentInfo = getGroup(parentPosition)
 
-        return (convertView ?: LayoutInflater.from(context).inflate(R.layout.dropdown_list_parent_item, null)).apply {
-            findViewById<TextView>(R.id.dropdown_list_title).text = parentInfo.name
-        }
+        return convertView ?: LayoutInflater.from(context)
+            .inflate(R.layout.dropdown_list_parent_item, null).apply {
+                findViewById<TextView>(R.id.dropdown_list_title).text = parentInfo.name
+            }
     }
 
-    override fun getChildView(parentPosition: Int, childPosition: Int, isLastChild: Boolean, convertView: View?, parent: ViewGroup): View {
+    override fun getChildView(
+        parentPosition: Int,
+        childPosition: Int,
+        isLastChild: Boolean,
+        convertView: View?,
+        parent: ViewGroup
+    ): View {
         val childInfo = getChild(parentPosition, childPosition)
 
-        return (convertView ?: LayoutInflater.from(context).inflate(R.layout.dropdown_list_child_item, null)).apply {
-            findViewById<TextView>(R.id.itemList).text = childInfo.name
-        }
+        return convertView ?: LayoutInflater.from(context)
+            .inflate(R.layout.dropdown_list_child_item, null).apply {
+                findViewById<TextView>(R.id.itemList).text = childInfo.name
+            }
     }
 
     override fun getGroupCount() = parentModels.size
@@ -39,7 +55,8 @@ class TextExpandableListAdapter(private val context: Context, list: List<ParentM
 
     override fun getGroup(parentPosition: Int) = parentModels[parentPosition]
 
-    override fun getChild(parentPosition: Int, childPosition: Int) = parentModels[parentPosition].itemList[childPosition]
+    override fun getChild(parentPosition: Int, childPosition: Int) =
+        parentModels[parentPosition].itemList[childPosition]
 
     override fun getGroupId(parentPosition: Int) = parentPosition.toLong()
 

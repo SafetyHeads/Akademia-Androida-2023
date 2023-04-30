@@ -28,6 +28,10 @@ jobs:
       - name: Build QA version
         if: github.ref == 'refs/heads/master'
         run: ./gradlew assembleQa
+        
+      - name: Run detekt
+        if: github.event.pull_request
+        run: ./gradlew detekt
 
       - name: Build QA and Production and Development versions for PR
         if: github.event.pull_request

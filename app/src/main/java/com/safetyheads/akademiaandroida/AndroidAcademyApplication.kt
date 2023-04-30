@@ -10,6 +10,7 @@ import com.safetyheads.akademiaandroida.forgotpasswordfragment.ForgotPasswordVie
 import com.safetyheads.akademiaandroida.fragments.technologystack.TechnologyStackUseCase
 import com.safetyheads.akademiaandroida.fragments.technologystack.TechnologyStackViewModel
 import com.safetyheads.akademiaandroida.splashscreen.SplashScreenViewModel
+import com.safetyheads.data.network.retrofit.ApiClient
 import com.safetyheads.domain.repositories.ConfigRepository
 import com.safetyheads.domain.repositories.TechnologyStackRepository
 import com.safetyheads.domain.repositories.UserRepository
@@ -23,15 +24,19 @@ import org.koin.core.context.startKoin
 import org.koin.dsl.module
 
 
-class AndroidAcademyApplication: Application() {
+class AndroidAcademyApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()
         startKoin {
             androidLogger()
             androidContext(this@AndroidAcademyApplication)
-            modules(appModule)
+            modules(listOf(appModule, networkModule))
         }
+    }
+
+    private val networkModule = module {
+        single { ApiClient(BuildConfig.DEBUG) }
     }
 
     private val appModule = module {

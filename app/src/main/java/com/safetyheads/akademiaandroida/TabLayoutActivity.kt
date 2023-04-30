@@ -22,8 +22,15 @@ class TabLayoutActivity : AppCompatActivity() {
                     2 -> binding.textView.text = tab.text
                 }
             }
-            override fun onTabUnselected(tab: TabLayout.Tab) {}
-            override fun onTabReselected(tab: TabLayout.Tab) {}
+
+            override fun onTabUnselected(tab: TabLayout.Tab) {
+                //no-op
+            }
+
+            // }
+            override fun onTabReselected(tab: TabLayout.Tab) {
+                //no-op
+            }
         })
     }
 }
