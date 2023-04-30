@@ -20,4 +20,13 @@
         <item name="windowSplashScreenAnimatedIcon">@mipmap/ic_splash_screen</item>
         <item name="postSplashScreenTheme">@style/Theme.AkademiaAndroida</item>
     </style>
+
+    <style name="Theme.AkademiaAndroida.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.AkademiaAndroida.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.AkademiaAndroida.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>
