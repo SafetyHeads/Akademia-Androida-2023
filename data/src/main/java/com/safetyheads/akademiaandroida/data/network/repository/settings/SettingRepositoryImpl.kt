@@ -1,8 +1,8 @@
-package com.safetyheads.akademiaandroida.settings
+package com.safetyheads.akademiaandroida.data.network.repository.settings
 
 import android.content.Context
-import com.safetyheads.domain.entities.Settings
-import com.safetyheads.domain.repositories.SettingsRepository
+import com.safetyheads.akademiaandroida.domain.entities.Settings
+import com.safetyheads.akademiaandroida.domain.repositories.SettingsRepository
 
 class SettingRepositoryImpl(val context: Context): SettingsRepository {
 

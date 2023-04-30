@@ -1,6 +1,6 @@
-package com.safetyheads.domain.repositories
+package com.safetyheads.akademiaandroida.domain.repositories
 
-import com.safetyheads.domain.entities.Settings
+import com.safetyheads.akademiaandroida.domain.entities.Settings
 
 interface SettingsRepository {
 

@@ -1,6 +1,6 @@
-package com.safetyheads.domain.repositories
+package com.safetyheads.akademiaandroida.domain.repositories
 
-import com.safetyheads.domain.entities.JobOffer
+import com.safetyheads.akademiaandroida.domain.entities.JobOffer
 import kotlinx.coroutines.flow.Flow
 
 interface CareerRepository {

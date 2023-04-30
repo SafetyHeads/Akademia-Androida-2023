@@ -1,4 +1,4 @@
-package com.safetyheads.akademiaandroida.career
+package com.safetyheads.akademiaandroida.presentation.ui.career
 
 import android.content.Intent
 import android.os.Bundle
@@ -7,8 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import com.safetyheads.akademiaandroida.WebViewActivity
-import com.safetyheads.akademiaandroida.databinding.FragmentCareerBinding
+import com.safetyheads.akademiaandroida.presentation.databinding.FragmentCareerBinding
+import com.safetyheads.akademiaandroida.presentation.ui.WebViewActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class CareerFragment : Fragment() {

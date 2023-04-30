@@ -1,13 +1,13 @@
-package com.safetyheads.akademiaandroida.career
+package com.safetyheads.akademiaandroida.presentation.ui.career
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.safetyheads.domain.entities.JobOffer
-import com.safetyheads.domain.entities.Settings
-import com.safetyheads.domain.repositories.SettingsRepository
-import com.safetyheads.domain.usecases.GetJobOfferUseCase
+import com.safetyheads.akademiaandroida.domain.entities.JobOffer
+import com.safetyheads.akademiaandroida.domain.entities.Settings
+import com.safetyheads.akademiaandroida.domain.repositories.SettingsRepository
+import com.safetyheads.akademiaandroida.domain.usecases.GetJobOfferUseCase
 import kotlinx.coroutines.launch
 
 class CareerViewModel(

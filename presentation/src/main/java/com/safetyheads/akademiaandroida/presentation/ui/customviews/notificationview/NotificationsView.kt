@@ -1,4 +1,4 @@
-package com.safetyheads.akademiaandroida.views.notificationview
+package com.safetyheads.akademiaandroida.presentation.ui.customviews.notificationview
 
 import android.animation.LayoutTransition
 import android.content.Context
@@ -7,8 +7,8 @@ import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.FrameLayout
-import com.safetyheads.akademiaandroida.R
-import com.safetyheads.akademiaandroida.databinding.ViewNotificationsBinding
+import com.safetyheads.akademiaandroida.presentation.R
+import com.safetyheads.akademiaandroida.presentation.databinding.ViewNotificationsBinding
 
 
 class NotificationsView @JvmOverloads constructor(

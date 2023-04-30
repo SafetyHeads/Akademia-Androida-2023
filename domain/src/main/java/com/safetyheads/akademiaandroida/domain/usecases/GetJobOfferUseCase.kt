@@ -1,7 +1,7 @@
-package com.safetyheads.domain.usecases
+package com.safetyheads.akademiaandroida.domain.usecases
 
-import com.safetyheads.domain.entities.JobOffer
-import com.safetyheads.domain.repositories.CareerRepository
+import com.safetyheads.akademiaandroida.domain.entities.JobOffer
+import com.safetyheads.akademiaandroida.domain.repositories.CareerRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 

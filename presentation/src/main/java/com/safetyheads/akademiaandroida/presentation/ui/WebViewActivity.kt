@@ -1,8 +1,8 @@
-package com.safetyheads.akademiaandroida
+package com.safetyheads.akademiaandroida.presentation.ui
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.safetyheads.akademiaandroida.databinding.ActivityWebViewBinding
+import androidx.appcompat.app.AppCompatActivity
+import com.safetyheads.akademiaandroida.presentation.databinding.ActivityWebViewBinding
 
 class WebViewActivity : AppCompatActivity() {
 

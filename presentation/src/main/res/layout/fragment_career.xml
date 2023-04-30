@@ -5,9 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".career.CareerFragment">
+    tools:context=".presentation.ui.career.CareerFragment">
 
-    <com.safetyheads.akademiaandroida.views.notificationview.NotificationsView
+    <com.safetyheads.akademiaandroida.presentation.ui.customviews.notificationview.NotificationsView
         android:id="@+id/notificationView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

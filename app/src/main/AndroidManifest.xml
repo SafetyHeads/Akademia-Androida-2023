@@ -47,7 +47,7 @@
             android:exported="true" />
 
         <activity
-            android:name=".WebViewActivity"
+            android:name=".presentation.ui.WebViewActivity"
             android:exported="false"
             android:label="@string/title_activity_web_view"
             android:theme="@style/Theme.AkademiaAndroida.NoActionBar" />

@@ -18,7 +18,7 @@
             android:paddingTop="@dimen/size_3x"
             android:paddingBottom="@dimen/size">
 
-            <com.safetyheads.akademiaandroida.H2View
+            <com.safetyheads.akademiaandroida.presentation.ui.components.H2View
                 android:id="@+id/h2View2"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"

@@ -1,10 +1,10 @@
-package com.safetyheads.akademiaandroida.career
+package com.safetyheads.akademiaandroida.presentation.ui.career
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.safetyheads.akademiaandroida.databinding.JobOfferListItemBinding
-import com.safetyheads.domain.entities.JobOffer
+import com.safetyheads.akademiaandroida.presentation.databinding.JobOfferListItemBinding
+import com.safetyheads.akademiaandroida.domain.entities.JobOffer
 
 class JobOffersAdapter(val onButtonClick: (String) -> Unit): RecyclerView.Adapter<JobOffersAdapter.JobOffersViewHolder>() {
 
