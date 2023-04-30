@@ -17,13 +17,12 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/MAPS_API_KEY" />
 
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+
         <activity
-            android:name=".WebViewActivity"
-            android:exported="false"
-            android:label="@string/title_activity_web_view"
-            android:theme="@style/Theme.AkademiaAndroida.NoActionBar" />
-        <activity
-            android:name=".MainActivity"
+            android:name=".presentation.ui.MainActivity"
             android:exported="true"
             android:theme="@style/Theme.AkademiaAndroida.withSplash">
             <intent-filter>
@@ -32,14 +31,26 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".TabLayoutActivity"
+            android:name=".presentation.ui.activities.TabLayoutActivity"
             android:exported="true" />
         <activity
-            android:name=".RootActivity"
+            android:name=".presentation.ui.RootActivity"
+
             android:exported="true" />
         <activity
-            android:name=".activitieslist.ListActivity"
+
+            android:name=".presentation.ui.activitieslist.ListActivity"
+
             android:exported="true" />
+        <activity
+            android:name=".youtube.YouTubeActivity"
+            android:exported="true" />
+
+        <activity
+            android:name=".WebViewActivity"
+            android:exported="false"
+            android:label="@string/title_activity_web_view"
+            android:theme="@style/Theme.AkademiaAndroida.NoActionBar" />
     </application>
     <queries>
         <package android:name="com.facebook.katana" />
