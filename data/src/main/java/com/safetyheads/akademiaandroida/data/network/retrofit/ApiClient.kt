@@ -1,4 +1,4 @@
-package com.safetyheads.data.network.retrofit
+package com.safetyheads.akademiaandroida.data.network.retrofit
 
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import okhttp3.OkHttpClient
