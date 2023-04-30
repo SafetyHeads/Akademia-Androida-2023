@@ -1,3 +1,0 @@
-package com.safetyheads.akademiaandroida.data.network
-
-interface YouTubeService

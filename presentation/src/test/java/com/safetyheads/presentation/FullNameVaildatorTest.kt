@@ -12,9 +12,6 @@ import org.assertj.core.api.AssertionsForInterfaceTypes.assertThat
 import org.junit.Test
 
 
-
-
-
 class FullNameVaildatorTest {
 
     @Test

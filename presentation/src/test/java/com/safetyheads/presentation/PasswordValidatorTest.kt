@@ -14,6 +14,7 @@ class PasswordValidatorTest {
 
 
     private val validator = PasswordValidator
+
     @Test
     fun validateAttach() {
         // Given

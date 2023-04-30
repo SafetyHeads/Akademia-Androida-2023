@@ -1,4 +1,4 @@
-package com.safetyheads.akademiaandroida.presentation.ui.activities.activitieslist
+package com.safetyheads.akademiaandroida.presentation.ui.activitieslist
 
 
 import android.content.pm.PackageManager

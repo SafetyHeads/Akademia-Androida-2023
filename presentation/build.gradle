@@ -5,7 +5,6 @@ plugins {
 }
 
 android {
-    namespace 'com.safetyheads.akademiaandroida'
     compileSdk 33
 
     defaultConfig {
@@ -60,7 +59,6 @@ dependencies {
 
     implementation 'com.airbnb.android:lottie:6.0.0'
 
-
     // ui
     implementation 'androidx.core:core-ktx:1.9.0'
     implementation 'androidx.appcompat:appcompat:1.6.1'
@@ -81,7 +79,8 @@ dependencies {
 
     //viewmodel
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.0'
-    //mokk
+
+    //mockk
     testImplementation "io.mockk:mockk:1.12.0"
     androidTestImplementation "io.mockk:mockk-android:1.11.0"
     testImplementation "org.assertj:assertj-core:3.20.2"
