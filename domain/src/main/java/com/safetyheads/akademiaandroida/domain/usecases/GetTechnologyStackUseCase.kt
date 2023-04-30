@@ -1,7 +1,7 @@
-package com.safetyheads.domain.usecases
+package com.safetyheads.akademiaandroida.domain.usecases
 
-import com.safetyheads.domain.entities.firebasefirestore.TechnologyStack
-import com.safetyheads.domain.repositories.TechnologyStackRepository
+import com.safetyheads.akademiaandroida.domain.entities.firebasefirestore.TechnologyStack
+import com.safetyheads.akademiaandroida.domain.repositories.TechnologyStackRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.map

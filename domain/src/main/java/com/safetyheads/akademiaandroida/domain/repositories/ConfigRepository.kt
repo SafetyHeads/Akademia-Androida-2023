@@ -5,5 +5,5 @@ import kotlinx.coroutines.flow.Flow
 
 interface ConfigRepository {
 
-    fun getConfig(): Flow<com.safetyheads.akademiaandroida.domain.entities.Config>
+    fun getConfig(): Flow<Config>
 }

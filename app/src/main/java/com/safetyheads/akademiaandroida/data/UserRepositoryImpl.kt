@@ -9,17 +9,17 @@ import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.tasks.await
 
-class UserRepositoryImpl : com.safetyheads.akademiaandroida.domain.repositories.UserRepository {
+class UserRepositoryImpl : UserRepository {
     private val firebaseAuth = FirebaseAuth.getInstance()
 
-    override fun resetPassword(email: String): Flow<com.safetyheads.akademiaandroida.domain.entities.ResetPassword> = flow {
+    override fun resetPassword(email: String): Flow<ResetPassword> = flow {
         firebaseAuth.sendPasswordResetEmail(email).await()
-        emit(com.safetyheads.akademiaandroida.domain.entities.ResetPassword(true, null))
+        emit(ResetPassword(true, null))
     }.catch { error ->
-        emit(com.safetyheads.akademiaandroida.domain.entities.ResetPassword(false, error))
+        emit(ResetPassword(false, error))
     }
 
-    override fun createUser(fullName: String, email: String, password: String): Flow<com.safetyheads.akademiaandroida.domain.entities.User> {
+    override fun createUser(fullName: String, email: String, password: String): Flow<User> {
         TODO("Not yet implemented")
     }
 }

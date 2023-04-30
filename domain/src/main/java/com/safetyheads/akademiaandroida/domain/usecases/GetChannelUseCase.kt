@@ -5,10 +5,10 @@ import com.safetyheads.akademiaandroida.domain.repositories.ChannelRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
-class GetChannelUseCase(private val channelRepository: com.safetyheads.akademiaandroida.domain.repositories.ChannelRepository):
-    ParameterlessBaseUseCase<com.safetyheads.akademiaandroida.domain.entities.Channel> {
+class GetChannelUseCase(private val channelRepository: ChannelRepository):
+    ParameterlessBaseUseCase<Channel> {
 
-    override suspend fun invoke(): Flow<Result<com.safetyheads.akademiaandroida.domain.entities.Channel>> {
+    override suspend fun invoke(): Flow<Result<Channel>> {
         return flow {
             try {
                 channelRepository.getChannel().collect { channel ->

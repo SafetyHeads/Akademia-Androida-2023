@@ -1,7 +1,6 @@
 package com.safetyheads.data.network.repository
 
 import com.safetyheads.data.network.mapper.VideoMapper
-import com.safetyheads.data.network.`object`.YouTubeApi
 import com.safetyheads.data.network.service.YouTubeService
 import com.safetyheads.akademiaandroida.domain.entities.Video
 import com.safetyheads.akademiaandroida.domain.repositories.VideoRepository
@@ -13,21 +12,21 @@ class VideoRepositoryImpl(
     private val youTubeService: YouTubeService,
     private val videoMapper: VideoMapper,
     private val apiKey: String
-) : com.safetyheads.akademiaandroida.domain.repositories.VideoRepository {
+) : VideoRepository {
 
-    override suspend fun getVideo(previousFilmDate: String): Flow<Result<com.safetyheads.akademiaandroida.domain.entities.Video>> =
+    override suspend fun getVideo(previousFilmDate: String): Flow<Result<Video>> =
         flow {
             val retrofitYouTubeVideo =
                 youTubeService
                     .getVideo(
                         apiKey,
-                        YouTubeApi.YOUTUBE_CHANNEL_ID,
-                        YouTubeApi.YOUTUBE_API_PART_VIDEO,
-                        YouTubeApi.YOUTUBE_API_ORDER,
-                        YouTubeApi.YOUTUBE_API_VIDEO_MAX_RESULTS,
+                        YouTubeApiConsts.YOUTUBE_CHANNEL_ID,
+                        YouTubeApiConsts.YOUTUBE_API_PART_VIDEO,
+                        YouTubeApiConsts.YOUTUBE_API_ORDER,
+                        YouTubeApiConsts.YOUTUBE_API_VIDEO_MAX_RESULTS,
                         previousFilmDate
                     )
-            val video: com.safetyheads.akademiaandroida.domain.entities.Video = videoMapper.transform(retrofitYouTubeVideo)
+            val video: Video = videoMapper.transform(retrofitYouTubeVideo)
             emit(Result.success(video))
         }.catch { exception ->
             emit(Result.failure(exception))

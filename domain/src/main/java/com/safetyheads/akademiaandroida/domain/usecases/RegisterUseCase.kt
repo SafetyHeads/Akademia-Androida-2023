@@ -1,11 +1,12 @@
 package com.safetyheads.akademiaandroida.domain.usecases
 
 import com.safetyheads.akademiaandroida.domain.entities.User
+import com.safetyheads.akademiaandroida.domain.repositories.UserRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
 class RegisterUseCase(
-    private val repository: com.safetyheads.akademiaandroida.domain.repositories.UserRepository
+    private val repository: UserRepository
 ) : BaseUseCase<RegisterUseCase.UserParams, User> {
     class UserParams(val fullName: String, val email: String, val password: String) :
         BaseUseCase.Params
@@ -19,8 +20,8 @@ class RegisterUseCase(
                         emit(Result.success(user))
                     }
             } catch (error: IllegalStateException) {
-                    emit(Result.failure(error))
-                }
+                emit(Result.failure(error))
             }
+        }
     }
 }

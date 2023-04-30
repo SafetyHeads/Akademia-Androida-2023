@@ -5,5 +5,5 @@ import kotlinx.coroutines.flow.Flow
 
 interface ChannelRepository {
 
-    suspend fun getChannel(): Flow<Result<com.safetyheads.akademiaandroida.domain.entities.Channel>>
+    suspend fun getChannel(): Flow<Result<Channel>>
 }

@@ -5,5 +5,5 @@ import kotlinx.coroutines.flow.Flow
 
 interface VideoRepository {
 
-    suspend fun getVideo(previousFilmDate: String): Flow<Result<com.safetyheads.akademiaandroida.domain.entities.Video>>
+    suspend fun getVideo(previousFilmDate: String): Flow<Result<Video>>
 }

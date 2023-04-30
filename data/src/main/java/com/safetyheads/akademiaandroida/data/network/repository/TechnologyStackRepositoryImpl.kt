@@ -1,10 +1,10 @@
 package com.safetyheads.akademiaandroida.data.network.repository
 
 import com.google.firebase.firestore.FirebaseFirestore
-import com.safetyheads.domain.entities.firebasefirestore.SubCategory
-import com.safetyheads.domain.entities.firebasefirestore.TechnologyStack
-import com.safetyheads.domain.entities.firebasefirestore.TechnologyStackItem
-import com.safetyheads.domain.repositories.TechnologyStackRepository
+import com.safetyheads.akademiaandroida.domain.entities.firebasefirestore.SubCategory
+import com.safetyheads.akademiaandroida.domain.entities.firebasefirestore.TechnologyStack
+import com.safetyheads.akademiaandroida.domain.entities.firebasefirestore.TechnologyStackItem
+import com.safetyheads.akademiaandroida.domain.repositories.TechnologyStackRepository
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow

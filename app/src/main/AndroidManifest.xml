@@ -37,7 +37,7 @@
             android:name=".activitieslist.ListActivity"
             android:exported="true" />
         <activity
-            android:name=".YouTube.YouTubeActivity"
+            android:name=".youtube.YouTubeActivity"
             android:exported="true" />
     </application>
     <queries>

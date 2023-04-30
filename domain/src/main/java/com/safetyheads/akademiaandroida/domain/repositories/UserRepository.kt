@@ -5,6 +5,6 @@ import com.safetyheads.akademiaandroida.domain.entities.User
 import kotlinx.coroutines.flow.Flow
 
 interface UserRepository {
-    fun createUser(fullName: String, email: String, password: String): Flow<com.safetyheads.akademiaandroida.domain.entities.User>
-    fun resetPassword(email: String): Flow<com.safetyheads.akademiaandroida.domain.entities.ResetPassword>
+    fun createUser(fullName: String, email: String, password: String): Flow<User>
+    fun resetPassword(email: String): Flow<ResetPassword>
 }

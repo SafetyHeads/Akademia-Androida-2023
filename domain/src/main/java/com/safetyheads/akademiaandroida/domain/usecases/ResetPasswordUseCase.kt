@@ -1,10 +1,11 @@
 package com.safetyheads.akademiaandroida.domain.usecases
 
 import com.safetyheads.akademiaandroida.domain.entities.ResetPassword
+import com.safetyheads.akademiaandroida.domain.repositories.UserRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
-class ResetPasswordUseCase(private val repository: com.safetyheads.akademiaandroida.domain.repositories.UserRepository) :
+class ResetPasswordUseCase(private val repository: UserRepository) :
     BaseUseCase<ResetPasswordUseCase.ResetParam, ResetPassword> {
 
     @JvmInline

@@ -5,10 +5,10 @@ import com.safetyheads.akademiaandroida.domain.repositories.PlaylistRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
-class GetPlayListsUseCase(private val playlistRepository: com.safetyheads.akademiaandroida.domain.repositories.PlaylistRepository):
-    ParameterlessBaseUseCase<ArrayList<com.safetyheads.akademiaandroida.domain.entities.Playlist>> {
+class GetPlayListsUseCase(private val playlistRepository: PlaylistRepository) :
+    ParameterlessBaseUseCase<ArrayList<Playlist>> {
 
-    override suspend fun invoke(): Flow<Result<ArrayList<com.safetyheads.akademiaandroida.domain.entities.Playlist>>> {
+    override suspend fun invoke(): Flow<Result<ArrayList<Playlist>>> {
         return flow {
             try {
                 playlistRepository.getPlayLists().collect { playlists ->

@@ -1,7 +1,6 @@
 package com.safetyheads.data.network.repository
 
 import com.safetyheads.data.network.mapper.ChannelMapper
-import com.safetyheads.data.network.`object`.YouTubeApi
 import com.safetyheads.data.network.service.YouTubeService
 import com.safetyheads.akademiaandroida.domain.entities.Channel
 import com.safetyheads.akademiaandroida.domain.repositories.ChannelRepository
@@ -13,16 +12,16 @@ class ChannelRepositoryImpl(
     private val youTubeService: YouTubeService,
     private val channelMapper: ChannelMapper,
     private val apiKey: String
-) : com.safetyheads.akademiaandroida.domain.repositories.ChannelRepository {
+) : ChannelRepository {
 
-    override suspend fun getChannel(): Flow<Result<com.safetyheads.akademiaandroida.domain.entities.Channel>> =
+    override suspend fun getChannel(): Flow<Result<Channel>> =
         flow {
             val retrofitYouTubeChannel =
                 youTubeService
                     .getChannel(
                         apiKey,
-                        YouTubeApi.YOUTUBE_API_PART_CHANNEL,
-                        YouTubeApi.YOUTUBE_CHANNEL_ID
+                        YouTubeApiConsts.YOUTUBE_API_PART_CHANNEL,
+                        YouTubeApiConsts.YOUTUBE_CHANNEL_ID
                     )
             val channel = channelMapper.transform(retrofitYouTubeChannel)
             emit(Result.success(channel))

@@ -1,20 +1,20 @@
 package com.safetyheads.akademiaandroida.data.network.repository
 
 import com.google.firebase.firestore.FirebaseFirestore
-import com.safetyheads.domain.entities.firebasefirestore.About
-import com.safetyheads.domain.entities.firebasefirestore.AdditionalSection
-import com.safetyheads.domain.entities.firebasefirestore.Address
-import com.safetyheads.domain.entities.firebasefirestore.ContactInfo
-import com.safetyheads.domain.entities.firebasefirestore.Info
-import com.safetyheads.domain.entities.firebasefirestore.Item
-import com.safetyheads.domain.entities.firebasefirestore.Social
-import com.safetyheads.domain.repositories.CompanyInfoRepository
+import com.safetyheads.akademiaandroida.domain.entities.firebasefirestore.About
+import com.safetyheads.akademiaandroida.domain.entities.firebasefirestore.AdditionalSection
+import com.safetyheads.akademiaandroida.domain.entities.firebasefirestore.Address
+import com.safetyheads.akademiaandroida.domain.entities.firebasefirestore.ContactInfo
+import com.safetyheads.akademiaandroida.domain.entities.firebasefirestore.Info
+import com.safetyheads.akademiaandroida.domain.entities.firebasefirestore.Item
+import com.safetyheads.akademiaandroida.domain.entities.firebasefirestore.Social
+import com.safetyheads.akademiaandroida.domain.repositories.CompanyInfoRepository
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
 
 class CompanyInfoRepositoryImpl(firebaseFirestore: FirebaseFirestore) :
-    CompanyInfoRepository {
+        CompanyInfoRepository {
 
     private val companyInfoRef = firebaseFirestore.collection("applicationData").document("companyInfo")
 
