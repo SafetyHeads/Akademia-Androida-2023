@@ -1,4 +1,4 @@
-package com.safetyheads.domain.entities.technologystack
+package com.safetyheads.akademiaandroida.domain.entities.technologystack
 
 enum class TechnologyStackType(val tag: String) {
     Mobile("mobile"),

@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseExpandableListAdapter
 import android.widget.TextView
+import com.safetyheads.akademiaandroida.domain.entities.technologystack.ParentModel
 import com.safetyheads.akademiaandroida.presentation.R
 
 class TextExpandableListAdapter(

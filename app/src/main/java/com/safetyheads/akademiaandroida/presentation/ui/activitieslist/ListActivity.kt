@@ -7,7 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.safetyheads.akademiaandroida.presentation.ui.career.CareerFragment
 import com.safetyheads.akademiaandroida.databinding.ActivityListBinding
-import com.safetyheads.akademiaandroida.fragments.technologystack.TechnologyStackFragment
+import com.safetyheads.akademiaandroida.presentation.ui.fragments.technologystack.TechnologyStackFragment
 import com.safetyheads.akademiaandroida.presentation.ui.customviews.ExperienceStructureFragment
 import com.safetyheads.akademiaandroida.presentation.ui.customviews.dropdown.FragmentDropDownList
 import com.safetyheads.akademiaandroida.presentation.ui.fragments.clients.ClientsFragment

@@ -1,9 +1,8 @@
 package com.safetyheads.akademiaandroida.domain.repositories
 
-import com.safetyheads.domain.entities.technologystack.TechnologyStack
-import com.safetyheads.domain.entities.technologystack.TechnologyStackType
+import com.safetyheads.akademiaandroida.domain.entities.firebasefirestore.TechnologyStack
 import kotlinx.coroutines.flow.Flow
 
 interface TechnologyStackRepository {
-    fun getTechnologyStack(type: TechnologyStackType): Flow<Result<List<TechnologyStack>>>
+    fun getTechnologyStack(): Flow<Result<TechnologyStack>>
 }

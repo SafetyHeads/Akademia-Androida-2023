@@ -1,4 +1,4 @@
-package com.safetyheads.akademiaandroida.fragments.technologystack
+package com.safetyheads.akademiaandroida.presentation.ui.fragments.technologystack
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,9 +9,9 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import com.google.android.material.tabs.TabLayout
-import com.safetyheads.akademiaandroida.R
-import com.safetyheads.akademiaandroida.databinding.FragmentTechnologyStackBinding
-import com.safetyheads.akademiaandroida.dropdownlist.dropdown.TextExpandableListAdapter
+import com.safetyheads.akademiaandroida.presentation.R
+import com.safetyheads.akademiaandroida.presentation.databinding.FragmentTechnologyStackBinding
+import com.safetyheads.akademiaandroida.presentation.ui.customviews.dropdown.TextExpandableListAdapter
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 

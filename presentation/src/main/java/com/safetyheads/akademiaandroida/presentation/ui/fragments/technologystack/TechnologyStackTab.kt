@@ -1,6 +1,6 @@
-package com.safetyheads.akademiaandroida.fragments.technologystack
+package com.safetyheads.akademiaandroida.presentation.ui.fragments.technologystack
 
-import com.safetyheads.domain.entities.technologystack.TechnologyStackType
+import com.safetyheads.akademiaandroida.domain.entities.technologystack.TechnologyStackType
 
 enum class TechnologyStackTab {
     Mobile, Web, Others

@@ -26,7 +26,6 @@ import com.safetyheads.akademiaandroida.domain.usecases.GetInfoUseCase
 import com.safetyheads.akademiaandroida.domain.usecases.GetPlayListItemsUseCase
 import com.safetyheads.akademiaandroida.domain.usecases.GetPlayListsUseCase
 import com.safetyheads.akademiaandroida.domain.usecases.GetSocialUseCase
-import com.safetyheads.akademiaandroida.domain.usecases.GetTechnologyStackUseCase
 import com.safetyheads.akademiaandroida.domain.usecases.GetVideoUseCase
 import com.safetyheads.akademiaandroida.domain.usecases.ResetPasswordUseCase
 import com.safetyheads.akademiaandroida.presentation.ui.activities.splashscreen.SplashScreenViewModel
@@ -49,9 +48,10 @@ import com.safetyheads.data.network.repository.YouTubeApiConsts
 import com.safetyheads.data.network.service.YouTubeService
 import com.safetyheads.akademiaandroida.domain.repositories.CareerRepository
 import com.safetyheads.akademiaandroida.domain.repositories.SettingsRepository
+import com.safetyheads.akademiaandroida.domain.repositories.TechnologyStackRepository
 import com.safetyheads.akademiaandroida.domain.usecases.GetJobOfferUseCase
-import com.safetyheads.akademiaandroida.fragments.technologystack.TechnologyStackViewModel
-import com.safetyheads.domain.usecases.TechnologyStackUseCase
+import com.safetyheads.akademiaandroida.presentation.ui.fragments.technologystack.TechnologyStackViewModel
+import com.safetyheads.akademiaandroida.domain.usecases.GetTechnologyStackUseCase
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.androidx.viewmodel.dsl.viewModel
@@ -80,7 +80,6 @@ class AndroidAcademyApplication : Application() {
         single<SettingsRepository> { SettingRepositoryImpl(get()) }
         single<UserRepository> { UserRepositoryImpl() }
         single<TechnologyStackRepository> { TechnologyStackRepositoryImpl(get()) }
-        single<TechnologyStackRepository> { com.safetyheads.akademiaandroida.data.TechnologyStackRepositoryImpl() }
         single { GetTechnologyStackUseCase(get()) }
         single<CompanyInfoRepository> { CompanyInfoRepositoryImpl(get()) }
 
@@ -99,7 +98,7 @@ class AndroidAcademyApplication : Application() {
         single { GetPlayListsUseCase(get()) }
         single { GetVideoUseCase(get()) }
         single<DateUseCase> { DateUseCaseImpl() }
-        single { TechnologyStackUseCase(get()) }
+        single { GetTechnologyStackUseCase(get()) }
 
         //viewmodels
         viewModel { SplashScreenViewModel(get(), get()) }

@@ -1,43 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/Technology_Stack"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/size_4x"
-        android:layout_marginTop="@dimen/size_3x"
-        android:layout_marginBottom="@dimen/size_2x"
-        android:fontFamily="@font/comfortaa_bold"
-        android:text="@string/technology_stack"
-        android:textColor="@color/s_60"
-        android:textSize="18sp"/>
+<!--    <TextView-->
+<!--        android:id="@+id/techStack"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginStart="@dimen/size_4x"-->
+<!--        android:layout_marginTop="@dimen/size_3x"-->
+<!--        android:layout_marginBottom="@dimen/size_2x"-->
+<!--        android:fontFamily="@font/comfortaa_bold"-->
+<!--        android:text="@string/technology_stack"-->
+<!--        android:textColor="@color/s_60"-->
+<!--        android:textSize="18sp"/>-->
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/technology_stack_tab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:tabSelectedTextColor="@color/p_60"
-        app:tabIndicatorColor="@color/p_60"
-        android:layout_marginBottom="@dimen/size"
         android:layout_marginStart="@dimen/size_3x"
-        app:tabMode="scrollable">
+        android:layout_marginBottom="@dimen/size"
+        app:tabIndicatorColor="@color/p_60"
+        app:tabMode="scrollable"
+        app:tabSelectedTextColor="@color/p_60">
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/mobile_app"
-            android:textColor="@color/n_120"/>
+            android:textColor="@color/n_120" />
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/web_app"
-            android:textColor="@color/n_120"/>
+            android:textColor="@color/n_120" />
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
@@ -53,5 +53,6 @@
         android:layout_height="match_parent"
         android:groupIndicator="@null"
         android:transcriptMode="alwaysScroll" />
+
 
 </LinearLayout>
