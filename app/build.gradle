@@ -12,15 +12,15 @@ android {
 
     flavorDimensions += "version"
     productFlavors {
-        create("development") {
+        development {
             dimension = "version"
             applicationIdSuffix = ".development"
         }
-        create("qa") {
+        qa {
             dimension = "version"
             applicationIdSuffix = ".qa"
         }
-        create("production") {
+        production {
             dimension = "version"
             applicationIdSuffix = ".production"
         }
