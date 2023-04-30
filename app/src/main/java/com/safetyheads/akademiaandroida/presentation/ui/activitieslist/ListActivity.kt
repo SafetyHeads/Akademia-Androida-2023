@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.safetyheads.akademiaandroida.presentation.ui.career.CareerFragment
 import com.safetyheads.akademiaandroida.databinding.ActivityListBinding
+import com.safetyheads.akademiaandroida.presentation.ui.fragments.technologystack.TechnologyStackFragment
 import com.safetyheads.akademiaandroida.presentation.ui.customviews.ExperienceStructureFragment
 import com.safetyheads.akademiaandroida.presentation.ui.customviews.dropdown.FragmentDropDownList
 import com.safetyheads.akademiaandroida.presentation.ui.fragments.clients.ClientsFragment
@@ -63,6 +64,7 @@ class ListActivity : AppCompatActivity() {
     val forgotPasswordFragment = ForgotPasswordFragment()
     val loginFragment = LoginFragment()
     val careerFragment = CareerFragment()
+    val technolgyStackFragment = TechnologyStackFragment()
 
     val dataListFragments = listOf(
         fontSylesFragment,
@@ -73,7 +75,8 @@ class ListActivity : AppCompatActivity() {
         fragmentDropDownList,
         loginFragment,
         forgotPasswordFragment,
-        careerFragment
+        forgotPasswordFragment,
+        technolgyStackFragment
     )
 }
 
