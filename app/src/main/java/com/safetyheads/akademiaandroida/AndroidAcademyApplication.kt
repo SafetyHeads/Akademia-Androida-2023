@@ -3,7 +3,9 @@ package com.safetyheads.akademiaandroida
 import android.app.Application
 import com.google.firebase.firestore.FirebaseFirestore
 import com.jakewharton.threetenabp.AndroidThreeTen
-import com.safetyheads.akademiaandroida.data.FirebaseConfigRepository
+import com.safetyheads.akademiaandroida.presentation.ui.career.CareerRepositoryImpl
+import com.safetyheads.akademiaandroida.presentation.ui.career.CareerViewModel
+import com.safetyheads.akademiaandroida.data.network.repository.FirebaseConfigRepository
 import com.safetyheads.akademiaandroida.data.network.repository.CompanyInfoRepositoryImpl
 import com.safetyheads.akademiaandroida.data.network.repository.TechnologyStackRepositoryImpl
 import com.safetyheads.akademiaandroida.data.network.retrofit.ApiClient
@@ -33,6 +35,7 @@ import com.safetyheads.akademiaandroida.presentation.ui.customviews.dropdown.Dro
 import com.safetyheads.akademiaandroida.presentation.ui.customviews.dropdown.LoadItemsToDropDownListUseCase
 import com.safetyheads.akademiaandroida.presentation.ui.fragments.forgotpasswordfragment.ForgotPasswordViewModel
 import com.safetyheads.akademiaandroida.presentation.ui.sign_up.UserRepositoryImpl
+import com.safetyheads.akademiaandroida.data.network.repository.settings.SettingRepositoryImpl
 import com.safetyheads.akademiaandroida.youtube.viewModel.ChannelViewModel
 import com.safetyheads.akademiaandroida.youtube.viewModel.PlayListViewModel
 import com.safetyheads.akademiaandroida.youtube.viewModel.VideoViewModel
@@ -45,6 +48,9 @@ import com.safetyheads.data.network.repository.PlaylistRepositoryImpl
 import com.safetyheads.data.network.repository.VideoRepositoryImpl
 import com.safetyheads.data.network.repository.YouTubeApiConsts
 import com.safetyheads.data.network.service.YouTubeService
+import com.safetyheads.akademiaandroida.domain.repositories.CareerRepository
+import com.safetyheads.akademiaandroida.domain.repositories.SettingsRepository
+import com.safetyheads.akademiaandroida.domain.usecases.GetJobOfferUseCase
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.androidx.viewmodel.dsl.viewModel
@@ -69,6 +75,8 @@ class AndroidAcademyApplication : Application() {
     private val appModule = module {
         //repositories
         single<ConfigRepository> { FirebaseConfigRepository() }
+        single<CareerRepository> { CareerRepositoryImpl() }
+        single<SettingsRepository> { SettingRepositoryImpl(get()) }
         single<UserRepository> { UserRepositoryImpl() }
         single<TechnologyStackRepository> { TechnologyStackRepositoryImpl(get()) }
         single { GetTechnologyStackUseCase(get()) }
@@ -78,6 +86,7 @@ class AndroidAcademyApplication : Application() {
         single { DelaySplashScreenUseCase() }
         single { LoadItemsToDropDownListUseCase() }
         single { GetConfigUseCase(get()) }
+        single { GetJobOfferUseCase(get()) }
         single { ResetPasswordUseCase(get()) }
         single { GetAddressUseCase(get()) }
         single { GetInfoUseCase(get()) }
@@ -93,6 +102,7 @@ class AndroidAcademyApplication : Application() {
         //viewmodels
         viewModel { SplashScreenViewModel(get(), get()) }
         viewModel { DropDownListViewModel(get()) }
+        viewModel { CareerViewModel(get(), get()) }
         viewModel { ForgotPasswordViewModel(get()) }
         viewModelOf(::ChannelViewModel)
         viewModelOf(::VideoViewModel)

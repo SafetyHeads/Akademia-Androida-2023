@@ -9,4 +9,8 @@
         <enum name="match_parent" value="-1" />
         <enum name="wrap_content" value="-2" />
     </attr>
+
+    <declare-styleable name="NotificationsView">
+        <attr name="title_text" format="string"/>
+    </declare-styleable>
 </resources>

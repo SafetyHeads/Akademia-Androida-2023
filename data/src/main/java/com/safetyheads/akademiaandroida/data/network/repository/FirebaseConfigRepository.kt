@@ -1,4 +1,4 @@
-package com.safetyheads.akademiaandroida.data
+package com.safetyheads.akademiaandroida.data.network.repository
 
 import com.google.firebase.remoteconfig.FirebaseRemoteConfig
 import com.google.firebase.remoteconfig.FirebaseRemoteConfigSettings
