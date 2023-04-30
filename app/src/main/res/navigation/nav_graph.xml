@@ -43,7 +43,7 @@
     </fragment>
     <fragment
         android:id="@+id/dashboard_fragment"
-        android:name="com.safetyheads.akademiaandroida.DashboardFragment"
+        android:name="com.safetyheads.akademiaandroida.dashboard.DashboardFragment"
         android:label="fragment_dashboard_fragment"
         tools:layout="@layout/fragment_dashboard" />
         android:id="@+id/dashboard_placeholder"

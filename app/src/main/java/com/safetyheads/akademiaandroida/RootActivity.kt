@@ -26,7 +26,9 @@ class RootActivity : AppCompatActivity() {
 
         val onBackPressedCallback = object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
-                if (navController.currentDestination?.id == R.id.launchScreenFragment || navController.currentDestination?.id == R.id.dashboard_fragment) {
+                if (navController.currentDestination?.id == R.id.launchScreenFragment ||
+                    navController.currentDestination?.id == R.id.dashboard_fragment
+                ) {
                     // do nothing
                 } else {
                     navController.popBackStack()

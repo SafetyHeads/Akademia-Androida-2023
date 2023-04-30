@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/home"
+        android:title="Home"
+        android:icon="@drawable/home_icon"/>
+    <item android:id="@+id/media"
+        android:title="Media"
+        android:icon="@drawable/media_icon"/>
+    <item android:id="@+id/career"
+        android:title="Career"
+        android:icon="@drawable/carrer_icon"/>
+    <item android:id="@+id/contact"
+        android:title="Contact"
+        android:icon="@drawable/contact_icon"/>
+</menu>

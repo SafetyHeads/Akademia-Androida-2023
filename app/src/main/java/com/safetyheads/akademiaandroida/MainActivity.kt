@@ -11,6 +11,7 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import com.safetyheads.akademiaandroida.activitieslist.ListActivity
 import com.safetyheads.akademiaandroida.contactusform.ContactUsFragment
+import com.safetyheads.akademiaandroida.dashboard.DashboardFragment
 import com.safetyheads.akademiaandroida.databinding.ActivityMainBinding
 import com.safetyheads.akademiaandroida.font.FontSylesFragment
 import com.safetyheads.akademiaandroida.fragments.WeAreHiringFragment

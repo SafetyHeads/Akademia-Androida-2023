@@ -1,4 +1,4 @@
-package com.safetyheads.akademiaandroida
+package com.safetyheads.akademiaandroida.dashboard
 
 import android.os.Bundle
 import android.view.LayoutInflater
