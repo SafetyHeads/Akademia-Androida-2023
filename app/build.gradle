@@ -14,22 +14,6 @@ android {
     namespace 'com.safetyheads.akademiaandroida'
     compileSdk 33
 
-    flavorDimensions += "version"
-    productFlavors {
-        development {
-            dimension = "version"
-            applicationIdSuffix = ".development"
-        }
-        qa {
-            dimension = "version"
-            applicationIdSuffix = ".qa"
-        }
-        production {
-            dimension = "version"
-            applicationIdSuffix = ".production"
-        }
-    }
-
     defaultConfig {
         applicationId "com.safetyheads.akademiaandroida"
         minSdk 24
@@ -49,6 +33,23 @@ android {
             resValue "string", "MAPS_API_KEY", ""
             buildConfigField("String", "YOUTUBE_DATA_API_KEY", "\"\"")
         }
+
+    }
+
+    flavorDimensions += "version"
+    productFlavors {
+        development {
+            dimension = "version"
+            applicationIdSuffix = ".development"
+        }
+        qa {
+            dimension = "version"
+            applicationIdSuffix = ".qa"
+        }
+        production {
+            dimension = "version"
+            applicationIdSuffix = ".production"
+        }
     }
 
     buildTypes {
@@ -63,6 +64,7 @@ android {
             initWith debug
         }
     }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -79,6 +81,7 @@ dependencies {
 
     // Modules implementations
     implementation project(':domain')
+    implementation project(':presentation')
     implementation project(':data')
 
     implementation 'com.jakewharton.threetenabp:threetenabp:1.4.6'
@@ -95,12 +98,15 @@ dependencies {
     implementation 'com.google.firebase:firebase-analytics-ktx:21.2.2'
     implementation 'com.google.firebase:firebase-auth-ktx:21.3.0'
     implementation 'com.google.firebase:firebase-firestore-ktx:24.5.0'
+    implementation 'com.google.firebase:firebase-config-ktx:21.3.0'
 
     implementation 'com.google.android.gms:play-services-maps:18.1.0'
 
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.0'
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4'
-    implementation 'com.google.firebase:firebase-config-ktx:21.3.0'
+
+    // google map
+    implementation 'com.google.android.gms:play-services-maps:18.1.0'
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
