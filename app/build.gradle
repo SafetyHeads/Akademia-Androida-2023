@@ -14,22 +14,6 @@ android {
     namespace 'com.safetyheads.akademiaandroida'
     compileSdk 33
 
-    flavorDimensions += "version"
-    productFlavors {
-        development {
-            dimension = "version"
-            applicationIdSuffix = ".development"
-        }
-        qa {
-            dimension = "version"
-            applicationIdSuffix = ".qa"
-        }
-        production {
-            dimension = "version"
-            applicationIdSuffix = ".production"
-        }
-    }
-
     defaultConfig {
         applicationId "com.safetyheads.akademiaandroida"
         minSdk 24
