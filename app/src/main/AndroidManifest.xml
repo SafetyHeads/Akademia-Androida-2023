@@ -41,7 +41,7 @@
             android:name=".RootActivity"
             android:exported="true" />
         <activity
-            android:name=".activities_list.ListActivity"
+            android:name=".activitieslist.ListActivity"
             android:exported="true" />
     </application>
 
