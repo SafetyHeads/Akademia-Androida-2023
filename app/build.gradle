@@ -6,7 +6,6 @@ plugins {
     id 'io.gitlab.arturbosch.detekt'
     id 'androidx.navigation.safeargs.kotlin'
 }
-
 android {
     namespace 'com.safetyheads.akademiaandroida'
     compileSdk 33
@@ -38,6 +37,17 @@ android {
         versionName = "$NAME_APPLICATION $VERSION_NAME_MAJOR.$VERSION_NAME_MINOR.$VERSION_NAME_PATCH"
         versionCode = generateVersionCode(VERSION_NAME_MAJOR, VERSION_NAME_MINOR, VERSION_NAME_PATCH)
 
+        Properties properties = new Properties()
+        File localPropertiesFile = project.rootProject.file("local.properties")
+
+        resValue "string", "MAPS_API_KEY", ""
+
+        if (localPropertiesFile.exists()) {
+            properties.load(localPropertiesFile.newDataInputStream())
+            if (properties.contains('mapsApiKey')) {
+                resValue "string", "MAPS_API_KEY", properties['mapsApiKey']
+            }
+        }
     }
 
     buildTypes {
@@ -83,6 +93,9 @@ dependencies {
     implementation 'com.google.firebase:firebase-auth-ktx:21.2.0'
     implementation 'com.google.firebase:firebase-firestore-ktx:24.5.0'
 
+    implementation 'com.google.android.gms:play-services-maps:18.1.0'
+
+
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.0'
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4'
     implementation 'com.google.firebase:firebase-config-ktx:21.3.0'
@@ -123,7 +136,6 @@ dependencies {
     // coroutine
     implementation('org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4')
     implementation('org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.2')
-
 
 }
 
