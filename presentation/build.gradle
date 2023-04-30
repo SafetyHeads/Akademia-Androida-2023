@@ -5,6 +5,7 @@ plugins {
 }
 
 android {
+    namespace 'com.safetyheads.akademiaandroida'
     compileSdk 33
 
     defaultConfig {
