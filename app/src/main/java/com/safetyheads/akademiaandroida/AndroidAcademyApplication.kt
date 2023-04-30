@@ -7,7 +7,7 @@ import com.safetyheads.akademiaandroida.data.UserRepositoryImpl
 import com.safetyheads.akademiaandroida.dropdownlist.DropDownListViewModel
 import com.safetyheads.akademiaandroida.dropdownlist.LoadItemsToDropDownListUseCase
 import com.safetyheads.akademiaandroida.forgotpasswordfragment.ForgotPasswordViewModel
-import com.safetyheads.akademiaandroida.fragments.technologystack.TechnologyStackUseCase
+import com.safetyheads.domain.usecases.TechnologyStackUseCase
 import com.safetyheads.akademiaandroida.fragments.technologystack.TechnologyStackViewModel
 import com.safetyheads.akademiaandroida.splashscreen.SplashScreenViewModel
 import com.safetyheads.data.network.retrofit.ApiClient

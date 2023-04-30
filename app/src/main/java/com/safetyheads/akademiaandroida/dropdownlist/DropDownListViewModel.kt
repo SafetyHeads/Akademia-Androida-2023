@@ -1,7 +1,7 @@
 package com.safetyheads.akademiaandroida.dropdownlist
 
 import androidx.lifecycle.ViewModel
-import com.safetyheads.akademiaandroida.dropdownlist.dropdown.ParentModel
+import com.safetyheads.domain.entities.technologystack.ParentModel
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 

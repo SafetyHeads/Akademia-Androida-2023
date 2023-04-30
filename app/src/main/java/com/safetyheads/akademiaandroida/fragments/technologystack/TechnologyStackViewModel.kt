@@ -1,7 +1,8 @@
 package com.safetyheads.akademiaandroida.fragments.technologystack
 
 import androidx.lifecycle.ViewModel
-import com.safetyheads.akademiaandroida.dropdownlist.dropdown.ParentModel
+import com.safetyheads.domain.entities.technologystack.ParentModel
+import com.safetyheads.domain.usecases.TechnologyStackUseCase
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.first

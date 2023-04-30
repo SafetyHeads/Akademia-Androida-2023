@@ -1,10 +1,9 @@
-package com.safetyheads.akademiaandroida.fragments.technologystack
+package com.safetyheads.domain.usecases
 
-import com.safetyheads.akademiaandroida.dropdownlist.dropdown.ChildModel
-import com.safetyheads.akademiaandroida.dropdownlist.dropdown.ParentModel
+import com.safetyheads.domain.entities.technologystack.ChildModel
+import com.safetyheads.domain.entities.technologystack.ParentModel
 import com.safetyheads.domain.entities.technologystack.TechnologyStackType
 import com.safetyheads.domain.repositories.TechnologyStackRepository
-import com.safetyheads.domain.usecases.BaseUseCase
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flow

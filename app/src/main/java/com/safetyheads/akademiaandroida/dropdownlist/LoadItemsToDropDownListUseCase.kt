@@ -1,7 +1,7 @@
 package com.safetyheads.akademiaandroida.dropdownlist
 
-import com.safetyheads.akademiaandroida.dropdownlist.dropdown.ChildModel
-import com.safetyheads.akademiaandroida.dropdownlist.dropdown.ParentModel
+import com.safetyheads.domain.entities.technologystack.ChildModel
+import com.safetyheads.domain.entities.technologystack.ParentModel
 import kotlinx.coroutines.coroutineScope
 
 class LoadItemsToDropDownListUseCase {
