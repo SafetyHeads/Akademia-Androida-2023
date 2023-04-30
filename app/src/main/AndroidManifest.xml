@@ -2,14 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <queries>
-        <package android:name="com.facebook.katana" />
-        <package android:name="com.instagram.android" />
-        <package android:name="com.google.android.youtube" />
-        <package android:name="com.linkedin.android" />
-        <package android:name="com.android.vending" />
-    </queries>
-
     <application
         android:name=".AndroidAcademyApplication"
         android:allowBackup="true"
@@ -20,6 +12,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AkademiaAndroida"
         tools:targetApi="31">
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/MAPS_API_KEY" />
+
         <activity
             android:name=".WebViewActivity"
             android:exported="false"
@@ -44,5 +41,11 @@
             android:name=".activitieslist.ListActivity"
             android:exported="true" />
     </application>
-
+    <queries>
+        <package android:name="com.facebook.katana" />
+        <package android:name="com.instagram.android" />
+        <package android:name="com.google.android.youtube" />
+        <package android:name="com.linkedin.android" />
+        <package android:name="com.android.vending" />
+    </queries>
 </manifest>

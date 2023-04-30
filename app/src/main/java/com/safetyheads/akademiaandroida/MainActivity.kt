@@ -1,6 +1,5 @@
 package com.safetyheads.akademiaandroida
 
-
 import android.content.Intent
 import android.os.Bundle
 import android.view.ViewGroup
@@ -15,6 +14,7 @@ import com.safetyheads.akademiaandroida.contactusform.ContactUsFragment
 import com.safetyheads.akademiaandroida.databinding.ActivityMainBinding
 import com.safetyheads.akademiaandroida.font.FontSylesFragment
 import com.safetyheads.akademiaandroida.fragments.WeAreHiringFragment
+import com.safetyheads.akademiaandroida.map.MapFragment
 import com.safetyheads.akademiaandroida.splashscreen.SplashScreenViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -31,31 +31,28 @@ class MainActivity : AppCompatActivity() {
         }
         observeConfigChanges()
 
-
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         binding.previevFont.setOnClickListener {
             openFragment(FontSylesFragment())
-            binding.previevFont.isVisible = false
-            binding.contactWithUs.isVisible = false
-            binding.weAreHiring.isVisible = false
-
+            hideButtons()
         }
 
         binding.weAreHiring.setOnClickListener {
             openFragment(WeAreHiringFragment())
-            binding.previevFont.isVisible = false
-            binding.contactWithUs.isVisible = false
-            binding.weAreHiring.isVisible = false
+            hideButtons()
         }
 
         binding.contactWithUs.setOnClickListener {
             //openFragment(ContactWithUsFragment())
             openFragment(ContactUsFragment())
-            binding.previevFont.isVisible = false
-            binding.contactWithUs.isVisible = false
-            binding.weAreHiring.isVisible = false
+            hideButtons()
+        }
+
+        binding.mapButton.setOnClickListener {
+            openFragment(MapFragment())
+            hideButtons()
         }
 
         val rootActivityIntent = Intent(this, RootActivity::class.java)
@@ -112,5 +109,11 @@ class MainActivity : AppCompatActivity() {
             )
                 .show()
         }
+    }
+    private fun hideButtons() {
+        binding.previevFont.isVisible = false
+        binding.contactWithUs.isVisible = false
+        binding.weAreHiring.isVisible = false
+        binding.mapButton.isVisible = false
     }
 }
