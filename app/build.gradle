@@ -13,15 +13,15 @@ android {
 
     flavorDimensions += "version"
     productFlavors {
-        create("development") {
+        development {
             dimension = "version"
             applicationIdSuffix = ".development"
         }
-        create("qa") {
+        qa {
             dimension = "version"
             applicationIdSuffix = ".qa"
         }
-        create("production") {
+        production {
             dimension = "version"
             applicationIdSuffix = ".production"
         }
@@ -41,11 +41,18 @@ android {
         Properties properties = new Properties()
         File localPropertiesFile = project.rootProject.file("local.properties")
 
+        resValue "string", "MAPS_API_KEY", ""
+        buildConfigField("String", "YOUTUBE_DATA_API_KEY", "\"\"")
+
         if (localPropertiesFile.exists()) {
             properties.load(localPropertiesFile.newDataInputStream())
-            buildConfigField("String", "YOUTUBE_DATA_API_KEY", "\"${properties.getProperty("YOUTUBE_DATA_API_KEY")}\"")
-        } else {
-            buildConfigField("String", "YOUTUBE_DATA_API_KEY", "\"\"")
+            if (properties.contains('mapsApiKey')) {
+                resValue "string", "MAPS_API_KEY", properties['mapsApiKey']
+            }
+            if (properties.contains('YOUTUBE_DATA_API_KEY')) {
+                buildConfigField("String", "YOUTUBE_DATA_API_KEY", "\"${properties.getProperty("YOUTUBE_DATA_API_KEY")}\"")
+            }
+
         }
     }
 
@@ -79,6 +86,8 @@ dependencies {
     implementation project(':domain')
     implementation project(':data')
 
+    implementation 'com.jakewharton.threetenabp:threetenabp:1.4.6'
+
     implementation 'com.airbnb.android:lottie:6.0.0'
     implementation 'androidx.core:core-ktx:1.9.0'
     implementation 'androidx.navigation:navigation-fragment-ktx:2.5.3'
@@ -88,8 +97,11 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
 
     implementation 'com.google.firebase:firebase-crashlytics-ktx:18.3.6'
-    implementation 'com.google.firebase:firebase-analytics-ktx:21.2.1'
-    implementation 'com.google.firebase:firebase-auth-ktx:21.2.0'
+    implementation 'com.google.firebase:firebase-analytics-ktx:21.2.2'
+    implementation 'com.google.firebase:firebase-auth-ktx:21.3.0'
+    implementation 'com.google.firebase:firebase-firestore-ktx:24.5.0'
+
+    implementation 'com.google.android.gms:play-services-maps:18.1.0'
 
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.0'
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4'
@@ -120,23 +132,20 @@ dependencies {
     // Koin
     implementation('io.insert-koin:koin-android:3.3.2')
 
+    implementation 'com.github.bumptech.glide:glide:4.15.1'
+
     // retrofit
     implementation('com.squareup.retrofit2:retrofit:2.9.0')
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.9.0'
+    implementation "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:0.9.2"
 
     // GSON - retrofit
     implementation('com.squareup.retrofit2:converter-gson:2.9.0')
-
-    implementation "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:0.9.2"
 
     // coroutine
     implementation('org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4')
     implementation('org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.2')
 
-    implementation 'com.squareup.okhttp3:logging-interceptor:4.9.0'
-
-    implementation 'com.github.bumptech.glide:glide:4.15.1'
-
-    implementation 'com.jakewharton.threetenabp:threetenabp:1.4.6'
 }
 
 private static Integer generateVersionCode(Integer VERSION_NAME_MAJOR, Integer VERSION_NAME_MINOR, Integer VERSION_NAME_PATCH) {
