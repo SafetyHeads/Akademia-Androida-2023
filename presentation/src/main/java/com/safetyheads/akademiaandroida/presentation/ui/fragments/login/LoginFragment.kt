@@ -6,12 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import com.safetyheads.akademiaandroida.R
-import com.safetyheads.akademiaandroida.databinding.FragmentLoginBinding
+import com.safetyheads.akademiaandroida.presentation.R
+import com.safetyheads.akademiaandroida.presentation.databinding.FragmentLoginBinding
 import com.safetyheads.akademiaandroida.presentation.ui.components.snackbar.LoginSnackBar
 import com.safetyheads.akademiaandroida.presentation.ui.utils.EmailValidator
 import com.safetyheads.akademiaandroida.presentation.ui.utils.PasswordValidator
-import com.safetyheads.akademiaandroida.presentationlogin.LoginFragmentDirections
 
 class LoginFragment : Fragment() {
 

@@ -5,7 +5,7 @@ import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.safetyheads.akademiaandroida.databinding.CardBinding
+import com.safetyheads.akademiaandroida.presentation.databinding.CardBinding
 
 class ActivitiesAdapter(private val list: List<String>, private val context: Context) :
     RecyclerView.Adapter<ActivitiesAdapter.MyViewHolder>() {

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.safetyheads.akademiaandroida.com.safetyheads.presentation.fragments.launchsreen.LaunchScreenFragment"
+    tools:context=".ui.fragments.launchsreen.LaunchScreenFragment"
     android:id="@+id/parent_layout"
     android:background="@color/n_0">
 

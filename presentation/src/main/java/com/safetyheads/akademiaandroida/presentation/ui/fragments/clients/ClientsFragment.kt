@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.safetyheads.akademiaandroida.databinding.FragmentClientsBinding
+import com.safetyheads.akademiaandroida.presentation.databinding.FragmentClientsBinding
 
 class ClientsFragment : Fragment() {
 

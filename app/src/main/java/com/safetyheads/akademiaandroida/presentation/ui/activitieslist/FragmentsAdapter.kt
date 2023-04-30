@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import androidx.recyclerview.widget.RecyclerView
 import com.safetyheads.akademiaandroida.R
-import com.safetyheads.akademiaandroida.databinding.CardBinding
+import com.safetyheads.akademiaandroida.presentation.databinding.CardBinding
 
 class FragmentsAdapter(private val list: List<Fragment>, private val context: Context) :
     RecyclerView.Adapter<FragmentsAdapter.MyViewHolder>() {

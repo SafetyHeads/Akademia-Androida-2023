@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import com.google.android.material.snackbar.BaseTransientBottomBar
 import com.google.android.material.snackbar.Snackbar
-import com.safetyheads.akademiaandroida.R
+import com.safetyheads.akademiaandroida.presentation.R
 
 class LoginSnackBar(parent: ViewGroup, content: LoginSnackBarView) :
     BaseTransientBottomBar<LoginSnackBar>(parent, content, content) {

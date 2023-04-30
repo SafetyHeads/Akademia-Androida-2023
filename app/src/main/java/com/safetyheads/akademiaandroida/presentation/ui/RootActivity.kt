@@ -25,8 +25,8 @@ class RootActivity : AppCompatActivity() {
 
         val onBackPressedCallback = object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
-                if (navController.currentDestination?.id == R.id.launchScreenFragment ||
-                    navController.currentDestination?.id == R.id.dashboard_placeholder
+                if (navController.currentDestination?.id == com.safetyheads.akademiaandroida.presentation.R.id.launchScreenFragment ||
+                    navController.currentDestination?.id == com.safetyheads.akademiaandroida.presentation.R.id.dashboard_placeholder
                 ) {
                     // do nothing
                 } else {

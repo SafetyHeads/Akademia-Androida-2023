@@ -5,7 +5,7 @@ import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.FrameLayout
 import androidx.annotation.DrawableRes
-import com.safetyheads.akademiaandroida.databinding.ViewArrowBinding
+import com.safetyheads.akademiaandroida.presentation.databinding.ViewArrowBinding
 
 class BackArrowView : FrameLayout {
 

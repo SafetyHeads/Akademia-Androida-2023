@@ -7,7 +7,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.google.android.material.snackbar.ContentViewCallback
-import com.safetyheads.akademiaandroida.R
+import com.safetyheads.akademiaandroida.presentation.R
 
 class LoginSnackBarView @JvmOverloads constructor(
     context: Context,

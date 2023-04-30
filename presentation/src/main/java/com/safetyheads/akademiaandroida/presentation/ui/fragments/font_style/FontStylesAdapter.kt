@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.safetyheads.akademiaandroida.databinding.ItemFontStylesBinding
+import com.safetyheads.akademiaandroida.presentation.databinding.ItemFontStylesBinding
 
 class FontStylesAdapter(
     private var description: ArrayList<String>,

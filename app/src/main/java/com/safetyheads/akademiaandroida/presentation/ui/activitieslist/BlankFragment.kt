@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.safetyheads.akademiaandroida.databinding.FragmentBlankBinding
+import com.safetyheads.akademiaandroida.presentation.databinding.FragmentBlankBinding
 
 class BlankFragment : Fragment() {
 

@@ -3,7 +3,7 @@ package com.safetyheads.akademiaandroida.presentation.ui.activities
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.tabs.TabLayout
-import com.safetyheads.akademiaandroida.databinding.ActivityTabLayoutBinding
+import com.safetyheads.akademiaandroida.presentation.databinding.ActivityTabLayoutBinding
 
 class TabLayoutActivity : AppCompatActivity() {
 

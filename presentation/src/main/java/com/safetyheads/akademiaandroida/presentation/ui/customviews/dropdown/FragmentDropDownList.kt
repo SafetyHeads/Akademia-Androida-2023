@@ -8,8 +8,8 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.viewModelScope
-import com.safetyheads.akademiaandroida.R
-import com.safetyheads.akademiaandroida.databinding.FragmentDropdownListBinding
+import com.safetyheads.akademiaandroida.presentation.R
+import com.safetyheads.akademiaandroida.presentation.databinding.FragmentDropdownListBinding
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 

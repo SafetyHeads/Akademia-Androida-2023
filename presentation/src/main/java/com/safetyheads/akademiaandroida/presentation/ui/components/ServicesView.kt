@@ -4,7 +4,7 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.FrameLayout
-import com.safetyheads.akademiaandroida.databinding.ViewServicesBinding
+import com.safetyheads.akademiaandroida.presentation.databinding.ViewServicesBinding
 
 class ServicesView @JvmOverloads constructor(
     context: Context,

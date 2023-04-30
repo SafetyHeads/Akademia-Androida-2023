@@ -2,7 +2,7 @@ package com.safetyheads.presentation
 
 import android.content.Context
 import android.widget.EditText
-import com.safetyheads.akademiaandroida.R
+import com.safetyheads.akademiaandroida.presentation.R
 import com.safetyheads.akademiaandroida.presentation.ui.utils.FullNameValidator
 import io.mockk.every
 import io.mockk.mockk

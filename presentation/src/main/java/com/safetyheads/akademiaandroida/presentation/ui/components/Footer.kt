@@ -7,8 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
-import com.safetyheads.akademiaandroida.R
-import com.safetyheads.akademiaandroida.databinding.FragmentFooterBinding
+import com.safetyheads.akademiaandroida.presentation.R
+import com.safetyheads.akademiaandroida.presentation.databinding.FragmentFooterBinding
 import com.safetyheads.akademiaandroida.presentation.ui.utils.TextUtils
 
 class Footer : Fragment() {

@@ -6,8 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.safetyheads.akademiaandroida.R
-import com.safetyheads.akademiaandroida.databinding.FragmentFontStylesBinding
+import com.safetyheads.akademiaandroida.presentation.R
+import com.safetyheads.akademiaandroida.presentation.databinding.FragmentFontStylesBinding
 
 class FontSylesFragment : Fragment() {
 

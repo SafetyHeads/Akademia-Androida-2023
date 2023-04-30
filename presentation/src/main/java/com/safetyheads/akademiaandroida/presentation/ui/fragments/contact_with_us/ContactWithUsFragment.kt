@@ -8,7 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.safetyheads.akademiaandroida.databinding.FragmentContactWithUsBinding
+import com.safetyheads.akademiaandroida.presentation.databinding.FragmentContactWithUsBinding
 import com.safetyheads.akademiaandroida.utils.getPackageInfoCompat
 
 class ContactWithUsFragment : Fragment() {

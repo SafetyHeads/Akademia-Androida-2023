@@ -9,10 +9,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.core.content.ContextCompat
+import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
+import androidx.navigation.NavDeepLinkRequest
 import androidx.navigation.fragment.findNavController
-import com.safetyheads.akademiaandroida.R
-import com.safetyheads.akademiaandroida.databinding.FragmentLaunchScreenBinding
+import com.safetyheads.akademiaandroida.presentation.R
+import com.safetyheads.akademiaandroida.presentation.databinding.FragmentLaunchScreenBinding
 import com.safetyheads.akademiaandroida.presentation.ui.components.Footer
 
 class LaunchScreenFragment : Fragment() {

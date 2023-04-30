@@ -5,8 +5,8 @@ import android.content.res.TypedArray
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.LinearLayout
-import com.safetyheads.akademiaandroida.R
-import com.safetyheads.akademiaandroida.databinding.ViewH2Binding
+import com.safetyheads.akademiaandroida.presentation.R
+import com.safetyheads.akademiaandroida.presentation.databinding.ViewH2Binding
 
 /* Example of use in XML:
          <com.safetyheads.akademiaandroida.presentation.ui.components.H2View

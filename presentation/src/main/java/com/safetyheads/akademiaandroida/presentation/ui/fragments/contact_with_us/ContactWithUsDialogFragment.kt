@@ -4,7 +4,7 @@ import android.app.AlertDialog
 import android.app.Dialog
 import android.os.Bundle
 import androidx.fragment.app.DialogFragment
-import com.safetyheads.akademiaandroida.R
+import com.safetyheads.akademiaandroida.presentation.R
 
 class ContactWithUsDialogFragment(
     private val callback: ContactWithUsCallback,

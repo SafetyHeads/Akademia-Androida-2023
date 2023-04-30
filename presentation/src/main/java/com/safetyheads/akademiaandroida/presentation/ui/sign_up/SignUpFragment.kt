@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.safetyheads.akademiaandroida.databinding.FragmentSignUpBinding
+import com.safetyheads.akademiaandroida.presentation.databinding.FragmentSignUpBinding
 import com.safetyheads.akademiaandroida.presentation.ui.sign_up.SignUpViewModel
 import com.safetyheads.akademiaandroida.presentation.ui.utils.EmailValidator
 import com.safetyheads.akademiaandroida.presentation.ui.utils.FullNameValidator

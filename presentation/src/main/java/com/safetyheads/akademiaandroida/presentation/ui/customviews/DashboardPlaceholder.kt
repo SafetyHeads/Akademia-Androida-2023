@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.safetyheads.akademiaandroida.databinding.FragmentDashboardPlaceholderBinding
+import com.safetyheads.akademiaandroida.presentation.databinding.FragmentDashboardPlaceholderBinding
 
 class DashboardPlaceholder : Fragment() {
 

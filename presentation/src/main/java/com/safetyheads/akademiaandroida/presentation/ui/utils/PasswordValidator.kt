@@ -3,7 +3,7 @@ package com.safetyheads.akademiaandroida.presentation.ui.utils
 import android.content.Context
 import android.widget.EditText
 import androidx.core.widget.addTextChangedListener
-import com.safetyheads.akademiaandroida.R
+import com.safetyheads.akademiaandroida.presentation.R
 
 /*
 To use this validator you have to add to your code:

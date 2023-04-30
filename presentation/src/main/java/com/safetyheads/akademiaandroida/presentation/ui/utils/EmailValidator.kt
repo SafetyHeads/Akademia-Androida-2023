@@ -3,7 +3,7 @@ package com.safetyheads.akademiaandroida.presentation.ui.utils
 import android.widget.EditText
 import androidx.core.util.PatternsCompat
 import androidx.core.widget.addTextChangedListener
-import com.safetyheads.akademiaandroida.R
+import com.safetyheads.akademiaandroida.presentation.R
 
 object EmailValidator {
     fun attach(editText: EditText) {

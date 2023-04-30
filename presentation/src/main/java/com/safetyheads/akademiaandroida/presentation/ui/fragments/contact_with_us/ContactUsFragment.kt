@@ -8,7 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
-import com.safetyheads.akademiaandroida.databinding.FragmentContactUsBinding
+import com.safetyheads.akademiaandroida.presentation.databinding.FragmentContactUsBinding
 
 
 class ContactUsFragment : Fragment() {
