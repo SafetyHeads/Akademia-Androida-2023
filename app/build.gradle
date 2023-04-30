@@ -11,22 +11,6 @@ android {
     namespace 'com.safetyheads.akademiaandroida'
     compileSdk 33
 
-    flavorDimensions += "version"
-    productFlavors {
-        create("development") {
-            dimension = "version"
-            applicationIdSuffix = ".development"
-        }
-        create("qa") {
-            dimension = "version"
-            applicationIdSuffix = ".qa"
-        }
-        create("production") {
-            dimension = "version"
-            applicationIdSuffix = ".production"
-        }
-    }
-
     defaultConfig {
         applicationId "com.safetyheads.akademiaandroida"
         minSdk 24
@@ -38,6 +22,22 @@ android {
         versionName = "$NAME_APPLICATION $VERSION_NAME_MAJOR.$VERSION_NAME_MINOR.$VERSION_NAME_PATCH"
         versionCode = generateVersionCode(VERSION_NAME_MAJOR, VERSION_NAME_MINOR, VERSION_NAME_PATCH)
 
+    }
+
+    flavorDimensions += "version"
+    productFlavors {
+        development {
+            dimension = "version"
+            applicationIdSuffix = ".development"
+        }
+        qa {
+            dimension = "version"
+            applicationIdSuffix = ".qa"
+        }
+        production {
+            dimension = "version"
+            applicationIdSuffix = ".production"
+        }
     }
 
     buildTypes {
@@ -52,6 +52,7 @@ android {
             initWith debug
         }
     }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
