@@ -3,7 +3,7 @@ package com.safetyheads.akademiaandroida.presentation.ui.sign_up
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.safetyheads.domain.usecases.RegisterUseCase
+import com.safetyheads.akademiaandroida.domain.usecases.RegisterUseCase
 import kotlinx.coroutines.launch
 
 class SignUpViewModel(

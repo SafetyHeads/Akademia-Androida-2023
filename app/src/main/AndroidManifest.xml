@@ -42,6 +42,9 @@
             android:name=".presentation.ui.activitieslist.ListActivity"
 
             android:exported="true" />
+        <activity
+            android:name=".youtube.YouTubeActivity"
+            android:exported="true" />
     </application>
     <queries>
         <package android:name="com.facebook.katana" />
