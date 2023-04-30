@@ -7,6 +7,9 @@ plugins {
     id 'androidx.navigation.safeargs.kotlin'
 }
 
+Properties properties = new Properties()
+File localPropertiesFile = project.rootProject.file("local.properties")
+
 android {
     namespace 'com.safetyheads.akademiaandroida'
     compileSdk 33
@@ -38,21 +41,13 @@ android {
         versionName = "$NAME_APPLICATION $VERSION_NAME_MAJOR.$VERSION_NAME_MINOR.$VERSION_NAME_PATCH"
         versionCode = generateVersionCode(VERSION_NAME_MAJOR, VERSION_NAME_MINOR, VERSION_NAME_PATCH)
 
-        Properties properties = new Properties()
-        File localPropertiesFile = project.rootProject.file("local.properties")
-
-        resValue "string", "MAPS_API_KEY", ""
-        buildConfigField("String", "YOUTUBE_DATA_API_KEY", "\"\"")
-
         if (localPropertiesFile.exists()) {
             properties.load(localPropertiesFile.newDataInputStream())
-            if (properties.contains('mapsApiKey')) {
-                resValue "string", "MAPS_API_KEY", properties['mapsApiKey']
-            }
-            if (properties.contains('YOUTUBE_DATA_API_KEY')) {
-                buildConfigField("String", "YOUTUBE_DATA_API_KEY", "\"${properties.getProperty("YOUTUBE_DATA_API_KEY")}\"")
-            }
-
+            resValue "string", "MAPS_API_KEY", properties['mapsApiKey']
+            buildConfigField("String", "YOUTUBE_DATA_API_KEY", "\"${properties.getProperty("YOUTUBE_DATA_API_KEY")}\"")
+        } else {
+            resValue "string", "MAPS_API_KEY", ""
+            buildConfigField("String", "YOUTUBE_DATA_API_KEY", "\"\"")
         }
     }
 
