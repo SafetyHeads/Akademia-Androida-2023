@@ -4,17 +4,23 @@ import android.app.Application
 import com.google.firebase.firestore.FirebaseFirestore
 import com.safetyheads.akademiaandroida.data.FirebaseConfigRepository
 import com.safetyheads.akademiaandroida.data.UserRepositoryImpl
+import com.safetyheads.akademiaandroida.data.network.repository.CompanyInfoRepositoryImpl
+import com.safetyheads.akademiaandroida.data.network.repository.TechnologyStackRepositoryImpl
+import com.safetyheads.akademiaandroida.data.network.retrofit.ApiClient
 import com.safetyheads.akademiaandroida.dropdownlist.DropDownListViewModel
 import com.safetyheads.akademiaandroida.dropdownlist.LoadItemsToDropDownListUseCase
 import com.safetyheads.akademiaandroida.forgotpasswordfragment.ForgotPasswordViewModel
 import com.safetyheads.akademiaandroida.splashscreen.SplashScreenViewModel
-import com.safetyheads.akademiaandroida.data.network.repository.TechnologyStackRepositoryImpl
-import com.safetyheads.akademiaandroida.data.network.retrofit.ApiClient
+import com.safetyheads.domain.repositories.CompanyInfoRepository
 import com.safetyheads.domain.repositories.ConfigRepository
 import com.safetyheads.domain.repositories.TechnologyStackRepository
 import com.safetyheads.domain.repositories.UserRepository
 import com.safetyheads.domain.usecases.DelaySplashScreenUseCase
+import com.safetyheads.domain.usecases.GetAddressUseCase
 import com.safetyheads.domain.usecases.GetConfigUseCase
+import com.safetyheads.domain.usecases.GetContactInfoUseCase
+import com.safetyheads.domain.usecases.GetInfoUseCase
+import com.safetyheads.domain.usecases.GetSocialUseCase
 import com.safetyheads.domain.usecases.GetTechnologyStackUseCase
 import com.safetyheads.domain.usecases.ResetPasswordUseCase
 import org.koin.android.ext.koin.androidContext
@@ -41,7 +47,8 @@ class AndroidAcademyApplication : Application() {
 
         //repositories
         single<TechnologyStackRepository> { TechnologyStackRepositoryImpl(get()) }
-        single{ GetTechnologyStackUseCase(get()) }
+        single { GetTechnologyStackUseCase(get()) }
+        single<CompanyInfoRepository> { CompanyInfoRepositoryImpl(get()) }
     }
 
     private val appModule = module {
@@ -54,6 +61,10 @@ class AndroidAcademyApplication : Application() {
         single { LoadItemsToDropDownListUseCase() }
         single { GetConfigUseCase(get()) }
         single { ResetPasswordUseCase(get()) }
+        single { GetAddressUseCase(get()) }
+        single { GetInfoUseCase(get()) }
+        single { GetContactInfoUseCase(get()) }
+        single { GetSocialUseCase(get()) }
 
         //viewmodels
         viewModel { SplashScreenViewModel(get(), get()) }
