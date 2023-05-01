@@ -1,9 +1,23 @@
-<?xml version="1.0" encoding="utf-8"?>
-<shape xmlns:android="http://schemas.android.com/apk/res/android"
-    android:shape="rectangle">
+<?xml version="1.0" encoding="UTF-8"?>
+<inset xmlns:android="http://schemas.android.com/apk/res/android"
+    android:insetLeft="12dp"
+    android:insetTop="12dp"
+    android:insetRight="12dp"
+    android:insetBottom="12dp"
+    android:visible="true">
+    <shape xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/listview_background_shape">
+        <corners android:radius="100dp" />
+        <solid android:color="@color/p_10" />
+    </shape>
+</inset>
 
-    <solid android:color="@color/p_10"/>
-    <corners android:radius="100dp"/>
-    <size android:width="@dimen/size_8x"
-        android:height="@dimen/size_4x"/>
-</shape>
+    <!--<?xml version="1.0" encoding="utf-8"?>-->
+    <!--<shape xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--    android:shape="rectangle">-->
+
+    <!--    <solid android:color="@color/p_10"/>-->
+    <!--    <corners android:radius="100dp"/>-->
+    <!--    <size android:width="@dimen/size_8x"-->
+    <!--        android:height="@dimen/size_4x"/>-->
+    <!--</shape>-->

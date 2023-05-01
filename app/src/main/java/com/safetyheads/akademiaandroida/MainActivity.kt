@@ -36,7 +36,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         binding.previevFont.setOnClickListener {
-            openFragment(FontSylesFragment())
+            openFragment(DashboardFragment())
             hideButtons()
         }
 

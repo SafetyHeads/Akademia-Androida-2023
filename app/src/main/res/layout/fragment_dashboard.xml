@@ -14,13 +14,17 @@
         android:layout_above="@id/bottom_navigation_view"/>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:background="@color/white"
+        app:labelVisibilityMode="labeled"
+        app:itemBackground="@drawable/dashboard_item_selector"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/size_10x"
         android:id="@+id/bottom_navigation_view"
         android:layout_alignParentBottom="true"
         app:menu="@menu/bottom_nav_view">
 
     </com.google.android.material.bottomnavigation.BottomNavigationView>
+
 
 <!--    <LinearLayout-->
 <!--        android:id="@+id/frame_layout"-->
