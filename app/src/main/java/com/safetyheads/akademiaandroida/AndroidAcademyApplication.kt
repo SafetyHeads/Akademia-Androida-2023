@@ -7,6 +7,7 @@ import com.safetyheads.akademiaandroida.presentation.ui.career.CareerRepositoryI
 import com.safetyheads.akademiaandroida.presentation.ui.career.CareerViewModel
 import com.safetyheads.akademiaandroida.data.network.repository.FirebaseConfigRepository
 import com.safetyheads.akademiaandroida.data.network.repository.CompanyInfoRepositoryImpl
+import com.safetyheads.akademiaandroida.data.network.repository.FaqRepositoryImpl
 import com.safetyheads.akademiaandroida.data.network.repository.TechnologyStackRepositoryImpl
 import com.safetyheads.akademiaandroida.data.network.retrofit.ApiClient
 import com.safetyheads.akademiaandroida.domain.repositories.ChannelRepository
@@ -16,20 +17,6 @@ import com.safetyheads.akademiaandroida.domain.repositories.PlaylistRepository
 import com.safetyheads.akademiaandroida.domain.repositories.TechnologyStackRepository
 import com.safetyheads.akademiaandroida.domain.repositories.UserRepository
 import com.safetyheads.akademiaandroida.domain.repositories.VideoRepository
-import com.safetyheads.akademiaandroida.domain.usecases.DateUseCase
-import com.safetyheads.akademiaandroida.domain.usecases.DateUseCaseImpl
-import com.safetyheads.akademiaandroida.domain.usecases.DelaySplashScreenUseCase
-import com.safetyheads.akademiaandroida.domain.usecases.GetAddressUseCase
-import com.safetyheads.akademiaandroida.domain.usecases.GetChannelUseCase
-import com.safetyheads.akademiaandroida.domain.usecases.GetConfigUseCase
-import com.safetyheads.akademiaandroida.domain.usecases.GetContactInfoUseCase
-import com.safetyheads.akademiaandroida.domain.usecases.GetInfoUseCase
-import com.safetyheads.akademiaandroida.domain.usecases.GetPlayListItemsUseCase
-import com.safetyheads.akademiaandroida.domain.usecases.GetPlayListsUseCase
-import com.safetyheads.akademiaandroida.domain.usecases.GetSocialUseCase
-import com.safetyheads.akademiaandroida.domain.usecases.GetTechnologyStackUseCase
-import com.safetyheads.akademiaandroida.domain.usecases.GetVideoUseCase
-import com.safetyheads.akademiaandroida.domain.usecases.ResetPasswordUseCase
 import com.safetyheads.akademiaandroida.presentation.ui.activities.splashscreen.SplashScreenViewModel
 import com.safetyheads.akademiaandroida.presentation.ui.customviews.dropdown.DropDownListViewModel
 import com.safetyheads.akademiaandroida.presentation.ui.customviews.dropdown.LoadItemsToDropDownListUseCase
@@ -50,7 +37,7 @@ import com.safetyheads.data.network.repository.YouTubeApiConsts
 import com.safetyheads.data.network.service.YouTubeService
 import com.safetyheads.akademiaandroida.domain.repositories.CareerRepository
 import com.safetyheads.akademiaandroida.domain.repositories.SettingsRepository
-import com.safetyheads.akademiaandroida.domain.usecases.GetJobOfferUseCase
+import com.safetyheads.akademiaandroida.domain.usecases.*
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.androidx.viewmodel.dsl.viewModel
@@ -81,6 +68,7 @@ class AndroidAcademyApplication : Application() {
         single<TechnologyStackRepository> { TechnologyStackRepositoryImpl(get()) }
         single { GetTechnologyStackUseCase(get()) }
         single<CompanyInfoRepository> { CompanyInfoRepositoryImpl(get()) }
+        single { FaqRepositoryImpl(get()) }
 
         //usecases
         single { DelaySplashScreenUseCase() }
@@ -98,6 +86,8 @@ class AndroidAcademyApplication : Application() {
         single { GetPlayListsUseCase(get()) }
         single { GetVideoUseCase(get()) }
         single<DateUseCase> { DateUseCaseImpl() }
+        single { GetFaqUseCase(get()) }
+        single { AddQuestionUseCase(get()) }
 
         //viewmodels
         viewModel { SplashScreenViewModel(get(), get()) }
