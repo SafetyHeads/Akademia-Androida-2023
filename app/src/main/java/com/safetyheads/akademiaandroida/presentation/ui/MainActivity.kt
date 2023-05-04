@@ -1,14 +1,22 @@
 package com.safetyheads.akademiaandroida.presentation.ui
 
+import android.app.NotificationManager
+import android.content.Context
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
+import android.provider.Settings
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.Toast
+import androidx.annotation.RequiresApi
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import com.google.firebase.FirebaseApp
+import com.google.firebase.messaging.FirebaseMessaging
 import com.safetyheads.akademiaandroida.R
 import com.safetyheads.akademiaandroida.databinding.ActivityMainBinding
 import com.safetyheads.akademiaandroida.presentation.ui.activities.splashscreen.SplashScreenViewModel
@@ -25,8 +33,11 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private val splashScreenViewModel: SplashScreenViewModel by viewModel()
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         installSplashScreen()
+        FirebaseApp.initializeApp(this)
+        FirebaseMessaging.getInstance().subscribeToTopic("all")
         val splashScreen = installSplashScreen()
         splashScreen.setKeepOnScreenCondition {
             splashScreenViewModel.getConfig.isActive
@@ -36,6 +47,18 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        if (!areNotificationsEnabled()) {
+            AlertDialog.Builder(this)
+                .setTitle("Włącz powiadomienia")
+                .setMessage("Aby korzystać z wszystkich funkcji aplikacji, włącz powiadomienia.")
+                .setPositiveButton("Ustawienia powiadomień") { _, _ ->
+                    openNotificationSettings()
+                }
+                //  .setNegativeButton("Anuluj", null)
+                .show()
+        }
+
         binding.previevFont.setOnClickListener {
             openFragment(FontSylesFragment())
             hideButtons()
@@ -118,5 +141,19 @@ class MainActivity : AppCompatActivity() {
         binding.contactWithUs.isVisible = false
         binding.weAreHiring.isVisible = false
         binding.mapButton.isVisible = false
+    }
+
+    private fun areNotificationsEnabled(): Boolean {
+        val notificationManager =
+            getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+        return notificationManager.areNotificationsEnabled()
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun openNotificationSettings() {
+        val intent = Intent(Settings.ACTION_APP_NOTIFICATION_SETTINGS).apply {
+            putExtra(Settings.EXTRA_APP_PACKAGE, packageName)
+        }
+        startActivity(intent)
     }
 }
