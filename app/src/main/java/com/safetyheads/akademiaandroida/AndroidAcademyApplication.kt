@@ -10,19 +10,13 @@ import com.safetyheads.akademiaandroida.data.network.repository.CompanyInfoRepos
 import com.safetyheads.akademiaandroida.data.network.repository.FaqRepositoryImpl
 import com.safetyheads.akademiaandroida.data.network.repository.TechnologyStackRepositoryImpl
 import com.safetyheads.akademiaandroida.data.network.retrofit.ApiClient
-import com.safetyheads.akademiaandroida.domain.repositories.ChannelRepository
-import com.safetyheads.akademiaandroida.domain.repositories.CompanyInfoRepository
-import com.safetyheads.akademiaandroida.domain.repositories.ConfigRepository
-import com.safetyheads.akademiaandroida.domain.repositories.PlaylistRepository
-import com.safetyheads.akademiaandroida.domain.repositories.TechnologyStackRepository
-import com.safetyheads.akademiaandroida.domain.repositories.UserRepository
-import com.safetyheads.akademiaandroida.domain.repositories.VideoRepository
 import com.safetyheads.akademiaandroida.presentation.ui.activities.splashscreen.SplashScreenViewModel
 import com.safetyheads.akademiaandroida.presentation.ui.customviews.dropdown.DropDownListViewModel
 import com.safetyheads.akademiaandroida.presentation.ui.customviews.dropdown.LoadItemsToDropDownListUseCase
 import com.safetyheads.akademiaandroida.presentation.ui.fragments.forgotpasswordfragment.ForgotPasswordViewModel
 import com.safetyheads.akademiaandroida.presentation.ui.sign_up.UserRepositoryImpl
 import com.safetyheads.akademiaandroida.data.network.repository.settings.SettingRepositoryImpl
+import com.safetyheads.akademiaandroida.domain.repositories.*
 import com.safetyheads.akademiaandroida.youtube.viewModel.ChannelViewModel
 import com.safetyheads.akademiaandroida.youtube.viewModel.PlayListViewModel
 import com.safetyheads.akademiaandroida.youtube.viewModel.VideoViewModel
@@ -35,8 +29,6 @@ import com.safetyheads.data.network.repository.PlaylistRepositoryImpl
 import com.safetyheads.data.network.repository.VideoRepositoryImpl
 import com.safetyheads.data.network.repository.YouTubeApiConsts
 import com.safetyheads.data.network.service.YouTubeService
-import com.safetyheads.akademiaandroida.domain.repositories.CareerRepository
-import com.safetyheads.akademiaandroida.domain.repositories.SettingsRepository
 import com.safetyheads.akademiaandroida.domain.usecases.*
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
@@ -68,7 +60,7 @@ class AndroidAcademyApplication : Application() {
         single<TechnologyStackRepository> { TechnologyStackRepositoryImpl(get()) }
         single { GetTechnologyStackUseCase(get()) }
         single<CompanyInfoRepository> { CompanyInfoRepositoryImpl(get()) }
-        single { FaqRepositoryImpl(get()) }
+        single<FaqRepository> { FaqRepositoryImpl(get()) }
 
         //usecases
         single { DelaySplashScreenUseCase() }

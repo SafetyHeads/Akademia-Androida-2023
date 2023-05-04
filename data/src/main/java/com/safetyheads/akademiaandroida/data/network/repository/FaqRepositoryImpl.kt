@@ -10,14 +10,13 @@ import com.safetyheads.akademiaandroida.domain.repositories.FaqRepository
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
-import java.sql.Date
 
 class FaqRepositoryImpl(firebaseFirestore: FirebaseFirestore) : FaqRepository {
 
-    private val reference = firebaseFirestore.collection("faq")
+    private val collectionReference = firebaseFirestore.collection("faq")
 
     override fun getFaq(): Flow<Result<MutableList<Faq>>> = callbackFlow {
-        val listener = reference.addSnapshotListener { snapshot, exception ->
+        val listener = collectionReference.addSnapshotListener { snapshot, exception ->
 
             if (exception != null) trySend(Result.failure(exception))
             else {
@@ -32,21 +31,21 @@ class FaqRepositoryImpl(firebaseFirestore: FirebaseFirestore) : FaqRepository {
     }
 
     override fun addQuestion(question: Question, type: Type): Flow<Result<Boolean>> = callbackFlow {
-        reference.add(
-            Faq(
-                Answer(Date(java.util.Date().time), true, ""),
-                true,
-                question,
-                type
-            )
-        )
+        val faqObject = Faq(Answer(), true, question, type.type)
 
-        .addOnFailureListener { exception ->
-            trySend(Result.failure(exception))
-        }
+        awaitClose { collectionReference.add(faqObject)
+            .addOnSuccessListener { document ->
+                // here should be setting current user's id to field 'userId'
+            }
 
-        .addOnCompleteListener { task ->
-            trySend(Result.success(task.isComplete))
+            .addOnFailureListener { exception ->
+                trySend(Result.failure(exception))
+            }
+
+            .addOnCompleteListener { task ->
+                trySend(Result.success(task.isComplete))
+            }
+            channel.close()
         }
     }
 }

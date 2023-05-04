@@ -1,10 +1,9 @@
 package com.safetyheads.akademiaandroida.domain.entities.firebasefirestore.faq
 
-import java.sql.Date
+import java.util.Date
 
 data class Answer(
-    //= Date(java.util.Date().time)
-    val answerDate: Date,
-    val publish: Boolean,
-    var text: String
+    var answerDate: Date = Date(),
+    var publish: Boolean = false,
+    var text: String = ""
 )
