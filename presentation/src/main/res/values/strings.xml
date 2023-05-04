@@ -95,4 +95,8 @@
     <string name="next">Next</string>
     <string name="previous">Previous</string>
     <string name="arrow_notifications">Arrow notifications</string>
+    <string name="technology_stack">Technology Stack</string>
+    <string name="mobile_app">Mobile app</string>
+    <string name="web_app">Web app</string>
+    <string name="others">Others</string>
 </resources>
