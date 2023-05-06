@@ -14,128 +14,17 @@
         android:layout_above="@id/bottom_navigation_view"/>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation_view"
         android:background="@color/white"
         app:labelVisibilityMode="labeled"
         app:itemBackground="@drawable/dashboard_item_selector"
         android:layout_width="match_parent"
         android:layout_height="@dimen/size_10x"
-        android:id="@+id/bottom_navigation_view"
         android:layout_alignParentBottom="true"
         app:menu="@menu/bottom_nav_view">
 
     </com.google.android.material.bottomnavigation.BottomNavigationView>
 
-
-<!--    <LinearLayout-->
-<!--        android:id="@+id/frame_layout"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="@dimen/size_10x"-->
-<!--        android:orientation="horizontal"-->
-<!--        android:weightSum="4"-->
-<!--        android:background="@color/n_0"-->
-<!--        android:layout_alignParentBottom="true">-->
-
-<!--        <LinearLayout-->
-<!--            android:layout_width="@dimen/size_10x"-->
-<!--            android:layout_height="match_parent"-->
-<!--            android:orientation="vertical"-->
-<!--            android:layout_marginStart="@dimen/size"-->
-<!--            android:weightSum="2"-->
-<!--            android:gravity="center"-->
-<!--            android:layout_weight="1">-->
-
-<!--            <ImageView-->
-<!--                android:background="@drawable/dashboard_round_background_active"-->
-<!--                android:layout_width="@dimen/size_8x"-->
-<!--                android:layout_height="@dimen/size_4x"-->
-<!--                android:adjustViewBounds="true"-->
-<!--                android:src="@drawable/home_icon_selected"/>-->
-
-<!--            <TextView-->
-<!--                style="@style/Poppins_regular_gray_10sp"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:gravity="center"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginTop="@dimen/size_0.5x"-->
-<!--                android:text="@string/home"/>-->
-<!--        </LinearLayout>-->
-
-<!--        <LinearLayout-->
-<!--            android:layout_width="@dimen/size_10x"-->
-<!--            android:layout_height="match_parent"-->
-<!--            android:orientation="vertical"-->
-<!--            android:layout_marginStart="@dimen/size"-->
-<!--            android:weightSum="2"-->
-<!--            android:gravity="center"-->
-<!--            android:layout_weight="1">-->
-
-<!--            <ImageView-->
-<!--                android:background="@drawable/dashboard_round_background_non_active"-->
-<!--                android:layout_width="@dimen/size_8x"-->
-<!--                android:layout_height="@dimen/size_4x"-->
-<!--                android:adjustViewBounds="true"-->
-<!--                android:src="@drawable/media_icon"/>-->
-
-<!--            <TextView-->
-<!--                style="@style/Poppins_regular_gray_10sp"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:gravity="center"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginTop="@dimen/size_0.5x"-->
-<!--                android:text="@string/media"/>-->
-<!--        </LinearLayout>-->
-
-<!--        <LinearLayout-->
-<!--            android:layout_width="@dimen/size_10x"-->
-<!--            android:layout_height="match_parent"-->
-<!--            android:orientation="vertical"-->
-<!--            android:layout_marginStart="@dimen/size"-->
-<!--            android:weightSum="2"-->
-<!--            android:gravity="center"-->
-<!--            android:layout_weight="1">-->
-
-<!--            <ImageView-->
-<!--                android:background="@drawable/dashboard_round_background_non_active"-->
-<!--                android:layout_width="@dimen/size_8x"-->
-<!--                android:layout_height="@dimen/size_4x"-->
-<!--                android:adjustViewBounds="true"-->
-<!--                android:src="@drawable/carrer_icon"/>-->
-
-<!--            <TextView-->
-<!--                style="@style/Poppins_regular_gray_10sp"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:gravity="center"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginTop="@dimen/size_0.5x"-->
-<!--                android:text="@string/career"/>-->
-<!--        </LinearLayout>-->
-
-<!--        <LinearLayout-->
-<!--            android:layout_width="@dimen/size_10x"-->
-<!--            android:layout_height="match_parent"-->
-<!--            android:orientation="vertical"-->
-<!--            android:layout_marginStart="@dimen/size"-->
-<!--            android:layout_marginEnd="@dimen/size"-->
-<!--            android:weightSum="2"-->
-<!--            android:gravity="center"-->
-<!--            android:layout_weight="1">-->
-
-<!--            <ImageView-->
-<!--                android:background="@drawable/dashboard_round_background_non_active"-->
-<!--                android:layout_width="@dimen/size_8x"-->
-<!--                android:layout_height="@dimen/size_4x"-->
-<!--                android:adjustViewBounds="true"-->
-<!--                android:src="@drawable/contact_icon"/>-->
-
-<!--            <TextView-->
-<!--                style="@style/Poppins_regular_gray_10sp"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:gravity="center"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginTop="@dimen/size_0.5x"-->
-<!--                android:text="@string/contact"/>-->
-<!--        </LinearLayout>-->
-<!--    </LinearLayout>-->
 </RelativeLayout>
 
 
