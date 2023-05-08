@@ -31,6 +31,10 @@
         <activity
             android:name=".activitieslist.ListActivity"
             android:exported="true" />
+
+        <activity android:name=".usersessionmanager.UserSessionManagerActivity"
+            android:exported="true" />
+
     </application>
     <queries>
         <package android:name="com.facebook.katana" />

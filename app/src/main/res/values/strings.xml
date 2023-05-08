@@ -82,4 +82,7 @@
     <string name="sign_in_now">Sign in now</string>
     <string name="we_have_emailed_your_password_reset_link">We have e-mailed your password reset link.</string>
     <string name="failed_sent_forgot_password">Failed sent e-mail. Please try again later</string>
+    <string name="wyswietl_info">Wyświetl info</string>
+    <string name="usun_scope">Usuń scope</string>
+    <string name="utworz_scope">Utwórz scope</string>
 </resources>
