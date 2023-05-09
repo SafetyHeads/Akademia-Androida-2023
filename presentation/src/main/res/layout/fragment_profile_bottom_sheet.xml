@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <View
+        android:id="@+id/rectangle_bottom_shield"
+        android:layout_width="80dp"
+        android:layout_height="3dp"
+        android:layout_marginTop="12dp"
+        android:background="@color/n_70"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/avatar_card_view"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="11dp"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="250dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rectangle_bottom_shield">
+
+        <ImageView
+            android:id="@+id/avatar_image_view"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:src="@drawable/placeholder_avatar" />
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/edit_avatar_card_view"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        app:cardBackgroundColor="@color/p_60"
+        app:cardCornerRadius="250dp"
+        app:layout_constraintBottom_toBottomOf="@+id/avatar_card_view"
+        app:layout_constraintEnd_toEndOf="@+id/avatar_card_view">
+
+        <ImageView
+            android:id="@+id/edit_avatar_image_view"
+            android:layout_width="12dp"
+            android:layout_height="12dp"
+            android:src="@drawable/edit_fill_icon"
+            android:layout_gravity="center"
+            android:gravity="center"/>
+
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/nickname_text_view"
+        style="@style/H2"
+        android:textColor="#FF18156e"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="Hello $nickname"
+        app:layout_constraintBottom_toBottomOf="@+id/avatar_card_view"
+        app:layout_constraintStart_toEndOf="@+id/avatar_card_view"
+        app:layout_constraintTop_toTopOf="@+id/avatar_card_view" />
+
+    <ImageView
+        android:id="@+id/person_icon"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/person_icon"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/avatar_card_view" />
+
+    <TextView
+        android:id="@+id/profile_text_view"
+        style="@style/Text6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="4dp"
+        android:text="@string/profile"
+        app:layout_constraintBottom_toBottomOf="@+id/person_icon"
+        app:layout_constraintStart_toEndOf="@+id/person_icon"
+        app:layout_constraintTop_toTopOf="@+id/person_icon" />
+
+    <View
+        android:id="@+id/first_line"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="24dp"
+        android:background="@color/n_70"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/person_icon" />
+
+    <ImageView
+        android:id="@+id/password_icon"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
+        android:src="@drawable/password_icon"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/first_line" />
+
+    <TextView
+        android:id="@+id/password_text_view"
+        style="@style/Text6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="4dp"
+        android:text="@string/password"
+        app:layout_constraintBottom_toBottomOf="@+id/password_icon"
+        app:layout_constraintStart_toEndOf="@+id/password_icon"
+        app:layout_constraintTop_toTopOf="@+id/password_icon" />
+
+    <View
+        android:id="@+id/second_line"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="24dp"
+        android:background="@color/n_70"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/password_icon" />
+
+    <ImageView
+        android:id="@+id/notifications_icon"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
+        android:src="@drawable/notification_icon"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/second_line" />
+
+    <TextView
+        android:id="@+id/notifications_text_view"
+        style="@style/Text6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="4dp"
+        android:text="@string/notifications"
+        app:layout_constraintBottom_toBottomOf="@+id/notifications_icon"
+        app:layout_constraintStart_toEndOf="@+id/notifications_icon"
+        app:layout_constraintTop_toTopOf="@+id/notifications_icon" />
+
+    <View
+        android:id="@+id/third_line"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="24dp"
+        android:background="@color/n_70"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/notifications_icon" />
+
+    <ImageView
+        android:id="@+id/location_icon"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
+        android:src="@drawable/location_icon"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/third_line" />
+
+    <TextView
+        android:id="@+id/location_text_view"
+        style="@style/Text6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="4dp"
+        android:text="@string/show_my_current_location"
+        app:layout_constraintBottom_toBottomOf="@+id/location_icon"
+        app:layout_constraintStart_toEndOf="@+id/location_icon"
+        app:layout_constraintTop_toTopOf="@+id/location_icon" />
+
+    <View
+        android:id="@+id/filling"
+        android:layout_width="80dp"
+        android:layout_height="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.432"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/location_icon" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

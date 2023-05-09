@@ -99,8 +99,18 @@
         <item name="android:textSize">10sp</item>
         <item name="android:textColor">@color/n_120</item>
         <item name="android:letterSpacing">0.07</item>
-        <item name="android:lineSpacingExtra">14sp</item>
+        <item name="android:lineSpacingExtra">7sp</item>
         <item name="android:textStyle">normal</item>
+    </style>
+
+    <!-- Text 6 normal -->
+    <style name="Text6" parent="@android:style/TextAppearance.Small">
+        <item name="android:fontFamily">@font/poppins_regular</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/n_120</item>
+        <item name="android:letterSpacing">0.03</item>
+        <item name="android:lineSpacingExtra">7sp</item>
+        <item name="android:textStyle">bold</item>
     </style>
 
     <!-- Text 7 semibold -->

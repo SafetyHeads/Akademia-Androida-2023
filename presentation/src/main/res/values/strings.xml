@@ -99,4 +99,8 @@
     <string name="mobile_app">Mobile app</string>
     <string name="web_app">Web app</string>
     <string name="others">Others</string>
+    <string name="profile">Profile</string>
+    <string name="notifications">Notifications</string>
+    <string name="show_my_current_location">Show my current location</string>
+    <string name="hello_nickname">Hello %s</string>
 </resources>
