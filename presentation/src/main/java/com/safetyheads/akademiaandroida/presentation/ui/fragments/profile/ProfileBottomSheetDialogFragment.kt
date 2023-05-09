@@ -48,14 +48,10 @@ class ProfileBottomSheetDialogFragment : BottomSheetDialogFragment() {
         binding.apply {
             avatarCardView.setOnClickListener { changePhoto() }
             editAvatarCardView.setOnClickListener { changePhoto() }
-            profileTextView.setOnClickListener { goToProfile() }
-            personIcon.setOnClickListener { goToProfile() }
-            passwordIcon.setOnClickListener { goToPassword() }
-            passwordTextView.setOnClickListener { goToPassword() }
-            notificationsIcon.setOnClickListener { goToNotifications() }
-            notificationsTextView.setOnClickListener { goToNotifications() }
-            locationIcon.setOnClickListener { goToLocalization() }
-            locationTextView.setOnClickListener { goToLocalization() }
+            profileCardView.setOnClickListener { goToProfile() }
+            passwordCardView.setOnClickListener { goToPassword() }
+            notificationCardView.setOnClickListener { goToNotifications() }
+            locationCardView.setOnClickListener { goToLocalization() }
         }
     }
 
