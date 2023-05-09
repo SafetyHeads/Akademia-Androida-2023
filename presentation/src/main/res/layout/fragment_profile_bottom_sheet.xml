@@ -6,9 +6,9 @@
 
     <View
         android:id="@+id/rectangle_bottom_shield"
-        android:layout_width="80dp"
+        android:layout_width="@dimen/size_10x"
         android:layout_height="3dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="@dimen/size_1.5x"
         android:background="@color/n_70"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -16,9 +16,9 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/avatar_card_view"
-        android:layout_width="56dp"
-        android:layout_height="56dp"
-        android:layout_marginStart="24dp"
+        android:layout_width="@dimen/size_7x"
+        android:layout_height="@dimen/size_7x"
+        android:layout_marginStart="@dimen/size_3x"
         android:layout_marginTop="11dp"
         app:cardBackgroundColor="@color/white"
         app:cardCornerRadius="250dp"
@@ -27,16 +27,16 @@
 
         <ImageView
             android:id="@+id/avatar_image_view"
-            android:layout_width="56dp"
-            android:layout_height="56dp"
+            android:layout_width="@dimen/size_7x"
+            android:layout_height="@dimen/size_7x"
             android:src="@drawable/placeholder_avatar" />
 
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
         android:id="@+id/edit_avatar_card_view"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
+        android:layout_width="@dimen/size_2.5x"
+        android:layout_height="@dimen/size_2.5x"
         app:cardBackgroundColor="@color/p_60"
         app:cardCornerRadius="250dp"
         app:layout_constraintBottom_toBottomOf="@+id/avatar_card_view"
@@ -44,8 +44,8 @@
 
         <ImageView
             android:id="@+id/edit_avatar_image_view"
-            android:layout_width="12dp"
-            android:layout_height="12dp"
+            android:layout_width="@dimen/size_1.5x"
+            android:layout_height="@dimen/size_1.5x"
             android:src="@drawable/edit_fill_icon"
             android:layout_gravity="center"
             android:gravity="center"/>
@@ -58,7 +58,7 @@
         android:textColor="#FF18156e"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="@dimen/size"
         android:text="Hello $nickname"
         app:layout_constraintBottom_toBottomOf="@+id/avatar_card_view"
         app:layout_constraintStart_toEndOf="@+id/avatar_card_view"
@@ -66,10 +66,10 @@
 
     <ImageView
         android:id="@+id/person_icon"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="16dp"
+        android:layout_width="@dimen/size_5x"
+        android:layout_height="@dimen/size_5x"
+        android:layout_marginStart="@dimen/size_3x"
+        android:layout_marginTop="@dimen/size_2x"
         android:src="@drawable/person_icon"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/avatar_card_view" />
@@ -79,8 +79,8 @@
         style="@style/Text6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginStart="@dimen/size"
+        android:layout_marginTop="@dimen/size_0.5x"
         android:text="@string/profile"
         app:layout_constraintBottom_toBottomOf="@+id/person_icon"
         app:layout_constraintStart_toEndOf="@+id/person_icon"
@@ -90,9 +90,9 @@
         android:id="@+id/first_line"
         android:layout_width="0dp"
         android:layout_height="1dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="24dp"
+        android:layout_marginStart="@dimen/size_3x"
+        android:layout_marginTop="@dimen/size"
+        android:layout_marginEnd="@dimen/size_3x"
         android:background="@color/n_70"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -100,10 +100,10 @@
 
     <ImageView
         android:id="@+id/password_icon"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="8dp"
+        android:layout_width="@dimen/size_5x"
+        android:layout_height="@dimen/size_5x"
+        android:layout_marginStart="@dimen/size_3x"
+        android:layout_marginTop="@dimen/size"
         android:src="@drawable/password_icon"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/first_line" />
@@ -113,8 +113,8 @@
         style="@style/Text6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginStart="@dimen/size"
+        android:layout_marginTop="@dimen/size_0.5x"
         android:text="@string/password"
         app:layout_constraintBottom_toBottomOf="@+id/password_icon"
         app:layout_constraintStart_toEndOf="@+id/password_icon"
@@ -124,9 +124,9 @@
         android:id="@+id/second_line"
         android:layout_width="0dp"
         android:layout_height="1dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="24dp"
+        android:layout_marginStart="@dimen/size_3x"
+        android:layout_marginTop="@dimen/size"
+        android:layout_marginEnd="@dimen/size_3x"
         android:background="@color/n_70"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -134,10 +134,10 @@
 
     <ImageView
         android:id="@+id/notifications_icon"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="8dp"
+        android:layout_width="@dimen/size_5x"
+        android:layout_height="@dimen/size_5x"
+        android:layout_marginStart="@dimen/size_3x"
+        android:layout_marginTop="@dimen/size"
         android:src="@drawable/notification_icon"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/second_line" />
@@ -147,8 +147,8 @@
         style="@style/Text6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginStart="@dimen/size"
+        android:layout_marginTop="@dimen/size_0.5x"
         android:text="@string/notifications"
         app:layout_constraintBottom_toBottomOf="@+id/notifications_icon"
         app:layout_constraintStart_toEndOf="@+id/notifications_icon"
@@ -158,9 +158,9 @@
         android:id="@+id/third_line"
         android:layout_width="0dp"
         android:layout_height="1dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="24dp"
+        android:layout_marginStart="@dimen/size_3x"
+        android:layout_marginTop="@dimen/size"
+        android:layout_marginEnd="@dimen/size_3x"
         android:background="@color/n_70"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -168,10 +168,10 @@
 
     <ImageView
         android:id="@+id/location_icon"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="8dp"
+        android:layout_width="@dimen/size_5x"
+        android:layout_height="@dimen/size_5x"
+        android:layout_marginStart="@dimen/size_3x"
+        android:layout_marginTop="@dimen/size"
         android:src="@drawable/location_icon"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/third_line" />
@@ -181,8 +181,8 @@
         style="@style/Text6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginStart="@dimen/size"
+        android:layout_marginTop="@dimen/size_0.5x"
         android:text="@string/show_my_current_location"
         app:layout_constraintBottom_toBottomOf="@+id/location_icon"
         app:layout_constraintStart_toEndOf="@+id/location_icon"
@@ -190,8 +190,8 @@
 
     <View
         android:id="@+id/filling"
-        android:layout_width="80dp"
-        android:layout_height="15dp"
+        android:layout_width="@dimen/size_10x"
+        android:layout_height="@dimen/size_2x"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.432"
         app:layout_constraintStart_toStartOf="parent"
