@@ -9,12 +9,12 @@ class GetProfileInformationUseCase(private val repository: UserRepository) :
     BaseUseCase<GetProfileInformationUseCase.ProfileParam, Profile> {
 
     @JvmInline
-    value class ProfileParam(val UUID: String) : BaseUseCase.Params
+    value class ProfileParam(val userUUID: String) : BaseUseCase.Params
 
     override suspend fun invoke(parameter: ProfileParam): Flow<Result<Profile>> {
         return flow {
             try {
-                repository.getProfileInformation(parameter.UUID).collect { profileInformation ->
+                repository.getProfileInformation(parameter.userUUID).collect { profileInformation ->
                     if (profileInformation.isSuccess)
                         emit(profileInformation)
                     else

@@ -29,9 +29,9 @@ class UserRepositoryImpl : UserRepository {
         emit(ResetPassword(false, error))
     }
 
-    override fun getProfileInformation(UUID: String): Flow<Result<Profile>> = callbackFlow {
+    override fun getProfileInformation(userUUID: String): Flow<Result<Profile>> = callbackFlow {
         val collectionReference = FirebaseFirestore.getInstance()
-        val listener = collectionReference.collection("users").document(UUID)
+        val listener = collectionReference.collection("users").document(userUUID)
                 .addSnapshotListener { snapshot, exception ->
                     if (exception != null) {
                         trySend(Result.failure(exception))

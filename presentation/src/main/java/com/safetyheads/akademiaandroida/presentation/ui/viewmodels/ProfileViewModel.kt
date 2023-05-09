@@ -19,20 +19,20 @@ class ProfileViewModel(
 
     fun tempLogin() {
         viewModelScope.launch {
-            loginUseCase.invoke(LoginUseCase.LoginParam("", "")).collect { UUID ->
-                if (UUID.isSuccess) {
-                    userUUID.value = UUID.getOrNull()
+            loginUseCase.invoke(LoginUseCase.LoginParam("", "")).collect { userUUIDResult ->
+                if (userUUIDResult.isSuccess) {
+                    userUUID.value = userUUIDResult.getOrNull()
                     getProfileInformation(userUUID.value.orEmpty())
                 } else {
-                    Log.i("ProfileViewModel", UUID.exceptionOrNull()?.message.orEmpty())
+                    Log.i("ProfileViewModel", userUUIDResult.exceptionOrNull()?.message.orEmpty())
                 }
             }
         }
     }
 
-    fun getProfileInformation(UUID: String) {
+    fun getProfileInformation(userUUID: String) {
         viewModelScope.launch {
-            getProfileInformationUseCase.invoke(GetProfileInformationUseCase.ProfileParam(UUID)).collect { profileInformation ->
+            getProfileInformationUseCase.invoke(GetProfileInformationUseCase.ProfileParam(userUUID)).collect { profileInformation ->
                 if (profileInformation.isSuccess) {
                     val tempUserInformation = profileInformation.getOrNull()
                     if (tempUserInformation != null)
