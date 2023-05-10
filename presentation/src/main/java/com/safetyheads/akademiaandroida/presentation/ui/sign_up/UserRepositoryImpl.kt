@@ -41,4 +41,22 @@ class UserRepositoryImpl : UserRepository {
             throw error
         }
     }
+
+    override fun loginUser(email: String, password: String): Flow<User> {
+        return flow {
+            val authResult = firebaseAuth.signInWithEmailAndPassword(email, password).await()
+
+            val firebaseUser = authResult.user!!
+
+            emit(User(firebaseUser.uid, firebaseUser.displayName!!, email))
+        }.catch { error ->
+            if (error is FirebaseAuthException) {
+                throw IllegalStateException(error.message ?: "Error during login")
+            } else {
+                throw error
+            }
+        }
+
+
+    }
 }
