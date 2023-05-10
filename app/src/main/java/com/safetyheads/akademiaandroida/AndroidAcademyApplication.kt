@@ -5,6 +5,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.jakewharton.threetenabp.AndroidThreeTen
 import com.safetyheads.akademiaandroida.data.network.repository.CompanyInfoRepositoryImpl
+import com.safetyheads.akademiaandroida.data.network.repository.FaqRepositoryImpl
 import com.safetyheads.akademiaandroida.data.network.repository.FirebaseConfigRepository
 import com.safetyheads.akademiaandroida.data.network.repository.TechnologyStackRepositoryImpl
 import com.safetyheads.akademiaandroida.data.network.repository.settings.SettingRepositoryImpl
@@ -13,11 +14,13 @@ import com.safetyheads.akademiaandroida.domain.repositories.CareerRepository
 import com.safetyheads.akademiaandroida.domain.repositories.ChannelRepository
 import com.safetyheads.akademiaandroida.domain.repositories.CompanyInfoRepository
 import com.safetyheads.akademiaandroida.domain.repositories.ConfigRepository
+import com.safetyheads.akademiaandroida.domain.repositories.FaqRepository
 import com.safetyheads.akademiaandroida.domain.repositories.PlaylistRepository
 import com.safetyheads.akademiaandroida.domain.repositories.SettingsRepository
 import com.safetyheads.akademiaandroida.domain.repositories.TechnologyStackRepository
 import com.safetyheads.akademiaandroida.domain.repositories.UserRepository
 import com.safetyheads.akademiaandroida.domain.repositories.VideoRepository
+import com.safetyheads.akademiaandroida.domain.usecases.AddQuestionUseCase
 import com.safetyheads.akademiaandroida.domain.usecases.DateUseCase
 import com.safetyheads.akademiaandroida.domain.usecases.DateUseCaseImpl
 import com.safetyheads.akademiaandroida.domain.usecases.DelaySplashScreenUseCase
@@ -25,6 +28,7 @@ import com.safetyheads.akademiaandroida.domain.usecases.GetAddressUseCase
 import com.safetyheads.akademiaandroida.domain.usecases.GetChannelUseCase
 import com.safetyheads.akademiaandroida.domain.usecases.GetConfigUseCase
 import com.safetyheads.akademiaandroida.domain.usecases.GetContactInfoUseCase
+import com.safetyheads.akademiaandroida.domain.usecases.GetFaqUseCase
 import com.safetyheads.akademiaandroida.domain.usecases.GetInfoUseCase
 import com.safetyheads.akademiaandroida.domain.usecases.GetJobOfferUseCase
 import com.safetyheads.akademiaandroida.domain.usecases.GetPlayListItemsUseCase
@@ -90,6 +94,7 @@ class AndroidAcademyApplication : Application() {
         single<TechnologyStackRepository> { TechnologyStackRepositoryImpl(get()) }
         single { GetTechnologyStackUseCase(get()) }
         single<CompanyInfoRepository> { CompanyInfoRepositoryImpl(get()) }
+        single<FaqRepository> { FaqRepositoryImpl(get()) }
 
 
         //usecases
@@ -107,6 +112,8 @@ class AndroidAcademyApplication : Application() {
         single { GetPlayListsUseCase(get()) }
         single { GetVideoUseCase(get()) }
         single<DateUseCase> { DateUseCaseImpl() }
+        single { GetFaqUseCase(get()) }
+        single { AddQuestionUseCase(get()) }
         single { GetTechnologyStackUseCase(get()) }
         single { RegisterUseCase(get()) }
 

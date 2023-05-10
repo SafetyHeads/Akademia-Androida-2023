@@ -12,7 +12,7 @@ import kotlinx.coroutines.launch
 
 class CareerViewModel(
     private val getJobOffer: GetJobOfferUseCase,
-    private val settingsRepository: SettingsRepository
+    private val settingsRepository: SettingsRepository,
     ): ViewModel() {
 
     private val _jobOffersList: MutableLiveData<List<JobOffer>> = MutableLiveData()
