@@ -7,6 +7,7 @@ import com.safetyheads.akademiaandroida.presentation.ui.career.CareerRepositoryI
 import com.safetyheads.akademiaandroida.presentation.ui.career.CareerViewModel
 import com.safetyheads.akademiaandroida.data.network.repository.FirebaseConfigRepository
 import com.safetyheads.akademiaandroida.data.network.repository.CompanyInfoRepositoryImpl
+import com.safetyheads.akademiaandroida.data.network.repository.FaqRepositoryImpl
 import com.safetyheads.akademiaandroida.data.network.repository.TechnologyStackRepositoryImpl
 import com.safetyheads.akademiaandroida.data.network.retrofit.ApiClient
 import com.safetyheads.akademiaandroida.domain.repositories.ChannelRepository
@@ -34,6 +35,7 @@ import com.safetyheads.akademiaandroida.presentation.ui.customviews.dropdown.Loa
 import com.safetyheads.akademiaandroida.presentation.ui.fragments.forgotpasswordfragment.ForgotPasswordViewModel
 import com.safetyheads.akademiaandroida.presentation.ui.sign_up.UserRepositoryImpl
 import com.safetyheads.akademiaandroida.data.network.repository.settings.SettingRepositoryImpl
+import com.safetyheads.akademiaandroida.domain.repositories.*
 import com.safetyheads.akademiaandroida.youtube.viewModel.ChannelViewModel
 import com.safetyheads.akademiaandroida.youtube.viewModel.PlayListViewModel
 import com.safetyheads.akademiaandroida.youtube.viewModel.VideoViewModel
@@ -46,6 +48,7 @@ import com.safetyheads.data.network.repository.PlaylistRepositoryImpl
 import com.safetyheads.data.network.repository.VideoRepositoryImpl
 import com.safetyheads.data.network.repository.YouTubeApiConsts
 import com.safetyheads.data.network.service.YouTubeService
+import com.safetyheads.akademiaandroida.domain.usecases.*
 import com.safetyheads.akademiaandroida.domain.repositories.CareerRepository
 import com.safetyheads.akademiaandroida.domain.repositories.SettingsRepository
 import com.safetyheads.akademiaandroida.domain.repositories.TechnologyStackRepository
@@ -82,6 +85,7 @@ class AndroidAcademyApplication : Application() {
         single<TechnologyStackRepository> { TechnologyStackRepositoryImpl(get()) }
         single { GetTechnologyStackUseCase(get()) }
         single<CompanyInfoRepository> { CompanyInfoRepositoryImpl(get()) }
+        single<FaqRepository> { FaqRepositoryImpl(get()) }
 
         //usecases
         single { DelaySplashScreenUseCase() }
@@ -98,6 +102,8 @@ class AndroidAcademyApplication : Application() {
         single { GetPlayListsUseCase(get()) }
         single { GetVideoUseCase(get()) }
         single<DateUseCase> { DateUseCaseImpl() }
+        single { GetFaqUseCase(get()) }
+        single { AddQuestionUseCase(get()) }
         single { GetTechnologyStackUseCase(get()) }
 
         //viewmodels
