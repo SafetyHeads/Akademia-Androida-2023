@@ -11,10 +11,12 @@ import com.safetyheads.akademiaandroida.presentation.databinding.FragmentLoginBi
 import com.safetyheads.akademiaandroida.presentation.ui.components.snackbar.LoginSnackBar
 import com.safetyheads.akademiaandroida.presentation.ui.utils.EmailValidator
 import com.safetyheads.akademiaandroida.presentation.ui.utils.PasswordValidator
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class LoginFragment : Fragment() {
 
     private lateinit var binding: FragmentLoginBinding
+    private val viewModel: LoginViewModel by viewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -34,6 +36,13 @@ class LoginFragment : Fragment() {
                 binding.root,
                 message = requireActivity().getString(R.string.we_have_emailed_your_password_reset_link)
             ).show()
+        }
+
+        binding.buttonSignIn.setOnClickListener {
+            viewModel.login(
+                binding.eTextEmailAddress.text.toString(),
+                binding.eTextPassword.text.toString()
+            )
         }
 
         EmailValidator.attach(binding.eTextEmailAddress)
