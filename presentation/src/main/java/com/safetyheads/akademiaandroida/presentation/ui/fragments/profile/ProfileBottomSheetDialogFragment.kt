@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.safetyheads.akademiaandroida.presentation.R
@@ -72,6 +73,8 @@ class ProfileBottomSheetDialogFragment : BottomSheetDialogFragment() {
     }
 
     private fun changePhoto() {
+        findNavController().navigate(R.id.action_profileFragment_to_changeAvatarFragment)
+        this.dismiss()
     }
 
 }

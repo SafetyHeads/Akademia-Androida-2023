@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
     <application
         android:name=".AndroidAcademyApplication"
         android:allowBackup="true"
@@ -55,6 +58,8 @@
             android:exported="false"
             android:label="@string/title_activity_web_view"
             android:theme="@style/Theme.AkademiaAndroida.NoActionBar" />
+
+
     </application>
     <queries>
         <package android:name="com.facebook.katana" />

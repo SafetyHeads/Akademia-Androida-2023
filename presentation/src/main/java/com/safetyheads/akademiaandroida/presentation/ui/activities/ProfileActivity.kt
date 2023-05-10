@@ -3,7 +3,6 @@ package com.safetyheads.akademiaandroida.presentation.ui.activities
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.safetyheads.akademiaandroida.presentation.databinding.ActivityProfileBinding
-import com.safetyheads.akademiaandroida.presentation.ui.fragments.profile.ProfileBottomSheetDialogFragment
 import com.safetyheads.akademiaandroida.presentation.ui.viewmodels.ProfileViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -19,8 +18,4 @@ class ProfileActivity : AppCompatActivity() {
         supportActionBar?.hide()
     }
 
-    fun profileBottomSheetShow() {
-        val modalBottomSheet = ProfileBottomSheetDialogFragment()
-        modalBottomSheet.show(supportFragmentManager, "ProfileBottomSheetDialogFragment")
-    }
 }
