@@ -1,16 +1,15 @@
-package com.safetyheads.akademiaandroida.signup
+package com.safetyheads.akademiaandroida.presentation.ui.sign_up
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import com.safetyheads.akademiaandroida.presentation.databinding.FragmentSignUpBinding
-import com.safetyheads.akademiaandroida.presentation.ui.sign_up.SignUpViewModel
 import com.safetyheads.akademiaandroida.presentation.ui.utils.EmailValidator
 import com.safetyheads.akademiaandroida.presentation.ui.utils.FullNameValidator
 import com.safetyheads.akademiaandroida.presentation.ui.utils.PasswordValidator
-
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SignUpFragment : Fragment() {
@@ -33,15 +32,33 @@ class SignUpFragment : Fragment() {
 
         binding.buttonSignUp.setOnClickListener {
             viewModel.signUp(
-                binding.eTextFullName.toString(),
-                binding.eTextEmailAddress.toString(),
-                binding.eTextPassword.toString(),
+                binding.eTextFullName.text.toString(),
+                binding.eTextEmailAddress.text.toString(),
+                binding.eTextPassword.text.toString(),
             )
         }
         FullNameValidator.attach(binding.eTextFullName, requireContext())
         EmailValidator.attach(binding.eTextEmailAddress)
         PasswordValidator.attach(binding.eTextPassword, requireContext())
         PasswordValidator.attach(binding.eTextConfirmPassword, requireContext())
+
+
+        lifecycleScope.launchWhenStarted {
+            viewModel.registrationState.collect { result ->
+                when {
+                    result == null -> {
+                    }
+
+                    result.isSuccess -> {
+
+                    }
+
+                    result.isFailure -> {
+
+                    }
+                }
+            }
+        }
     }
 }
 
