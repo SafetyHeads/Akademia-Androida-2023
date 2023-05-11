@@ -3,6 +3,7 @@ package com.safetyheads.akademiaandroida.presentation.ui
 import android.os.Bundle
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import com.safetyheads.akademiaandroida.R
@@ -15,6 +16,7 @@ class RootActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        installSplashScreen()
         binding = ActivityRootBinding.inflate(layoutInflater)
         setContentView(binding.root)
 

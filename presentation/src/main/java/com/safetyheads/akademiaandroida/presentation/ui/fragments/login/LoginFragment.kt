@@ -38,9 +38,29 @@ class LoginFragment : Fragment() {
 
         EmailValidator.attach(binding.eTextEmailAddress)
         PasswordValidator.attach(binding.eTextPassword, requireContext())
+
+        navigationListeners()
+    }
+
+    private fun navigationListeners() {
+        binding.buttonBack.setOnClickListener {
+            findNavController().navigateUp()
+        }
+
+        binding.buttonSignIn.setOnClickListener {
+            // TODO task 104
+            val action = LoginFragmentDirections.actionLoginFragmentToDashboardPlaceholder()
+            findNavController().navigate(action)
+        }
+
         binding.forgotPassword.setOnClickListener {
             val action =
                 LoginFragmentDirections.actionLoginFragmentToForgotPasswordFragment(false)
+            findNavController().navigate(action)
+        }
+
+        binding.signUpNow.setOnClickListener {
+            val action = LoginFragmentDirections.actionLoginFragmentToSignUpFragment()
             findNavController().navigate(action)
         }
     }
