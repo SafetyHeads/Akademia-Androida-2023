@@ -8,7 +8,6 @@ import android.content.Intent
 import android.os.Build
 import android.util.Log
 import androidx.core.app.NotificationCompat
-import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
 import com.safetyheads.akademiaandroida.presentation.ui.MainActivity
@@ -83,20 +82,5 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
         notificationManager.notify(0, builder.build())
     }
 
-    private fun saveTokenToFireStore(token: String, userId: String) {
-        val fireStore = FirebaseFirestore.getInstance()
-        val tokenDocument = hashMapOf("token" to token)
 
-        fireStore.collection("users").document(userId).collection("tokens").add(tokenDocument)
-            .addOnSuccessListener { documentReference ->
-                Log.d(
-                    "MyFirebaseMessaging",
-                    "Token successfully saved in Firestore: ${documentReference.id}"
-                )
-            }
-            .addOnFailureListener { exception ->
-                Log.w("MyFirebaseMessaging", "Error saving token in Firestore", exception)
-            }
-
-    }
 }
