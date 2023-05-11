@@ -35,8 +35,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         installSplashScreen()
-        FirebaseApp.initializeApp(this)
-        FirebaseMessaging.getInstance().subscribeToTopic("all")
+        setupFirebase()
         val splashScreen = installSplashScreen()
         splashScreen.setKeepOnScreenCondition {
             splashScreenViewModel.getConfig.isActive
@@ -44,8 +43,7 @@ class MainActivity : AppCompatActivity() {
         observeConfigChanges()
 
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        setupBindings()
 
         if (!areNotificationsEnabled()) {
             AlertDialog.Builder(this)
@@ -58,26 +56,7 @@ class MainActivity : AppCompatActivity() {
                 .show()
         }
 
-        binding.previevFont.setOnClickListener {
-            openFragment(FontSylesFragment())
-            hideButtons()
-        }
-
-        binding.weAreHiring.setOnClickListener {
-            openFragment(WeAreHiringFragment())
-            hideButtons()
-        }
-
-        binding.contactWithUs.setOnClickListener {
-            //openFragment(ContactWithUsFragment())
-            openFragment(ContactUsFragment())
-            hideButtons()
-        }
-
-        binding.mapButton.setOnClickListener {
-            openFragment(MapFragment())
-            hideButtons()
-        }
+        setupOnClickListeners()
 
         val rootActivityIntent = Intent(this, RootActivity::class.java)
         binding.rootActivityButton.setOnClickListener {
@@ -107,6 +86,39 @@ class MainActivity : AppCompatActivity() {
             )
         )
     }
+
+    private fun setupBindings() {
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+    }
+
+    private fun setupFirebase() {
+        FirebaseApp.initializeApp(this)
+        FirebaseMessaging.getInstance().subscribeToTopic("all")
+    }
+
+    private fun setupOnClickListeners() {
+        binding.previevFont.setOnClickListener {
+            openFragment(FontSylesFragment())
+            hideButtons()
+        }
+
+        binding.weAreHiring.setOnClickListener {
+            openFragment(WeAreHiringFragment())
+            hideButtons()
+        }
+
+        binding.contactWithUs.setOnClickListener {
+            openFragment(ContactUsFragment())
+            hideButtons()
+        }
+
+        binding.mapButton.setOnClickListener {
+            openFragment(MapFragment())
+            hideButtons()
+        }
+    }
+
 
     private fun openFragment(fragment: Fragment) {
         supportFragmentManager.beginTransaction().apply {
