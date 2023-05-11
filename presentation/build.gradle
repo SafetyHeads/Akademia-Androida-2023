@@ -1,0 +1,94 @@
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+    id 'androidx.navigation.safeargs.kotlin'
+}
+
+android {
+    namespace 'com.safetyheads.akademiaandroida.presentation'
+    compileSdk 33
+
+    defaultConfig {
+        minSdk 24
+        targetSdk 33
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    flavorDimensions += "version"
+    productFlavors {
+        development {
+            dimension = "version"
+        }
+        qa {
+            dimension = "version"
+        }
+        production {
+            dimension = "version"
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+
+        }
+        develop {
+            initWith debug
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    buildFeatures {
+        viewBinding = true
+    }
+}
+
+dependencies {
+
+    implementation project(':domain')
+
+    implementation 'com.airbnb.android:lottie:6.0.0'
+
+    // ui
+    implementation 'androidx.core:core-ktx:1.9.0'
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'com.google.android.material:material:1.8.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+
+    //navigation
+    implementation 'androidx.navigation:navigation-ui-ktx:2.5.3'
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.5.3'
+
+    // Koin
+    implementation('io.insert-koin:koin-android:3.3.3')
+
+    // coroutine
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4")
+    implementation('org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4')
+
+    //viewmodel
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.0'
+
+    //firebase
+    implementation 'com.google.firebase:firebase-auth-ktx:21.3.0'
+
+    //mockk
+    testImplementation "io.mockk:mockk:1.12.0"
+    androidTestImplementation "io.mockk:mockk-android:1.11.0"
+    testImplementation "org.assertj:assertj-core:3.20.2"
+
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+}
