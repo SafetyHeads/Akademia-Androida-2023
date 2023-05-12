@@ -30,17 +30,34 @@ class SignUpFragment : Fragment() {
 
         super.onViewCreated(view, savedInstanceState)
 
+        val etConfirmPassword = binding.eTextConfirmPassword
+        val etPassword = binding.eTextPassword
+        val etFullName = binding.eTextFullName
+        val etEmailAdress = binding.eTextEmailAddress
+
         binding.buttonSignUp.setOnClickListener {
-            viewModel.signUp(
-                binding.eTextFullName.text.toString(),
-                binding.eTextEmailAddress.text.toString(),
-                binding.eTextPassword.text.toString(),
-            )
+            binding.progressBar.visibility = View.VISIBLE
+            //TODO: add check is correct to EditText Function
+            if (etPassword.error.isNullOrEmpty() &&
+                etConfirmPassword.error.isNullOrEmpty() &&
+                etFullName.error.isNullOrEmpty() &&
+                etEmailAdress.error.isNullOrEmpty() && etPassword.text?.isNotBlank() == true &&
+                etConfirmPassword.text?.isNotBlank() == true &&
+                etEmailAdress.text?.isNotBlank() == true &&
+                etFullName.text?.isNotBlank() == true
+            ) {
+                viewModel.signUp(
+                    binding.eTextFullName.text.toString(),
+                    binding.eTextEmailAddress.text.toString(),
+                    binding.eTextPassword.text.toString(),
+                )
+            }
+
         }
-        FullNameValidator.attach(binding.eTextFullName, requireContext())
-        EmailValidator.attach(binding.eTextEmailAddress)
-        PasswordValidator.attach(binding.eTextPassword, requireContext())
-        PasswordValidator.attach(binding.eTextConfirmPassword, requireContext())
+        FullNameValidator.attach(etFullName, requireContext())
+        EmailValidator.attach(etEmailAdress)
+        PasswordValidator.attach(etPassword, requireContext())
+        PasswordValidator.attach(etConfirmPassword, requireContext())
 
 
         lifecycleScope.launchWhenStarted {
@@ -50,11 +67,11 @@ class SignUpFragment : Fragment() {
                     }
 
                     result.isSuccess -> {
-
+                        binding.progressBar.visibility = View.INVISIBLE
                     }
 
                     result.isFailure -> {
-
+                        binding.progressBar.visibility = View.INVISIBLE
                     }
                 }
             }
