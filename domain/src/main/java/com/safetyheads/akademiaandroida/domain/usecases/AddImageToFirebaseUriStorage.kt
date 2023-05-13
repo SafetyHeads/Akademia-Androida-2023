@@ -1,18 +1,17 @@
 package com.safetyheads.akademiaandroida.domain.usecases
 
 import android.net.Uri
-import com.safetyheads.akademiaandroida.domain.entities.firebasefirestore.Image
 import com.safetyheads.akademiaandroida.domain.repositories.UserRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
 class AddImageToFirebaseUriStorage(private val repository: UserRepository) :
-    BaseUseCase<AddImageToFirebaseUriStorage.ProfileParam, Image> {
+    BaseUseCase<AddImageToFirebaseUriStorage.ImageParam, String> {
 
     @JvmInline
-    value class ProfileParam(val imageUri: Uri) : BaseUseCase.Params
+    value class ImageParam(val imageUri: Uri) : BaseUseCase.Params
 
-    override suspend fun invoke(parameter: ProfileParam): Flow<Result<Image>> {
+    override suspend fun invoke(parameter: ImageParam): Flow<Result<String>> {
         return flow {
             try {
                 repository.addImageToFirebaseStorage(parameter.imageUri).collect { imageUri ->

@@ -1,24 +1,26 @@
 package com.safetyheads.akademiaandroida.domain.usecases
 
+import android.net.Uri
 import com.safetyheads.akademiaandroida.domain.repositories.UserRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
-class AddImageToFirebaseUserProfileFirestore(private val repository: UserRepository) :
-    BaseUseCase<AddImageToFirebaseUserProfileFirestore.ImageParam, String> {
+class RemoveImageFromFirebaseStorage(private val repository: UserRepository) :
+    BaseUseCase<RemoveImageFromFirebaseStorage.ImageParam, Boolean> {
 
-    class ImageParam(val userUUID: String, val imageStringReference: String) : BaseUseCase.Params
+    @JvmInline
+    value class ImageParam(val imageStringReference: String) : BaseUseCase.Params
 
-    override suspend fun invoke(parameter: ImageParam): Flow<Result<String>> {
+    override suspend fun invoke(parameter: ImageParam): Flow<Result<Boolean>> {
         return flow {
             try {
-                repository.addImageToFirebaseUserProfileFirestore(parameter.userUUID, parameter.imageStringReference).collect { firestoreChange ->
+                repository.removeImageFromFirebaseStorage(parameter.imageStringReference).collect { firestoreChange ->
                     if (firestoreChange.isSuccess)
                         emit(firestoreChange)
                     else
                         emit(
                             Result.failure(
-                                firestoreChange.exceptionOrNull() ?: Exception("Add Image To Firebase User Profile Firestore Error!")
+                                firestoreChange.exceptionOrNull() ?: Exception("Add Image to Firebase Storage Error!")
                             )
                         )
                 }

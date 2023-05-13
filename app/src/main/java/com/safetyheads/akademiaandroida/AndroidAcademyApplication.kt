@@ -21,7 +21,6 @@ import com.safetyheads.akademiaandroida.domain.repositories.VideoRepository
 import com.safetyheads.akademiaandroida.domain.usecases.AddImageToFirebaseBitmapStorage
 import com.safetyheads.akademiaandroida.domain.usecases.AddImageToFirebaseUriStorage
 import com.safetyheads.akademiaandroida.domain.usecases.AddImageToFirebaseUserProfileFirestore
-import com.safetyheads.akademiaandroida.domain.usecases.AddImageToFirestoreStorage
 import com.safetyheads.akademiaandroida.domain.usecases.DateUseCase
 import com.safetyheads.akademiaandroida.domain.usecases.DateUseCaseImpl
 import com.safetyheads.akademiaandroida.domain.usecases.DelaySplashScreenUseCase
@@ -38,7 +37,8 @@ import com.safetyheads.akademiaandroida.domain.usecases.GetSocialUseCase
 import com.safetyheads.akademiaandroida.domain.usecases.GetTechnologyStackUseCase
 import com.safetyheads.akademiaandroida.domain.usecases.GetVideoUseCase
 import com.safetyheads.akademiaandroida.domain.usecases.LoginUseCase
-import com.safetyheads.akademiaandroida.domain.usecases.RemoveImageToFirestoreFirebaseStorage
+import com.safetyheads.akademiaandroida.domain.usecases.RemoveImageFromFirebaseStorage
+import com.safetyheads.akademiaandroida.domain.usecases.RemoveImageFromUserProfileFirestore
 import com.safetyheads.akademiaandroida.domain.usecases.ResetPasswordUseCase
 import com.safetyheads.akademiaandroida.presentation.ui.activities.splashscreen.SplashScreenViewModel
 import com.safetyheads.akademiaandroida.presentation.ui.career.CareerRepositoryImpl
@@ -94,9 +94,9 @@ class AndroidAcademyApplication : Application() {
         //usecases
         single { AddImageToFirebaseUriStorage(get()) }
         single { AddImageToFirebaseBitmapStorage(get()) }
-        single { AddImageToFirestoreStorage(get()) }
         single { AddImageToFirebaseUserProfileFirestore(get()) }
-        single { RemoveImageToFirestoreFirebaseStorage(get()) }
+        single { RemoveImageFromUserProfileFirestore(get()) }
+        single { RemoveImageFromFirebaseStorage(get()) }
         single { GetProfileInformationUseCase(get()) }
         single { LoginUseCase(get()) }
         single { DelaySplashScreenUseCase() }

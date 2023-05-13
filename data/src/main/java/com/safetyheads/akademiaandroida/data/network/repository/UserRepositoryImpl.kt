@@ -12,7 +12,6 @@ import com.google.firebase.storage.FirebaseStorage
 import com.safetyheads.akademiaandroida.domain.entities.ResetPassword
 import com.safetyheads.akademiaandroida.domain.entities.User
 import com.safetyheads.akademiaandroida.domain.entities.firebasefirestore.Address
-import com.safetyheads.akademiaandroida.domain.entities.firebasefirestore.Image
 import com.safetyheads.akademiaandroida.domain.entities.firebasefirestore.Location
 import com.safetyheads.akademiaandroida.domain.entities.firebasefirestore.Profile
 import com.safetyheads.akademiaandroida.domain.repositories.UserRepository
@@ -32,7 +31,7 @@ class UserRepositoryImpl : UserRepository {
     private val collectionReference = FirebaseFirestore.getInstance()
     private val storageReference = FirebaseStorage.getInstance()
 
-    override fun resetPassword(email: String): Flow<ResetPassword> = flow {
+    override suspend fun resetPassword(email: String): Flow<ResetPassword> = flow {
         firebaseAuth.sendPasswordResetEmail(email).await()
 
         emit(ResetPassword(true, null))
@@ -40,7 +39,7 @@ class UserRepositoryImpl : UserRepository {
         emit(ResetPassword(false, error))
     }
 
-    override fun getProfileInformation(userUUID: String): Flow<Result<Profile>> = callbackFlow {
+    override suspend fun getProfileInformation(userUUID: String): Flow<Result<Profile>> = callbackFlow {
         val listener = collectionReference.collection("users").document(userUUID)
             .addSnapshotListener { snapshot, exception ->
                 if (exception != null) {
@@ -104,7 +103,7 @@ class UserRepositoryImpl : UserRepository {
         awaitClose { listener.remove() }
     }
 
-    override fun logIn(email: String, password: String): Flow<Result<String>> = callbackFlow {
+    override suspend fun logIn(email: String, password: String): Flow<Result<String>> = callbackFlow {
         // temporary user login
         val email = "testalbertb@sh.pl"
         val password = "123456789"
@@ -122,32 +121,21 @@ class UserRepositoryImpl : UserRepository {
         awaitClose { listener.isCanceled }
     }
 
-    override fun addImageToFirestore(image: Image): Flow<Result<String>> = flow {
-        try {
-            collectionReference.collection("images").document(image.imageKey).set(
-                mapOf(
-                    "url" to image.imageUri,
-                    "createAt" to FieldValue.serverTimestamp()
-                )
-            ).await()
-            emit(Result.success(image.imageKey))
-        } catch (e: Exception) {
-            emit(Result.failure(e))
-        }
-    }
-
-    override fun addImageToFirebaseUserProfileFirestore(
+    override suspend fun addImageToFirebaseUserProfileFirestore(
         userUUID: String,
-        imageStringReference: String
-    ): Flow<Result<Boolean>> = callbackFlow {
+        imageStringReference: String,
+    ): Flow<Result<String>> = callbackFlow {
         try {
-            val collectionRef =
-                collectionReference.collection("images").document(imageStringReference)
+            val collectionRef = collectionReference.collection("images").document(imageStringReference)
+            val userDocRef = collectionReference.collection("users").document(userUUID)
+            val userDocSnapshot = userDocRef.get().await()
+            val previousImageRef = userDocSnapshot.get("image") as DocumentReference
+            val previousImageStringRef = previousImageRef.get().await().id
 
             val listener = collectionReference.collection("users").document(userUUID)
-                .set(mapOf("image" to collectionRef))
+                .update(mapOf("image" to collectionRef))
                 .addOnSuccessListener {
-                    trySend(Result.success(true))
+                    trySend(Result.success(previousImageStringRef))
                 }
                 .addOnFailureListener { e ->
                     trySend(Result.failure(e))
@@ -158,58 +146,49 @@ class UserRepositoryImpl : UserRepository {
         }
     }
 
-    override fun removeImage(userUUID: String): Flow<Result<Boolean>> = callbackFlow {
+    override suspend fun removeImageFromUserProfileFirestore(userUUID: String): Flow<Result<String>> = callbackFlow {
         try {
+            val defaultUserDocRef = collectionReference.collection("images").document("default_user")
+            val usersDocRef = collectionReference.collection("users").document(userUUID)
+            val userDocSnapshot = usersDocRef.get().await()
+            val previousImageRef = userDocSnapshot.get("image") as DocumentReference
+            val previousImageStringRef = previousImageRef.get().await().id
+
             val listener = collectionReference.collection("users").document(userUUID)
-                .addSnapshotListener { snapshot, exception ->
-                    if (exception != null) {
-                        trySend(Result.failure(exception))
-                    } else {
-                        snapshot?.let { document ->
-                            val imageReference = document.get("image") as DocumentReference
-                            val imageStringReference = imageReference.path
-
-                            collectionReference.collection("users").document(userUUID)
-                                .get()
-                                .addOnSuccessListener { documentSnapshot ->
-                                    val existingData = documentSnapshot.data
-                                    existingData?.let { data ->
-                                        val newData = data.toMutableMap()
-                                        newData["image"] = collectionReference.collection("")
-
-                                        collectionReference.collection("users").document(userUUID)
-                                            .set(newData)
-                                            .addOnSuccessListener {
-                                                imageReference.delete().addOnSuccessListener {
-                                                    val objectRef = storageReference.reference.child(imageStringReference)
-                                                    objectRef.delete().addOnSuccessListener {
-                                                        trySend(Result.success(true))
-                                                    }.addOnFailureListener { e ->
-                                                        trySend(Result.failure(e))
-                                                    }
-                                                }.addOnFailureListener { e ->
-                                                    trySend(Result.failure(e))
-                                                }
-                                            }
-                                            .addOnFailureListener { e ->
-                                                trySend(Result.failure(e))
-                                            }
-                                    }
-                                }
-                                .addOnFailureListener { e ->
-                                    trySend(Result.failure(e))
-                                }
-                        }
-                    }
+                .update(mapOf("image" to defaultUserDocRef))
+                .addOnSuccessListener {
+                    trySend(Result.success(previousImageStringRef))
                 }
-            awaitClose { listener.remove() }
+                .addOnFailureListener { e ->
+                    trySend(Result.failure(e))
+                }
+            awaitClose { listener.isCanceled }
         } catch (e: Exception) {
             trySend(Result.failure(e))
         }
     }
 
-    override fun addImageToFirebaseStorage(imageBitmap: Bitmap): Flow<Result<Image>> =
-        callbackFlow {
+    override suspend fun removeImageFromFirebaseStorage(imageStringReference: String): Flow<Result<Boolean>> = callbackFlow {
+        try {
+            val documentRef = collectionReference.collection("images").document(imageStringReference)
+
+            val listener = documentRef.delete().addOnSuccessListener {
+                val storageRef = storageReference.reference.child("images/${imageStringReference}.jpg")
+                storageRef.delete().addOnSuccessListener {
+                    trySend(Result.success(true))
+                }.addOnFailureListener { e ->
+                    trySend(Result.failure(e))
+                }
+            }.addOnFailureListener { e ->
+                trySend(Result.failure(e))
+            }
+            awaitClose { listener.isCanceled }
+        } catch (e: Exception) {
+            trySend(Result.failure(e))
+        }
+    }
+
+    override suspend fun addImageToFirebaseStorage(imageBitmap: Bitmap): Flow<Result<String>> = callbackFlow {
             try {
                 val fileName = UUID.randomUUID().toString()
                 val baos = ByteArrayOutputStream()
@@ -219,8 +198,18 @@ class UserRepositoryImpl : UserRepository {
 
                 val listener = imageRef.putBytes(imageData)
                     .addOnSuccessListener {
-                        imageRef.downloadUrl.addOnSuccessListener { uri ->
-                            trySend(Result.success(Image(uri, fileName)))
+                        imageRef.downloadUrl.addOnSuccessListener { url ->
+                            collectionReference.collection("images").document(fileName).set(
+                                mapOf(
+                                    "url" to url,
+                                    "type" to "avatar",
+                                    "createAt" to FieldValue.serverTimestamp()
+                                )
+                            ).addOnSuccessListener {
+                                trySend(Result.success(fileName))
+                            }.addOnFailureListener { e ->
+                                trySend(Result.failure(e))
+                            }
                         }
                     }
                     .addOnFailureListener { e ->
@@ -228,19 +217,29 @@ class UserRepositoryImpl : UserRepository {
                     }
                 awaitClose { listener.isCanceled }
             } catch (e: Exception) {
-
+                trySend(Result.failure(e))
             }
         }
 
-    override fun addImageToFirebaseStorage(imageUri: Uri): Flow<Result<Image>> = callbackFlow {
+    override suspend fun addImageToFirebaseStorage(imageUri: Uri): Flow<Result<String>> = callbackFlow {
         try {
             val fileName = UUID.randomUUID().toString()
             val imageRef = storageReference.reference.child("images/${fileName}.jpg")
 
             val listener = imageRef.putFile(imageUri)
                 .addOnSuccessListener {
-                    imageRef.downloadUrl.addOnSuccessListener { uri ->
-                        trySend(Result.success(Image(uri, fileName)))
+                    imageRef.downloadUrl.addOnSuccessListener { url ->
+                        collectionReference.collection("images").document(fileName).set(
+                            mapOf(
+                                "url" to url,
+                                "type" to "avatar",
+                                "createAt" to FieldValue.serverTimestamp()
+                            )
+                        ).addOnSuccessListener {
+                            trySend(Result.success(fileName))
+                        }.addOnFailureListener { e ->
+                            trySend(Result.failure(e))
+                        }
                     }
                 }
                 .addOnFailureListener { e ->
@@ -252,7 +251,7 @@ class UserRepositoryImpl : UserRepository {
         }
     }
 
-    override fun createUser(fullName: String, email: String, password: String): Flow<User> {
+    override suspend fun createUser(fullName: String, email: String, password: String): Flow<User> {
         TODO("Not yet implemented")
     }
 

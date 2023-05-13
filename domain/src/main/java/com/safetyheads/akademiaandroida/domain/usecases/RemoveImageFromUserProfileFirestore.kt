@@ -1,26 +1,26 @@
 package com.safetyheads.akademiaandroida.domain.usecases
 
-import android.graphics.Bitmap
+import android.net.Uri
 import com.safetyheads.akademiaandroida.domain.repositories.UserRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
-class AddImageToFirebaseBitmapStorage(private val repository: UserRepository) :
-    BaseUseCase<AddImageToFirebaseBitmapStorage.ImageParam, String> {
+class RemoveImageFromUserProfileFirestore(private val repository: UserRepository) :
+    BaseUseCase<RemoveImageFromUserProfileFirestore.ImageParam, String> {
 
     @JvmInline
-    value class ImageParam(val imageBitmap: Bitmap) : BaseUseCase.Params
+    value class ImageParam(val userUUID: String) : BaseUseCase.Params
 
     override suspend fun invoke(parameter: ImageParam): Flow<Result<String>> {
         return flow {
             try {
-                repository.addImageToFirebaseStorage(parameter.imageBitmap).collect { imageUri ->
-                    if (imageUri.isSuccess)
-                        emit(imageUri)
+                repository.removeImageFromUserProfileFirestore(parameter.userUUID).collect { imageStringReference ->
+                    if (imageStringReference.isSuccess)
+                        emit(imageStringReference)
                     else
                         emit(
                             Result.failure(
-                                imageUri.exceptionOrNull() ?: Exception("Add Image to Firebase Storage Error!")
+                                imageStringReference.exceptionOrNull() ?: Exception("Add Image to Firebase Storage Error!")
                             )
                         )
                 }

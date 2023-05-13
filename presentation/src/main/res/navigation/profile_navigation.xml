@@ -19,6 +19,10 @@
         android:id="@+id/changeAvatarFragment"
         android:name="com.safetyheads.akademiaandroida.presentation.ui.fragments.profile.ChangeAvatarFragment"
         android:label="ChangeAvatarFragment"
-        tools:layout="@layout/fragment_change_profile_avatar" />
+        tools:layout="@layout/fragment_change_profile_avatar" >
+        <action
+            android:id="@+id/action_changeAvatarFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+    </fragment>
 
 </navigation>

@@ -22,7 +22,7 @@ class ChangeAvatarBottomSheetDialogFragment : BottomSheetDialogFragment() {
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View {
         binding = FragmentChangeAvatarBottomSheetBinding.inflate(inflater, container, false)
         return binding.root
@@ -31,11 +31,6 @@ class ChangeAvatarBottomSheetDialogFragment : BottomSheetDialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initUI()
-        observeUI()
-    }
-
-    private fun observeUI() {
-
     }
 
     private fun initUI() {
@@ -57,7 +52,8 @@ class ChangeAvatarBottomSheetDialogFragment : BottomSheetDialogFragment() {
             }
 
             removeImageCardView.setOnClickListener {
-                viewModel.removeImage()
+                viewModel.removeImageFromUserProfile()
+                this@ChangeAvatarBottomSheetDialogFragment.dismiss()
             }
         }
     }
@@ -66,8 +62,10 @@ class ChangeAvatarBottomSheetDialogFragment : BottomSheetDialogFragment() {
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
             if (result.resultCode == Activity.RESULT_OK) {
                 val uri = result.data?.data
-                if (uri != null)
+                if (uri != null) {
                     viewModel.addImageToFirebaseUriStorage(uri)
+                    this@ChangeAvatarBottomSheetDialogFragment.dismiss()
+                }
             }
         }
 
@@ -77,6 +75,7 @@ class ChangeAvatarBottomSheetDialogFragment : BottomSheetDialogFragment() {
                 val data = result.data
                 val imageBitmap = data?.extras?.get("data") as Bitmap
                 viewModel.addImageToFirebaseBitmapStorage(imageBitmap)
+                this@ChangeAvatarBottomSheetDialogFragment.dismiss()
             }
         }
 }
