@@ -2,6 +2,8 @@ package com.safetyheads.akademiaandroida.data.network.repository
 
 import android.util.Log
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseAuthException
+import com.google.firebase.auth.UserProfileChangeRequest
 import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.GeoPoint
@@ -32,65 +34,65 @@ class UserRepositoryImpl : UserRepository {
     override fun getProfileInformation(userUUID: String): Flow<Result<Profile>> = callbackFlow {
         val collectionReference = FirebaseFirestore.getInstance()
         val listener = collectionReference.collection("users").document(userUUID)
-                .addSnapshotListener { snapshot, exception ->
-                    if (exception != null) {
-                        trySend(Result.failure(exception))
-                    } else {
-                        snapshot?.let { document ->
-                            val firebaseId = document.getString("FirebaseId").orEmpty()
-                            val address = Address(
-                                document.getString("address.city").orEmpty(),
-                                document.getString("address.country").orEmpty(),
-                                document.getString("address.streetName").orEmpty(),
-                                document.getString("address.streetNumber").orEmpty(),
-                                document.getString("address.zipCode").orEmpty()
-                            )
+            .addSnapshotListener { snapshot, exception ->
+                if (exception != null) {
+                    trySend(Result.failure(exception))
+                } else {
+                    snapshot?.let { document ->
+                        val firebaseId = document.getString("FirebaseId").orEmpty()
+                        val address = Address(
+                            document.getString("address.city").orEmpty(),
+                            document.getString("address.country").orEmpty(),
+                            document.getString("address.streetName").orEmpty(),
+                            document.getString("address.streetNumber").orEmpty(),
+                            document.getString("address.zipCode").orEmpty()
+                        )
 
-                            val currentLocationRef = document.get("currentLocation") as? GeoPoint
-                            val currentLocation = Location(
-                                currentLocationRef?.latitude ?: 0.0,
-                                currentLocationRef?.longitude ?: 0.0
-                            )
+                        val currentLocationRef = document.get("currentLocation") as? GeoPoint
+                        val currentLocation = Location(
+                            currentLocationRef?.latitude ?: 0.0,
+                            currentLocationRef?.longitude ?: 0.0
+                        )
 
 
-                            val homeLocationRef = document.get("homeLocation") as? GeoPoint
-                            val homeLocation = Location(
-                                homeLocationRef?.latitude ?: 0.0,
-                                homeLocationRef?.longitude ?: 0.0
-                            )
+                        val homeLocationRef = document.get("homeLocation") as? GeoPoint
+                        val homeLocation = Location(
+                            homeLocationRef?.latitude ?: 0.0,
+                            homeLocationRef?.longitude ?: 0.0
+                        )
 
-                            val fcmToken = document.getString("fcmToken").orEmpty()
-                            val id = document.getString("id").orEmpty()
-                            val firstName = document.getString("firstName").orEmpty()
-                            val lastName = document.getString("lastName").orEmpty()
-                            val userName = document.getString("userName").orEmpty()
+                        val fcmToken = document.getString("fcmToken").orEmpty()
+                        val id = document.getString("id").orEmpty()
+                        val firstName = document.getString("firstName").orEmpty()
+                        val lastName = document.getString("lastName").orEmpty()
+                        val userName = document.getString("userName").orEmpty()
 
-                            val imageReference = document.get("image") as DocumentReference
-                            imageReference.addSnapshotListener { snapshot, exception ->
-                                if (exception != null) {
-                                    trySend(Result.failure(exception))
-                                } else {
-                                    snapshot?.let { secondDocument ->
-                                        val imageUrl = secondDocument.getString("url").orEmpty()
-                                        val profile = Profile(
-                                            firebaseId,
-                                            address,
-                                            currentLocation,
-                                            fcmToken,
-                                            firstName,
-                                            homeLocation,
-                                            id,
-                                            imageUrl,
-                                            lastName,
-                                            userName
-                                        )
-                                        trySend(Result.success(profile))
-                                    }
+                        val imageReference = document.get("image") as DocumentReference
+                        imageReference.addSnapshotListener { snapshot, exception ->
+                            if (exception != null) {
+                                trySend(Result.failure(exception))
+                            } else {
+                                snapshot?.let { secondDocument ->
+                                    val imageUrl = secondDocument.getString("url").orEmpty()
+                                    val profile = Profile(
+                                        firebaseId,
+                                        address,
+                                        currentLocation,
+                                        fcmToken,
+                                        firstName,
+                                        homeLocation,
+                                        id,
+                                        imageUrl,
+                                        lastName,
+                                        userName
+                                    )
+                                    trySend(Result.success(profile))
                                 }
                             }
                         }
                     }
                 }
+            }
         awaitClose { listener.remove() }
     }
 
@@ -112,8 +114,24 @@ class UserRepositoryImpl : UserRepository {
         awaitClose { listener.isCanceled }
     }
 
-    override fun createUser(fullName: String, email: String, password: String): Flow<User> {
-        TODO("Not yet implemented")
+    override fun createUser(fullName: String, email: String, password: String): Flow<User> = flow {
+        val authResult = firebaseAuth.createUserWithEmailAndPassword(email, password).await()
+
+        val firebaseUser = authResult.user!!
+
+        val profileUpdates = UserProfileChangeRequest.Builder()
+            .setDisplayName(fullName)
+            .build()
+
+        firebaseUser.updateProfile(profileUpdates).await()
+
+        emit(User(firebaseUser.uid, fullName, email))
+    }.catch { error ->
+        if (error is FirebaseAuthException) {
+            throw IllegalStateException(error.message ?: "Error during registration")
+        } else {
+            throw error
+        }
     }
 
 }
