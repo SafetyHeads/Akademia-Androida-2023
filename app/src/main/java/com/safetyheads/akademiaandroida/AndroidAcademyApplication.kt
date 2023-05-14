@@ -49,7 +49,13 @@ import com.safetyheads.akademiaandroida.presentation.ui.customviews.dropdown.Loa
 import com.safetyheads.akademiaandroida.presentation.ui.fragments.forgotpasswordfragment.ForgotPasswordViewModel
 import com.safetyheads.akademiaandroida.presentation.ui.fragments.technologystack.TechnologyStackViewModel
 import com.safetyheads.akademiaandroida.presentation.ui.sign_up.SignUpViewModel
-import com.safetyheads.akademiaandroida.usersessionmanager.*
+import com.safetyheads.akademiaandroida.presentation.ui.viewmodels.ProfileViewModel
+import com.safetyheads.akademiaandroida.usersessionmanager.FakeSessionGenerator
+import com.safetyheads.akademiaandroida.usersessionmanager.LoggedSessionManager
+import com.safetyheads.akademiaandroida.usersessionmanager.SESSION_SCOPE_NAME
+import com.safetyheads.akademiaandroida.usersessionmanager.Session
+import com.safetyheads.akademiaandroida.usersessionmanager.UnloggedSessionManager
+import com.safetyheads.akademiaandroida.usersessionmanager.getSessionScope
 import com.safetyheads.akademiaandroida.youtube.viewModel.ChannelViewModel
 import com.safetyheads.akademiaandroida.youtube.viewModel.PlayListViewModel
 import com.safetyheads.akademiaandroida.youtube.viewModel.VideoViewModel
@@ -131,7 +137,7 @@ class AndroidAcademyApplication : Application() {
         viewModelOf(::ChannelViewModel)
         viewModelOf(::VideoViewModel)
         viewModelOf(::PlayListViewModel)
-        viewModelOf(::ProfileViewModel)
+        viewModel { ProfileViewModel(get(), get()) }
         viewModel { TechnologyStackViewModel(get()) }
         viewModel { SignUpViewModel(get()) }
     }
