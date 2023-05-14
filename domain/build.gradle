@@ -8,7 +8,9 @@ java {
     sourceCompatibility JavaVersion.VERSION_1_8
     targetCompatibility JavaVersion.VERSION_1_8
 }
+
 dependencies {
+    implementation 'com.jakewharton.threetenabp:threetenabp:1.4.6'
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.0")
     implementation 'com.google.firebase:firebase-config-ktx:21.3.0'
     testImplementation 'junit:junit:4.13.2'
