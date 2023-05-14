@@ -32,7 +32,6 @@ class ChangeAvatarFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         initUI()
         observeUI()
-        viewModel.tempLogin()
     }
 
     private fun observeUI() {
