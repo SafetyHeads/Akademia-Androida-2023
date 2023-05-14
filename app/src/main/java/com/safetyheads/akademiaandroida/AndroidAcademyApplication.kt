@@ -47,6 +47,7 @@ import com.safetyheads.akademiaandroida.presentation.ui.fragments.forgotpassword
 import com.safetyheads.akademiaandroida.presentation.ui.fragments.technologystack.TechnologyStackViewModel
 import com.safetyheads.akademiaandroida.presentation.ui.sign_up.SignUpViewModel
 import com.safetyheads.akademiaandroida.presentation.ui.sign_up.UserRepositoryImpl
+import com.safetyheads.akademiaandroida.usersessionmanager.*
 import com.safetyheads.akademiaandroida.youtube.viewModel.ChannelViewModel
 import com.safetyheads.akademiaandroida.youtube.viewModel.PlayListViewModel
 import com.safetyheads.akademiaandroida.youtube.viewModel.VideoViewModel
@@ -64,6 +65,7 @@ import org.koin.android.ext.koin.androidLogger
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.androidx.viewmodel.dsl.viewModelOf
 import org.koin.core.context.startKoin
+import org.koin.core.qualifier.named
 import org.koin.dsl.module
 
 
@@ -76,7 +78,7 @@ class AndroidAcademyApplication : Application() {
         startKoin {
             androidLogger()
             androidContext(this@AndroidAcademyApplication)
-            modules(listOf(appModule, networkModule))
+            modules(listOf(appModule, networkModule, sessionModule))
         }
     }
 
@@ -149,5 +151,20 @@ class AndroidAcademyApplication : Application() {
 
     }
 
+    private val sessionModule = module {
+        single { FakeSessionGenerator() }
+
+        scope(named(SESSION_SCOPE_NAME)) {
+            scoped {
+                val session = getSessionScope().getOrNull<Session>()
+                if (session == null) {
+                    UnloggedSessionManager(fakeSessionGenerator = get())
+                } else {
+                    LoggedSessionManager(session)
+                }
+            }
+        }
+
+    }
 
 }

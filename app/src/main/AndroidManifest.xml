@@ -59,6 +59,9 @@
             android:label="@string/title_activity_web_view"
             android:theme="@style/Theme.AkademiaAndroida.NoActionBar" />
 
+        <activity android:name=".usersessionmanager.UserSessionManagerActivity"
+            android:exported="true" />
+
         <service
             android:name=".MyFirebaseMessagingService"
             android:exported="false">

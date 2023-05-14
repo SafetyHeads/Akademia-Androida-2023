@@ -99,4 +99,7 @@
     <string name="mobile_app">Mobile app</string>
     <string name="web_app">Web app</string>
     <string name="others">Others</string>
+    <string name="wyswietl_info">Wyświetl info</string>
+    <string name="usun_scope">Usuń scope</string>
+    <string name="utworz_scope">Utwórz scope</string>
 </resources>
