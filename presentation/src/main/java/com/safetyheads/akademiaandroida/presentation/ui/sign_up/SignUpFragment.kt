@@ -4,13 +4,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.EditText
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import com.safetyheads.akademiaandroida.presentation.databinding.FragmentSignUpBinding
-import com.safetyheads.akademiaandroida.presentation.ui.utils.EmailValidator
-import com.safetyheads.akademiaandroida.presentation.ui.utils.FullNameValidator
-import com.safetyheads.akademiaandroida.presentation.ui.utils.PasswordValidator
+import com.safetyheads.akademiaandroida.presentation.ui.utils.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SignUpFragment : Fragment() {
@@ -27,13 +24,6 @@ class SignUpFragment : Fragment() {
         return binding.root
     }
 
-    fun isCorrectOrEmptyEditText(editText: EditText): Boolean {
-        return if (editText.text.isNullOrEmpty()) {
-            false
-        } else {
-            editText.error.isNullOrEmpty()
-        }
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
@@ -45,9 +35,8 @@ class SignUpFragment : Fragment() {
         val etEmailAdress = binding.eTextEmailAddress
 
         binding.buttonSignUp.setOnClickListener {
-
-            if (isCorrectOrEmptyEditText(etConfirmPassword) && isCorrectOrEmptyEditText(etPassword)
-                && isCorrectOrEmptyEditText(etFullName) && isCorrectOrEmptyEditText(etEmailAdress)
+            if (etConfirmPassword.isCorrectOrEmptyText() && etPassword.isCorrectOrEmptyText()
+                && etFullName.isCorrectOrEmptyText() && etEmailAdress.isCorrectOrEmptyText()
             ) {
                 binding.progressBar.visibility = View.VISIBLE
                 viewModel.signUp(
@@ -56,13 +45,12 @@ class SignUpFragment : Fragment() {
                     binding.eTextPassword.text.toString(),
                 )
             }
-
         }
+
         FullNameValidator.attach(etFullName, requireContext())
         EmailValidator.attach(etEmailAdress)
         PasswordValidator.attach(etPassword, requireContext())
         PasswordValidator.attach(etConfirmPassword, requireContext())
-
 
         lifecycleScope.launchWhenStarted {
             viewModel.registrationState.collect { result ->
