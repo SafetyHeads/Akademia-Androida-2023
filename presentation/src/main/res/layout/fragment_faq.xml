@@ -43,6 +43,7 @@ android:layout_height="fill_parent">
         app:text="FAQ" />
 
     <LinearLayout
+        android:id="@+id/linear_layout_faq"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
@@ -95,6 +96,43 @@ android:layout_height="fill_parent">
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
     </LinearLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_faq_constraint"
+        android:padding="@dimen/size_2x"
+        android:layout_margin="@dimen/size_3x"
+        app:layout_constraintTop_toBottomOf="@id/linear_layout_faq">
+
+        <TextView
+            android:id="@+id/textView4"
+            style="@style/Poppins_regular_14"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/size_4x"
+            android:text="Are you looking for another answer?"
+            android:textColor="@color/s_60"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/button2"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Button
+            android:id="@+id/button2"
+            style="@style/StyledButton"
+            android:layout_width="112dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_regular"
+            android:lineSpacingExtra="6sp"
+            android:padding="@dimen/size_2x"
+            android:text="Ask question"
+            android:textSize="11sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textView4" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 
