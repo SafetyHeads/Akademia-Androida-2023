@@ -5,16 +5,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
-import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.tabs.TabLayout
 import com.safetyheads.akademiaandroida.domain.entities.faqs.FaqTab
 import com.safetyheads.akademiaandroida.domain.entities.faqs.FaqType
-import com.safetyheads.akademiaandroida.presentation.R
 import com.safetyheads.akademiaandroida.presentation.databinding.FragmentFaqBinding
 import com.safetyheads.akademiaandroida.presentation.ui.customviews.dropdown.TextExpandableListAdapter
-import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class FaqFragment : Fragment() {
@@ -26,27 +23,20 @@ class FaqFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        // Inflate the layout for this fragment
         binding = FragmentFaqBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        faqViewModel.getFaqs()
 
-        faqViewModel.faqsList.observe(viewLifecycleOwner) { faqs ->
-            if (faqs != null) {
-                for (faq in faqs) {
-                    if(faq.type == FaqType.Benefits.tag) {
+        val questionRV : RecyclerView = binding.questionsRecyclerView
+        questionRV.layoutManager = LinearLayoutManager(requireActivity())
 
-                    } else if(faq.type == FaqType.Delegations.tag) {
 
-                    } else {
-
-                    }
-                }
-            }
+        faqViewModel.typedFaqsList.observe(viewLifecycleOwner) { faqs ->
+            if(faqs != null)
+                questionRV.adapter = FaqAdapter(faqs)
         }
 
         binding.faqTabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
