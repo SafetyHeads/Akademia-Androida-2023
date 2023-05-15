@@ -5,7 +5,7 @@
     android:id="@+id/constraintLayout_bottom_nav"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".dashboard.DashboardFragment" >
+    tools:context=".ui.customviews.DashboardFragment">
 
     <FrameLayout
         android:layout_width="match_parent"
@@ -14,19 +14,15 @@
         android:layout_above="@id/bottom_navigation_view"/>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottom_navigation_view"
-        android:background="@color/white"
-        app:labelVisibilityMode="labeled"
-        app:itemBackground="@drawable/dashboard_item_selector"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/size_10x"
-        android:layout_alignParentBottom="true"
-        app:menu="@menu/bottom_nav_view">
+    android:id="@+id/bottom_navigation_view"
+    android:background="@color/white"
+    app:labelVisibilityMode="labeled"
+    app:itemBackground="@drawable/dashboard_item_selector"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/size_10x"
+    android:layout_alignParentBottom="true"
+    app:menu="@menu/bottom_nav_view">
 
-    </com.google.android.material.bottomnavigation.BottomNavigationView>
+</com.google.android.material.bottomnavigation.BottomNavigationView>
 
-</RelativeLayout>
-
-
-
-
+    </RelativeLayout>
