@@ -11,6 +11,7 @@ import com.safetyheads.akademiaandroida.presentation.databinding.FragmentLoginBi
 import com.safetyheads.akademiaandroida.presentation.ui.components.snackbar.LoginSnackBar
 import com.safetyheads.akademiaandroida.presentation.ui.utils.EmailValidator
 import com.safetyheads.akademiaandroida.presentation.ui.utils.PasswordValidator
+import com.safetyheads.akademiaandroida.presentation.ui.utils.isCorrectText
 
 class LoginFragment : Fragment() {
 
@@ -38,6 +39,13 @@ class LoginFragment : Fragment() {
 
         EmailValidator.attach(binding.eTextEmailAddress)
         PasswordValidator.attach(binding.eTextPassword, requireContext())
+
+        binding.buttonSignIn.setOnClickListener {
+            if(binding.eTextPassword.isCorrectText() && binding.eTextPassword.isCorrectText()) {
+
+            }
+        }
+
         binding.forgotPassword.setOnClickListener {
             val action =
                 LoginFragmentDirections.actionLoginFragmentToForgotPasswordFragment(false)

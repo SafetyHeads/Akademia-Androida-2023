@@ -35,8 +35,8 @@ class SignUpFragment : Fragment() {
         val etEmailAdress = binding.eTextEmailAddress
 
         binding.buttonSignUp.setOnClickListener {
-            if (etConfirmPassword.isCorrectOrEmptyText() && etPassword.isCorrectOrEmptyText()
-                && etFullName.isCorrectOrEmptyText() && etEmailAdress.isCorrectOrEmptyText()
+            if (etConfirmPassword.isCorrectText() && etPassword.isCorrectText()
+                && etFullName.isCorrectText() && etEmailAdress.isCorrectText()
             ) {
                 binding.progressBar.visibility = View.VISIBLE
                 viewModel.signUp(
