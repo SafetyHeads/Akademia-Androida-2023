@@ -14,34 +14,6 @@ android {
     namespace 'com.safetyheads.akademiaandroida'
     compileSdk 33
 
-//<<<<<<< HEAD
-//=======
-//    flavorDimensions += "version"
-//    productFlavors {
-//        create("development") {
-//            dimension = "version"
-//            applicationIdSuffix = ".development"
-//        }
-//        create("qa") {
-//            dimension = "version"
-//            applicationIdSuffix = ".qa"
-//        }
-//        create("production") {
-//            dimension = "version"
-//            applicationIdSuffix = ".production"
-//        }
-//    }
-//
-//    sourceSets {
-//        production {
-//            manifest.srcFile 'src/production/AndroidManifest.xml'
-//        }
-//        qa{
-//            manifest.srcFile 'src/qa/AndroidManifest.xml'
-//        }
-//    }
-
-//>>>>>>> 8f877bf (Created manifests for build types, prepared initial navigation)
     defaultConfig {
         applicationId "com.safetyheads.akademiaandroida"
         minSdk 24
