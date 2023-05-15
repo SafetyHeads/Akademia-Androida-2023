@@ -11,6 +11,7 @@ import com.safetyheads.akademiaandroida.presentation.ui.customviews.ExperienceSt
 import com.safetyheads.akademiaandroida.presentation.ui.customviews.dropdown.FragmentDropDownList
 import com.safetyheads.akademiaandroida.presentation.ui.fragments.clients.ClientsFragment
 import com.safetyheads.akademiaandroida.presentation.ui.fragments.contact_with_us.ContactWithUsFragment
+import com.safetyheads.akademiaandroida.presentation.ui.fragments.faq.FaqFragment
 import com.safetyheads.akademiaandroida.presentation.ui.fragments.font_style.FontSylesFragment
 import com.safetyheads.akademiaandroida.presentation.ui.fragments.forgotpasswordfragment.ForgotPasswordFragment
 import com.safetyheads.akademiaandroida.presentation.ui.fragments.login.LoginFragment
@@ -66,6 +67,7 @@ class ListActivity : AppCompatActivity() {
     val careerFragment = CareerFragment()
     val technolgyStackFragment = TechnologyStackFragment()
     val signUpFragment = SignUpFragment()
+    val faqFragment = FaqFragment()
 
     val dataListFragments = listOf(
         fontSylesFragment,
@@ -78,7 +80,8 @@ class ListActivity : AppCompatActivity() {
         forgotPasswordFragment,
         forgotPasswordFragment,
         technolgyStackFragment,
-        signUpFragment
+        signUpFragment,
+        faqFragment
     )
 }
 

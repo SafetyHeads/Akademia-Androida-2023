@@ -46,6 +46,7 @@ import com.safetyheads.akademiaandroida.presentation.ui.career.CareerRepositoryI
 import com.safetyheads.akademiaandroida.presentation.ui.career.CareerViewModel
 import com.safetyheads.akademiaandroida.presentation.ui.customviews.dropdown.DropDownListViewModel
 import com.safetyheads.akademiaandroida.presentation.ui.customviews.dropdown.LoadItemsToDropDownListUseCase
+import com.safetyheads.akademiaandroida.presentation.ui.fragments.faq.FaqViewModel
 import com.safetyheads.akademiaandroida.presentation.ui.fragments.forgotpasswordfragment.ForgotPasswordViewModel
 import com.safetyheads.akademiaandroida.presentation.ui.fragments.technologystack.TechnologyStackViewModel
 import com.safetyheads.akademiaandroida.presentation.ui.sign_up.SignUpViewModel
@@ -140,6 +141,7 @@ class AndroidAcademyApplication : Application() {
         viewModel { ProfileViewModel(get(), get()) }
         viewModel { TechnologyStackViewModel(get()) }
         viewModel { SignUpViewModel(get()) }
+        viewModel { FaqViewModel(get()) }
     }
 
     private val networkModule = module {
