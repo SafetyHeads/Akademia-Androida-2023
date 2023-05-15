@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import com.safetyheads.akademiaandroida.presentation.databinding.FragmentSignUpBinding
@@ -26,6 +27,14 @@ class SignUpFragment : Fragment() {
         return binding.root
     }
 
+    fun isCorrectOrEmptyEditText(editText: EditText): Boolean {
+        return if (editText.text.isNullOrEmpty()) {
+            false
+        } else {
+            editText.error.isNullOrEmpty()
+        }
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
         super.onViewCreated(view, savedInstanceState)
@@ -36,16 +45,11 @@ class SignUpFragment : Fragment() {
         val etEmailAdress = binding.eTextEmailAddress
 
         binding.buttonSignUp.setOnClickListener {
-            binding.progressBar.visibility = View.VISIBLE
-            //TODO: add check is correct to EditText Function
-            if (etPassword.error.isNullOrEmpty() &&
-                etConfirmPassword.error.isNullOrEmpty() &&
-                etFullName.error.isNullOrEmpty() &&
-                etEmailAdress.error.isNullOrEmpty() && etPassword.text?.isNotBlank() == true &&
-                etConfirmPassword.text?.isNotBlank() == true &&
-                etEmailAdress.text?.isNotBlank() == true &&
-                etFullName.text?.isNotBlank() == true
+
+            if (isCorrectOrEmptyEditText(etConfirmPassword) && isCorrectOrEmptyEditText(etPassword)
+                && isCorrectOrEmptyEditText(etFullName) && isCorrectOrEmptyEditText(etEmailAdress)
             ) {
+                binding.progressBar.visibility = View.VISIBLE
                 viewModel.signUp(
                     binding.eTextFullName.text.toString(),
                     binding.eTextEmailAddress.text.toString(),
