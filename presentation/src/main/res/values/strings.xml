@@ -108,4 +108,7 @@
     <string name="choose_image">Choose image</string>
     <string name="make_photo">Make photo</string>
     <string name="remove_current_image">Remove current image</string>
+    <string name="wyswietl_info">Wyświetl info</string>
+    <string name="usun_scope">Usuń scope</string>
+    <string name="utworz_scope">Utwórz scope</string>
 </resources>

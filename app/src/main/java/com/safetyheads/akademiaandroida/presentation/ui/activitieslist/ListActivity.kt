@@ -5,9 +5,8 @@ import android.content.pm.PackageManager
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.safetyheads.akademiaandroida.presentation.ui.career.CareerFragment
 import com.safetyheads.akademiaandroida.databinding.ActivityListBinding
-import com.safetyheads.akademiaandroida.presentation.ui.fragments.technologystack.TechnologyStackFragment
+import com.safetyheads.akademiaandroida.presentation.ui.career.CareerFragment
 import com.safetyheads.akademiaandroida.presentation.ui.customviews.ExperienceStructureFragment
 import com.safetyheads.akademiaandroida.presentation.ui.customviews.dropdown.FragmentDropDownList
 import com.safetyheads.akademiaandroida.presentation.ui.fragments.clients.ClientsFragment
@@ -15,8 +14,9 @@ import com.safetyheads.akademiaandroida.presentation.ui.fragments.contact_with_u
 import com.safetyheads.akademiaandroida.presentation.ui.fragments.font_style.FontSylesFragment
 import com.safetyheads.akademiaandroida.presentation.ui.fragments.forgotpasswordfragment.ForgotPasswordFragment
 import com.safetyheads.akademiaandroida.presentation.ui.fragments.login.LoginFragment
+import com.safetyheads.akademiaandroida.presentation.ui.fragments.technologystack.TechnologyStackFragment
 import com.safetyheads.akademiaandroida.presentation.ui.fragments.we_are_hiring.WeAreHiringFragment
-
+import com.safetyheads.akademiaandroida.presentation.ui.sign_up.SignUpFragment
 import com.safetyheads.akademiaandroida.utils.getPackageInfoCompat
 
 class ListActivity : AppCompatActivity() {
@@ -65,6 +65,7 @@ class ListActivity : AppCompatActivity() {
     val loginFragment = LoginFragment()
     val careerFragment = CareerFragment()
     val technolgyStackFragment = TechnologyStackFragment()
+    val signUpFragment = SignUpFragment()
 
     val dataListFragments = listOf(
         fontSylesFragment,
@@ -76,7 +77,8 @@ class ListActivity : AppCompatActivity() {
         loginFragment,
         forgotPasswordFragment,
         forgotPasswordFragment,
-        technolgyStackFragment
+        technolgyStackFragment,
+        signUpFragment
     )
 }
 

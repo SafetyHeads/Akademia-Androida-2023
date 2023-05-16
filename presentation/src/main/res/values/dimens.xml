@@ -35,4 +35,5 @@
 
     <dimen name="default_margin_top_bottom_shield">14dp</dimen>
     <dimen name="default_margin_start_bottom_shield">34dp</dimen>
+
 </resources>

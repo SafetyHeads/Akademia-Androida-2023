@@ -4,6 +4,8 @@ import android.graphics.Bitmap
 import android.net.Uri
 import android.util.Log
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseAuthException
+import com.google.firebase.auth.UserProfileChangeRequest
 import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
@@ -251,8 +253,24 @@ class UserRepositoryImpl : UserRepository {
         }
     }
 
-    override suspend fun createUser(fullName: String, email: String, password: String): Flow<User> {
-        TODO("Not yet implemented")
+    override suspend fun createUser(fullName: String, email: String, password: String): Flow<User> = flow {
+        val authResult = firebaseAuth.createUserWithEmailAndPassword(email, password).await()
+
+        val firebaseUser = authResult.user!!
+
+        val profileUpdates = UserProfileChangeRequest.Builder()
+            .setDisplayName(fullName)
+            .build()
+
+        firebaseUser.updateProfile(profileUpdates).await()
+
+        emit(User(firebaseUser.uid, fullName, email))
+    }.catch { error ->
+        if (error is FirebaseAuthException) {
+            throw IllegalStateException(error.message ?: "Error during registration")
+        } else {
+            throw error
+        }
     }
 
 }
