@@ -20,7 +20,8 @@ class AddImageToFirebaseBitmapStorage(private val repository: UserRepository) :
                     else
                         emit(
                             Result.failure(
-                                imageUri.exceptionOrNull() ?: Exception("Add Image to Firebase Storage Error!")
+                                imageUri.exceptionOrNull()
+                                    ?: Exception("Add Image to Firebase Storage Error!")
                             )
                         )
                 }
