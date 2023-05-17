@@ -19,7 +19,6 @@ class FaqViewModel(
 ) : ViewModel() {
 
     private var selectedType: Type
-
     private val _typedFaqsList: MutableLiveData<List<Faq>?> = MutableLiveData<List<Faq>?>().apply {
         getFaqs(Type.BENEFITS)
         selectedType = Type.BENEFITS
@@ -27,7 +26,6 @@ class FaqViewModel(
     private val _isSendSuccess: MutableLiveData<Boolean> = MutableLiveData<Boolean>()
     var typedFaqsList: LiveData<List<Faq>?> = _typedFaqsList
     var isSendSuccess: LiveData<Boolean> = _isSendSuccess
-
     private fun getFaqs(type: Type) {
         viewModelScope.launch {
             getFaqUseCase.invoke().collect() { result ->
@@ -46,7 +44,6 @@ class FaqViewModel(
             }
         }
     }
-
     fun sendQuestion(question: String) {
         val questionModel = Question(text = question)
         viewModelScope.launch {
@@ -61,7 +58,6 @@ class FaqViewModel(
                 }
         }
     }
-
     fun tabSelected(tab: FaqTab) {
         getFaqs(tab.toFaqType())
         selectedType = tab.toFaqType()

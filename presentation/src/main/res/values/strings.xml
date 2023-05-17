@@ -117,4 +117,8 @@
     <string name="ask_question">Ask question</string>
     <string name="success_question_sent_information">Your question has been sent. We will answer as soon as possible.</string>
     <string name="failed_question_sent_information">Your question has not been sent. Please try again later</string>
+    <string name="write_your_question">Write your question</string>
+    <string name="send">Send</string>
+    <string name="arrow_to_answer">arrow to answer</string>
+    <string name="ok">OK</string>
 </resources>

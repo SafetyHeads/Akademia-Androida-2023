@@ -1,6 +1,5 @@
 package com.safetyheads.akademiaandroida.presentation.ui.fragments.faq
 
-import android.R
 import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -12,12 +11,10 @@ import com.safetyheads.akademiaandroida.presentation.databinding.FragmentBottomS
 class FaqBottomSheetFragment : BottomSheetDialogFragment() {
 
     private lateinit var binding: FragmentBottomSheetFaqBinding
-
     companion object {
         const val FAQ_SHEET_DIALOG = "FaqBottomSheetDialog"
         private const val FAQ_QUESTION = "FaqQuestion"
         private const val FAQ_ANSWER = "FaqAnswer"
-
         fun newInstance(faqQuestion: String, faqAnswer : String): FaqBottomSheetFragment {
             val fragment = FaqBottomSheetFragment()
             val args = Bundle().apply {
@@ -28,7 +25,6 @@ class FaqBottomSheetFragment : BottomSheetDialogFragment() {
             return fragment
         }
     }
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -37,7 +33,6 @@ class FaqBottomSheetFragment : BottomSheetDialogFragment() {
         binding = FragmentBottomSheetFaqBinding.inflate(inflater, container, false)
         return binding.root
     }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         (view.parent as View).setBackgroundColor(Color.TRANSPARENT)

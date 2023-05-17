@@ -5,7 +5,6 @@ import com.safetyheads.akademiaandroida.domain.entities.firebasefirestore.faq.Ty
 enum class FaqTab {
     Benefits, Delegations, AMA
 }
-
 fun FaqTab.toFaqType() = when (this) {
     FaqTab.Benefits -> Type.BENEFITS
     FaqTab.Delegations -> Type.DELEGATIONS

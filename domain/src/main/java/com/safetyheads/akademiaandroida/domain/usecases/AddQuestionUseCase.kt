@@ -7,9 +7,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
 class AddQuestionUseCase(private val repository: FaqRepository): BaseUseCase<AddQuestionUseCase.QuestionParam , Boolean> {
-
     class QuestionParam(val question: Question, val type: Type): BaseUseCase.Params
-
     override suspend fun invoke(parameter: QuestionParam): Flow<Result<Boolean>> {
         return flow {
             try {

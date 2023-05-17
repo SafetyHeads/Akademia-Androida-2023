@@ -1,6 +1,5 @@
 package com.safetyheads.akademiaandroida.data.network.repository
 
-
 import com.google.firebase.firestore.FirebaseFirestore
 import com.safetyheads.akademiaandroida.domain.entities.firebasefirestore.faq.Answer
 import com.safetyheads.akademiaandroida.domain.entities.firebasefirestore.faq.Faq
@@ -12,7 +11,6 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
 
 class FaqRepositoryImpl(firebaseFirestore: FirebaseFirestore) : FaqRepository {
-
     private val collectionReference = firebaseFirestore.collection("faq")
 
     override fun getFaq(): Flow<Result<MutableList<Faq>>> = callbackFlow {

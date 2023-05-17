@@ -23,7 +23,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class FaqFragment : Fragment() {
     private lateinit var binding: FragmentFaqBinding
-    private val faqViewModel: FaqViewModel by viewModel();
+    private val faqViewModel: FaqViewModel by viewModel()
     private lateinit var askDialog: AlertDialog
 
     override fun onCreateView(
@@ -39,7 +39,6 @@ class FaqFragment : Fragment() {
 
         val questionRV: RecyclerView = binding.questionsRecyclerView
         questionRV.layoutManager = LinearLayoutManager(requireActivity())
-
 
         faqViewModel.typedFaqsList.observe(viewLifecycleOwner) { faqs ->
             if (faqs != null)
