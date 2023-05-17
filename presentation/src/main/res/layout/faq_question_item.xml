@@ -4,7 +4,8 @@
     android:id="@+id/faq_question_item_constraint"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="@dimen/size_0.5x">
+    android:layout_margin="@dimen/size_0.5x"
+    android:foreground="?android:attr/selectableItemBackground">
 
     <TextView
         android:id="@+id/tv_question"
