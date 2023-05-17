@@ -20,7 +20,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/appCompatEditText"
+        android:id="@+id/eTextQuestion"
         style="@style/Poppins_regular_10"
         android:layout_width="match_parent"
         android:layout_height="102dp"
@@ -37,6 +37,7 @@
         app:layout_constraintTop_toBottomOf="@+id/view" />
 
     <Button
+        android:id="@+id/sendButton"
         android:layout_width="98dp"
         android:layout_height="40dp"
         android:layout_marginEnd="@dimen/size_3x"
@@ -51,5 +52,5 @@
         android:background="@drawable/button_n60_background"
         android:text="Send"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/appCompatEditText" />
+        app:layout_constraintTop_toBottomOf="@+id/eTextQuestion" />
 </androidx.constraintlayout.widget.ConstraintLayout>
