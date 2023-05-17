@@ -6,17 +6,17 @@
     app:startDestination="@id/youTubeVideoFragment">
     <fragment
         android:id="@+id/youTubeVideoFragment"
-        android:name="com.safetyheads.akademiaandroida.youtube.fragments.YouTubeVideoFragment"
+        android:name="com.safetyheads.akademiaandroida.presentation.ui.fragments.youtubefragments.YouTubeVideoFragment"
         android:label="YouTubeVideoFragment"
         tools:layout="@layout/fragment_video" />
     <fragment
         android:id="@+id/youTubeChanelFragment"
-        android:name="com.safetyheads.akademiaandroida.youtube.fragments.YouTubeChanelFragment"
+        android:name="com.safetyheads.akademiaandroida.presentation.ui.fragments.youtubefragments.YouTubeChanelFragment"
         android:label="YouTubeChanelFragment"
         tools:layout="@layout/fragment_channel" />
     <fragment
         android:id="@+id/youTubePlayListsFragment"
-        android:name="com.safetyheads.akademiaandroida.youtube.fragments.YouTubePlayListsFragment"
+        android:name="com.safetyheads.akademiaandroida.presentation.ui.fragments.youtubefragments.YouTubePlayListsFragment"
         android:label="YouTubePlayListsFragment"
         tools:layout="@layout/fragment_playlist"/>
 </navigation>

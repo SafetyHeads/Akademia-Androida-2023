@@ -1,12 +1,12 @@
-package com.safetyheads.akademiaandroida.youtube.adapters
+package com.safetyheads.akademiaandroida.presentation.ui.fragments.youtubefragments
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.safetyheads.akademiaandroida.youtube.diffUtil.VideoDiffUtil
-import com.safetyheads.akademiaandroida.databinding.ItemVideoBinding
+import com.safetyheads.akademiaandroida.presentation.databinding.ItemVideoBinding
+import com.safetyheads.akademiaandroida.presentation.ui.fragments.youtubefragments.diffUtil.VideoDiffUtil
 
 
 class VideoAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {

@@ -1,14 +1,14 @@
-package com.safetyheads.akademiaandroida.youtube.viewModel
+package com.safetyheads.akademiaandroida.presentation.ui.fragments.youtubefragments
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.safetyheads.akademiaandroida.BuildConfig
 import com.safetyheads.akademiaandroida.domain.entities.Playlist
 import com.safetyheads.akademiaandroida.domain.entities.Video
 import com.safetyheads.akademiaandroida.domain.usecases.GetPlayListItemsUseCase
 import com.safetyheads.akademiaandroida.domain.usecases.GetPlayListsUseCase
+import com.safetyheads.akademiaandroida.presentation.BuildConfig
 import kotlinx.coroutines.launch
 
 class PlayListViewModel(
