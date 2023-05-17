@@ -1,4 +1,4 @@
-package com.safetyheads.akademiaandroida.presentation.ui.sign_up
+package com.safetyheads.akademiaandroida.presentation.ui.signup
 
 
 import androidx.lifecycle.ViewModel

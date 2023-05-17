@@ -1,4 +1,4 @@
-package com.safetyheads.akademiaandroida.presentation.ui.fragments.contact_with_us
+package com.safetyheads.akademiaandroida.presentation.ui.fragments.contactwithus
 
 import android.content.Intent
 import android.net.Uri
@@ -9,7 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.safetyheads.akademiaandroida.presentation.databinding.FragmentContactWithUsBinding
-import com.safetyheads.akademiaandroida.utils.getPackageInfoCompat
+import com.safetyheads.akademiaandroida.presentation.ui.utils.getPackageInfoCompat
 
 class ContactWithUsFragment : Fragment() {
 

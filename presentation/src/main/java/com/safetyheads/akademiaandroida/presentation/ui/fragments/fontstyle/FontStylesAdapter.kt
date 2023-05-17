@@ -1,4 +1,4 @@
-package com.safetyheads.akademiaandroida.presentation.ui.fragments.font_style
+package com.safetyheads.akademiaandroida.presentation.ui.fragments.fontstyle
 
 import android.view.LayoutInflater
 import android.view.View

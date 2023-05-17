@@ -17,7 +17,7 @@ import com.safetyheads.akademiaandroida.presentation.ui.customviews.dropdown.Loa
 import com.safetyheads.akademiaandroida.presentation.ui.fragments.faq.FaqViewModel
 import com.safetyheads.akademiaandroida.presentation.ui.fragments.forgotpasswordfragment.ForgotPasswordViewModel
 import com.safetyheads.akademiaandroida.presentation.ui.fragments.technologystack.TechnologyStackViewModel
-import com.safetyheads.akademiaandroida.presentation.ui.sign_up.SignUpViewModel
+import com.safetyheads.akademiaandroida.presentation.ui.signup.SignUpViewModel
 import com.safetyheads.akademiaandroida.presentation.ui.viewmodels.ProfileViewModel
 import com.safetyheads.akademiaandroida.usersessionmanager.*
 import com.safetyheads.akademiaandroida.youtube.viewModel.ChannelViewModel

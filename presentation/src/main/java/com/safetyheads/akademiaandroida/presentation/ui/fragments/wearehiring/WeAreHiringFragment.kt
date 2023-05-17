@@ -1,4 +1,4 @@
-package com.safetyheads.akademiaandroida.presentation.ui.fragments.we_are_hiring
+package com.safetyheads.akademiaandroida.presentation.ui.fragments.wearehiring
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -26,9 +26,7 @@ class WeAreHiringFragment : Fragment() {
     }
 
     private fun initUI() {
-        binding.applyNow.setOnClickListener {
-            // TODO: Apply now button click
-        }
+        binding.applyNow.setOnClickListener { }
 
         binding.applyNow.setOnClickListener { }
     }

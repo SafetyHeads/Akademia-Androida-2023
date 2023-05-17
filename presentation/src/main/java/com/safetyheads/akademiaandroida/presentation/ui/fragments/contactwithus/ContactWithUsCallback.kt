@@ -1,4 +1,4 @@
-package com.safetyheads.akademiaandroida.presentation.ui.fragments.contact_with_us
+package com.safetyheads.akademiaandroida.presentation.ui.fragments.contactwithus
 
 interface ContactWithUsCallback {
     fun setPositiveButton()
