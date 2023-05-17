@@ -107,10 +107,29 @@ class UserRepositoryImpl : UserRepository {
                     val user = firebaseAuth.currentUser
                     val userUUID = user?.uid.orEmpty()
                     trySend(Result.success(userUUID))
+
+                    val firestore = FirebaseFirestore.getInstance()
+                    val userDocumentReference = firestore.collection("users").document(userUUID)
+
+                    userDocumentReference.get().addOnSuccessListener { document ->
+                        if (document != null) {
+                            val firebaseId = document.getString("FirebaseId").orEmpty()
+                            if(firebaseId.isEmpty()) {
+                                val userData = hashMapOf(
+                                    "FirebaseId" to userUUID,
+                                    // można tu inicjalizować pozostałe pola profilu
+                                )
+                                userDocumentReference.set(userData).addOnSuccessListener {
+                                    Log.d("Firestore", "DocumentSnapshot successfully written!")
+                                }
+                                    .addOnFailureListener { e ->
+                                        Log.w("Firestore", "Error writing document", e)
+                                    }
+                            }
                 } else {
                     Log.i("FirebaseConfigRepository", "Authentication failed.")
                 }
-            }
+            }}}
         awaitClose { listener.isCanceled }
     }
 
