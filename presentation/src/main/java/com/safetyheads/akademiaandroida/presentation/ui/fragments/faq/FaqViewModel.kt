@@ -19,13 +19,33 @@ class FaqViewModel(
 ) : ViewModel() {
 
     private var selectedType: Type
-    private val _typedFaqsList: MutableLiveData<List<Faq>?> = MutableLiveData<List<Faq>?>().apply {
+    private val _typedFaqsList: MutableLiveData<List<Faq>> = MutableLiveData<List<Faq>>().apply {
         getFaqs(Type.BENEFITS)
         selectedType = Type.BENEFITS
     }
     private val _isSendSuccess: MutableLiveData<Boolean> = MutableLiveData<Boolean>()
-    var typedFaqsList: LiveData<List<Faq>?> = _typedFaqsList
-    var isSendSuccess: LiveData<Boolean> = _isSendSuccess
+    val typedFaqsList: LiveData<List<Faq>> = _typedFaqsList
+    val isSendSuccess: LiveData<Boolean> = _isSendSuccess
+    fun sendQuestion(question: String) {
+        val questionModel = Question(text = question)
+        viewModelScope.launch {
+            addQuestionUseCase.invoke(AddQuestionUseCase.QuestionParam(questionModel, selectedType))
+                .collect() { result ->
+                    if (result.isSuccess) {
+                        _isSendSuccess.postValue(result.getOrNull())
+                    } else {
+                        _isSendSuccess.postValue(result.getOrNull())
+                    }
+
+                }
+        }
+    }
+
+    fun tabSelected(tab: FaqTab) {
+        getFaqs(tab.toFaqType())
+        selectedType = tab.toFaqType()
+    }
+
     private fun getFaqs(type: Type) {
         viewModelScope.launch {
             getFaqUseCase.invoke().collect() { result ->
@@ -44,22 +64,5 @@ class FaqViewModel(
             }
         }
     }
-    fun sendQuestion(question: String) {
-        val questionModel = Question(text = question)
-        viewModelScope.launch {
-            addQuestionUseCase.invoke(AddQuestionUseCase.QuestionParam(questionModel, selectedType))
-                .collect() { result ->
-                    if (result.isSuccess) {
-                        _isSendSuccess.postValue(result.getOrNull())
-                    } else {
-                        _isSendSuccess.postValue(result.getOrNull())
-                    }
 
-                }
-        }
-    }
-    fun tabSelected(tab: FaqTab) {
-        getFaqs(tab.toFaqType())
-        selectedType = tab.toFaqType()
-    }
 }

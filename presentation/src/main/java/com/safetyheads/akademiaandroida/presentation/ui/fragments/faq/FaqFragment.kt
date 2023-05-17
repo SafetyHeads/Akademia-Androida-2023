@@ -36,10 +36,8 @@ class FaqFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         val questionRV: RecyclerView = binding.questionsRecyclerView
         questionRV.layoutManager = LinearLayoutManager(requireActivity())
-
         faqViewModel.typedFaqsList.observe(viewLifecycleOwner) { faqs ->
             if (faqs != null)
                 questionRV.adapter = FaqAdapter(faqs, ::onClick)
@@ -53,15 +51,12 @@ class FaqFragment : Fragment() {
                     2 -> faqViewModel.tabSelected(FaqTab.AMA)
                 }
             }
-
             override fun onTabUnselected(tab: TabLayout.Tab?) {
                 // no-op
             }
-
             override fun onTabReselected(tab: TabLayout.Tab?) {
                 //no-op
             }
-
         })
 
         binding.askQuestionButton.setOnClickListener { askQuestionDialog() }
@@ -103,7 +98,7 @@ class FaqFragment : Fragment() {
 
         btnSend.setOnClickListener {
             val textQuestion = eTextQuestion.text
-            if (textQuestion.isNullOrEmpty().not()) {
+            if (textQuestion.isNotEmpty()) {
                 faqViewModel.sendQuestion(textQuestion.toString())
             }
         }
