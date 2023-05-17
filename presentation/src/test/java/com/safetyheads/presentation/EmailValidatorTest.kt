@@ -2,7 +2,7 @@ package com.safetyheads.akademiaandroida
 
 import android.content.Context
 import android.widget.EditText
-import com.safetyheads.presentation.utils.EmailValidator
+import com.safetyheads.akademiaandroida.presentation.ui.utils.EmailValidator
 import io.mockk.MockKAnnotations
 import io.mockk.every
 import io.mockk.impl.annotations.RelaxedMockK

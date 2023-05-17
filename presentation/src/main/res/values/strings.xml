@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">Akademia Androida</string>
     <string name="label_first_tier_color">Kolor I rzędu</string>
     <string name="label_second_tier_color">Kolor II rzędu</string>
@@ -103,7 +103,11 @@
     <string name="notifications">Notifications</string>
     <string name="show_my_current_location">Show my current location</string>
     <string name="hello_nickname">Hello %s</string>
+    <string name="meet_us">Meet us</string>
+    <string name="explore_our_social_media">Explore our social media for laughs, member features, furry friends, and passion-filled content.</string>
     <string name="wyswietl_info">Wyświetl info</string>
     <string name="usun_scope">Usuń scope</string>
     <string name="utworz_scope">Utwórz scope</string>
+
+
 </resources>
