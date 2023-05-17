@@ -71,7 +71,7 @@ class FaqFragment : Fragment() {
                 faqQuestion = faq.question.text,
                 faqAnswer = faq.answer.text
             )
-            bottomSheet.show(parentFragmentManager, "FaqBottomSheetDialog")
+            bottomSheet.show(parentFragmentManager, FaqBottomSheetFragment.FAQ_SHEET_DIALOG)
         }
 
 

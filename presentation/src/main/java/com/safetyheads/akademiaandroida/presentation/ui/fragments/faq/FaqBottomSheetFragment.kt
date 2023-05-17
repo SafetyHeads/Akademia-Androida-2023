@@ -12,6 +12,7 @@ class FaqBottomSheetFragment : BottomSheetDialogFragment() {
     private lateinit var binding: FaqBottomSheetFragmentBinding
 
     companion object {
+        const val FAQ_SHEET_DIALOG = "FaqBottomSheetDialog"
         private const val FAQ_QUESTION = "FaqQuestion"
         private const val FAQ_ANSWER = "FaqAnswer"
 
