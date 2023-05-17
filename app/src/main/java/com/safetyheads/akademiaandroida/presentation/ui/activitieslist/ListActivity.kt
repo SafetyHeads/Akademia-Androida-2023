@@ -81,6 +81,7 @@ class ListActivity : AppCompatActivity() {
         forgotPasswordFragment,
         technolgyStackFragment,
         signUpFragment,
+        careerFragment,
         faqFragment
     )
 }
