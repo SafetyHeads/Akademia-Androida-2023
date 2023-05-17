@@ -1,6 +1,5 @@
 package com.safetyheads.akademiaandroida.domain.usecases
 
-
 import com.safetyheads.akademiaandroida.domain.entities.firebasefirestore.faq.Question
 import com.safetyheads.akademiaandroida.domain.entities.firebasefirestore.faq.Type
 import com.safetyheads.akademiaandroida.domain.repositories.FaqRepository
