@@ -1,5 +1,7 @@
 package com.safetyheads.akademiaandroida.presentation.ui.fragments.faq
 
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -7,16 +9,18 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.bottomsheet.BottomSheetBehavior
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.tabs.TabLayout
 import com.safetyheads.akademiaandroida.domain.entities.faqs.FaqTab
 import com.safetyheads.akademiaandroida.domain.entities.faqs.FaqType
+import com.safetyheads.akademiaandroida.domain.entities.firebasefirestore.faq.Faq
 import com.safetyheads.akademiaandroida.presentation.databinding.FragmentFaqBinding
 import com.safetyheads.akademiaandroida.presentation.ui.customviews.dropdown.TextExpandableListAdapter
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class FaqFragment : Fragment() {
     private lateinit var binding: FragmentFaqBinding
-    private lateinit var expandableListAdapter: TextExpandableListAdapter
     private val faqViewModel : FaqViewModel by viewModel();
 
     override fun onCreateView(
@@ -36,7 +40,7 @@ class FaqFragment : Fragment() {
 
         faqViewModel.typedFaqsList.observe(viewLifecycleOwner) { faqs ->
             if(faqs != null)
-                questionRV.adapter = FaqAdapter(faqs)
+                questionRV.adapter = FaqAdapter(faqs, ::onClick)
         }
 
         binding.faqTabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
@@ -57,5 +61,11 @@ class FaqFragment : Fragment() {
             }
 
         })
+    }
+
+    private fun onClick(faq: Faq) {
+        val faqSheet = FaqBottomSheetFragment()
+        faqSheet.show(parentFragmentManager, "BottomSheetDialog")
+        
     }
 }

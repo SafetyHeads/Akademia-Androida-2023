@@ -58,7 +58,7 @@ android:layout_height="fill_parent">
             android:layout_marginTop="@dimen/size_2x"
             android:layout_marginStart="@dimen/size_3x"
             app:tabIndicatorColor="@color/p_60"
-            app:tabTextAppearance="@style/Text7"
+            app:tabTextAppearance="@style/Poppins_regular_14"
             app:tabMode="scrollable"
             app:tabSelectedTextColor="@color/p_60">
 

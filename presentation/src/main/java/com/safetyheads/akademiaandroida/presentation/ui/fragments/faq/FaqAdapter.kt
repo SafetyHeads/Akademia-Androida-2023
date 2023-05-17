@@ -1,15 +1,17 @@
 package com.safetyheads.akademiaandroida.presentation.ui.fragments.faq
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.safetyheads.akademiaandroida.domain.entities.firebasefirestore.faq.Faq
 import com.safetyheads.akademiaandroida.presentation.R
 
-class FaqAdapter(private val faqs: List<Faq>) :
+class FaqAdapter(private val faqs: List<Faq>, private val onClick: (Faq) -> Unit) :
     RecyclerView.Adapter<FaqAdapter.ViewHolder>() {
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val tvQuestion : TextView = itemView.findViewById(R.id.tv_question)
@@ -31,7 +33,7 @@ class FaqAdapter(private val faqs: List<Faq>) :
         holder.tvQuestion.text = faq.question.text
 
         holder.questionConstraint.setOnClickListener {
-        //TODO: onclick
+            onClick(faq)
         }
     }
 }
