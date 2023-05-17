@@ -14,9 +14,10 @@ android:layout_height="fill_parent">
 
     <ImageView
         android:id="@+id/button_back"
-        style="@style/Back_arrow"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        style="@style/Back_arrow"
+        android:contentDescription="@string/back_button"
         android:layout_marginTop="@dimen/size_3x"
         android:layout_marginStart="@dimen/size_3x"
         app:layout_constraintBottom_toBottomOf="@+id/profile_image"
@@ -66,19 +67,19 @@ android:layout_height="fill_parent">
             <com.google.android.material.tabs.TabItem
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Benefits"
+                android:text="@string/benefits"
                 android:textColor="@color/n_120" />
 
             <com.google.android.material.tabs.TabItem
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Delegations"
+                android:text="@string/delegations"
                 android:textColor="@color/n_120" />
 
             <com.google.android.material.tabs.TabItem
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="AMA"
+                android:text="@string/ama"
                 android:textColor="@color/n_120" />
 
         </com.google.android.material.tabs.TabLayout>
@@ -112,7 +113,7 @@ android:layout_height="fill_parent">
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/size_4x"
-            android:text="Are you looking for another answer?"
+            android:text="@string/are_you_looking_for_another_answer"
             android:textColor="@color/s_60"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/askQuestionButton"
@@ -127,7 +128,7 @@ android:layout_height="fill_parent">
             android:fontFamily="@font/poppins_regular"
             android:lineSpacingExtra="6sp"
             android:padding="@dimen/size_2x"
-            android:text="Ask question"
+            android:text="@string/ask_question"
             android:textSize="11sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
