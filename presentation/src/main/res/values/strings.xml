@@ -115,4 +115,6 @@
     <string name="ama">AMA</string>
     <string name="are_you_looking_for_another_answer">Are you looking for another answer?</string>
     <string name="ask_question">Ask question</string>
+    <string name="success_question_sent_information">Your question has been sent. We will answer as soon as possible.</string>
+    <string name="failed_question_sent_information">Your question has not been sent. Please try again later</string>
 </resources>

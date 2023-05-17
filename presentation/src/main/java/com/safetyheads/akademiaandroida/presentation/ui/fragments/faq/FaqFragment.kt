@@ -3,7 +3,6 @@ package com.safetyheads.akademiaandroida.presentation.ui.fragments.faq
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,17 +10,15 @@ import android.widget.Button
 import android.widget.EditText
 import androidx.appcompat.app.AlertDialog
 import androidx.core.widget.addTextChangedListener
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.bottomsheet.BottomSheetBehavior
-import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.tabs.TabLayout
 import com.safetyheads.akademiaandroida.domain.entities.faqs.FaqTab
-import com.safetyheads.akademiaandroida.domain.entities.faqs.FaqType
 import com.safetyheads.akademiaandroida.domain.entities.firebasefirestore.faq.Faq
 import com.safetyheads.akademiaandroida.presentation.R
 import com.safetyheads.akademiaandroida.presentation.databinding.FragmentFaqBinding
-import com.safetyheads.akademiaandroida.presentation.ui.customviews.dropdown.TextExpandableListAdapter
+import com.safetyheads.akademiaandroida.presentation.ui.components.snackbar.LoginSnackBar
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class FaqFragment : Fragment() {
@@ -66,23 +63,48 @@ class FaqFragment : Fragment() {
             }
 
         })
-        binding.askQuestionButton.setOnClickListener {
-            val dialogView = LayoutInflater.from(context).inflate(R.layout.dialog_ask_question, null)
-            val builder = AlertDialog.Builder(requireContext())
-            builder.setView(dialogView)
-            val dialog = builder.create()
-            dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-            dialog.show()
 
-            val eTextQuestion = dialogView.findViewById<EditText>(R.id.eTextQuestion)
-            val btnSend : Button = dialogView.findViewById(R.id.sendButton)
+        binding.askQuestionButton.setOnClickListener { askQuestionDialog() }
+    }
 
-            eTextQuestion.addTextChangedListener {
-                if(it.isNullOrEmpty()) {
-                    btnSend.setBackgroundResource(R.drawable.button_n60_background)
-                } else {
-                    btnSend.setBackgroundResource(R.drawable.button_p30_background)
-                }
+    private fun askQuestionDialog() {
+        val dialogView = LayoutInflater.from(context).inflate(R.layout.dialog_ask_question, null)
+        val builder = AlertDialog.Builder(requireContext())
+        builder.setView(dialogView)
+        val dialog = builder.create()
+        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        dialog.show()
+
+        val eTextQuestion = dialogView.findViewById<EditText>(R.id.eTextQuestion)
+        val btnSend: Button = dialogView.findViewById(R.id.sendButton)
+
+        eTextQuestion.addTextChangedListener {
+            if (it.isNullOrEmpty()) {
+                btnSend.setBackgroundResource(R.drawable.button_n60_background)
+            } else {
+                btnSend.setBackgroundResource(R.drawable.button_p30_background)
+            }
+        }
+
+        btnSend.setOnClickListener {
+            val textQuestion = eTextQuestion.text
+            if (textQuestion.isNullOrEmpty().not()) {
+                faqViewModel.sendQuestion(textQuestion.toString())
+            }
+        }
+
+        faqViewModel.isSendSuccess.observe(viewLifecycleOwner) { isSuccess ->
+            if (isSuccess) {
+                dialog.dismiss()
+                LoginSnackBar.make(
+                    binding.root,
+                    message = requireActivity().getString(R.string.success_question_sent_information)
+                ).show()
+            } else {
+                LoginSnackBar.make(
+                    binding.root,
+                    message = requireActivity().getString(R.string.failed_question_sent_information)
+                ).show()
             }
         }
     }
