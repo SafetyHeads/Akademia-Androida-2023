@@ -14,7 +14,6 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/size"
         android:layout_marginRight="@dimen/size_8x"
-        android:text="@string/lorem_ipsum_dolor_sit_amet"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/imageView3"
         app:layout_constraintStart_toStartOf="parent"
