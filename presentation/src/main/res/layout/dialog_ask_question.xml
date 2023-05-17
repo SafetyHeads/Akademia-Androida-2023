@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/askQuestionDialog"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingBottom="@dimen/size_3x"
+    android:background="@drawable/rounded_background">
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="80dp"
+        android:layout_height="3dp"
+        android:layout_marginTop="@dimen/size_1.5x"
+        android:background="@color/n_70"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/appCompatEditText"
+        style="@style/Poppins_regular_10"
+        android:layout_width="match_parent"
+        android:layout_height="102dp"
+        android:layout_marginStart="@dimen/size_3x"
+        android:layout_marginTop="@dimen/size_3x"
+        android:layout_marginEnd="@dimen/size_3x"
+        android:background="@drawable/question_style"
+        android:gravity="top"
+        android:hint="Write your question"
+        android:padding="@dimen/size_1.5x"
+        android:textColor="@color/n_90"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view" />
+
+    <Button
+        android:layout_width="98dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="@dimen/size_3x"
+        android:layout_marginTop="@dimen/size_2x"
+        android:paddingStart="@dimen/size_2x"
+        android:paddingEnd="@dimen/size_2x"
+        android:fontFamily="@font/poppins_regular"
+        android:textAllCaps="false"
+        android:textSize="14sp"
+        android:drawableStart="@drawable/ic_send"
+        android:drawableTint="@color/n_100"
+        android:background="@drawable/button_n60_background"
+        android:text="Send"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/appCompatEditText" />
+</androidx.constraintlayout.widget.ConstraintLayout>

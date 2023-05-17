@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomsheet.BottomSheetBehavior
@@ -16,7 +17,6 @@ import com.safetyheads.akademiaandroida.domain.entities.faqs.FaqTab
 import com.safetyheads.akademiaandroida.domain.entities.faqs.FaqType
 import com.safetyheads.akademiaandroida.domain.entities.firebasefirestore.faq.Faq
 import com.safetyheads.akademiaandroida.presentation.R
-import com.safetyheads.akademiaandroida.presentation.databinding.FaqBottomSheetFragmentBinding
 import com.safetyheads.akademiaandroida.presentation.databinding.FragmentFaqBinding
 import com.safetyheads.akademiaandroida.presentation.ui.customviews.dropdown.TextExpandableListAdapter
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -63,6 +63,17 @@ class FaqFragment : Fragment() {
             }
 
         })
+        binding.askQuestionButton.setOnClickListener {
+            val dialogView = LayoutInflater.from(context).inflate(R.layout.dialog_ask_question, null)
+
+            val builder = AlertDialog.Builder(requireContext())
+            builder.setView(dialogView)
+
+            val dialog = builder.create()
+            dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+
+            dialog.show()
+        }
     }
 
     private fun onClick(faq: Faq) {
