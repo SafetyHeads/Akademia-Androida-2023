@@ -15,13 +15,15 @@ import com.google.android.material.tabs.TabLayout
 import com.safetyheads.akademiaandroida.domain.entities.faqs.FaqTab
 import com.safetyheads.akademiaandroida.domain.entities.faqs.FaqType
 import com.safetyheads.akademiaandroida.domain.entities.firebasefirestore.faq.Faq
+import com.safetyheads.akademiaandroida.presentation.R
+import com.safetyheads.akademiaandroida.presentation.databinding.FaqBottomSheetFragmentBinding
 import com.safetyheads.akademiaandroida.presentation.databinding.FragmentFaqBinding
 import com.safetyheads.akademiaandroida.presentation.ui.customviews.dropdown.TextExpandableListAdapter
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class FaqFragment : Fragment() {
     private lateinit var binding: FragmentFaqBinding
-    private val faqViewModel : FaqViewModel by viewModel();
+    private val faqViewModel: FaqViewModel by viewModel();
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -34,18 +36,18 @@ class FaqFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val questionRV : RecyclerView = binding.questionsRecyclerView
+        val questionRV: RecyclerView = binding.questionsRecyclerView
         questionRV.layoutManager = LinearLayoutManager(requireActivity())
 
 
         faqViewModel.typedFaqsList.observe(viewLifecycleOwner) { faqs ->
-            if(faqs != null)
+            if (faqs != null)
                 questionRV.adapter = FaqAdapter(faqs, ::onClick)
         }
 
         binding.faqTabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab) {
-                when(tab.position) {
+                when (tab.position) {
                     0 -> faqViewModel.tabSelected(FaqTab.Benefits)
                     1 -> faqViewModel.tabSelected(FaqTab.Delegations)
                     2 -> faqViewModel.tabSelected(FaqTab.AMA)
@@ -64,8 +66,14 @@ class FaqFragment : Fragment() {
     }
 
     private fun onClick(faq: Faq) {
-        val faqSheet = FaqBottomSheetFragment()
-        faqSheet.show(parentFragmentManager, "BottomSheetDialog")
-        
+        if (faq.answer.publish) {
+            val bottomSheet = FaqBottomSheetFragment.newInstance(
+                faqQuestion = faq.question.text,
+                faqAnswer = faq.answer.text
+            )
+            bottomSheet.show(parentFragmentManager, "FaqBottomSheetDialog")
+        }
+
+
     }
 }

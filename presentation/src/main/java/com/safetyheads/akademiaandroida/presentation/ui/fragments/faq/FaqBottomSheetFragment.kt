@@ -11,6 +11,21 @@ class FaqBottomSheetFragment : BottomSheetDialogFragment() {
 
     private lateinit var binding: FaqBottomSheetFragmentBinding
 
+    companion object {
+        private const val FAQ_QUESTION = "FaqQuestion"
+        private const val FAQ_ANSWER = "FaqAnswer"
+
+        fun newInstance(faqQuestion: String, faqAnswer : String): FaqBottomSheetFragment {
+            val fragment = FaqBottomSheetFragment()
+            val args = Bundle().apply {
+                putString(FAQ_QUESTION, faqQuestion)
+                putString(FAQ_ANSWER, faqAnswer)
+            }
+            fragment.arguments = args
+            return fragment
+        }
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -23,5 +38,10 @@ class FaqBottomSheetFragment : BottomSheetDialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.faqBottomSheet.setBackgroundColor(0)
+        binding.answerTextView.text = arguments?.getString(FAQ_ANSWER)
+        binding.questionTextView.text = arguments?.getString(FAQ_QUESTION)
+        binding.btnOk.setOnClickListener {
+            dismiss()
+        }
     }
 }
