@@ -33,19 +33,16 @@ class FaqRepositoryImpl(firebaseFirestore: FirebaseFirestore) : FaqRepository {
     override fun addQuestion(question: Question, type: Type): Flow<Result<Boolean>> = callbackFlow {
         val faqObject = Faq(Answer(), true, question, type.type)
 
-        awaitClose { collectionReference.add(faqObject)
+        val listener = collectionReference.add(faqObject)
             .addOnSuccessListener { document ->
                 // here should be setting current user's id to field 'userId'
             }
-
             .addOnFailureListener { exception ->
                 trySend(Result.failure(exception))
             }
-
             .addOnCompleteListener { task ->
                 trySend(Result.success(task.isComplete))
             }
-            channel.close()
-        }
+        awaitClose { listener.isCanceled }
     }
 }
