@@ -24,6 +24,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class FaqFragment : Fragment() {
     private lateinit var binding: FragmentFaqBinding
     private val faqViewModel: FaqViewModel by viewModel();
+    private lateinit var askDialog: AlertDialog
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -65,15 +66,30 @@ class FaqFragment : Fragment() {
         })
 
         binding.askQuestionButton.setOnClickListener { askQuestionDialog() }
+
+        faqViewModel.isSendSuccess.observe(viewLifecycleOwner) { isSuccess ->
+            if (isSuccess) {
+                askDialog.dismiss()
+                LoginSnackBar.make(
+                    binding.root,
+                    message = requireActivity().getString(R.string.success_question_sent_information)
+                ).show()
+            } else {
+                LoginSnackBar.make(
+                    binding.root,
+                    message = requireActivity().getString(R.string.failed_question_sent_information)
+                ).show()
+            }
+        }
     }
 
     private fun askQuestionDialog() {
         val dialogView = LayoutInflater.from(context).inflate(R.layout.dialog_ask_question, null)
         val builder = AlertDialog.Builder(requireContext())
         builder.setView(dialogView)
-        val dialog = builder.create()
-        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-        dialog.show()
+        askDialog = builder.create()
+        askDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        askDialog.show()
 
         val eTextQuestion = dialogView.findViewById<EditText>(R.id.eTextQuestion)
         val btnSend: Button = dialogView.findViewById(R.id.sendButton)
@@ -92,21 +108,6 @@ class FaqFragment : Fragment() {
                 faqViewModel.sendQuestion(textQuestion.toString())
             }
         }
-
-        faqViewModel.isSendSuccess.observe(viewLifecycleOwner) { isSuccess ->
-            if (isSuccess) {
-                dialog.dismiss()
-                LoginSnackBar.make(
-                    binding.root,
-                    message = requireActivity().getString(R.string.success_question_sent_information)
-                ).show()
-            } else {
-                LoginSnackBar.make(
-                    binding.root,
-                    message = requireActivity().getString(R.string.failed_question_sent_information)
-                ).show()
-            }
-        }
     }
 
     private fun onClick(faq: Faq) {
@@ -117,7 +118,5 @@ class FaqFragment : Fragment() {
             )
             bottomSheet.show(parentFragmentManager, FaqBottomSheetFragment.FAQ_SHEET_DIALOG)
         }
-
-
     }
 }
