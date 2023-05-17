@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:paddingBottom="@dimen/size_3x"
-    android:background="@drawable/rounded_background">
+    android:background="@drawable/rounded_layout_top_bg">
 
     <View
         android:id="@+id/view"

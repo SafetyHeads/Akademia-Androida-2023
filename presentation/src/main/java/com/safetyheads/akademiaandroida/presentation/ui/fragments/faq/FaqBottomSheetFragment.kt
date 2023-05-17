@@ -1,5 +1,7 @@
 package com.safetyheads.akademiaandroida.presentation.ui.fragments.faq
 
+import android.R
+import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -38,7 +40,7 @@ class FaqBottomSheetFragment : BottomSheetDialogFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.faqBottomSheet.setBackgroundColor(0)
+        (view.parent as View).setBackgroundColor(Color.TRANSPARENT)
         binding.answerTextView.text = arguments?.getString(FAQ_ANSWER)
         binding.questionTextView.text = arguments?.getString(FAQ_QUESTION)
         binding.btnOk.setOnClickListener {
