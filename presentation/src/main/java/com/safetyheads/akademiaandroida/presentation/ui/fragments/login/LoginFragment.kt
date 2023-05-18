@@ -48,9 +48,9 @@ class LoginFragment : Fragment() {
         }
 
         binding.buttonSignIn.setOnClickListener {
-            // TODO task 104
-            val action = LoginFragmentDirections.actionLoginFragmentToDashboardPlaceholder()
-            findNavController().navigate(action)
+            // TODO add here logic for login task/104
+//            val action = LoginFragmentDirections.actionLoginFragmentToDashboardPlaceholder()
+//            findNavController().navigate(action)
         }
 
         binding.forgotPassword.setOnClickListener {

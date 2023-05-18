@@ -61,8 +61,9 @@ class LaunchScreenFragment : Fragment() {
         }
 
         binding.button.setOnClickListener {
-            val action = LaunchScreenFragmentDirections.actionLaunchScreenFragmentToNotloggedPlaceholder()
-            findNavController().navigate(action)
+            // add here action to dashboard
+//            val action = LaunchScreenFragmentDirections.actionLaunchScreenFragmentToNotloggedPlaceholder()
+//            findNavController().navigate(action)
         }
     }
 }
