@@ -22,6 +22,12 @@ import com.safetyheads.akademiaandroida.domain.repositories.TechnologyStackRepos
 import com.safetyheads.akademiaandroida.domain.repositories.UserRepository
 import com.safetyheads.akademiaandroida.domain.repositories.VideoRepository
 import com.safetyheads.akademiaandroida.domain.usecases.AddQuestionUseCase
+import com.safetyheads.akademiaandroida.domain.usecases.ChangeCityAddressUseCase
+import com.safetyheads.akademiaandroida.domain.usecases.ChangeCountryAddressUseCase
+import com.safetyheads.akademiaandroida.domain.usecases.ChangeJobPositionUseCase
+import com.safetyheads.akademiaandroida.domain.usecases.ChangeNameUseCase
+import com.safetyheads.akademiaandroida.domain.usecases.ChangePhoneNumberUseCase
+import com.safetyheads.akademiaandroida.domain.usecases.ChangeStreetAddressUseCase
 import com.safetyheads.akademiaandroida.domain.usecases.DateUseCase
 import com.safetyheads.akademiaandroida.domain.usecases.DateUseCaseImpl
 import com.safetyheads.akademiaandroida.domain.usecases.DelaySplashScreenUseCase
@@ -128,6 +134,12 @@ class AndroidAcademyApplication : Application() {
         single { AddQuestionUseCase(get()) }
         single { GetTechnologyStackUseCase(get()) }
         single { RegisterUseCase(get()) }
+        single { ChangeCityAddressUseCase(get()) }
+        single { ChangeCountryAddressUseCase(get()) }
+        single { ChangeJobPositionUseCase(get()) }
+        single { ChangeNameUseCase(get()) }
+        single { ChangePhoneNumberUseCase(get()) }
+        single { ChangeStreetAddressUseCase(get()) }
 
         //viewmodels
         viewModel { SplashScreenViewModel(get(), get()) }
@@ -137,7 +149,7 @@ class AndroidAcademyApplication : Application() {
         viewModelOf(::ChannelViewModel)
         viewModelOf(::VideoViewModel)
         viewModelOf(::PlayListViewModel)
-        viewModel { ProfileViewModel(get(), get()) }
+        viewModelOf(::ProfileViewModel)
         viewModel { TechnologyStackViewModel(get()) }
         viewModel { SignUpViewModel(get()) }
     }
