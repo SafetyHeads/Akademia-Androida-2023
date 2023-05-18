@@ -113,4 +113,10 @@
     <string name="other_actions">Other actions</string>
     <string name="delete_account">Delete account</string>
     <string name="log_out_from_app">Log out from app</string>
+    <string name="invalid_address_message">Wrong address provided</string>
+    <string name="invalid_street_message">Wrong street name</string>
+    <string name="invalid_house_number_message">Wrong house number</string>
+    <string name="invalid_apartment_number_message">Wrong apartment number</string>
+    <string name="invalid_zip_code">Wrong zip code</string>
+    <string name="invalid_city">Wrong city name</string>
 </resources>
