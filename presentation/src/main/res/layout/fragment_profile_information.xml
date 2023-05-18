@@ -21,7 +21,7 @@
                 style="@style/Poppins_regular_blue_10sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
+                android:layout_marginStart="@dimen/size_3x"
                 android:layout_marginTop="6dp"
                 android:text="@string/job_position"
                 app:layout_constraintStart_toStartOf="parent"
@@ -32,7 +32,7 @@
                 style="@style/Poppins_regular_blue_10sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
+                android:layout_marginStart="@dimen/size_3x"
                 android:layout_marginTop="6dp"
                 android:text="@string/e_mail"
                 app:layout_constraintStart_toStartOf="parent"
@@ -43,7 +43,7 @@
                 style="@style/Poppins_regular_blue_10sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
+                android:layout_marginStart="@dimen/size_3x"
                 android:layout_marginTop="6dp"
                 android:text="@string/phone_number"
                 app:layout_constraintStart_toStartOf="parent"
@@ -54,7 +54,7 @@
                 style="@style/H2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
+                android:layout_marginStart="@dimen/size"
                 android:layout_marginTop="26dp"
                 android:text="@string/account_informations"
                 app:layout_constraintStart_toEndOf="@+id/green_line"
@@ -62,10 +62,10 @@
 
             <ImageView
                 android:id="@+id/arrow_back"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="36dp"
+                android:layout_width="@dimen/size_3x"
+                android:layout_height="@dimen/size_3x"
+                android:layout_marginStart="@dimen/size_2.5x"
+                android:layout_marginTop="@dimen/size_4.5x"
                 android:src="@drawable/ic_back_arrow"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -73,9 +73,9 @@
             <View
                 android:id="@+id/green_line"
                 android:layout_width="1dp"
-                android:layout_height="20dp"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="32dp"
+                android:layout_height="@dimen/size_2.5x"
+                android:layout_marginStart="@dimen/size_3x"
+                android:layout_marginTop="@dimen/size_4x"
                 android:background="@color/p_60"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/arrow_back" />
@@ -85,8 +85,8 @@
                 style="@style/Poppins_regular_blue_10sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginStart="@dimen/size_3x"
+                android:layout_marginTop="@dimen/size_2x"
                 android:text="@string/full_name"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/green_line" />
@@ -95,8 +95,8 @@
                 android:id="@+id/full_name_edit_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="4dp"
+                android:layout_marginStart="@dimen/size_3x"
+                android:layout_marginTop="@dimen/size_0.5x"
                 android:background="@null"
                 android:ems="20"
                 android:inputType="text"
@@ -109,8 +109,8 @@
                 android:id="@+id/job_position_edit_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="4dp"
+                android:layout_marginStart="@dimen/size_3x"
+                android:layout_marginTop="@dimen/size_0.5x"
                 android:background="@null"
                 android:ems="20"
                 android:inputType="text"
@@ -123,8 +123,8 @@
                 android:id="@+id/email_text_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="4dp"
+                android:layout_marginStart="@dimen/size_3x"
+                android:layout_marginTop="@dimen/size_0.5x"
                 android:background="@null"
                 android:ems="8"
                 android:inputType="text"
@@ -137,8 +137,8 @@
                 android:id="@+id/phone_number_edit_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="4dp"
+                android:layout_marginStart="@dimen/size_3x"
+                android:layout_marginTop="@dimen/size_0.5x"
                 android:background="@null"
                 android:ems="20"
                 android:inputType="text"
@@ -151,9 +151,9 @@
                 android:id="@+id/first_line"
                 android:layout_width="0dp"
                 android:layout_height="1dp"
-                android:layout_marginStart="12dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="12dp"
+                android:layout_marginStart="@dimen/size_1.5x"
+                android:layout_marginTop="@dimen/size"
+                android:layout_marginEnd="@dimen/size_1.5x"
                 android:background="@color/n_60"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -163,9 +163,9 @@
                 android:id="@+id/second_line"
                 android:layout_width="0dp"
                 android:layout_height="1dp"
-                android:layout_marginStart="12dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="12dp"
+                android:layout_marginStart="@dimen/size_1.5x"
+                android:layout_marginTop="@dimen/size"
+                android:layout_marginEnd="@dimen/size_1.5x"
                 android:background="@color/n_60"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
@@ -176,9 +176,9 @@
                 android:id="@+id/third_line"
                 android:layout_width="0dp"
                 android:layout_height="1dp"
-                android:layout_marginStart="12dp"
+                android:layout_marginStart="@dimen/size_1.5x"
                 android:layout_marginTop="6dp"
-                android:layout_marginEnd="12dp"
+                android:layout_marginEnd="@dimen/size_1.5x"
                 android:background="@color/n_60"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -189,19 +189,19 @@
                 android:id="@+id/fourth_line"
                 android:layout_width="0dp"
                 android:layout_height="1dp"
-                android:layout_marginStart="12dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="12dp"
+                android:layout_marginStart="@dimen/size_1.5x"
+                android:layout_marginTop="@dimen/size"
+                android:layout_marginEnd="@dimen/size_1.5x"
                 android:background="@color/n_60"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/phone_number_edit_text"
-                android:paddingEnd="24dp"/>
+                android:paddingEnd="@dimen/size_3x"/>
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="24dp"
+                android:layout_height="@dimen/size_3x"
                 app:layout_constraintTop_toBottomOf="@+id/fourth_line" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -210,7 +210,7 @@
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="12dp" />
+        android:layout_height="@dimen/size_1.5x" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/address_card_view"
@@ -227,7 +227,7 @@
                 style="@style/H2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
+                android:layout_marginStart="@dimen/size"
                 android:layout_marginTop="18dp"
                 android:text="@string/address"
                 app:layout_constraintStart_toEndOf="@+id/green_second_line"
@@ -236,9 +236,9 @@
             <View
                 android:id="@+id/green_second_line"
                 android:layout_width="1dp"
-                android:layout_height="20dp"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="24dp"
+                android:layout_height="@dimen/size_2.5x"
+                android:layout_marginStart="@dimen/size_3x"
+                android:layout_marginTop="@dimen/size_3x"
                 android:background="@color/p_60"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -247,8 +247,8 @@
                 android:id="@+id/street_edit_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="12dp"
+                android:layout_marginStart="@dimen/size_3x"
+                android:layout_marginTop="@dimen/size_1.5x"
                 android:background="@null"
                 android:ems="20"
                 android:inputType="text"
@@ -261,8 +261,8 @@
                 android:id="@+id/city_edit_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginStart="@dimen/size_3x"
+                android:layout_marginTop="@dimen/size"
                 android:background="@null"
                 android:ems="20"
                 android:inputType="text"
@@ -275,8 +275,8 @@
                 android:id="@+id/country_edit_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginStart="@dimen/size_3x"
+                android:layout_marginTop="@dimen/size"
                 android:background="@null"
                 android:ems="20"
                 android:inputType="text"
@@ -287,7 +287,7 @@
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="24dp"
+                android:layout_height="@dimen/size_3x"
                 app:layout_constraintTop_toBottomOf="@+id/country_edit_text" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -296,7 +296,7 @@
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="12dp" />
+        android:layout_height="@dimen/size_1.5x" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/other_action_card_view"
@@ -313,7 +313,7 @@
                 style="@style/H2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
+                android:layout_marginStart="@dimen/size"
                 android:layout_marginTop="26dp"
                 android:text="@string/other_actions"
                 app:layout_constraintStart_toEndOf="@+id/green_other_line"
@@ -322,9 +322,9 @@
             <View
                 android:id="@+id/green_other_line"
                 android:layout_width="1dp"
-                android:layout_height="20dp"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="32dp"
+                android:layout_height="@dimen/size_2.5x"
+                android:layout_marginStart="@dimen/size_3x"
+                android:layout_marginTop="@dimen/size_4x"
                 android:background="@color/p_60"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -334,7 +334,7 @@
                 style="@style/Text6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
+                android:layout_marginStart="@dimen/size_3x"
                 android:layout_marginTop="18dp"
                 android:text="@string/delete_account"
                 app:layout_constraintStart_toStartOf="parent"
@@ -344,25 +344,25 @@
                 android:id="@+id/first_other_line"
                 android:layout_width="0dp"
                 android:layout_height="1dp"
-                android:layout_marginStart="12dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="12dp"
+                android:layout_marginStart="@dimen/size_1.5x"
+                android:layout_marginTop="@dimen/size"
+                android:layout_marginEnd="@dimen/size_1.5x"
                 android:background="@color/n_60"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/delete_account"
-                android:paddingEnd="24dp"/>
+                android:paddingEnd="@dimen/size_3x"/>
 
             <View
                 android:id="@+id/second_other_line"
                 android:layout_width="0dp"
                 android:layout_height="1dp"
-                android:layout_marginStart="12dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="12dp"
+                android:layout_marginStart="@dimen/size_1.5x"
+                android:layout_marginTop="@dimen/size"
+                android:layout_marginEnd="@dimen/size_1.5x"
                 android:background="@color/n_60"
-                android:paddingEnd="24dp"
+                android:paddingEnd="@dimen/size_3x"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
@@ -373,7 +373,7 @@
                 style="@style/Text6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
+                android:layout_marginStart="@dimen/size_3x"
                 android:layout_marginTop="10dp"
                 android:text="@string/log_out_from_app"
                 app:layout_constraintStart_toStartOf="parent"
@@ -381,7 +381,7 @@
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="24dp"
+                android:layout_height="@dimen/size_3x"
                 app:layout_constraintTop_toBottomOf="@+id/second_other_line" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -390,6 +390,6 @@
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="12dp" />
+        android:layout_height="@dimen/size_1.5x" />
 
 </LinearLayout>
