@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -120,8 +119,8 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/job_position" />
 
-            <EditText
-                android:id="@+id/email_edit_text"
+            <TextView
+                android:id="@+id/email_text_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
@@ -130,7 +129,7 @@
                 android:ems="8"
                 android:inputType="text"
                 android:text="@string/e_mail"
-                android:textSize="14sp"
+                style="@style/Text6"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/email" />
 
@@ -178,13 +177,13 @@
                 android:layout_width="0dp"
                 android:layout_height="1dp"
                 android:layout_marginStart="12dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="6dp"
                 android:layout_marginEnd="12dp"
                 android:background="@color/n_60"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/email_edit_text" />
+                app:layout_constraintTop_toBottomOf="@+id/email_text_view" />
 
             <View
                 android:id="@+id/fourth_line"
@@ -245,7 +244,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <EditText
-                android:id="@+id/street"
+                android:id="@+id/street_edit_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
@@ -259,7 +258,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/address" />
 
             <EditText
-                android:id="@+id/city"
+                android:id="@+id/city_edit_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
@@ -270,10 +269,10 @@
                 android:text="City"
                 android:textSize="14sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/street" />
+                app:layout_constraintTop_toBottomOf="@+id/street_edit_text" />
 
             <EditText
-                android:id="@+id/country"
+                android:id="@+id/country_edit_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
@@ -284,12 +283,12 @@
                 android:text="Country"
                 android:textSize="14sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/city" />
+                app:layout_constraintTop_toBottomOf="@+id/city_edit_text" />
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="24dp"
-                app:layout_constraintTop_toBottomOf="@+id/country" />
+                app:layout_constraintTop_toBottomOf="@+id/country_edit_text" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -307,7 +306,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent">
 
             <TextView
                 android:id="@+id/other_action"
@@ -382,11 +381,15 @@
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="24dp"
+                android:layout_height="8dp"
                 app:layout_constraintTop_toBottomOf="@+id/second_other_line" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.cardview.widget.CardView>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="12dp" />
 
 </LinearLayout>
