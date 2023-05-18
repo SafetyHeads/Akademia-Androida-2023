@@ -17,6 +17,7 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import com.google.firebase.FirebaseApp
 import com.google.firebase.messaging.FirebaseMessaging
+import com.safetyheads.akademiaandroida.presentation.ui.MainActivity
 import com.safetyheads.akademiaandroida.presentation.ui.activities.splashscreen.SplashScreenViewModel
 import com.safetyheads.akademiaandroida.presentation.ui.activitieslist.ListActivity
 import com.safetyheads.akademiaandroida.presentation.ui.components.Footer
@@ -82,6 +83,10 @@ class DevelopmentMainActivity : AppCompatActivity() {
                 ViewGroup.LayoutParams.WRAP_CONTENT
             )
         )
+
+        binding.startApp.setOnClickListener {
+            startActivity(Intent(this, MainActivity::class.java))
+        }
     }
 
     private fun setupBindings() {
@@ -115,7 +120,6 @@ class DevelopmentMainActivity : AppCompatActivity() {
             hideButtons()
         }
     }
-
 
     private fun openFragment(fragment: Fragment) {
         supportFragmentManager.beginTransaction().apply {

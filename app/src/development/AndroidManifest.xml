@@ -22,5 +22,9 @@
             </intent-filter>
         </activity>
 
+        <activity
+            android:name=".presentation.ui.MainActivity"
+            android:exported="true"
+            android:theme="@style/Theme.AkademiaAndroida.withSplash"/>
     </application>
 </manifest>
