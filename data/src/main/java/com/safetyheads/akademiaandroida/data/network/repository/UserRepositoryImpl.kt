@@ -48,20 +48,16 @@ class UserRepositoryImpl : UserRepository {
                             document.getString("address.streetNumber").orEmpty(),
                             document.getString("address.zipCode").orEmpty()
                         )
-
                         val currentLocationRef = document.get("currentLocation") as? GeoPoint
                         val currentLocation = Location(
                             currentLocationRef?.latitude ?: 0.0,
                             currentLocationRef?.longitude ?: 0.0
                         )
-
-
                         val homeLocationRef = document.get("homeLocation") as? GeoPoint
                         val homeLocation = Location(
                             homeLocationRef?.latitude ?: 0.0,
                             homeLocationRef?.longitude ?: 0.0
                         )
-
                         val fcmToken = document.getString("fcmToken").orEmpty()
                         val id = document.getString("id").orEmpty()
                         val firstName = document.getString("firstName").orEmpty()
@@ -70,7 +66,6 @@ class UserRepositoryImpl : UserRepository {
                         val email = document.getString("email").orEmpty()
                         val jobPosition = document.getString("jobPosition").orEmpty()
                         val phoneNumber = document.getString("phoneNumber").orEmpty()
-
                         val imageReference = document.get("image") as DocumentReference
                         imageReference.addSnapshotListener { snapshot, exception ->
                             if (exception != null) {
@@ -79,18 +74,12 @@ class UserRepositoryImpl : UserRepository {
                                 snapshot?.let { secondDocument ->
                                     val imageUrl = secondDocument.getString("url").orEmpty()
                                     val profile = Profile(
-                                        firebaseId,
-                                        email,
-                                        address,
-                                        currentLocation,
-                                        fcmToken,
-                                        firstName,
-                                        homeLocation,
-                                        id,
-                                        imageUrl,
-                                        lastName,
-                                        userName,
-                                        phoneNumber,
+                                        firebaseId, email,
+                                        address, currentLocation,
+                                        fcmToken, firstName,
+                                        homeLocation, id,
+                                        imageUrl, lastName,
+                                        userName, phoneNumber,
                                         jobPosition
                                     )
                                     trySend(Result.success(profile))
