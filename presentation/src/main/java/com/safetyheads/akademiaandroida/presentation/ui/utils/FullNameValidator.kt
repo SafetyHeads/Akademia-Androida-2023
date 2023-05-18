@@ -26,12 +26,10 @@ object FullNameValidator {
         val bigOnlyFirstLetterFilter = InputFilter { source, start, end, _, _, _ ->
             var upperCase = 0
             for (i in start until end) {
-                if (Character.isUpperCase(source[i]) && checkIsNotSpace(source[i]) && isNotFirstChar(
-                        upperCase
-                    )
-                )
+                if (Character.isUpperCase(source[i]) && checkIsNotSpace(source[i]) && isNotFirstChar(upperCase))
                     return@InputFilter source.dropLast(1)
-                upperCase++
+                else if (Character.isUpperCase(source[i]))
+                    upperCase++
             }
             null
         }

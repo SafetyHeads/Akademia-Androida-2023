@@ -228,6 +228,7 @@ class ProfileInformationFragment : Fragment() {
             if (nameParts.size == 2) {
                 val firstName = nameParts[0]
                 val lastName = nameParts[1]
+                viewModel.changeName(firstName, lastName)
             }
         }
     }
@@ -235,8 +236,7 @@ class ProfileInformationFragment : Fragment() {
     private fun changeJobPosition() {
         jobPositionJob = null
         val jobPosition = binding.jobPositionEditText.text.toString()
-
-
+        viewModel.changeJobPosition(jobPosition)
     }
 
     private fun changePhoneNumber() {
@@ -250,7 +250,7 @@ class ProfileInformationFragment : Fragment() {
     private fun changeCountry() {
         countryJob = null
         val country = binding.countryEditText.text.toString()
-
+        viewModel.changeCountryAddress(country)
     }
 
     private fun changeStreet() {
@@ -261,6 +261,7 @@ class ProfileInformationFragment : Fragment() {
             if (streetParts.size == 2) {
                 val streetName = streetParts[0]
                 val streetNumber = streetParts[1]
+                viewModel.changeStreetAddress(streetName, streetNumber)
             }
         }
     }
@@ -273,6 +274,7 @@ class ProfileInformationFragment : Fragment() {
             if (cityParts.size == 2) {
                 val zipCode = cityParts[0]
                 val city = cityParts[1]
+                viewModel.changeCityAddress(zipCode, city)
             }
         }
     }
