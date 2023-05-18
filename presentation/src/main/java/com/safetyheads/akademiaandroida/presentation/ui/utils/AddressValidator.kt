@@ -11,6 +11,7 @@ object AddressValidator {
     private const val MIN_STREET_LENGTH = 3
     private const val MIN_HOUSE_NUMBER_LENGTH = 1
     private const val MIN_APARTMENT_NUMBER_LENGTH = 1
+    var IS_CORRECT = false
 
     fun attach(editText: EditText, context: Context) {
         var splitResult = mutableListOf<String>()
@@ -42,6 +43,9 @@ object AddressValidator {
 
             if (validateAddress(splitResult, editText, context) && checkout) {
                 editText.error = null
+                IS_CORRECT = true
+            } else {
+                IS_CORRECT = false
             }
         }
     }

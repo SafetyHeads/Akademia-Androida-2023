@@ -11,6 +11,7 @@ object CityValidator {
     private const val MAX_TEXT_LENGTH = 100
     private const val ZIPCODE_PATTERN = "^\\d{2}-\\d{3}|\\d{5}$"
     private const val CITY_PATTERN = "^[A-Za-z\\s]+$"
+    var IS_CORRECT = false
 
     fun attach(editText: EditText, context: Context) {
         val lengthFilter = InputFilter.LengthFilter(MAX_TEXT_LENGTH)
@@ -20,6 +21,9 @@ object CityValidator {
             val splitAddress = address.split(" ")
             if (validateCity(splitAddress, editText, context)) {
                 editText.error = null
+                IS_CORRECT = true
+            } else {
+                IS_CORRECT = false
             }
         }
     }
