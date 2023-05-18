@@ -366,10 +366,10 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/log_oug_account" />
+                app:layout_constraintTop_toBottomOf="@+id/log_out_account" />
 
             <TextView
-                android:id="@+id/log_oug_account"
+                android:id="@+id/log_out_account"
                 style="@style/Text6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -381,7 +381,7 @@
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="8dp"
+                android:layout_height="24dp"
                 app:layout_constraintTop_toBottomOf="@+id/second_other_line" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

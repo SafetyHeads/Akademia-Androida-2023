@@ -13,6 +13,8 @@ import com.safetyheads.akademiaandroida.domain.usecases.ChangePhoneNumberUseCase
 import com.safetyheads.akademiaandroida.domain.usecases.ChangeStreetAddressUseCase
 import com.safetyheads.akademiaandroida.domain.usecases.GetProfileInformationUseCase
 import com.safetyheads.akademiaandroida.domain.usecases.LoginUseCase
+import com.safetyheads.akademiaandroida.domain.usecases.ProfileDeleteAccountUseCase
+import com.safetyheads.akademiaandroida.domain.usecases.ProfileLogOutUseCase
 import kotlinx.coroutines.launch
 
 class ProfileViewModel(
@@ -23,11 +25,15 @@ class ProfileViewModel(
     private val changeJobPositionUseCase: ChangeJobPositionUseCase,
     private val changeNameUseCase: ChangeNameUseCase,
     private val changePhoneNumberUseCase: ChangePhoneNumberUseCase,
-    private val changeStreetAddressUseCase: ChangeStreetAddressUseCase
+    private val changeStreetAddressUseCase: ChangeStreetAddressUseCase,
+    private val profileDeleteAccountUseCase: ProfileDeleteAccountUseCase,
+    private val profileLogOutUseCase: ProfileLogOutUseCase
 ) : ViewModel() {
 
     val userUUID: MutableLiveData<String> = MutableLiveData()
     val userInformation: MutableLiveData<Profile> = MutableLiveData()
+    val logOutProfile: MutableLiveData<Boolean> = MutableLiveData(false)
+    val deleteProfile: MutableLiveData<Boolean> = MutableLiveData(false)
 
     fun tempLogin() {
         viewModelScope.launch {
@@ -126,6 +132,35 @@ class ProfileViewModel(
                 }
             }
         }
+    }
+
+    fun deleteProfile() {
+        viewModelScope.launch {
+            profileDeleteAccountUseCase.invoke(ProfileDeleteAccountUseCase.Param()).collect { deleteProfileResult ->
+                if (deleteProfileResult.isSuccess) {
+                    deleteProfile.postValue(true)
+                } else {
+                    Log.i("ProfileViewModel", deleteProfileResult.exceptionOrNull()?.message.orEmpty())
+                }
+            }
+        }
+    }
+
+    fun logOutProfile() {
+        viewModelScope.launch {
+            profileLogOutUseCase.invoke(ProfileLogOutUseCase.Param()).collect { logOutProfileResult ->
+                if (logOutProfileResult.isSuccess) {
+                    logOutProfile.postValue(true)
+                } else {
+                    Log.i("ProfileViewModel", logOutProfileResult.exceptionOrNull()?.message.orEmpty())
+                }
+            }
+        }
+    }
+
+    fun resetProfileEntities() {
+        logOutProfile.value = false
+        deleteProfile.value = false
     }
 
 }

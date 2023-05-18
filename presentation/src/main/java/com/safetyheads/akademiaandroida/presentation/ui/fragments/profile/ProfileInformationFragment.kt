@@ -70,6 +70,20 @@ class ProfileInformationFragment : Fragment() {
                 }
             }
         }
+
+        viewModel.logOutProfile.observe(viewLifecycleOwner) { logout ->
+            if (logout == true) {
+                viewModel.resetProfileEntities()
+                //navigate to activity for unregistered
+            }
+        }
+
+        viewModel.deleteProfile.observe(viewLifecycleOwner) { delete ->
+            if (delete == true) {
+                viewModel.resetProfileEntities()
+                //navigate to activity for unregistered
+            }
+        }
     }
 
     private fun initUI() {
@@ -79,6 +93,18 @@ class ProfileInformationFragment : Fragment() {
         CityValidator.attach(binding.cityEditText, requireContext())
 
         binding.apply {
+            deleteAccount.setOnClickListener {
+                viewModel.deleteProfile()
+            }
+
+            logOutAccount.setOnClickListener {
+                viewModel.logOutProfile()
+            }
+
+            arrowBack.setOnClickListener {
+                requireActivity().onBackPressed()
+            }
+
             fullNameEditText.addTextChangedListener(object : TextWatcher {
                 override fun beforeTextChanged(
                     s: CharSequence?,

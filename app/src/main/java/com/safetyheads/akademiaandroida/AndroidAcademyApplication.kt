@@ -45,6 +45,8 @@ import com.safetyheads.akademiaandroida.domain.usecases.GetSocialUseCase
 import com.safetyheads.akademiaandroida.domain.usecases.GetTechnologyStackUseCase
 import com.safetyheads.akademiaandroida.domain.usecases.GetVideoUseCase
 import com.safetyheads.akademiaandroida.domain.usecases.LoginUseCase
+import com.safetyheads.akademiaandroida.domain.usecases.ProfileDeleteAccountUseCase
+import com.safetyheads.akademiaandroida.domain.usecases.ProfileLogOutUseCase
 import com.safetyheads.akademiaandroida.domain.usecases.RegisterUseCase
 import com.safetyheads.akademiaandroida.domain.usecases.ResetPasswordUseCase
 import com.safetyheads.akademiaandroida.presentation.ui.activities.splashscreen.SplashScreenViewModel
@@ -140,6 +142,8 @@ class AndroidAcademyApplication : Application() {
         single { ChangeNameUseCase(get()) }
         single { ChangePhoneNumberUseCase(get()) }
         single { ChangeStreetAddressUseCase(get()) }
+        single { ProfileDeleteAccountUseCase(get()) }
+        single { ProfileLogOutUseCase(get()) }
 
         //viewmodels
         viewModel { SplashScreenViewModel(get(), get()) }

@@ -251,6 +251,37 @@ class UserRepositoryImpl : UserRepository {
             }
         }
 
+    override suspend fun logOut(): Flow<Result<Boolean>> = flow {
+        if (firebaseAuth.currentUser != null) {
+            firebaseAuth.signOut()
+            emit(Result.success(true))
+        } else {
+            emit(Result.failure(Exception("User Logout failed!")))
+        }
+    }
+
+    override suspend fun deleteAccount(): Flow<Result<Boolean>> = callbackFlow {
+        val user = firebaseAuth.currentUser
+
+        if (user == null) {
+            trySend(Result.failure(Exception("User is not authenticated.")))
+            close()
+            return@callbackFlow
+        }
+
+        val listener = user.delete()
+            .addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    trySend(Result.success(true))
+                } else {
+                    trySend(Result.failure(task.exception ?: Exception("Account deletion failed.")))
+                }
+                close()
+            }
+
+        awaitClose { listener.isCanceled }
+    }
+
     override fun createUser(fullName: String, email: String, password: String): Flow<User> = flow {
         val authResult = firebaseAuth.createUserWithEmailAndPassword(email, password).await()
 

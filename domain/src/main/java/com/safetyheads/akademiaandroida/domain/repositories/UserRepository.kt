@@ -16,5 +16,7 @@ interface UserRepository {
     suspend fun changeStreetAddress(streetName: String, streetNumber: String, userUUID: String): Flow<Result<Boolean>>
     suspend fun changeCityAddress(zipCode: String, city: String, userUUID: String): Flow<Result<Boolean>>
     suspend fun changeCountry(country: String, userUUID: String): Flow<Result<Boolean>>
+    suspend fun logOut(): Flow<Result<Boolean>>
+    suspend fun deleteAccount(): Flow<Result<Boolean>>
 
 }
