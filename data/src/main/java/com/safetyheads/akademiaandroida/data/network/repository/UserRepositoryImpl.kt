@@ -22,6 +22,7 @@ import kotlinx.coroutines.tasks.await
 
 class UserRepositoryImpl : UserRepository {
     private val firebaseAuth = FirebaseAuth.getInstance()
+    private val collectionReference = FirebaseFirestore.getInstance()
 
     override fun resetPassword(email: String): Flow<ResetPassword> = flow {
         firebaseAuth.sendPasswordResetEmail(email).await()
@@ -66,6 +67,9 @@ class UserRepositoryImpl : UserRepository {
                         val firstName = document.getString("firstName").orEmpty()
                         val lastName = document.getString("lastName").orEmpty()
                         val userName = document.getString("userName").orEmpty()
+                        val email = document.getString("email").orEmpty()
+                        val jobPosition = document.getString("jobPosition").orEmpty()
+                        val phoneNumber = document.getString("phoneNumber").orEmpty()
 
                         val imageReference = document.get("image") as DocumentReference
                         imageReference.addSnapshotListener { snapshot, exception ->
@@ -76,6 +80,7 @@ class UserRepositoryImpl : UserRepository {
                                     val imageUrl = secondDocument.getString("url").orEmpty()
                                     val profile = Profile(
                                         firebaseId,
+                                        email,
                                         address,
                                         currentLocation,
                                         fcmToken,
@@ -84,7 +89,9 @@ class UserRepositoryImpl : UserRepository {
                                         id,
                                         imageUrl,
                                         lastName,
-                                        userName
+                                        userName,
+                                        phoneNumber,
+                                        jobPosition
                                     )
                                     trySend(Result.success(profile))
                                 }
@@ -113,6 +120,136 @@ class UserRepositoryImpl : UserRepository {
             }
         awaitClose { listener.isCanceled }
     }
+
+    override suspend fun changeName(
+        firstName: String,
+        lastName: String,
+        userUUID: String
+    ): Flow<Result<Boolean>> = callbackFlow {
+        try {
+            val listener = collectionReference.collection("users").document(userUUID)
+                .update(
+                    mapOf(
+                        "firstName" to firstName,
+                        "lastName" to lastName
+                    )
+                ).addOnCompleteListener {
+                    trySend(Result.success(true))
+                }.addOnFailureListener { e ->
+                    trySend(Result.failure(e))
+                }
+            awaitClose { listener.isCanceled }
+        } catch (e: Exception) {
+            trySend(Result.failure(e))
+        }
+    }
+
+    override suspend fun changeJobPosition(
+        jobPosition: String,
+        userUUID: String
+    ): Flow<Result<Boolean>> = callbackFlow {
+        try {
+            val listener = collectionReference.collection("users").document(userUUID)
+                .update(
+                    mapOf(
+                        "jobPosition" to jobPosition,
+                    )
+                ).addOnCompleteListener {
+                    trySend(Result.success(true))
+                }.addOnFailureListener { e ->
+                    trySend(Result.failure(e))
+                }
+            awaitClose { listener.isCanceled }
+        } catch (e: Exception) {
+            trySend(Result.failure(e))
+        }
+    }
+
+    override suspend fun changePhoneNumber(
+        phoneNumber: String,
+        userUUID: String
+    ): Flow<Result<Boolean>> = callbackFlow {
+        try {
+            val listener = collectionReference.collection("users").document(userUUID)
+                .update(
+                    mapOf(
+                        "phoneNumber" to phoneNumber,
+                    )
+                ).addOnCompleteListener {
+                    trySend(Result.success(true))
+                }.addOnFailureListener { e ->
+                    trySend(Result.failure(e))
+                }
+            awaitClose { listener.isCanceled }
+        } catch (e: Exception) {
+            trySend(Result.failure(e))
+        }
+    }
+
+    override suspend fun changeStreetAddress(
+        streetName: String,
+        streetNumber: String,
+        userUUID: String
+    ): Flow<Result<Boolean>> = callbackFlow {
+        try {
+            val listener = collectionReference.collection("users").document(userUUID)
+                .update(
+                    mapOf(
+                        "address.streetName" to streetName,
+                        "address.streetNumber" to streetNumber,
+                    )
+                ).addOnCompleteListener {
+                    trySend(Result.success(true))
+                }.addOnFailureListener { e ->
+                    trySend(Result.failure(e))
+                }
+            awaitClose { listener.isCanceled }
+        } catch (e: Exception) {
+            trySend(Result.failure(e))
+        }
+    }
+
+    override suspend fun changeCityAddress(
+        zipCode: String,
+        city: String,
+        userUUID: String
+    ): Flow<Result<Boolean>> = callbackFlow {
+        try {
+            val listener = collectionReference.collection("users").document(userUUID)
+                .update(
+                    mapOf(
+                        "address.city" to city,
+                        "address.zipCode" to zipCode,
+                    )
+                ).addOnCompleteListener {
+                    trySend(Result.success(true))
+                }.addOnFailureListener { e ->
+                    trySend(Result.failure(e))
+                }
+            awaitClose { listener.isCanceled }
+        } catch (e: Exception) {
+            trySend(Result.failure(e))
+        }
+    }
+
+    override suspend fun changeCountry(country: String, userUUID: String): Flow<Result<Boolean>> =
+        callbackFlow {
+            try {
+                val listener = collectionReference.collection("users").document(userUUID)
+                    .update(
+                        mapOf(
+                            "address.country" to country
+                        )
+                    ).addOnCompleteListener {
+                        trySend(Result.success(true))
+                    }.addOnFailureListener { e ->
+                        trySend(Result.failure(e))
+                    }
+                awaitClose { listener.isCanceled }
+            } catch (e: Exception) {
+                trySend(Result.failure(e))
+            }
+        }
 
     override fun createUser(fullName: String, email: String, password: String): Flow<User> = flow {
         val authResult = firebaseAuth.createUserWithEmailAndPassword(email, password).await()
