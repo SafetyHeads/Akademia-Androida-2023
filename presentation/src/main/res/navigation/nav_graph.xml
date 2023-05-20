@@ -55,7 +55,7 @@
     </fragment>
     <fragment
         android:id="@+id/signUpFragment"
-        android:name="com.safetyheads.akademiaandroida.presentation.ui.sign_up.SignUpFragment"
+        android:name="com.safetyheads.akademiaandroida.presentation.ui.signup.SignUpFragment"
         android:label="SignUpFragment"
         tools:layout="@layout/fragment_sign_up" />
 </navigation>
