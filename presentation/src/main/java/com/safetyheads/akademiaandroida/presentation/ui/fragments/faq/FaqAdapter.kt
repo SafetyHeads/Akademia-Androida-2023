@@ -20,9 +20,8 @@ class FaqAdapter(private val faqs: List<Faq>, private val onClick: (Faq) -> Unit
             LayoutInflater.from(parent.context).inflate(R.layout.faq_question_item, parent, false)
         return ViewHolder(view)
     }
-    override fun getItemCount(): Int {
-        return faqs.size
-    }
+    override fun getItemCount(): Int = faqs.size
+
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val faq = faqs[position]
         holder.tvQuestion.text = faq.question.text

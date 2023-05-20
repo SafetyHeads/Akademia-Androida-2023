@@ -28,6 +28,9 @@ class WeAreHiringFragment : Fragment() {
     private fun initUI() {
         binding.applyNow.setOnClickListener { }
 
-        binding.applyNow.setOnClickListener { }
+        @Suppress("ForbiddenComment")
+        binding.applyNow.setOnClickListener {
+            // TODO: Apply now button click
+        }
     }
 }

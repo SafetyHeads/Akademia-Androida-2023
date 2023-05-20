@@ -9,8 +9,6 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.safetyheads.akademiaandroida.presentation.databinding.FragmentBottomSheetFaqBinding
 
 class FaqBottomSheetFragment : BottomSheetDialogFragment() {
-
-    private lateinit var binding: FragmentBottomSheetFaqBinding
     companion object {
         const val FAQ_SHEET_DIALOG = "FaqBottomSheetDialog"
         private const val FAQ_QUESTION = "FaqQuestion"
@@ -25,6 +23,7 @@ class FaqBottomSheetFragment : BottomSheetDialogFragment() {
             return fragment
         }
     }
+    private lateinit var binding: FragmentBottomSheetFaqBinding
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,

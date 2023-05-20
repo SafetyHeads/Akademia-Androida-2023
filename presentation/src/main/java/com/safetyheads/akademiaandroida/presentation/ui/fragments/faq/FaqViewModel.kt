@@ -51,15 +51,8 @@ class FaqViewModel(
             getFaqUseCase.invoke().collect() { result ->
                 if (result.isSuccess) {
                     val faqsList = result.getOrNull()
-                    if (faqsList != null) {
-                        val typedFaqs: MutableList<Faq> = mutableListOf()
-                        for (faq in faqsList) {
-                            if (faq.type == type.type && faq.publish) {
-                                typedFaqs.add(faq)
-                                _typedFaqsList.postValue(typedFaqs)
-                            }
-                        }
-                    }
+                        ?.filter { it.type == type.type && it.publish }.orEmpty()
+                    _typedFaqsList.postValue(faqsList)
                 }
             }
         }
