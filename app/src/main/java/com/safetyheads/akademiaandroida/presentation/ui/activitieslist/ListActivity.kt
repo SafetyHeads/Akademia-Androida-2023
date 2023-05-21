@@ -17,8 +17,8 @@ import com.safetyheads.akademiaandroida.presentation.ui.fragments.login.LoginFra
 import com.safetyheads.akademiaandroida.presentation.ui.fragments.map.MapFragment
 import com.safetyheads.akademiaandroida.presentation.ui.fragments.technologystack.TechnologyStackFragment
 import com.safetyheads.akademiaandroida.presentation.ui.fragments.we_are_hiring.WeAreHiringFragment
-import com.safetyheads.akademiaandroida.presentation.ui.fragments.youtubefragments.YouTubeChanelFragment
-import com.safetyheads.akademiaandroida.presentation.ui.fragments.youtubefragments.YouTubeVideoFragment
+import com.safetyheads.akademiaandroida.presentation.ui.fragments.youtube.YouTubeChanelFragment
+import com.safetyheads.akademiaandroida.presentation.ui.fragments.youtube.YouTubeVideoFragment
 import com.safetyheads.akademiaandroida.presentation.ui.sign_up.SignUpFragment
 import com.safetyheads.akademiaandroida.utils.getPackageInfoCompat
 

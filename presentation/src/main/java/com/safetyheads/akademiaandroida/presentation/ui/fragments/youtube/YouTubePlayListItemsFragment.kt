@@ -1,4 +1,4 @@
-package com.safetyheads.akademiaandroida.presentation.ui.fragments.youtubefragments
+package com.safetyheads.akademiaandroida.presentation.ui.fragments.youtube
 
 import android.os.Bundle
 import android.view.LayoutInflater

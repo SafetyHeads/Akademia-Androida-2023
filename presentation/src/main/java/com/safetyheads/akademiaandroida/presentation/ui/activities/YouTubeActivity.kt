@@ -4,10 +4,10 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.safetyheads.akademiaandroida.presentation.R
-import com.safetyheads.akademiaandroida.presentation.ui.fragments.youtubefragments.YouTubeChanelFragment
-import com.safetyheads.akademiaandroida.presentation.ui.fragments.youtubefragments.YouTubePlayListItemsFragment
-import com.safetyheads.akademiaandroida.presentation.ui.fragments.youtubefragments.YouTubePlayListsFragment
-import com.safetyheads.akademiaandroida.presentation.ui.fragments.youtubefragments.YouTubeVideoFragment
+import com.safetyheads.akademiaandroida.presentation.ui.fragments.youtube.YouTubeChanelFragment
+import com.safetyheads.akademiaandroida.presentation.ui.fragments.youtube.YouTubePlayListItemsFragment
+import com.safetyheads.akademiaandroida.presentation.ui.fragments.youtube.YouTubePlayListsFragment
+import com.safetyheads.akademiaandroida.presentation.ui.fragments.youtube.YouTubeVideoFragment
 import com.safetyheads.akademiaandroida.presentation.databinding.ActivityYoutubeBinding
 
 
