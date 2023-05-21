@@ -1,21 +1,30 @@
 package com.safetyheads.akademiaandroida.presentation.ui.fragments.login
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.safetyheads.akademiaandroida.domain.entities.User
 import com.safetyheads.akademiaandroida.domain.usecases.LoginUseCase
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 
 class LoginViewModel(private val loginUseCase: LoginUseCase) : ViewModel() {
-    private val _loginStatus = MutableStateFlow<Result<User>?>(null)
-    val LoginState: StateFlow<Result<User>?> = _loginStatus
+    private val _loginState = MutableLiveData<LoginState>(null)
+    val loginState: LiveData<LoginState> = _loginState
+
     fun login(email: String, password: String) {
         viewModelScope.launch {
-            loginUseCase.invoke(LoginUseCase.UserParams(email, password)).collect { result ->
-                _loginStatus.value = result
+            loginUseCase.invoke(LoginUseCase.LoginParam(email, password)).collect { result ->
+
+                if (result.isSuccess) {
+                    _loginState.value = LoginState.SUCCESS
+                } else {
+                    _loginState.value = LoginState.ERROR
+                }
             }
         }
     }
+}
+
+enum class LoginState {
+    SUCCESS, ERROR, LOADING
 }

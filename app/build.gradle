@@ -51,6 +51,14 @@ android {
             applicationIdSuffix = ".production"
         }
     }
+    sourceSets {
+        production {
+            manifest.srcFile 'src/production/AndroidManifest.xml'
+        }
+        qa{
+            manifest.srcFile 'src/qa/AndroidManifest.xml'
+        }
+    }
 
     buildTypes {
         release {
@@ -94,11 +102,13 @@ dependencies {
     implementation 'com.google.android.material:material:1.8.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
 
+    // Firebase
     implementation 'com.google.firebase:firebase-crashlytics-ktx:18.3.6'
     implementation 'com.google.firebase:firebase-analytics-ktx:21.2.2'
     implementation 'com.google.firebase:firebase-auth-ktx:21.3.0'
     implementation 'com.google.firebase:firebase-firestore-ktx:24.5.0'
     implementation 'com.google.firebase:firebase-config-ktx:21.3.0'
+    implementation 'com.google.firebase:firebase-messaging-ktx:23.1.2'
 
     implementation 'com.google.android.gms:play-services-maps:18.1.0'
 
@@ -107,6 +117,7 @@ dependencies {
 
     // google map
     implementation 'com.google.android.gms:play-services-maps:18.1.0'
+
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
