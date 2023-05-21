@@ -5,9 +5,9 @@ import android.content.pm.PackageManager
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.safetyheads.akademiaandroida.presentation.ui.customviews.DashboardFragment
 import com.safetyheads.akademiaandroida.databinding.ActivityListBinding
 import com.safetyheads.akademiaandroida.presentation.ui.career.CareerFragment
+import com.safetyheads.akademiaandroida.presentation.ui.customviews.DashboardFragment
 import com.safetyheads.akademiaandroida.presentation.ui.customviews.ExperienceStructureFragment
 import com.safetyheads.akademiaandroida.presentation.ui.customviews.dropdown.FragmentDropDownList
 import com.safetyheads.akademiaandroida.presentation.ui.fragments.clients.ClientsFragment
@@ -18,12 +18,9 @@ import com.safetyheads.akademiaandroida.presentation.ui.fragments.forgotpassword
 import com.safetyheads.akademiaandroida.presentation.ui.fragments.login.LoginFragment
 import com.safetyheads.akademiaandroida.presentation.ui.fragments.map.MapFragment
 import com.safetyheads.akademiaandroida.presentation.ui.fragments.technologystack.TechnologyStackFragment
-import com.safetyheads.akademiaandroida.presentation.ui.fragments.we_are_hiring.WeAreHiringFragment
+import com.safetyheads.akademiaandroida.presentation.ui.fragments.wearehiring.WeAreHiringFragment
 import com.safetyheads.akademiaandroida.presentation.ui.fragments.youtube.YouTubeChanelFragment
 import com.safetyheads.akademiaandroida.presentation.ui.fragments.youtube.YouTubeVideoFragment
-import com.safetyheads.akademiaandroida.presentation.ui.sign_up.SignUpFragment
-import com.safetyheads.akademiaandroida.utils.getPackageInfoCompat
-import com.safetyheads.akademiaandroida.presentation.ui.fragments.wearehiring.WeAreHiringFragment
 import com.safetyheads.akademiaandroida.presentation.ui.signup.SignUpFragment
 import com.safetyheads.akademiaandroida.presentation.ui.utils.getPackageInfoCompat
 
@@ -95,7 +92,7 @@ class ListActivity : AppCompatActivity() {
         signUpFragment,
         mapFragment,
         youTubeVideoFragment,
-        youTubeChanelFragment
+        youTubeChanelFragment,
         careerFragment,
         faqFragment
 

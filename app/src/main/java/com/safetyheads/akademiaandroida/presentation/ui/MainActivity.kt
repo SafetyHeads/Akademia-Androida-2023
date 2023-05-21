@@ -6,12 +6,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.safetyheads.akademiaandroida.databinding.ActivityMainBinding
 import com.safetyheads.akademiaandroida.presentation.ui.activities.splashscreen.SplashScreenViewModel
-import com.safetyheads.akademiaandroida.presentation.ui.activitieslist.ListActivity
-import com.safetyheads.akademiaandroida.presentation.ui.components.Footer
-import com.safetyheads.akademiaandroida.presentation.ui.fragments.contact_with_us.ContactUsFragment
-import com.safetyheads.akademiaandroida.presentation.ui.fragments.font_style.FontSylesFragment
-import com.safetyheads.akademiaandroida.presentation.ui.fragments.map.MapFragment
-import com.safetyheads.akademiaandroida.presentation.ui.fragments.we_are_hiring.WeAreHiringFragment
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : AppCompatActivity() {
