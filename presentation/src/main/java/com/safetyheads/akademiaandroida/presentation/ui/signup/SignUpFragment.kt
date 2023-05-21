@@ -96,9 +96,9 @@ class SignUpFragment : Fragment() {
         val password = binding.eTextPassword.text.toString().trim()
         val passwordconfirm = binding.eTextConfirmPassword.text.toString().trim()
 
-        // Add more validation logic here, like checking if email is valid and if passwords match
+
         return email.isNotEmpty() && password.isNotEmpty() && fullname.isNotEmpty() && passwordconfirm.isNotEmpty()
-                && password == passwordconfirm // check if passwords match
+                && password == passwordconfirm
     }
 }
 
