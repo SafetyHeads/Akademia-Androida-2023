@@ -1,6 +1,8 @@
 package com.safetyheads.akademiaandroida.presentation.ui.fragments.login
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -32,6 +34,8 @@ class LoginFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val isSuccessFromForgotPass = arguments?.getBoolean("isSuccess")
 
+        setupInputValidation()
+
         if (isSuccessFromForgotPass == true) {
             LoginSnackBar.make(
                 binding.root,
@@ -46,8 +50,7 @@ class LoginFragment : Fragment() {
             )
         }
 
-        EmailValidator.attach(binding.eTextEmailAddress)
-        PasswordValidator.attach(binding.eTextPassword, requireContext())
+
 
         viewModel.loginState.observe(viewLifecycleOwner, Observer { loginState ->
             when (loginState) {
@@ -94,5 +97,34 @@ class LoginFragment : Fragment() {
             val action = LoginFragmentDirections.actionLoginFragmentToSignUpFragment()
             findNavController().navigate(action)
         }
+    }
+
+    private fun setupInputValidation() {
+
+        EmailValidator.attach(binding.eTextEmailAddress)
+        PasswordValidator.attach(binding.eTextPassword, requireContext())
+
+        val textWatcher = object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
+
+            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
+                binding.buttonSignIn.isEnabled = isValidInput()
+            }
+            override fun afterTextChanged(s: Editable) {}
+        }
+
+        binding.eTextEmailAddress.addTextChangedListener(textWatcher)
+        binding.eTextPassword.addTextChangedListener(textWatcher)
+
+        binding.buttonSignIn.isEnabled = false
+
+    }
+
+
+    private fun isValidInput(): Boolean {
+        val email = binding.eTextEmailAddress.text.toString().trim()
+        val password = binding.eTextPassword.text.toString().trim()
+
+        return email.isNotEmpty() && password.isNotEmpty()
     }
 }
