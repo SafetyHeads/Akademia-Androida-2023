@@ -263,6 +263,7 @@ class ProfileViewModel(
                 .collect { deleteProfileResult ->
                     if (deleteProfileResult.isSuccess) {
                         deleteProfile.postValue(true)
+                        resetProfileEntities()
                     } else {
                         Log.i(
                             "ProfileViewModel",
@@ -279,6 +280,7 @@ class ProfileViewModel(
                 .collect { logOutProfileResult ->
                     if (logOutProfileResult.isSuccess) {
                         logOutProfile.postValue(true)
+                        resetProfileEntities()
                     } else {
                         Log.i(
                             "ProfileViewModel",
