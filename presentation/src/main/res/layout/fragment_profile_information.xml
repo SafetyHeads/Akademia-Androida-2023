@@ -244,15 +244,42 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <EditText
-                android:id="@+id/street_edit_text"
+                android:id="@+id/zipcode_edit_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/size_3x"
+                android:layout_marginTop="@dimen/size"
+                android:background="@null"
+                android:ems="3"
+                android:inputType="text"
+                android:text="zip"
+                android:textSize="14sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/street_number_edit_text" />
+
+            <EditText
+                android:id="@+id/street_number_edit_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/size_0.5x"
+                android:layout_marginTop="@dimen/size_1.5x"
+                android:background="@null"
+                android:ems="5"
+                android:inputType="text"
+                android:text="Street number"
+                android:textSize="14sp"
+                app:layout_constraintStart_toEndOf="@+id/street_name_edit_text"
+                app:layout_constraintTop_toBottomOf="@+id/address" />
+
+            <EditText
+                android:id="@+id/street_name_edit_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/size_3x"
                 android:layout_marginTop="@dimen/size_1.5x"
                 android:background="@null"
-                android:ems="20"
                 android:inputType="text"
-                android:text="Street"
+                android:text="Street name"
                 android:textSize="14sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/address" />
@@ -261,15 +288,14 @@
                 android:id="@+id/city_edit_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/size_3x"
                 android:layout_marginTop="@dimen/size"
                 android:background="@null"
-                android:ems="20"
+                android:ems="10"
                 android:inputType="text"
                 android:text="City"
                 android:textSize="14sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/street_edit_text" />
+                app:layout_constraintStart_toEndOf="@+id/zipcode_edit_text"
+                app:layout_constraintTop_toBottomOf="@+id/street_number_edit_text" />
 
             <EditText
                 android:id="@+id/country_edit_text"

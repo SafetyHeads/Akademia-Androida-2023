@@ -6,18 +6,17 @@ import android.widget.EditText
 import androidx.core.widget.addTextChangedListener
 import com.safetyheads.akademiaandroida.presentation.R
 
-
-object CityValidator {
+object StreetNameValidator {
     private const val MAX_TEXT_LENGTH = 30
-    private const val CITY_PATTERN = "^[A-Za-z\\s]+$"
+    private const val STREET_NAME_PATTERN = "^[A-Za-z\\s]+$"
     var IS_CORRECT = false
 
     fun attach(editText: EditText, context: Context) {
         val lengthFilter = InputFilter.LengthFilter(MAX_TEXT_LENGTH)
         editText.filters = arrayOf(lengthFilter)
         editText.addTextChangedListener { text ->
-            val address = text.toString().trim()
-            if (validateCity(address, editText, context)) {
+            val streetName = text.toString().trim()
+            if (validateCity(streetName, editText, context)) {
                 editText.error = null
                 IS_CORRECT = true
             } else {
@@ -27,14 +26,16 @@ object CityValidator {
     }
 
     private fun validateCity(
-        address: String,
+        streetName: String,
         editText: EditText,
         context: Context
     ): Boolean {
         var isCorrect = true
 
-        if (!Regex(CITY_PATTERN).matches(address) || address.length < 3) {
-            editText.error = context.getString(R.string.invalid_city)
+        if (!Regex(STREET_NAME_PATTERN).matches(streetName)
+            || streetName.length < 3
+            || !streetName.first().isUpperCase()) {
+            editText.error = context.getString(R.string.invalid_street_name)
             isCorrect = false
         }
 

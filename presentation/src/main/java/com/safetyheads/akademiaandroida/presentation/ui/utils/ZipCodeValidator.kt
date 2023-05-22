@@ -6,18 +6,17 @@ import android.widget.EditText
 import androidx.core.widget.addTextChangedListener
 import com.safetyheads.akademiaandroida.presentation.R
 
-
-object CityValidator {
-    private const val MAX_TEXT_LENGTH = 30
-    private const val CITY_PATTERN = "^[A-Za-z\\s]+$"
+object ZipCodeValidator {
+    private const val MAX_TEXT_LENGTH = 6
+    private const val ZIPCODE_PATTERN = "^\\d{2}-\\d{3}|\\d{5}$"
     var IS_CORRECT = false
 
     fun attach(editText: EditText, context: Context) {
         val lengthFilter = InputFilter.LengthFilter(MAX_TEXT_LENGTH)
         editText.filters = arrayOf(lengthFilter)
         editText.addTextChangedListener { text ->
-            val address = text.toString().trim()
-            if (validateCity(address, editText, context)) {
+            val zipCode = text.toString().trim()
+            if (validateZipCode(zipCode, editText, context)) {
                 editText.error = null
                 IS_CORRECT = true
             } else {
@@ -26,18 +25,19 @@ object CityValidator {
         }
     }
 
-    private fun validateCity(
-        address: String,
+    private fun validateZipCode(
+        zipCode: String,
         editText: EditText,
         context: Context
     ): Boolean {
         var isCorrect = true
 
-        if (!Regex(CITY_PATTERN).matches(address) || address.length < 3) {
-            editText.error = context.getString(R.string.invalid_city)
+        if (!Regex(ZIPCODE_PATTERN).matches(zipCode)) {
+            editText.error = context.getString(R.string.invalid_zip_code)
             isCorrect = false
         }
 
         return isCorrect
     }
+
 }

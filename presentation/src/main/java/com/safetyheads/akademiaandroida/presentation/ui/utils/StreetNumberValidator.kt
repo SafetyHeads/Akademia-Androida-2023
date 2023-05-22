@@ -6,18 +6,19 @@ import android.widget.EditText
 import androidx.core.widget.addTextChangedListener
 import com.safetyheads.akademiaandroida.presentation.R
 
-
-object CityValidator {
-    private const val MAX_TEXT_LENGTH = 30
-    private const val CITY_PATTERN = "^[A-Za-z\\s]+$"
+object StreetNumberValidator {
+    private const val MAX_TEXT_LENGTH = 6
+    private const val MIN_NUMBER_LENGTH = 1
     var IS_CORRECT = false
 
     fun attach(editText: EditText, context: Context) {
         val lengthFilter = InputFilter.LengthFilter(MAX_TEXT_LENGTH)
         editText.filters = arrayOf(lengthFilter)
         editText.addTextChangedListener { text ->
-            val address = text.toString().trim()
-            if (validateCity(address, editText, context)) {
+            val streetNumber = text.toString().trim()
+            var checkout = true
+
+            if (validateStreetNumber(streetNumber, editText, context) && checkout) {
                 editText.error = null
                 IS_CORRECT = true
             } else {
@@ -26,15 +27,17 @@ object CityValidator {
         }
     }
 
-    private fun validateCity(
-        address: String,
+    private fun validateStreetNumber(
+        streetNumber: String,
         editText: EditText,
         context: Context
     ): Boolean {
         var isCorrect = true
 
-        if (!Regex(CITY_PATTERN).matches(address) || address.length < 3) {
-            editText.error = context.getString(R.string.invalid_city)
+        if (streetNumber.length < MIN_NUMBER_LENGTH
+            || streetNumber.endsWith("/")
+            || streetNumber.length > MAX_TEXT_LENGTH) {
+            editText.error = context.getString(R.string.invalid_house_number_message)
             isCorrect = false
         }
 

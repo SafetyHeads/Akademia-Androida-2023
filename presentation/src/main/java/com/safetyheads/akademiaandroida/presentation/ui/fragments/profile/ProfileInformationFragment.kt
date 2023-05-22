@@ -9,10 +9,12 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.safetyheads.akademiaandroida.domain.entities.firebasefirestore.Profile
 import com.safetyheads.akademiaandroida.presentation.databinding.FragmentProfileInformationBinding
-import com.safetyheads.akademiaandroida.presentation.ui.utils.AddressValidator
 import com.safetyheads.akademiaandroida.presentation.ui.utils.CityValidator
 import com.safetyheads.akademiaandroida.presentation.ui.utils.FullNameValidator
 import com.safetyheads.akademiaandroida.presentation.ui.utils.PhoneNumberValidator
+import com.safetyheads.akademiaandroida.presentation.ui.utils.StreetNameValidator
+import com.safetyheads.akademiaandroida.presentation.ui.utils.StreetNumberValidator
+import com.safetyheads.akademiaandroida.presentation.ui.utils.ZipCodeValidator
 import com.safetyheads.akademiaandroida.presentation.ui.viewmodels.ProfileViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -30,7 +32,9 @@ class ProfileInformationFragment : Fragment() {
     private var fullNameJob: Job? = null
     private var jobPositionJob: Job? = null
     private var phoneNumberJob: Job? = null
-    private var streetJob: Job? = null
+    private var streetNameJob: Job? = null
+    private var streetNumberJob: Job? = null
+    private var zipCodeJob: Job? = null
     private var cityJob: Job? = null
     private var countryJob: Job? = null
 
@@ -60,10 +64,14 @@ class ProfileInformationFragment : Fragment() {
                         jobPositionEditText.setText(profileInformation.jobPosition)
                     if (phoneNumberJob == null)
                         phoneNumberEditText.setText(profileInformation.phoneNumber)
-                    if (streetJob == null)
-                        streetEditText.setText("${profileInformation.address.streetName} ${profileInformation.address.streetNumber}")
+                    if (streetNameJob == null)
+                        streetNameEditText.setText(profileInformation.address.streetName)
+                    if (streetNumberJob == null)
+                        streetNumberEditText.setText(profileInformation.address.streetNumber)
                     if (cityJob == null)
-                        cityEditText.setText("${profileInformation.address.zipCode} ${profileInformation.address.city}")
+                        cityEditText.setText(profileInformation.address.city)
+                    if (zipCodeJob == null)
+                        zipcodeEditText.setText(profileInformation.address.zipCode)
                     if (countryJob == null)
                         countryEditText.setText(profileInformation.address.country)
                     emailTextView.text = profileInformation.email
@@ -89,7 +97,11 @@ class ProfileInformationFragment : Fragment() {
     private fun initUI() {
         FullNameValidator.attach(binding.fullNameEditText, requireContext())
         PhoneNumberValidator.attach(binding.phoneNumberEditText, requireContext())
-        AddressValidator.attach(binding.streetEditText, requireContext())
+
+        StreetNameValidator.attach(binding.streetNameEditText, requireContext())
+        StreetNumberValidator.attach(binding.streetNumberEditText, requireContext())
+
+        ZipCodeValidator.attach(binding.zipcodeEditText, requireContext())
         CityValidator.attach(binding.cityEditText, requireContext())
 
         binding.apply {
@@ -117,10 +129,7 @@ class ProfileInformationFragment : Fragment() {
                 override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                     if (("${actualProfile.firstName} ${actualProfile.lastName}") != binding.fullNameEditText.text.toString()) {
                         fullNameJob?.cancel()
-                        fullNameJob = CoroutineScope(Dispatchers.Main).launch {
-                            delay(5000)
-                            changeFullName()
-                        }
+                        fullNameJob = resetJob { changeFullName() }
                     }
                 }
 
@@ -140,10 +149,7 @@ class ProfileInformationFragment : Fragment() {
                 override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                     if (actualProfile.jobPosition != binding.jobPositionEditText.text.toString()) {
                         jobPositionJob?.cancel()
-                        jobPositionJob = CoroutineScope(Dispatchers.Main).launch {
-                            delay(5000)
-                            changeJobPosition()
-                        }
+                        jobPositionJob = resetJob { changeJobPosition() }
                     }
                 }
 
@@ -163,10 +169,7 @@ class ProfileInformationFragment : Fragment() {
                 override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                     if (actualProfile.phoneNumber != binding.phoneNumberEditText.text.toString()) {
                         phoneNumberJob?.cancel()
-                        phoneNumberJob = CoroutineScope(Dispatchers.Main).launch {
-                            delay(5000)
-                            changePhoneNumber()
-                        }
+                        phoneNumberJob = resetJob { changePhoneNumber() }
                     }
                 }
 
@@ -174,7 +177,7 @@ class ProfileInformationFragment : Fragment() {
                 }
             })
 
-            streetEditText.addTextChangedListener(object : TextWatcher {
+            streetNameEditText.addTextChangedListener(object : TextWatcher {
                 override fun beforeTextChanged(
                     s: CharSequence?,
                     start: Int,
@@ -184,12 +187,9 @@ class ProfileInformationFragment : Fragment() {
                 }
 
                 override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                    if (("${actualProfile.address.streetName} ${actualProfile.address.streetNumber}") != binding.streetEditText.text.toString()) {
-                        streetJob?.cancel()
-                        streetJob = CoroutineScope(Dispatchers.Main).launch {
-                            delay(5000)
-                            changeStreet()
-                        }
+                    if (actualProfile.address.streetName != binding.streetNameEditText.text.toString()) {
+                        streetNameJob?.cancel()
+                        streetNameJob = resetJob { changeStreetName() }
                     }
                 }
 
@@ -207,12 +207,9 @@ class ProfileInformationFragment : Fragment() {
                 }
 
                 override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                    if (("${actualProfile.address.zipCode} ${actualProfile.address.city}") != binding.cityEditText.text.toString()) {
+                    if (actualProfile.address.city != binding.cityEditText.text.toString()) {
                         cityJob?.cancel()
-                        cityJob = CoroutineScope(Dispatchers.Main).launch {
-                            delay(5000)
-                            changeCity()
-                        }
+                        cityJob = resetJob { changeCity() }
                     }
                 }
 
@@ -232,10 +229,47 @@ class ProfileInformationFragment : Fragment() {
                 override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                     if (actualProfile.address.country != binding.countryEditText.text.toString()) {
                         countryJob?.cancel()
-                        countryJob = CoroutineScope(Dispatchers.Main).launch {
-                            delay(5000)
-                            changeCountry()
-                        }
+                        countryJob = resetJob { changeCountry() }
+                    }
+                }
+
+                override fun afterTextChanged(s: Editable?) {
+                }
+            })
+
+            streetNumberEditText.addTextChangedListener(object : TextWatcher {
+                override fun beforeTextChanged(
+                    s: CharSequence?,
+                    start: Int,
+                    count: Int,
+                    after: Int
+                ) {
+                }
+
+                override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                    if (actualProfile.address.streetNumber != binding.streetNumberEditText.text.toString()) {
+                        countryJob?.cancel()
+                        countryJob = resetJob { changeStreetNumber() }
+                    }
+                }
+
+                override fun afterTextChanged(s: Editable?) {
+                }
+            })
+
+            zipcodeEditText.addTextChangedListener(object : TextWatcher {
+                override fun beforeTextChanged(
+                    s: CharSequence?,
+                    start: Int,
+                    count: Int,
+                    after: Int
+                ) {
+                }
+
+                override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                    if (actualProfile.address.zipCode != binding.zipcodeEditText.text.toString()) {
+                        countryJob?.cancel()
+                        countryJob = resetJob { changeZipCode() }
                     }
                 }
 
@@ -279,29 +313,43 @@ class ProfileInformationFragment : Fragment() {
         viewModel.changeCountryAddress(country)
     }
 
-    private fun changeStreet() {
-        streetJob = null
-        if (AddressValidator.IS_CORRECT) {
-            val street = binding.streetEditText.text.toString()
-            val streetParts = street.split(" ")
-            if (streetParts.size == 2) {
-                val streetName = streetParts[0]
-                val streetNumber = streetParts[1]
-                viewModel.changeStreetAddress(streetName, streetNumber)
-            }
+    private fun changeStreetName() {
+        streetNameJob = null
+        if (StreetNameValidator.IS_CORRECT) {
+            val street = binding.streetNameEditText.text.toString()
+            viewModel.changeStreetAddress(street)
         }
     }
+
 
     private fun changeCity() {
         cityJob = null
         if (CityValidator.IS_CORRECT) {
             val city = binding.cityEditText.text.toString()
-            val cityParts = city.split(" ")
-            if (cityParts.size == 2) {
-                val zipCode = cityParts[0]
-                val city = cityParts[1]
-                viewModel.changeCityAddress(zipCode, city)
-            }
+            viewModel.changeCityAddress(city)
+        }
+    }
+
+    private fun changeZipCode() {
+        zipCodeJob = null
+        if (ZipCodeValidator.IS_CORRECT) {
+            val zipCode = binding.zipcodeEditText.text.toString()
+            viewModel.changeZipCode(zipCode)
+        }
+    }
+
+    private fun changeStreetNumber() {
+        streetNumberJob = null
+        if (StreetNumberValidator.IS_CORRECT) {
+            val streetNumber = binding.streetNumberEditText.text.toString()
+            viewModel.changeStreetNumber(streetNumber)
+        }
+    }
+
+    private fun resetJob(function: () -> Unit): Job {
+        return CoroutineScope(Dispatchers.Main).launch {
+            delay(5000)
+            function.invoke()
         }
     }
 

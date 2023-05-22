@@ -4,18 +4,19 @@ import com.safetyheads.akademiaandroida.domain.repositories.UserRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
-class ChangePhoneNumberUseCase(private val repository: UserRepository) :
-    BaseUseCase<ChangePhoneNumberUseCase.Param, Boolean> {
+class ChangeUserUseCase(private val repository: UserRepository) :
+    BaseUseCase<ChangeUserUseCase.Param, String> {
 
     class Param(
-        val phoneNumber: String,
+        val mapChange: Map<String, Any>,
+        val functionTag: String,
         val userUUID: String
     ) : BaseUseCase.Params
 
-    override suspend fun invoke(parameter: Param): Flow<Result<Boolean>> {
+    override suspend fun invoke(parameter: Param): Flow<Result<String>> {
         return flow {
             try {
-                repository.changePhoneNumber(parameter.phoneNumber, parameter.userUUID)
+                repository.changeUser(parameter.mapChange, parameter.functionTag, parameter.userUUID)
                     .collect { result ->
                         if (result.isSuccess)
                             emit(result)

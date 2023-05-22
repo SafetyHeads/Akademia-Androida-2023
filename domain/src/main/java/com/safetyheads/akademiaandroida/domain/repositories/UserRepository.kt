@@ -10,13 +10,8 @@ interface UserRepository {
     fun resetPassword(email: String): Flow<ResetPassword>
     fun getProfileInformation(userUUID: String): Flow<Result<Profile>>
     fun logIn(email: String, password: String): Flow<Result<String>>
-    suspend fun changeName(firstName: String, lastName: String, userUUID: String): Flow<Result<Boolean>>
-    suspend fun changeJobPosition(jobPosition: String, userUUID: String): Flow<Result<Boolean>>
-    suspend fun changePhoneNumber(phoneNumber: String, userUUID: String): Flow<Result<Boolean>>
-    suspend fun changeStreetAddress(streetName: String, streetNumber: String, userUUID: String): Flow<Result<Boolean>>
-    suspend fun changeCityAddress(zipCode: String, city: String, userUUID: String): Flow<Result<Boolean>>
-    suspend fun changeCountry(country: String, userUUID: String): Flow<Result<Boolean>>
     suspend fun logOut(): Flow<Result<Boolean>>
     suspend fun deleteAccount(): Flow<Result<Boolean>>
+    suspend fun changeUser(mapChange: Map<String, Any>, functionTag: String, userUUID: String): Flow<Result<String>>
 
 }

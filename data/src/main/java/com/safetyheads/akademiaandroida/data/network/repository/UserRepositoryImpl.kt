@@ -110,136 +110,6 @@ class UserRepositoryImpl : UserRepository {
         awaitClose { listener.isCanceled }
     }
 
-    override suspend fun changeName(
-        firstName: String,
-        lastName: String,
-        userUUID: String
-    ): Flow<Result<Boolean>> = callbackFlow {
-        try {
-            val listener = collectionReference.collection("users").document(userUUID)
-                .update(
-                    mapOf(
-                        "firstName" to firstName,
-                        "lastName" to lastName
-                    )
-                ).addOnCompleteListener {
-                    trySend(Result.success(true))
-                }.addOnFailureListener { e ->
-                    trySend(Result.failure(e))
-                }
-            awaitClose { listener.isCanceled }
-        } catch (e: Exception) {
-            trySend(Result.failure(e))
-        }
-    }
-
-    override suspend fun changeJobPosition(
-        jobPosition: String,
-        userUUID: String
-    ): Flow<Result<Boolean>> = callbackFlow {
-        try {
-            val listener = collectionReference.collection("users").document(userUUID)
-                .update(
-                    mapOf(
-                        "jobPosition" to jobPosition,
-                    )
-                ).addOnCompleteListener {
-                    trySend(Result.success(true))
-                }.addOnFailureListener { e ->
-                    trySend(Result.failure(e))
-                }
-            awaitClose { listener.isCanceled }
-        } catch (e: Exception) {
-            trySend(Result.failure(e))
-        }
-    }
-
-    override suspend fun changePhoneNumber(
-        phoneNumber: String,
-        userUUID: String
-    ): Flow<Result<Boolean>> = callbackFlow {
-        try {
-            val listener = collectionReference.collection("users").document(userUUID)
-                .update(
-                    mapOf(
-                        "phoneNumber" to phoneNumber,
-                    )
-                ).addOnCompleteListener {
-                    trySend(Result.success(true))
-                }.addOnFailureListener { e ->
-                    trySend(Result.failure(e))
-                }
-            awaitClose { listener.isCanceled }
-        } catch (e: Exception) {
-            trySend(Result.failure(e))
-        }
-    }
-
-    override suspend fun changeStreetAddress(
-        streetName: String,
-        streetNumber: String,
-        userUUID: String
-    ): Flow<Result<Boolean>> = callbackFlow {
-        try {
-            val listener = collectionReference.collection("users").document(userUUID)
-                .update(
-                    mapOf(
-                        "address.streetName" to streetName,
-                        "address.streetNumber" to streetNumber,
-                    )
-                ).addOnCompleteListener {
-                    trySend(Result.success(true))
-                }.addOnFailureListener { e ->
-                    trySend(Result.failure(e))
-                }
-            awaitClose { listener.isCanceled }
-        } catch (e: Exception) {
-            trySend(Result.failure(e))
-        }
-    }
-
-    override suspend fun changeCityAddress(
-        zipCode: String,
-        city: String,
-        userUUID: String
-    ): Flow<Result<Boolean>> = callbackFlow {
-        try {
-            val listener = collectionReference.collection("users").document(userUUID)
-                .update(
-                    mapOf(
-                        "address.city" to city,
-                        "address.zipCode" to zipCode,
-                    )
-                ).addOnCompleteListener {
-                    trySend(Result.success(true))
-                }.addOnFailureListener { e ->
-                    trySend(Result.failure(e))
-                }
-            awaitClose { listener.isCanceled }
-        } catch (e: Exception) {
-            trySend(Result.failure(e))
-        }
-    }
-
-    override suspend fun changeCountry(country: String, userUUID: String): Flow<Result<Boolean>> =
-        callbackFlow {
-            try {
-                val listener = collectionReference.collection("users").document(userUUID)
-                    .update(
-                        mapOf(
-                            "address.country" to country
-                        )
-                    ).addOnCompleteListener {
-                        trySend(Result.success(true))
-                    }.addOnFailureListener { e ->
-                        trySend(Result.failure(e))
-                    }
-                awaitClose { listener.isCanceled }
-            } catch (e: Exception) {
-                trySend(Result.failure(e))
-            }
-        }
-
     override suspend fun logOut(): Flow<Result<Boolean>> = flow {
         if (firebaseAuth.currentUser != null) {
             firebaseAuth.signOut()
@@ -269,6 +139,25 @@ class UserRepositoryImpl : UserRepository {
             }
 
         awaitClose { listener.isCanceled }
+    }
+
+    override suspend fun changeUser(
+        mapChange: Map<String, Any>,
+        functionTag: String,
+        userUUID: String
+    ): Flow<Result<String>> = callbackFlow {
+        try {
+            val listener = collectionReference.collection("users").document(userUUID)
+                .update(mapChange)
+                .addOnCompleteListener {
+                    trySend(Result.success(functionTag))
+                }.addOnFailureListener { e ->
+                    trySend(Result.failure(e))
+                }
+            awaitClose { listener.isCanceled }
+        } catch (e: Exception) {
+            trySend(Result.failure(e))
+        }
     }
 
     override fun createUser(fullName: String, email: String, password: String): Flow<User> = flow {
