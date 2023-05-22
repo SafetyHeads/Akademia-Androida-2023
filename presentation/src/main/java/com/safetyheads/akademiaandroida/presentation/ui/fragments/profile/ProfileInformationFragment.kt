@@ -82,12 +82,14 @@ class ProfileInformationFragment : Fragment() {
         viewModel.logOutProfile.observe(viewLifecycleOwner) { logout ->
             if (logout == true) {
                 //navigate to activity for unregistered
+                TODO()
             }
         }
 
         viewModel.deleteProfile.observe(viewLifecycleOwner) { delete ->
             if (delete == true) {
                 //navigate to activity for unregistered
+                TODO()
             }
         }
     }
