@@ -91,6 +91,10 @@
     <string name="or">Or</string>
     <string name="we_have_emailed_your_password_reset_link">We have e-mailed your password reset link.</string>
     <string name="failed_sent_forgot_password">Failed sent e-mail. Please try again later</string>
+    <string name="home">Home</string>
+    <string name="media">Media</string>
+    <string name="career">Career</string>
+    <string name="contact">Contact</string>
     <string name="title_activity_web_view">WebViewActivity</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
@@ -111,4 +115,19 @@
     <string name="wyswietl_info">Wyświetl info</string>
     <string name="usun_scope">Usuń scope</string>
     <string name="utworz_scope">Utwórz scope</string>
+    <string name="long_lorem_ipsum">Aliquam consequat magna erat, nec finibus neque condimentum vulputate. In eget purus ac augue mattis pharetra. Aliquam scelerisque, sapien vel fringilla finibus, mi sem condimentum odio, quis ultrices dolor purus eu lorem. Phasellus scelerisque nunc nunc, in hendrerit lorem lacinia eget. Ut ut dolor a nisl dignissim interdum ut in mauris. Aliquam consequat magna erat, nec finibus neque condimentum vulputate. In eget purus ac augue mattis pharetra. Aliquam scelerisque, sapien vel fringilla finibus, mi sem condimentum odio, quis ultrices dolor purus eu lorem. Phasellus scelerisque nunc nunc, in hendrerit lorem lacinia eget. Ut ut dolor a nisl dignissim interdum ut in mauris. Aliquam consequat magna erat, nec finibus neque condimentum vulputate. In eget purus ac augue mattis pharetra. Aliquam scelerisque, sapien vel fringilla finibus, mi sem condimentum odio, quis ultrices dolor purus eu lorem. Phasellus scelerisque nunc nunc, in hendrerit lorem lacinia eget. Ut ut dolor a nisl dignissim interdum ut in mauris. Aliquam consequat magna erat, nec finibus neque condimentum vulputate. In eget purus ac augue mattis pharetra. Aliquam scelerisque, sapien vel fringilla finibus, mi sem condimentum odio, quis ultrices dolor purus eu lorem. Phasellus scelerisque nunc nunc, in hendrerit lorem lacinia eget. Ut ut dolor a nisl dignissim interdum ut in mauris. Aliquam consequat magna erat, nec finibus neque condimentum vulputate. In eget purus ac augue mattis pharetra. Aliquam scelerisque, sapien vel fringilla finibus, mi sem condimentum odio, quis ultrices dolor purus eu lorem. Phasellus scelerisque nunc nunc, in hendrerit lorem lacinia eget. Ut ut dolor a nisl dignissim interdum ut in mauris.</string>
+    <string name="lorem_ipsum_dolor_sit_amet">Lorem ipsum dolor sit amet</string>
+    <string name="medium_lorem_ipsum">Aliquam consequat magna erat, nec finibus neque condimentum vulputate. In eget purus ac augue mattis pharetra. Aliquam scelerisque, sapien vel fringilla finibus, mi sem condimentum odio, quis ultrices dolor purus eu lorem. Phasellus scelerisque nunc nunc, in hendrerit lorem lacinia eget. Ut ut dolor a nisl dignissim interdum ut in mauris.</string>
+    <string name="back_button">back button</string>
+    <string name="benefits">Benefits</string>
+    <string name="delegations">Delegations</string>
+    <string name="ama">AMA</string>
+    <string name="are_you_looking_for_another_answer">Are you looking for another answer?</string>
+    <string name="ask_question">Ask question</string>
+    <string name="success_question_sent_information">Your question has been sent. We will answer as soon as possible.</string>
+    <string name="failed_question_sent_information">Your question has not been sent. Please try again later</string>
+    <string name="write_your_question">Write your question</string>
+    <string name="send">Send</string>
+    <string name="arrow_to_answer">arrow to answer</string>
+    <string name="ok">OK</string>
 </resources>

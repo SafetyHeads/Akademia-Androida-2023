@@ -51,6 +51,14 @@ android {
             applicationIdSuffix = ".production"
         }
     }
+    sourceSets {
+        production {
+            manifest.srcFile 'src/production/AndroidManifest.xml'
+        }
+        qa{
+            manifest.srcFile 'src/qa/AndroidManifest.xml'
+        }
+    }
 
     buildTypes {
         release {

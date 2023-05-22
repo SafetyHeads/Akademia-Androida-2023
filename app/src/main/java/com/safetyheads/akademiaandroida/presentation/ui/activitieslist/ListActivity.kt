@@ -5,19 +5,21 @@ import android.content.pm.PackageManager
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.safetyheads.akademiaandroida.presentation.ui.customviews.DashboardFragment
 import com.safetyheads.akademiaandroida.databinding.ActivityListBinding
 import com.safetyheads.akademiaandroida.presentation.ui.career.CareerFragment
 import com.safetyheads.akademiaandroida.presentation.ui.customviews.ExperienceStructureFragment
 import com.safetyheads.akademiaandroida.presentation.ui.customviews.dropdown.FragmentDropDownList
 import com.safetyheads.akademiaandroida.presentation.ui.fragments.clients.ClientsFragment
-import com.safetyheads.akademiaandroida.presentation.ui.fragments.contact_with_us.ContactWithUsFragment
-import com.safetyheads.akademiaandroida.presentation.ui.fragments.font_style.FontSylesFragment
+import com.safetyheads.akademiaandroida.presentation.ui.fragments.contactwithus.ContactWithUsFragment
+import com.safetyheads.akademiaandroida.presentation.ui.fragments.faq.FaqFragment
+import com.safetyheads.akademiaandroida.presentation.ui.fragments.fontstyle.FontSylesFragment
 import com.safetyheads.akademiaandroida.presentation.ui.fragments.forgotpasswordfragment.ForgotPasswordFragment
 import com.safetyheads.akademiaandroida.presentation.ui.fragments.login.LoginFragment
 import com.safetyheads.akademiaandroida.presentation.ui.fragments.technologystack.TechnologyStackFragment
-import com.safetyheads.akademiaandroida.presentation.ui.fragments.we_are_hiring.WeAreHiringFragment
-import com.safetyheads.akademiaandroida.presentation.ui.sign_up.SignUpFragment
-import com.safetyheads.akademiaandroida.utils.getPackageInfoCompat
+import com.safetyheads.akademiaandroida.presentation.ui.fragments.wearehiring.WeAreHiringFragment
+import com.safetyheads.akademiaandroida.presentation.ui.signup.SignUpFragment
+import com.safetyheads.akademiaandroida.presentation.ui.utils.getPackageInfoCompat
 
 class ListActivity : AppCompatActivity() {
     private lateinit var binding: ActivityListBinding
@@ -63,9 +65,11 @@ class ListActivity : AppCompatActivity() {
     val fragmentDropDownList = FragmentDropDownList()
     val forgotPasswordFragment = ForgotPasswordFragment()
     val loginFragment = LoginFragment()
+    val dashboardFragment = DashboardFragment()
     val careerFragment = CareerFragment()
     val technolgyStackFragment = TechnologyStackFragment()
     val signUpFragment = SignUpFragment()
+    val faqFragment = FaqFragment()
 
     val dataListFragments = listOf(
         fontSylesFragment,
@@ -76,9 +80,11 @@ class ListActivity : AppCompatActivity() {
         fragmentDropDownList,
         loginFragment,
         forgotPasswordFragment,
-        forgotPasswordFragment,
+        dashboardFragment,
         technolgyStackFragment,
-        signUpFragment
+        signUpFragment,
+        careerFragment,
+        faqFragment
     )
 }
 

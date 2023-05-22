@@ -1,4 +1,4 @@
-package com.safetyheads.akademiaandroida.utils
+package com.safetyheads.akademiaandroida.presentation.ui.utils
 
 import android.content.pm.PackageInfo
 import android.content.pm.PackageManager

@@ -57,15 +57,19 @@ class ProfileBottomSheetDialogFragment : BottomSheetDialogFragment() {
     }
 
     private fun goToLocalization() {
+        //no-op
     }
 
     private fun goToNotifications() {
+        //no-op
     }
 
     private fun goToPassword() {
+        //no-op
     }
 
     private fun goToProfile() {
+        //no-op
     }
 
     private fun changePhoto() {
