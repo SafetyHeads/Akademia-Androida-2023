@@ -117,6 +117,7 @@ class ProfileInformationFragment : Fragment() {
                 requireActivity().onBackPressed()
             }
 
+            @Suppress("EmptyFunctionBlock")
             fullNameEditText.addTextChangedListener(object : TextWatcher {
                 override fun beforeTextChanged(
                     s: CharSequence?,
@@ -137,6 +138,7 @@ class ProfileInformationFragment : Fragment() {
                 }
             })
 
+            @Suppress("EmptyFunctionBlock")
             jobPositionEditText.addTextChangedListener(object : TextWatcher {
                 override fun beforeTextChanged(
                     s: CharSequence?,
@@ -157,6 +159,7 @@ class ProfileInformationFragment : Fragment() {
                 }
             })
 
+            @Suppress("EmptyFunctionBlock")
             phoneNumberEditText.addTextChangedListener(object : TextWatcher {
                 override fun beforeTextChanged(
                     s: CharSequence?,
@@ -177,6 +180,7 @@ class ProfileInformationFragment : Fragment() {
                 }
             })
 
+            @Suppress("EmptyFunctionBlock")
             streetNameEditText.addTextChangedListener(object : TextWatcher {
                 override fun beforeTextChanged(
                     s: CharSequence?,
@@ -197,6 +201,7 @@ class ProfileInformationFragment : Fragment() {
                 }
             })
 
+            @Suppress("EmptyFunctionBlock")
             cityEditText.addTextChangedListener(object : TextWatcher {
                 override fun beforeTextChanged(
                     s: CharSequence?,
@@ -217,6 +222,7 @@ class ProfileInformationFragment : Fragment() {
                 }
             })
 
+            @Suppress("EmptyFunctionBlock")
             countryEditText.addTextChangedListener(object : TextWatcher {
                 override fun beforeTextChanged(
                     s: CharSequence?,
@@ -237,6 +243,7 @@ class ProfileInformationFragment : Fragment() {
                 }
             })
 
+            @Suppress("EmptyFunctionBlock")
             streetNumberEditText.addTextChangedListener(object : TextWatcher {
                 override fun beforeTextChanged(
                     s: CharSequence?,
@@ -257,6 +264,7 @@ class ProfileInformationFragment : Fragment() {
                 }
             })
 
+            @Suppress("EmptyFunctionBlock")
             zipcodeEditText.addTextChangedListener(object : TextWatcher {
                 override fun beforeTextChanged(
                     s: CharSequence?,
