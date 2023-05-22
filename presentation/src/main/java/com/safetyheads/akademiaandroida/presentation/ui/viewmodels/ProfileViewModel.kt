@@ -6,7 +6,6 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.safetyheads.akademiaandroida.domain.entities.Playlist
 import com.safetyheads.akademiaandroida.domain.entities.firebasefirestore.Profile
 import com.safetyheads.akademiaandroida.domain.usecases.AddImageToFirebaseBitmapStorage
 import com.safetyheads.akademiaandroida.domain.usecases.AddImageToFirebaseUriStorage
@@ -47,36 +46,45 @@ class ProfileViewModel(
 
     fun getProfileInformation(userUUID: String) {
         viewModelScope.launch {
-            getProfileInformationUseCase.invoke(GetProfileInformationUseCase.ProfileParam(userUUID)).collect { profileInformation ->
-                if (profileInformation.isSuccess) {
-                    val tempUserInformation = profileInformation.getOrNull()
-                    if (tempUserInformation != null)
-                        userInformation.postValue(tempUserInformation.copy())
-                } else {
-                    Log.i("ProfileViewModel", profileInformation.exceptionOrNull()?.message.orEmpty())
+            getProfileInformationUseCase.invoke(GetProfileInformationUseCase.ProfileParam(userUUID))
+                .collect { profileInformation ->
+                    if (profileInformation.isSuccess) {
+                        val tempUserInformation = profileInformation.getOrNull()
+                        if (tempUserInformation != null)
+                            userInformation.postValue(tempUserInformation.copy())
+                    } else {
+                        Log.i(
+                            "ProfileViewModel",
+                            profileInformation.exceptionOrNull()?.message.orEmpty()
+                        )
+                    }
                 }
-            }
         }
     }
 
     fun addImageToFirebaseUriStorage(imageUri: Uri) {
         isLoading.postValue(true)
         viewModelScope.launch {
-            addImageToFirebaseUriStorage.invoke(AddImageToFirebaseUriStorage.ImageParam(imageUri)).collect { imageUri ->
-                if (imageUri.isSuccess) {
-                    addImageToFirebaseUserProfile(imageUri.getOrNull().orEmpty())
-                } else {
-                    isLoading.postValue(false)
-                    Log.i("ProfileViewModel", imageUri.exceptionOrNull()?.message.orEmpty())
+            addImageToFirebaseUriStorage.invoke(AddImageToFirebaseUriStorage.ImageParam(imageUri))
+                .collect { imageUri ->
+                    if (imageUri.isSuccess) {
+                        addImageToFirebaseUserProfile(imageUri.getOrNull().orEmpty())
+                    } else {
+                        isLoading.postValue(false)
+                        Log.i("ProfileViewModel", imageUri.exceptionOrNull()?.message.orEmpty())
+                    }
                 }
-            }
         }
     }
 
     fun addImageToFirebaseBitmapStorage(imageBitmap: Bitmap) {
         isLoading.postValue(true)
         viewModelScope.launch {
-            addImageToFirebaseBitmapStorage.invoke(AddImageToFirebaseBitmapStorage.ImageParam(imageBitmap)).collect { imageUri ->
+            addImageToFirebaseBitmapStorage.invoke(
+                AddImageToFirebaseBitmapStorage.ImageParam(
+                    imageBitmap
+                )
+            ).collect { imageUri ->
                 if (imageUri.isSuccess) {
                     addImageToFirebaseUserProfile(imageUri.getOrNull().orEmpty())
                 } else {
@@ -90,13 +98,21 @@ class ProfileViewModel(
     fun addImageToFirebaseUserProfile(imageStringReference: String) {
         viewModelScope.launch {
             if (imageStringReference.isNotEmpty()) {
-                addImageToFirebaseUserProfileFirestore.invoke(AddImageToFirebaseUserProfileFirestore.ImageParam(userUUID.value.orEmpty(), imageStringReference)).collect { addImageResult ->
+                addImageToFirebaseUserProfileFirestore.invoke(
+                    AddImageToFirebaseUserProfileFirestore.ImageParam(
+                        userUUID.value.orEmpty(),
+                        imageStringReference
+                    )
+                ).collect { addImageResult ->
                     if (addImageResult.isSuccess) {
                         removeImageFromFirebaseStorage(addImageResult.getOrNull().orEmpty())
                         isLoading.postValue(false)
                     } else {
                         isLoading.postValue(false)
-                        Log.i("ProfileViewModel", addImageResult.exceptionOrNull()?.message.orEmpty())
+                        Log.i(
+                            "ProfileViewModel",
+                            addImageResult.exceptionOrNull()?.message.orEmpty()
+                        )
                     }
                 }
             }
@@ -106,11 +122,21 @@ class ProfileViewModel(
     fun removeImageFromFirebaseStorage(imageStringReference: String) {
         viewModelScope.launch {
             if (imageStringReference != "default_user" && imageStringReference.isNotEmpty()) {
-                removeImageFromFirebaseStorage.invoke(RemoveImageFromFirebaseStorage.ImageParam(imageStringReference)).collect { removeImageResult ->
+                removeImageFromFirebaseStorage.invoke(
+                    RemoveImageFromFirebaseStorage.ImageParam(
+                        imageStringReference
+                    )
+                ).collect { removeImageResult ->
                     if (removeImageResult.isSuccess) {
-                        Log.i(this@ProfileViewModel.toString(), "Remove image from Firebase Storage successful!")
+                        Log.i(
+                            this@ProfileViewModel.toString(),
+                            "Remove image from Firebase Storage successful!"
+                        )
                     } else {
-                        Log.i(this@ProfileViewModel.toString(), "Remove image from Firebase Storage no successful!")
+                        Log.i(
+                            this@ProfileViewModel.toString(),
+                            "Remove image from Firebase Storage no successful!"
+                        )
                     }
                 }
             }
@@ -120,13 +146,20 @@ class ProfileViewModel(
     fun removeImageFromUserProfile() {
         isLoading.postValue(true)
         viewModelScope.launch {
-            removeImageFromUserProfileFirestore.invoke(RemoveImageFromUserProfileFirestore.ImageParam(userUUID.value.orEmpty())).collect { removeImageResult ->
+            removeImageFromUserProfileFirestore.invoke(
+                RemoveImageFromUserProfileFirestore.ImageParam(
+                    userUUID.value.orEmpty()
+                )
+            ).collect { removeImageResult ->
                 if (removeImageResult.isSuccess) {
                     isLoading.postValue(false)
                     removeImageFromFirebaseStorage(removeImageResult.getOrNull().orEmpty())
                 } else {
                     isLoading.postValue(false)
-                    Log.i("ProfileViewModel", removeImageResult.exceptionOrNull()?.message.orEmpty())
+                    Log.i(
+                        "ProfileViewModel",
+                        removeImageResult.exceptionOrNull()?.message.orEmpty()
+                    )
                 }
             }
         }
