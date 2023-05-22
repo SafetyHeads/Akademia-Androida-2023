@@ -32,6 +32,18 @@ class UserRepositoryImpl : UserRepository {
         emit(ResetPassword(false, error))
     }
 
+    override fun updateFcmToken(userUUID: String, token: String): Flow<Result<Unit>> = flow {
+        try {
+            FirebaseFirestore.getInstance().collection("users").document(userUUID).update(
+                mapOf("fcmToken" to token)
+            ).await()
+            emit(Result.success(Unit))
+        } catch (e: Exception) {
+            emit(Result.failure(e))
+        }
+
+    }
+
     override fun getProfileInformation(userUUID: String): Flow<Result<Profile>> = callbackFlow {
         val collectionReference = FirebaseFirestore.getInstance()
         val listener = collectionReference.collection("users").document(userUUID)

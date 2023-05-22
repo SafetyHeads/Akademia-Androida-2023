@@ -15,6 +15,7 @@ import com.safetyheads.akademiaandroida.presentation.ui.fragments.contactwithus.
 import com.safetyheads.akademiaandroida.presentation.ui.fragments.faq.FaqFragment
 import com.safetyheads.akademiaandroida.presentation.ui.fragments.fontstyle.FontSylesFragment
 import com.safetyheads.akademiaandroida.presentation.ui.fragments.forgotpasswordfragment.ForgotPasswordFragment
+import com.safetyheads.akademiaandroida.presentation.ui.fragments.forgotpasswordfragment.user_test.UserTestFragment
 import com.safetyheads.akademiaandroida.presentation.ui.fragments.login.LoginFragment
 import com.safetyheads.akademiaandroida.presentation.ui.fragments.technologystack.TechnologyStackFragment
 import com.safetyheads.akademiaandroida.presentation.ui.fragments.wearehiring.WeAreHiringFragment
@@ -70,6 +71,7 @@ class ListActivity : AppCompatActivity() {
     val technolgyStackFragment = TechnologyStackFragment()
     val signUpFragment = SignUpFragment()
     val faqFragment = FaqFragment()
+    val userTestFragment = UserTestFragment()
 
     val dataListFragments = listOf(
         fontSylesFragment,
@@ -84,7 +86,8 @@ class ListActivity : AppCompatActivity() {
         technolgyStackFragment,
         signUpFragment,
         careerFragment,
-        faqFragment
+        faqFragment,
+        userTestFragment
     )
 }
 

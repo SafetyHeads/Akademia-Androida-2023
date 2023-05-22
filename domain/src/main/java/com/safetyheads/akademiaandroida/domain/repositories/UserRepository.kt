@@ -10,4 +10,5 @@ interface UserRepository {
     fun resetPassword(email: String): Flow<ResetPassword>
     fun getProfileInformation(userUUID: String): Flow<Result<Profile>>
     fun logIn(email: String, password: String): Flow<Result<String>>
+    fun updateFcmToken(userUUID: String, token: String): Flow<Result<Unit>>
 }
