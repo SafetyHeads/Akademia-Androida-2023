@@ -99,7 +99,7 @@ class UserRepositoryImpl(
         awaitClose { listener.remove() }
     }
 
-    override fun logIn(email: String, password: String): Flow<Result<String>> = callbackFlow {
+    override suspend fun logIn(email: String, password: String): Flow<Result<String>> = callbackFlow {
 
         val listener = firebaseAuth.signInWithEmailAndPassword(email, password)
             .addOnCompleteListener { task ->
