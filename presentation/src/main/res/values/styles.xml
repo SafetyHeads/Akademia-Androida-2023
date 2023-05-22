@@ -191,6 +191,7 @@
         <item name="android:textStyle">normal</item>
         <item name="android:fontFamily">@font/poppins_regular</item>
         <item name="android:textColor">@color/s_60</item>
+    </style>
       
     <style name="Poppins_regular_14" parent="TextAppearance.AppCompat">
         <item name="android:fontFamily">@font/poppins_regular</item>
@@ -312,4 +313,5 @@
         <item name="android:textSize">14sp</item>
         <item name="android:lineSpacingExtra">2sp</item>
     </style>
+
 </resources>
