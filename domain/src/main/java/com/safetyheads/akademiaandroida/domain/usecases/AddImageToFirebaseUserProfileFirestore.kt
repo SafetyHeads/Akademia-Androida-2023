@@ -1,10 +1,10 @@
 package com.safetyheads.akademiaandroida.domain.usecases
 
-import com.safetyheads.akademiaandroida.domain.repositories.UserRepository
+import com.safetyheads.akademiaandroida.domain.repositories.ImageRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
-class AddImageToFirebaseUserProfileFirestore(private val repository: UserRepository) :
+class AddImageToFirebaseUserProfileFirestore(private val repository: ImageRepository) :
     BaseUseCase<AddImageToFirebaseUserProfileFirestore.ImageParam, String> {
 
     class ImageParam(val userUUID: String, val imageStringReference: String) : BaseUseCase.Params

@@ -3,10 +3,12 @@ package com.safetyheads.akademiaandroida
 import android.app.Application
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.storage.FirebaseStorage
 import com.jakewharton.threetenabp.AndroidThreeTen
 import com.safetyheads.akademiaandroida.data.network.repository.CompanyInfoRepositoryImpl
 import com.safetyheads.akademiaandroida.data.network.repository.FaqRepositoryImpl
 import com.safetyheads.akademiaandroida.data.network.repository.FirebaseConfigRepository
+import com.safetyheads.akademiaandroida.data.network.repository.ImageRepositoryImpl
 import com.safetyheads.akademiaandroida.data.network.repository.TechnologyStackRepositoryImpl
 import com.safetyheads.akademiaandroida.data.network.repository.UserRepositoryImpl
 import com.safetyheads.akademiaandroida.data.network.repository.settings.SettingRepositoryImpl
@@ -16,6 +18,7 @@ import com.safetyheads.akademiaandroida.domain.repositories.ChannelRepository
 import com.safetyheads.akademiaandroida.domain.repositories.CompanyInfoRepository
 import com.safetyheads.akademiaandroida.domain.repositories.ConfigRepository
 import com.safetyheads.akademiaandroida.domain.repositories.FaqRepository
+import com.safetyheads.akademiaandroida.domain.repositories.ImageRepository
 import com.safetyheads.akademiaandroida.domain.repositories.PlaylistRepository
 import com.safetyheads.akademiaandroida.domain.repositories.SettingsRepository
 import com.safetyheads.akademiaandroida.domain.repositories.TechnologyStackRepository
@@ -98,6 +101,9 @@ class AndroidAcademyApplication : Application() {
     private val appModule = module {
 
         single { FirebaseAuth.getInstance() }
+        single { FirebaseFirestore.getInstance() }
+        single { FirebaseStorage.getInstance() }
+
 
         single { RegisterUseCase(get()) }
         viewModel { SignUpViewModel(get()) }
@@ -105,11 +111,12 @@ class AndroidAcademyApplication : Application() {
         single<ConfigRepository> { FirebaseConfigRepository() }
         single<CareerRepository> { CareerRepositoryImpl() }
         single<SettingsRepository> { SettingRepositoryImpl(get()) }
-        single<UserRepository> { UserRepositoryImpl() }
+        single<UserRepository> { UserRepositoryImpl(get(), get()) }
         single<TechnologyStackRepository> { TechnologyStackRepositoryImpl(get()) }
         single { GetTechnologyStackUseCase(get()) }
         single<CompanyInfoRepository> { CompanyInfoRepositoryImpl(get()) }
         single<FaqRepository> { FaqRepositoryImpl(get()) }
+        single<ImageRepository> { ImageRepositoryImpl(get(), get()) }
 
 
         //usecases

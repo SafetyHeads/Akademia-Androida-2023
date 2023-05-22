@@ -1,10 +1,10 @@
 package com.safetyheads.akademiaandroida.domain.usecases
 
-import com.safetyheads.akademiaandroida.domain.repositories.UserRepository
+import com.safetyheads.akademiaandroida.domain.repositories.ImageRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
-class RemoveImageFromFirebaseStorage(private val repository: UserRepository) :
+class RemoveImageFromFirebaseStorage(private val repository: ImageRepository) :
     BaseUseCase<RemoveImageFromFirebaseStorage.ImageParam, Boolean> {
 
     @JvmInline

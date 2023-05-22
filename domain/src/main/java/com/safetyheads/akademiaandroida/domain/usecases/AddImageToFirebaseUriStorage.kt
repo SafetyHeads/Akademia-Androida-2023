@@ -1,11 +1,12 @@
 package com.safetyheads.akademiaandroida.domain.usecases
 
 import android.net.Uri
+import com.safetyheads.akademiaandroida.domain.repositories.ImageRepository
 import com.safetyheads.akademiaandroida.domain.repositories.UserRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
-class AddImageToFirebaseUriStorage(private val repository: UserRepository) :
+class AddImageToFirebaseUriStorage(private val repository: ImageRepository) :
     BaseUseCase<AddImageToFirebaseUriStorage.ImageParam, String> {
 
     @JvmInline

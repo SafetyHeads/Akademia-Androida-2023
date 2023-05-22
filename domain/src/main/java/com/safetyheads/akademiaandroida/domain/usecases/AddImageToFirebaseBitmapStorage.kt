@@ -1,11 +1,12 @@
 package com.safetyheads.akademiaandroida.domain.usecases
 
 import android.graphics.Bitmap
+import com.safetyheads.akademiaandroida.domain.repositories.ImageRepository
 import com.safetyheads.akademiaandroida.domain.repositories.UserRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
-class AddImageToFirebaseBitmapStorage(private val repository: UserRepository) :
+class AddImageToFirebaseBitmapStorage(private val repository: ImageRepository) :
     BaseUseCase<AddImageToFirebaseBitmapStorage.ImageParam, String> {
 
     @JvmInline
