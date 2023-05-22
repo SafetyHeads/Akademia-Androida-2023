@@ -1,8 +1,8 @@
-package com.safetyheads.akademiaandroida
+package com.safetyheads.presentation
 
 import android.content.Context
 import android.widget.EditText
-import com.safetyheads.presentation.utils.PhoneNumberValidator
+import com.safetyheads.akademiaandroida.presentation.ui.utils.PhoneNumberValidator
 import io.mockk.mockk
 import io.mockk.verify
 import org.assertj.core.api.AssertionsForInterfaceTypes.assertThat

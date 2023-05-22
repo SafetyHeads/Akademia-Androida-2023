@@ -191,6 +191,32 @@
         <item name="android:textStyle">normal</item>
         <item name="android:fontFamily">@font/poppins_regular</item>
         <item name="android:textColor">@color/s_60</item>
+      
+    <style name="Poppins_regular_14" parent="TextAppearance.AppCompat">
+        <item name="android:fontFamily">@font/poppins_regular</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:lineSpacingExtra">6sp</item>
+    </style>
+
+    <style name="Poppins_regular_10" parent="TextAppearance.AppCompat">
+        <item name="android:fontFamily">@font/poppins_regular</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">10sp</item>
+        <item name="android:lineSpacingExtra">6sp</item>
+    </style>
+
+    <style name="circleImageView" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
+
+    <!-- Poppins-regular 10sp Gray text color -->
+    <style name="Poppins_regular_gray_10sp" parent="TextAppearance.AppCompat">
+        <item name="android:textSize">10sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:fontFamily">@font/poppins_regular</item>
+        <item name="android:textColor">@color/n_100</item>
         <item name="android:lineSpacingExtra">2sp</item>
     </style>
 
@@ -202,6 +228,7 @@
         <item name="android:background">@drawable/button_background</item>
         <item name="android:fontFamily">@font/poppins_semibold</item>
         <item name="android:textColor">@color/white</item>
+        <item name="android:textAllCaps">false</item>
     </style>
 
     <style name="JobOfferButton" parent="@android:style/TextAppearance.Small">

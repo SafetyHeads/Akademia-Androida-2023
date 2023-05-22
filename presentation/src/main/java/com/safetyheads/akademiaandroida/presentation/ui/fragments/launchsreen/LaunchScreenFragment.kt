@@ -9,9 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.core.content.ContextCompat
-import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
-import androidx.navigation.NavDeepLinkRequest
 import androidx.navigation.fragment.findNavController
 import com.safetyheads.akademiaandroida.presentation.R
 import com.safetyheads.akademiaandroida.presentation.databinding.FragmentLaunchScreenBinding
@@ -20,7 +18,11 @@ import com.safetyheads.akademiaandroida.presentation.ui.components.Footer
 class LaunchScreenFragment : Fragment() {
     private lateinit var binding: FragmentLaunchScreenBinding
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
         binding = FragmentLaunchScreenBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -47,9 +49,19 @@ class LaunchScreenFragment : Fragment() {
         childFragmentManager.beginTransaction()
             .add(R.id.parent_layout, Footer())
             .commit()
+
+        navigationListeners()
+    }
+    private fun navigationListeners() {
         binding.txtSign.setOnClickListener {
             val action =
-                LaunchScreenFragmentDirections.actionLaunchScreenFragmentToLoginPlaceholder()
+                LaunchScreenFragmentDirections.actionLaunchScreenFragmentToLoginFragment()
+            findNavController().navigate(action)
+
+        }
+
+        binding.button.setOnClickListener {
+            val action = LaunchScreenFragmentDirections.actionLaunchScreenFragmentToDashboard()
             findNavController().navigate(action)
         }
     }
