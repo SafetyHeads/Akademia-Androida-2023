@@ -1,8 +1,10 @@
 package com.safetyheads.akademiaandroida.presentation.ui.signup
 
+import android.content.ContentValues
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -70,13 +72,17 @@ class SignUpFragment : Fragment() {
 
 
         val textWatcher = object : TextWatcher {
-            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
+            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {
+                Log.d(ContentValues.TAG, "beforeTextChanged")
+            }
 
             override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
                 binding.buttonSignUp.isEnabled = isValidInput()
+                Log.d(ContentValues.TAG, "onTextChanged")
             }
-
-            override fun afterTextChanged(s: Editable) {}
+            override fun afterTextChanged(s: Editable) {
+                Log.d(ContentValues.TAG, "afterTextChanged")
+            }
         }
 
         binding.eTextFullName.addTextChangedListener(textWatcher)
