@@ -9,7 +9,7 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.safetyheads.akademiaandroida.youtube.YouTubeActivity
-import com.safetyheads.akademiaandroida.youtube.adapters.PlaylistAdapter
+import com.safetyheads.akademiaandroida.presentation.ui.adapters.PlaylistAdapter
 import com.safetyheads.akademiaandroida.youtube.viewModel.PlayListViewModel
 import com.safetyheads.akademiaandroida.databinding.FragmentPlaylistBinding
 import org.koin.androidx.viewmodel.ext.android.activityViewModel

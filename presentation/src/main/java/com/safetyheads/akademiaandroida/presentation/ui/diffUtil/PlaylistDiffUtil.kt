@@ -1,4 +1,4 @@
-package com.safetyheads.akademiaandroida.youtube.diffUtil
+package com.safetyheads.akademiaandroida.presentation.ui.diffUtil
 
 import androidx.recyclerview.widget.DiffUtil
 

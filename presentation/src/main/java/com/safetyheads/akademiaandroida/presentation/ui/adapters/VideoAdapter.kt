@@ -1,22 +1,23 @@
-package com.safetyheads.akademiaandroida.youtube.adapters
+package com.safetyheads.akademiaandroida.presentation.ui.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.safetyheads.akademiaandroida.youtube.diffUtil.VideoDiffUtil
-import com.safetyheads.akademiaandroida.databinding.ItemVideoBinding
+import com.safetyheads.akademiaandroida.domain.entities.Video
+import com.safetyheads.akademiaandroida.presentation.databinding.ItemVideoBinding
+import com.safetyheads.akademiaandroida.presentation.ui.diffUtil.VideoDiffUtil
 
 
 class VideoAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    private var oldItems = ArrayList<com.safetyheads.akademiaandroida.domain.entities.Video>()
+    private var oldItems = ArrayList<Video>()
 
     class VideoHolder(itemView: ItemVideoBinding) : RecyclerView.ViewHolder(itemView.root) {
         private val binding = itemView
 
-        fun setData(data: com.safetyheads.akademiaandroida.domain.entities.Video) {
+        fun setData(data: Video) {
             binding.ivThumbnail.setOnClickListener {
                 // navigate to YouTube
             }
@@ -41,7 +42,7 @@ class VideoAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         return oldItems.size
     }
 
-    fun setData(newList: ArrayList<com.safetyheads.akademiaandroida.domain.entities.Video>) {
+    fun setData(newList: ArrayList<Video>) {
         val videoDiff = VideoDiffUtil(oldItems, newList)
         val diff = DiffUtil.calculateDiff(videoDiff)
         oldItems.clear()

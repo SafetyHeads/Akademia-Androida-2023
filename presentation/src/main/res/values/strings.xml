@@ -108,6 +108,9 @@
     <string name="wyswietl_info">Wyświetl info</string>
     <string name="usun_scope">Usuń scope</string>
     <string name="utworz_scope">Utwórz scope</string>
+    <string name="photo">Photo</string>
+    <string name="movies">Movies</string>
+    <string name="all_media">All media</string>
 
 
 </resources>

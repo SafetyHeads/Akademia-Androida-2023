@@ -7,6 +7,7 @@ import com.jakewharton.threetenabp.AndroidThreeTen
 import com.safetyheads.akademiaandroida.data.network.repository.CompanyInfoRepositoryImpl
 import com.safetyheads.akademiaandroida.data.network.repository.FaqRepositoryImpl
 import com.safetyheads.akademiaandroida.data.network.repository.FirebaseConfigRepository
+import com.safetyheads.akademiaandroida.data.network.repository.ImageRepositoryImpl
 import com.safetyheads.akademiaandroida.data.network.repository.TechnologyStackRepositoryImpl
 import com.safetyheads.akademiaandroida.data.network.repository.UserRepositoryImpl
 import com.safetyheads.akademiaandroida.data.network.repository.settings.SettingRepositoryImpl
@@ -16,6 +17,7 @@ import com.safetyheads.akademiaandroida.domain.repositories.ChannelRepository
 import com.safetyheads.akademiaandroida.domain.repositories.CompanyInfoRepository
 import com.safetyheads.akademiaandroida.domain.repositories.ConfigRepository
 import com.safetyheads.akademiaandroida.domain.repositories.FaqRepository
+import com.safetyheads.akademiaandroida.domain.repositories.ImageRepository
 import com.safetyheads.akademiaandroida.domain.repositories.PlaylistRepository
 import com.safetyheads.akademiaandroida.domain.repositories.SettingsRepository
 import com.safetyheads.akademiaandroida.domain.repositories.TechnologyStackRepository
@@ -26,11 +28,13 @@ import com.safetyheads.akademiaandroida.domain.usecases.DateUseCase
 import com.safetyheads.akademiaandroida.domain.usecases.DateUseCaseImpl
 import com.safetyheads.akademiaandroida.domain.usecases.DelaySplashScreenUseCase
 import com.safetyheads.akademiaandroida.domain.usecases.GetAddressUseCase
+import com.safetyheads.akademiaandroida.domain.usecases.GetAllVideoUseCase
 import com.safetyheads.akademiaandroida.domain.usecases.GetChannelUseCase
 import com.safetyheads.akademiaandroida.domain.usecases.GetConfigUseCase
 import com.safetyheads.akademiaandroida.domain.usecases.GetContactInfoUseCase
 import com.safetyheads.akademiaandroida.domain.usecases.GetFaqUseCase
 import com.safetyheads.akademiaandroida.domain.usecases.GetInfoUseCase
+import com.safetyheads.akademiaandroida.domain.usecases.GetInstagramImageUseCase
 import com.safetyheads.akademiaandroida.domain.usecases.GetJobOfferUseCase
 import com.safetyheads.akademiaandroida.domain.usecases.GetPlayListItemsUseCase
 import com.safetyheads.akademiaandroida.domain.usecases.GetPlayListsUseCase
@@ -49,6 +53,7 @@ import com.safetyheads.akademiaandroida.presentation.ui.customviews.dropdown.Loa
 import com.safetyheads.akademiaandroida.presentation.ui.fragments.forgotpasswordfragment.ForgotPasswordViewModel
 import com.safetyheads.akademiaandroida.presentation.ui.fragments.technologystack.TechnologyStackViewModel
 import com.safetyheads.akademiaandroida.presentation.ui.sign_up.SignUpViewModel
+import com.safetyheads.akademiaandroida.presentation.ui.viewmodels.MediaViewModel
 import com.safetyheads.akademiaandroida.presentation.ui.viewmodels.ProfileViewModel
 import com.safetyheads.akademiaandroida.usersessionmanager.FakeSessionGenerator
 import com.safetyheads.akademiaandroida.usersessionmanager.LoggedSessionManager
@@ -63,6 +68,7 @@ import com.safetyheads.data.network.mapper.ChannelMapper
 import com.safetyheads.data.network.mapper.PlayListVideoMapper
 import com.safetyheads.data.network.mapper.PlaylistMapper
 import com.safetyheads.data.network.mapper.VideoMapper
+import com.safetyheads.data.network.mapper.VideosMapper
 import com.safetyheads.data.network.repository.ChannelRepositoryImpl
 import com.safetyheads.data.network.repository.PlaylistRepositoryImpl
 import com.safetyheads.data.network.repository.VideoRepositoryImpl
@@ -137,6 +143,7 @@ class AndroidAcademyApplication : Application() {
         viewModelOf(::ChannelViewModel)
         viewModelOf(::VideoViewModel)
         viewModelOf(::PlayListViewModel)
+        viewModelOf(::MediaViewModel)
         viewModel { ProfileViewModel(get(), get()) }
         viewModel { TechnologyStackViewModel(get()) }
         viewModel { SignUpViewModel(get()) }
@@ -154,12 +161,16 @@ class AndroidAcademyApplication : Application() {
         single { PlaylistMapper() }
         single { PlayListVideoMapper() }
         single { VideoMapper() }
+        single { VideosMapper() }
 
         //repository
-        single<VideoRepository> { VideoRepositoryImpl(get(), get(), BuildConfig.YOUTUBE_DATA_API_KEY) }
+        single<ImageRepository> { ImageRepositoryImpl(get()) }
+        single<VideoRepository> { VideoRepositoryImpl(get(), get(), get(), BuildConfig.YOUTUBE_DATA_API_KEY) }
         single<ChannelRepository> { ChannelRepositoryImpl(get(), get(), BuildConfig.YOUTUBE_DATA_API_KEY) }
         single<PlaylistRepository> { PlaylistRepositoryImpl(get(), get(), get(), BuildConfig.YOUTUBE_DATA_API_KEY) }
 
+        single { GetInstagramImageUseCase(get()) }
+        single { GetAllVideoUseCase(get()) }
     }
 
     private val sessionModule = module {

@@ -8,9 +8,9 @@ import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.safetyheads.akademiaandroida.youtube.adapters.VideoAdapter
-import com.safetyheads.akademiaandroida.youtube.viewModel.VideoViewModel
 import com.safetyheads.akademiaandroida.databinding.FragmentVideoBinding
+import com.safetyheads.akademiaandroida.presentation.ui.adapters.VideoAdapter
+import com.safetyheads.akademiaandroida.youtube.viewModel.VideoViewModel
 import org.koin.androidx.viewmodel.ext.android.activityViewModel
 
 class YouTubeVideoFragment: Fragment() {
