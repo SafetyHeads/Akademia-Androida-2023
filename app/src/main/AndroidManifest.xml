@@ -68,6 +68,9 @@
         <activity android:name=".usersessionmanager.UserSessionManagerActivity"
             android:exported="true" />
 
+        <activity android:name=".presentation.ui.activities.DashboardActivity"
+            android:exported="true"/>
+
         <service
             android:name=".MyFirebaseMessagingService"
             android:exported="false">
