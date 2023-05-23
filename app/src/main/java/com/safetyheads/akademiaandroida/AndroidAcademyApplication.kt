@@ -48,6 +48,7 @@ import com.safetyheads.akademiaandroida.presentation.ui.customviews.dropdown.Dro
 import com.safetyheads.akademiaandroida.presentation.ui.customviews.dropdown.LoadItemsToDropDownListUseCase
 import com.safetyheads.akademiaandroida.presentation.ui.fragments.faq.FaqViewModel
 import com.safetyheads.akademiaandroida.presentation.ui.fragments.forgotpasswordfragment.ForgotPasswordViewModel
+import com.safetyheads.akademiaandroida.presentation.ui.fragments.login.LoginViewModel
 import com.safetyheads.akademiaandroida.presentation.ui.fragments.technologystack.TechnologyStackViewModel
 import com.safetyheads.akademiaandroida.presentation.ui.fragments.youtube.ChannelViewModel
 import com.safetyheads.akademiaandroida.presentation.ui.fragments.youtube.PlayListViewModel
@@ -60,6 +61,9 @@ import com.safetyheads.akademiaandroida.usersessionmanager.SESSION_SCOPE_NAME
 import com.safetyheads.akademiaandroida.usersessionmanager.Session
 import com.safetyheads.akademiaandroida.usersessionmanager.UnloggedSessionManager
 import com.safetyheads.akademiaandroida.usersessionmanager.getSessionScope
+import com.safetyheads.akademiaandroida.youtube.viewModel.ChannelViewModel
+import com.safetyheads.akademiaandroida.youtube.viewModel.PlayListViewModel
+import com.safetyheads.akademiaandroida.youtube.viewModel.VideoViewModel
 import com.safetyheads.data.network.mapper.ChannelMapper
 import com.safetyheads.data.network.mapper.PlayListVideoMapper
 import com.safetyheads.data.network.mapper.PlaylistMapper
@@ -129,6 +133,7 @@ class AndroidAcademyApplication : Application() {
         single { AddQuestionUseCase(get()) }
         single { GetTechnologyStackUseCase(get()) }
         single { RegisterUseCase(get()) }
+        single { LoginUseCase(get()) }
 
         //viewmodels
         viewModel { SplashScreenViewModel(get(), get()) }
@@ -142,6 +147,7 @@ class AndroidAcademyApplication : Application() {
         viewModel { TechnologyStackViewModel(get()) }
         viewModel { SignUpViewModel(get()) }
         viewModel { FaqViewModel(get(), get()) }
+        viewModel { LoginViewModel(get()) }
     }
 
     private val networkModule = module {
