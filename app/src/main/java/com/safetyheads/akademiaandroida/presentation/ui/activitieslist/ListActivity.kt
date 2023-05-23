@@ -5,9 +5,9 @@ import android.content.pm.PackageManager
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.safetyheads.akademiaandroida.presentation.ui.customviews.DashboardFragment
 import com.safetyheads.akademiaandroida.databinding.ActivityListBinding
 import com.safetyheads.akademiaandroida.presentation.ui.career.CareerFragment
+import com.safetyheads.akademiaandroida.presentation.ui.customviews.DashboardFragment
 import com.safetyheads.akademiaandroida.presentation.ui.customviews.ExperienceStructureFragment
 import com.safetyheads.akademiaandroida.presentation.ui.customviews.dropdown.FragmentDropDownList
 import com.safetyheads.akademiaandroida.presentation.ui.fragments.clients.ClientsFragment
@@ -16,10 +16,14 @@ import com.safetyheads.akademiaandroida.presentation.ui.fragments.faq.FaqFragmen
 import com.safetyheads.akademiaandroida.presentation.ui.fragments.fontstyle.FontSylesFragment
 import com.safetyheads.akademiaandroida.presentation.ui.fragments.forgotpasswordfragment.ForgotPasswordFragment
 import com.safetyheads.akademiaandroida.presentation.ui.fragments.login.LoginFragment
+import com.safetyheads.akademiaandroida.presentation.ui.fragments.map.MapFragment
 import com.safetyheads.akademiaandroida.presentation.ui.fragments.technologystack.TechnologyStackFragment
 import com.safetyheads.akademiaandroida.presentation.ui.fragments.wearehiring.WeAreHiringFragment
+import com.safetyheads.akademiaandroida.presentation.ui.fragments.youtube.YouTubeChanelFragment
+import com.safetyheads.akademiaandroida.presentation.ui.fragments.youtube.YouTubeVideoFragment
 import com.safetyheads.akademiaandroida.presentation.ui.signup.SignUpFragment
 import com.safetyheads.akademiaandroida.presentation.ui.utils.getPackageInfoCompat
+
 
 class ListActivity : AppCompatActivity() {
     private lateinit var binding: ActivityListBinding
@@ -69,6 +73,9 @@ class ListActivity : AppCompatActivity() {
     val careerFragment = CareerFragment()
     val technolgyStackFragment = TechnologyStackFragment()
     val signUpFragment = SignUpFragment()
+    val mapFragment = MapFragment()
+    val youTubeVideoFragment = YouTubeVideoFragment()
+    val youTubeChanelFragment = YouTubeChanelFragment()
     val faqFragment = FaqFragment()
 
     val dataListFragments = listOf(
@@ -83,8 +90,12 @@ class ListActivity : AppCompatActivity() {
         dashboardFragment,
         technolgyStackFragment,
         signUpFragment,
+        mapFragment,
+        youTubeVideoFragment,
+        youTubeChanelFragment,
         careerFragment,
         faqFragment
+
     )
 }
 

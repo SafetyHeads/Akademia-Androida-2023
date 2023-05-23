@@ -1,14 +1,14 @@
-package com.safetyheads.akademiaandroida.youtube
+package com.safetyheads.akademiaandroida.presentation.ui.activities
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import com.safetyheads.akademiaandroida.R
-import com.safetyheads.akademiaandroida.youtube.fragments.YouTubeChanelFragment
-import com.safetyheads.akademiaandroida.youtube.fragments.YouTubePlayListItemsFragment
-import com.safetyheads.akademiaandroida.youtube.fragments.YouTubePlayListsFragment
-import com.safetyheads.akademiaandroida.youtube.fragments.YouTubeVideoFragment
-import com.safetyheads.akademiaandroida.databinding.ActivityYoutubeBinding
+import com.safetyheads.akademiaandroida.presentation.R
+import com.safetyheads.akademiaandroida.presentation.ui.fragments.youtube.YouTubeChanelFragment
+import com.safetyheads.akademiaandroida.presentation.ui.fragments.youtube.YouTubePlayListItemsFragment
+import com.safetyheads.akademiaandroida.presentation.ui.fragments.youtube.YouTubePlayListsFragment
+import com.safetyheads.akademiaandroida.presentation.ui.fragments.youtube.YouTubeVideoFragment
+import com.safetyheads.akademiaandroida.presentation.databinding.ActivityYoutubeBinding
 
 
 class YouTubeActivity : AppCompatActivity() {

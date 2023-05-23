@@ -1,13 +1,13 @@
-package com.safetyheads.akademiaandroida.youtube.viewModel
+package com.safetyheads.akademiaandroida.presentation.ui.fragments.youtube
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.safetyheads.akademiaandroida.BuildConfig
 import com.safetyheads.akademiaandroida.domain.entities.Video
 import com.safetyheads.akademiaandroida.domain.usecases.DateUseCase
 import com.safetyheads.akademiaandroida.domain.usecases.GetVideoUseCase
+import com.safetyheads.akademiaandroida.presentation.BuildConfig
 import kotlinx.coroutines.launch
 
 class VideoViewModel(

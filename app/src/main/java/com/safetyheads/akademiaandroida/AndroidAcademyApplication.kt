@@ -50,6 +50,9 @@ import com.safetyheads.akademiaandroida.presentation.ui.fragments.faq.FaqViewMod
 import com.safetyheads.akademiaandroida.presentation.ui.fragments.forgotpasswordfragment.ForgotPasswordViewModel
 import com.safetyheads.akademiaandroida.presentation.ui.fragments.login.LoginViewModel
 import com.safetyheads.akademiaandroida.presentation.ui.fragments.technologystack.TechnologyStackViewModel
+import com.safetyheads.akademiaandroida.presentation.ui.fragments.youtube.ChannelViewModel
+import com.safetyheads.akademiaandroida.presentation.ui.fragments.youtube.PlayListViewModel
+import com.safetyheads.akademiaandroida.presentation.ui.fragments.youtube.VideoViewModel
 import com.safetyheads.akademiaandroida.presentation.ui.signup.SignUpViewModel
 import com.safetyheads.akademiaandroida.presentation.ui.viewmodels.ProfileViewModel
 import com.safetyheads.akademiaandroida.usersessionmanager.FakeSessionGenerator
@@ -58,9 +61,6 @@ import com.safetyheads.akademiaandroida.usersessionmanager.SESSION_SCOPE_NAME
 import com.safetyheads.akademiaandroida.usersessionmanager.Session
 import com.safetyheads.akademiaandroida.usersessionmanager.UnloggedSessionManager
 import com.safetyheads.akademiaandroida.usersessionmanager.getSessionScope
-import com.safetyheads.akademiaandroida.youtube.viewModel.ChannelViewModel
-import com.safetyheads.akademiaandroida.youtube.viewModel.PlayListViewModel
-import com.safetyheads.akademiaandroida.youtube.viewModel.VideoViewModel
 import com.safetyheads.data.network.mapper.ChannelMapper
 import com.safetyheads.data.network.mapper.PlayListVideoMapper
 import com.safetyheads.data.network.mapper.PlaylistMapper
