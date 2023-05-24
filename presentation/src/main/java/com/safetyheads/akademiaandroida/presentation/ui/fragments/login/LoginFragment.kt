@@ -46,33 +46,16 @@ class LoginFragment : Fragment() {
             ).show()
         }
 
-        EmailValidator.attach(binding.eTextEmailAddress)
-        PasswordValidator.attach(binding.eTextPassword, requireContext())
-
-        binding.buttonSignIn.setOnClickListener {
-            viewModel.login(
-                binding.eTextEmailAddress.text.toString(),
-                binding.eTextPassword.text.toString()
-            )
-            if(binding.eTextPassword.isCorrectText() && binding.eTextPassword.isCorrectText()) {
-
-            }
-        }
-
-        binding.forgotPassword.setOnClickListener {
-            val action =
-                LoginFragmentDirections.actionLoginFragmentToForgotPasswordFragment(false)
-            findNavController().navigate(action)
-        }
-
         viewModel.loginState.observe(viewLifecycleOwner, Observer { loginState ->
             when (loginState) {
                 LoginState.SUCCESS -> {
+                    binding.progressBar.visibility = View.GONE
                     println("Login was successful.")
                     findNavController().navigate(R.id.action_login_to_dashboard_fragment)
                 }
 
                 LoginState.ERROR -> {
+                    binding.progressBar.visibility = View.GONE
                     println("Login failed.")
                     LoginSnackBar.make(
                         binding.root,
@@ -94,6 +77,7 @@ class LoginFragment : Fragment() {
         }
 
         binding.buttonSignIn.setOnClickListener {
+            binding.progressBar.visibility = View.VISIBLE
             viewModel.login(
                 binding.eTextEmailAddress.text.toString(),
                 binding.eTextPassword.text.toString()
@@ -119,15 +103,14 @@ class LoginFragment : Fragment() {
 
         val textWatcher = object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {
-                Log.d(ContentValues.TAG, "beforeTextChanged")
+                //no-op
             }
 
             override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
                 binding.buttonSignIn.isEnabled = isValidInput()
-                Log.d(ContentValues.TAG, "onTextChanged")
             }
             override fun afterTextChanged(s: Editable) {
-                Log.d(ContentValues.TAG, "afterTextChanged")
+                //no-op
             }
         }
 

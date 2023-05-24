@@ -38,22 +38,17 @@ class SignUpFragment : Fragment() {
 
         setupInputValidation()
 
-        val etConfirmPassword = binding.eTextConfirmPassword
         val etPassword = binding.eTextPassword
         val etFullName = binding.eTextFullName
         val etEmailAdress = binding.eTextEmailAddress
 
         binding.buttonSignUp.setOnClickListener {
-            if (etConfirmPassword.isCorrectText() && etPassword.isCorrectText()
-                && etFullName.isCorrectText() && etEmailAdress.isCorrectText()
-            ) {
-                binding.progressBar.visibility = View.VISIBLE
-                viewModel.signUp(
-                    etFullName.text.toString(),
-                    etEmailAdress.text.toString(),
-                    etPassword.text.toString(),
-                )
-            }
+            binding.progressBar.visibility = View.VISIBLE
+            viewModel.signUp(
+                etFullName.text.toString(),
+                etEmailAdress.text.toString(),
+                etPassword.text.toString(),
+            )
         }
 
         lifecycleScope.launchWhenStarted {
@@ -91,6 +86,7 @@ class SignUpFragment : Fragment() {
                 binding.buttonSignUp.isEnabled = isValidInput()
                 //no-op
             }
+
             override fun afterTextChanged(s: Editable) {
                 //no-op
             }
