@@ -125,4 +125,6 @@
     <string name="send">Send</string>
     <string name="arrow_to_answer">arrow to answer</string>
     <string name="ok">OK</string>
+    <string name="chat">Chat</string>
+    <string name="map">Map</string>
 </resources>

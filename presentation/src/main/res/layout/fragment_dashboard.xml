@@ -23,7 +23,6 @@
         app:itemTextColor="@drawable/text_tint_selector"
         app:itemBackground="@drawable/dashboard_item_selector"
         android:layout_alignParentBottom="true"
-        app:menu="@menu/bottom_nav_view">
-</com.google.android.material.bottomnavigation.BottomNavigationView>
+        app:menu="@menu/dashboard_not_logged_nav_menu" />
 
     </RelativeLayout>
