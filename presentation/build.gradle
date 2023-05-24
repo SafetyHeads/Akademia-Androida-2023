@@ -83,6 +83,7 @@ dependencies {
 
     //firebase
     implementation 'com.google.firebase:firebase-auth-ktx:21.3.0'
+    implementation 'com.google.android.gms:play-services-maps:18.1.0'
 
     //mockk
     testImplementation "io.mockk:mockk:1.12.0"

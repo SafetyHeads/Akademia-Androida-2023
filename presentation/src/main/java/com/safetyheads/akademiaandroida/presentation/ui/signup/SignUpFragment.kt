@@ -1,6 +1,10 @@
 package com.safetyheads.akademiaandroida.presentation.ui.signup
 
+import android.content.ContentValues
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -30,6 +34,8 @@ class SignUpFragment : Fragment() {
 
         super.onViewCreated(view, savedInstanceState)
 
+        setupInputValidation()
+
         binding.buttonSignUp.setOnClickListener {
             viewModel.signUp(
                 binding.eTextFullName.text.toString(),
@@ -37,10 +43,6 @@ class SignUpFragment : Fragment() {
                 binding.eTextPassword.text.toString(),
             )
         }
-        FullNameValidator.attach(binding.eTextFullName, requireContext())
-        EmailValidator.attach(binding.eTextEmailAddress)
-        PasswordValidator.attach(binding.eTextPassword, requireContext())
-        PasswordValidator.attach(binding.eTextConfirmPassword, requireContext())
 
 
         lifecycleScope.launchWhenStarted {
@@ -59,6 +61,50 @@ class SignUpFragment : Fragment() {
                 }
             }
         }
+    }
+
+    private fun setupInputValidation() {
+
+        FullNameValidator.attach(binding.eTextFullName, requireContext())
+        EmailValidator.attach(binding.eTextEmailAddress)
+        PasswordValidator.attach(binding.eTextPassword, requireContext())
+        PasswordValidator.attach(binding.eTextConfirmPassword, requireContext())
+
+
+        val textWatcher = object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {
+                Log.d(ContentValues.TAG, "beforeTextChanged")
+            }
+
+            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
+                binding.buttonSignUp.isEnabled = isValidInput()
+                Log.d(ContentValues.TAG, "onTextChanged")
+            }
+            override fun afterTextChanged(s: Editable) {
+                Log.d(ContentValues.TAG, "afterTextChanged")
+            }
+        }
+
+        binding.eTextFullName.addTextChangedListener(textWatcher)
+        binding.eTextEmailAddress.addTextChangedListener(textWatcher)
+        binding.eTextPassword.addTextChangedListener(textWatcher)
+        binding.eTextConfirmPassword.addTextChangedListener(textWatcher)
+
+        binding.buttonSignUp.isEnabled = false
+
+
+    }
+
+
+    private fun isValidInput(): Boolean {
+        val fullname = binding.eTextFullName.text.toString().trim()
+        val email = binding.eTextEmailAddress.text.toString().trim()
+        val password = binding.eTextPassword.text.toString().trim()
+        val passwordconfirm = binding.eTextConfirmPassword.text.toString().trim()
+
+
+        return email.isNotEmpty() && password.isNotEmpty() && fullname.isNotEmpty() && passwordconfirm.isNotEmpty()
+                && password == passwordconfirm
     }
 }
 

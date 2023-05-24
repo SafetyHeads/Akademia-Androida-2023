@@ -3,7 +3,7 @@ package com.safetyheads.akademiaandroida.usersessionmanager
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.snackbar.Snackbar
-import com.safetyheads.akademiaandroida.databinding.ActivityUserSessionBinding
+import com.safetyheads.akademiaandroida.presentation.databinding.ActivityUserSessionBinding
 import org.koin.android.ext.android.getKoin
 
 class UserSessionManagerActivity : AppCompatActivity() {

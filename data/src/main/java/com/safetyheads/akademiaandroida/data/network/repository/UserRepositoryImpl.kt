@@ -140,7 +140,8 @@ class UserRepositoryImpl : UserRepository {
                         .addOnFailureListener { exception ->
                             Log.d(TAG, "get failed with ", exception)
                         }
-                }
+                } else
+                    trySend(Result.failure(task.exception ?: Exception("failed")))
             }
         awaitClose { listener.isCanceled }
     }
