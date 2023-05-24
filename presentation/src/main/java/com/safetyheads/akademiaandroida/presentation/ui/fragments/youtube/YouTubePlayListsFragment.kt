@@ -1,4 +1,4 @@
-package com.safetyheads.akademiaandroida.youtube.fragments
+package com.safetyheads.akademiaandroida.presentation.ui.fragments.youtube
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,10 +8,8 @@ import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.safetyheads.akademiaandroida.youtube.YouTubeActivity
-import com.safetyheads.akademiaandroida.youtube.adapters.PlaylistAdapter
-import com.safetyheads.akademiaandroida.youtube.viewModel.PlayListViewModel
-import com.safetyheads.akademiaandroida.databinding.FragmentPlaylistBinding
+import com.safetyheads.akademiaandroida.presentation.databinding.FragmentPlaylistBinding
+import com.safetyheads.akademiaandroida.presentation.ui.activities.YouTubeActivity
 import org.koin.androidx.viewmodel.ext.android.activityViewModel
 
 class YouTubePlayListsFragment: Fragment(), PlaylistAdapter.ClickListener {
