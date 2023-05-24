@@ -1,16 +1,11 @@
 package com.safetyheads.akademiaandroida.presentation.ui.fragments.login
 
-import android.content.ContentValues
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.safetyheads.akademiaandroida.presentation.R
 import com.safetyheads.akademiaandroida.presentation.databinding.FragmentLoginBinding
@@ -47,7 +42,7 @@ class LoginFragment : Fragment() {
             ).show()
         }
 
-        viewModel.loginState.observe(viewLifecycleOwner, Observer { loginState ->
+        viewModel.loginState.observe(viewLifecycleOwner) { loginState ->
             when (loginState) {
                 LoginState.SUCCESS -> {
                     binding.progressBar.visibility = View.GONE
@@ -67,8 +62,12 @@ class LoginFragment : Fragment() {
                 LoginState.LOADING -> {
                     println("Login is in progress.")
                 }
+
+                else -> {
+                    //no-op
+                }
             }
-        })
+        }
         navigationListeners()
     }
 
@@ -114,8 +113,6 @@ class LoginFragment : Fragment() {
 
     }
 
-
     private fun isValidInput(): Boolean = binding.eTextEmailAddress.isCorrectText()
             && binding.eTextPassword.isCorrectText()
-
 }

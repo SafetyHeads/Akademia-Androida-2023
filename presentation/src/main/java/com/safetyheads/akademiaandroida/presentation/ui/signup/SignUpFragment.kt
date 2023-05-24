@@ -1,10 +1,6 @@
 package com.safetyheads.akademiaandroida.presentation.ui.signup
 
-import android.content.ContentValues
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -30,23 +26,17 @@ class SignUpFragment : Fragment() {
         return binding.root
     }
 
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-
         super.onViewCreated(view, savedInstanceState)
 
         setupInputValidation()
 
-        val etPassword = binding.eTextPassword
-        val etFullName = binding.eTextFullName
-        val etEmailAdress = binding.eTextEmailAddress
-
         binding.buttonSignUp.setOnClickListener {
             binding.progressBar.visibility = View.VISIBLE
             viewModel.signUp(
-                etFullName.text.toString(),
-                etEmailAdress.text.toString(),
-                etPassword.text.toString(),
+                binding.eTextFullName.text.toString(),
+                binding.eTextEmailAddress.text.toString(),
+                binding.eTextPassword.text.toString(),
             )
         }
 
@@ -54,6 +44,7 @@ class SignUpFragment : Fragment() {
             viewModel.registrationState.collect { result ->
                 when {
                     result == null -> {
+                        //no-op
                     }
 
                     result.isSuccess -> {
@@ -75,21 +66,6 @@ class SignUpFragment : Fragment() {
         PasswordValidator.attach(binding.eTextPassword, requireContext())
         PasswordValidator.attach(binding.eTextConfirmPassword, requireContext())
 
-
-        val textWatcher = object : TextWatcher {
-            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {
-                //no-op
-            }
-
-            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
-                binding.buttonSignUp.isEnabled = isValidInput()
-            }
-
-            override fun afterTextChanged(s: Editable) {
-                //no-op
-            }
-        }
-
         binding.eTextFullName.addTextChangedListener {
             binding.buttonSignUp.isEnabled = isValidInput()
         }
@@ -105,14 +81,10 @@ class SignUpFragment : Fragment() {
 
         binding.buttonSignUp.isEnabled = false
     }
-
-
     private fun isValidInput(): Boolean = binding.eTextFullName.isCorrectText() &&
             binding.eTextEmailAddress.isCorrectText() &&
             binding.eTextPassword.isCorrectText() &&
             binding.eTextConfirmPassword.isCorrectText() &&
             binding.eTextPassword.text.toString() == binding.eTextConfirmPassword.text.toString()
-
-
 }
 
