@@ -22,7 +22,6 @@ class VideoAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
                 // navigate to YouTube
             }
             binding.tvVideoTitle.text = data.videoTitle
-            binding.tvPublished.text = data.publishTime
             Glide.with(binding.root)
                 .load(data.thumbnailsUrl)
                 .into(binding.ivThumbnail)

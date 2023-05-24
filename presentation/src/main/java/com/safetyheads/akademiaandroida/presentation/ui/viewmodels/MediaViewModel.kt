@@ -4,13 +4,16 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.safetyheads.akademiaandroida.domain.entities.Media
+import com.safetyheads.akademiaandroida.domain.entities.Settings
+import com.safetyheads.akademiaandroida.domain.repositories.SettingsRepository
 import com.safetyheads.akademiaandroida.domain.usecases.GetAllVideoUseCase
 import com.safetyheads.akademiaandroida.domain.usecases.GetInstagramImageUseCase
 import kotlinx.coroutines.launch
 
 class MediaViewModel(
     private val getInstagramImageUseCase: GetInstagramImageUseCase,
-    private val getAllVideoUseCase: GetAllVideoUseCase
+    private val getAllVideoUseCase: GetAllVideoUseCase,
+    private val settingsRepository: SettingsRepository
 ) : ViewModel() {
 
     init {
@@ -64,4 +67,8 @@ class MediaViewModel(
 
         connectedList.postValue(tempConnectedList)
     }
+
+    fun readSetting() = settingsRepository.readSetting(Settings.SEND_NOTIFICATIONS_MEDIA)
+
+    fun writeSetting(value: Boolean) = settingsRepository.writeSetting(Settings.SEND_NOTIFICATIONS_MEDIA, value)
 }

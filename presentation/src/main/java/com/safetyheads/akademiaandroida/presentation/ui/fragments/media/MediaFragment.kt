@@ -33,6 +33,7 @@ class MediaFragment : Fragment() {
         initUI()
         observeUI()
         initList()
+        initNotificationView()
     }
 
     private fun initList() {
@@ -41,13 +42,44 @@ class MediaFragment : Fragment() {
     }
 
     private fun observeUI() {
-        mediaViewModel.connectedList.observe(viewLifecycleOwner) { list ->
-            videoAdapter.setData(list as ArrayList<Media>)
+        mediaViewModel.connectedList.observe(viewLifecycleOwner) { connectedList ->
+            if (binding.radioButtonAllMedia.isChecked)
+                videoAdapter.setData(connectedList as ArrayList<Media>)
+        }
+
+        mediaViewModel.youtubeFilmList.observe(viewLifecycleOwner) { youtubeFilmList ->
+            if (binding.radioButtonMovies.isChecked)
+                videoAdapter.setData(youtubeFilmList as ArrayList<Media>)
+        }
+
+        mediaViewModel.instagramImageList.observe(viewLifecycleOwner) { instagramImageList ->
+            if (binding.radioButtonPhoto.isChecked)
+                videoAdapter.setData(instagramImageList as ArrayList<Media>)
         }
     }
 
     private fun initUI() {
+        binding.radioButtonAllMedia.setOnClickListener {
+            videoAdapter.setData(mediaViewModel.connectedList.value as ArrayList<Media>)
+        }
 
+        binding.radioButtonMovies.setOnClickListener {
+            videoAdapter.setData(mediaViewModel.youtubeFilmList.value as ArrayList<Media>)
+        }
+
+        binding.radioButtonPhoto.setOnClickListener {
+            videoAdapter.setData(mediaViewModel.instagramImageList.value as ArrayList<Media>)
+        }
+    }
+
+    private fun initNotificationView() {
+        val shouldSendNotifications = mediaViewModel.readSetting()
+        binding.notificationView.setSwitchButton(shouldSendNotifications)
+        binding.notificationView.setExpandableContent(!shouldSendNotifications)
+
+        binding.notificationView.switchButtonListener { nottificationView ->
+            mediaViewModel.writeSetting(nottificationView)
+        }
     }
 
 }

@@ -3,20 +3,23 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:clipToPadding="false">
 
     <com.safetyheads.akademiaandroida.presentation.ui.customviews.notificationview.NotificationsView
         android:id="@+id/notificationView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:title_text="@string/our_job_offers" />
+        android:clipToPadding="false"
+        android:paddingBottom="@dimen/size_0.5x"
+        app:title_text="@string/our_creativity" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
         style="@style/default_card_style"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="@dimen/size_1.5x">
+        android:layout_marginTop="@dimen/size">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -27,7 +30,7 @@
                 style="@style/H2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
+                android:layout_marginStart="@dimen/size_4x"
                 android:layout_marginTop="18dp"
                 android:drawablePadding="@dimen/size"
                 android:gravity="center_vertical"
@@ -40,8 +43,8 @@
                 android:id="@+id/imageView3"
                 android:layout_width="1dp"
                 android:layout_height="84dp"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="24dp"
+                android:layout_marginStart="@dimen/size_3x"
+                android:layout_marginTop="@dimen/size_3x"
                 android:background="#94b66d"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -50,7 +53,7 @@
                 android:id="@+id/textView5"
                 style="@style/Text6"
                 android:layout_width="277dp"
-                android:layout_height="62dp"
+                android:layout_height="wrap_content"
                 android:lineSpacingExtra="0.0dp"
                 android:text="@string/explore_our_social_media"
                 app:layout_constraintStart_toStartOf="@+id/textView4"
@@ -60,8 +63,8 @@
                 android:id="@+id/horizontalScrollView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginStart="@dimen/size_3x"
+                android:layout_marginTop="@dimen/size_2x"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView5">
 
@@ -75,7 +78,8 @@
                         android:id="@+id/radio_button_all_media"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/all_media" />
+                        android:text="@string/all_media"
+                        android:checked="true"/>
 
                     <RadioButton
                         android:id="@+id/radio_button_movies"
@@ -97,9 +101,9 @@
                 android:id="@+id/recycler_view"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="24dp"
-                android:layout_marginEnd="24dp"
+                android:layout_marginStart="@dimen/size_3x"
+                android:layout_marginTop="@dimen/size_3x"
+                android:layout_marginEnd="@dimen/size_3x"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
