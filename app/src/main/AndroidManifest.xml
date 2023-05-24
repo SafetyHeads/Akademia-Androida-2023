@@ -55,7 +55,7 @@
             android:name=".presentation.ui.activitieslist.ListActivity"
             android:exported="true" />
         <activity
-            android:name=".youtube.YouTubeActivity"
+            android:name=".presentation.ui.activities.YouTubeActivity"
             android:exported="true" />
         <activity
             android:name=".presentation.ui.activities.ProfileActivity"

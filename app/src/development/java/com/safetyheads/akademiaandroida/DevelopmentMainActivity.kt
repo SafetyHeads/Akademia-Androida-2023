@@ -23,8 +23,8 @@ import com.safetyheads.akademiaandroida.presentation.ui.activitieslist.ListActiv
 import com.safetyheads.akademiaandroida.presentation.ui.components.Footer
 import com.safetyheads.akademiaandroida.presentation.ui.fragments.contactwithus.ContactUsFragment
 import com.safetyheads.akademiaandroida.presentation.ui.fragments.fontstyle.FontSylesFragment
+import com.safetyheads.akademiaandroida.presentation.ui.fragments.map.MapFragment
 import com.safetyheads.akademiaandroida.presentation.ui.fragments.wearehiring.WeAreHiringFragment
-import com.safetyheads.akademiaandroida.presentation.ui.map.MapFragment
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class DevelopmentMainActivity : AppCompatActivity() {

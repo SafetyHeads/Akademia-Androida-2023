@@ -56,7 +56,11 @@ import com.safetyheads.akademiaandroida.presentation.ui.customviews.dropdown.Dro
 import com.safetyheads.akademiaandroida.presentation.ui.customviews.dropdown.LoadItemsToDropDownListUseCase
 import com.safetyheads.akademiaandroida.presentation.ui.fragments.faq.FaqViewModel
 import com.safetyheads.akademiaandroida.presentation.ui.fragments.forgotpasswordfragment.ForgotPasswordViewModel
+import com.safetyheads.akademiaandroida.presentation.ui.fragments.login.LoginViewModel
 import com.safetyheads.akademiaandroida.presentation.ui.fragments.technologystack.TechnologyStackViewModel
+import com.safetyheads.akademiaandroida.presentation.ui.fragments.youtube.ChannelViewModel
+import com.safetyheads.akademiaandroida.presentation.ui.fragments.youtube.PlayListViewModel
+import com.safetyheads.akademiaandroida.presentation.ui.fragments.youtube.VideoViewModel
 import com.safetyheads.akademiaandroida.presentation.ui.signup.SignUpViewModel
 import com.safetyheads.akademiaandroida.presentation.ui.viewmodels.ProfileViewModel
 import com.safetyheads.akademiaandroida.usersessionmanager.FakeSessionGenerator
@@ -146,6 +150,7 @@ class AndroidAcademyApplication : Application() {
         single { AddQuestionUseCase(get()) }
         single { GetTechnologyStackUseCase(get()) }
         single { RegisterUseCase(get()) }
+        single { LoginUseCase(get()) }
 
         //viewmodels
         viewModel { SplashScreenViewModel(get(), get()) }
@@ -159,6 +164,7 @@ class AndroidAcademyApplication : Application() {
         viewModel { TechnologyStackViewModel(get()) }
         viewModel { SignUpViewModel(get()) }
         viewModel { FaqViewModel(get(), get()) }
+        viewModel { LoginViewModel(get()) }
     }
 
     private val networkModule = module {
