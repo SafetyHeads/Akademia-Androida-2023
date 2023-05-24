@@ -4,15 +4,15 @@ import com.safetyheads.akademiaandroida.domain.repositories.ImageRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
-class AddImageToFirebaseUserProfileFirestore(private val repository: ImageRepository) :
-    BaseUseCase<AddImageToFirebaseUserProfileFirestore.ImageParam, String> {
+class AddImageToUserProfile(private val repository: ImageRepository) :
+    BaseUseCase<AddImageToUserProfile.ImageParam, String> {
 
     class ImageParam(val userUUID: String, val imageStringReference: String) : BaseUseCase.Params
 
     override suspend fun invoke(parameter: ImageParam): Flow<Result<String>> {
         return flow {
             try {
-                repository.addImageToFirebaseUserProfileFirestore(
+                repository.addImageToUserProfile(
                     parameter.userUUID,
                     parameter.imageStringReference
                 ).collect { firestoreChange ->

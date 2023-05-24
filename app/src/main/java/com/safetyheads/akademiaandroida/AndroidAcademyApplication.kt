@@ -24,9 +24,9 @@ import com.safetyheads.akademiaandroida.domain.repositories.SettingsRepository
 import com.safetyheads.akademiaandroida.domain.repositories.TechnologyStackRepository
 import com.safetyheads.akademiaandroida.domain.repositories.UserRepository
 import com.safetyheads.akademiaandroida.domain.repositories.VideoRepository
-import com.safetyheads.akademiaandroida.domain.usecases.AddImageToFirebaseBitmapStorage
-import com.safetyheads.akademiaandroida.domain.usecases.AddImageToFirebaseUriStorage
-import com.safetyheads.akademiaandroida.domain.usecases.AddImageToFirebaseUserProfileFirestore
+import com.safetyheads.akademiaandroida.domain.usecases.AddImageToBitmapStorage
+import com.safetyheads.akademiaandroida.domain.usecases.AddImageToUriStorage
+import com.safetyheads.akademiaandroida.domain.usecases.AddImageToUserProfile
 import com.safetyheads.akademiaandroida.domain.usecases.AddQuestionUseCase
 import com.safetyheads.akademiaandroida.domain.usecases.DateUseCase
 import com.safetyheads.akademiaandroida.domain.usecases.DateUseCaseImpl
@@ -46,8 +46,8 @@ import com.safetyheads.akademiaandroida.domain.usecases.GetTechnologyStackUseCas
 import com.safetyheads.akademiaandroida.domain.usecases.GetVideoUseCase
 import com.safetyheads.akademiaandroida.domain.usecases.LoginUseCase
 import com.safetyheads.akademiaandroida.domain.usecases.RegisterUseCase
-import com.safetyheads.akademiaandroida.domain.usecases.RemoveImageFromFirebaseStorage
-import com.safetyheads.akademiaandroida.domain.usecases.RemoveImageFromUserProfileFirestore
+import com.safetyheads.akademiaandroida.domain.usecases.RemoveImageFromStorage
+import com.safetyheads.akademiaandroida.domain.usecases.RemoveImageFromUserProfile
 import com.safetyheads.akademiaandroida.domain.usecases.ResetPasswordUseCase
 import com.safetyheads.akademiaandroida.presentation.ui.activities.splashscreen.SplashScreenViewModel
 import com.safetyheads.akademiaandroida.presentation.ui.career.CareerRepositoryImpl
@@ -121,11 +121,11 @@ class AndroidAcademyApplication : Application() {
 
 
         //usecases
-        single { AddImageToFirebaseUriStorage(get()) }
-        single { AddImageToFirebaseBitmapStorage(get()) }
-        single { AddImageToFirebaseUserProfileFirestore(get()) }
-        single { RemoveImageFromUserProfileFirestore(get()) }
-        single { RemoveImageFromFirebaseStorage(get()) }
+        single { AddImageToUriStorage(get()) }
+        single { AddImageToBitmapStorage(get()) }
+        single { AddImageToUserProfile(get()) }
+        single { RemoveImageFromUserProfile(get()) }
+        single { RemoveImageFromStorage(get()) }
         single { GetProfileInformationUseCase(get()) }
         single { LoginUseCase(get()) }
         single { DelaySplashScreenUseCase() }

@@ -7,23 +7,23 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.safetyheads.akademiaandroida.domain.entities.firebasefirestore.Profile
-import com.safetyheads.akademiaandroida.domain.usecases.AddImageToFirebaseBitmapStorage
-import com.safetyheads.akademiaandroida.domain.usecases.AddImageToFirebaseUriStorage
-import com.safetyheads.akademiaandroida.domain.usecases.AddImageToFirebaseUserProfileFirestore
+import com.safetyheads.akademiaandroida.domain.usecases.AddImageToBitmapStorage
+import com.safetyheads.akademiaandroida.domain.usecases.AddImageToUriStorage
+import com.safetyheads.akademiaandroida.domain.usecases.AddImageToUserProfile
 import com.safetyheads.akademiaandroida.domain.usecases.GetProfileInformationUseCase
 import com.safetyheads.akademiaandroida.domain.usecases.LoginUseCase
-import com.safetyheads.akademiaandroida.domain.usecases.RemoveImageFromFirebaseStorage
-import com.safetyheads.akademiaandroida.domain.usecases.RemoveImageFromUserProfileFirestore
+import com.safetyheads.akademiaandroida.domain.usecases.RemoveImageFromStorage
+import com.safetyheads.akademiaandroida.domain.usecases.RemoveImageFromUserProfile
 import kotlinx.coroutines.launch
 
 class ProfileViewModel(
     private val loginUseCase: LoginUseCase,
     private val getProfileInformationUseCase: GetProfileInformationUseCase,
-    private val addImageToFirebaseUriStorage: AddImageToFirebaseUriStorage,
-    private val addImageToFirebaseBitmapStorage: AddImageToFirebaseBitmapStorage,
-    private val addImageToFirebaseUserProfileFirestore: AddImageToFirebaseUserProfileFirestore,
-    private val removeImageFromUserProfileFirestore: RemoveImageFromUserProfileFirestore,
-    private val removeImageFromFirebaseStorage: RemoveImageFromFirebaseStorage
+    private val addImageToUriStorage: AddImageToUriStorage,
+    private val addImageToBitmapStorage: AddImageToBitmapStorage,
+    private val addImageToUserProfile: AddImageToUserProfile,
+    private val removeImageFromUserProfile: RemoveImageFromUserProfile,
+    private val removeImageFromStorage: RemoveImageFromStorage
 ) : ViewModel() {
 
     val userUUID: MutableLiveData<String> = MutableLiveData()
@@ -62,13 +62,13 @@ class ProfileViewModel(
         }
     }
 
-    fun addImageToFirebaseUriStorage(imageUri: Uri) {
+    fun addImageToUriStorage(imageUri: Uri) {
         isLoading.postValue(true)
         viewModelScope.launch {
-            addImageToFirebaseUriStorage.invoke(AddImageToFirebaseUriStorage.ImageParam(imageUri))
+            addImageToUriStorage.invoke(AddImageToUriStorage.ImageParam(imageUri))
                 .collect { imageUri ->
                     if (imageUri.isSuccess) {
-                        addImageToFirebaseUserProfile(imageUri.getOrNull().orEmpty())
+                        addImageToUserProfile(imageUri.getOrNull().orEmpty())
                     } else {
                         isLoading.postValue(false)
                         Log.i("ProfileViewModel", imageUri.exceptionOrNull()?.message.orEmpty())
@@ -77,16 +77,16 @@ class ProfileViewModel(
         }
     }
 
-    fun addImageToFirebaseBitmapStorage(imageBitmap: Bitmap) {
+    fun addImageToBitmapStorage(imageBitmap: Bitmap) {
         isLoading.postValue(true)
         viewModelScope.launch {
-            addImageToFirebaseBitmapStorage.invoke(
-                AddImageToFirebaseBitmapStorage.ImageParam(
+            addImageToBitmapStorage.invoke(
+                AddImageToBitmapStorage.ImageParam(
                     imageBitmap
                 )
             ).collect { imageUri ->
                 if (imageUri.isSuccess) {
-                    addImageToFirebaseUserProfile(imageUri.getOrNull().orEmpty())
+                    addImageToUserProfile(imageUri.getOrNull().orEmpty())
                 } else {
                     isLoading.postValue(false)
                     Log.i("ProfileViewModel", imageUri.exceptionOrNull()?.message.orEmpty())
@@ -95,17 +95,17 @@ class ProfileViewModel(
         }
     }
 
-    fun addImageToFirebaseUserProfile(imageStringReference: String) {
+    fun addImageToUserProfile(imageStringReference: String) {
         viewModelScope.launch {
             if (imageStringReference.isNotEmpty()) {
-                addImageToFirebaseUserProfileFirestore.invoke(
-                    AddImageToFirebaseUserProfileFirestore.ImageParam(
+                addImageToUserProfile.invoke(
+                    AddImageToUserProfile.ImageParam(
                         userUUID.value.orEmpty(),
                         imageStringReference
                     )
                 ).collect { addImageResult ->
                     if (addImageResult.isSuccess) {
-                        removeImageFromFirebaseStorage(addImageResult.getOrNull().orEmpty())
+                        removeImageFromStorage(addImageResult.getOrNull().orEmpty())
                         isLoading.postValue(false)
                     } else {
                         isLoading.postValue(false)
@@ -119,11 +119,11 @@ class ProfileViewModel(
         }
     }
 
-    fun removeImageFromFirebaseStorage(imageStringReference: String) {
+    fun removeImageFromStorage(imageStringReference: String) {
         viewModelScope.launch {
             if (imageStringReference != "default_user" && imageStringReference.isNotEmpty()) {
-                removeImageFromFirebaseStorage.invoke(
-                    RemoveImageFromFirebaseStorage.ImageParam(
+                removeImageFromStorage.invoke(
+                    RemoveImageFromStorage.ImageParam(
                         imageStringReference
                     )
                 ).collect { removeImageResult ->
@@ -146,14 +146,14 @@ class ProfileViewModel(
     fun removeImageFromUserProfile() {
         isLoading.postValue(true)
         viewModelScope.launch {
-            removeImageFromUserProfileFirestore.invoke(
-                RemoveImageFromUserProfileFirestore.ImageParam(
+            removeImageFromUserProfile.invoke(
+                RemoveImageFromUserProfile.ImageParam(
                     userUUID.value.orEmpty()
                 )
             ).collect { removeImageResult ->
                 if (removeImageResult.isSuccess) {
                     isLoading.postValue(false)
-                    removeImageFromFirebaseStorage(removeImageResult.getOrNull().orEmpty())
+                    removeImageFromStorage(removeImageResult.getOrNull().orEmpty())
                 } else {
                     isLoading.postValue(false)
                     Log.i(

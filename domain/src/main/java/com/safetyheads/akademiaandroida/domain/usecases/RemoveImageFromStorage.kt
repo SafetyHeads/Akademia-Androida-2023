@@ -4,23 +4,23 @@ import com.safetyheads.akademiaandroida.domain.repositories.ImageRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
-class RemoveImageFromUserProfileFirestore(private val repository: ImageRepository) :
-    BaseUseCase<RemoveImageFromUserProfileFirestore.ImageParam, String> {
+class RemoveImageFromStorage(private val repository: ImageRepository) :
+    BaseUseCase<RemoveImageFromStorage.ImageParam, Boolean> {
 
     @JvmInline
-    value class ImageParam(val userUUID: String) : BaseUseCase.Params
+    value class ImageParam(val imageStringReference: String) : BaseUseCase.Params
 
-    override suspend fun invoke(parameter: ImageParam): Flow<Result<String>> {
+    override suspend fun invoke(parameter: ImageParam): Flow<Result<Boolean>> {
         return flow {
             try {
-                repository.removeImageFromUserProfileFirestore(parameter.userUUID)
-                    .collect { imageStringReference ->
-                        if (imageStringReference.isSuccess)
-                            emit(imageStringReference)
+                repository.removeImageFromStorage(parameter.imageStringReference)
+                    .collect { firestoreChange ->
+                        if (firestoreChange.isSuccess)
+                            emit(firestoreChange)
                         else
                             emit(
                                 Result.failure(
-                                    imageStringReference.exceptionOrNull()
+                                    firestoreChange.exceptionOrNull()
                                         ?: Exception("Add Image to Firebase Storage Error!")
                                 )
                             )

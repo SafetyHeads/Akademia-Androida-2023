@@ -1,21 +1,20 @@
 package com.safetyheads.akademiaandroida.domain.usecases
 
-import android.graphics.Bitmap
+import android.net.Uri
 import com.safetyheads.akademiaandroida.domain.repositories.ImageRepository
-import com.safetyheads.akademiaandroida.domain.repositories.UserRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
-class AddImageToFirebaseBitmapStorage(private val repository: ImageRepository) :
-    BaseUseCase<AddImageToFirebaseBitmapStorage.ImageParam, String> {
+class AddImageToUriStorage(private val repository: ImageRepository) :
+    BaseUseCase<AddImageToUriStorage.ImageParam, String> {
 
     @JvmInline
-    value class ImageParam(val imageBitmap: Bitmap) : BaseUseCase.Params
+    value class ImageParam(val imageUri: Uri) : BaseUseCase.Params
 
     override suspend fun invoke(parameter: ImageParam): Flow<Result<String>> {
         return flow {
             try {
-                repository.addImageToFirebaseStorage(parameter.imageBitmap).collect { imageUri ->
+                repository.addImageToStorage(parameter.imageUri).collect { imageUri ->
                     if (imageUri.isSuccess)
                         emit(imageUri)
                     else

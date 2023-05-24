@@ -63,7 +63,7 @@ class ChangeAvatarBottomSheetDialogFragment : BottomSheetDialogFragment() {
             if (result.resultCode == Activity.RESULT_OK) {
                 val uri = result.data?.data
                 if (uri != null) {
-                    viewModel.addImageToFirebaseUriStorage(uri)
+                    viewModel.addImageToUriStorage(uri)
                     this@ChangeAvatarBottomSheetDialogFragment.dismiss()
                 }
             }
@@ -74,7 +74,7 @@ class ChangeAvatarBottomSheetDialogFragment : BottomSheetDialogFragment() {
             if (result.resultCode == Activity.RESULT_OK) {
                 val data = result.data
                 val imageBitmap = data?.extras?.get("data") as Bitmap
-                viewModel.addImageToFirebaseBitmapStorage(imageBitmap)
+                viewModel.addImageToBitmapStorage(imageBitmap)
                 this@ChangeAvatarBottomSheetDialogFragment.dismiss()
             }
         }

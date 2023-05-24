@@ -20,7 +20,7 @@ class ImageRepositoryImpl(
     private val storageReference: FirebaseStorage
 ) : ImageRepository {
 
-    override suspend fun addImageToFirebaseUserProfileFirestore(
+    override suspend fun addImageToUserProfile(
         userUUID: String,
         imageStringReference: String,
     ): Flow<Result<String>> = callbackFlow {
@@ -45,7 +45,7 @@ class ImageRepositoryImpl(
         }
     }
 
-    override suspend fun removeImageFromUserProfileFirestore(userUUID: String): Flow<Result<String>> = callbackFlow {
+    override suspend fun removeImageFromUserProfile(userUUID: String): Flow<Result<String>> = callbackFlow {
         try {
             val defaultUserDocRef = collectionReference.collection("images").document("default_user")
             val usersDocRef = collectionReference.collection("users").document(userUUID)
@@ -67,7 +67,7 @@ class ImageRepositoryImpl(
         }
     }
 
-    override suspend fun removeImageFromFirebaseStorage(imageStringReference: String): Flow<Result<Boolean>> = callbackFlow {
+    override suspend fun removeImageFromStorage(imageStringReference: String): Flow<Result<Boolean>> = callbackFlow {
         try {
             val documentRef = collectionReference.collection("images").document(imageStringReference)
 
@@ -87,7 +87,7 @@ class ImageRepositoryImpl(
         }
     }
 
-    override suspend fun addImageToFirebaseStorage(imageBitmap: Bitmap): Flow<Result<String>> = callbackFlow {
+    override suspend fun addImageToStorage(imageBitmap: Bitmap): Flow<Result<String>> = callbackFlow {
         try {
             val fileName = UUID.randomUUID().toString()
             val baos = ByteArrayOutputStream()
@@ -120,7 +120,7 @@ class ImageRepositoryImpl(
         }
     }
 
-    override suspend fun addImageToFirebaseStorage(imageUri: Uri): Flow<Result<String>> = callbackFlow {
+    override suspend fun addImageToStorage(imageUri: Uri): Flow<Result<String>> = callbackFlow {
         try {
             val fileName = UUID.randomUUID().toString()
             val imageRef = storageReference.reference.child("images/${fileName}.jpg")
