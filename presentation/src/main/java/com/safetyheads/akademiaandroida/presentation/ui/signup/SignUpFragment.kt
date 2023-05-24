@@ -15,6 +15,9 @@ import com.safetyheads.akademiaandroida.presentation.ui.utils.EmailValidator
 import com.safetyheads.akademiaandroida.presentation.ui.utils.FullNameValidator
 import com.safetyheads.akademiaandroida.presentation.ui.utils.PasswordValidator
 import com.safetyheads.akademiaandroida.presentation.ui.utils.isCorrectText
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SignUpFragment : Fragment() {
@@ -56,11 +59,6 @@ class SignUpFragment : Fragment() {
             }
         }
 
-        FullNameValidator.attach(etFullName, requireContext())
-        EmailValidator.attach(etEmailAdress)
-        PasswordValidator.attach(etPassword, requireContext())
-        PasswordValidator.attach(etConfirmPassword, requireContext())
-
         lifecycleScope.launchWhenStarted {
             viewModel.registrationState.collect { result ->
                 when {
@@ -89,15 +87,15 @@ class SignUpFragment : Fragment() {
 
         val textWatcher = object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {
-                Log.d(ContentValues.TAG, "beforeTextChanged")
+                //no-op
             }
 
             override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
                 binding.buttonSignUp.isEnabled = isValidInput()
-                Log.d(ContentValues.TAG, "onTextChanged")
             }
+
             override fun afterTextChanged(s: Editable) {
-                Log.d(ContentValues.TAG, "afterTextChanged")
+                //no-op
             }
         }
 
@@ -113,14 +111,22 @@ class SignUpFragment : Fragment() {
 
 
     private fun isValidInput(): Boolean {
-        val fullname = binding.eTextFullName.text.toString().trim()
-        val email = binding.eTextEmailAddress.text.toString().trim()
-        val password = binding.eTextPassword.text.toString().trim()
-        val passwordconfirm = binding.eTextConfirmPassword.text.toString().trim()
+        Log.d("Backspace", "---------------------------------------")
+        Log.d("eTextFullName", binding.eTextFullName.isCorrectText().toString())
+        Log.d("eTextEmailAddress", binding.eTextEmailAddress.isCorrectText().toString())
+        Log.d("eTextPassword", binding.eTextPassword.isCorrectText().toString())
+        Log.d("eTextConfirmPassword", binding.eTextConfirmPassword.isCorrectText().toString())
+        Log.d("CHECKPASSWORDS", (binding.eTextPassword.text.toString()
+            .trim() == binding.eTextConfirmPassword.text.toString().trim()).toString())
+        return binding.eTextFullName.isCorrectText() && binding.eTextPassword.isCorrectText() &&
+                binding.eTextEmailAddress.isCorrectText() &&
+                binding.eTextPassword.isCorrectText() &&
+                binding.eTextConfirmPassword.isCorrectText() &&
+                binding.eTextPassword.text.toString()
+                    .trim() == binding.eTextConfirmPassword.text.toString().trim()
 
 
-        return email.isNotEmpty() && password.isNotEmpty() && fullname.isNotEmpty() && passwordconfirm.isNotEmpty()
-                && password == passwordconfirm
+
     }
 }
 
