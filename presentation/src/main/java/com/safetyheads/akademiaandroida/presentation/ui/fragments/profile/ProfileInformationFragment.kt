@@ -50,6 +50,67 @@ class ProfileInformationFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         initUI()
         observeUI()
+        initEditText()
+    }
+
+    private fun initEditText() {
+        binding.apply {
+            fullNameEditText.addTextChangedListener {
+                if (("${actualProfile.firstName} ${actualProfile.lastName}") != binding.fullNameEditText.text.toString()) {
+                    fullNameJob?.cancel()
+                    fullNameJob = resetJob { changeFullName() }
+                }
+            }
+
+            jobPositionEditText.addTextChangedListener {
+                if (actualProfile.jobPosition != binding.jobPositionEditText.text.toString()) {
+                    jobPositionJob?.cancel()
+                    jobPositionJob = resetJob { changeJobPosition() }
+                }
+            }
+
+            phoneNumberEditText.addTextChangedListener {
+                if (actualProfile.phoneNumber != binding.phoneNumberEditText.text.toString()) {
+                    phoneNumberJob?.cancel()
+                    phoneNumberJob = resetJob { changePhoneNumber() }
+                }
+            }
+
+            streetNameEditText.addTextChangedListener {
+                if (actualProfile.address.streetName != binding.streetNameEditText.text.toString()) {
+                    streetNameJob?.cancel()
+                    streetNameJob = resetJob { changeStreetName() }
+                }
+            }
+
+            cityEditText.addTextChangedListener {
+                if (actualProfile.address.city != binding.cityEditText.text.toString()) {
+                    cityJob?.cancel()
+                    cityJob = resetJob { changeCity() }
+                }
+            }
+
+            countryEditText.addTextChangedListener {
+                if (actualProfile.address.country != binding.countryEditText.text.toString()) {
+                    countryJob?.cancel()
+                    countryJob = resetJob { changeCountry() }
+                }
+            }
+
+            streetNumberEditText.addTextChangedListener {
+                if (actualProfile.address.streetNumber != binding.streetNumberEditText.text.toString()) {
+                    countryJob?.cancel()
+                    countryJob = resetJob { changeStreetNumber() }
+                }
+            }
+
+            zipcodeEditText.addTextChangedListener {
+                if (actualProfile.address.zipCode != binding.zipcodeEditText.text.toString()) {
+                    countryJob?.cancel()
+                    countryJob = resetJob { changeZipCode() }
+                }
+            }
+        }
     }
 
     private fun observeUI() {
@@ -114,62 +175,6 @@ class ProfileInformationFragment : Fragment() {
 
             arrowBack.setOnClickListener {
                 requireActivity().onBackPressed()
-            }
-
-            fullNameEditText.addTextChangedListener {
-                if (("${actualProfile.firstName} ${actualProfile.lastName}") != binding.fullNameEditText.text.toString()) {
-                    fullNameJob?.cancel()
-                    fullNameJob = resetJob { changeFullName() }
-                }
-            }
-
-            jobPositionEditText.addTextChangedListener {
-                if (actualProfile.jobPosition != binding.jobPositionEditText.text.toString()) {
-                    jobPositionJob?.cancel()
-                    jobPositionJob = resetJob { changeJobPosition() }
-                }
-            }
-
-            phoneNumberEditText.addTextChangedListener {
-                if (actualProfile.phoneNumber != binding.phoneNumberEditText.text.toString()) {
-                    phoneNumberJob?.cancel()
-                    phoneNumberJob = resetJob { changePhoneNumber() }
-                }
-            }
-
-            streetNameEditText.addTextChangedListener {
-                if (actualProfile.address.streetName != binding.streetNameEditText.text.toString()) {
-                    streetNameJob?.cancel()
-                    streetNameJob = resetJob { changeStreetName() }
-                }
-            }
-
-            cityEditText.addTextChangedListener {
-                if (actualProfile.address.city != binding.cityEditText.text.toString()) {
-                    cityJob?.cancel()
-                    cityJob = resetJob { changeCity() }
-                }
-            }
-
-            countryEditText.addTextChangedListener {
-                if (actualProfile.address.country != binding.countryEditText.text.toString()) {
-                    countryJob?.cancel()
-                    countryJob = resetJob { changeCountry() }
-                }
-            }
-
-            streetNumberEditText.addTextChangedListener {
-                if (actualProfile.address.streetNumber != binding.streetNumberEditText.text.toString()) {
-                    countryJob?.cancel()
-                    countryJob = resetJob { changeStreetNumber() }
-                }
-            }
-
-            zipcodeEditText.addTextChangedListener {
-                if (actualProfile.address.zipCode != binding.zipcodeEditText.text.toString()) {
-                    countryJob?.cancel()
-                    countryJob = resetJob { changeZipCode() }
-                }
             }
         }
     }
