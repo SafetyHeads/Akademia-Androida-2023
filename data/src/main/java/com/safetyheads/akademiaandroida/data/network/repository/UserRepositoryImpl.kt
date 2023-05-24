@@ -94,10 +94,6 @@ class UserRepositoryImpl : UserRepository {
     }
 
     override fun logIn(email: String, password: String): Flow<Result<String>> = callbackFlow {
-        //temp loggin
-        val email = "testalbertb@sh.pl"
-        val password = "123456789"
-
         val listener = firebaseAuth.signInWithEmailAndPassword(email, password)
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {

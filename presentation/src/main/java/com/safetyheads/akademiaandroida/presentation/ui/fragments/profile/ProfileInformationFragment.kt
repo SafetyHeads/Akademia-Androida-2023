@@ -1,11 +1,10 @@
 package com.safetyheads.akademiaandroida.presentation.ui.fragments.profile
 
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import com.safetyheads.akademiaandroida.domain.entities.firebasefirestore.Profile
 import com.safetyheads.akademiaandroida.presentation.databinding.FragmentProfileInformationBinding
@@ -117,175 +116,62 @@ class ProfileInformationFragment : Fragment() {
                 requireActivity().onBackPressed()
             }
 
-            @Suppress("EmptyFunctionBlock")
-            fullNameEditText.addTextChangedListener(object : TextWatcher {
-                override fun beforeTextChanged(
-                    s: CharSequence?,
-                    start: Int,
-                    count: Int,
-                    after: Int
-                ) {
+            fullNameEditText.addTextChangedListener {
+                if (("${actualProfile.firstName} ${actualProfile.lastName}") != binding.fullNameEditText.text.toString()) {
+                    fullNameJob?.cancel()
+                    fullNameJob = resetJob { changeFullName() }
                 }
+            }
 
-                override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                    if (("${actualProfile.firstName} ${actualProfile.lastName}") != binding.fullNameEditText.text.toString()) {
-                        fullNameJob?.cancel()
-                        fullNameJob = resetJob { changeFullName() }
-                    }
+            jobPositionEditText.addTextChangedListener {
+                if (actualProfile.jobPosition != binding.jobPositionEditText.text.toString()) {
+                    jobPositionJob?.cancel()
+                    jobPositionJob = resetJob { changeJobPosition() }
                 }
+            }
 
-                override fun afterTextChanged(s: Editable?) {
+            phoneNumberEditText.addTextChangedListener {
+                if (actualProfile.phoneNumber != binding.phoneNumberEditText.text.toString()) {
+                    phoneNumberJob?.cancel()
+                    phoneNumberJob = resetJob { changePhoneNumber() }
                 }
-            })
+            }
 
-            @Suppress("EmptyFunctionBlock")
-            jobPositionEditText.addTextChangedListener(object : TextWatcher {
-                override fun beforeTextChanged(
-                    s: CharSequence?,
-                    start: Int,
-                    count: Int,
-                    after: Int
-                ) {
+            streetNameEditText.addTextChangedListener {
+                if (actualProfile.address.streetName != binding.streetNameEditText.text.toString()) {
+                    streetNameJob?.cancel()
+                    streetNameJob = resetJob { changeStreetName() }
                 }
+            }
 
-                override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                    if (actualProfile.jobPosition != binding.jobPositionEditText.text.toString()) {
-                        jobPositionJob?.cancel()
-                        jobPositionJob = resetJob { changeJobPosition() }
-                    }
+            cityEditText.addTextChangedListener {
+                if (actualProfile.address.city != binding.cityEditText.text.toString()) {
+                    cityJob?.cancel()
+                    cityJob = resetJob { changeCity() }
                 }
+            }
 
-                override fun afterTextChanged(s: Editable?) {
+            countryEditText.addTextChangedListener {
+                if (actualProfile.address.country != binding.countryEditText.text.toString()) {
+                    countryJob?.cancel()
+                    countryJob = resetJob { changeCountry() }
                 }
-            })
+            }
 
-            @Suppress("EmptyFunctionBlock")
-            phoneNumberEditText.addTextChangedListener(object : TextWatcher {
-                override fun beforeTextChanged(
-                    s: CharSequence?,
-                    start: Int,
-                    count: Int,
-                    after: Int
-                ) {
+            streetNumberEditText.addTextChangedListener {
+                if (actualProfile.address.streetNumber != binding.streetNumberEditText.text.toString()) {
+                    countryJob?.cancel()
+                    countryJob = resetJob { changeStreetNumber() }
                 }
+            }
 
-                override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                    if (actualProfile.phoneNumber != binding.phoneNumberEditText.text.toString()) {
-                        phoneNumberJob?.cancel()
-                        phoneNumberJob = resetJob { changePhoneNumber() }
-                    }
+            zipcodeEditText.addTextChangedListener {
+                if (actualProfile.address.zipCode != binding.zipcodeEditText.text.toString()) {
+                    countryJob?.cancel()
+                    countryJob = resetJob { changeZipCode() }
                 }
-
-                override fun afterTextChanged(s: Editable?) {
-                }
-            })
-
-            @Suppress("EmptyFunctionBlock")
-            streetNameEditText.addTextChangedListener(object : TextWatcher {
-                override fun beforeTextChanged(
-                    s: CharSequence?,
-                    start: Int,
-                    count: Int,
-                    after: Int
-                ) {
-                }
-
-                override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                    if (actualProfile.address.streetName != binding.streetNameEditText.text.toString()) {
-                        streetNameJob?.cancel()
-                        streetNameJob = resetJob { changeStreetName() }
-                    }
-                }
-
-                override fun afterTextChanged(s: Editable?) {
-                }
-            })
-
-            @Suppress("EmptyFunctionBlock")
-            cityEditText.addTextChangedListener(object : TextWatcher {
-                override fun beforeTextChanged(
-                    s: CharSequence?,
-                    start: Int,
-                    count: Int,
-                    after: Int
-                ) {
-                }
-
-                override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                    if (actualProfile.address.city != binding.cityEditText.text.toString()) {
-                        cityJob?.cancel()
-                        cityJob = resetJob { changeCity() }
-                    }
-                }
-
-                override fun afterTextChanged(s: Editable?) {
-                }
-            })
-
-            @Suppress("EmptyFunctionBlock")
-            countryEditText.addTextChangedListener(object : TextWatcher {
-                override fun beforeTextChanged(
-                    s: CharSequence?,
-                    start: Int,
-                    count: Int,
-                    after: Int
-                ) {
-                }
-
-                override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                    if (actualProfile.address.country != binding.countryEditText.text.toString()) {
-                        countryJob?.cancel()
-                        countryJob = resetJob { changeCountry() }
-                    }
-                }
-
-                override fun afterTextChanged(s: Editable?) {
-                }
-            })
-
-            @Suppress("EmptyFunctionBlock")
-            streetNumberEditText.addTextChangedListener(object : TextWatcher {
-                override fun beforeTextChanged(
-                    s: CharSequence?,
-                    start: Int,
-                    count: Int,
-                    after: Int
-                ) {
-                }
-
-                override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                    if (actualProfile.address.streetNumber != binding.streetNumberEditText.text.toString()) {
-                        countryJob?.cancel()
-                        countryJob = resetJob { changeStreetNumber() }
-                    }
-                }
-
-                override fun afterTextChanged(s: Editable?) {
-                }
-            })
-
-            @Suppress("EmptyFunctionBlock")
-            zipcodeEditText.addTextChangedListener(object : TextWatcher {
-                override fun beforeTextChanged(
-                    s: CharSequence?,
-                    start: Int,
-                    count: Int,
-                    after: Int
-                ) {
-                }
-
-                override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                    if (actualProfile.address.zipCode != binding.zipcodeEditText.text.toString()) {
-                        countryJob?.cancel()
-                        countryJob = resetJob { changeZipCode() }
-                    }
-                }
-
-                override fun afterTextChanged(s: Editable?) {
-                }
-            })
+            }
         }
-
     }
 
     private fun changeFullName() {
