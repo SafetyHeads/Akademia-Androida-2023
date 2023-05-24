@@ -8,6 +8,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
@@ -101,31 +102,20 @@ class LoginFragment : Fragment() {
         EmailValidator.attach(binding.eTextEmailAddress)
         PasswordValidator.attach(binding.eTextPassword, requireContext())
 
-        val textWatcher = object : TextWatcher {
-            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {
-                //no-op
-            }
-
-            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
-                binding.buttonSignIn.isEnabled = isValidInput()
-            }
-            override fun afterTextChanged(s: Editable) {
-                //no-op
-            }
+        binding.eTextPassword.addTextChangedListener {
+            binding.buttonSignIn.isEnabled = isValidInput()
         }
 
-        binding.eTextEmailAddress.addTextChangedListener(textWatcher)
-        binding.eTextPassword.addTextChangedListener(textWatcher)
+        binding.eTextEmailAddress.addTextChangedListener {
+            binding.buttonSignIn.isEnabled = isValidInput()
+        }
 
         binding.buttonSignIn.isEnabled = false
 
     }
 
 
-    private fun isValidInput(): Boolean {
-        val email = binding.eTextEmailAddress.text.toString().trim()
-        val password = binding.eTextPassword.text.toString().trim()
+    private fun isValidInput(): Boolean = binding.eTextEmailAddress.isCorrectText()
+            && binding.eTextPassword.isCorrectText()
 
-        return email.isNotEmpty() && password.isNotEmpty()
-    }
 }
