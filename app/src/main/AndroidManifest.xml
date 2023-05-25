@@ -65,7 +65,12 @@
             android:label="@string/title_activity_web_view"
             android:theme="@style/Theme.AkademiaAndroida.NoActionBar" />
 
-        <activity android:name=".usersessionmanager.UserSessionManagerActivity"
+        <activity
+            android:name=".usersessionmanager.UserSessionManagerActivity"
+            android:exported="true" />
+
+        <activity
+            android:name=".presentation.ui.activities.DashboardActivity"
             android:exported="true" />
 
         <service

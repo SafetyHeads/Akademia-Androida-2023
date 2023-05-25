@@ -1,5 +1,6 @@
 package com.safetyheads.akademiaandroida.presentation.ui.fragments.login
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,6 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.safetyheads.akademiaandroida.presentation.R
 import com.safetyheads.akademiaandroida.presentation.databinding.FragmentLoginBinding
+import com.safetyheads.akademiaandroida.presentation.ui.activities.DashboardActivity
 import com.safetyheads.akademiaandroida.presentation.ui.components.snackbar.LoginSnackBar
 import com.safetyheads.akademiaandroida.presentation.ui.utils.EmailValidator
 import com.safetyheads.akademiaandroida.presentation.ui.utils.PasswordValidator
@@ -48,7 +50,8 @@ class LoginFragment : Fragment() {
                 LoginState.SUCCESS -> {
                     binding.progressBar.isVisible = false
                     println("Login was successful.")
-                    findNavController().navigate(R.id.action_login_to_dashboard_fragment)
+                    val intent = Intent(requireActivity(), DashboardActivity::class.java)
+                    startActivity(intent)
                 }
 
                 LoginState.ERROR -> {
