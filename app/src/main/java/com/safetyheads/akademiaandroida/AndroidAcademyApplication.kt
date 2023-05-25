@@ -35,6 +35,7 @@ import com.safetyheads.akademiaandroida.domain.usecases.GetJobOfferUseCase
 import com.safetyheads.akademiaandroida.domain.usecases.GetPlayListItemsUseCase
 import com.safetyheads.akademiaandroida.domain.usecases.GetPlayListsUseCase
 import com.safetyheads.akademiaandroida.domain.usecases.GetProfileInformationUseCase
+import com.safetyheads.akademiaandroida.domain.usecases.GetSessionUseCase
 import com.safetyheads.akademiaandroida.domain.usecases.GetSocialUseCase
 import com.safetyheads.akademiaandroida.domain.usecases.GetTechnologyStackUseCase
 import com.safetyheads.akademiaandroida.domain.usecases.GetVideoUseCase
@@ -54,12 +55,14 @@ import com.safetyheads.akademiaandroida.presentation.ui.fragments.youtube.Channe
 import com.safetyheads.akademiaandroida.presentation.ui.fragments.youtube.PlayListViewModel
 import com.safetyheads.akademiaandroida.presentation.ui.fragments.youtube.VideoViewModel
 import com.safetyheads.akademiaandroida.presentation.ui.signup.SignUpViewModel
+import com.safetyheads.akademiaandroida.presentation.ui.viewmodels.DashboardViewModel
 import com.safetyheads.akademiaandroida.presentation.ui.viewmodels.ProfileViewModel
 import com.safetyheads.akademiaandroida.usersessionmanager.FakeSessionGenerator
 import com.safetyheads.akademiaandroida.usersessionmanager.LoggedSessionManager
 import com.safetyheads.akademiaandroida.usersessionmanager.SESSION_SCOPE_NAME
 import com.safetyheads.akademiaandroida.usersessionmanager.Session
 import com.safetyheads.akademiaandroida.usersessionmanager.UnloggedSessionManager
+import com.safetyheads.akademiaandroida.usersessionmanager.UserSessionManager
 import com.safetyheads.akademiaandroida.usersessionmanager.getSessionScope
 import com.safetyheads.data.network.mapper.ChannelMapper
 import com.safetyheads.data.network.mapper.PlayListVideoMapper
@@ -70,6 +73,7 @@ import com.safetyheads.data.network.repository.PlaylistRepositoryImpl
 import com.safetyheads.data.network.repository.VideoRepositoryImpl
 import com.safetyheads.data.network.repository.YouTubeApiConsts
 import com.safetyheads.data.network.service.YouTubeService
+import org.koin.android.ext.android.getKoin
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.androidx.viewmodel.dsl.viewModel
@@ -131,6 +135,7 @@ class AndroidAcademyApplication : Application() {
         single { GetTechnologyStackUseCase(get()) }
         single { RegisterUseCase(get()) }
         single { LoginUseCase(get()) }
+        single { GetSessionUseCase() }
 
         //viewmodels
         viewModel { SplashScreenViewModel(get(), get()) }
@@ -138,6 +143,7 @@ class AndroidAcademyApplication : Application() {
         viewModel { CareerViewModel(get(), get()) }
         viewModel { ForgotPasswordViewModel(get()) }
         viewModelOf(::ChannelViewModel)
+        viewModelOf(::DashboardViewModel)
         viewModelOf(::VideoViewModel)
         viewModelOf(::PlayListViewModel)
         viewModel { ProfileViewModel(get(), get()) }
