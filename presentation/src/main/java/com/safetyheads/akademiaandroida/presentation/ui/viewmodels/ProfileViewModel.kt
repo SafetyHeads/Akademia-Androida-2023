@@ -6,6 +6,7 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.safetyheads.akademiaandroida.data.network.repository.ImageRepositoryImpl
 import com.safetyheads.akademiaandroida.domain.entities.firebasefirestore.Profile
 import com.safetyheads.akademiaandroida.domain.usecases.AddImageToBitmapStorage
 import com.safetyheads.akademiaandroida.domain.usecases.AddImageToUriStorage
@@ -65,7 +66,7 @@ class ProfileViewModel(
     fun addImageToUriStorage(imageUri: Uri) {
         isLoading.postValue(true)
         viewModelScope.launch {
-            addImageToUriStorage.invoke(AddImageToUriStorage.ImageParam(imageUri))
+            addImageToUriStorage.invoke(AddImageToUriStorage.ImageParam(ImageRepositoryImpl.AndroidUri(imageUri)))
                 .collect { imageUri ->
                     if (imageUri.isSuccess) {
                         addImageToUserProfile(imageUri.getOrNull().orEmpty())
@@ -82,7 +83,7 @@ class ProfileViewModel(
         viewModelScope.launch {
             addImageToBitmapStorage.invoke(
                 AddImageToBitmapStorage.ImageParam(
-                    imageBitmap
+                    ImageRepositoryImpl.AndroidBitmap(imageBitmap)
                 )
             ).collect { imageUri ->
                 if (imageUri.isSuccess) {

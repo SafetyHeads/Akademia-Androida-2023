@@ -1,6 +1,6 @@
 package com.safetyheads.akademiaandroida.domain.usecases
 
-import android.net.Uri
+import com.safetyheads.akademiaandroida.domain.entities.ImageUri
 import com.safetyheads.akademiaandroida.domain.repositories.ImageRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -9,7 +9,7 @@ class AddImageToUriStorage(private val repository: ImageRepository) :
     BaseUseCase<AddImageToUriStorage.ImageParam, String> {
 
     @JvmInline
-    value class ImageParam(val imageUri: Uri) : BaseUseCase.Params
+    value class ImageParam(val imageUri: ImageUri) : BaseUseCase.Params
 
     override suspend fun invoke(parameter: ImageParam): Flow<Result<String>> {
         return flow {

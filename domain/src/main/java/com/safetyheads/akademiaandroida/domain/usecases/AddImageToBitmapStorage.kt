@@ -1,6 +1,6 @@
 package com.safetyheads.akademiaandroida.domain.usecases
 
-import android.graphics.Bitmap
+import com.safetyheads.akademiaandroida.domain.entities.RawBitmap
 import com.safetyheads.akademiaandroida.domain.repositories.ImageRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -9,7 +9,7 @@ class AddImageToBitmapStorage(private val repository: ImageRepository) :
     BaseUseCase<AddImageToBitmapStorage.ImageParam, String> {
 
     @JvmInline
-    value class ImageParam(val imageBitmap: Bitmap) : BaseUseCase.Params
+    value class ImageParam(val imageBitmap: RawBitmap) : BaseUseCase.Params
 
     override suspend fun invoke(parameter: ImageParam): Flow<Result<String>> {
         return flow {

@@ -2,11 +2,12 @@ package com.safetyheads.akademiaandroida.data.network.repository
 
 import android.graphics.Bitmap
 import android.net.Uri
-import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
+import com.safetyheads.akademiaandroida.domain.entities.ImageUri
+import com.safetyheads.akademiaandroida.domain.entities.RawBitmap
 import com.safetyheads.akademiaandroida.domain.repositories.ImageRepository
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
@@ -87,11 +88,11 @@ class ImageRepositoryImpl(
         }
     }
 
-    override suspend fun addImageToStorage(imageBitmap: Bitmap): Flow<Result<String>> = callbackFlow {
+    override suspend fun addImageToStorage(imageBitmap: RawBitmap): Flow<Result<String>> = callbackFlow {
         try {
             val fileName = UUID.randomUUID().toString()
             val baos = ByteArrayOutputStream()
-            imageBitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos)
+            (imageBitmap as AndroidBitmap).bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos)
             val imageData = baos.toByteArray()
             val imageRef = storageReference.reference.child("images/${fileName}.jpg")
 
@@ -120,12 +121,12 @@ class ImageRepositoryImpl(
         }
     }
 
-    override suspend fun addImageToStorage(imageUri: Uri): Flow<Result<String>> = callbackFlow {
+    override suspend fun addImageToStorage(imageUri: ImageUri): Flow<Result<String>> = callbackFlow {
         try {
             val fileName = UUID.randomUUID().toString()
             val imageRef = storageReference.reference.child("images/${fileName}.jpg")
 
-            val listener = imageRef.putFile(imageUri)
+            val listener = imageRef.putFile((imageUri as AndroidUri).uri)
                 .addOnSuccessListener {
                     imageRef.downloadUrl.addOnSuccessListener { url ->
                         collectionReference.collection("images").document(fileName).set(
@@ -149,4 +150,7 @@ class ImageRepositoryImpl(
             trySend(Result.failure(e))
         }
     }
+    data class AndroidBitmap(val bitmap: Bitmap) : RawBitmap
+    data class AndroidUri(val uri: Uri) : ImageUri
+
 }
