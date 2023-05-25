@@ -9,6 +9,15 @@
         android:id="@+id/profileFragment"
         android:name="com.safetyheads.akademiaandroida.presentation.ui.fragments.profile.ProfileFragment"
         android:label="ProfileFragment"
-        tools:layout="@layout/fragment_profile" />
+        tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/action_profileFragment_to_profileInformationFragment"
+            app:destination="@id/profileInformationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/profileInformationFragment"
+        android:name="com.safetyheads.akademiaandroida.presentation.ui.fragments.profile.ProfileInformationFragment"
+        android:label="ProfileInformationFragment"
+        tools:layout="@layout/fragment_profile_information" />
 
 </navigation>

@@ -10,4 +10,8 @@ interface UserRepository {
     fun resetPassword(email: String): Flow<ResetPassword>
     fun getProfileInformation(userUUID: String): Flow<Result<Profile>>
     fun logIn(email: String, password: String): Flow<Result<String>>
+    suspend fun logOut(): Flow<Result<Boolean>>
+    suspend fun deleteAccount(): Flow<Result<Boolean>>
+    suspend fun changeUser(mapChange: Map<String, Any>, functionTag: String, userUUID: String): Flow<Result<String>>
+
 }
