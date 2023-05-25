@@ -2,6 +2,7 @@ package com.safetyheads.akademiaandroida.data.network.repository
 
 import com.google.firebase.firestore.FirebaseFirestore
 import com.safetyheads.akademiaandroida.domain.entities.Media
+import com.safetyheads.akademiaandroida.domain.entities.MediaType
 import com.safetyheads.akademiaandroida.domain.repositories.ImageRepository
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
@@ -11,7 +12,7 @@ class ImageRepositoryImpl(
     private val firestoreReference: FirebaseFirestore
 ) : ImageRepository {
 
-    override suspend fun getInstagramImages(): Flow<Result<ArrayList<Media>>> = callbackFlow {
+    override suspend fun getInstagramImages(): Flow<Result<List<Media>>> = callbackFlow {
         val listener = firestoreReference.collection("images")
             .whereEqualTo("type", "instagram")
             .get()
@@ -29,7 +30,7 @@ class ImageRepositoryImpl(
                             "empty",
                             createAt,
                             imageUrl,
-                            "instagram"))
+                            MediaType.INSTAGRAM))
                     }
                 }
                 trySend(Result.success(instagramImageList))

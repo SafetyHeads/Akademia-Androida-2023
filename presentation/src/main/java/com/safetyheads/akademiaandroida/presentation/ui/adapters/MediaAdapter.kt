@@ -2,25 +2,27 @@ package com.safetyheads.akademiaandroida.presentation.ui.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.safetyheads.akademiaandroida.domain.entities.Media
+import com.safetyheads.akademiaandroida.domain.entities.MediaType
 import com.safetyheads.akademiaandroida.presentation.databinding.ItemMediaBinding
 import com.safetyheads.akademiaandroida.presentation.databinding.ItemVideoBinding
-import com.safetyheads.akademiaandroida.presentation.ui.diffUtil.MediaDiffUtil
+import com.safetyheads.akademiaandroida.presentation.ui.diffUtil.MediaDiffCallback
 
 
 class MediaAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    private var oldItems = ArrayList<Media>()
+    private val differ = AsyncListDiffer(this, MediaDiffCallback())
+    private val oldItems = ArrayList<Media>()
 
     private val viewTypeInstagram = 0
     private val viewTypeVideo = 1
 
     override fun getItemViewType(position: Int): Int {
         val media = oldItems[position]
-        return if (media.mediaType == "instagram") {
+        return if (media.mediaType == MediaType.INSTAGRAM) {
             viewTypeInstagram
         } else {
             viewTypeVideo
@@ -83,11 +85,9 @@ class MediaAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     }
 
     fun setData(newList: ArrayList<Media>) {
-        val videoDiff = MediaDiffUtil(oldItems, newList)
-        val diff = DiffUtil.calculateDiff(videoDiff)
+        differ.submitList(newList)
         oldItems.clear()
         oldItems.addAll(newList)
-        diff.dispatchUpdatesTo(this)
     }
 
     fun clearAll() {

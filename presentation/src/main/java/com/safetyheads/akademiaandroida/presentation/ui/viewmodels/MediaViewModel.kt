@@ -1,5 +1,6 @@
 package com.safetyheads.akademiaandroida.presentation.ui.viewmodels
 
+import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -16,23 +17,28 @@ class MediaViewModel(
     private val settingsRepository: SettingsRepository
 ) : ViewModel() {
 
+    val youtubeFilmList: MutableLiveData<List<Media>> = MutableLiveData()
+    val instagramImageList: MutableLiveData<List<Media>> = MutableLiveData()
+    val connectedList: MediatorLiveData<List<Media>> = MediatorLiveData()
+
     init {
         getAllVideosFromYouTube()
         getInstagramImage()
-    }
 
-    val youtubeFilmList: MutableLiveData<List<Media>> = MutableLiveData()
-    val instagramImageList: MutableLiveData<List<Media>> = MutableLiveData()
-    val connectedList: MutableLiveData<List<Media>> = MutableLiveData()
+        connectedList.addSource(youtubeFilmList) {
+            mergeLists.invoke()
+        }
+
+        connectedList.addSource(instagramImageList) {
+            mergeLists.invoke()
+        }
+    }
 
     fun getInstagramImage() {
         viewModelScope.launch {
             getInstagramImageUseCase.invoke().collect() { imageList ->
-                val tempImageResult = imageList.getOrNull()
-                if (tempImageResult != null) {
-                    instagramImageList.value = tempImageResult.orEmpty()
-                    instagramImageList.postValue(tempImageResult.orEmpty())
-                    getConnectedList()
+                if (imageList != null) {
+                    instagramImageList.postValue(imageList.getOrNull().orEmpty())
                 }
             }
         }
@@ -41,34 +47,35 @@ class MediaViewModel(
     fun getAllVideosFromYouTube() {
         viewModelScope.launch {
             getAllVideoUseCase.invoke().collect() { videoList ->
-                val tempVideoResult = videoList.getOrNull()
-                if (tempVideoResult != null) {
-                    youtubeFilmList.value = tempVideoResult.orEmpty()
-                    youtubeFilmList.postValue(tempVideoResult.orEmpty())
-                    getConnectedList()
+                if (videoList != null) {
+                    youtubeFilmList.postValue(videoList.getOrNull().orEmpty())
                 }
             }
         }
     }
 
-    fun getConnectedList() {
-        val tempConnectedList = ArrayList<Media>()
+    private val mergeLists = {
+        if (youtubeFilmList.value != null
+            && instagramImageList.value != null) {
+            val tempConnectedList = ArrayList<Media>()
 
-        val maxSize = maxOf(youtubeFilmList.value?.size ?: 0, instagramImageList.value?.size ?: 0)
+            val maxSize = maxOf(youtubeFilmList.value?.size ?: 0, instagramImageList.value?.size ?: 0)
 
-        for (i in 0 until maxSize) {
-            if (i < (youtubeFilmList.value?.size ?: 0)) {
-                tempConnectedList.add(youtubeFilmList.value?.get(i) ?: Media())
+            for (i in 0 until maxSize) {
+                if (i < (youtubeFilmList.value?.size ?: 0)) {
+                    tempConnectedList.add(youtubeFilmList.value?.get(i) ?: Media())
+                }
+                if (i < (instagramImageList.value?.size ?: 0)) {
+                    tempConnectedList.add(instagramImageList.value?.get(i) ?: Media())
+                }
             }
-            if (i < (instagramImageList.value?.size ?: 0)) {
-                tempConnectedList.add(instagramImageList.value?.get(i) ?: Media())
-            }
+
+            connectedList.postValue(tempConnectedList)
         }
-
-        connectedList.postValue(tempConnectedList)
     }
 
     fun readSetting() = settingsRepository.readSetting(Settings.SEND_NOTIFICATIONS_MEDIA)
 
-    fun writeSetting(value: Boolean) = settingsRepository.writeSetting(Settings.SEND_NOTIFICATIONS_MEDIA, value)
+    fun writeSetting(value: Boolean) =
+        settingsRepository.writeSetting(Settings.SEND_NOTIFICATIONS_MEDIA, value)
 }

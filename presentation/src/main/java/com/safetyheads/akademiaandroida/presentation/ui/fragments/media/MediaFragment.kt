@@ -77,8 +77,8 @@ class MediaFragment : Fragment() {
         binding.notificationView.setSwitchButton(shouldSendNotifications)
         binding.notificationView.setExpandableContent(!shouldSendNotifications)
 
-        binding.notificationView.switchButtonListener { nottificationView ->
-            mediaViewModel.writeSetting(nottificationView)
+        binding.notificationView.switchButtonListener { isChecked ->
+            mediaViewModel.writeSetting(isChecked)
         }
     }
 

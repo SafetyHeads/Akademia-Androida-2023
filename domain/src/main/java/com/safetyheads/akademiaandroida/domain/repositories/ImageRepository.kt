@@ -4,5 +4,5 @@ import com.safetyheads.akademiaandroida.domain.entities.Media
 import kotlinx.coroutines.flow.Flow
 
 interface ImageRepository {
-    suspend fun getInstagramImages(): Flow<Result<ArrayList<Media>>>
+    suspend fun getInstagramImages(): Flow<Result<List<Media>>>
 }

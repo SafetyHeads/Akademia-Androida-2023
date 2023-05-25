@@ -6,9 +6,9 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
 class GetInstagramImageUseCase(private val repository: ImageRepository) :
-    ParameterlessBaseUseCase<ArrayList<Media>> {
+    ParameterlessBaseUseCase<List<Media>> {
 
-    override suspend fun invoke(): Flow<Result<ArrayList<Media>>> {
+    override suspend fun invoke(): Flow<Result<List<Media>>> {
         return flow {
             try {
                 repository.getInstagramImages().collect { images ->

@@ -7,5 +7,5 @@ import kotlinx.coroutines.flow.Flow
 interface VideoRepository {
 
     suspend fun getVideo(previousFilmDate: String): Flow<Result<Video>>
-    suspend fun getAllVideos(): Flow<Result<ArrayList<Media>>>
+    suspend fun getAllVideos(): Flow<Result<List<Media>>>
 }

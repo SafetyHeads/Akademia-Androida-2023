@@ -37,7 +37,7 @@ class VideoRepositoryImpl(
             emit(Result.failure(exception))
         }
 
-    override suspend fun getAllVideos(): Flow<Result<ArrayList<Media>>> =
+    override suspend fun getAllVideos(): Flow<Result<List<Media>>> =
         callbackFlow {
             val retrofitYouTubeVideos =
                 youTubeService

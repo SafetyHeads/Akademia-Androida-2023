@@ -5,5 +5,5 @@ data class Media(
     val mediaTitle: String = "",
     val mediaPublishTime: String = "",
     val mediaUrl: String = "",
-    val mediaType: String = ""
+    val mediaType: MediaType? = null
 )
