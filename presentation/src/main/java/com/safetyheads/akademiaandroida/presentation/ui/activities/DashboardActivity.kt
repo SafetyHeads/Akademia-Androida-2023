@@ -19,22 +19,24 @@ class DashboardActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         setupNavBar()
-        setupBottomNavBar()
     }
 
-    private fun setupBottomNavBar() {
+    private fun setupNavBar() {
+        //temp
         val currentUser = FirebaseAuth.getInstance().currentUser
+
         binding.bottomNavigationView.menu.clear()
         binding.bottomNavigationView.inflateMenu(
             if (currentUser != null) R.menu.dashboard_logged_nav_menu
             else R.menu.dashboard_not_logged_nav_menu
         )
-    }
-
-    private fun setupNavBar() {
         val navHostFragment = supportFragmentManager
             .findFragmentById(R.id.fragmentContainerView) as NavHostFragment
         navController = navHostFragment.navController
+        navController.setGraph(
+            if(currentUser != null) R.navigation.dashboard_logged_nav_graph
+            else R.navigation.dashboard_not_logged_nav_graph
+        )
 
         val bottomNav = binding.bottomNavigationView
         bottomNav.setupWithNavController(navController)
