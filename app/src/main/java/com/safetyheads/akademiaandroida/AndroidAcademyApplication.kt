@@ -58,7 +58,6 @@ import com.safetyheads.akademiaandroida.presentation.ui.fragments.youtube.Channe
 import com.safetyheads.akademiaandroida.presentation.ui.fragments.youtube.PlayListViewModel
 import com.safetyheads.akademiaandroida.presentation.ui.fragments.youtube.VideoViewModel
 import com.safetyheads.akademiaandroida.presentation.ui.signup.SignUpViewModel
-import com.safetyheads.akademiaandroida.presentation.ui.sign_up.SignUpViewModel
 import com.safetyheads.akademiaandroida.presentation.ui.viewmodels.MediaViewModel
 import com.safetyheads.akademiaandroida.presentation.ui.viewmodels.ProfileViewModel
 import com.safetyheads.akademiaandroida.usersessionmanager.FakeSessionGenerator
@@ -104,7 +103,6 @@ class AndroidAcademyApplication : Application() {
         single { FirebaseAuth.getInstance() }
 
         single { RegisterUseCase(get()) }
-        viewModel { SignUpViewModel(get()) }
         //repositories
         single<ConfigRepository> { FirebaseConfigRepository() }
         single<CareerRepository> { CareerRepositoryImpl() }

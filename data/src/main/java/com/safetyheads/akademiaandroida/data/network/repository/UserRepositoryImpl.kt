@@ -1,5 +1,6 @@
 package com.safetyheads.akademiaandroida.data.network.repository
 
+import android.content.ContentValues.TAG
 import android.util.Log
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthException
@@ -97,19 +98,55 @@ class UserRepositoryImpl : UserRepository {
     }
 
     override fun logIn(email: String, password: String): Flow<Result<String>> = callbackFlow {
-        // temporary user login
-        val email = "testalbertb@sh.pl"
-        val password = "123456789"
 
         val listener = firebaseAuth.signInWithEmailAndPassword(email, password)
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
+                    val firestore = FirebaseFirestore.getInstance()
+                    val usersCollection = firestore.collection("users")
                     val user = firebaseAuth.currentUser
                     val userUUID = user?.uid.orEmpty()
                     trySend(Result.success(userUUID))
-                } else {
-                    Log.i("FirebaseConfigRepository", "Authentication failed.")
-                }
+
+                    val docRef = usersCollection.document(userUUID)
+                    val userDocumentReference = firestore.collection("users").document(userUUID)
+
+                    docRef.get().addOnSuccessListener { document ->
+                        if (document != null && document.exists()) {
+                            Log.d(TAG, "DocumentSnapshot data: ${document.data}")
+                            val firebaseId = document.getString("FirebaseId").orEmpty()
+                            if (firebaseId == userUUID) {
+                                Log.d(TAG, "Profile exists with FirebaseId: $firebaseId")
+                            } else {
+                                Log.d(TAG, "No matching FirebaseId found")
+                            }
+                        } else {
+                            userDocumentReference.get().addOnSuccessListener { document ->
+                                if (document != null) {
+                                    val firebaseId = document.getString("FirebaseId").orEmpty()
+                                    if(firebaseId.isEmpty()) {
+                                        val userData = hashMapOf(
+                                            "FirebaseId" to userUUID,
+                                            // można tu inicjalizować pozostałe pola profilu
+                                        )
+                                        userDocumentReference.set(userData).addOnSuccessListener {
+                                            Log.d("Firestore", "DocumentSnapshot successfully written!")
+                                        }
+                                            .addOnFailureListener { e ->
+                                                Log.w("Firestore", "Error writing document", e)
+                                            }
+                                    }
+                                } else {
+                                    Log.i("FirebaseConfigRepository", "Authentication failed.")
+                                }
+                            }
+                        }
+                    }
+                        .addOnFailureListener { exception ->
+                            Log.d(TAG, "get failed with ", exception)
+                        }
+                } else
+                    trySend(Result.failure(task.exception ?: Exception("failed")))
             }
         awaitClose { listener.isCanceled }
     }

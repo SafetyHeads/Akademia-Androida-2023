@@ -1,21 +1,14 @@
-<<<<<<<< HEAD:presentation/src/main/java/com/safetyheads/akademiaandroida/presentation/ui/adapters/PlaylistAdapter.kt
 package com.safetyheads.akademiaandroida.presentation.ui.adapters
-========
-package com.safetyheads.akademiaandroida.presentation.ui.fragments.youtube
->>>>>>>> master:presentation/src/main/java/com/safetyheads/akademiaandroida/presentation/ui/fragments/youtube/PlaylistAdapter.kt
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-<<<<<<<< HEAD:presentation/src/main/java/com/safetyheads/akademiaandroida/presentation/ui/adapters/PlaylistAdapter.kt
 import com.safetyheads.akademiaandroida.domain.entities.Playlist
 import com.safetyheads.akademiaandroida.presentation.databinding.ItemPlaylistBinding
-import com.safetyheads.akademiaandroida.presentation.ui.diffUtil.PlaylistDiffUtil
-========
-import com.safetyheads.akademiaandroida.presentation.databinding.ItemPlaylistBinding
->>>>>>>> master:presentation/src/main/java/com/safetyheads/akademiaandroida/presentation/ui/fragments/youtube/PlaylistAdapter.kt
+import com.safetyheads.akademiaandroida.presentation.ui.fragments.youtube.PlaylistDiffUtil
+
 
 class PlaylistAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 

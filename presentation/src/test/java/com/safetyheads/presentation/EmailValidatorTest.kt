@@ -1,4 +1,4 @@
-package com.safetyheads.akademiaandroida
+package com.safetyheads.presentation
 
 import android.content.Context
 import android.widget.EditText

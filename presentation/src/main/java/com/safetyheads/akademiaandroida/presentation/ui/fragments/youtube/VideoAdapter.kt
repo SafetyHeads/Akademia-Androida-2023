@@ -1,21 +1,12 @@
-<<<<<<<< HEAD:presentation/src/main/java/com/safetyheads/akademiaandroida/presentation/ui/adapters/VideoAdapter.kt
-package com.safetyheads.akademiaandroida.presentation.ui.adapters
-========
 package com.safetyheads.akademiaandroida.presentation.ui.fragments.youtube
->>>>>>>> master:presentation/src/main/java/com/safetyheads/akademiaandroida/presentation/ui/fragments/youtube/VideoAdapter.kt
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-<<<<<<<< HEAD:presentation/src/main/java/com/safetyheads/akademiaandroida/presentation/ui/adapters/VideoAdapter.kt
 import com.safetyheads.akademiaandroida.domain.entities.Video
 import com.safetyheads.akademiaandroida.presentation.databinding.ItemVideoBinding
-import com.safetyheads.akademiaandroida.presentation.ui.diffUtil.VideoDiffUtil
-========
-import com.safetyheads.akademiaandroida.presentation.databinding.ItemVideoBinding
->>>>>>>> master:presentation/src/main/java/com/safetyheads/akademiaandroida/presentation/ui/fragments/youtube/VideoAdapter.kt
 
 
 class VideoAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {

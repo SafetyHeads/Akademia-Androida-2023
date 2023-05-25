@@ -2,12 +2,21 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <queries>
+        <package android:name="com.facebook.katana" />
+        <package android:name="com.instagram.android" />
+        <package android:name="com.google.android.youtube" />
+        <package android:name="com.linkedin.android" />
+        <package android:name="com.android.vending" />
+    </queries>
+
     <uses-permission
         android:name="android.permission.POST_NOTIFICATIONS"
         tools:node="remove" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
+
 
     <application
         android:name=".AndroidAcademyApplication"
@@ -19,40 +28,33 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AkademiaAndroida"
         tools:targetApi="31">
+        <activity
+            android:name=".presentation.ui.MainActivity"
+            android:exported="true"
+            android:theme="@style/Theme.AkademiaAndroida.withSplash">
+            <intent-filter tools:node="remove">
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/MAPS_API_KEY" />
-
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
 
         <activity
-            android:name=".presentation.ui.MainActivity"
-            android:exported="true"
-            android:theme="@style/Theme.AkademiaAndroida.withSplash">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity
             android:name=".presentation.ui.activities.TabLayoutActivity"
             android:exported="true" />
-        <activity
-            android:name=".presentation.ui.RootActivity"
 
-            android:exported="true" />
         <activity
-
             android:name=".presentation.ui.activitieslist.ListActivity"
-
             android:exported="true" />
         <activity
-            android:name=".youtube.YouTubeActivity"
+            android:name=".presentation.ui.activities.YouTubeActivity"
             android:exported="true" />
-
         <activity
             android:name=".presentation.ui.activities.ProfileActivity"
             android:exported="true" />
@@ -66,6 +68,9 @@
         <activity android:name=".usersessionmanager.UserSessionManagerActivity"
             android:exported="true" />
 
+        <activity android:name=".presentation.ui.activities.DashboardActivity"
+            android:exported="true"/>
+
         <service
             android:name=".MyFirebaseMessagingService"
             android:exported="false">
@@ -75,11 +80,4 @@
         </service>
 
     </application>
-    <queries>
-        <package android:name="com.facebook.katana" />
-        <package android:name="com.instagram.android" />
-        <package android:name="com.google.android.youtube" />
-        <package android:name="com.linkedin.android" />
-        <package android:name="com.android.vending" />
-    </queries>
 </manifest>

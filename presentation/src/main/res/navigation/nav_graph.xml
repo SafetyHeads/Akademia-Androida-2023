@@ -11,46 +11,30 @@
         android:label="fragment_launchScreen"
         tools:layout="@layout/fragment_launch_screen">
         <action
-            android:id="@+id/action_LaunchScreenFragment_to_notlogged_placeholder"
-            app:destination="@id/notlogged_placeholder" />
-        <action
-            android:id="@+id/action_LaunchScreenFragment_to_login_placeholder"
+            android:id="@+id/action_LaunchScreenFragment_to_login_fragment"
             app:destination="@id/login_fragment" />
     </fragment>
-    <fragment
-        android:id="@+id/notlogged_placeholder"
-        android:name="com.safetyheads.akademiaandroida.presentation.ui.customviews.NotloggedPlaceholder"
-        android:label="fragment_notlogged_placeholder"
-        tools:layout="@layout/fragment_notlogged_placeholder">
-        <action
-            android:id="@+id/action_notlogged_placeholder_to_launchScreenFragment"
-            app:destination="@id/launchScreenFragment" />
-    </fragment>
+
     <fragment
         android:id="@+id/login_fragment"
         android:name="com.safetyheads.akademiaandroida.presentation.ui.fragments.login.LoginFragment"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login">
         <action
-            android:id="@+id/action_login_placeholder_to_dashboard_placeholder"
-            app:destination="@id/dashboard_placeholder" />
-        <action
-            android:id="@+id/action_login_placeholder_to_launchScreenFragment"
+            android:id="@+id/action_login_to_launchScreenFragment"
             app:destination="@id/launchScreenFragment" />
         <action
             android:id="@+id/action_login_fragment_to_forgot_password_fragment"
             app:destination="@id/forgot_password_fragment" />
+        <action
+            android:id="@+id/action_login_fragment_to_signUpFragment"
+            app:destination="@id/signUpFragment" />
     </fragment>
-    <fragment
-        android:id="@+id/dashboard_placeholder"
-        android:name="com.safetyheads.akademiaandroida.presentation.ui.customviews.DashboardPlaceholder"
-        android:label="fragment_dashboard_placeholder"
-        tools:layout="@layout/fragment_dashboard_placeholder" />
     <fragment
         android:id="@+id/forgot_password_fragment"
         android:name="com.safetyheads.akademiaandroida.presentation.ui.fragments.forgotpasswordfragment.ForgotPasswordFragment"
-        android:label="fragment_dashboard_placeholder"
-        tools:layout="@layout/fragment_dashboard_placeholder">
+        android:label="fragment_forgot_password"
+        tools:layout="@layout/fragment_forgot_password">
         <action
             android:id="@+id/action_forgot_password_fragment_to_login_fragment"
             app:destination="@id/login_fragment" />
@@ -58,4 +42,9 @@
             android:name="isSuccess"
             app:argType="boolean" />
     </fragment>
+    <fragment
+        android:id="@+id/signUpFragment"
+        android:name="com.safetyheads.akademiaandroida.presentation.ui.signup.SignUpFragment"
+        android:label="SignUpFragment"
+        tools:layout="@layout/fragment_sign_up" />
 </navigation>

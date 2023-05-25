@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.safetyheads.akademiaandroida.presentation.databinding.FragmentPlaylistBinding
 import com.safetyheads.akademiaandroida.presentation.ui.activities.YouTubeActivity
+import com.safetyheads.akademiaandroida.presentation.ui.adapters.PlaylistAdapter
 import org.koin.androidx.viewmodel.ext.android.activityViewModel
 
 class YouTubePlayListsFragment: Fragment(), PlaylistAdapter.ClickListener {

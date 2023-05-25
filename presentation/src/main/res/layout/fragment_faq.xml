@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="fill_parent"
+android:layout_height="fill_parent">
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:id="@+id/login_container"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    tools:context=".ui.fragments.faq.FaqFragment">
+
+    <ImageView
+        android:id="@+id/button_back"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        style="@style/Back_arrow"
+        android:contentDescription="@string/back_button"
+        android:layout_marginTop="@dimen/size_3x"
+        android:layout_marginStart="@dimen/size_3x"
+        app:layout_constraintBottom_toBottomOf="@+id/profile_image"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/profile_image"
+        app:shapeAppearanceOverlay="@style/circleImageView"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="@dimen/size_3x"
+        android:layout_marginEnd="@dimen/size_3x"
+        android:src="@drawable/placeholder_avatar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.safetyheads.akademiaandroida.presentation.ui.components.H2View
+        android:id="@+id/h2View3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/size_3x"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profile_image"
+        app:text="FAQ" />
+
+    <LinearLayout
+        android:id="@+id/linear_layout_faq"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/h2View3">
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/faq_tab_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/size_2x"
+            android:layout_marginStart="@dimen/size_3x"
+            app:tabIndicatorColor="@color/p_60"
+            app:tabTextAppearance="@style/Poppins_regular_14"
+            app:tabMode="scrollable"
+            app:tabSelectedTextColor="@color/p_60">
+
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/benefits"
+                android:textColor="@color/n_120" />
+
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/delegations"
+                android:textColor="@color/n_120" />
+
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/ama"
+                android:textColor="@color/n_120" />
+
+        </com.google.android.material.tabs.TabLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/n_60">
+        </View>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/questions_recycler_view"
+            android:layout_marginTop="@dimen/size_3x"
+            android:layout_marginEnd="@dimen/size_1.5x"
+            android:layout_marginStart="@dimen/size_3x"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_faq_constraint"
+        android:padding="@dimen/size_2x"
+        android:layout_margin="@dimen/size_3x"
+        app:layout_constraintTop_toBottomOf="@id/linear_layout_faq">
+
+        <TextView
+            android:id="@+id/textView4"
+            style="@style/Poppins_regular_14"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/size_4x"
+            android:text="@string/are_you_looking_for_another_answer"
+            android:textColor="@color/s_60"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/askQuestionButton"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Button
+            android:id="@+id/askQuestionButton"
+            style="@style/StyledButton"
+            android:layout_width="112dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_regular"
+            android:lineSpacingExtra="6sp"
+            android:padding="@dimen/size_2x"
+            android:text="@string/ask_question"
+            android:textSize="11sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textView4" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
