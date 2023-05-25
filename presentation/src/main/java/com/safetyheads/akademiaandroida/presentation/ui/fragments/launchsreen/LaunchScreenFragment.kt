@@ -1,5 +1,6 @@
 package com.safetyheads.akademiaandroida.presentation.ui.fragments.launchsreen
 
+import android.content.Intent
 import android.os.Bundle
 import android.text.Spannable
 import android.text.SpannableString
@@ -13,6 +14,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.safetyheads.akademiaandroida.presentation.R
 import com.safetyheads.akademiaandroida.presentation.databinding.FragmentLaunchScreenBinding
+import com.safetyheads.akademiaandroida.presentation.ui.activities.DashboardActivity
 import com.safetyheads.akademiaandroida.presentation.ui.components.Footer
 
 class LaunchScreenFragment : Fragment() {
@@ -61,8 +63,8 @@ class LaunchScreenFragment : Fragment() {
         }
 
         binding.button.setOnClickListener {
-            val action = LaunchScreenFragmentDirections.actionLaunchScreenFragmentToDashboard()
-            findNavController().navigate(action)
+            val intent = Intent(requireContext(),DashboardActivity::class.java)
+            startActivity(intent)
         }
     }
 }
