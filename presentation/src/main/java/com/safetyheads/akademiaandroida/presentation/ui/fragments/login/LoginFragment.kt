@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
@@ -45,13 +46,13 @@ class LoginFragment : Fragment() {
         viewModel.loginState.observe(viewLifecycleOwner) { loginState ->
             when (loginState) {
                 LoginState.SUCCESS -> {
-                    binding.progressBar.visibility = View.GONE
+                    binding.progressBar.isVisible = false
                     println("Login was successful.")
                     findNavController().navigate(R.id.action_login_to_dashboard_fragment)
                 }
 
                 LoginState.ERROR -> {
-                    binding.progressBar.visibility = View.GONE
+                    binding.progressBar.isVisible = false
                     println("Login failed.")
                     LoginSnackBar.make(
                         binding.root,
@@ -77,7 +78,7 @@ class LoginFragment : Fragment() {
         }
 
         binding.buttonSignIn.setOnClickListener {
-            binding.progressBar.visibility = View.VISIBLE
+            binding.progressBar.isVisible = true
             viewModel.login(
                 binding.eTextEmailAddress.text.toString(),
                 binding.eTextPassword.text.toString()
