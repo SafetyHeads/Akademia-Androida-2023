@@ -1,4 +1,4 @@
-package com.safetyheads.akademiaandroida.youtube.fragments
+package com.safetyheads.akademiaandroida.presentation.ui.fragments.youtube
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,8 +8,7 @@ import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
-import com.safetyheads.akademiaandroida.youtube.viewModel.ChannelViewModel
-import com.safetyheads.akademiaandroida.databinding.FragmentChannelBinding
+import com.safetyheads.akademiaandroida.presentation.databinding.FragmentChannelBinding
 import org.koin.androidx.viewmodel.ext.android.activityViewModel
 
 class YouTubeChanelFragment : Fragment() {

@@ -1,4 +1,8 @@
+<<<<<<<< HEAD:presentation/src/main/java/com/safetyheads/akademiaandroida/presentation/ui/diffUtil/PlaylistDiffUtil.kt
 package com.safetyheads.akademiaandroida.presentation.ui.diffUtil
+========
+package com.safetyheads.akademiaandroida.presentation.ui.fragments.youtube
+>>>>>>>> master:presentation/src/main/java/com/safetyheads/akademiaandroida/presentation/ui/fragments/youtube/PlaylistDiffUtil.kt
 
 import androidx.recyclerview.widget.DiffUtil
 
