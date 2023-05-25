@@ -9,12 +9,12 @@ import com.safetyheads.akademiaandroida.domain.entities.Media
 import com.safetyheads.akademiaandroida.domain.entities.MediaType
 import com.safetyheads.akademiaandroida.presentation.databinding.ItemMediaBinding
 import com.safetyheads.akademiaandroida.presentation.databinding.ItemVideoBinding
-import com.safetyheads.akademiaandroida.presentation.ui.diffUtil.MediaDiffCallback
+import com.safetyheads.akademiaandroida.presentation.ui.diffUtil.MediaDiffUtil
 
 
 class MediaAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    private val differ = AsyncListDiffer(this, MediaDiffCallback())
+    private val differ = AsyncListDiffer(this, MediaDiffUtil())
     private val oldItems = ArrayList<Media>()
 
     private val viewTypeInstagram = 0
