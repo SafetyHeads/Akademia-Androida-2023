@@ -11,14 +11,15 @@
         android:label="fragment_dashboard"
         tools:layout="@layout/fragment_dashboard" />
 
-    <navigation android:id="@+id/career"
+    <navigation
+        android:id="@+id/career"
         app:startDestination="@id/careerFragment">
 
         <fragment
             android:id="@+id/careerFragment"
             android:name="com.safetyheads.akademiaandroida.presentation.ui.career.CareerFragment"
             android:label="CareerFragment"
-            tools:layout="@layout/fragment_career"/>
+            tools:layout="@layout/fragment_career" />
     </navigation>
 
     <navigation android:id="@+id/contact"
