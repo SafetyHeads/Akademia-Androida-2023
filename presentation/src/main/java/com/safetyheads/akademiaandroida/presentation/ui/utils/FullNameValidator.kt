@@ -11,6 +11,7 @@ object FullNameValidator {
     private const val MAX_TEXT_LENGTH = 100
     private const val MIN_NAME_AND_SURNAME_LENGTH = 2
     private const val MIN_SPACE_AMOUNT = 1
+    var IS_CORRECT = false
     fun attach(editText: EditText, context: Context) {
         val regexFilter =
             InputFilter { source, start, end, _, _, _ ->
@@ -25,12 +26,10 @@ object FullNameValidator {
         val bigOnlyFirstLetterFilter = InputFilter { source, start, end, _, _, _ ->
             var upperCase = 0
             for (i in start until end) {
-                if (Character.isUpperCase(source[i]) && checkIsNotSpace(source[i]) && isNotFirstChar(
-                        upperCase
-                    )
-                )
+                if (Character.isUpperCase(source[i]) && checkIsNotSpace(source[i]) && isNotFirstChar(upperCase))
                     return@InputFilter source.dropLast(1)
-                upperCase++
+                else if (Character.isUpperCase(source[i]))
+                    upperCase++
             }
             null
         }
@@ -41,8 +40,12 @@ object FullNameValidator {
             val surname = splitNames.getOrNull(1).orEmpty()
             if (validateName(splitNames.first(), splitNames, editText, context) &&
                 validateSurname(surname, splitNames, spacesAmount, editText, context)
-            )
+            ) {
                 editText.error = null
+                IS_CORRECT = true
+            } else {
+                IS_CORRECT = false
+            }
         }
     }
 
