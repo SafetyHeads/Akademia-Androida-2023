@@ -4,7 +4,7 @@ import com.safetyheads.akademiaandroida.domain.repositories.UserSessionManager
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
-class GetSessionUseCase(private val userSessionManager: UserSessionManager) : ParameterlessBaseUseCase<Boolean> {
+class IsLoggedInUseCase(private val userSessionManager: UserSessionManager) : ParameterlessBaseUseCase<Boolean> {
     override suspend fun invoke(): Flow<Result<Boolean>> {
         return getLoggedIn()
     }

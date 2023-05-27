@@ -37,7 +37,7 @@ import com.safetyheads.akademiaandroida.domain.usecases.GetJobOfferUseCase
 import com.safetyheads.akademiaandroida.domain.usecases.GetPlayListItemsUseCase
 import com.safetyheads.akademiaandroida.domain.usecases.GetPlayListsUseCase
 import com.safetyheads.akademiaandroida.domain.usecases.GetProfileInformationUseCase
-import com.safetyheads.akademiaandroida.domain.usecases.GetSessionUseCase
+import com.safetyheads.akademiaandroida.domain.usecases.IsLoggedInUseCase
 import com.safetyheads.akademiaandroida.domain.usecases.GetSocialUseCase
 import com.safetyheads.akademiaandroida.domain.usecases.GetTechnologyStackUseCase
 import com.safetyheads.akademiaandroida.domain.usecases.GetVideoUseCase
@@ -139,7 +139,7 @@ class AndroidAcademyApplication : Application() {
         single { ProfileDeleteAccountUseCase(get()) }
         single { ProfileLogOutUseCase(get()) }
         single { LoginUseCase(get()) }
-        single { GetSessionUseCase( getSessionScope().get() ) }
+        single { IsLoggedInUseCase( getSessionScope().get() ) }
 
         //viewmodels
         viewModel { SplashScreenViewModel(get(), get()) }
