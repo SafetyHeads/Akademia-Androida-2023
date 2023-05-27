@@ -30,7 +30,6 @@ class DashboardActivity : AppCompatActivity() {
     }
 
     private fun setupNavBar(isLoggedUser: Boolean) {
-
         binding.bottomNavigationView.menu.clear()
         binding.bottomNavigationView.inflateMenu(
             if (isLoggedUser) R.menu.dashboard_logged_nav_menu
@@ -43,9 +42,7 @@ class DashboardActivity : AppCompatActivity() {
             if(isLoggedUser) R.navigation.dashboard_logged_nav_graph
             else R.navigation.dashboard_not_logged_nav_graph
         )
-
         val bottomNav = binding.bottomNavigationView
         bottomNav.setupWithNavController(navController)
-
     }
 }
