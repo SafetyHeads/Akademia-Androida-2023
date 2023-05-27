@@ -20,6 +20,7 @@ import com.safetyheads.akademiaandroida.domain.repositories.PlaylistRepository
 import com.safetyheads.akademiaandroida.domain.repositories.SettingsRepository
 import com.safetyheads.akademiaandroida.domain.repositories.TechnologyStackRepository
 import com.safetyheads.akademiaandroida.domain.repositories.UserRepository
+import com.safetyheads.akademiaandroida.domain.repositories.UserSessionManager
 import com.safetyheads.akademiaandroida.domain.repositories.VideoRepository
 import com.safetyheads.akademiaandroida.domain.usecases.AddQuestionUseCase
 import com.safetyheads.akademiaandroida.domain.usecases.DateUseCase
@@ -58,11 +59,10 @@ import com.safetyheads.akademiaandroida.presentation.ui.signup.SignUpViewModel
 import com.safetyheads.akademiaandroida.presentation.ui.viewmodels.DashboardViewModel
 import com.safetyheads.akademiaandroida.presentation.ui.viewmodels.ProfileViewModel
 import com.safetyheads.akademiaandroida.usersessionmanager.FakeSessionGenerator
-import com.safetyheads.akademiaandroida.usersessionmanager.LoggedSessionManager
+import com.safetyheads.akademiaandroida.usersessionmanager.LoggedSessionManagerImpl
 import com.safetyheads.akademiaandroida.usersessionmanager.SESSION_SCOPE_NAME
 import com.safetyheads.akademiaandroida.usersessionmanager.Session
-import com.safetyheads.akademiaandroida.usersessionmanager.UnloggedSessionManager
-import com.safetyheads.akademiaandroida.usersessionmanager.UserSessionManager
+import com.safetyheads.akademiaandroida.usersessionmanager.UnloggedSessionManagerImpl
 import com.safetyheads.akademiaandroida.usersessionmanager.getSessionScope
 import com.safetyheads.data.network.mapper.ChannelMapper
 import com.safetyheads.data.network.mapper.PlayListVideoMapper
@@ -73,7 +73,6 @@ import com.safetyheads.data.network.repository.PlaylistRepositoryImpl
 import com.safetyheads.data.network.repository.VideoRepositoryImpl
 import com.safetyheads.data.network.repository.YouTubeApiConsts
 import com.safetyheads.data.network.service.YouTubeService
-import org.koin.android.ext.android.getKoin
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.androidx.viewmodel.dsl.viewModel
@@ -112,7 +111,6 @@ class AndroidAcademyApplication : Application() {
         single<CompanyInfoRepository> { CompanyInfoRepositoryImpl(get()) }
         single<FaqRepository> { FaqRepositoryImpl(get()) }
 
-
         //usecases
         single { GetProfileInformationUseCase(get()) }
         single { LoginUseCase(get()) }
@@ -135,7 +133,7 @@ class AndroidAcademyApplication : Application() {
         single { GetTechnologyStackUseCase(get()) }
         single { RegisterUseCase(get()) }
         single { LoginUseCase(get()) }
-        single { GetSessionUseCase() }
+        single { GetSessionUseCase( getSessionScope().get() ) }
 
         //viewmodels
         viewModel { SplashScreenViewModel(get(), get()) }
@@ -143,7 +141,6 @@ class AndroidAcademyApplication : Application() {
         viewModel { CareerViewModel(get(), get()) }
         viewModel { ForgotPasswordViewModel(get()) }
         viewModelOf(::ChannelViewModel)
-        viewModelOf(::DashboardViewModel)
         viewModelOf(::VideoViewModel)
         viewModelOf(::PlayListViewModel)
         viewModel { ProfileViewModel(get(), get()) }
@@ -151,6 +148,7 @@ class AndroidAcademyApplication : Application() {
         viewModel { SignUpViewModel(get()) }
         viewModel { FaqViewModel(get(), get()) }
         viewModel { LoginViewModel(get()) }
+        viewModel { DashboardViewModel(get()) }
     }
 
     private val networkModule = module {
@@ -177,12 +175,12 @@ class AndroidAcademyApplication : Application() {
         single { FakeSessionGenerator() }
 
         scope(named(SESSION_SCOPE_NAME)) {
-            scoped {
+            scoped<UserSessionManager> {
                 val session = getSessionScope().getOrNull<Session>()
                 if (session == null) {
-                    UnloggedSessionManager(fakeSessionGenerator = get())
+                    UnloggedSessionManagerImpl(fakeSessionGenerator = get())
                 } else {
-                    LoggedSessionManager(session)
+                    LoggedSessionManagerImpl(session)
                 }
             }
         }
