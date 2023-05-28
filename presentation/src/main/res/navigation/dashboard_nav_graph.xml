@@ -31,5 +31,14 @@
             android:label="ContactUsFragment"
             tools:layout="@layout/fragment_contact_us"/>
     </navigation>
+    <fragment
+        android:id="@+id/weAreHiringFragment"
+        android:name="com.safetyheads.akademiaandroida.presentation.ui.fragments.wearehiring.WeAreHiringFragment"
+        android:label="WeAreHiringFragment"
+        tools:layout="@layout/fragment_we_are_hiring">
+        <action
+            android:id="@+id/action_weAreHiringFragment_to_career"
+            app:destination="@id/career" />
+    </fragment>
 
 </navigation>

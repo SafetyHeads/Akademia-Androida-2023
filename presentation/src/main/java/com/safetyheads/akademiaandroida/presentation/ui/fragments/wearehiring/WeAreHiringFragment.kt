@@ -5,6 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
+import com.safetyheads.akademiaandroida.presentation.R
 import com.safetyheads.akademiaandroida.presentation.databinding.FragmentWeAreHiringBinding
 
 class WeAreHiringFragment : Fragment() {
@@ -27,9 +29,8 @@ class WeAreHiringFragment : Fragment() {
 
     private fun initUI() {
 
-        @Suppress("ForbiddenComment")
         binding.applyNow.setOnClickListener {
-            // TODO: Apply now button click
+            findNavController().navigate(R.id.action_weAreHiringFragment_to_career)
         }
     }
 }
