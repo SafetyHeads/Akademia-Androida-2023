@@ -139,5 +139,14 @@
     <string name="send">Send</string>
     <string name="arrow_to_answer">arrow to answer</string>
     <string name="ok">OK</string>
+    <string name="change_password">Change Password</string>
+    <string name="current_password">Current password</string>
+    <string name="new_password">New password</string>
+    <string name="reject">Reject</string>
+    <string name="save">Save</string>
+    <string name="confirm_new_password">Confirm new password</string>
+    <string name="failed_reset_password">Reset password failed</string>
+    <string name="password_not_match">Passwords are not the same</string>
+    <string name="reset_password_success">Reset password success</string>
     <string name="back_arrow_descritpion">back arrow descritpion</string>
 </resources>

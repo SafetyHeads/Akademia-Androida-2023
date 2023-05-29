@@ -33,6 +33,15 @@ class UserRepositoryImpl : UserRepository {
         emit(ResetPassword(false, error))
     }
 
+    override fun changePassword(oldPassword: String, newPassword: String): Flow<Result<Unit>> = flow {
+        try {
+            firebaseAuth.confirmPasswordReset(oldPassword,newPassword).await()
+            emit(Result.success(Unit))
+        } catch (e: Exception) {
+            emit(Result.failure(e))
+        }
+    }
+
     override fun getProfileInformation(userUUID: String): Flow<Result<Profile>> = callbackFlow {
         val collectionReference = FirebaseFirestore.getInstance()
         val listener = collectionReference.collection("users").document(userUUID)

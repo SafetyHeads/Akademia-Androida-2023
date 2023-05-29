@@ -60,6 +60,8 @@ import com.safetyheads.akademiaandroida.presentation.ui.signup.SignUpViewModel
 import com.safetyheads.akademiaandroida.presentation.ui.viewmodels.ProfileViewModel
 import com.safetyheads.akademiaandroida.usersessionmanager.FakeSessionGenerator
 import com.safetyheads.akademiaandroida.usersessionmanager.LoggedSessionManager
+import com.safetyheads.akademiaandroida.presentation.ui.fragments.changepassword.ChangePasswordUseCase
+import com.safetyheads.akademiaandroida.presentation.ui.fragments.changepassword.ChangePasswordViewModel
 import com.safetyheads.akademiaandroida.usersessionmanager.SESSION_SCOPE_NAME
 import com.safetyheads.akademiaandroida.usersessionmanager.Session
 import com.safetyheads.akademiaandroida.usersessionmanager.UnloggedSessionManager
@@ -137,6 +139,7 @@ class AndroidAcademyApplication : Application() {
         single { ProfileDeleteAccountUseCase(get()) }
         single { ProfileLogOutUseCase(get()) }
         single { LoginUseCase(get()) }
+        single { ChangePasswordUseCase (get())}
 
         //viewmodels
         viewModel { SplashScreenViewModel(get(), get()) }
@@ -151,6 +154,7 @@ class AndroidAcademyApplication : Application() {
         viewModel { SignUpViewModel(get()) }
         viewModel { FaqViewModel(get(), get()) }
         viewModel { LoginViewModel(get()) }
+        viewModelOf(::ChangePasswordViewModel)
     }
 
     private val networkModule = module {
