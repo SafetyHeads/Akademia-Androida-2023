@@ -24,6 +24,7 @@ import com.safetyheads.akademiaandroida.domain.repositories.TechnologyStackRepos
 import com.safetyheads.akademiaandroida.domain.repositories.UserRepository
 import com.safetyheads.akademiaandroida.domain.repositories.VideoRepository
 import com.safetyheads.akademiaandroida.domain.usecases.AddQuestionUseCase
+import com.safetyheads.akademiaandroida.domain.usecases.ChangeUserUseCase
 import com.safetyheads.akademiaandroida.domain.usecases.DateUseCase
 import com.safetyheads.akademiaandroida.domain.usecases.DateUseCaseImpl
 import com.safetyheads.akademiaandroida.domain.usecases.DelaySplashScreenUseCase
@@ -43,6 +44,8 @@ import com.safetyheads.akademiaandroida.domain.usecases.GetSocialUseCase
 import com.safetyheads.akademiaandroida.domain.usecases.GetTechnologyStackUseCase
 import com.safetyheads.akademiaandroida.domain.usecases.GetVideoUseCase
 import com.safetyheads.akademiaandroida.domain.usecases.LoginUseCase
+import com.safetyheads.akademiaandroida.domain.usecases.ProfileDeleteAccountUseCase
+import com.safetyheads.akademiaandroida.domain.usecases.ProfileLogOutUseCase
 import com.safetyheads.akademiaandroida.domain.usecases.RegisterUseCase
 import com.safetyheads.akademiaandroida.domain.usecases.ResetPasswordUseCase
 import com.safetyheads.akademiaandroida.presentation.ui.activities.splashscreen.SplashScreenViewModel
@@ -135,6 +138,9 @@ class AndroidAcademyApplication : Application() {
         single { AddQuestionUseCase(get()) }
         single { GetTechnologyStackUseCase(get()) }
         single { RegisterUseCase(get()) }
+        single { ChangeUserUseCase(get()) }
+        single { ProfileDeleteAccountUseCase(get()) }
+        single { ProfileLogOutUseCase(get()) }
         single { LoginUseCase(get()) }
 
         //viewmodels
@@ -145,8 +151,7 @@ class AndroidAcademyApplication : Application() {
         viewModelOf(::ChannelViewModel)
         viewModelOf(::VideoViewModel)
         viewModelOf(::PlayListViewModel)
-        viewModelOf(::MediaViewModel)
-        viewModel { ProfileViewModel(get(), get()) }
+        viewModelOf(::ProfileViewModel)
         viewModel { TechnologyStackViewModel(get()) }
         viewModel { SignUpViewModel(get()) }
         viewModel { FaqViewModel(get(), get()) }

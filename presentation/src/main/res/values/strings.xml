@@ -116,7 +116,20 @@
     <string name="movies">Movies</string>
     <string name="all_media">All media</string>
     <string name="our_creativity">our creativity</string>
-
+    <string name="account_informations">Account informations</string>
+    <string name="job_position">Job position</string>
+    <string name="phone_number">Phone number</string>
+    <string name="address">Address</string>
+    <string name="other_actions">Other actions</string>
+    <string name="delete_account">Delete account</string>
+    <string name="log_out_from_app">Log out from app</string>
+    <string name="invalid_address_message">Wrong address provided</string>
+    <string name="invalid_street_message">Wrong street name</string>
+    <string name="invalid_house_number_message">Wrong house number</string>
+    <string name="invalid_apartment_number_message">Wrong apartment number</string>
+    <string name="invalid_zip_code">Wrong zip code</string>
+    <string name="invalid_city">Wrong city name</string>
+    <string name="invalid_street_name">Wrong street name</string>
     <string name="long_lorem_ipsum">Aliquam consequat magna erat, nec finibus neque condimentum vulputate. In eget purus ac augue mattis pharetra. Aliquam scelerisque, sapien vel fringilla finibus, mi sem condimentum odio, quis ultrices dolor purus eu lorem. Phasellus scelerisque nunc nunc, in hendrerit lorem lacinia eget. Ut ut dolor a nisl dignissim interdum ut in mauris. Aliquam consequat magna erat, nec finibus neque condimentum vulputate. In eget purus ac augue mattis pharetra. Aliquam scelerisque, sapien vel fringilla finibus, mi sem condimentum odio, quis ultrices dolor purus eu lorem. Phasellus scelerisque nunc nunc, in hendrerit lorem lacinia eget. Ut ut dolor a nisl dignissim interdum ut in mauris. Aliquam consequat magna erat, nec finibus neque condimentum vulputate. In eget purus ac augue mattis pharetra. Aliquam scelerisque, sapien vel fringilla finibus, mi sem condimentum odio, quis ultrices dolor purus eu lorem. Phasellus scelerisque nunc nunc, in hendrerit lorem lacinia eget. Ut ut dolor a nisl dignissim interdum ut in mauris. Aliquam consequat magna erat, nec finibus neque condimentum vulputate. In eget purus ac augue mattis pharetra. Aliquam scelerisque, sapien vel fringilla finibus, mi sem condimentum odio, quis ultrices dolor purus eu lorem. Phasellus scelerisque nunc nunc, in hendrerit lorem lacinia eget. Ut ut dolor a nisl dignissim interdum ut in mauris. Aliquam consequat magna erat, nec finibus neque condimentum vulputate. In eget purus ac augue mattis pharetra. Aliquam scelerisque, sapien vel fringilla finibus, mi sem condimentum odio, quis ultrices dolor purus eu lorem. Phasellus scelerisque nunc nunc, in hendrerit lorem lacinia eget. Ut ut dolor a nisl dignissim interdum ut in mauris.</string>
     <string name="lorem_ipsum_dolor_sit_amet">Lorem ipsum dolor sit amet</string>
     <string name="medium_lorem_ipsum">Aliquam consequat magna erat, nec finibus neque condimentum vulputate. In eget purus ac augue mattis pharetra. Aliquam scelerisque, sapien vel fringilla finibus, mi sem condimentum odio, quis ultrices dolor purus eu lorem. Phasellus scelerisque nunc nunc, in hendrerit lorem lacinia eget. Ut ut dolor a nisl dignissim interdum ut in mauris.</string>
@@ -132,4 +145,5 @@
     <string name="send">Send</string>
     <string name="arrow_to_answer">arrow to answer</string>
     <string name="ok">OK</string>
+    <string name="back_arrow_descritpion">back arrow descritpion</string>
 </resources>

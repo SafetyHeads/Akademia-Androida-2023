@@ -24,6 +24,6 @@
         app:itemIconTint="@drawable/icon_tint_selector"
         app:itemTextColor="@drawable/text_tint_selector"
         app:labelVisibilityMode="labeled"
-        app:menu="@menu/bottom_nav_view"/>
+        app:menu="@menu/bottom_nav_view" />
 
 </FrameLayout>
