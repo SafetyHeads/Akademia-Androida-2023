@@ -15,13 +15,12 @@ import com.safetyheads.akademiaandroida.presentation.ui.diffUtil.MediaDiffUtil
 class MediaAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private val differ = AsyncListDiffer(this, MediaDiffUtil())
-    private val oldItems = ArrayList<Media>()
 
     private val viewTypeInstagram = 0
     private val viewTypeVideo = 1
 
     override fun getItemViewType(position: Int): Int {
-        val media = oldItems[position]
+        val media = differ.currentList[position]
         return if (media.mediaType == MediaType.INSTAGRAM) {
             viewTypeInstagram
         } else {
@@ -45,6 +44,7 @@ class MediaAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         fun setData(data: Media) {
             Glide.with(binding.root)
                 .load(data.mediaUrl)
+                .fitCenter()
                 .dontAnimate()
                 .into(binding.ivThumbnail)
             binding.tvVideoTitle.text = data.mediaTitle
@@ -66,7 +66,7 @@ class MediaAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        val media = oldItems[position]
+        val media = differ.currentList[position]
 
         when (holder) {
             is InstagramHolder -> {
@@ -81,17 +81,15 @@ class MediaAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     }
 
     override fun getItemCount(): Int {
-        return oldItems.size
+        return differ.currentList.size
     }
 
     fun setData(newList: ArrayList<Media>) {
         differ.submitList(newList)
-        oldItems.clear()
-        oldItems.addAll(newList)
     }
 
     fun clearAll() {
-        oldItems.clear()
+        differ.currentList.clear()
         notifyDataSetChanged()
     }
 }
