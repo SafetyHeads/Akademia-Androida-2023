@@ -23,7 +23,7 @@ import kotlinx.coroutines.tasks.await
 
 class UserRepositoryImpl(
     private val firebaseAuth: FirebaseAuth,
-    private val  collectionReference: FirebaseFirestore
+    private val collectionReference: FirebaseFirestore
 ) : UserRepository {
 
     override suspend fun resetPassword(email: String): Flow<ResetPassword> = flow {
@@ -196,7 +196,7 @@ class UserRepositoryImpl(
         }
     }
 
-    override fun createUser(fullName: String, email: String, password: String): Flow<User> = flow {
+    override suspend fun createUser(fullName: String, email: String, password: String): Flow<User> = flow {
         val authResult = firebaseAuth.createUserWithEmailAndPassword(email, password).await()
 
         val firebaseUser = authResult.user!!
