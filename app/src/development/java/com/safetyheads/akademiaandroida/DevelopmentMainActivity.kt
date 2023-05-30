@@ -1,11 +1,10 @@
 package com.safetyheads.akademiaandroida
 
-import com.safetyheads.akademiaandroida.databinding.ActivityDevelopmentMainBinding
-import android.os.Bundle
 import android.app.NotificationManager
 import android.content.Context
 import android.content.Intent
 import android.os.Build
+import android.os.Bundle
 import android.provider.Settings
 import android.view.ViewGroup
 import android.widget.Button
@@ -17,6 +16,7 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import com.google.firebase.FirebaseApp
 import com.google.firebase.messaging.FirebaseMessaging
+import com.safetyheads.akademiaandroida.databinding.ActivityDevelopmentMainBinding
 import com.safetyheads.akademiaandroida.presentation.ui.MainActivity
 import com.safetyheads.akademiaandroida.presentation.ui.activities.splashscreen.SplashScreenViewModel
 import com.safetyheads.akademiaandroida.presentation.ui.activitieslist.ListActivity

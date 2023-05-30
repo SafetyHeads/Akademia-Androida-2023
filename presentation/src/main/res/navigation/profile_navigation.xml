@@ -24,5 +24,13 @@
             android:id="@+id/action_changeAvatarFragment_to_profileFragment"
             app:destination="@id/profileFragment" />
     </fragment>
+            android:id="@+id/action_profileFragment_to_profileInformationFragment"
+            app:destination="@id/profileInformationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/profileInformationFragment"
+        android:name="com.safetyheads.akademiaandroida.presentation.ui.fragments.profile.ProfileInformationFragment"
+        android:label="ProfileInformationFragment"
+        tools:layout="@layout/fragment_profile_information" />
 
 </navigation>

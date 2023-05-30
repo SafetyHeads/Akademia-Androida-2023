@@ -69,7 +69,8 @@ class ProfileBottomSheetDialogFragment : BottomSheetDialogFragment() {
     }
 
     private fun goToProfile() {
-        //no-op
+        findNavController().navigate(R.id.action_profileFragment_to_profileInformationFragment)
+        this.dismiss()
     }
 
     private fun changePhoto() {
