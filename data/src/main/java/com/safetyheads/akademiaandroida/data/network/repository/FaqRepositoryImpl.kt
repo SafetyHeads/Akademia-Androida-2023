@@ -1,6 +1,6 @@
 package com.safetyheads.akademiaandroida.data.network.repository
 
-
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.safetyheads.akademiaandroida.domain.entities.firebasefirestore.faq.Answer
 import com.safetyheads.akademiaandroida.domain.entities.firebasefirestore.faq.Faq
@@ -12,8 +12,8 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
 
 class FaqRepositoryImpl(firebaseFirestore: FirebaseFirestore) : FaqRepository {
-
     private val collectionReference = firebaseFirestore.collection("faq")
+    private val firebaseAuth = FirebaseAuth.getInstance()
 
     override fun getFaq(): Flow<Result<MutableList<Faq>>> = callbackFlow {
         val listener = collectionReference.addSnapshotListener { snapshot, exception ->
@@ -33,19 +33,19 @@ class FaqRepositoryImpl(firebaseFirestore: FirebaseFirestore) : FaqRepository {
     override fun addQuestion(question: Question, type: Type): Flow<Result<Boolean>> = callbackFlow {
         val faqObject = Faq(Answer(), true, question, type.type)
 
-        awaitClose { collectionReference.add(faqObject)
+        val listener = collectionReference.add(faqObject)
             .addOnSuccessListener { document ->
-                // here should be setting current user's id to field 'userId'
+                firebaseAuth.currentUser?.apply {
+                    val userId = this.uid
+                    document.update("question.userId", userId)
+                }
             }
-
             .addOnFailureListener { exception ->
                 trySend(Result.failure(exception))
             }
-
             .addOnCompleteListener { task ->
                 trySend(Result.success(task.isComplete))
             }
-            channel.close()
-        }
+        awaitClose { listener.isCanceled }
     }
 }

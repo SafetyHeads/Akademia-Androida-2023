@@ -3,10 +3,12 @@ package com.safetyheads.akademiaandroida
 import android.app.Application
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.storage.FirebaseStorage
 import com.jakewharton.threetenabp.AndroidThreeTen
 import com.safetyheads.akademiaandroida.data.network.repository.CompanyInfoRepositoryImpl
 import com.safetyheads.akademiaandroida.data.network.repository.FaqRepositoryImpl
 import com.safetyheads.akademiaandroida.data.network.repository.FirebaseConfigRepository
+import com.safetyheads.akademiaandroida.data.network.repository.ImageRepositoryImpl
 import com.safetyheads.akademiaandroida.data.network.repository.TechnologyStackRepositoryImpl
 import com.safetyheads.akademiaandroida.data.network.repository.UserRepositoryImpl
 import com.safetyheads.akademiaandroida.data.network.repository.settings.SettingRepositoryImpl
@@ -16,12 +18,17 @@ import com.safetyheads.akademiaandroida.domain.repositories.ChannelRepository
 import com.safetyheads.akademiaandroida.domain.repositories.CompanyInfoRepository
 import com.safetyheads.akademiaandroida.domain.repositories.ConfigRepository
 import com.safetyheads.akademiaandroida.domain.repositories.FaqRepository
+import com.safetyheads.akademiaandroida.domain.repositories.ImageRepository
 import com.safetyheads.akademiaandroida.domain.repositories.PlaylistRepository
 import com.safetyheads.akademiaandroida.domain.repositories.SettingsRepository
 import com.safetyheads.akademiaandroida.domain.repositories.TechnologyStackRepository
 import com.safetyheads.akademiaandroida.domain.repositories.UserRepository
 import com.safetyheads.akademiaandroida.domain.repositories.VideoRepository
+import com.safetyheads.akademiaandroida.domain.usecases.AddImageToBitmapStorage
+import com.safetyheads.akademiaandroida.domain.usecases.AddImageToUriStorage
+import com.safetyheads.akademiaandroida.domain.usecases.AddImageToUserProfile
 import com.safetyheads.akademiaandroida.domain.usecases.AddQuestionUseCase
+import com.safetyheads.akademiaandroida.domain.usecases.ChangeUserUseCase
 import com.safetyheads.akademiaandroida.domain.usecases.DateUseCase
 import com.safetyheads.akademiaandroida.domain.usecases.DateUseCaseImpl
 import com.safetyheads.akademiaandroida.domain.usecases.DelaySplashScreenUseCase
@@ -39,16 +46,25 @@ import com.safetyheads.akademiaandroida.domain.usecases.GetSocialUseCase
 import com.safetyheads.akademiaandroida.domain.usecases.GetTechnologyStackUseCase
 import com.safetyheads.akademiaandroida.domain.usecases.GetVideoUseCase
 import com.safetyheads.akademiaandroida.domain.usecases.LoginUseCase
+import com.safetyheads.akademiaandroida.domain.usecases.ProfileDeleteAccountUseCase
+import com.safetyheads.akademiaandroida.domain.usecases.ProfileLogOutUseCase
 import com.safetyheads.akademiaandroida.domain.usecases.RegisterUseCase
+import com.safetyheads.akademiaandroida.domain.usecases.RemoveImageFromStorage
+import com.safetyheads.akademiaandroida.domain.usecases.RemoveImageFromUserProfile
 import com.safetyheads.akademiaandroida.domain.usecases.ResetPasswordUseCase
 import com.safetyheads.akademiaandroida.presentation.ui.activities.splashscreen.SplashScreenViewModel
 import com.safetyheads.akademiaandroida.presentation.ui.career.CareerRepositoryImpl
 import com.safetyheads.akademiaandroida.presentation.ui.career.CareerViewModel
 import com.safetyheads.akademiaandroida.presentation.ui.customviews.dropdown.DropDownListViewModel
 import com.safetyheads.akademiaandroida.presentation.ui.customviews.dropdown.LoadItemsToDropDownListUseCase
+import com.safetyheads.akademiaandroida.presentation.ui.fragments.faq.FaqViewModel
 import com.safetyheads.akademiaandroida.presentation.ui.fragments.forgotpasswordfragment.ForgotPasswordViewModel
+import com.safetyheads.akademiaandroida.presentation.ui.fragments.login.LoginViewModel
 import com.safetyheads.akademiaandroida.presentation.ui.fragments.technologystack.TechnologyStackViewModel
-import com.safetyheads.akademiaandroida.presentation.ui.sign_up.SignUpViewModel
+import com.safetyheads.akademiaandroida.presentation.ui.fragments.youtube.ChannelViewModel
+import com.safetyheads.akademiaandroida.presentation.ui.fragments.youtube.PlayListViewModel
+import com.safetyheads.akademiaandroida.presentation.ui.fragments.youtube.VideoViewModel
+import com.safetyheads.akademiaandroida.presentation.ui.signup.SignUpViewModel
 import com.safetyheads.akademiaandroida.presentation.ui.viewmodels.ProfileViewModel
 import com.safetyheads.akademiaandroida.usersessionmanager.FakeSessionGenerator
 import com.safetyheads.akademiaandroida.usersessionmanager.LoggedSessionManager
@@ -56,9 +72,6 @@ import com.safetyheads.akademiaandroida.usersessionmanager.SESSION_SCOPE_NAME
 import com.safetyheads.akademiaandroida.usersessionmanager.Session
 import com.safetyheads.akademiaandroida.usersessionmanager.UnloggedSessionManager
 import com.safetyheads.akademiaandroida.usersessionmanager.getSessionScope
-import com.safetyheads.akademiaandroida.youtube.viewModel.ChannelViewModel
-import com.safetyheads.akademiaandroida.youtube.viewModel.PlayListViewModel
-import com.safetyheads.akademiaandroida.youtube.viewModel.VideoViewModel
 import com.safetyheads.data.network.mapper.ChannelMapper
 import com.safetyheads.data.network.mapper.PlayListVideoMapper
 import com.safetyheads.data.network.mapper.PlaylistMapper
@@ -93,6 +106,9 @@ class AndroidAcademyApplication : Application() {
     private val appModule = module {
 
         single { FirebaseAuth.getInstance() }
+        single { FirebaseFirestore.getInstance() }
+        single { FirebaseStorage.getInstance() }
+
 
         single { RegisterUseCase(get()) }
         viewModel { SignUpViewModel(get()) }
@@ -100,14 +116,20 @@ class AndroidAcademyApplication : Application() {
         single<ConfigRepository> { FirebaseConfigRepository() }
         single<CareerRepository> { CareerRepositoryImpl() }
         single<SettingsRepository> { SettingRepositoryImpl(get()) }
-        single<UserRepository> { UserRepositoryImpl() }
+        single<UserRepository> { UserRepositoryImpl(get(), get()) }
         single<TechnologyStackRepository> { TechnologyStackRepositoryImpl(get()) }
         single { GetTechnologyStackUseCase(get()) }
         single<CompanyInfoRepository> { CompanyInfoRepositoryImpl(get()) }
         single<FaqRepository> { FaqRepositoryImpl(get()) }
+        single<ImageRepository> { ImageRepositoryImpl(get(), get()) }
 
 
         //usecases
+        single { AddImageToUriStorage(get()) }
+        single { AddImageToBitmapStorage(get()) }
+        single { AddImageToUserProfile(get()) }
+        single { RemoveImageFromUserProfile(get()) }
+        single { RemoveImageFromStorage(get()) }
         single { GetProfileInformationUseCase(get()) }
         single { LoginUseCase(get()) }
         single { DelaySplashScreenUseCase() }
@@ -128,6 +150,10 @@ class AndroidAcademyApplication : Application() {
         single { AddQuestionUseCase(get()) }
         single { GetTechnologyStackUseCase(get()) }
         single { RegisterUseCase(get()) }
+        single { ChangeUserUseCase(get()) }
+        single { ProfileDeleteAccountUseCase(get()) }
+        single { ProfileLogOutUseCase(get()) }
+        single { LoginUseCase(get()) }
 
         //viewmodels
         viewModel { SplashScreenViewModel(get(), get()) }
@@ -137,9 +163,11 @@ class AndroidAcademyApplication : Application() {
         viewModelOf(::ChannelViewModel)
         viewModelOf(::VideoViewModel)
         viewModelOf(::PlayListViewModel)
-        viewModel { ProfileViewModel(get(), get()) }
+        viewModelOf(::ProfileViewModel)
         viewModel { TechnologyStackViewModel(get()) }
         viewModel { SignUpViewModel(get()) }
+        viewModel { FaqViewModel(get(), get()) }
+        viewModel { LoginViewModel(get()) }
     }
 
     private val networkModule = module {

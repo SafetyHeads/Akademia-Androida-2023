@@ -20,7 +20,8 @@ class GetProfileInformationUseCase(private val repository: UserRepository) :
                     else
                         emit(
                             Result.failure(
-                                profileInformation.exceptionOrNull() ?: Exception("ProfileInformationUseCase Error!")
+                                profileInformation.exceptionOrNull()
+                                    ?: Exception("ProfileInformationUseCase Error!")
                             )
                         )
                 }
