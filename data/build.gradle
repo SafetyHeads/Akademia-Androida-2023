@@ -69,6 +69,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-config-ktx:21.3.0'
     implementation 'com.google.firebase:firebase-firestore-ktx:24.5.0'
     implementation 'com.google.firebase:firebase-auth-ktx:21.3.0'
+    implementation 'com.google.firebase:firebase-storage-ktx:20.2.0'
 
     testImplementation 'junit:junit:4.13.2'
 }

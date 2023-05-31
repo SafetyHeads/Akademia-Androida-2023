@@ -3,10 +3,12 @@ package com.safetyheads.akademiaandroida
 import android.app.Application
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.storage.FirebaseStorage
 import com.jakewharton.threetenabp.AndroidThreeTen
 import com.safetyheads.akademiaandroida.data.network.repository.CompanyInfoRepositoryImpl
 import com.safetyheads.akademiaandroida.data.network.repository.FaqRepositoryImpl
 import com.safetyheads.akademiaandroida.data.network.repository.FirebaseConfigRepository
+import com.safetyheads.akademiaandroida.data.network.repository.ImageRepositoryImpl
 import com.safetyheads.akademiaandroida.data.network.repository.TechnologyStackRepositoryImpl
 import com.safetyheads.akademiaandroida.data.network.repository.UserRepositoryImpl
 import com.safetyheads.akademiaandroida.data.network.repository.settings.SettingRepositoryImpl
@@ -16,11 +18,15 @@ import com.safetyheads.akademiaandroida.domain.repositories.ChannelRepository
 import com.safetyheads.akademiaandroida.domain.repositories.CompanyInfoRepository
 import com.safetyheads.akademiaandroida.domain.repositories.ConfigRepository
 import com.safetyheads.akademiaandroida.domain.repositories.FaqRepository
+import com.safetyheads.akademiaandroida.domain.repositories.ImageRepository
 import com.safetyheads.akademiaandroida.domain.repositories.PlaylistRepository
 import com.safetyheads.akademiaandroida.domain.repositories.SettingsRepository
 import com.safetyheads.akademiaandroida.domain.repositories.TechnologyStackRepository
 import com.safetyheads.akademiaandroida.domain.repositories.UserRepository
 import com.safetyheads.akademiaandroida.domain.repositories.VideoRepository
+import com.safetyheads.akademiaandroida.domain.usecases.AddImageToBitmapStorage
+import com.safetyheads.akademiaandroida.domain.usecases.AddImageToUriStorage
+import com.safetyheads.akademiaandroida.domain.usecases.AddImageToUserProfile
 import com.safetyheads.akademiaandroida.domain.usecases.AddQuestionUseCase
 import com.safetyheads.akademiaandroida.domain.usecases.ChangeUserUseCase
 import com.safetyheads.akademiaandroida.domain.usecases.DateUseCase
@@ -43,6 +49,8 @@ import com.safetyheads.akademiaandroida.domain.usecases.LoginUseCase
 import com.safetyheads.akademiaandroida.domain.usecases.ProfileDeleteAccountUseCase
 import com.safetyheads.akademiaandroida.domain.usecases.ProfileLogOutUseCase
 import com.safetyheads.akademiaandroida.domain.usecases.RegisterUseCase
+import com.safetyheads.akademiaandroida.domain.usecases.RemoveImageFromStorage
+import com.safetyheads.akademiaandroida.domain.usecases.RemoveImageFromUserProfile
 import com.safetyheads.akademiaandroida.domain.usecases.ResetPasswordUseCase
 import com.safetyheads.akademiaandroida.presentation.ui.activities.splashscreen.SplashScreenViewModel
 import com.safetyheads.akademiaandroida.presentation.ui.career.CareerRepositoryImpl
@@ -98,6 +106,9 @@ class AndroidAcademyApplication : Application() {
     private val appModule = module {
 
         single { FirebaseAuth.getInstance() }
+        single { FirebaseFirestore.getInstance() }
+        single { FirebaseStorage.getInstance() }
+
 
         single { RegisterUseCase(get()) }
         viewModel { SignUpViewModel(get()) }
@@ -105,14 +116,20 @@ class AndroidAcademyApplication : Application() {
         single<ConfigRepository> { FirebaseConfigRepository() }
         single<CareerRepository> { CareerRepositoryImpl() }
         single<SettingsRepository> { SettingRepositoryImpl(get()) }
-        single<UserRepository> { UserRepositoryImpl() }
+        single<UserRepository> { UserRepositoryImpl(get(), get()) }
         single<TechnologyStackRepository> { TechnologyStackRepositoryImpl(get()) }
         single { GetTechnologyStackUseCase(get()) }
         single<CompanyInfoRepository> { CompanyInfoRepositoryImpl(get()) }
         single<FaqRepository> { FaqRepositoryImpl(get()) }
+        single<ImageRepository> { ImageRepositoryImpl(get(), get()) }
 
 
         //usecases
+        single { AddImageToUriStorage(get()) }
+        single { AddImageToBitmapStorage(get()) }
+        single { AddImageToUserProfile(get()) }
+        single { RemoveImageFromUserProfile(get()) }
+        single { RemoveImageFromStorage(get()) }
         single { GetProfileInformationUseCase(get()) }
         single { LoginUseCase(get()) }
         single { DelaySplashScreenUseCase() }
