@@ -65,8 +65,6 @@ import com.safetyheads.akademiaandroida.usersessionmanager.SessionGenerator
 import com.safetyheads.akademiaandroida.usersessionmanager.LoggedSessionManager
 import com.safetyheads.akademiaandroida.usersessionmanager.SESSION_SCOPE_NAME
 import com.safetyheads.akademiaandroida.domain.entities.Session
-import com.safetyheads.akademiaandroida.domain.usecases.CreateUserSessionUseCase
-import com.safetyheads.akademiaandroida.domain.usecases.DeleteUserSessionUseCase
 import com.safetyheads.akademiaandroida.usersessionmanager.UnloggedSessionManager
 import com.safetyheads.akademiaandroida.usersessionmanager.UserSessionManagerViewModel
 import com.safetyheads.akademiaandroida.usersessionmanager.getSessionScope
@@ -111,7 +109,7 @@ class AndroidAcademyApplication : Application() {
         single<ConfigRepository> { FirebaseConfigRepository() }
         single<CareerRepository> { CareerRepositoryImpl() }
         single<SettingsRepository> { SettingRepositoryImpl(get()) }
-        single<UserRepository> { UserRepositoryImpl(get(), get()) }
+        single<UserRepository> { UserRepositoryImpl(get()) }
         single<TechnologyStackRepository> { TechnologyStackRepositoryImpl(get()) }
         single { GetTechnologyStackUseCase(get()) }
         single<CompanyInfoRepository> { CompanyInfoRepositoryImpl(get()) }
@@ -143,8 +141,6 @@ class AndroidAcademyApplication : Application() {
         single { ProfileLogOutUseCase(get()) }
         single { LoginUseCase(get()) }
         factory { IsLoggedInUseCase( get() ) }
-        factory { DeleteUserSessionUseCase( get() ) }
-        factory { CreateUserSessionUseCase( get() ) }
 
         //viewmodels
         viewModel { SplashScreenViewModel(get(), get()) }

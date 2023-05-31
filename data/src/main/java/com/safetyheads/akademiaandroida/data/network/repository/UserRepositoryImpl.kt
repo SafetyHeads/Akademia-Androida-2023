@@ -14,8 +14,7 @@ import com.safetyheads.akademiaandroida.domain.entities.firebasefirestore.Addres
 import com.safetyheads.akademiaandroida.domain.entities.firebasefirestore.Location
 import com.safetyheads.akademiaandroida.domain.entities.firebasefirestore.Profile
 import com.safetyheads.akademiaandroida.domain.repositories.UserRepository
-import com.safetyheads.akademiaandroida.domain.usecases.CreateUserSessionUseCase
-import com.safetyheads.akademiaandroida.domain.usecases.DeleteUserSessionUseCase
+import com.safetyheads.akademiaandroida.domain.repositories.UserSessionManager
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
@@ -23,7 +22,7 @@ import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.tasks.await
 
-class UserRepositoryImpl(private val deleteUserSessionUseCase: DeleteUserSessionUseCase, private val createUserSessionUseCase: CreateUserSessionUseCase) : UserRepository {
+class UserRepositoryImpl(private val sessionManager: UserSessionManager) : UserRepository {
     private val firebaseAuth = FirebaseAuth.getInstance()
     private val collectionReference = FirebaseFirestore.getInstance()
 
@@ -102,7 +101,7 @@ class UserRepositoryImpl(private val deleteUserSessionUseCase: DeleteUserSession
                     val usersCollection = firestore.collection("users")
                     val user = firebaseAuth.currentUser
                     val userUUID = user?.uid.orEmpty()
-                    createUserSessionUseCase.createSession()
+                    changeSession()
                     trySend(Result.success(userUUID))
                     val docRef = usersCollection.document(userUUID)
                     val userDocumentReference = firestore.collection("users").document(userUUID)
@@ -149,7 +148,7 @@ class UserRepositoryImpl(private val deleteUserSessionUseCase: DeleteUserSession
     override suspend fun logOut(): Flow<Result<Boolean>> = flow {
         if (firebaseAuth.currentUser != null) {
             firebaseAuth.signOut()
-            deleteUserSessionUseCase.deleteSession()
+            changeSession()
             emit(Result.success(true))
         } else {
             emit(Result.failure(Exception("User Logout failed!")))
@@ -207,6 +206,13 @@ class UserRepositoryImpl(private val deleteUserSessionUseCase: DeleteUserSession
             throw IllegalStateException(error.message ?: "Error during registration")
         } else {
             throw error
+        }
+    }
+
+    private fun changeSession() {
+        when(sessionManager) {
+            is UserSessionManager.Unlogged -> (sessionManager as UserSessionManager.Unlogged).logIn()
+            is UserSessionManager.Logged -> (sessionManager as UserSessionManager.Logged).logOff()
         }
     }
 }
