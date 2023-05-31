@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.safetyheads.akademiaandroida.presentation.databinding.FragmentContactUsBinding
+import com.safetyheads.akademiaandroida.presentation.ui.fragments.writetous.WriteToUsBottomSheetFragment
 
 
 class ContactUsFragment : Fragment() {
@@ -25,16 +26,24 @@ class ContactUsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initUI()
+        initUI(view)
     }
 
-    private fun initUI() {
+    private fun initUI(view: View) {
         binding.textViewEmail.setOnClickListener {
             openEmailApp(it)
         }
 
         binding.textViewPhone.setOnClickListener {
             openPhoneApp(it)
+        }
+        binding.buttonFillForm.setOnClickListener {
+            val sheet = WriteToUsBottomSheetFragment()
+
+            sheet.show(
+                parentFragmentManager,
+                WriteToUsBottomSheetFragment.WRITE_TO_US_SHEET_DIALOG
+            )
         }
     }
 
