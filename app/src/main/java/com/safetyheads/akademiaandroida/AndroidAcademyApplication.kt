@@ -68,6 +68,7 @@ import com.safetyheads.akademiaandroida.domain.entities.Session
 import com.safetyheads.akademiaandroida.domain.usecases.CreateUserSessionUseCase
 import com.safetyheads.akademiaandroida.domain.usecases.DeleteUserSessionUseCase
 import com.safetyheads.akademiaandroida.usersessionmanager.UnloggedSessionManager
+import com.safetyheads.akademiaandroida.usersessionmanager.UserSessionManagerViewModel
 import com.safetyheads.akademiaandroida.usersessionmanager.getSessionScope
 import com.safetyheads.data.network.mapper.ChannelMapper
 import com.safetyheads.data.network.mapper.PlayListVideoMapper
@@ -142,8 +143,8 @@ class AndroidAcademyApplication : Application() {
         single { ProfileLogOutUseCase(get()) }
         single { LoginUseCase(get()) }
         factory { IsLoggedInUseCase( getSessionScope().get() ) }
-        single { DeleteUserSessionUseCase( getSessionScope().get() ) }
-        single { CreateUserSessionUseCase( getSessionScope().get() ) }
+        factory { DeleteUserSessionUseCase( getSessionScope().get() ) }
+        factory { CreateUserSessionUseCase( getSessionScope().get() ) }
 
         //viewmodels
         viewModel { SplashScreenViewModel(get(), get()) }
@@ -154,6 +155,7 @@ class AndroidAcademyApplication : Application() {
         viewModelOf(::VideoViewModel)
         viewModelOf(::PlayListViewModel)
         viewModelOf(::ProfileViewModel)
+        viewModelOf(::UserSessionManagerViewModel)
         viewModel { TechnologyStackViewModel(get()) }
         viewModel { SignUpViewModel(get()) }
         viewModel { FaqViewModel(get(), get()) }
