@@ -1,4 +1,4 @@
-package com.safetyheads.akademiaandroida.writetous
+package com.safetyheads.akademiaandroida.presentation.ui.fragments.writetous
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -10,9 +10,7 @@ import com.safetyheads.akademiaandroida.presentation.ui.utils.EmailValidator
 import com.safetyheads.akademiaandroida.presentation.ui.utils.FullNameValidator
 import com.safetyheads.akademiaandroida.presentation.ui.utils.PhoneNumberValidator
 
-
 class WriteToUsFragment : Fragment() {
-
     private lateinit var binding: FragmentWriteToUsBinding
 
     override fun onCreateView(
@@ -25,12 +23,9 @@ class WriteToUsFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-
         super.onViewCreated(view, savedInstanceState)
-
         FullNameValidator.attach(binding.eTextFullName, requireContext())
         PhoneNumberValidator.attach(binding.eTextPhoneNumber, requireContext())
         EmailValidator.attach(binding.eTextEmailAddress)
-
     }
 }
