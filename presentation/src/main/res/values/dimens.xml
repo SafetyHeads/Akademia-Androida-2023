@@ -23,6 +23,10 @@
     <dimen name="size_9_5x">76dp</dimen>
     <dimen name="size_10x">80dp</dimen>
 
+    <dimen name="size_15x">120dp</dimen>
+
+    <dimen name="size_20x">160dp</dimen>
+
     <dimen name="radius_3x">24dp</dimen>
     <dimen name="margin_default_start">75dp</dimen>
 
@@ -30,4 +34,6 @@
     <dimen name="fab_margin">16dp</dimen>
 
     <dimen name="default_margin_top_bottom_shield">14dp</dimen>
+    <dimen name="default_margin_start_bottom_shield">34dp</dimen>
+
 </resources>

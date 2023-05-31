@@ -11,9 +11,23 @@
         android:label="ProfileFragment"
         tools:layout="@layout/fragment_profile" >
         <action
+            android:id="@+id/action_profileFragment_to_changeAvatarFragment"
+            app:destination="@id/changeAvatarFragment" />
+        <action
             android:id="@+id/action_profileFragment_to_profileInformationFragment"
             app:destination="@id/profileInformationFragment" />
     </fragment>
+
+    <fragment
+        android:id="@+id/changeAvatarFragment"
+        android:name="com.safetyheads.akademiaandroida.presentation.ui.fragments.profile.ChangeAvatarFragment"
+        android:label="ChangeAvatarFragment"
+        tools:layout="@layout/fragment_change_profile_avatar" >
+        <action
+            android:id="@+id/action_changeAvatarFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+    </fragment>
+
     <fragment
         android:id="@+id/profileInformationFragment"
         android:name="com.safetyheads.akademiaandroida.presentation.ui.fragments.profile.ProfileInformationFragment"

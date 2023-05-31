@@ -22,19 +22,21 @@ import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.tasks.await
 
-class UserRepositoryImpl(private val sessionManager: UserSessionManager) : UserRepository {
-    private val firebaseAuth = FirebaseAuth.getInstance()
-    private val collectionReference = FirebaseFirestore.getInstance()
+class UserRepositoryImpl(
+    private val sessionManager: UserSessionManager,
+    private val firebaseAuth: FirebaseAuth,
+    private val collectionReference: FirebaseFirestore
+) : UserRepository {
 
-    override fun resetPassword(email: String): Flow<ResetPassword> = flow {
+    override suspend fun resetPassword(email: String): Flow<ResetPassword> = flow {
         firebaseAuth.sendPasswordResetEmail(email).await()
+
         emit(ResetPassword(true, null))
     }.catch { error ->
         emit(ResetPassword(false, error))
     }
 
-    override fun getProfileInformation(userUUID: String): Flow<Result<Profile>> = callbackFlow {
-        val collectionReference = FirebaseFirestore.getInstance()
+    override suspend fun getProfileInformation(userUUID: String): Flow<Result<Profile>> = callbackFlow {
         val listener = collectionReference.collection("users").document(userUUID)
             .addSnapshotListener { snapshot, exception ->
                 if (exception != null) {
@@ -93,7 +95,7 @@ class UserRepositoryImpl(private val sessionManager: UserSessionManager) : UserR
         awaitClose { listener.remove() }
     }
 
-    override fun logIn(email: String, password: String): Flow<Result<String>> = callbackFlow {
+    override suspend fun logIn(email: String, password: String): Flow<Result<String>> = callbackFlow {
         val listener = firebaseAuth.signInWithEmailAndPassword(email, password)
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
@@ -103,8 +105,10 @@ class UserRepositoryImpl(private val sessionManager: UserSessionManager) : UserR
                     val userUUID = user?.uid.orEmpty()
                     changeSession()
                     trySend(Result.success(userUUID))
+
                     val docRef = usersCollection.document(userUUID)
                     val userDocumentReference = firestore.collection("users").document(userUUID)
+
                     docRef.get().addOnSuccessListener { document ->
                         if (document != null && document.exists()) {
                             Log.d(TAG, "DocumentSnapshot data: ${document.data}")
@@ -157,11 +161,13 @@ class UserRepositoryImpl(private val sessionManager: UserSessionManager) : UserR
 
     override suspend fun deleteAccount(): Flow<Result<Boolean>> = callbackFlow {
         val user = firebaseAuth.currentUser
+
         if (user == null) {
             trySend(Result.failure(Exception("User is not authenticated.")))
             close()
             return@callbackFlow
         }
+
         val listener = user.delete()
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
@@ -171,6 +177,7 @@ class UserRepositoryImpl(private val sessionManager: UserSessionManager) : UserR
                 }
                 close()
             }
+
         awaitClose { listener.isCanceled }
     }
 
@@ -193,13 +200,17 @@ class UserRepositoryImpl(private val sessionManager: UserSessionManager) : UserR
         }
     }
 
-    override fun createUser(fullName: String, email: String, password: String): Flow<User> = flow {
+    override suspend fun createUser(fullName: String, email: String, password: String): Flow<User> = flow {
         val authResult = firebaseAuth.createUserWithEmailAndPassword(email, password).await()
+
         val firebaseUser = authResult.user!!
+
         val profileUpdates = UserProfileChangeRequest.Builder()
             .setDisplayName(fullName)
             .build()
+
         firebaseUser.updateProfile(profileUpdates).await()
+
         emit(User(firebaseUser.uid, fullName, email))
     }.catch { error ->
         if (error is FirebaseAuthException) {
