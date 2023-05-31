@@ -21,11 +21,12 @@ import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.tasks.await
 
-class UserRepositoryImpl : UserRepository {
-    private val firebaseAuth = FirebaseAuth.getInstance()
-    private val collectionReference = FirebaseFirestore.getInstance()
+class UserRepositoryImpl(
+    private val firebaseAuth: FirebaseAuth,
+    private val collectionReference: FirebaseFirestore
+) : UserRepository {
 
-    override fun resetPassword(email: String): Flow<ResetPassword> = flow {
+    override suspend fun resetPassword(email: String): Flow<ResetPassword> = flow {
         firebaseAuth.sendPasswordResetEmail(email).await()
 
         emit(ResetPassword(true, null))
@@ -33,8 +34,7 @@ class UserRepositoryImpl : UserRepository {
         emit(ResetPassword(false, error))
     }
 
-    override fun getProfileInformation(userUUID: String): Flow<Result<Profile>> = callbackFlow {
-        val collectionReference = FirebaseFirestore.getInstance()
+    override suspend fun getProfileInformation(userUUID: String): Flow<Result<Profile>> = callbackFlow {
         val listener = collectionReference.collection("users").document(userUUID)
             .addSnapshotListener { snapshot, exception ->
                 if (exception != null) {
@@ -93,7 +93,7 @@ class UserRepositoryImpl : UserRepository {
         awaitClose { listener.remove() }
     }
 
-    override fun logIn(email: String, password: String): Flow<Result<String>> = callbackFlow {
+    override suspend fun logIn(email: String, password: String): Flow<Result<String>> = callbackFlow {
         val listener = firebaseAuth.signInWithEmailAndPassword(email, password)
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
@@ -196,7 +196,7 @@ class UserRepositoryImpl : UserRepository {
         }
     }
 
-    override fun createUser(fullName: String, email: String, password: String): Flow<User> = flow {
+    override suspend fun createUser(fullName: String, email: String, password: String): Flow<User> = flow {
         val authResult = firebaseAuth.createUserWithEmailAndPassword(email, password).await()
 
         val firebaseUser = authResult.user!!

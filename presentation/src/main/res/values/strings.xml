@@ -109,6 +109,11 @@
     <string name="hello_nickname">Hello %s</string>
     <string name="meet_us">Meet us</string>
     <string name="explore_our_social_media">Explore our social media for laughs, member features, furry friends, and passion-filled content.</string>
+    <string name="profile_photo">Profile photo</string>
+    <string name="change_photo">Change photo</string>
+    <string name="choose_image">Choose image</string>
+    <string name="make_photo">Make photo</string>
+    <string name="remove_current_image">Remove current image</string>
     <string name="wyswietl_info">Wyświetl info</string>
     <string name="usun_scope">Usuń scope</string>
     <string name="utworz_scope">Utwórz scope</string>

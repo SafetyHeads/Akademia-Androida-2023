@@ -74,7 +74,8 @@ class ProfileBottomSheetDialogFragment : BottomSheetDialogFragment() {
     }
 
     private fun changePhoto() {
-        //no-op
+        findNavController().navigate(R.id.action_profileFragment_to_changeAvatarFragment)
+        this.dismiss()
     }
 
 }
