@@ -1,6 +1,7 @@
 package com.safetyheads.akademiaandroida.domain.repositories
 
 import com.safetyheads.akademiaandroida.domain.entities.ImageUri
+import com.safetyheads.akademiaandroida.domain.entities.Media
 import com.safetyheads.akademiaandroida.domain.entities.RawBitmap
 import kotlinx.coroutines.flow.Flow
 

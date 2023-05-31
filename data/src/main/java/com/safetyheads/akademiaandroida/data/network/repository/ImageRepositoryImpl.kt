@@ -1,12 +1,22 @@
 package com.safetyheads.akademiaandroida.data.network.repository
 
+import android.graphics.Bitmap
+import android.net.Uri
+import com.google.firebase.firestore.DocumentReference
+import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.storage.FirebaseStorage
+import com.safetyheads.akademiaandroida.domain.entities.ImageUri
 import com.safetyheads.akademiaandroida.domain.entities.Media
 import com.safetyheads.akademiaandroida.domain.entities.MediaType
+import com.safetyheads.akademiaandroida.domain.entities.RawBitmap
 import com.safetyheads.akademiaandroida.domain.repositories.ImageRepository
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
+import kotlinx.coroutines.tasks.await
+import java.io.ByteArrayOutputStream
+import java.util.UUID
 
 class ImageRepositoryImpl(
     private val collectionReference: FirebaseFirestore,

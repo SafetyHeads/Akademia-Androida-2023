@@ -67,7 +67,6 @@ import com.safetyheads.akademiaandroida.presentation.ui.fragments.youtube.Channe
 import com.safetyheads.akademiaandroida.presentation.ui.fragments.youtube.PlayListViewModel
 import com.safetyheads.akademiaandroida.presentation.ui.fragments.youtube.VideoViewModel
 import com.safetyheads.akademiaandroida.presentation.ui.signup.SignUpViewModel
-import com.safetyheads.akademiaandroida.presentation.ui.viewmodels.MediaViewModel
 import com.safetyheads.akademiaandroida.presentation.ui.viewmodels.ProfileViewModel
 import com.safetyheads.akademiaandroida.usersessionmanager.FakeSessionGenerator
 import com.safetyheads.akademiaandroida.usersessionmanager.LoggedSessionManager
@@ -175,7 +174,6 @@ class AndroidAcademyApplication : Application() {
 
     private val networkModule = module {
 
-        single { FirebaseFirestore.getInstance() }
         single { ApiClient(BuildConfig.DEBUG) }
         //YouTubeService Singleton
         single { get<ApiClient>().create(YouTubeApiConsts.YOUTUBE_API_BASE_URL, YouTubeService::class.java) }
@@ -188,7 +186,7 @@ class AndroidAcademyApplication : Application() {
         single { VideosMapper() }
 
         //repository
-        single<ImageRepository> { ImageRepositoryImpl(get()) }
+        single<ImageRepository> { ImageRepositoryImpl(get(), get()) }
         single<VideoRepository> { VideoRepositoryImpl(get(), get(), get(), BuildConfig.YOUTUBE_DATA_API_KEY) }
         single<ChannelRepository> { ChannelRepositoryImpl(get(), get(), BuildConfig.YOUTUBE_DATA_API_KEY) }
         single<PlaylistRepository> { PlaylistRepositoryImpl(get(), get(), get(), BuildConfig.YOUTUBE_DATA_API_KEY) }
