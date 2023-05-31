@@ -32,8 +32,9 @@ class WriteToUsBottomSheetFragment : BottomSheetDialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val behavior = BottomSheetBehavior.from(binding.constriantContainer)
+        val behavior = BottomSheetBehavior.from(binding.constraintContainer)
         behavior.state = BottomSheetBehavior.STATE_EXPANDED
+        behavior.skipCollapsed = true
         FullNameValidator.attach(binding.eTextFullName, requireContext())
         PhoneNumberValidator.attach(binding.eTextPhoneNumber, requireContext())
         EmailValidator.attach(binding.eTextEmailAddress)
