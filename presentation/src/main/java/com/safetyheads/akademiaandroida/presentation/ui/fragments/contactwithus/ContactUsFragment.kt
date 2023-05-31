@@ -26,10 +26,10 @@ class ContactUsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initUI(view)
+        initUI()
     }
 
-    private fun initUI(view: View) {
+    private fun initUI() {
         binding.textViewEmail.setOnClickListener {
             openEmailApp(it)
         }
