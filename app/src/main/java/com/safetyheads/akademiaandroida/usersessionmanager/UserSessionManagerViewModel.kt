@@ -17,13 +17,15 @@ class UserSessionManagerViewModel(
     private val exampleEmail = "dn311@gm.pl"
     private val examplePassword = "test12345678"
 
-    private val _isLoggedIn : MutableLiveData<Boolean> = MutableLiveData()
-    val isLoggedIn : LiveData<Boolean> = _isLoggedIn
+    private val _isLoggedIn: MutableLiveData<Boolean> = MutableLiveData()
+    val isLoggedIn: LiveData<Boolean> = _isLoggedIn
 
     fun deleteSession() {
+        val sessionManager: UserSessionManager = getKoin().getSessionScope().get()
         viewModelScope.launch {
             logOutUseCase.invoke(ProfileLogOutUseCase.Param()).collect {
-                if(it.isSuccess) {
+                if (it.isSuccess) {
+                    (sessionManager as? UserSessionManager.Logged)?.logOff()
                     checkSession()
                 }
             }
@@ -31,10 +33,15 @@ class UserSessionManagerViewModel(
         checkSession()
     }
 
-     fun createSession() {
+    fun createSession() {
         viewModelScope.launch {
-            logInUseCase.invoke(LoginUseCase.LoginParam(email = exampleEmail, password = examplePassword)).collect {result ->
-                if(result.isSuccess) {
+            logInUseCase.invoke(
+                LoginUseCase.LoginParam(
+                    email = exampleEmail,
+                    password = examplePassword
+                )
+            ).collect { result ->
+                if (result.isSuccess) {
                     checkSession()
                 }
             }
@@ -42,7 +49,7 @@ class UserSessionManagerViewModel(
     }
 
     fun checkSession() {
-        val sessionManager : UserSessionManager = getKoin().getSessionScope().get()
+        val sessionManager: UserSessionManager = getKoin().getSessionScope().get()
         _isLoggedIn.postValue(sessionManager.isLoggedIn)
     }
 }

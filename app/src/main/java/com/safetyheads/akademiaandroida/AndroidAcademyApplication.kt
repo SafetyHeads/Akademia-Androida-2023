@@ -142,9 +142,9 @@ class AndroidAcademyApplication : Application() {
         single { ProfileDeleteAccountUseCase(get()) }
         single { ProfileLogOutUseCase(get()) }
         single { LoginUseCase(get()) }
-        factory { IsLoggedInUseCase( getSessionScope().get() ) }
-        factory { DeleteUserSessionUseCase( getSessionScope().get() ) }
-        factory { CreateUserSessionUseCase( getSessionScope().get() ) }
+        factory { IsLoggedInUseCase( get() ) }
+        factory { DeleteUserSessionUseCase( get() ) }
+        factory { CreateUserSessionUseCase( get() ) }
 
         //viewmodels
         viewModel { SplashScreenViewModel(get(), get()) }
@@ -185,11 +185,12 @@ class AndroidAcademyApplication : Application() {
 
     private val sessionModule = module {
         single { SessionGenerator( get() ) }
+        factory { getSessionScope().get<UserSessionManager>() }
 
         scope(named(SESSION_SCOPE_NAME)) {
             scoped<UserSessionManager> {
-                val session = getSessionScope().getOrNull<Session>()
-                if (session == null) {
+                val session = this.getOrNull<Session>()
+                if (session == null || session.userEmail.isEmpty()) {
                     UnloggedSessionManager(sessionGenerator = get())
                 } else {
                     LoggedSessionManager(session)
