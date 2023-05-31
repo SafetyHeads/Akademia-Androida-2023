@@ -29,7 +29,6 @@ class UserRepositoryImpl(private val deleteUserSessionUseCase: DeleteUserSession
 
     override fun resetPassword(email: String): Flow<ResetPassword> = flow {
         firebaseAuth.sendPasswordResetEmail(email).await()
-
         emit(ResetPassword(true, null))
     }.catch { error ->
         emit(ResetPassword(false, error))
@@ -105,10 +104,8 @@ class UserRepositoryImpl(private val deleteUserSessionUseCase: DeleteUserSession
                     val userUUID = user?.uid.orEmpty()
                     createUserSessionUseCase.createSession()
                     trySend(Result.success(userUUID))
-
                     val docRef = usersCollection.document(userUUID)
                     val userDocumentReference = firestore.collection("users").document(userUUID)
-
                     docRef.get().addOnSuccessListener { document ->
                         if (document != null && document.exists()) {
                             Log.d(TAG, "DocumentSnapshot data: ${document.data}")
@@ -161,13 +158,11 @@ class UserRepositoryImpl(private val deleteUserSessionUseCase: DeleteUserSession
 
     override suspend fun deleteAccount(): Flow<Result<Boolean>> = callbackFlow {
         val user = firebaseAuth.currentUser
-
         if (user == null) {
             trySend(Result.failure(Exception("User is not authenticated.")))
             close()
             return@callbackFlow
         }
-
         val listener = user.delete()
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
@@ -177,7 +172,6 @@ class UserRepositoryImpl(private val deleteUserSessionUseCase: DeleteUserSession
                 }
                 close()
             }
-
         awaitClose { listener.isCanceled }
     }
 
@@ -202,15 +196,11 @@ class UserRepositoryImpl(private val deleteUserSessionUseCase: DeleteUserSession
 
     override fun createUser(fullName: String, email: String, password: String): Flow<User> = flow {
         val authResult = firebaseAuth.createUserWithEmailAndPassword(email, password).await()
-
         val firebaseUser = authResult.user!!
-
         val profileUpdates = UserProfileChangeRequest.Builder()
             .setDisplayName(fullName)
             .build()
-
         firebaseUser.updateProfile(profileUpdates).await()
-
         emit(User(firebaseUser.uid, fullName, email))
     }.catch { error ->
         if (error is FirebaseAuthException) {
@@ -219,5 +209,4 @@ class UserRepositoryImpl(private val deleteUserSessionUseCase: DeleteUserSession
             throw error
         }
     }
-
 }
