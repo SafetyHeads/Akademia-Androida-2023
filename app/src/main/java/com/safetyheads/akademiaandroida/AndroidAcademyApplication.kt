@@ -61,11 +61,13 @@ import com.safetyheads.akademiaandroida.presentation.ui.fragments.youtube.VideoV
 import com.safetyheads.akademiaandroida.presentation.ui.signup.SignUpViewModel
 import com.safetyheads.akademiaandroida.presentation.ui.viewmodels.DashboardViewModel
 import com.safetyheads.akademiaandroida.presentation.ui.viewmodels.ProfileViewModel
-import com.safetyheads.akademiaandroida.usersessionmanager.FakeSessionGenerator
-import com.safetyheads.akademiaandroida.usersessionmanager.LoggedSessionManagerImpl
+import com.safetyheads.akademiaandroida.usersessionmanager.SessionGenerator
+import com.safetyheads.akademiaandroida.usersessionmanager.LoggedSessionManager
 import com.safetyheads.akademiaandroida.usersessionmanager.SESSION_SCOPE_NAME
-import com.safetyheads.akademiaandroida.usersessionmanager.Session
-import com.safetyheads.akademiaandroida.usersessionmanager.UnloggedSessionManagerImpl
+import com.safetyheads.akademiaandroida.domain.entities.Session
+import com.safetyheads.akademiaandroida.domain.usecases.CreateUserSessionUseCase
+import com.safetyheads.akademiaandroida.domain.usecases.DeleteUserSessionUseCase
+import com.safetyheads.akademiaandroida.usersessionmanager.UnloggedSessionManager
 import com.safetyheads.akademiaandroida.usersessionmanager.getSessionScope
 import com.safetyheads.data.network.mapper.ChannelMapper
 import com.safetyheads.data.network.mapper.PlayListVideoMapper
@@ -108,7 +110,7 @@ class AndroidAcademyApplication : Application() {
         single<ConfigRepository> { FirebaseConfigRepository() }
         single<CareerRepository> { CareerRepositoryImpl() }
         single<SettingsRepository> { SettingRepositoryImpl(get()) }
-        single<UserRepository> { UserRepositoryImpl() }
+        single<UserRepository> { UserRepositoryImpl(get(), get()) }
         single<TechnologyStackRepository> { TechnologyStackRepositoryImpl(get()) }
         single { GetTechnologyStackUseCase(get()) }
         single<CompanyInfoRepository> { CompanyInfoRepositoryImpl(get()) }
@@ -140,6 +142,8 @@ class AndroidAcademyApplication : Application() {
         single { ProfileLogOutUseCase(get()) }
         single { LoginUseCase(get()) }
         single { IsLoggedInUseCase( getSessionScope().get() ) }
+        single { DeleteUserSessionUseCase( getSessionScope().get() ) }
+        single { CreateUserSessionUseCase( getSessionScope().get() ) }
 
         //viewmodels
         viewModel { SplashScreenViewModel(get(), get()) }
@@ -178,15 +182,15 @@ class AndroidAcademyApplication : Application() {
     }
 
     private val sessionModule = module {
-        single { FakeSessionGenerator() }
+        single { SessionGenerator( get() ) }
 
         scope(named(SESSION_SCOPE_NAME)) {
             scoped<UserSessionManager> {
                 val session = getSessionScope().getOrNull<Session>()
                 if (session == null) {
-                    UnloggedSessionManagerImpl(fakeSessionGenerator = get())
+                    UnloggedSessionManager(sessionGenerator = get())
                 } else {
-                    LoggedSessionManagerImpl(session)
+                    LoggedSessionManager(session)
                 }
             }
         }

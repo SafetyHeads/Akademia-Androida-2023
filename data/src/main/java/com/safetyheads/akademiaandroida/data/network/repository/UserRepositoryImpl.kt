@@ -14,6 +14,8 @@ import com.safetyheads.akademiaandroida.domain.entities.firebasefirestore.Addres
 import com.safetyheads.akademiaandroida.domain.entities.firebasefirestore.Location
 import com.safetyheads.akademiaandroida.domain.entities.firebasefirestore.Profile
 import com.safetyheads.akademiaandroida.domain.repositories.UserRepository
+import com.safetyheads.akademiaandroida.domain.usecases.CreateUserSessionUseCase
+import com.safetyheads.akademiaandroida.domain.usecases.DeleteUserSessionUseCase
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
@@ -21,7 +23,7 @@ import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.tasks.await
 
-class UserRepositoryImpl : UserRepository {
+class UserRepositoryImpl(private val deleteUserSessionUseCase: DeleteUserSessionUseCase, private val createUserSessionUseCase: CreateUserSessionUseCase) : UserRepository {
     private val firebaseAuth = FirebaseAuth.getInstance()
     private val collectionReference = FirebaseFirestore.getInstance()
 
@@ -101,6 +103,7 @@ class UserRepositoryImpl : UserRepository {
                     val usersCollection = firestore.collection("users")
                     val user = firebaseAuth.currentUser
                     val userUUID = user?.uid.orEmpty()
+                    createUserSessionUseCase.createSession()
                     trySend(Result.success(userUUID))
 
                     val docRef = usersCollection.document(userUUID)
@@ -149,6 +152,7 @@ class UserRepositoryImpl : UserRepository {
     override suspend fun logOut(): Flow<Result<Boolean>> = flow {
         if (firebaseAuth.currentUser != null) {
             firebaseAuth.signOut()
+            deleteUserSessionUseCase.deleteSession()
             emit(Result.success(true))
         } else {
             emit(Result.failure(Exception("User Logout failed!")))

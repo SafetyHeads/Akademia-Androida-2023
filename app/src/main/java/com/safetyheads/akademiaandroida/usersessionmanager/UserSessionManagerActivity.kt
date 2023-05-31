@@ -20,22 +20,24 @@ class UserSessionManagerActivity : AppCompatActivity() {
 
         binding.createScopeButton.setOnClickListener {
             when(sessionManager) {
-                is UserSessionManagerImpl.Logged -> showSnackbar("Scope already created")
-                is UserSessionManagerImpl.Unlogged -> (sessionManager as UserSessionManagerImpl.Unlogged).logIn()
+                is UserSessionManager.Logged -> showSnackbar("Scope already created")
+                is UserSessionManager.Unlogged -> (sessionManager as UserSessionManager.Unlogged).logIn()
             }
         }
 
         binding.displayInfoButton.setOnClickListener {
-            val message = (sessionManager as? LoggedSessionManagerImpl)?.session?.let {
-                "User is logged in with email: ${it.userEmail}"
+            val message = (sessionManager as? LoggedSessionManager)?.session?.let {
+                "User is logged in with email: ${it.userEmail} and is ${sessionManager.isLoggedIn}"
             } ?: "User is not logged in"
             showSnackbar(message)
         }
 
         binding.deleteScopeButton.setOnClickListener {
             when(sessionManager) {
-                is UserSessionManagerImpl.Logged -> (sessionManager as UserSessionManagerImpl.Logged).logOff()
-                is UserSessionManagerImpl.Unlogged -> showSnackbar("Scope already destroyed")
+                is UserSessionManager.Logged -> {
+                    (sessionManager as UserSessionManager.Logged).logOff()
+                }
+                is UserSessionManager.Unlogged -> showSnackbar("Scope already destroyed")
             }
         }
     }
