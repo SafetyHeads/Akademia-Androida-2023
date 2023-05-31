@@ -141,7 +141,7 @@ class AndroidAcademyApplication : Application() {
         single { ProfileDeleteAccountUseCase(get()) }
         single { ProfileLogOutUseCase(get()) }
         single { LoginUseCase(get()) }
-        single { IsLoggedInUseCase( getSessionScope().get() ) }
+        factory { IsLoggedInUseCase( getSessionScope().get() ) }
         single { DeleteUserSessionUseCase( getSessionScope().get() ) }
         single { CreateUserSessionUseCase( getSessionScope().get() ) }
 
