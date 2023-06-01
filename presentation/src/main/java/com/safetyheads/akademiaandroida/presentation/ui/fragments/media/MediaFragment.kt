@@ -1,5 +1,7 @@
 package com.safetyheads.akademiaandroida.presentation.ui.fragments.media
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,10 +11,11 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.safetyheads.akademiaandroida.domain.entities.Media
 import com.safetyheads.akademiaandroida.presentation.databinding.FragmentMediaBinding
 import com.safetyheads.akademiaandroida.presentation.ui.adapters.MediaAdapter
+import com.safetyheads.akademiaandroida.presentation.ui.fragments.contactwithus.ContactWithUsObject
 import com.safetyheads.akademiaandroida.presentation.ui.viewmodels.MediaViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class MediaFragment : Fragment() {
+class MediaFragment : Fragment(), MediaAdapter.ClickListener {
 
     private lateinit var binding: FragmentMediaBinding
     private val mediaViewModel: MediaViewModel by viewModel()
@@ -38,7 +41,9 @@ class MediaFragment : Fragment() {
 
     private fun initList() {
         binding.recyclerView.adapter = videoAdapter
-        binding.recyclerView.layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
+        binding.recyclerView.layoutManager =
+            StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
+        videoAdapter.setClickListener(this)
     }
 
     private fun observeUI() {
@@ -80,6 +85,22 @@ class MediaFragment : Fragment() {
         binding.notificationView.switchButtonListener { isChecked ->
             mediaViewModel.writeSetting(isChecked)
         }
+    }
+
+    private fun createYouTubeIntent(videoId: String): Intent {
+        return Intent(Intent.ACTION_VIEW).apply {
+            data = Uri.parse(ContactWithUsObject.youtubeVideoWatch + videoId)
+            if (requireContext().packageManager.getLaunchIntentForPackage(
+                    ContactWithUsObject.youTubePackage
+                ) != null
+            ) setPackage(
+                ContactWithUsObject.youTubePackage
+            )
+        }
+    }
+
+    override fun onClick(videoId: String) {
+        startActivity(createYouTubeIntent(videoId))
     }
 
 }

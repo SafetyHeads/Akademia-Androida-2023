@@ -15,6 +15,7 @@ import com.safetyheads.akademiaandroida.presentation.ui.diffUtil.MediaDiffUtil
 class MediaAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private val differ = AsyncListDiffer(this, MediaDiffUtil())
+    private var clickListener: ClickListener? = null
 
     private val viewTypeInstagram = 0
     private val viewTypeVideo = 1
@@ -41,13 +42,16 @@ class MediaAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     class VideoHolder(itemView: ItemVideoBinding) : RecyclerView.ViewHolder(itemView.root) {
         private val binding = itemView
 
-        fun setData(data: Media) {
+        fun setData(data: Media, clickListener: ClickListener?) {
             Glide.with(binding.root)
                 .load(data.mediaUrl)
                 .fitCenter()
                 .dontAnimate()
                 .into(binding.ivThumbnail)
             binding.tvVideoTitle.text = data.mediaTitle
+            binding.ivThumbnail.setOnClickListener {
+                clickListener?.onClick(data.mediaId)
+            }
         }
     }
 
@@ -75,7 +79,7 @@ class MediaAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
             }
             is VideoHolder -> {
                 val videoHolder = holder as VideoHolder
-                videoHolder.setData(media)
+                videoHolder.setData(media, clickListener)
             }
         }
     }
@@ -91,5 +95,13 @@ class MediaAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     fun clearAll() {
         differ.currentList.clear()
         notifyDataSetChanged()
+    }
+
+    fun setClickListener(listener: ClickListener) {
+        clickListener = listener
+    }
+
+    interface ClickListener {
+        fun onClick(videoId: String)
     }
 }

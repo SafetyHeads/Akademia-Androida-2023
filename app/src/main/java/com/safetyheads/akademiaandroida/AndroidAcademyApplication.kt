@@ -68,6 +68,7 @@ import com.safetyheads.akademiaandroida.presentation.ui.fragments.youtube.PlayLi
 import com.safetyheads.akademiaandroida.presentation.ui.fragments.youtube.VideoViewModel
 import com.safetyheads.akademiaandroida.presentation.ui.signup.SignUpViewModel
 import com.safetyheads.akademiaandroida.presentation.ui.viewmodels.ProfileViewModel
+import com.safetyheads.akademiaandroida.presentation.ui.viewmodels.MediaViewModel
 import com.safetyheads.akademiaandroida.usersessionmanager.FakeSessionGenerator
 import com.safetyheads.akademiaandroida.usersessionmanager.LoggedSessionManager
 import com.safetyheads.akademiaandroida.usersessionmanager.SESSION_SCOPE_NAME
@@ -166,6 +167,7 @@ class AndroidAcademyApplication : Application() {
         viewModelOf(::VideoViewModel)
         viewModelOf(::PlayListViewModel)
         viewModelOf(::ProfileViewModel)
+        viewModelOf(::MediaViewModel)
         viewModel { TechnologyStackViewModel(get()) }
         viewModel { SignUpViewModel(get()) }
         viewModel { FaqViewModel(get(), get()) }
