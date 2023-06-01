@@ -28,10 +28,17 @@ class BackArrowView : FrameLayout {
     }
 
     private fun initView() {
-        binding = ViewArrowBinding.inflate(LayoutInflater.from(context), this, true)
+        binding = ViewArrowBinding.inflate(LayoutInflater.from(context), this)
+//        binding.imageButton.setOnClickListener()
     }
 
     fun setImage(@DrawableRes imageRes: Int) {
-        binding.arrow.setImageResource(imageRes)
+        binding.imageButton.setImageResource(imageRes)
+    }
+
+    fun customButtonListener(callbackFunction: () -> Any) {
+        binding.imageButton.setOnClickListener {
+            callbackFunction()
+        }
     }
 }

@@ -1,202 +1,206 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/login_container"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        tools:context="com.safetyheads.presentation.sign_up.SignUpFragment"
-        android:layout_margin="@dimen/size_3x">
+        android:layout_height="wrap_content">
 
-        <ImageView
+        <com.safetyheads.akademiaandroida.presentation.ui.components.BackArrowView
             android:id="@+id/button_back"
-            style="@style/Back_arrow"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:contentDescription="@string/back_arrow_descritpion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"/>
 
-        <View
-            android:id="@+id/green_horizontal_line"
-            android:layout_width="1dp"
-            android:layout_height="20dp"
-            android:background="@color/p_60"
-            android:layout_marginLeft="2dp"
-            android:layout_marginTop="@dimen/size_5x"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/button_back" />
-
-        <TextView
+        <com.safetyheads.akademiaandroida.presentation.ui.components.H2View
             android:id="@+id/sign_up"
-            style="@style/Text8_comfortaa_bold"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/size_4x"
-            android:layout_marginLeft="8dp"
-            android:text="@string/sign_up"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/button_back" />
-
-        <TextView
-            android:id="@+id/full_name"
-            style="@style/Text2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/size_4x"
-            android:text="@string/full_name"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/sign_up" />
-
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/layout_eText_full_name"
-            style="@style/Layout_eText_full_name"
             android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:layout_marginTop="2dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/full_name">
+            android:layout_height="wrap_content"
+            app:text="Sign Up"
+            android:layout_marginTop="@dimen/size_3x"
+            app:layout_constraintTop_toBottomOf="@id/button_back"
+            app:layout_constraintStart_toStartOf="parent"/>
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/eText_full_name"
-                style="@style/EText_full_name"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/login_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/size_3x"
+            android:layout_marginEnd="@dimen/size_3x"
+            app:layout_constraintTop_toBottomOf="@id/sign_up"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <TextView
+                android:id="@+id/full_name"
+                style="@style/Text2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/size_4x"
+                android:text="@string/full_name"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/layout_eText_full_name"
+                style="@style/Layout_eText_full_name"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
-                android:background="@null" />
-        </com.google.android.material.textfield.TextInputLayout>
+                android:layout_marginTop="2dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/full_name">
 
-        <TextView
-            android:id="@+id/email_address"
-            style="@style/Text2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/size_2x"
-            android:text="@string/email_address"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/layout_eText_full_name" />
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/eText_full_name"
+                    style="@style/EText_full_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:background="@null" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/layout_eText_email_address"
-            style="@style/Layout_eText_email_address"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:layout_marginTop="2dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/email_address">
+            <TextView
+                android:id="@+id/email_address"
+                style="@style/Text2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/size_2x"
+                android:text="@string/email_address"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/layout_eText_full_name" />
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/eText_email_address"
-                style="@style/EText_email_address"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/layout_eText_email_address"
+                style="@style/Layout_eText_email_address"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
-                android:background="@null" />
-        </com.google.android.material.textfield.TextInputLayout>
+                android:layout_marginTop="2dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/email_address">
 
-        <TextView
-            android:id="@+id/password"
-            style="@style/Text2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/size_2x"
-            android:text="@string/password"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/layout_eText_email_address" />
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/eText_email_address"
+                    style="@style/EText_email_address"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:background="@null" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/layout_eText_password"
-            style="@style/Layout_eText_password"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:layout_marginTop="2dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/password">
+            <TextView
+                android:id="@+id/password"
+                style="@style/Text2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/size_2x"
+                android:text="@string/password"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/layout_eText_email_address" />
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/eText_password"
-                style="@style/EText_password"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/layout_eText_password"
+                style="@style/Layout_eText_password"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
-                android:background="@null" />
-        </com.google.android.material.textfield.TextInputLayout>
+                android:layout_marginTop="2dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/password">
 
-        <TextView
-            android:id="@+id/confirm_password"
-            style="@style/Text2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/size_2x"
-            android:text="@string/confirm_password"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/layout_eText_password" />
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/eText_password"
+                    style="@style/EText_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:background="@null" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/layout_eText_confirm_password"
-            style="@style/Layout_eText_password"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:layout_marginTop="2dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/confirm_password">
+            <TextView
+                android:id="@+id/confirm_password"
+                style="@style/Text2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/size_2x"
+                android:text="@string/confirm_password"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/layout_eText_password" />
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/eText_confirm_password"
-                style="@style/EText_password"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/layout_eText_confirm_password"
+                style="@style/Layout_eText_password"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
-                android:background="@null" />
-        </com.google.android.material.textfield.TextInputLayout>
+                android:layout_marginTop="2dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/confirm_password">
 
-        <Button
-            android:id="@+id/button_sign_up"
-            style="@style/StyledButton"
-            android:enabled="true"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:layout_marginTop="@dimen/size_5x"
-            android:text="@string/sign_up"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/layout_eText_confirm_password" />
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/eText_confirm_password"
+                    style="@style/EText_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:background="@null" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-        <TextView
-            android:id="@+id/already_have_an_account"
-            style="@style/Text2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/size_4x"
-            android:layout_marginLeft="@dimen/size_7x"
-            android:text="@string/already_have_an_account"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/button_sign_up" />
+            <Button
+                android:id="@+id/button_sign_up"
+                style="@style/StyledButton"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="@dimen/size_5x"
+                android:enabled="true"
+                android:text="@string/sign_up"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/layout_eText_confirm_password" />
 
-        <TextView
-            android:id="@+id/sign_in_now"
-            style="@style/Poppins_regular_green_10sp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/size_4x"
-            android:layout_marginRight="@dimen/size_10x"
-            android:text="@string/sign_in_now"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/button_sign_up" />
+            <LinearLayout
+                android:id="@+id/linearLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="@dimen/size_4x"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/button_sign_up">
 
-        <com.airbnb.lottie.LottieAnimationView
-            android:id="@+id/progressBar"
-            style="@style/progress_bar_style"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+                <TextView
+                    android:id="@+id/already_have_an_account"
+                    style="@style/Text2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/size_0.5x"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="@string/already_have_an_account" />
+
+                <TextView
+                    android:id="@+id/sign_in_now"
+                    style="@style/Poppins_regular_green_10sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/size_0.5x"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="@string/sign_in_now" />
+
+            </LinearLayout>
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/progressBar"
+                style="@style/progress_bar_style"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </ScrollView>

@@ -132,7 +132,7 @@
     <string name="long_lorem_ipsum">Aliquam consequat magna erat, nec finibus neque condimentum vulputate. In eget purus ac augue mattis pharetra. Aliquam scelerisque, sapien vel fringilla finibus, mi sem condimentum odio, quis ultrices dolor purus eu lorem. Phasellus scelerisque nunc nunc, in hendrerit lorem lacinia eget. Ut ut dolor a nisl dignissim interdum ut in mauris. Aliquam consequat magna erat, nec finibus neque condimentum vulputate. In eget purus ac augue mattis pharetra. Aliquam scelerisque, sapien vel fringilla finibus, mi sem condimentum odio, quis ultrices dolor purus eu lorem. Phasellus scelerisque nunc nunc, in hendrerit lorem lacinia eget. Ut ut dolor a nisl dignissim interdum ut in mauris. Aliquam consequat magna erat, nec finibus neque condimentum vulputate. In eget purus ac augue mattis pharetra. Aliquam scelerisque, sapien vel fringilla finibus, mi sem condimentum odio, quis ultrices dolor purus eu lorem. Phasellus scelerisque nunc nunc, in hendrerit lorem lacinia eget. Ut ut dolor a nisl dignissim interdum ut in mauris. Aliquam consequat magna erat, nec finibus neque condimentum vulputate. In eget purus ac augue mattis pharetra. Aliquam scelerisque, sapien vel fringilla finibus, mi sem condimentum odio, quis ultrices dolor purus eu lorem. Phasellus scelerisque nunc nunc, in hendrerit lorem lacinia eget. Ut ut dolor a nisl dignissim interdum ut in mauris. Aliquam consequat magna erat, nec finibus neque condimentum vulputate. In eget purus ac augue mattis pharetra. Aliquam scelerisque, sapien vel fringilla finibus, mi sem condimentum odio, quis ultrices dolor purus eu lorem. Phasellus scelerisque nunc nunc, in hendrerit lorem lacinia eget. Ut ut dolor a nisl dignissim interdum ut in mauris.</string>
     <string name="lorem_ipsum_dolor_sit_amet">Lorem ipsum dolor sit amet</string>
     <string name="medium_lorem_ipsum">Aliquam consequat magna erat, nec finibus neque condimentum vulputate. In eget purus ac augue mattis pharetra. Aliquam scelerisque, sapien vel fringilla finibus, mi sem condimentum odio, quis ultrices dolor purus eu lorem. Phasellus scelerisque nunc nunc, in hendrerit lorem lacinia eget. Ut ut dolor a nisl dignissim interdum ut in mauris.</string>
-    <string name="back_button">back button</string>
+    <string name="back_arrow_button">Back arrow button</string>
     <string name="benefits">Benefits</string>
     <string name="delegations">Delegations</string>
     <string name="ama">AMA</string>
@@ -146,5 +146,4 @@
     <string name="ok">OK</string>
     <string name="chat">Chat</string>
     <string name="map">Map</string>
-    <string name="back_arrow_descritpion">back arrow descritpion</string>
 </resources>
