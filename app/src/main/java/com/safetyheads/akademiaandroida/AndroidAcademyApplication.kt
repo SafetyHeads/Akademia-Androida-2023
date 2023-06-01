@@ -161,7 +161,7 @@ class AndroidAcademyApplication : Application() {
         factory { IsLoggedInUseCase( get() ) }
 
         //viewmodels
-        viewModel { SplashScreenViewModel(get(), get()) }
+        viewModel { SplashScreenViewModel(get(), get(), get() ) }
         viewModel { DropDownListViewModel(get()) }
         viewModel { CareerViewModel(get(), get()) }
         viewModel { ForgotPasswordViewModel(get()) }

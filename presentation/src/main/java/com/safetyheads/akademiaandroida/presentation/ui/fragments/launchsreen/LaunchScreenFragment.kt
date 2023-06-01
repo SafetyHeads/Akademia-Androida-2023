@@ -65,6 +65,7 @@ class LaunchScreenFragment : Fragment() {
         binding.button.setOnClickListener {
             val intent = Intent(requireContext(), DashboardActivity::class.java)
             startActivity(intent)
+            requireActivity().finish();
         }
     }
 }
