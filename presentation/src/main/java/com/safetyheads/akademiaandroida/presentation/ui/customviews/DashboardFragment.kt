@@ -18,5 +18,4 @@ class DashboardFragment : Fragment() {
         binding = FragmentDashboardBinding.inflate(inflater, container, false)
         return binding.root
     }
-
 }

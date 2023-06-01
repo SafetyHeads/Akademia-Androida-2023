@@ -14,6 +14,7 @@ import com.safetyheads.akademiaandroida.domain.entities.firebasefirestore.Addres
 import com.safetyheads.akademiaandroida.domain.entities.firebasefirestore.Location
 import com.safetyheads.akademiaandroida.domain.entities.firebasefirestore.Profile
 import com.safetyheads.akademiaandroida.domain.repositories.UserRepository
+import com.safetyheads.akademiaandroida.domain.repositories.UserSessionManager
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
@@ -22,6 +23,7 @@ import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.tasks.await
 
 class UserRepositoryImpl(
+    private val sessionManager: UserSessionManager,
     private val firebaseAuth: FirebaseAuth,
     private val collectionReference: FirebaseFirestore
 ) : UserRepository {
@@ -101,6 +103,7 @@ class UserRepositoryImpl(
                     val usersCollection = firestore.collection("users")
                     val user = firebaseAuth.currentUser
                     val userUUID = user?.uid.orEmpty()
+                    changeSession()
                     trySend(Result.success(userUUID))
 
                     val docRef = usersCollection.document(userUUID)
@@ -149,6 +152,7 @@ class UserRepositoryImpl(
     override suspend fun logOut(): Flow<Result<Boolean>> = flow {
         if (firebaseAuth.currentUser != null) {
             firebaseAuth.signOut()
+            changeSession()
             emit(Result.success(true))
         } else {
             emit(Result.failure(Exception("User Logout failed!")))
@@ -216,4 +220,10 @@ class UserRepositoryImpl(
         }
     }
 
+    private fun changeSession() {
+        when(sessionManager) {
+            is UserSessionManager.Unlogged -> (sessionManager as UserSessionManager.Unlogged).logIn()
+            is UserSessionManager.Logged -> (sessionManager as UserSessionManager.Logged).logOff()
+        }
+    }
 }

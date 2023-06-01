@@ -1,5 +1,6 @@
 package com.safetyheads.akademiaandroida.usersessionmanager
 
+import com.safetyheads.akademiaandroida.domain.entities.Session
 import org.koin.core.Koin
 import org.koin.core.qualifier.named
 import org.koin.core.scope.Scope
