@@ -13,6 +13,7 @@ import com.safetyheads.akademiaandroida.data.network.repository.TechnologyStackR
 import com.safetyheads.akademiaandroida.data.network.repository.UserRepositoryImpl
 import com.safetyheads.akademiaandroida.data.network.repository.settings.SettingRepositoryImpl
 import com.safetyheads.akademiaandroida.data.network.retrofit.ApiClient
+import com.safetyheads.akademiaandroida.domain.entities.Session
 import com.safetyheads.akademiaandroida.domain.repositories.CareerRepository
 import com.safetyheads.akademiaandroida.domain.repositories.ChannelRepository
 import com.safetyheads.akademiaandroida.domain.repositories.CompanyInfoRepository
@@ -45,10 +46,10 @@ import com.safetyheads.akademiaandroida.domain.usecases.GetJobOfferUseCase
 import com.safetyheads.akademiaandroida.domain.usecases.GetPlayListItemsUseCase
 import com.safetyheads.akademiaandroida.domain.usecases.GetPlayListsUseCase
 import com.safetyheads.akademiaandroida.domain.usecases.GetProfileInformationUseCase
-import com.safetyheads.akademiaandroida.domain.usecases.IsLoggedInUseCase
 import com.safetyheads.akademiaandroida.domain.usecases.GetSocialUseCase
 import com.safetyheads.akademiaandroida.domain.usecases.GetTechnologyStackUseCase
 import com.safetyheads.akademiaandroida.domain.usecases.GetVideoUseCase
+import com.safetyheads.akademiaandroida.domain.usecases.IsLoggedInUseCase
 import com.safetyheads.akademiaandroida.domain.usecases.LoginUseCase
 import com.safetyheads.akademiaandroida.domain.usecases.ProfileDeleteAccountUseCase
 import com.safetyheads.akademiaandroida.domain.usecases.ProfileLogOutUseCase
@@ -70,13 +71,11 @@ import com.safetyheads.akademiaandroida.presentation.ui.fragments.youtube.PlayLi
 import com.safetyheads.akademiaandroida.presentation.ui.fragments.youtube.VideoViewModel
 import com.safetyheads.akademiaandroida.presentation.ui.signup.SignUpViewModel
 import com.safetyheads.akademiaandroida.presentation.ui.viewmodels.DashboardViewModel
-import com.safetyheads.akademiaandroida.presentation.ui.viewmodels.ProfileViewModel
 import com.safetyheads.akademiaandroida.presentation.ui.viewmodels.MediaViewModel
-import com.safetyheads.akademiaandroida.usersessionmanager.FakeSessionGenerator
-import com.safetyheads.akademiaandroida.usersessionmanager.SessionGenerator
+import com.safetyheads.akademiaandroida.presentation.ui.viewmodels.ProfileViewModel
 import com.safetyheads.akademiaandroida.usersessionmanager.LoggedSessionManager
 import com.safetyheads.akademiaandroida.usersessionmanager.SESSION_SCOPE_NAME
-import com.safetyheads.akademiaandroida.domain.entities.Session
+import com.safetyheads.akademiaandroida.usersessionmanager.SessionGenerator
 import com.safetyheads.akademiaandroida.usersessionmanager.UnloggedSessionManager
 import com.safetyheads.akademiaandroida.usersessionmanager.UserSessionManagerViewModel
 import com.safetyheads.akademiaandroida.usersessionmanager.getSessionScope
