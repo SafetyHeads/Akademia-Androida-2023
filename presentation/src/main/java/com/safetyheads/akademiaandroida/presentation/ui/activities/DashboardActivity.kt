@@ -1,5 +1,6 @@
 package com.safetyheads.akademiaandroida.presentation.ui.activities
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.navigation.NavController
@@ -26,6 +27,12 @@ class DashboardActivity : AppCompatActivity() {
     private fun initObservers() {
         viewModel.isExistUser.observe(this) {
             setupNavBar(it)
+        }
+
+        viewModel.isLogOut.observe(this) {isLogOut ->
+            if(isLogOut) {
+                val intent = Intent(this, )
+            }
         }
     }
 
