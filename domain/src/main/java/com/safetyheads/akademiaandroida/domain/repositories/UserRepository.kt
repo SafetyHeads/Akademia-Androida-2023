@@ -11,6 +11,6 @@ interface UserRepository {
     suspend fun getProfileInformation(userUUID: String): Flow<Result<Profile>>
     suspend fun logIn(email: String, password: String): Flow<Result<String>>
     suspend fun logOut(): Flow<Result<Boolean>>
-    suspend fun deleteAccount(): Flow<Result<Boolean>>
+    suspend fun deleteAccount(userUUID: String): Flow<Result<String>>
     suspend fun changeUser(mapChange: Map<String, Any>, functionTag: String, userUUID: String): Flow<Result<String>>
 }

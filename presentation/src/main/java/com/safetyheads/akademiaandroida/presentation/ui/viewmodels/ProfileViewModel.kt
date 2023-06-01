@@ -396,18 +396,22 @@ class ProfileViewModel(
 
     fun deleteProfile() {
         viewModelScope.launch {
-            profileDeleteAccountUseCase.invoke(ProfileDeleteAccountUseCase.Param())
-                .collect { deleteProfileResult ->
-                    if (deleteProfileResult.isSuccess) {
-                        deleteProfile.postValue(true)
-                        resetProfileEntities()
-                    } else {
-                        Log.i(
-                            "ProfileViewModel",
-                            deleteProfileResult.exceptionOrNull()?.message.orEmpty()
-                        )
-                    }
+            profileDeleteAccountUseCase.invoke(
+                ProfileDeleteAccountUseCase.Param(
+                    userUUID.value.orEmpty()
+                )
+            ).collect { deleteProfileResult ->
+                if (deleteProfileResult.isSuccess) {
+                    deleteProfile.postValue(true)
+                    removeImageFromStorage(deleteProfileResult.getOrNull().orEmpty())
+                    resetProfileEntities()
+                } else {
+                    Log.i(
+                        "ProfileViewModel",
+                        deleteProfileResult.exceptionOrNull()?.message.orEmpty()
+                    )
                 }
+            }
         }
     }
 
