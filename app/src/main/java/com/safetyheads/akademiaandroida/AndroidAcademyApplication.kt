@@ -23,6 +23,7 @@ import com.safetyheads.akademiaandroida.domain.repositories.PlaylistRepository
 import com.safetyheads.akademiaandroida.domain.repositories.SettingsRepository
 import com.safetyheads.akademiaandroida.domain.repositories.TechnologyStackRepository
 import com.safetyheads.akademiaandroida.domain.repositories.UserRepository
+import com.safetyheads.akademiaandroida.domain.repositories.UserSessionManager
 import com.safetyheads.akademiaandroida.domain.repositories.VideoRepository
 import com.safetyheads.akademiaandroida.domain.usecases.AddImageToBitmapStorage
 import com.safetyheads.akademiaandroida.domain.usecases.AddImageToUriStorage
@@ -44,6 +45,7 @@ import com.safetyheads.akademiaandroida.domain.usecases.GetJobOfferUseCase
 import com.safetyheads.akademiaandroida.domain.usecases.GetPlayListItemsUseCase
 import com.safetyheads.akademiaandroida.domain.usecases.GetPlayListsUseCase
 import com.safetyheads.akademiaandroida.domain.usecases.GetProfileInformationUseCase
+import com.safetyheads.akademiaandroida.domain.usecases.IsLoggedInUseCase
 import com.safetyheads.akademiaandroida.domain.usecases.GetSocialUseCase
 import com.safetyheads.akademiaandroida.domain.usecases.GetTechnologyStackUseCase
 import com.safetyheads.akademiaandroida.domain.usecases.GetVideoUseCase
@@ -67,13 +69,16 @@ import com.safetyheads.akademiaandroida.presentation.ui.fragments.youtube.Channe
 import com.safetyheads.akademiaandroida.presentation.ui.fragments.youtube.PlayListViewModel
 import com.safetyheads.akademiaandroida.presentation.ui.fragments.youtube.VideoViewModel
 import com.safetyheads.akademiaandroida.presentation.ui.signup.SignUpViewModel
+import com.safetyheads.akademiaandroida.presentation.ui.viewmodels.DashboardViewModel
 import com.safetyheads.akademiaandroida.presentation.ui.viewmodels.ProfileViewModel
 import com.safetyheads.akademiaandroida.presentation.ui.viewmodels.MediaViewModel
 import com.safetyheads.akademiaandroida.usersessionmanager.FakeSessionGenerator
+import com.safetyheads.akademiaandroida.usersessionmanager.SessionGenerator
 import com.safetyheads.akademiaandroida.usersessionmanager.LoggedSessionManager
 import com.safetyheads.akademiaandroida.usersessionmanager.SESSION_SCOPE_NAME
-import com.safetyheads.akademiaandroida.usersessionmanager.Session
+import com.safetyheads.akademiaandroida.domain.entities.Session
 import com.safetyheads.akademiaandroida.usersessionmanager.UnloggedSessionManager
+import com.safetyheads.akademiaandroida.usersessionmanager.UserSessionManagerViewModel
 import com.safetyheads.akademiaandroida.usersessionmanager.getSessionScope
 import com.safetyheads.data.network.mapper.ChannelMapper
 import com.safetyheads.data.network.mapper.PlayListVideoMapper
@@ -119,7 +124,7 @@ class AndroidAcademyApplication : Application() {
         single<ConfigRepository> { FirebaseConfigRepository() }
         single<CareerRepository> { CareerRepositoryImpl() }
         single<SettingsRepository> { SettingRepositoryImpl(get()) }
-        single<UserRepository> { UserRepositoryImpl(get(), get()) }
+        single<UserRepository> { UserRepositoryImpl(get(), get(), get()) }
         single<TechnologyStackRepository> { TechnologyStackRepositoryImpl(get()) }
         single { GetTechnologyStackUseCase(get()) }
         single<CompanyInfoRepository> { CompanyInfoRepositoryImpl(get()) }
@@ -157,6 +162,7 @@ class AndroidAcademyApplication : Application() {
         single { ProfileDeleteAccountUseCase(get()) }
         single { ProfileLogOutUseCase(get()) }
         single { LoginUseCase(get()) }
+        factory { IsLoggedInUseCase( get() ) }
 
         //viewmodels
         viewModel { SplashScreenViewModel(get(), get()) }
@@ -168,10 +174,12 @@ class AndroidAcademyApplication : Application() {
         viewModelOf(::PlayListViewModel)
         viewModelOf(::ProfileViewModel)
         viewModelOf(::MediaViewModel)
+        viewModelOf(::UserSessionManagerViewModel)
         viewModel { TechnologyStackViewModel(get()) }
         viewModel { SignUpViewModel(get()) }
         viewModel { FaqViewModel(get(), get()) }
         viewModel { LoginViewModel(get()) }
+        viewModel { DashboardViewModel(get()) }
     }
 
     private val networkModule = module {
@@ -198,13 +206,14 @@ class AndroidAcademyApplication : Application() {
     }
 
     private val sessionModule = module {
-        single { FakeSessionGenerator() }
+        single { SessionGenerator( get() ) }
+        factory { getSessionScope().get<UserSessionManager>() }
 
         scope(named(SESSION_SCOPE_NAME)) {
-            scoped {
-                val session = getSessionScope().getOrNull<Session>()
-                if (session == null) {
-                    UnloggedSessionManager(fakeSessionGenerator = get())
+            scoped<UserSessionManager> {
+                val session = this.getOrNull<Session>()
+                if (session == null || session.userEmail.isEmpty()) {
+                    UnloggedSessionManager(sessionGenerator = get())
                 } else {
                     LoggedSessionManager(session)
                 }

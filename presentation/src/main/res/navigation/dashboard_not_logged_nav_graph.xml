@@ -12,7 +12,7 @@
         tools:layout="@layout/fragment_dashboard" />
 
     <navigation
-        android:id="@+id/career"
+        android:id="@+id/not_logged_career"
         app:startDestination="@id/careerFragment">
 
         <fragment
@@ -22,7 +22,7 @@
             tools:layout="@layout/fragment_career" />
     </navigation>
 
-    <navigation android:id="@+id/contact"
+    <navigation android:id="@+id/not_logged_contact"
         app:startDestination="@id/contactUsFragment">
 
         <fragment

@@ -81,8 +81,12 @@ dependencies {
     //viewmodel
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.0'
 
+    // Firebase BoM
+    implementation platform('com.google.firebase:firebase-bom:32.1.0')
+
     //firebase
-    implementation 'com.google.firebase:firebase-auth-ktx:21.3.0'
+    implementation 'com.google.firebase:firebase-auth-ktx'
+
     implementation 'com.google.android.gms:play-services-maps:18.1.0'
     implementation project(path: ':data')
 
