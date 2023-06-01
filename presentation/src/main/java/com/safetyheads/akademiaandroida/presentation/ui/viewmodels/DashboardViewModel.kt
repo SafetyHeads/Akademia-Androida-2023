@@ -7,7 +7,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.safetyheads.akademiaandroida.domain.usecases.IsLoggedInUseCase
 import com.safetyheads.akademiaandroida.domain.usecases.ProfileLogOutUseCase
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 class DashboardViewModel(

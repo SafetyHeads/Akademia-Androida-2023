@@ -174,7 +174,7 @@ class AndroidAcademyApplication : Application() {
         viewModel { SignUpViewModel(get()) }
         viewModel { FaqViewModel(get(), get()) }
         viewModel { LoginViewModel(get()) }
-        viewModel { DashboardViewModel(get()) }
+        viewModel { DashboardViewModel(get(), get()) }
     }
 
     private val networkModule = module {
