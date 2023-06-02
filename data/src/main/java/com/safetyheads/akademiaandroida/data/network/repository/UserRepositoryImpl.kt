@@ -159,7 +159,7 @@ class UserRepositoryImpl(
         }
     }
 
-    override suspend fun deleteAccount(): Flow<Result<Boolean>> = callbackFlow {
+    override suspend fun deleteAccount(userUUID: String): Flow<Result<String>> = callbackFlow {
         val user = firebaseAuth.currentUser
 
         if (user == null) {
@@ -168,10 +168,14 @@ class UserRepositoryImpl(
             return@callbackFlow
         }
 
+        val userDocSnapshot = collectionReference.collection("users").document(userUUID).get().await()
+        val previousImageRef = userDocSnapshot.get("image") as DocumentReference
+        val previousImageStringRef = previousImageRef.get().await().id
+
         val listener = user.delete()
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
-                    trySend(Result.success(true))
+                    trySend(Result.success(previousImageStringRef))
                 } else {
                     trySend(Result.failure(task.exception ?: Exception("Account deletion failed.")))
                 }
