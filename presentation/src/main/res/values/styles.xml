@@ -221,6 +221,24 @@
         <item name="android:lineSpacingExtra">2sp</item>
     </style>
 
+    <!-- Poppins-light 8sp -->
+    <style name="Poppins_light_8sp" parent="TextAppearance.AppCompat">
+        <item name="android:textSize">8sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">@color/n_120</item>
+        <item name="android:fontFamily">@font/poppins_regular</item>
+        <item name="android:lineSpacingExtra">2sp</item>
+    </style>
+
+    <!-- Poppins-light 8sp green-->
+    <style name="Poppins_light_8sp_green" parent="TextAppearance.AppCompat">
+        <item name="android:textSize">8sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">@color/p_60</item>
+        <item name="android:fontFamily">@font/poppins_regular</item>
+        <item name="android:lineSpacingExtra">2sp</item>
+    </style>
+
     <!-- Button background -->
     <style name="StyledButton" parent="@android:style/TextAppearance.Small">
         <item name="layoutWidth">match_parent</item>
@@ -257,8 +275,16 @@
         <item name="android:src">@drawable/ic_back_arrow</item>
     </style>
 
-    <!-- TextInputLayout full name -->
-    <style name="Layout_eText_full_name" parent="TextAppearance.AppCompat">
+    <!-- TextInputLayout theme overaly p60 color  -->
+    <style name="Layout_eText_theme_overlay_p_60" parent="ThemeOverlay.AppCompat">
+        <item name="layoutWidth">match_parent</item>
+        <item name="android:height">48dp</item>
+        <item name="colorAccent">@color/p_60</item>
+        <item name="hintEnabled">false</item>
+    </style>
+
+    <!-- TextInputLayout -->
+    <style name="Layout_eText" parent="TextAppearance.AppCompat">
         <item name="layoutWidth">match_parent</item>
         <item name="android:height">48dp</item>
         <item name="android:background">@drawable/text_input_style</item>
@@ -266,8 +292,22 @@
         <item name="android:paddingLeft">8dp</item>
     </style>
 
-    <!-- TextInputEditText full name -->
-    <style name="EText_full_name" parent="TextAppearance.AppCompat"></style>
+    <!-- TextInputEditText -->
+    <style name="EText" parent="TextAppearance.AppCompat">
+        <item name="layoutWidth">match_parent</item>
+        <item name="android:height">48dp</item>
+        <item name="fontFamily">@font/poppins_regular</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <!-- TextInputEditText p_60 color -->
+    <style name="EText_p60" parent="TextAppearance.AppCompat">
+        <item name="layoutWidth">match_parent</item>
+        <item name="android:height">48dp</item>
+        <item name="fontFamily">@font/poppins_regular</item>
+        <item name="backgroundTint">@color/p_60</item>
+        <item name="android:textSize">14sp</item>
+    </style>
 
     <!-- TextInputLayout email address -->
     <style name="Layout_eText_email_address" parent="TextAppearance.AppCompat">
@@ -280,7 +320,21 @@
 
     <!-- TextInputEditText email address -->
     <style name="EText_email_address" parent="TextAppearance.AppCompat">
+        <item name="layoutWidth">match_parent</item>
+        <item name="android:height">48dp</item>
         <item name="android:inputType">textEmailAddress</item>
+        <item name="fontFamily">@font/poppins_regular</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <!-- TextInputEditText email address p_60 color -->
+    <style name="EText_email_address_p60" parent="TextAppearance.AppCompat">
+        <item name="layoutWidth">match_parent</item>
+        <item name="android:height">48dp</item>
+        <item name="fontFamily">@font/poppins_regular</item>
+        <item name="android:inputType">textEmailAddress</item>
+        <item name="backgroundTint">@color/p_60</item>
+        <item name="android:textSize">14sp</item>
     </style>
 
     <!-- TextInputLayout password -->
@@ -295,7 +349,37 @@
 
     <!-- TextInputEditText password -->
     <style name="EText_password" parent="TextAppearance.AppCompat">
+        <item name="layoutWidth">match_parent</item>
+        <item name="android:height">48dp</item>
         <item name="android:inputType">textPassword</item>
+        <item name="fontFamily">@font/poppins_regular</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <!-- TextInputLayout phone number -->
+    <style name="Layout_eText_phone_number" parent="TextAppearance.AppCompat">
+        <item name="layoutWidth">match_parent</item>
+        <item name="android:height">48dp</item>
+        <item name="android:background">@drawable/text_input_style</item>
+        <item name="hintEnabled">false</item>
+        <item name="android:paddingLeft">8dp</item>
+    </style>
+
+    <!-- TextInputEditText phone number -->
+    <style name="EText_phone_number" parent="TextAppearance.AppCompat">
+        <item name="layoutWidth">match_parent</item>
+        <item name="android:height">48dp</item>
+        <item name="android:inputType">phone</item>
+    </style>
+
+    <!-- TextInputEditText phone number p_60 color -->
+    <style name="EText_phone_number_p60" parent="TextAppearance.AppCompat">
+        <item name="layoutWidth">match_parent</item>
+        <item name="android:height">48dp</item>
+        <item name="fontFamily">@font/poppins_regular</item>
+        <item name="backgroundTint">@color/p_60</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:inputType">phone</item>
     </style>
 
     <style name="Widget.Theme.AkademiaAndroida.MyView" parent="">
@@ -321,6 +405,13 @@
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:visibility">invisible</item>
+    </style>
+
+    <!-- Radio Button NDA -->
+    <style name="radio_button_nda" parent="Base.Widget.AppCompat.CompoundButton.RadioButton">
+        <item name="buttonTint">@color/s_60</item>
+        <item name="android:textColor">@color/s_60</item>
+        <item name="android:textSize">10sp</item>
     </style>
 
 </resources>

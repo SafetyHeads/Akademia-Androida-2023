@@ -81,7 +81,12 @@ class ListActivity : AppCompatActivity() {
         forgotPasswordFragment,
         technolgyStackFragment,
         signUpFragment,
-        mediaFragment
+        mediaFragment,
+        mapFragment,
+        youTubeVideoFragment,
+        youTubeChanelFragment,
+        careerFragment,
+        faqFragment
     )
 }
 
