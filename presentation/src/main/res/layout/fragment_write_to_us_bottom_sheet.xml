@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/writetous_container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
+        android:paddingBottom="@dimen/size_2x"
+        android:background="@drawable/write_to_us_background">
+
+        <ImageView
+            android:id="@+id/grey_line"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|top"
+            android:scaleType="centerCrop"
+            android:src="@drawable/grey_line"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/green_horizontal_line"
+            android:layout_width="1dp"
+            android:layout_height="20dp"
+            android:background="@color/p_60"
+            android:layout_marginLeft="@dimen/size_3x"
+            android:layout_marginRight="@dimen/size_3x"
+            android:layout_marginTop="@dimen/size_3x"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/grey_line"/>
+
+        <TextView
+            android:id="@+id/write_to_us"
+            style="@style/Text8_comfortaa_bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/size_2x"
+            android:layout_marginLeft="@dimen/size_4x"
+            android:text="@string/write_to_us"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/grey_line"/>
+
+        <TextView
+            android:id="@+id/full_name"
+            style="@style/Text2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/full_name_with_star"
+            android:layout_marginTop="@dimen/size_3x"
+            android:layout_marginLeft="@dimen/size_3x"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/write_to_us"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layout_eText_full_name"
+            android:theme="@style/Layout_eText_theme_overlay_p_60"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_6x"
+            android:layout_marginTop="2dp"
+            android:layout_marginLeft="@dimen/size_3x"
+            android:layout_marginRight="@dimen/size_3x"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/full_name">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/eText_full_name"
+                style="@style/EText_p60"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/size_6x"
+                android:hint="@string/enter_full_name"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/phone_number"
+            style="@style/Text2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/size_1.5x"
+            android:layout_marginLeft="@dimen/size_3x"
+            android:text="@string/phone_number"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/layout_eText_full_name"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layout_eText_phone_number"
+            android:theme="@style/Layout_eText_theme_overlay_p_60"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_6x"
+            android:layout_marginTop="2dp"
+            android:layout_marginLeft="@dimen/size_3x"
+            android:layout_marginRight="@dimen/size_3x"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/phone_number">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/eText_phone_number"
+                style="@style/EText_phone_number_p60"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/size_6x"
+                android:hint="@string/example_phone_number"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/email_address"
+            style="@style/Text2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/size_1.5x"
+            android:layout_marginLeft="@dimen/size_3x"
+            android:text="@string/e_mail_with_star"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/layout_eText_phone_number"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layout_eText_email_address"
+            android:theme="@style/Layout_eText_theme_overlay_p_60"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_6x"
+            android:layout_marginTop="2dp"
+            android:layout_marginLeft="@dimen/size_3x"
+            android:layout_marginRight="@dimen/size_3x"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/email_address">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/eText_email_address"
+                style="@style/EText_email_address_p60"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/size_6x"
+                android:hint="@string/enter_email_address"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/message"
+            style="@style/Text2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/size_1.5x"
+            android:layout_marginLeft="@dimen/size_3x"
+            android:text="@string/message_with_star"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/layout_eText_email_address"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layout_eText_message"
+            android:theme="@style/Layout_eText_theme_overlay_p_60"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_10x"
+            android:layout_marginTop="2dp"
+            android:layout_marginLeft="@dimen/size_3x"
+            android:layout_marginRight="@dimen/size_3x"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/message">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/eText_message"
+                style="@style/EText_p60"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/size_10x"
+                android:hint="@string/enter_your_message_here"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/do_you_need_nda"
+            style="@style/Text2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/size_1.5x"
+            android:layout_marginLeft="@dimen/size_3x"
+            android:text="@string/do_you_need_nda_first"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/layout_eText_message"/>
+
+        <RadioGroup
+            android:id="@+id/radioGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checkedButton="@+id/radio_button_1"
+            android:orientation="horizontal"
+            android:layout_marginTop="@dimen/size_0.5x"
+            android:layout_marginLeft="@dimen/size_3x"
+            app:layout_constraintStart_toEndOf="@+id/do_you_need_nda"
+            app:layout_constraintTop_toBottomOf="@id/layout_eText_message">
+
+            <RadioButton
+                android:id="@+id/radio_button_no"
+                style="@style/radio_button_nda"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/no" />
+
+            <RadioButton
+                android:id="@+id/radio_button_yes"
+                style="@style/radio_button_nda"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/size_2x"
+                android:text="@string/yes"/>
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/i_hereby_consent"
+            style="@style/Poppins_light_8sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/size_1.5x"
+            android:layout_marginLeft="@dimen/size_3x"
+            android:text="@string/i_hereby_consent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/do_you_need_nda"/>
+
+        <TextView
+            android:id="@+id/for_more_information"
+            style="@style/Poppins_light_8sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/size_3x"
+            android:text="@string/for_more_information"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/i_hereby_consent"/>
+
+        <TextView
+            android:id="@+id/privacy_policy"
+            style="@style/Poppins_light_8sp_green"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/privacy_policy"
+            android:layout_marginLeft="@dimen/size_0.5x"
+            app:layout_constraintStart_toEndOf="@+id/for_more_information"
+            app:layout_constraintTop_toBottomOf="@id/i_hereby_consent"/>
+
+        <Button
+            android:id="@+id/buttonSendYourMessage"
+            style="@style/StyledButton"
+            android:enabled="false"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="@dimen/size_5x"
+            android:layout_marginLeft="@dimen/size_3x"
+            android:layout_marginRight="@dimen/size_3x"
+            android:layout_marginBottom="@dimen/size_2x"
+            android:text="@string/send_your_message"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/for_more_information"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
