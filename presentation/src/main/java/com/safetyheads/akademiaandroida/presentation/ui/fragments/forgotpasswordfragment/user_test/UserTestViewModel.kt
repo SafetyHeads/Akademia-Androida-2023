@@ -7,7 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.safetyheads.akademiaandroida.domain.usecases.GetMessagingTokenUseCase
 import com.safetyheads.akademiaandroida.domain.usecases.GetProfileInformationUseCase
 import com.safetyheads.akademiaandroida.domain.usecases.LoginUseCase
-import com.safetyheads.akademiaandroida.domain.usecases.UpdateProfileFCMUseCase
+import com.safetyheads.akademiaandroida.domain.usecases.UpdateProfileFcmUseCase
 import kotlinx.coroutines.flow.flatMapConcat
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
@@ -15,7 +15,7 @@ import kotlinx.coroutines.launch
 class UserTestViewModel(
     private val loginUseCase: LoginUseCase,
     private val userGetProfileInformationUseCase: GetProfileInformationUseCase,
-    private val updateProfileFCMUseCase: UpdateProfileFCMUseCase,
+    private val updateProfileFcmUseCase: UpdateProfileFcmUseCase,
     private val getMessagingTokenUseCase: GetMessagingTokenUseCase
 ) : ViewModel() {
 
@@ -59,7 +59,7 @@ class UserTestViewModel(
                 getMessagingTokenUseCase.invoke()
                     .map { result -> result.getOrNull() }
                     .flatMapConcat {
-                        updateProfileFCMUseCase.invoke(UpdateProfileFCMUseCase.UpdateProfileParam(id, it.orEmpty()))
+                        updateProfileFcmUseCase.invoke(UpdateProfileFcmUseCase.UpdateProfileParam(id, it.orEmpty()))
                     }
                     .collect {
                         _message.postValue("Token updated")
@@ -71,7 +71,7 @@ class UserTestViewModel(
     fun clearFcm() {
         userUUID?.let { id ->
             viewModelScope.launch {
-                updateProfileFCMUseCase.invoke(UpdateProfileFCMUseCase.UpdateProfileParam(id, ""))
+                updateProfileFcmUseCase.invoke(UpdateProfileFcmUseCase.UpdateProfileParam(id, ""))
                     .collect {
                         _message.postValue("Token cleared")
                     }

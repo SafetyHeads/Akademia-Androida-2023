@@ -95,7 +95,7 @@ class AndroidAcademyApplication : Application() {
         single { AddQuestionUseCase(get()) }
         single { GetTechnologyStackUseCase(get()) }
         single { RegisterUseCase(get()) }
-        single { UpdateProfileFCMUseCase(get()) }
+        single { UpdateProfileFcmUseCase(get()) }
         single { GetMessagingTokenUseCase(get()) }
 
         //viewmodels
