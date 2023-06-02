@@ -3,14 +3,13 @@ package com.safetyheads.akademiaandroida.usersessionmanager
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.snackbar.Snackbar
-import com.safetyheads.akademiaandroida.databinding.ActivityUserSessionBinding
-import org.koin.android.ext.android.getKoin
+import com.safetyheads.akademiaandroida.presentation.databinding.ActivityUserSessionBinding
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class UserSessionManagerActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityUserSessionBinding
-    private val sessionManager: UserSessionManager
-        get() = getKoin().getSessionScope().get()
+    private val viewModel by viewModel<UserSessionManagerViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -18,24 +17,19 @@ class UserSessionManagerActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.createScopeButton.setOnClickListener {
-            when(sessionManager) {
-                is UserSessionManager.Logged -> showSnackbar("Scope already created")
-                is UserSessionManager.Unlogged -> (sessionManager as UserSessionManager.Unlogged).logIn()
-            }
+            viewModel.createSession()
         }
 
         binding.displayInfoButton.setOnClickListener {
-            val message = (sessionManager as? LoggedSessionManager)?.session?.let {
-                "User is logged in with email: ${it.userEmail}"
-            } ?: "User is not logged in"
-            showSnackbar(message)
+            viewModel.checkSession()
         }
 
         binding.deleteScopeButton.setOnClickListener {
-            when(sessionManager) {
-                is UserSessionManager.Logged -> (sessionManager as UserSessionManager.Logged).logOff()
-                is UserSessionManager.Unlogged -> showSnackbar("Scope already destroyed")
-            }
+            viewModel.deleteSession()
+        }
+        viewModel.isLoggedIn.observe(this) {isLogged ->
+            val msg = if(isLogged) "The user is logged" else "The user is not logged"
+            showSnackbar(msg)
         }
     }
 

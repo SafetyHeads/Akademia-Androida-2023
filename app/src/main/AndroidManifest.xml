@@ -16,6 +16,8 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
 
     <application
@@ -53,7 +55,7 @@
             android:name=".presentation.ui.activitieslist.ListActivity"
             android:exported="true" />
         <activity
-            android:name=".youtube.YouTubeActivity"
+            android:name=".presentation.ui.activities.YouTubeActivity"
             android:exported="true" />
         <activity
             android:name=".presentation.ui.activities.ProfileActivity"
@@ -65,7 +67,12 @@
             android:label="@string/title_activity_web_view"
             android:theme="@style/Theme.AkademiaAndroida.NoActionBar" />
 
-        <activity android:name=".usersessionmanager.UserSessionManagerActivity"
+        <activity
+            android:name=".usersessionmanager.UserSessionManagerActivity"
+            android:exported="true" />
+
+        <activity
+            android:name=".presentation.ui.activities.DashboardActivity"
             android:exported="true" />
 
         <service
