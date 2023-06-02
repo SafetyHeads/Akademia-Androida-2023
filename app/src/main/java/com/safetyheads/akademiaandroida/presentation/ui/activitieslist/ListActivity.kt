@@ -95,7 +95,6 @@ class ListActivity : AppCompatActivity() {
         youTubeChanelFragment,
         careerFragment,
         faqFragment
-
     )
 }
 
