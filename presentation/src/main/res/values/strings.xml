@@ -149,4 +149,5 @@
     <string name="password_not_match">Passwords are not the same</string>
     <string name="reset_password_success">Reset password success</string>
     <string name="back_arrow_descritpion">back arrow descritpion</string>
+    <string name="password_rules">Your password must have at least 8 characters and contain at least two of the following:\n - uppercase letters\n - lowercase letters\n - numbers\n - symbols</string>
 </resources>
