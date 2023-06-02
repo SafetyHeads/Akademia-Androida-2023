@@ -5,7 +5,6 @@ import android.content.pm.PackageManager
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.android.gms.maps.MapFragment
 import com.safetyheads.akademiaandroida.databinding.ActivityListBinding
 import com.safetyheads.akademiaandroida.presentation.ui.career.CareerFragment
 import com.safetyheads.akademiaandroida.presentation.ui.customviews.ExperienceStructureFragment
@@ -16,6 +15,7 @@ import com.safetyheads.akademiaandroida.presentation.ui.fragments.faq.FaqFragmen
 import com.safetyheads.akademiaandroida.presentation.ui.fragments.fontstyle.FontSylesFragment
 import com.safetyheads.akademiaandroida.presentation.ui.fragments.forgotpasswordfragment.ForgotPasswordFragment
 import com.safetyheads.akademiaandroida.presentation.ui.fragments.login.LoginFragment
+import com.safetyheads.akademiaandroida.presentation.ui.fragments.map.MapFragment
 import com.safetyheads.akademiaandroida.presentation.ui.fragments.media.MediaFragment
 import com.safetyheads.akademiaandroida.presentation.ui.fragments.technologystack.TechnologyStackFragment
 import com.safetyheads.akademiaandroida.presentation.ui.fragments.wearehiring.WeAreHiringFragment
