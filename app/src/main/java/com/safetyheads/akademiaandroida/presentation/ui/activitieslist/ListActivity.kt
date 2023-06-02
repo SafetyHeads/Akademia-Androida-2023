@@ -15,6 +15,7 @@ import com.safetyheads.akademiaandroida.presentation.ui.fragments.contactwithus.
 import com.safetyheads.akademiaandroida.presentation.ui.fragments.faq.FaqFragment
 import com.safetyheads.akademiaandroida.presentation.ui.fragments.fontstyle.FontSylesFragment
 import com.safetyheads.akademiaandroida.presentation.ui.fragments.forgotpasswordfragment.ForgotPasswordFragment
+import com.safetyheads.akademiaandroida.presentation.ui.fragments.letsmeet.LetsMeetInWroclawFragment
 import com.safetyheads.akademiaandroida.presentation.ui.fragments.login.LoginFragment
 import com.safetyheads.akademiaandroida.presentation.ui.fragments.map.MapFragment
 import com.safetyheads.akademiaandroida.presentation.ui.fragments.technologystack.TechnologyStackFragment
@@ -77,6 +78,7 @@ class ListActivity : AppCompatActivity() {
     val youTubeVideoFragment = YouTubeVideoFragment()
     val youTubeChanelFragment = YouTubeChanelFragment()
     val faqFragment = FaqFragment()
+    val letsMeetInWroclawFragment = LetsMeetInWroclawFragment()
 
     val dataListFragments = listOf(
         fontSylesFragment,
@@ -94,8 +96,8 @@ class ListActivity : AppCompatActivity() {
         youTubeVideoFragment,
         youTubeChanelFragment,
         careerFragment,
-        faqFragment
-
+        faqFragment,
+        letsMeetInWroclawFragment
     )
 }
 
