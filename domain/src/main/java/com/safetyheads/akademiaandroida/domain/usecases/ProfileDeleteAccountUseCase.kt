@@ -5,14 +5,14 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
 class ProfileDeleteAccountUseCase(private val repository: UserRepository) :
-    BaseUseCase<ProfileDeleteAccountUseCase.Param, Boolean> {
+    BaseUseCase<ProfileDeleteAccountUseCase.Param, String> {
 
-    class Param : BaseUseCase.Params
+    class Param(val userUUID: String) : BaseUseCase.Params
 
-    override suspend fun invoke(parameter: Param): Flow<Result<Boolean>> {
+    override suspend fun invoke(parameter: Param): Flow<Result<String>> {
         return flow {
             try {
-                repository.deleteAccount().collect { result ->
+                repository.deleteAccount(parameter.userUUID).collect { result ->
                     if (result.isSuccess)
                         emit(result)
                     else

@@ -17,7 +17,8 @@
 
         <com.safetyheads.akademiaandroida.presentation.ui.components.H2View
             android:id="@+id/sign_up"
-            android:layout_width="match_parent"
+            style="@style/Text8_comfortaa_bold"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:text="Sign Up"
             android:layout_marginTop="@dimen/size_3x"
@@ -46,7 +47,7 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/layout_eText_full_name"
-                style="@style/Layout_eText_full_name"
+                style="@style/Layout_eText"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:layout_marginTop="2dp"
@@ -56,7 +57,7 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/eText_full_name"
-                    style="@style/EText_full_name"
+                    style="@style/EText"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
                     android:background="@null" />
