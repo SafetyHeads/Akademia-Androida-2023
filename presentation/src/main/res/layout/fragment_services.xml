@@ -13,7 +13,6 @@
         app:text="Services"
         android:layout_marginTop="@dimen/size_3x"/>
 
-
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabLayout"
         android:layout_width="match_parent"
@@ -22,18 +21,11 @@
         style="@style/tabLayout"
         app:tabTextAppearance="@style/tabLabelText">
 
-
     </com.google.android.material.tabs.TabLayout>
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/viewPager"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
-
-<!--    <com.safetyheads.akademiaandroida.presentation.ui.components.ServicesView-->
-<!--        android:id="@+id/viewServices"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_gravity="center"/>-->
 
 </LinearLayout>
