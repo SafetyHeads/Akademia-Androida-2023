@@ -1,14 +1,12 @@
 package com.safetyheads.akademiaandroida.presentation.ui.activities
 
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.safetyheads.akademiaandroida.presentation.R
 import com.safetyheads.akademiaandroida.presentation.databinding.ActivityDashboardBinding
-import com.safetyheads.akademiaandroida.presentation.ui.customviews.DashboardFragment
 import com.safetyheads.akademiaandroida.presentation.ui.viewmodels.DashboardViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 

@@ -40,6 +40,7 @@ class DashboardFragment : Fragment() {
                         "com.safetyheads.akademiaandroida.presentation.ui.MainActivity"
                     )
                     startActivity(intent)
+                    requireActivity().finish()
                 }
             }
         }

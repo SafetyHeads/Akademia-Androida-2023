@@ -29,7 +29,6 @@ class BackArrowView : FrameLayout {
 
     private fun initView() {
         binding = ViewArrowBinding.inflate(LayoutInflater.from(context), this)
-//        binding.imageButton.setOnClickListener()
     }
 
     fun setImage(@DrawableRes imageRes: Int) {
