@@ -23,6 +23,11 @@
 
     </com.google.android.material.tabs.TabLayout>
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/n_60"/>
+
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/viewPager"
         android:layout_width="wrap_content"
