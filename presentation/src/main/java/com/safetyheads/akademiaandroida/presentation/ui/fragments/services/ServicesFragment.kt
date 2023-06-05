@@ -45,11 +45,11 @@ class ServicesFragment : Fragment() {
             }
 
             override fun onTabUnselected(tab: TabLayout.Tab?) {
-                //
+                //no-op
             }
 
             override fun onTabReselected(tab: TabLayout.Tab?) {
-                //
+                //no-op
             }
 
         })
