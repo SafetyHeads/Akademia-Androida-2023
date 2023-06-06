@@ -25,7 +25,7 @@ class DashboardActivity : AppCompatActivity() {
     }
 
     private fun initObservers() {
-        viewModel.isExistUser.observe(this) {
+        viewModel.doesExistUser.observe(this) {
             setupNavBar(it)
         }
 

@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity() {
         splashScreen.setKeepOnScreenCondition {
             splashScreenViewModel.getConfig.isActive
         }
-        observers()
+        observeConfigChanges()
 
         super.onCreate(savedInstanceState)
         splashScreenViewModel.checkLoggedIn()
@@ -30,7 +30,7 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    private fun observers() {
+    private fun observeConfigChanges() {
         splashScreenViewModel.config.observe(this) { config ->
             Toast.makeText(
                 applicationContext,

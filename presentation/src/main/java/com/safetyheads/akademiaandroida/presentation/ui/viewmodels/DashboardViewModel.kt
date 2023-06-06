@@ -13,17 +13,17 @@ class DashboardViewModel(
     private val isLoggedInUseCase: IsLoggedInUseCase,
     private val logOutUseCase: ProfileLogOutUseCase
 ) : ViewModel() {
-    private val _isExistUser: MutableLiveData<Boolean> = MutableLiveData()
+    private val _doesExistUser: MutableLiveData<Boolean> = MutableLiveData()
     private val _islogOut: MutableLiveData<Boolean> = MutableLiveData()
 
-    val isExistUser: LiveData<Boolean> = _isExistUser
+    val doesExistUser: LiveData<Boolean> = _doesExistUser
     val isLogOut : LiveData<Boolean> = _islogOut
 
     fun getSessionInfo() {
         viewModelScope.launch {
             isLoggedInUseCase.invoke().collect { sessionInfo ->
                 if (sessionInfo.isSuccess) {
-                    _isExistUser.postValue(sessionInfo.getOrNull())
+                    _doesExistUser.postValue(sessionInfo.getOrNull())
                 } else {
                     Log.i("DashboardViewModel", sessionInfo.exceptionOrNull()?.message.orEmpty())
                 }
