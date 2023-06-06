@@ -97,7 +97,8 @@ class SignUpFragment : Fragment() {
         }
 
         binding.signInNow.setOnClickListener {
-            findNavController().navigateUp()
+            val action = SignUpFragmentDirections.actionSignUpFragmentToLoginFragment()
+            findNavController().navigate(action)
         }
     }
 }
