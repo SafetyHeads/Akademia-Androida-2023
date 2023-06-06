@@ -10,7 +10,7 @@
     <com.safetyheads.akademiaandroida.presentation.ui.components.H2View
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:text="Services"
+        app:text="@string/services"
         android:layout_marginTop="@dimen/size_3x"/>
 
     <com.google.android.material.tabs.TabLayout
