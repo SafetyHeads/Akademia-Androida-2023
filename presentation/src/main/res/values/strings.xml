@@ -161,4 +161,8 @@
     <string name="map">Map</string>
     <string name="back_arrow_descritpion">back arrow descritpion</string>
     <string name="let_s_meet_in_wroclaw">Let\'s meet in Wrocław!</string>
+    <string name="development">Development</string>
+    <string name="outsorcing">Outsorcing</string>
+    <string name="consulting">Consulting</string>
+    <string name="services">Services</string>
 </resources>
