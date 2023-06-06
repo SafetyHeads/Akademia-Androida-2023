@@ -99,8 +99,8 @@ class ListActivity : AppCompatActivity() {
         youTubeChanelFragment,
         careerFragment,
         faqFragment,
-        letsMeetInWroclawFragment
-        servicesFragment
+        letsMeetInWroclawFragment,
+        servicesFragment,
     )
 }
 
