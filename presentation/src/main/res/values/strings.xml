@@ -160,4 +160,8 @@
     <string name="chat">Chat</string>
     <string name="map">Map</string>
     <string name="back_arrow_descritpion">back arrow descritpion</string>
+    <string name="development">Development</string>
+    <string name="outsorcing">Outsorcing</string>
+    <string name="consulting">Consulting</string>
+    <string name="services">Services</string>
 </resources>

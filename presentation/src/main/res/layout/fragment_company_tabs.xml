@@ -4,13 +4,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context="com.safetyheads.presentation.uistate.CompanyTabs">
+    tools:context="ui.uistate.CompanyTabs">
 
     <com.google.android.material.tabs.TabLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:tabTextAppearance="@style/tabLabelText"
-        style="@style/companyTabLayout">
+        style="@style/tabLayout">
 
         <com.google.android.material.tabs.TabItem
             android:id="@+id/about"
