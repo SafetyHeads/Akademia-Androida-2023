@@ -272,9 +272,9 @@
 
     <!-- Back arrow -->
     <style name="Back_arrow">
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
         <item name="android:src">@drawable/ic_back_arrow</item>
+        <item name="android:background">@drawable/ripple_effect</item>
+        <item name="android:padding">@dimen/size</item>
     </style>
 
     <!-- TextInputLayout theme overaly p60 color  -->
