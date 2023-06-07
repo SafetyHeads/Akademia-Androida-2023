@@ -7,6 +7,7 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.safetyheads.akademiaandroida.presentation.R
 import com.safetyheads.akademiaandroida.presentation.databinding.ActivityDashboardBinding
+import com.safetyheads.akademiaandroida.presentation.services.LocationService
 import com.safetyheads.akademiaandroida.presentation.ui.viewmodels.DashboardViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -21,6 +22,7 @@ class DashboardActivity : AppCompatActivity() {
         setContentView(binding.root)
         initObservers()
         viewModel.getSessionInfo()
+        LocationService()
     }
 
     private fun initObservers() {

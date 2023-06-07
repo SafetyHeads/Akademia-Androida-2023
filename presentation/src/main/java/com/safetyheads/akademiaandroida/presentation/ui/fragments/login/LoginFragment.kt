@@ -14,7 +14,6 @@ import com.safetyheads.akademiaandroida.presentation.databinding.FragmentLoginBi
 import com.safetyheads.akademiaandroida.presentation.ui.activities.DashboardActivity
 import com.safetyheads.akademiaandroida.presentation.ui.components.snackbar.LoginSnackBar
 import com.safetyheads.akademiaandroida.presentation.ui.utils.EmailValidator
-import com.safetyheads.akademiaandroida.presentation.ui.utils.PasswordValidator
 import com.safetyheads.akademiaandroida.presentation.ui.utils.isCorrectText
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -103,7 +102,7 @@ class LoginFragment : Fragment() {
     private fun setupInputValidation() {
 
         EmailValidator.attach(binding.eTextEmailAddress)
-        PasswordValidator.attach(binding.eTextPassword, requireContext())
+        //PasswordValidator.attach(binding.eTextPassword, requireContext())
 
         binding.eTextPassword.addTextChangedListener {
             binding.buttonSignIn.isEnabled = isValidInput()
