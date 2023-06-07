@@ -77,7 +77,7 @@ class LoginFragment : Fragment() {
     }
 
     private fun navigationListeners() {
-        binding.buttonBack.setOnClickListener {
+        binding.buttonBack.customButtonListener {
             findNavController().navigateUp()
         }
 

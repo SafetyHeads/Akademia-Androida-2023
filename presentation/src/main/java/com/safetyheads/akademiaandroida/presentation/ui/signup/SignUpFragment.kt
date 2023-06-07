@@ -8,6 +8,7 @@ import androidx.core.view.isVisible
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import com.safetyheads.akademiaandroida.presentation.databinding.FragmentSignUpBinding
 import com.safetyheads.akademiaandroida.presentation.ui.utils.EmailValidator
 import com.safetyheads.akademiaandroida.presentation.ui.utils.FullNameValidator
@@ -32,15 +33,6 @@ class SignUpFragment : Fragment() {
 
         setupInputValidation()
 
-        binding.buttonSignUp.setOnClickListener {
-            binding.progressBar.isVisible = true
-            viewModel.signUp(
-                binding.eTextFullName.text.toString(),
-                binding.eTextEmailAddress.text.toString(),
-                binding.eTextPassword.text.toString(),
-            )
-        }
-
         lifecycleScope.launchWhenStarted {
             viewModel.registrationState.collect { result ->
                 when {
@@ -58,6 +50,7 @@ class SignUpFragment : Fragment() {
                 }
             }
         }
+        navigationListeners()
     }
 
     private fun setupInputValidation() {
@@ -87,5 +80,26 @@ class SignUpFragment : Fragment() {
             binding.eTextPassword.isCorrectText() &&
             binding.eTextConfirmPassword.isCorrectText() &&
             binding.eTextPassword.text.toString() == binding.eTextConfirmPassword.text.toString()
+
+    private fun navigationListeners() {
+
+        binding.buttonSignUp.setOnClickListener {
+            binding.progressBar.isVisible = true
+            viewModel.signUp(
+                binding.eTextFullName.text.toString(),
+                binding.eTextEmailAddress.text.toString(),
+                binding.eTextPassword.text.toString(),
+            )
+        }
+
+        binding.buttonBack.customButtonListener {
+            findNavController().navigateUp()
+        }
+
+        binding.signInNow.setOnClickListener {
+            val action = SignUpFragmentDirections.actionSignUpFragmentToLoginFragment()
+            findNavController().navigate(action)
+        }
+    }
 }
 

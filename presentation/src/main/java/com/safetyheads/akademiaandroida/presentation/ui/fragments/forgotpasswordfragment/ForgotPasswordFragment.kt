@@ -29,6 +29,7 @@ class ForgotPasswordFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
         val etEmail = binding.eTextEmailAddress
         val requestBtn = binding.requestButton
@@ -66,11 +67,21 @@ class ForgotPasswordFragment : Fragment() {
                 forgotPasswordViewModel.resetPassword(etEmail.text.toString())
             }
         }
-        super.onViewCreated(view, savedInstanceState)
+        navigationListeners()
     }
 
     private fun getColor(color: Int) = ColorStateList.valueOf(
         ContextCompat.getColor(requireActivity(), color)
     )
+
+    private fun navigationListeners() {
+        binding.buttonBack.customButtonListener {
+            findNavController().navigateUp()
+        }
+
+        binding.signInNow.setOnClickListener {
+            findNavController().navigateUp()
+        }
+    }
 
 }
