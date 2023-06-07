@@ -29,7 +29,7 @@ class DashboardFragment : Fragment() {
     }
 
     private fun initObservers() {
-        viewModel.isExistUser.observe(viewLifecycleOwner) { isUserLogged ->
+        viewModel.doesExistUser.observe(viewLifecycleOwner) { isUserLogged ->
             if(isUserLogged) {
                 binding.backButton.visibility = View.GONE
             } else {
