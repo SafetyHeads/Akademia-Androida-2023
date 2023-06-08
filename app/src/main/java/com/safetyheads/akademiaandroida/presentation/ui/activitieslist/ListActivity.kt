@@ -11,7 +11,7 @@ import com.safetyheads.akademiaandroida.presentation.ui.customviews.DashboardFra
 import com.safetyheads.akademiaandroida.presentation.ui.customviews.ExperienceStructureFragment
 import com.safetyheads.akademiaandroida.presentation.ui.customviews.dropdown.FragmentDropDownList
 import com.safetyheads.akademiaandroida.presentation.ui.fragments.clients.ClientsFragment
-import com.safetyheads.akademiaandroida.presentation.ui.fragments.contactwithus.ContactWithUsFragment
+import com.safetyheads.akademiaandroida.presentation.ui.fragments.contact.ContactWithUsFragment
 import com.safetyheads.akademiaandroida.presentation.ui.fragments.faq.FaqFragment
 import com.safetyheads.akademiaandroida.presentation.ui.fragments.fontstyle.FontSylesFragment
 import com.safetyheads.akademiaandroida.presentation.ui.fragments.forgotpasswordfragment.ForgotPasswordFragment

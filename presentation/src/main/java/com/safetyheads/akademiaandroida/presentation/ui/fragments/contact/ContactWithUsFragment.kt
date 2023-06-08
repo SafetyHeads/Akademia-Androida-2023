@@ -1,4 +1,4 @@
-package com.safetyheads.akademiaandroida.presentation.ui.fragments.contactwithus
+package com.safetyheads.akademiaandroida.presentation.ui.fragments.contact
 
 import android.content.Intent
 import android.net.Uri
