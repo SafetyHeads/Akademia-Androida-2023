@@ -13,14 +13,14 @@ import com.safetyheads.akademiaandroida.presentation.ui.utils.TextUtils
 
 class Footer : Fragment() {
 
-    private lateinit var binding: FragmentFooterBinding
-
+    private var _binding: FragmentFooterBinding? = null
+    private val binding get() = _binding!!
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentFooterBinding.inflate(inflater, container, false)
+        _binding = FragmentFooterBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -55,5 +55,10 @@ class Footer : Fragment() {
             }
         binding.footerTextUp.text = footerUpText
         binding.footerTextUp.movementMethod = LinkMovementMethod.getInstance()
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }
