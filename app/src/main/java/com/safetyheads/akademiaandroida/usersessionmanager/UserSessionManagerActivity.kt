@@ -27,7 +27,7 @@ class UserSessionManagerActivity : AppCompatActivity() {
         binding.deleteScopeButton.setOnClickListener {
             viewModel.deleteSession()
         }
-        viewModel.isLoggedIn.observe(this) {isLogged ->
+        viewModel.isLoggedIn.observe(this) { isLogged ->
             val msg = if(isLogged) "The user is logged" else "The user is not logged"
             showSnackbar(msg)
         }

@@ -21,7 +21,7 @@ sealed class UserSessionManagerImpl(override val isLoggedIn: Boolean) : UserSess
 class LoggedSessionManager(override val session: Session) : UserSessionManager.Logged,
     UserSessionManagerImpl.Logged() {
     override fun logOff() {
-        getKoin().reloadSessionScope(Session(""))
+        getKoin().reloadSessionScope(Session("", ""))
     }
 }
 

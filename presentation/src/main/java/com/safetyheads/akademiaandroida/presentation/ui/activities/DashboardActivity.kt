@@ -1,20 +1,27 @@
 package com.safetyheads.akademiaandroida.presentation.ui.activities
 
+import android.Manifest
+import android.content.Intent
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.core.app.ActivityCompat
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
+import com.safetyheads.akademiaandroida.domain.usecases.ChangeLocationUseCase
+import com.safetyheads.akademiaandroida.presentation.services.LocationService
 import com.safetyheads.akademiaandroida.presentation.R
 import com.safetyheads.akademiaandroida.presentation.databinding.ActivityDashboardBinding
-import com.safetyheads.akademiaandroida.presentation.services.LocationService
 import com.safetyheads.akademiaandroida.presentation.ui.viewmodels.DashboardViewModel
+import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class DashboardActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDashboardBinding
     private lateinit var navController: NavController
     private val viewModel : DashboardViewModel by viewModel()
+    private val locationService: LocationService by inject()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,7 +29,26 @@ class DashboardActivity : AppCompatActivity() {
         setContentView(binding.root)
         initObservers()
         viewModel.getSessionInfo()
-        LocationService()
+        startTrucker()
+    }
+
+    private fun startTrucker() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            ActivityCompat.requestPermissions(
+                this,
+                arrayOf(
+                    Manifest.permission.ACCESS_COARSE_LOCATION,
+                    Manifest.permission.ACCESS_FINE_LOCATION,
+                    Manifest.permission.ACCESS_BACKGROUND_LOCATION,
+                ),
+                0
+            )
+        }
+
+        Intent(applicationContext, locationService::class.java).apply {
+            action = LocationService.ACTION_START
+            startService(this)
+        }
     }
 
     private fun initObservers() {
@@ -47,4 +73,5 @@ class DashboardActivity : AppCompatActivity() {
         val bottomNav = binding.bottomNavigationView
         bottomNav.setupWithNavController(navController)
     }
+
 }

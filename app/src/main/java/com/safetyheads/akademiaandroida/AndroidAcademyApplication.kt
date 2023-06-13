@@ -1,6 +1,10 @@
 package com.safetyheads.akademiaandroida
 
 import android.app.Application
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.content.Context
+import android.os.Build
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
@@ -13,6 +17,8 @@ import com.safetyheads.akademiaandroida.data.network.repository.TechnologyStackR
 import com.safetyheads.akademiaandroida.data.network.repository.UserRepositoryImpl
 import com.safetyheads.akademiaandroida.data.network.repository.settings.SettingRepositoryImpl
 import com.safetyheads.akademiaandroida.data.network.retrofit.ApiClient
+import com.safetyheads.akademiaandroida.domain.entities.Session
+import com.safetyheads.akademiaandroida.domain.entities.location.ChangeLocation
 import com.safetyheads.akademiaandroida.domain.repositories.CareerRepository
 import com.safetyheads.akademiaandroida.domain.repositories.ChannelRepository
 import com.safetyheads.akademiaandroida.domain.repositories.CompanyInfoRepository
@@ -29,6 +35,7 @@ import com.safetyheads.akademiaandroida.domain.usecases.AddImageToBitmapStorage
 import com.safetyheads.akademiaandroida.domain.usecases.AddImageToUriStorage
 import com.safetyheads.akademiaandroida.domain.usecases.AddImageToUserProfile
 import com.safetyheads.akademiaandroida.domain.usecases.AddQuestionUseCase
+import com.safetyheads.akademiaandroida.domain.usecases.ChangeLocationUseCase
 import com.safetyheads.akademiaandroida.domain.usecases.ChangeUserUseCase
 import com.safetyheads.akademiaandroida.domain.usecases.DateUseCase
 import com.safetyheads.akademiaandroida.domain.usecases.DateUseCaseImpl
@@ -43,10 +50,10 @@ import com.safetyheads.akademiaandroida.domain.usecases.GetJobOfferUseCase
 import com.safetyheads.akademiaandroida.domain.usecases.GetPlayListItemsUseCase
 import com.safetyheads.akademiaandroida.domain.usecases.GetPlayListsUseCase
 import com.safetyheads.akademiaandroida.domain.usecases.GetProfileInformationUseCase
-import com.safetyheads.akademiaandroida.domain.usecases.IsLoggedInUseCase
 import com.safetyheads.akademiaandroida.domain.usecases.GetSocialUseCase
 import com.safetyheads.akademiaandroida.domain.usecases.GetTechnologyStackUseCase
 import com.safetyheads.akademiaandroida.domain.usecases.GetVideoUseCase
+import com.safetyheads.akademiaandroida.domain.usecases.IsLoggedInUseCase
 import com.safetyheads.akademiaandroida.domain.usecases.LoginUseCase
 import com.safetyheads.akademiaandroida.domain.usecases.ProfileDeleteAccountUseCase
 import com.safetyheads.akademiaandroida.domain.usecases.ProfileLogOutUseCase
@@ -54,6 +61,7 @@ import com.safetyheads.akademiaandroida.domain.usecases.RegisterUseCase
 import com.safetyheads.akademiaandroida.domain.usecases.RemoveImageFromStorage
 import com.safetyheads.akademiaandroida.domain.usecases.RemoveImageFromUserProfile
 import com.safetyheads.akademiaandroida.domain.usecases.ResetPasswordUseCase
+import com.safetyheads.akademiaandroida.presentation.services.LocationService
 import com.safetyheads.akademiaandroida.presentation.ui.activities.splashscreen.SplashScreenViewModel
 import com.safetyheads.akademiaandroida.presentation.ui.career.CareerRepositoryImpl
 import com.safetyheads.akademiaandroida.presentation.ui.career.CareerViewModel
@@ -69,10 +77,10 @@ import com.safetyheads.akademiaandroida.presentation.ui.fragments.youtube.VideoV
 import com.safetyheads.akademiaandroida.presentation.ui.signup.SignUpViewModel
 import com.safetyheads.akademiaandroida.presentation.ui.viewmodels.DashboardViewModel
 import com.safetyheads.akademiaandroida.presentation.ui.viewmodels.ProfileViewModel
-import com.safetyheads.akademiaandroida.usersessionmanager.SessionGenerator
+import com.safetyheads.akademiaandroida.usersessionmanager.ChangeLocationImpl
 import com.safetyheads.akademiaandroida.usersessionmanager.LoggedSessionManager
 import com.safetyheads.akademiaandroida.usersessionmanager.SESSION_SCOPE_NAME
-import com.safetyheads.akademiaandroida.domain.entities.Session
+import com.safetyheads.akademiaandroida.usersessionmanager.SessionGenerator
 import com.safetyheads.akademiaandroida.usersessionmanager.UnloggedSessionManager
 import com.safetyheads.akademiaandroida.usersessionmanager.UserSessionManagerViewModel
 import com.safetyheads.akademiaandroida.usersessionmanager.getSessionScope
@@ -104,6 +112,20 @@ class AndroidAcademyApplication : Application() {
             androidLogger()
             androidContext(this@AndroidAcademyApplication)
             modules(listOf(appModule, networkModule, sessionModule))
+            localization()
+        }
+    }
+
+    private fun localization() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            val channel = NotificationChannel(
+                "location",
+                "location",
+                NotificationManager.IMPORTANCE_DEFAULT
+            )
+            val notificationManager =
+                getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+            notificationManager.createNotificationChannel(channel)
         }
     }
 
@@ -129,6 +151,7 @@ class AndroidAcademyApplication : Application() {
 
 
         //usecases
+        single<ChangeLocation> { ChangeLocationImpl() }
         single { AddImageToUriStorage(get()) }
         single { AddImageToBitmapStorage(get()) }
         single { AddImageToUserProfile(get()) }
@@ -158,7 +181,7 @@ class AndroidAcademyApplication : Application() {
         single { ProfileDeleteAccountUseCase(get()) }
         single { ProfileLogOutUseCase(get()) }
         single { LoginUseCase(get()) }
-        factory { IsLoggedInUseCase( get() ) }
+        factory { IsLoggedInUseCase(get()) }
 
         //viewmodels
         viewModel { SplashScreenViewModel(get(), get()) }
@@ -175,6 +198,9 @@ class AndroidAcademyApplication : Application() {
         viewModel { FaqViewModel(get(), get()) }
         viewModel { LoginViewModel(get()) }
         viewModel { DashboardViewModel(get()) }
+
+        single { ChangeLocationUseCase(get(), get()) }
+        factory { LocationService(get()) }
     }
 
     private val networkModule = module {
@@ -182,7 +208,12 @@ class AndroidAcademyApplication : Application() {
         single { FirebaseFirestore.getInstance() }
         single { ApiClient(BuildConfig.DEBUG) }
         //YouTubeService Singleton
-        single { get<ApiClient>().create(YouTubeApiConsts.YOUTUBE_API_BASE_URL, YouTubeService::class.java) }
+        single {
+            get<ApiClient>().create(
+                YouTubeApiConsts.YOUTUBE_API_BASE_URL,
+                YouTubeService::class.java
+            )
+        }
 
         //mapper
         single { ChannelMapper() }
@@ -191,14 +222,33 @@ class AndroidAcademyApplication : Application() {
         single { VideoMapper() }
 
         //repository
-        single<VideoRepository> { VideoRepositoryImpl(get(), get(), BuildConfig.YOUTUBE_DATA_API_KEY) }
-        single<ChannelRepository> { ChannelRepositoryImpl(get(), get(), BuildConfig.YOUTUBE_DATA_API_KEY) }
-        single<PlaylistRepository> { PlaylistRepositoryImpl(get(), get(), get(), BuildConfig.YOUTUBE_DATA_API_KEY) }
+        single<VideoRepository> {
+            VideoRepositoryImpl(
+                get(),
+                get(),
+                BuildConfig.YOUTUBE_DATA_API_KEY
+            )
+        }
+        single<ChannelRepository> {
+            ChannelRepositoryImpl(
+                get(),
+                get(),
+                BuildConfig.YOUTUBE_DATA_API_KEY
+            )
+        }
+        single<PlaylistRepository> {
+            PlaylistRepositoryImpl(
+                get(),
+                get(),
+                get(),
+                BuildConfig.YOUTUBE_DATA_API_KEY
+            )
+        }
 
     }
 
     private val sessionModule = module {
-        single { SessionGenerator( get() ) }
+        single { SessionGenerator(get()) }
         factory { getSessionScope().get<UserSessionManager>() }
 
         scope(named(SESSION_SCOPE_NAME)) {
