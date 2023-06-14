@@ -16,7 +16,7 @@ import com.safetyheads.akademiaandroida.presentation.ui.fragments.faq.FaqFragmen
 import com.safetyheads.akademiaandroida.presentation.ui.fragments.fontstyle.FontSylesFragment
 import com.safetyheads.akademiaandroida.presentation.ui.fragments.forgotpasswordfragment.ForgotPasswordFragment
 import com.safetyheads.akademiaandroida.presentation.ui.fragments.letsmeet.LetsMeetInWroclawFragment
-import com.safetyheads.akademiaandroida.presentation.ui.fragments.forgotpasswordfragment.user_test.UserTestFragment
+import com.safetyheads.akademiaandroida.presentation.ui.fragments.forgotpasswordfragment.usertest.UserTestFragment
 import com.safetyheads.akademiaandroida.presentation.ui.fragments.login.LoginFragment
 import com.safetyheads.akademiaandroida.presentation.ui.fragments.map.MapFragment
 import com.safetyheads.akademiaandroida.presentation.ui.fragments.services.ServicesFragment

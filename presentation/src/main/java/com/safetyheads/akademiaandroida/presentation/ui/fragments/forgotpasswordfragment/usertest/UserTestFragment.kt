@@ -1,4 +1,4 @@
-package com.safetyheads.akademiaandroida.presentation.ui.fragments.forgotpasswordfragment.user_test
+package com.safetyheads.akademiaandroida.presentation.ui.fragments.forgotpasswordfragment.usertest
 
 import android.os.Bundle
 import android.view.LayoutInflater

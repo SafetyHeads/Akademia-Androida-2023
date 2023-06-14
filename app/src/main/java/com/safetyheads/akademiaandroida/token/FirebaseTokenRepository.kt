@@ -6,9 +6,8 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.tasks.await
 
-class FirebaseTokenRepository: TokenRepository {
+class FirebaseTokenRepository(val firebaseMessaging: FirebaseMessaging): TokenRepository {
     override fun getMessagingToken(): Flow<String> = flow {
-        val token = FirebaseMessaging.getInstance().token.await()
-        emit(token)
+        emit(firebaseMessaging.token.await())
     }
 }

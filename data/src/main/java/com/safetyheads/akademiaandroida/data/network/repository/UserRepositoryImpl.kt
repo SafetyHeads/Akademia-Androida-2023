@@ -45,7 +45,6 @@ class UserRepositoryImpl(
         } catch (e: Exception) {
             emit(Result.failure(e))
         }
-
     }
 
     override suspend fun getProfileInformation(userUUID: String): Flow<Result<Profile>> = callbackFlow {

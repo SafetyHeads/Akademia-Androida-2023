@@ -1,4 +1,4 @@
-package com.safetyheads.akademiaandroida.presentation.ui.fragments.forgotpasswordfragment.user_test
+package com.safetyheads.akademiaandroida.presentation.ui.fragments.forgotpasswordfragment.usertest
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -25,7 +25,8 @@ class UserTestViewModel(
 
     fun login() {
         viewModelScope.launch {
-            loginUseCase.invoke(LoginUseCase.LoginParam("bagno1@test.pl", "pass1234")).collect { userUUIDResult ->
+            //Provide email and password
+            loginUseCase.invoke(LoginUseCase.LoginParam("", "")).collect { userUUIDResult ->
                 if (userUUIDResult.isSuccess) {
                     userUUID = userUUIDResult.getOrNull()
                     _message.postValue("Logged in")

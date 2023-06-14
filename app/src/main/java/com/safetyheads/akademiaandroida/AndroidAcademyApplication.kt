@@ -3,6 +3,7 @@ package com.safetyheads.akademiaandroida
 import android.app.Application
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.messaging.FirebaseMessaging
 import com.google.firebase.storage.FirebaseStorage
 import com.jakewharton.threetenabp.AndroidThreeTen
 import com.safetyheads.akademiaandroida.data.network.repository.CompanyInfoRepositoryImpl
@@ -32,7 +33,7 @@ import com.safetyheads.akademiaandroida.presentation.ui.customviews.dropdown.Dro
 import com.safetyheads.akademiaandroida.presentation.ui.customviews.dropdown.LoadItemsToDropDownListUseCase
 import com.safetyheads.akademiaandroida.presentation.ui.fragments.faq.FaqViewModel
 import com.safetyheads.akademiaandroida.presentation.ui.fragments.forgotpasswordfragment.ForgotPasswordViewModel
-import com.safetyheads.akademiaandroida.presentation.ui.fragments.forgotpasswordfragment.user_test.UserTestViewModel
+import com.safetyheads.akademiaandroida.presentation.ui.fragments.forgotpasswordfragment.usertest.UserTestViewModel
 import com.safetyheads.akademiaandroida.presentation.ui.fragments.login.LoginViewModel
 import com.safetyheads.akademiaandroida.presentation.ui.fragments.technologystack.TechnologyStackViewModel
 import com.safetyheads.akademiaandroida.presentation.ui.fragments.youtube.ChannelViewModel
@@ -87,7 +88,7 @@ class AndroidAcademyApplication : Application() {
         single { FirebaseAuth.getInstance() }
         single { FirebaseFirestore.getInstance() }
         single { FirebaseStorage.getInstance() }
-
+        single { FirebaseMessaging.getInstance()}
 
         single { RegisterUseCase(get()) }
         viewModel { SignUpViewModel(get()) }
@@ -102,7 +103,7 @@ class AndroidAcademyApplication : Application() {
         single<FaqRepository> { FaqRepositoryImpl(get()) }
         single<ImageRepository> { ImageRepositoryImpl(get(), get()) }
 
-        single<TokenRepository> { FirebaseTokenRepository() }
+        single<TokenRepository> { FirebaseTokenRepository(get()) }
 
         //usecases
         single { AddImageToUriStorage(get()) }
