@@ -161,7 +161,7 @@ class AndroidAcademyApplication : Application() {
         factory { IsLoggedInUseCase( get() ) }
 
         //viewmodels
-        viewModel { SplashScreenViewModel(get(), get()) }
+        viewModel { SplashScreenViewModel(get(), get(), get() ) }
         viewModel { DropDownListViewModel(get()) }
         viewModel { CareerViewModel(get(), get()) }
         viewModel { ForgotPasswordViewModel(get()) }
@@ -174,7 +174,7 @@ class AndroidAcademyApplication : Application() {
         viewModel { SignUpViewModel(get()) }
         viewModel { FaqViewModel(get(), get()) }
         viewModel { LoginViewModel(get()) }
-        viewModel { DashboardViewModel(get()) }
+        viewModel { DashboardViewModel(get(), get()) }
     }
 
     private val networkModule = module {

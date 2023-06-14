@@ -52,6 +52,7 @@ class LoginFragment : Fragment() {
                     println("Login was successful.")
                     val intent = Intent(requireActivity(), DashboardActivity::class.java)
                     startActivity(intent)
+                    requireActivity().finish()
                 }
 
                 LoginState.ERROR -> {
