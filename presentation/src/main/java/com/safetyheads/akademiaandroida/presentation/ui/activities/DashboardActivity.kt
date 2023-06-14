@@ -48,7 +48,7 @@ class DashboardActivity : AppCompatActivity() {
 
         navController.addOnDestinationChangedListener { _, navDestination, _ ->
             //TODO: dopisac fragmenty
-            if (navDestination.id == R.id.dashboardFragment
+            if (navDestination.id == R.id.not_logged_home
                 || navDestination.id == R.id.careerFragment
                 || navDestination.id == R.id.contactUsFragment) {
                 binding.backButton.visibility = View.GONE
