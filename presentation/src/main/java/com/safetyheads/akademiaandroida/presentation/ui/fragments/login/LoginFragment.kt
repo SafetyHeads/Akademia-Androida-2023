@@ -52,6 +52,7 @@ class LoginFragment : Fragment() {
                     println("Login was successful.")
                     val intent = Intent(requireActivity(), DashboardActivity::class.java)
                     startActivity(intent)
+                    requireActivity().finish()
                 }
 
                 LoginState.ERROR -> {
@@ -76,7 +77,7 @@ class LoginFragment : Fragment() {
     }
 
     private fun navigationListeners() {
-        binding.buttonBack.setOnClickListener {
+        binding.buttonBack.customButtonListener {
             findNavController().navigateUp()
         }
 
