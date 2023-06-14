@@ -1,6 +1,7 @@
 package com.safetyheads.akademiaandroida.presentation.ui.activities
 
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
@@ -13,7 +14,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class DashboardActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDashboardBinding
     private lateinit var navController: NavController
-    private val viewModel : DashboardViewModel by viewModel()
+    private val viewModel: DashboardViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,10 +40,25 @@ class DashboardActivity : AppCompatActivity() {
             .findFragmentById(R.id.fragmentContainerView) as NavHostFragment
         navController = navHostFragment.navController
         navController.setGraph(
-            if(isLoggedUser) R.navigation.dashboard_logged_nav_graph
+            if (isLoggedUser) R.navigation.dashboard_logged_nav_graph
             else R.navigation.dashboard_not_logged_nav_graph
         )
         val bottomNav = binding.bottomNavigationView
         bottomNav.setupWithNavController(navController)
+
+        navController.addOnDestinationChangedListener { _, navDestination, _ ->
+            //TODO: dopisac fragmenty
+            if (navDestination.id == R.id.dashboardFragment
+                || navDestination.id == R.id.careerFragment
+                || navDestination.id == R.id.contactUsFragment) {
+                binding.backButton.visibility = View.GONE
+            } else {
+                binding.backButton.visibility = View.VISIBLE
+            }
+        }
+
+        binding.backButton.setOnClickListener {
+            navController.navigateUp()
+        }
     }
 }
