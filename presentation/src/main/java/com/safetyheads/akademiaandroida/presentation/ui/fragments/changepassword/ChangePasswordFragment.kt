@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
 import com.safetyheads.akademiaandroida.presentation.R
 import com.safetyheads.akademiaandroida.presentation.databinding.FragmentChangePasswordBinding
@@ -35,6 +36,10 @@ class ChangePasswordFragment : Fragment() {
         PasswordValidator.attach(etNewPassword, requireContext())
         PasswordValidator.attach(etConfirmNewPassword, requireContext())
 
+        etCurrentPassword.doOnTextChanged { text, _, _, _ -> changePasswordViewModel.currentPasswordChanged(text.toString()) }
+        etNewPassword.doOnTextChanged { text, _, _, _ -> changePasswordViewModel.newPasswordChanged(text.toString()) }
+        etConfirmNewPassword.doOnTextChanged { text, _, _, _ -> changePasswordViewModel.confirmNewPasswordChanged(text.toString()) }
+
         changePasswordViewModel.isSuccess.observe(viewLifecycleOwner) { isSuccess ->
             if (isSuccess) {
                 LoginSnackBar.make(
@@ -47,6 +52,10 @@ class ChangePasswordFragment : Fragment() {
                     message = requireActivity().getString(R.string.failed_reset_password)
                 ).show()
             }
+        }
+
+        changePasswordViewModel.isSaveEnable.observe(viewLifecycleOwner) { enabled ->
+            savePassword.isEnabled = enabled
         }
 
         rejectPassword.setOnClickListener {

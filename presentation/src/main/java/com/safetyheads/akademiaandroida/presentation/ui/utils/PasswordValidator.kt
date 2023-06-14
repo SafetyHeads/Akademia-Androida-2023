@@ -29,7 +29,7 @@ object PasswordValidator {
         }
     }
 
-    private fun isValid(password: String): Boolean {
+    fun isValid(password: String): Boolean {
         return PasswordRegex.matches(password)
     }
 }
