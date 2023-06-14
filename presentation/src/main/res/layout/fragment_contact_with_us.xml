@@ -21,7 +21,7 @@
         android:id="@+id/facebook_fill"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/size"
+        android:layout_marginStart="@dimen/size_3x"
         android:layout_marginTop="@dimen/size_6x"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/check_our_social_media"

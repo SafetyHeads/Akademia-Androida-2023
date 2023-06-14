@@ -11,7 +11,8 @@
         android:layout_marginTop="@dimen/size_3x"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:text="Clients"/>
+        app:text="@string/clients"/>
+
 
     <ImageView
         android:id="@+id/imageView1"
