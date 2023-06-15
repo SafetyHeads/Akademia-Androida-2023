@@ -20,7 +20,8 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class LoginFragment : Fragment() {
 
-    private lateinit var binding: FragmentLoginBinding
+    private var _binding: FragmentLoginBinding? = null
+    val binding get() = _binding!!
     private val viewModel: LoginViewModel by viewModel()
 
     override fun onCreateView(
@@ -28,7 +29,7 @@ class LoginFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentLoginBinding.inflate(inflater, container, false)
+        _binding = FragmentLoginBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -120,4 +121,9 @@ class LoginFragment : Fragment() {
 
     private fun isValidInput(): Boolean = binding.eTextEmailAddress.isCorrectText()
             && binding.eTextPassword.isCorrectText()
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
 }

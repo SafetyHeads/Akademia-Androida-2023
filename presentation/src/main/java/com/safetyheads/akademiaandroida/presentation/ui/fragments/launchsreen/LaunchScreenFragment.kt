@@ -1,5 +1,6 @@
 package com.safetyheads.akademiaandroida.presentation.ui.fragments.launchsreen
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.text.Spannable
@@ -17,15 +18,16 @@ import com.safetyheads.akademiaandroida.presentation.databinding.FragmentLaunchS
 import com.safetyheads.akademiaandroida.presentation.ui.activities.DashboardActivity
 import com.safetyheads.akademiaandroida.presentation.ui.components.Footer
 
+@SuppressLint("CustomSplashScreen")
 class LaunchScreenFragment : Fragment() {
-    private lateinit var binding: FragmentLaunchScreenBinding
-
+    private var _binding: FragmentLaunchScreenBinding? = null
+    private val binding get() = _binding!!
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentLaunchScreenBinding.inflate(inflater, container, false)
+        _binding = FragmentLaunchScreenBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -67,6 +69,10 @@ class LaunchScreenFragment : Fragment() {
             startActivity(intent)
             requireActivity().finish();
         }
+    }
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }
 
