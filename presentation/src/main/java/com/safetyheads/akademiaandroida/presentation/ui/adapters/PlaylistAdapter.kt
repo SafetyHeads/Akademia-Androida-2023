@@ -1,22 +1,25 @@
-package com.safetyheads.akademiaandroida.presentation.ui.fragments.youtube
+package com.safetyheads.akademiaandroida.presentation.ui.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.safetyheads.akademiaandroida.domain.entities.Playlist
 import com.safetyheads.akademiaandroida.presentation.databinding.ItemPlaylistBinding
+import com.safetyheads.akademiaandroida.presentation.ui.fragments.youtube.PlaylistDiffUtil
+
 
 class PlaylistAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    private var oldItems = ArrayList<com.safetyheads.akademiaandroida.domain.entities.Playlist>()
+    private var oldItems = ArrayList<Playlist>()
     private var clickListener: ClickListener? = null
 
     class PlaylistHolder(itemView: ItemPlaylistBinding) :
         RecyclerView.ViewHolder(itemView.root) {
         private val binding = itemView
 
-        fun setData(data: com.safetyheads.akademiaandroida.domain.entities.Playlist, position: Int, clickListener: ClickListener?) {
+        fun setData(data: Playlist, position: Int, clickListener: ClickListener?) {
             binding.tvPlaylistTitle.text = data.playlistTitle
             binding.tvVideoCount.text = "${data.playlistVideoCount} videos"
             Glide.with(binding.root).load(data.playlistUrl)
@@ -40,7 +43,7 @@ class PlaylistAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         return oldItems.size
     }
 
-    fun setData(newItems: ArrayList<com.safetyheads.akademiaandroida.domain.entities.Playlist>) {
+    fun setData(newItems: ArrayList<Playlist>) {
         val playlistDiff = PlaylistDiffUtil(oldItems, newItems)
         val diff = DiffUtil.calculateDiff(playlistDiff)
         oldItems = newItems
@@ -52,6 +55,6 @@ class PlaylistAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     }
 
     interface ClickListener {
-        fun onClick(item: com.safetyheads.akademiaandroida.domain.entities.Playlist, position: Int)
+        fun onClick(item: Playlist, position: Int)
     }
 }

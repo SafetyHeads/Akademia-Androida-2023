@@ -21,9 +21,9 @@ class CareerViewModel(
     private val _failureText: MutableLiveData<String> = MutableLiveData()
     var failureText: LiveData<String> = _failureText
 
-    fun readSetting() = settingsRepository.readSetting(Settings.SEND_NOTIFICATIONS)
+    fun readSetting() = settingsRepository.readSetting(Settings.SEND_NOTIFICATIONS_CAREER)
 
-    fun writeSetting(value: Boolean) = settingsRepository.writeSetting(Settings.SEND_NOTIFICATIONS, value)
+    fun writeSetting(value: Boolean) = settingsRepository.writeSetting(Settings.SEND_NOTIFICATIONS_CAREER, value)
 
     fun getJobOffersList() {
     viewModelScope.launch {

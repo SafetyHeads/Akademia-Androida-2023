@@ -107,6 +107,8 @@
     <string name="notifications">Notifications</string>
     <string name="show_my_current_location">Show my current location</string>
     <string name="hello_nickname">Hello %s</string>
+    <string name="meet_us">Meet us</string>
+    <string name="explore_our_social_media">Explore our social media for laughs, member features, furry friends, and passion-filled content.</string>
     <string name="profile_photo">Profile photo</string>
     <string name="change_photo">Change photo</string>
     <string name="choose_image">Choose image</string>
@@ -115,6 +117,10 @@
     <string name="wyswietl_info">Wyświetl info</string>
     <string name="usun_scope">Usuń scope</string>
     <string name="utworz_scope">Utwórz scope</string>
+    <string name="photo">Photo</string>
+    <string name="movies">Movies</string>
+    <string name="all_media">All media</string>
+    <string name="our_creativity">our creativity</string>
     <string name="full_name_with_star">Full name*</string>
     <string name="e_mail_with_star">E-mail*</string>
     <string name="write_to_us">Write to us</string>
