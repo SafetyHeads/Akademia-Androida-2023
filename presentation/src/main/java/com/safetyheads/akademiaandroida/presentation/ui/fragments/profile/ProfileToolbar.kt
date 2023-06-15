@@ -57,7 +57,7 @@ class ProfileToolbar : Fragment() {
         val navController = navHostFragment.navController
 
         navController.addOnDestinationChangedListener { _, navDestination, _ ->
-            
+
             if (navDestination.id == R.id.careerFragment
                 || navDestination.id == R.id.mediaFragment
                 || navDestination.id == R.id.dashboardFragment
@@ -67,7 +67,6 @@ class ProfileToolbar : Fragment() {
             } else {
                 binding.backButton.visibility = View.VISIBLE
             }
-            Log.d("BACKQUEUE", navController.backQueue.size.toString())
         }
 
         binding.backButton.customButtonListener {

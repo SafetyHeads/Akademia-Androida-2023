@@ -8,7 +8,7 @@
         android:id="@+id/back_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/size"
+        android:layout_marginBottom="@dimen/size_1.5x"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="parent" />
 
@@ -16,7 +16,7 @@
         android:id="@+id/avatar_card_view"
         android:layout_width="@dimen/size_6x"
         android:layout_height="@dimen/size_6x"
-        android:layout_marginTop="@dimen/size"
+        android:layout_marginTop="@dimen/size_0.5x"
         android:layout_marginEnd="@dimen/size"
         app:cardBackgroundColor="@color/white"
         app:cardCornerRadius="250dp"
