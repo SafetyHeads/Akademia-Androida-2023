@@ -415,4 +415,5 @@
         <item name="android:textColor">@color/s_60</item>
         <item name="android:textSize">10sp</item>
     </style>
+
 </resources>
