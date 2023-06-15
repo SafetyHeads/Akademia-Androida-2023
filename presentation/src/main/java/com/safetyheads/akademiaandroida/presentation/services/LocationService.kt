@@ -25,14 +25,14 @@ import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.withContext
+import org.koin.android.ext.android.inject
 
-class LocationService(
-    private val changeLocationUseCase: ChangeLocationUseCase,
-) : Service() {
+class LocationService : Service() {
 
     private val serviceScope = CoroutineScope(SupervisorJob() + Dispatchers.IO)
     private lateinit var locationForegroundClient: LocationClient
     private lateinit var locationBackgroundClient: LocationClient
+    private val changeLocationUseCase: ChangeLocationUseCase by inject()
 
     override fun onBind(p0: Intent?): IBinder? {
         return null

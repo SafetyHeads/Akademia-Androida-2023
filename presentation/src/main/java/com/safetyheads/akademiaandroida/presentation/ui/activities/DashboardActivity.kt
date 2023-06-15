@@ -6,6 +6,7 @@ import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
@@ -21,7 +22,6 @@ class DashboardActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDashboardBinding
     private lateinit var navController: NavController
     private val viewModel : DashboardViewModel by viewModel()
-    private val locationService: LocationService by inject()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,9 +45,10 @@ class DashboardActivity : AppCompatActivity() {
             )
         }
 
-        Intent(applicationContext, locationService::class.java).apply {
+        Intent(this, LocationService::class.java).apply {
             action = LocationService.ACTION_START
-            startService(this)
+        }.let { intent ->
+            ContextCompat.startForegroundService(this, intent)
         }
     }
 

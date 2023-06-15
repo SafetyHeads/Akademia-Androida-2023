@@ -200,7 +200,6 @@ class AndroidAcademyApplication : Application() {
         viewModel { DashboardViewModel(get()) }
 
         single { ChangeLocationUseCase(get(), get()) }
-        factory { LocationService(get()) }
     }
 
     private val networkModule = module {
