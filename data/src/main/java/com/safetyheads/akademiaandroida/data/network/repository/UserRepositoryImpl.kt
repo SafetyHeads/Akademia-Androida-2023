@@ -47,6 +47,20 @@ class UserRepositoryImpl(
         }
     }
 
+    override suspend fun anonymousLogIn(): Flow<Result<String>> = callbackFlow {
+        val listener = firebaseAuth.signInAnonymously()
+            .addOnCompleteListener { anonymousLogInResult ->
+                if (anonymousLogInResult.isSuccessful) {
+                    val user = firebaseAuth.currentUser
+                    trySend(Result.success(user.toString()))
+                }
+            }
+            .addOnFailureListener { error ->
+                trySend(Result.failure(error))
+            }
+        awaitClose { listener.isCanceled }
+    }
+
     override suspend fun getProfileInformation(userUUID: String): Flow<Result<Profile>> = callbackFlow {
         val listener = collectionReference.collection("users").document(userUUID)
             .addSnapshotListener { snapshot, exception ->
