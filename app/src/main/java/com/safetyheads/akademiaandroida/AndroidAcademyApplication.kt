@@ -3,6 +3,7 @@ package com.safetyheads.akademiaandroida
 import android.app.Application
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.messaging.FirebaseMessaging
 import com.google.firebase.storage.FirebaseStorage
 import com.jakewharton.threetenabp.AndroidThreeTen
 import com.safetyheads.akademiaandroida.data.network.repository.CompanyInfoRepositoryImpl
@@ -23,6 +24,7 @@ import com.safetyheads.akademiaandroida.domain.repositories.ImageRepository
 import com.safetyheads.akademiaandroida.domain.repositories.PlaylistRepository
 import com.safetyheads.akademiaandroida.domain.repositories.SettingsRepository
 import com.safetyheads.akademiaandroida.domain.repositories.TechnologyStackRepository
+import com.safetyheads.akademiaandroida.domain.repositories.TokenRepository
 import com.safetyheads.akademiaandroida.domain.repositories.UserRepository
 import com.safetyheads.akademiaandroida.domain.repositories.UserSessionManager
 import com.safetyheads.akademiaandroida.domain.repositories.VideoRepository
@@ -43,6 +45,7 @@ import com.safetyheads.akademiaandroida.domain.usecases.GetFaqUseCase
 import com.safetyheads.akademiaandroida.domain.usecases.GetInfoUseCase
 import com.safetyheads.akademiaandroida.domain.usecases.GetInstagramImageUseCase
 import com.safetyheads.akademiaandroida.domain.usecases.GetJobOfferUseCase
+import com.safetyheads.akademiaandroida.domain.usecases.GetMessagingTokenUseCase
 import com.safetyheads.akademiaandroida.domain.usecases.GetPlayListItemsUseCase
 import com.safetyheads.akademiaandroida.domain.usecases.GetPlayListsUseCase
 import com.safetyheads.akademiaandroida.domain.usecases.GetProfileInformationUseCase
@@ -57,6 +60,7 @@ import com.safetyheads.akademiaandroida.domain.usecases.RegisterUseCase
 import com.safetyheads.akademiaandroida.domain.usecases.RemoveImageFromStorage
 import com.safetyheads.akademiaandroida.domain.usecases.RemoveImageFromUserProfile
 import com.safetyheads.akademiaandroida.domain.usecases.ResetPasswordUseCase
+import com.safetyheads.akademiaandroida.domain.usecases.UpdateProfileFcmUseCase
 import com.safetyheads.akademiaandroida.presentation.ui.activities.splashscreen.SplashScreenViewModel
 import com.safetyheads.akademiaandroida.presentation.ui.career.CareerRepositoryImpl
 import com.safetyheads.akademiaandroida.presentation.ui.career.CareerViewModel
@@ -64,6 +68,7 @@ import com.safetyheads.akademiaandroida.presentation.ui.customviews.dropdown.Dro
 import com.safetyheads.akademiaandroida.presentation.ui.customviews.dropdown.LoadItemsToDropDownListUseCase
 import com.safetyheads.akademiaandroida.presentation.ui.fragments.faq.FaqViewModel
 import com.safetyheads.akademiaandroida.presentation.ui.fragments.forgotpasswordfragment.ForgotPasswordViewModel
+import com.safetyheads.akademiaandroida.presentation.ui.fragments.forgotpasswordfragment.usertest.UserTestViewModel
 import com.safetyheads.akademiaandroida.presentation.ui.fragments.login.LoginViewModel
 import com.safetyheads.akademiaandroida.presentation.ui.fragments.technologystack.TechnologyStackViewModel
 import com.safetyheads.akademiaandroida.presentation.ui.fragments.youtube.ChannelViewModel
@@ -73,6 +78,7 @@ import com.safetyheads.akademiaandroida.presentation.ui.signup.SignUpViewModel
 import com.safetyheads.akademiaandroida.presentation.ui.viewmodels.DashboardViewModel
 import com.safetyheads.akademiaandroida.presentation.ui.viewmodels.MediaViewModel
 import com.safetyheads.akademiaandroida.presentation.ui.viewmodels.ProfileViewModel
+import com.safetyheads.akademiaandroida.token.FirebaseTokenRepository
 import com.safetyheads.akademiaandroida.usersessionmanager.LoggedSessionManager
 import com.safetyheads.akademiaandroida.usersessionmanager.SESSION_SCOPE_NAME
 import com.safetyheads.akademiaandroida.usersessionmanager.SessionGenerator
@@ -116,7 +122,7 @@ class AndroidAcademyApplication : Application() {
         single { FirebaseAuth.getInstance() }
         single { FirebaseFirestore.getInstance() }
         single { FirebaseStorage.getInstance() }
-
+        single { FirebaseMessaging.getInstance() }
 
         single { RegisterUseCase(get()) }
         //repositories
@@ -130,6 +136,7 @@ class AndroidAcademyApplication : Application() {
         single<FaqRepository> { FaqRepositoryImpl(get()) }
         single<ImageRepository> { ImageRepositoryImpl(get(), get()) }
 
+        single<TokenRepository> { FirebaseTokenRepository(get()) }
 
         //usecases
         single { AddImageToUriStorage(get()) }
@@ -161,10 +168,12 @@ class AndroidAcademyApplication : Application() {
         single { ProfileDeleteAccountUseCase(get()) }
         single { ProfileLogOutUseCase(get()) }
         single { LoginUseCase(get()) }
-        factory { IsLoggedInUseCase( get() ) }
+        factory { IsLoggedInUseCase(get()) }
+        single { UpdateProfileFcmUseCase(get()) }
+        single { GetMessagingTokenUseCase(get()) }
 
         //viewmodels
-        viewModel { SplashScreenViewModel(get(), get()) }
+        viewModel { SplashScreenViewModel(get(), get(), get()) }
         viewModel { DropDownListViewModel(get()) }
         viewModel { CareerViewModel(get(), get()) }
         viewModel { ForgotPasswordViewModel(get()) }
@@ -178,7 +187,8 @@ class AndroidAcademyApplication : Application() {
         viewModel { SignUpViewModel(get()) }
         viewModel { FaqViewModel(get(), get()) }
         viewModel { LoginViewModel(get()) }
-        viewModel { DashboardViewModel(get()) }
+        viewModel { DashboardViewModel(get(), get()) }
+        viewModelOf(::UserTestViewModel)
     }
 
     private val networkModule = module {
@@ -205,7 +215,7 @@ class AndroidAcademyApplication : Application() {
     }
 
     private val sessionModule = module {
-        single { SessionGenerator( get() ) }
+        single { SessionGenerator(get()) }
         factory { getSessionScope().get<UserSessionManager>() }
 
         scope(named(SESSION_SCOPE_NAME)) {
