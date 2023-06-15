@@ -58,20 +58,5 @@ class DashboardActivity : AppCompatActivity() {
         )
         val bottomNav = binding.bottomNavigationView
         bottomNav.setupWithNavController(navController)
-
-        navController.addOnDestinationChangedListener { _, navDestination, _ ->
-            //TODO: dopisac fragmenty
-            if (navDestination.id == R.id.not_logged_home
-                || navDestination.id == R.id.careerFragment
-                || navDestination.id == R.id.contactUsFragment) {
-                binding.backButton.visibility = View.GONE
-            } else {
-                binding.backButton.visibility = View.VISIBLE
-            }
-        }
-
-        binding.backButton.setOnClickListener {
-            navController.navigateUp()
-        }
     }
 }

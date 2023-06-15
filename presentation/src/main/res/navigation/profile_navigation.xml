@@ -7,9 +7,9 @@
 
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.safetyheads.akademiaandroida.presentation.ui.fragments.profile.ProfileFragment"
+        android:name="com.safetyheads.akademiaandroida.presentation.ui.fragments.profile.ProfileToolbar"
         android:label="ProfileFragment"
-        tools:layout="@layout/fragment_profile" >
+        tools:layout="@layout/toolbar_profile" >
         <action
             android:id="@+id/action_profileFragment_to_changeAvatarFragment"
             app:destination="@id/changeAvatarFragment" />

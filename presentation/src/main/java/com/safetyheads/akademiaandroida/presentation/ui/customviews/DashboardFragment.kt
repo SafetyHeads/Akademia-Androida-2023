@@ -7,6 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.NavHostFragment
+import com.safetyheads.akademiaandroida.presentation.R
 import com.safetyheads.akademiaandroida.presentation.databinding.FragmentDashboardBinding
 import com.safetyheads.akademiaandroida.presentation.ui.viewmodels.DashboardViewModel
 
@@ -26,6 +28,13 @@ class DashboardFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initObservers()
+
+        binding.testBtn.setOnClickListener {
+            val navHostFragment = requireActivity().supportFragmentManager
+                .findFragmentById(R.id.fragmentContainerView) as NavHostFragment
+            val navController = navHostFragment.navController
+            navController.navigate(R.id.action_dashboardFragment_to_fontSylesFragment)
+        }
     }
 
     private fun initObservers() {

@@ -5,11 +5,42 @@
     android:id="@+id/dashboard_nav_graph"
     app:startDestination="@id/not_logged_home">
 
-    <fragment
+
+
+    <navigation
         android:id="@+id/not_logged_home"
-        android:name="com.safetyheads.akademiaandroida.presentation.ui.customviews.DashboardFragment"
-        android:label="fragment_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        app:startDestination="@id/dashboardFragment">
+
+        <fragment
+            android:id="@+id/dashboardFragment"
+            android:name="com.safetyheads.akademiaandroida.presentation.ui.customviews.DashboardFragment"
+            android:label="DashboardFragment"
+            tools:layout="@layout/fragment_dashboard" >
+            <action
+                android:id="@+id/action_dashboardFragment_to_fontSylesFragment"
+                app:destination="@id/fontSylesFragment" />
+        </fragment>
+
+        <fragment
+            android:id="@+id/fontSylesFragment"
+            android:name="com.safetyheads.akademiaandroida.presentation.ui.fragments.fontstyle.FontSylesFragment"
+            android:label="FontSylesFragment" >
+            <action
+                android:id="@+id/action_fontSylesFragment_to_dashboardFragment"
+                app:destination="@id/dashboardFragment" />
+        </fragment>
+    </navigation>
+
+    <navigation
+        android:id="@+id/not_logged_media"
+        app:startDestination="@id/mediaFragment">
+
+        <fragment
+            android:id="@+id/mediaFragment"
+            android:name="com.safetyheads.akademiaandroida.presentation.ui.fragments.media.MediaFragment"
+            android:label="MediaFragment"
+            tools:layout="@layout/fragment_media" />
+    </navigation>
 
     <navigation
         android:id="@+id/not_logged_career"
@@ -31,5 +62,6 @@
             android:label="ContactUsFragment"
             tools:layout="@layout/fragment_contact_us"/>
     </navigation>
+
 
 </navigation>
