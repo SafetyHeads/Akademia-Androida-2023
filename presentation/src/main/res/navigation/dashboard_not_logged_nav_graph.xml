@@ -5,8 +5,6 @@
     android:id="@+id/dashboard_nav_graph"
     app:startDestination="@id/not_logged_home">
 
-
-
     <navigation
         android:id="@+id/not_logged_home"
         app:startDestination="@id/dashboardFragment">
@@ -62,6 +60,5 @@
             android:label="ContactUsFragment"
             tools:layout="@layout/fragment_contact_us"/>
     </navigation>
-
 
 </navigation>
