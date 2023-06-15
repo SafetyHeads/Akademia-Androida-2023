@@ -171,4 +171,5 @@
     <string name="outsorcing">Outsorcing</string>
     <string name="consulting">Consulting</string>
     <string name="services">Services</string>
+    <string name="error_connecting_to_the_server">Error connecting to the server!</string>
 </resources>
