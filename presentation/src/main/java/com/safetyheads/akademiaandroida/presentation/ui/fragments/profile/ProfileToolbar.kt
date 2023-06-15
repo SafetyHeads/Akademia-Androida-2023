@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.NavHostFragment
 import com.bumptech.glide.Glide
@@ -36,10 +37,7 @@ class ProfileToolbar : Fragment() {
 
     private fun observeUI() {
         viewModel.doesExistUser.observe(viewLifecycleOwner) { doesExist ->
-            if (doesExist)
-                binding.avatarCardView.visibility = View.VISIBLE
-            else
-                binding.avatarCardView.visibility = View.GONE
+            binding.avatarCardView.isVisible = doesExist
         }
         viewModel.userInformation.observe(viewLifecycleOwner) { profile ->
             if (profile.image.isNotEmpty()) {
@@ -56,16 +54,11 @@ class ProfileToolbar : Fragment() {
         val navController = navHostFragment.navController
 
         navController.addOnDestinationChangedListener { _, navDestination, _ ->
-
-            if (navDestination.id == R.id.careerFragment
-                || navDestination.id == R.id.mediaFragment
-                || navDestination.id == R.id.dashboardFragment
-                || navDestination.id == R.id.contactUsFragment
-            ) {
-                binding.backButton.visibility = View.GONE
-            } else {
-                binding.backButton.visibility = View.VISIBLE
-            }
+            binding.backButton.isVisible =
+                navDestination.id == R.id.careerFragment
+                        || navDestination.id == R.id.mediaFragment
+                        || navDestination.id == R.id.dashboardFragment
+                        || navDestination.id == R.id.contactUsFragment
         }
 
         binding.backButton.customButtonListener {
