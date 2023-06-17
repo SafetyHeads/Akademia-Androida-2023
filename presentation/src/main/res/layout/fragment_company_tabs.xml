@@ -1,25 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="ui.uistate.CompanyTabs">
 
     <com.google.android.material.tabs.TabLayout
+        style="@style/StyledButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:tabTextAppearance="@style/tabLabelText"
-        style="@style/tabLayout">
+        app:tabTextAppearance="@style/tabLabelText">
 
         <com.google.android.material.tabs.TabItem
-            android:id="@+id/about"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/about_company_tab_layout" />
 
         <com.google.android.material.tabs.TabItem
-            android:id="@+id/in_numbers"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/in_numbers_company_tab_layout" />

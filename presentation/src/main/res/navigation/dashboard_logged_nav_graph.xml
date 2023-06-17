@@ -3,12 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/dashboard_nav_graph"
-    app:startDestination="@id/dashboardFragment">
+    app:startDestination="@id/homeFragment">
 
     <fragment
-        android:id="@+id/dashboardFragment"
-        android:name="com.safetyheads.akademiaandroida.presentation.ui.customviews.DashboardFragment"
-        android:label="fragment_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        android:id="@+id/homeFragment"
+        android:name="com.safetyheads.akademiaandroida.presentation.ui.fragments.home.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" />
 
 </navigation>

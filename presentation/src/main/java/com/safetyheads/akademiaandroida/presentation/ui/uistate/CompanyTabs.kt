@@ -18,5 +18,4 @@ class CompanyTabs : Fragment() {
         binding = FragmentCompanyTabsBinding.inflate(inflater, container, false)
         return binding.root
     }
-
 }

@@ -181,5 +181,6 @@
     <string name="consulting">Consulting</string>
     <string name="services">Services</string>
     <string name="error_connecting_to_the_server">Error connecting to the server!</string>
+    <string name="clients">Clients</string>
     <string name="password_rules">Your password must have at least 8 characters and contain at least two of the following:\n - uppercase letters\n - lowercase letters\n - numbers\n - symbols</string>
 </resources>
