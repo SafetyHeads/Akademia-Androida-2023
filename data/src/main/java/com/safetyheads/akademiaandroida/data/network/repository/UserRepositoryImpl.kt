@@ -4,6 +4,7 @@ import android.content.ContentValues.TAG
 import android.util.Log
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthException
+import com.google.firebase.auth.FirebaseAuthRecentLoginRequiredException
 import com.google.firebase.auth.UserProfileChangeRequest
 import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.FirebaseFirestore
@@ -36,6 +37,29 @@ class UserRepositoryImpl(
         emit(ResetPassword(false, error))
     }
 
+    override suspend fun changePassword(oldPassword: String, newPassword: String): Flow<Result<Unit>> = flow {
+        try {
+            firebaseAuth.currentUser?.updatePassword(newPassword)?.await()
+            emit(Result.success(Unit))
+        } catch (e: FirebaseAuthRecentLoginRequiredException) {
+            firebaseAuth.currentUser?.email?.let { email ->
+                logIn(email, oldPassword).collect { result ->
+                    if (result.isSuccess) {
+                        changePassword(oldPassword, newPassword).collect {
+                            emit(it)
+                        }
+                    } else {
+                        emit(Result.failure(e))
+                    }
+                }
+
+            } ?: emit(Result.failure(Exception("User is null")))
+
+        } catch (e: Exception) {
+            emit(Result.failure(e))
+        }
+    }
+
     override suspend fun updateFcmToken(userUUID: String, token: String): Flow<Result<Unit>> = flow {
         try {
             FirebaseFirestore.getInstance().collection("users").document(userUUID).update(
@@ -47,7 +71,22 @@ class UserRepositoryImpl(
         }
     }
 
+    override suspend fun anonymousLogIn(): Flow<Result<String>> = callbackFlow {
+        val listener = firebaseAuth.signInAnonymously()
+            .addOnCompleteListener { anonymousLogInResult ->
+                if (anonymousLogInResult.isSuccessful) {
+                    val user = firebaseAuth.currentUser
+                    trySend(Result.success(user.toString()))
+                }
+            }
+            .addOnFailureListener { error ->
+                trySend(Result.failure(error))
+            }
+        awaitClose { listener.isCanceled }
+    }
+
     override suspend fun getProfileInformation(userUUID: String): Flow<Result<Profile>> = callbackFlow {
+        val collectionReference = FirebaseFirestore.getInstance()
         val listener = collectionReference.collection("users").document(userUUID)
             .addSnapshotListener { snapshot, exception ->
                 if (exception != null) {
@@ -133,7 +172,7 @@ class UserRepositoryImpl(
                             userDocumentReference.get().addOnSuccessListener { document ->
                                 if (document != null) {
                                     val firebaseId = document.getString("FirebaseId").orEmpty()
-                                    if(firebaseId.isEmpty()) {
+                                    if (firebaseId.isEmpty()) {
                                         val userData = hashMapOf(
                                             "FirebaseId" to userUUID,
                                             // można tu inicjalizować pozostałe pola profilu
@@ -236,7 +275,7 @@ class UserRepositoryImpl(
     }
 
     private fun changeSession() {
-        when(sessionManager) {
+        when (sessionManager) {
             is UserSessionManager.Unlogged -> (sessionManager as UserSessionManager.Unlogged).logIn()
             is UserSessionManager.Logged -> (sessionManager as UserSessionManager.Logged).logOff()
         }

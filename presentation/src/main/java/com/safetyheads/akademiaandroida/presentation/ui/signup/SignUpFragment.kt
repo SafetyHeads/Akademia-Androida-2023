@@ -13,6 +13,7 @@ import com.safetyheads.akademiaandroida.presentation.databinding.FragmentSignUpB
 import com.safetyheads.akademiaandroida.presentation.ui.utils.EmailValidator
 import com.safetyheads.akademiaandroida.presentation.ui.utils.FullNameValidator
 import com.safetyheads.akademiaandroida.presentation.ui.utils.PasswordValidator
+import com.safetyheads.akademiaandroida.presentation.ui.utils.ViewExt.hideKeyboard
 import com.safetyheads.akademiaandroida.presentation.ui.utils.isCorrectText
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -84,6 +85,7 @@ class SignUpFragment : Fragment() {
     private fun navigationListeners() {
 
         binding.buttonSignUp.setOnClickListener {
+            it.hideKeyboard()
             binding.progressBar.isVisible = true
             viewModel.signUp(
                 binding.eTextFullName.text.toString(),
