@@ -165,6 +165,15 @@
     <string name="ok">OK</string>
     <string name="chat">Chat</string>
     <string name="map">Map</string>
+    <string name="change_password">Change Password</string>
+    <string name="current_password">Current password</string>
+    <string name="new_password">New password</string>
+    <string name="reject">Reject</string>
+    <string name="save">Save</string>
+    <string name="confirm_new_password">Confirm new password</string>
+    <string name="failed_reset_password">Reset password failed</string>
+    <string name="password_not_match">Passwords are not the same</string>
+    <string name="reset_password_success">Reset password success</string>
     <string name="back_arrow_descritpion">back arrow descritpion</string>
     <string name="let_s_meet_in_wroclaw">Let\'s meet in Wrocław!</string>
     <string name="development">Development</string>
@@ -173,4 +182,5 @@
     <string name="services">Services</string>
     <string name="error_connecting_to_the_server">Error connecting to the server!</string>
     <string name="clients">Clients</string>
+    <string name="password_rules">Your password must have at least 8 characters and contain at least two of the following:\n - uppercase letters\n - lowercase letters\n - numbers\n - symbols</string>
 </resources>

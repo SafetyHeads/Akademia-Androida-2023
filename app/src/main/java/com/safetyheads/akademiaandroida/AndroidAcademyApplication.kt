@@ -82,6 +82,8 @@ import com.safetyheads.akademiaandroida.presentation.ui.viewmodels.ProfileViewMo
 import com.safetyheads.akademiaandroida.presentation.ui.viewmodels.LaunchScreenViewModel
 import com.safetyheads.akademiaandroida.token.FirebaseTokenRepository
 import com.safetyheads.akademiaandroida.usersessionmanager.LoggedSessionManager
+import com.safetyheads.akademiaandroida.domain.usecases.ChangePasswordUseCase
+import com.safetyheads.akademiaandroida.presentation.ui.fragments.changepassword.ChangePasswordViewModel
 import com.safetyheads.akademiaandroida.usersessionmanager.SESSION_SCOPE_NAME
 import com.safetyheads.akademiaandroida.usersessionmanager.SessionGenerator
 import com.safetyheads.akademiaandroida.usersessionmanager.UnloggedSessionManager
@@ -174,6 +176,7 @@ class AndroidAcademyApplication : Application() {
         factory { IsLoggedInUseCase(get()) }
         single { UpdateProfileFcmUseCase(get()) }
         single { GetMessagingTokenUseCase(get()) }
+        single { ChangePasswordUseCase (get()) }
 
         //viewmodels
         viewModel { SplashScreenViewModel(get(), get(), get()) }
@@ -193,6 +196,7 @@ class AndroidAcademyApplication : Application() {
         viewModel { DashboardViewModel(get(), get()) }
         viewModelOf(::UserTestViewModel)
         viewModelOf(::LaunchScreenViewModel)
+        viewModelOf(::ChangePasswordViewModel)
     }
 
     private val networkModule = module {
