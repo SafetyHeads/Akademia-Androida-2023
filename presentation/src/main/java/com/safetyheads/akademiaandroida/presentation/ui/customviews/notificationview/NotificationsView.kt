@@ -15,20 +15,22 @@ class NotificationsView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyle: Int = 0
-): FrameLayout(context, attrs, defStyle) {
+) : FrameLayout(context, attrs, defStyle) {
 
     private val binding = ViewNotificationsBinding.inflate(
         LayoutInflater.from(context),
         this,
         true
     )
-    private val attributes: TypedArray = context.obtainStyledAttributes(attrs, R.styleable.NotificationsView)
+    private val attributes: TypedArray =
+        context.obtainStyledAttributes(attrs, R.styleable.NotificationsView)
+
     init {
         binding.titleText.text = attributes.getString(R.styleable.NotificationsView_title_text)
 
         binding.arrow.setOnClickListener {
             val contentVisibility = binding.expandableContent.visibility
-            if(contentVisibility == View.GONE) {
+            if (contentVisibility == View.GONE) {
                 binding.linearLayout.layoutTransition.enableTransitionType(LayoutTransition.CHANGING)
                 binding.arrow.rotation = 180f
                 binding.expandableContent.visibility = View.VISIBLE
@@ -53,5 +55,15 @@ class NotificationsView @JvmOverloads constructor(
 
     fun setSwitchButton(value: Boolean) {
         binding.switchButton.isChecked = value
+    }
+
+    fun setExpandableContent(value: Boolean) {
+        if (value) {
+            binding.expandableContent.visibility = View.VISIBLE
+            binding.arrow.rotation = 180f
+        } else {
+            binding.expandableContent.visibility = View.GONE
+            binding.arrow.rotation = 0f
+        }
     }
 }
