@@ -8,15 +8,17 @@
         <package android:name="com.google.android.youtube" />
         <package android:name="com.linkedin.android" />
         <package android:name="com.android.vending" />
+        <package android:name="com.google.android.apps.maps" />
     </queries>
 
     <uses-permission
         android:name="android.permission.POST_NOTIFICATIONS"
         tools:node="remove" />
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
-
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <application
         android:name=".AndroidAcademyApplication"

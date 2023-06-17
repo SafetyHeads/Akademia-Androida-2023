@@ -14,6 +14,7 @@ import com.safetyheads.akademiaandroida.domain.entities.firebasefirestore.Addres
 import com.safetyheads.akademiaandroida.domain.entities.firebasefirestore.Location
 import com.safetyheads.akademiaandroida.domain.entities.firebasefirestore.Profile
 import com.safetyheads.akademiaandroida.domain.repositories.UserRepository
+import com.safetyheads.akademiaandroida.domain.repositories.UserSessionManager
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
@@ -21,11 +22,13 @@ import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.tasks.await
 
-class UserRepositoryImpl : UserRepository {
-    private val firebaseAuth = FirebaseAuth.getInstance()
-    private val collectionReference = FirebaseFirestore.getInstance()
+class UserRepositoryImpl(
+    private val sessionManager: UserSessionManager,
+    private val firebaseAuth: FirebaseAuth,
+    private val collectionReference: FirebaseFirestore
+) : UserRepository {
 
-    override fun resetPassword(email: String): Flow<ResetPassword> = flow {
+    override suspend fun resetPassword(email: String): Flow<ResetPassword> = flow {
         firebaseAuth.sendPasswordResetEmail(email).await()
 
         emit(ResetPassword(true, null))
@@ -33,16 +36,41 @@ class UserRepositoryImpl : UserRepository {
         emit(ResetPassword(false, error))
     }
 
-    override fun changePassword(oldPassword: String, newPassword: String): Flow<Result<Unit>> = flow {
+    override suspend fun changePassword(oldPassword: String, newPassword: String): Flow<Result<Unit>> = flow {
         try {
-            firebaseAuth.confirmPasswordReset(oldPassword,newPassword).await()
+            firebaseAuth.confirmPasswordReset(oldPassword, newPassword).await()
             emit(Result.success(Unit))
         } catch (e: Exception) {
             emit(Result.failure(e))
         }
     }
 
-    override fun getProfileInformation(userUUID: String): Flow<Result<Profile>> = callbackFlow {
+    override suspend fun updateFcmToken(userUUID: String, token: String): Flow<Result<Unit>> = flow {
+        try {
+            FirebaseFirestore.getInstance().collection("users").document(userUUID).update(
+                mapOf("fcmToken" to token)
+            ).await()
+            emit(Result.success(Unit))
+        } catch (e: Exception) {
+            emit(Result.failure(e))
+        }
+    }
+
+    override suspend fun anonymousLogIn(): Flow<Result<String>> = callbackFlow {
+        val listener = firebaseAuth.signInAnonymously()
+            .addOnCompleteListener { anonymousLogInResult ->
+                if (anonymousLogInResult.isSuccessful) {
+                    val user = firebaseAuth.currentUser
+                    trySend(Result.success(user.toString()))
+                }
+            }
+            .addOnFailureListener { error ->
+                trySend(Result.failure(error))
+            }
+        awaitClose { listener.isCanceled }
+    }
+
+    override suspend fun getProfileInformation(userUUID: String): Flow<Result<Profile>> = callbackFlow {
         val collectionReference = FirebaseFirestore.getInstance()
         val listener = collectionReference.collection("users").document(userUUID)
             .addSnapshotListener { snapshot, exception ->
@@ -102,7 +130,7 @@ class UserRepositoryImpl : UserRepository {
         awaitClose { listener.remove() }
     }
 
-    override fun logIn(email: String, password: String): Flow<Result<String>> = callbackFlow {
+    override suspend fun logIn(email: String, password: String): Flow<Result<String>> = callbackFlow {
         val listener = firebaseAuth.signInWithEmailAndPassword(email, password)
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
@@ -110,6 +138,7 @@ class UserRepositoryImpl : UserRepository {
                     val usersCollection = firestore.collection("users")
                     val user = firebaseAuth.currentUser
                     val userUUID = user?.uid.orEmpty()
+                    changeSession()
                     trySend(Result.success(userUUID))
 
                     val docRef = usersCollection.document(userUUID)
@@ -128,7 +157,7 @@ class UserRepositoryImpl : UserRepository {
                             userDocumentReference.get().addOnSuccessListener { document ->
                                 if (document != null) {
                                     val firebaseId = document.getString("FirebaseId").orEmpty()
-                                    if(firebaseId.isEmpty()) {
+                                    if (firebaseId.isEmpty()) {
                                         val userData = hashMapOf(
                                             "FirebaseId" to userUUID,
                                             // można tu inicjalizować pozostałe pola profilu
@@ -158,13 +187,14 @@ class UserRepositoryImpl : UserRepository {
     override suspend fun logOut(): Flow<Result<Boolean>> = flow {
         if (firebaseAuth.currentUser != null) {
             firebaseAuth.signOut()
+            changeSession()
             emit(Result.success(true))
         } else {
             emit(Result.failure(Exception("User Logout failed!")))
         }
     }
 
-    override suspend fun deleteAccount(): Flow<Result<Boolean>> = callbackFlow {
+    override suspend fun deleteAccount(userUUID: String): Flow<Result<String>> = callbackFlow {
         val user = firebaseAuth.currentUser
 
         if (user == null) {
@@ -173,10 +203,14 @@ class UserRepositoryImpl : UserRepository {
             return@callbackFlow
         }
 
+        val userDocSnapshot = collectionReference.collection("users").document(userUUID).get().await()
+        val previousImageRef = userDocSnapshot.get("image") as DocumentReference
+        val previousImageStringRef = previousImageRef.get().await().id
+
         val listener = user.delete()
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
-                    trySend(Result.success(true))
+                    trySend(Result.success(previousImageStringRef))
                 } else {
                     trySend(Result.failure(task.exception ?: Exception("Account deletion failed.")))
                 }
@@ -205,7 +239,7 @@ class UserRepositoryImpl : UserRepository {
         }
     }
 
-    override fun createUser(fullName: String, email: String, password: String): Flow<User> = flow {
+    override suspend fun createUser(fullName: String, email: String, password: String): Flow<User> = flow {
         val authResult = firebaseAuth.createUserWithEmailAndPassword(email, password).await()
 
         val firebaseUser = authResult.user!!
@@ -225,4 +259,10 @@ class UserRepositoryImpl : UserRepository {
         }
     }
 
+    private fun changeSession() {
+        when (sessionManager) {
+            is UserSessionManager.Unlogged -> (sessionManager as UserSessionManager.Unlogged).logIn()
+            is UserSessionManager.Logged -> (sessionManager as UserSessionManager.Logged).logOff()
+        }
+    }
 }

@@ -1,20 +1,33 @@
 package com.safetyheads.akademiaandroida.presentation.ui.viewmodels
 
+import android.graphics.Bitmap
+import android.net.Uri
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.safetyheads.akademiaandroida.data.network.repository.ImageRepositoryImpl
 import com.safetyheads.akademiaandroida.domain.entities.firebasefirestore.Profile
+import com.safetyheads.akademiaandroida.domain.usecases.AddImageToBitmapStorage
+import com.safetyheads.akademiaandroida.domain.usecases.AddImageToUriStorage
+import com.safetyheads.akademiaandroida.domain.usecases.AddImageToUserProfile
 import com.safetyheads.akademiaandroida.domain.usecases.ChangeUserUseCase
 import com.safetyheads.akademiaandroida.domain.usecases.GetProfileInformationUseCase
 import com.safetyheads.akademiaandroida.domain.usecases.LoginUseCase
 import com.safetyheads.akademiaandroida.domain.usecases.ProfileDeleteAccountUseCase
 import com.safetyheads.akademiaandroida.domain.usecases.ProfileLogOutUseCase
+import com.safetyheads.akademiaandroida.domain.usecases.RemoveImageFromStorage
+import com.safetyheads.akademiaandroida.domain.usecases.RemoveImageFromUserProfile
 import kotlinx.coroutines.launch
 
 class ProfileViewModel(
     private val loginUseCase: LoginUseCase,
     private val getProfileInformationUseCase: GetProfileInformationUseCase,
+    private val addImageToUriStorage: AddImageToUriStorage,
+    private val addImageToBitmapStorage: AddImageToBitmapStorage,
+    private val addImageToUserProfile: AddImageToUserProfile,
+    private val removeImageFromUserProfile: RemoveImageFromUserProfile,
+    private val removeImageFromStorage: RemoveImageFromStorage,
     private val changeUserUseCase: ChangeUserUseCase,
     private val profileDeleteAccountUseCase: ProfileDeleteAccountUseCase,
     private val profileLogOutUseCase: ProfileLogOutUseCase
@@ -22,6 +35,8 @@ class ProfileViewModel(
 
     val userUUID: MutableLiveData<String> = MutableLiveData()
     val userInformation: MutableLiveData<Profile> = MutableLiveData()
+    val isLoading: MutableLiveData<Boolean> = MutableLiveData(false)
+    val errorMessage: MutableLiveData<Throwable> = MutableLiveData()
     val logOutProfile: MutableLiveData<Boolean> = MutableLiveData(false)
     val deleteProfile: MutableLiveData<Boolean> = MutableLiveData(false)
 
@@ -53,6 +68,45 @@ class ProfileViewModel(
                         )
                     }
                 }
+        }
+    }
+
+    fun addImageToUriStorage(imageUri: Uri) {
+        isLoading.postValue(true)
+        viewModelScope.launch {
+            addImageToUriStorage.invoke(
+                AddImageToUriStorage.ImageParam(
+                    ImageRepositoryImpl.AndroidUri(
+                        imageUri
+                    )
+                )
+            )
+                .collect { imageUri ->
+                    if (imageUri.isSuccess) {
+                        addImageToUserProfile(imageUri.getOrNull().orEmpty())
+                    } else {
+                        isLoading.postValue(false)
+                        Log.i("ProfileViewModel", imageUri.exceptionOrNull()?.message.orEmpty())
+                    }
+                }
+        }
+    }
+
+    fun addImageToBitmapStorage(imageBitmap: Bitmap) {
+        isLoading.postValue(true)
+        viewModelScope.launch {
+            addImageToBitmapStorage.invoke(
+                AddImageToBitmapStorage.ImageParam(
+                    ImageRepositoryImpl.AndroidBitmap(imageBitmap)
+                )
+            ).collect { imageUri ->
+                if (imageUri.isSuccess) {
+                    addImageToUserProfile(imageUri.getOrNull().orEmpty())
+                } else {
+                    isLoading.postValue(false)
+                    Log.i("ProfileViewModel", imageUri.exceptionOrNull()?.message.orEmpty())
+                }
+            }
         }
     }
 
@@ -106,6 +160,30 @@ class ProfileViewModel(
         }
     }
 
+    fun addImageToUserProfile(imageStringReference: String) {
+        viewModelScope.launch {
+            if (imageStringReference.isNotEmpty()) {
+                addImageToUserProfile.invoke(
+                    AddImageToUserProfile.ImageParam(
+                        userUUID.value.orEmpty(),
+                        imageStringReference
+                    )
+                ).collect { addImageResult ->
+                    if (addImageResult.isSuccess) {
+                        removeImageFromStorage(addImageResult.getOrNull().orEmpty())
+                        isLoading.postValue(false)
+                    } else {
+                        isLoading.postValue(false)
+                        Log.i(
+                            "ProfileViewModel",
+                            addImageResult.exceptionOrNull()?.message.orEmpty()
+                        )
+                    }
+                }
+            }
+        }
+    }
+
     fun changeStreetAddress(streetName: String) {
         viewModelScope.launch {
             val mapChange: Map<String, Any> = mapOf(
@@ -126,6 +204,31 @@ class ProfileViewModel(
                         "ProfileViewModel",
                         cityAddressResult.exceptionOrNull()?.message.orEmpty()
                     )
+
+                }
+            }
+        }
+    }
+
+    fun removeImageFromStorage(imageStringReference: String) {
+        viewModelScope.launch {
+            if (imageStringReference != "default_user" && imageStringReference.isNotEmpty()) {
+                removeImageFromStorage.invoke(
+                    RemoveImageFromStorage.ImageParam(
+                        imageStringReference
+                    )
+                ).collect { removeImageResult ->
+                    if (removeImageResult.isSuccess) {
+                        Log.i(
+                            this@ProfileViewModel.toString(),
+                            "Remove image from Firebase Storage successful!"
+                        )
+                    } else {
+                        Log.i(
+                            this@ProfileViewModel.toString(),
+                            "Remove image from Firebase Storage no successful!"
+                        )
+                    }
                 }
             }
         }
@@ -156,6 +259,28 @@ class ProfileViewModel(
         }
     }
 
+    fun removeImageFromUserProfile() {
+        isLoading.postValue(true)
+        viewModelScope.launch {
+            removeImageFromUserProfile.invoke(
+                RemoveImageFromUserProfile.ImageParam(
+                    userUUID.value.orEmpty()
+                )
+            ).collect { removeImageResult ->
+                if (removeImageResult.isSuccess) {
+                    isLoading.postValue(false)
+                    removeImageFromStorage(removeImageResult.getOrNull().orEmpty())
+                } else {
+                    isLoading.postValue(false)
+                    Log.i(
+                        "ProfileViewModel",
+                        removeImageResult.exceptionOrNull()?.message.orEmpty()
+                    )
+                }
+            }
+        }
+    }
+
     fun changeStreetNumber(streetNumber: String) {
         viewModelScope.launch {
             val mapChange: Map<String, Any> = mapOf(
@@ -170,7 +295,10 @@ class ProfileViewModel(
                 )
             ).collect { cityAddressResult ->
                 if (cityAddressResult.isSuccess) {
-                    Log.i("ProfileViewModel", cityAddressResult.getOrNull().toString())
+                    Log.i(
+                        "ProfileViewModel",
+                        cityAddressResult.getOrNull().toString()
+                    )
                 } else {
                     Log.i(
                         "ProfileViewModel",
@@ -195,7 +323,10 @@ class ProfileViewModel(
                 )
             ).collect { cityAddressResult ->
                 if (cityAddressResult.isSuccess) {
-                    Log.i("ProfileViewModel", cityAddressResult.getOrNull().toString())
+                    Log.i(
+                        "ProfileViewModel",
+                        cityAddressResult.getOrNull().toString()
+                    )
                 } else {
                     Log.i(
                         "ProfileViewModel",
@@ -220,7 +351,10 @@ class ProfileViewModel(
                 )
             ).collect { cityAddressResult ->
                 if (cityAddressResult.isSuccess) {
-                    Log.i("ProfileViewModel", cityAddressResult.getOrNull().toString())
+                    Log.i(
+                        "ProfileViewModel",
+                        cityAddressResult.getOrNull().toString()
+                    )
                 } else {
                     Log.i(
                         "ProfileViewModel",
@@ -246,7 +380,10 @@ class ProfileViewModel(
                 )
             ).collect { cityAddressResult ->
                 if (cityAddressResult.isSuccess) {
-                    Log.i("ProfileViewModel", cityAddressResult.getOrNull().toString())
+                    Log.i(
+                        "ProfileViewModel",
+                        cityAddressResult.getOrNull().toString()
+                    )
                 } else {
                     Log.i(
                         "ProfileViewModel",
@@ -259,18 +396,22 @@ class ProfileViewModel(
 
     fun deleteProfile() {
         viewModelScope.launch {
-            profileDeleteAccountUseCase.invoke(ProfileDeleteAccountUseCase.Param())
-                .collect { deleteProfileResult ->
-                    if (deleteProfileResult.isSuccess) {
-                        deleteProfile.postValue(true)
-                        resetProfileEntities()
-                    } else {
-                        Log.i(
-                            "ProfileViewModel",
-                            deleteProfileResult.exceptionOrNull()?.message.orEmpty()
-                        )
-                    }
+            profileDeleteAccountUseCase.invoke(
+                ProfileDeleteAccountUseCase.Param(
+                    userUUID.value.orEmpty()
+                )
+            ).collect { deleteProfileResult ->
+                if (deleteProfileResult.isSuccess) {
+                    deleteProfile.postValue(true)
+                    removeImageFromStorage(deleteProfileResult.getOrNull().orEmpty())
+                    resetProfileEntities()
+                } else {
+                    Log.i(
+                        "ProfileViewModel",
+                        deleteProfileResult.exceptionOrNull()?.message.orEmpty()
+                    )
                 }
+            }
         }
     }
 
@@ -291,9 +432,8 @@ class ProfileViewModel(
         }
     }
 
-    fun resetProfileEntities() {
+    private fun resetProfileEntities() {
         logOutProfile.value = false
         deleteProfile.value = false
     }
-
 }

@@ -9,16 +9,22 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 import androidx.core.content.ContextCompat
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.safetyheads.akademiaandroida.presentation.R
 import com.safetyheads.akademiaandroida.presentation.databinding.FragmentLaunchScreenBinding
 import com.safetyheads.akademiaandroida.presentation.ui.activities.DashboardActivity
 import com.safetyheads.akademiaandroida.presentation.ui.components.Footer
+import com.safetyheads.akademiaandroida.presentation.ui.viewmodels.LaunchScreenViewModel
+import org.koin.androidx.viewmodel.ext.android.activityViewModel
 
 class LaunchScreenFragment : Fragment() {
+
     private lateinit var binding: FragmentLaunchScreenBinding
+    private val viewModel: LaunchScreenViewModel by activityViewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -53,7 +59,31 @@ class LaunchScreenFragment : Fragment() {
             .commit()
 
         navigationListeners()
+        initObserver()
     }
+
+    private fun initObserver() {
+        viewModel.loginResult.observe(viewLifecycleOwner) { loginResult ->
+            if (loginResult) {
+                startActivity(Intent(requireContext(), DashboardActivity::class.java))
+                requireActivity().finish()
+            }
+        }
+
+        viewModel.errorMessage.observe(viewLifecycleOwner) { errorMessage ->
+            if (errorMessage != null)
+                Toast.makeText(
+                    context,
+                    getString(R.string.error_connecting_to_the_server),
+                    Toast.LENGTH_SHORT
+                ).show()
+        }
+
+        viewModel.isLoading.observe(viewLifecycleOwner) { isLoading ->
+            binding.progressBar.isVisible = isLoading
+        }
+    }
+
     private fun navigationListeners() {
         binding.txtSign.setOnClickListener {
             val action =
@@ -63,8 +93,7 @@ class LaunchScreenFragment : Fragment() {
         }
 
         binding.button.setOnClickListener {
-            val intent = Intent(requireContext(), DashboardActivity::class.java)
-            startActivity(intent)
+            viewModel.anonymousLogin()
         }
     }
 }
