@@ -9,6 +9,11 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
+        <com.safetyheads.akademiaandroida.presentation.ui.components.BackArrowView
+            android:id="@+id/back_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
         <androidx.cardview.widget.CardView
             android:id="@+id/cardView"
             style="@style/default_card_style"

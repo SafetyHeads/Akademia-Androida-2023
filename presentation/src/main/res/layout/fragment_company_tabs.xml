@@ -7,7 +7,7 @@
     tools:context="ui.uistate.CompanyTabs">
 
     <com.google.android.material.tabs.TabLayout
-        style="@style/companyTabLayout"
+        style="@style/StyledButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:tabTextAppearance="@style/tabLabelText">
