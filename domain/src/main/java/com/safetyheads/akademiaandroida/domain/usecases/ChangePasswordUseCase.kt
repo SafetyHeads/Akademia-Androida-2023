@@ -1,7 +1,6 @@
-package com.safetyheads.akademiaandroida.presentation.ui.fragments.changepassword
+package com.safetyheads.akademiaandroida.domain.usecases
 
 import com.safetyheads.akademiaandroida.domain.repositories.UserRepository
-import com.safetyheads.akademiaandroida.domain.usecases.BaseUseCase
 import kotlinx.coroutines.flow.Flow
 
 class ChangePasswordUseCase(private val repository: UserRepository) :

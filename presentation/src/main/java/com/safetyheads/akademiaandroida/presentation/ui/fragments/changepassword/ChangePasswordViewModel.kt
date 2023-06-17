@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.safetyheads.akademiaandroida.domain.usecases.ChangePasswordUseCase
 import com.safetyheads.akademiaandroida.presentation.ui.utils.PasswordValidator
 import kotlinx.coroutines.launch
 

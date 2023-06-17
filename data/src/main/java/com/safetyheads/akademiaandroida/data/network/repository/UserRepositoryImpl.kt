@@ -4,6 +4,7 @@ import android.content.ContentValues.TAG
 import android.util.Log
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthException
+import com.google.firebase.auth.FirebaseAuthRecentLoginRequiredException
 import com.google.firebase.auth.UserProfileChangeRequest
 import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.FirebaseFirestore
@@ -38,8 +39,22 @@ class UserRepositoryImpl(
 
     override suspend fun changePassword(oldPassword: String, newPassword: String): Flow<Result<Unit>> = flow {
         try {
-            firebaseAuth.confirmPasswordReset(oldPassword, newPassword).await()
+            firebaseAuth.currentUser?.updatePassword(newPassword)?.await()
             emit(Result.success(Unit))
+        } catch (e: FirebaseAuthRecentLoginRequiredException) {
+            firebaseAuth.currentUser?.email?.let { email ->
+                logIn(email, oldPassword).collect { result ->
+                    if (result.isSuccess) {
+                        changePassword(oldPassword, newPassword).collect {
+                            emit(it)
+                        }
+                    } else {
+                        emit(Result.failure(e))
+                    }
+                }
+
+            } ?: emit(Result.failure(Exception("User is null")))
+
         } catch (e: Exception) {
             emit(Result.failure(e))
         }
