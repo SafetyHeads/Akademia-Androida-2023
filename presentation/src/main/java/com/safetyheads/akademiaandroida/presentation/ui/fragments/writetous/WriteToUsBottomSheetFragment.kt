@@ -1,5 +1,6 @@
 package com.safetyheads.akademiaandroida.presentation.ui.fragments.writetous
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -47,6 +48,15 @@ class WriteToUsBottomSheetFragment : BottomSheetDialogFragment() {
         }
         binding.eTextEmailAddress.addTextChangedListener {
             buttonIsEnabled()
+        }
+
+        binding.buttonSendYourMessage.setOnClickListener {
+            val emailIntent = Intent(Intent.ACTION_SEND).apply {
+                type = "message/rfc822"
+                putExtra(Intent.EXTRA_EMAIL, arrayOf("contact@safetyheads.com"))
+                putExtra(Intent.EXTRA_TEXT, binding.eTextMessage.text)
+            }
+            startActivity(emailIntent)
         }
     }
 
