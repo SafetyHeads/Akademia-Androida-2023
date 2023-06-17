@@ -1,16 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="companyTabLayout">
+    <style name="tabLayout">
         <item name="tabIndicatorColor">@color/p_60</item>
         <item name="tabRippleColor">@color/n_60</item>
         <item name="tabSelectedTextColor">@color/p_60</item>
         <item name="tabTextColor">@color/n_120</item>
         <item name="tabMode">scrollable</item>
+        <item name="android:layout_marginStart">@dimen/size_3x</item>
     </style>
 
-    <style name="tabLabelText">
+    <style name="tabLabelText" parent="@android:style/TextAppearance.Widget.TabWidget">
         <item name="android:textSize">14sp</item>
+        <item name="android:fontFamily">@font/poppins_regular</item>
     </style>
 
     <!-- Header 1 -->
@@ -270,9 +272,9 @@
 
     <!-- Back arrow -->
     <style name="Back_arrow">
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
         <item name="android:src">@drawable/ic_back_arrow</item>
+        <item name="android:background">@drawable/ripple_effect</item>
+        <item name="android:padding">@dimen/size</item>
     </style>
 
     <!-- TextInputLayout theme overaly p60 color  -->
@@ -413,4 +415,5 @@
         <item name="android:textColor">@color/s_60</item>
         <item name="android:textSize">10sp</item>
     </style>
+
 </resources>

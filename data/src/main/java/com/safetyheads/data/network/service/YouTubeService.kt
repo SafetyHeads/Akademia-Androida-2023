@@ -19,6 +19,15 @@ interface YouTubeService {
         @Query("publishedBefore") date: String
     ) : YouTubeVideo
 
+    @GET("search")
+    suspend fun getAllVideos(
+        @Query("key") apiKey: String,
+        @Query("channelId") channelId: String,
+        @Query("part") part: String,
+        @Query("order") order: String,
+        @Query("maxResults") maxResults: Int,
+    ) : YouTubeVideo
+
     @GET("channels")
     suspend fun getChannel(
         @Query("key") apiKey: String,

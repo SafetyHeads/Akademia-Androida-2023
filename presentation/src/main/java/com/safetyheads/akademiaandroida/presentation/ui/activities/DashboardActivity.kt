@@ -1,5 +1,6 @@
 package com.safetyheads.akademiaandroida.presentation.ui.activities
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.navigation.NavController
@@ -13,7 +14,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class DashboardActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDashboardBinding
     private lateinit var navController: NavController
-    private val viewModel : DashboardViewModel by viewModel()
+    private val viewModel: DashboardViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,8 +25,20 @@ class DashboardActivity : AppCompatActivity() {
     }
 
     private fun initObservers() {
-        viewModel.isExistUser.observe(this) {
+        viewModel.doesExistUser.observe(this) {
             setupNavBar(it)
+        }
+
+        viewModel.isLogOut.observe(this) { isLogOut ->
+            if (isLogOut) {
+                val intent = Intent()
+                intent.setClassName(
+                    packageName,
+                    "com.safetyheads.akademiaandroida.presentation.ui.MainActivity"
+                )
+                startActivity(intent)
+                finish()
+            }
         }
     }
 
@@ -39,7 +52,7 @@ class DashboardActivity : AppCompatActivity() {
             .findFragmentById(R.id.fragmentContainerView) as NavHostFragment
         navController = navHostFragment.navController
         navController.setGraph(
-            if(isLoggedUser) R.navigation.dashboard_logged_nav_graph
+            if (isLoggedUser) R.navigation.dashboard_logged_nav_graph
             else R.navigation.dashboard_not_logged_nav_graph
         )
         val bottomNav = binding.bottomNavigationView

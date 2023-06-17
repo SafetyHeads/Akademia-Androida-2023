@@ -7,6 +7,8 @@ import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 import com.safetyheads.akademiaandroida.domain.entities.ImageUri
+import com.safetyheads.akademiaandroida.domain.entities.Media
+import com.safetyheads.akademiaandroida.domain.entities.MediaType
 import com.safetyheads.akademiaandroida.domain.entities.RawBitmap
 import com.safetyheads.akademiaandroida.domain.repositories.ImageRepository
 import kotlinx.coroutines.channels.awaitClose
@@ -20,6 +22,34 @@ class ImageRepositoryImpl(
     private val collectionReference: FirebaseFirestore,
     private val storageReference: FirebaseStorage
 ) : ImageRepository {
+
+    override suspend fun getInstagramImages(): Flow<Result<List<Media>>> = callbackFlow {
+        val listener = collectionReference.collection("images")
+            .whereEqualTo("type", "instagram")
+            .get()
+            .addOnSuccessListener { documentSnapshot ->
+                val instagramImageList: ArrayList<Media> = ArrayList()
+
+                for (document in documentSnapshot.documents) {
+                    val data = document.data
+
+                    if (data != null) {
+                        val createAt = data.getOrDefault("createAt", "").toString()
+                        val imageUrl = data.getOrDefault("url", "").toString()
+                        instagramImageList.add(Media(
+                            "empty",
+                            "empty",
+                            createAt,
+                            imageUrl,
+                            MediaType.INSTAGRAM))
+                    }
+                }
+                trySend(Result.success(instagramImageList))
+            }.addOnFailureListener { e ->
+                trySend(Result.failure(e))
+            }
+        awaitClose { listener.isCanceled }
+    }
 
     override suspend fun addImageToUserProfile(
         userUUID: String,

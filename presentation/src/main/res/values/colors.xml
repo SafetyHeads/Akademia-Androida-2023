@@ -42,6 +42,7 @@
     <color name="n_70">#c3c4c4</color>
     <color name="n_60">#eff0f1</color>
     <color name="n_0">#ffffff</color>
+    <color name="transparent">#00ffffff</color>
 
     <!-- Error color -->
     <color name="e_60">#a70000</color>

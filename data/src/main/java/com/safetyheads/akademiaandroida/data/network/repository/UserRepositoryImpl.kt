@@ -36,6 +36,31 @@ class UserRepositoryImpl(
         emit(ResetPassword(false, error))
     }
 
+    override suspend fun updateFcmToken(userUUID: String, token: String): Flow<Result<Unit>> = flow {
+        try {
+            FirebaseFirestore.getInstance().collection("users").document(userUUID).update(
+                mapOf("fcmToken" to token)
+            ).await()
+            emit(Result.success(Unit))
+        } catch (e: Exception) {
+            emit(Result.failure(e))
+        }
+    }
+
+    override suspend fun anonymousLogIn(): Flow<Result<String>> = callbackFlow {
+        val listener = firebaseAuth.signInAnonymously()
+            .addOnCompleteListener { anonymousLogInResult ->
+                if (anonymousLogInResult.isSuccessful) {
+                    val user = firebaseAuth.currentUser
+                    trySend(Result.success(user.toString()))
+                }
+            }
+            .addOnFailureListener { error ->
+                trySend(Result.failure(error))
+            }
+        awaitClose { listener.isCanceled }
+    }
+
     override suspend fun getProfileInformation(userUUID: String): Flow<Result<Profile>> = callbackFlow {
         val listener = collectionReference.collection("users").document(userUUID)
             .addSnapshotListener { snapshot, exception ->

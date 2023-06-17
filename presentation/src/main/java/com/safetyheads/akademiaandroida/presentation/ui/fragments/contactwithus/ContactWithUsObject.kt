@@ -13,6 +13,7 @@ object ContactWithUsObject {
     const val instagramSH = "https://www.instagram.com/safety_heads/"
     const val linkedinSH = "https://www.linkedin.com/company/safetyheads"
     const val youTubeSH = "https://www.youtube.com/@safetyheads8094"
+    const val youtubeVideoWatch = "https://www.youtube.com/watch?v="
 
     const val facebookAppNewSH = "fb://facewebmodal/f?href="
     const val facebookAppOldSH = "fb://page/2927034007521523"
