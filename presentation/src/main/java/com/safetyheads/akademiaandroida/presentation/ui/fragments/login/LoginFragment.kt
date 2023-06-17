@@ -15,6 +15,7 @@ import com.safetyheads.akademiaandroida.presentation.ui.activities.DashboardActi
 import com.safetyheads.akademiaandroida.presentation.ui.components.snackbar.LoginSnackBar
 import com.safetyheads.akademiaandroida.presentation.ui.utils.EmailValidator
 import com.safetyheads.akademiaandroida.presentation.ui.utils.PasswordValidator
+import com.safetyheads.akademiaandroida.presentation.ui.utils.ViewExt.hideKeyboard
 import com.safetyheads.akademiaandroida.presentation.ui.utils.isCorrectText
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -82,6 +83,7 @@ class LoginFragment : Fragment() {
         }
 
         binding.buttonSignIn.setOnClickListener {
+            it.hideKeyboard()
             binding.progressBar.isVisible = true
             viewModel.login(
                 binding.eTextEmailAddress.text.toString(),
