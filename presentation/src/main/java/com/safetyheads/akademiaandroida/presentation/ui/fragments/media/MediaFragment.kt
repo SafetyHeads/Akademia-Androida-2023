@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.safetyheads.akademiaandroida.domain.entities.Media
 import com.safetyheads.akademiaandroida.presentation.databinding.FragmentMediaBinding
 import com.safetyheads.akademiaandroida.presentation.ui.adapters.MediaAdapter
-import com.safetyheads.akademiaandroida.presentation.ui.fragments.contactwithus.ContactWithUsObject
+import com.safetyheads.akademiaandroida.presentation.ui.fragments.contact.ContactWithUsObject
 import com.safetyheads.akademiaandroida.presentation.ui.viewmodels.MediaViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
