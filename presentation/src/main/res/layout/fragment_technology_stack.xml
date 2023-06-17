@@ -2,24 +2,22 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical">
 
-<!--    <TextView-->
-<!--        android:id="@+id/techStack"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginStart="@dimen/size_4x"-->
-<!--        android:layout_marginTop="@dimen/size_3x"-->
-<!--        android:layout_marginBottom="@dimen/size_2x"-->
-<!--        android:fontFamily="@font/comfortaa_bold"-->
-<!--        android:text="@string/technology_stack"-->
-<!--        android:textColor="@color/s_60"-->
-<!--        android:textSize="18sp"/>-->
+    <com.safetyheads.akademiaandroida.presentation.ui.components.H2View
+        android:id="@+id/techStack"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/size"
+        android:layout_marginTop="@dimen/size_3x"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_back"
+        app:text="@string/technology_stack" />
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/technology_stack_tab"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/size_3x"
         android:layout_marginBottom="@dimen/size"
@@ -50,9 +48,8 @@
     <ExpandableListView
         android:id="@+id/expendableListView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:groupIndicator="@null"
         android:transcriptMode="alwaysScroll" />
-
 
 </LinearLayout>

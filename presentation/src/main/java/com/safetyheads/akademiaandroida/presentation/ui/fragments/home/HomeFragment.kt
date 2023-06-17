@@ -1,4 +1,4 @@
-package com.safetyheads.akademiaandroida.presentation.ui.customviews
+package com.safetyheads.akademiaandroida.presentation.ui.fragments.home
 
 import android.content.Intent
 import android.os.Bundle
@@ -9,19 +9,19 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.NavHostFragment
 import com.safetyheads.akademiaandroida.presentation.R
-import com.safetyheads.akademiaandroida.presentation.databinding.FragmentDashboardBinding
+import com.safetyheads.akademiaandroida.presentation.databinding.FragmentHomeBinding
 import com.safetyheads.akademiaandroida.presentation.ui.viewmodels.DashboardViewModel
 
-class DashboardFragment : Fragment() {
+class HomeFragment : Fragment() {
 
-    private lateinit var binding: FragmentDashboardBinding
-    private val viewModel : DashboardViewModel by activityViewModels()
+    private lateinit var binding: FragmentHomeBinding
+    private val viewModel: DashboardViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentDashboardBinding.inflate(inflater, container, false)
+        binding = FragmentHomeBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -39,7 +39,7 @@ class DashboardFragment : Fragment() {
 
     private fun initObservers() {
         viewModel.doesExistUser.observe(viewLifecycleOwner) { isUserLogged ->
-            if(isUserLogged) {
+            if (isUserLogged) {
                 binding.backButton.visibility = View.GONE
             } else {
                 binding.backButton.customButtonListener {
