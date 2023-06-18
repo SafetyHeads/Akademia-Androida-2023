@@ -2,17 +2,20 @@
 <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true">
+    android:fillViewport="true"
+    android:paddingHorizontal="4dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <com.safetyheads.akademiaandroida.presentation.ui.components.BackArrowView
-            android:id="@+id/back_button"
+        <Button
+            android:id="@+id/testBtn"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/test" />
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cardView"
@@ -37,7 +40,9 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/size_2x">
 
-            <com.safetyheads.akademiaandroida.presentation.ui.components.ServicesView
+            <androidx.fragment.app.FragmentContainerView
+                android:id="@+id/services"
+                android:name="com.safetyheads.akademiaandroida.presentation.ui.fragments.services.ServicesFragment"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="@dimen/size_2x" />
@@ -103,8 +108,7 @@
                 android:id="@+id/we_are_hiring"
                 android:name="com.safetyheads.akademiaandroida.presentation.ui.fragments.wearehiring.WeAreHiringFragment"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginVertical="@dimen/size_2x" />
+                android:layout_height="match_parent" />
 
         </androidx.cardview.widget.CardView>
 
@@ -113,11 +117,11 @@
             style="@style/default_card_style"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/size_2x">
+            android:layout_marginVertical="@dimen/size_2x">
 
             <androidx.fragment.app.FragmentContainerView
                 android:id="@+id/check_our_social_media"
-                android:name="com.safetyheads.akademiaandroida.presentation.ui.fragments.contactwithus.ContactWithUsFragment"
+                android:name="com.safetyheads.akademiaandroida.presentation.ui.fragments.contact.ContactWithUsFragment"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="@dimen/size_2x" />

@@ -57,7 +57,7 @@ class ProfileToolbar : Fragment() {
             binding.backButton.isVisible =
                 navDestination.id == R.id.careerFragment
                         || navDestination.id == R.id.mediaFragment
-                        || navDestination.id == R.id.dashboardFragment
+                        || navDestination.id == R.id.homeFragment
                         || navDestination.id == R.id.contactUsFragment
         }
 

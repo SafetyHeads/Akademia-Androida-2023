@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     tools:context=".ui.fragments.services.ServicesFragment">
 
     <com.safetyheads.akademiaandroida.presentation.ui.components.H2View
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:text="@string/services"
-        android:layout_marginTop="@dimen/size_3x"/>
+        android:layout_marginTop="@dimen/size_3x"
+        app:text="@string/services" />
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabLayout"
+        style="@style/tabLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/size_2.5x"
-        style="@style/tabLayout"
         app:tabTextAppearance="@style/tabLabelText">
 
     </com.google.android.material.tabs.TabLayout>
@@ -26,7 +26,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@color/n_60"/>
+        android:background="@color/n_60" />
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/viewPager"
