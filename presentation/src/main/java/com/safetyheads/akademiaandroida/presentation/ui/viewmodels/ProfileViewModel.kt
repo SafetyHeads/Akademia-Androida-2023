@@ -3,6 +3,7 @@ package com.safetyheads.akademiaandroida.presentation.ui.viewmodels
 import android.graphics.Bitmap
 import android.net.Uri
 import android.util.Log
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -13,6 +14,7 @@ import com.safetyheads.akademiaandroida.domain.usecases.AddImageToUriStorage
 import com.safetyheads.akademiaandroida.domain.usecases.AddImageToUserProfile
 import com.safetyheads.akademiaandroida.domain.usecases.ChangeUserUseCase
 import com.safetyheads.akademiaandroida.domain.usecases.GetProfileInformationUseCase
+import com.safetyheads.akademiaandroida.domain.usecases.IsLoggedInUseCase
 import com.safetyheads.akademiaandroida.domain.usecases.LoginUseCase
 import com.safetyheads.akademiaandroida.domain.usecases.ProfileDeleteAccountUseCase
 import com.safetyheads.akademiaandroida.domain.usecases.ProfileLogOutUseCase
@@ -30,8 +32,11 @@ class ProfileViewModel(
     private val removeImageFromStorage: RemoveImageFromStorage,
     private val changeUserUseCase: ChangeUserUseCase,
     private val profileDeleteAccountUseCase: ProfileDeleteAccountUseCase,
-    private val profileLogOutUseCase: ProfileLogOutUseCase
+    private val profileLogOutUseCase: ProfileLogOutUseCase,
+    private val isLoggedInUseCase : IsLoggedInUseCase
 ) : ViewModel() {
+
+    private val _doesExistUser: MutableLiveData<Boolean> = MutableLiveData()
 
     val userUUID: MutableLiveData<String> = MutableLiveData()
     val userInformation: MutableLiveData<Profile> = MutableLiveData()
@@ -39,6 +44,20 @@ class ProfileViewModel(
     val errorMessage: MutableLiveData<Throwable> = MutableLiveData()
     val logOutProfile: MutableLiveData<Boolean> = MutableLiveData(false)
     val deleteProfile: MutableLiveData<Boolean> = MutableLiveData(false)
+    val doesExistUser: LiveData<Boolean> = _doesExistUser
+
+    fun getSessionInfo() {
+        viewModelScope.launch {
+            isLoggedInUseCase.invoke().collect { sessionInfo ->
+                if (sessionInfo.isSuccess) {
+                    _doesExistUser.postValue(sessionInfo.getOrNull())
+                } else {
+                    Log.i("DashboardViewModel", sessionInfo.exceptionOrNull()?.message.orEmpty())
+                }
+
+            }
+        }
+    }
 
     fun tempLogin() {
         viewModelScope.launch {

@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ExpandableListAdapter
+import android.widget.ExpandableListView
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
@@ -44,6 +46,7 @@ class TechnologyStackFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         binding.expendableListView.apply {
             setAdapter(this@TechnologyStackFragment.expandableListAdapter)
+            setExpandableListViewHeight(this, -1)
             setOnGroupClickListener { parent, view, groupPosition, _ ->
                 if (parent.isGroupExpanded(groupPosition)) {
                     view.findViewById<ImageView>(R.id.arrow).rotation = 0f
@@ -54,9 +57,10 @@ class TechnologyStackFragment : Fragment() {
                     view.findViewById<TextView>(R.id.dropdown_list_title)
                         .setTextColor(context.getColor(R.color.p_60))
                 }
+
+                setExpandableListViewHeight(parent, groupPosition)
+
                 false
-
-
             }
         }
 
@@ -78,6 +82,38 @@ class TechnologyStackFragment : Fragment() {
                 // no-op
             }
         })
+    }
+
+    //taken from https://gist.github.com/moltak/10458814
+    private fun setExpandableListViewHeight(listView: ExpandableListView, group: Int) {
+        val listAdapter = listView.expandableListAdapter as ExpandableListAdapter
+        var totalHeight = 0
+        val desiredWidth = View.MeasureSpec.makeMeasureSpec(
+            listView.width,
+            View.MeasureSpec.EXACTLY
+        )
+        for (i in 0 until listAdapter.groupCount) {
+            val groupItem = listAdapter.getGroupView(i, false, null, listView)
+            groupItem.measure(desiredWidth, View.MeasureSpec.UNSPECIFIED)
+            totalHeight += groupItem.measuredHeight
+            if (listView.isGroupExpanded(i) && i != group || !listView.isGroupExpanded(i) && i == group) {
+                for (j in 0 until listAdapter.getChildrenCount(i)) {
+                    val listItem = listAdapter.getChildView(
+                        i, j, false, null,
+                        listView
+                    )
+                    listItem.measure(desiredWidth, View.MeasureSpec.UNSPECIFIED)
+                    totalHeight += listItem.measuredHeight
+                }
+            }
+            totalHeight += (listView.dividerHeight * (listAdapter.getChildrenCount(i) - 1));
+        }
+        val params = listView.layoutParams
+        var height = totalHeight + listView.dividerHeight * (listAdapter.groupCount - 1) + listView.dividerHeight
+        if (height < 10) height = 250
+        params.height = height
+        listView.layoutParams = params
+        listView.requestLayout()
     }
 }
 

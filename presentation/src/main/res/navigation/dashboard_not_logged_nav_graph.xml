@@ -3,33 +3,64 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/dashboard_nav_graph"
-    app:startDestination="@id/homeFragment">
-
-    <fragment
-        android:id="@+id/homeFragment"
-        android:name="com.safetyheads.akademiaandroida.presentation.ui.fragments.home.HomeFragment"
-        android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+    app:startDestination="@id/not_logged_home">
 
     <navigation
-        android:id="@+id/not_logged_career"
-        app:startDestination="@id/careerFragment">
+        android:id="@+id/not_logged_home"
+        app:startDestination="@id/homeFragment">
 
         <fragment
-            android:id="@+id/careerFragment"
-            android:name="com.safetyheads.akademiaandroida.presentation.ui.career.CareerFragment"
-            android:label="CareerFragment"
-            tools:layout="@layout/fragment_career" />
-    </navigation>
+            android:id="@+id/homeFragment"
+            android:name="com.safetyheads.akademiaandroida.presentation.ui.fragments.home.HomeFragment"
+            android:label="fragment_home"
+            tools:layout="@layout/fragment_home">
 
-    <navigation android:id="@+id/not_logged_contact"
-        app:startDestination="@id/contactUsFragment">
+            <action
+                android:id="@+id/action_dashboardFragment_to_fontSylesFragment"
+                app:destination="@id/fontSylesFragment" />
+        </fragment>
 
         <fragment
-            android:id="@+id/contactUsFragment"
-            android:name="com.safetyheads.akademiaandroida.presentation.ui.fragments.contact.ContactFragment"
-            android:label="ContactUsFragment"
-            tools:layout="@layout/fragment_contact"/>
-    </navigation>
+            android:id="@+id/fontSylesFragment"
+            android:name="com.safetyheads.akademiaandroida.presentation.ui.fragments.fontstyle.FontSylesFragment"
+            android:label="FontSylesFragment">
+            <action
+                android:id="@+id/action_fontSylesFragment_to_dashboardFragment"
+                app:destination="@id/homeFragment" />
+        </fragment>
 
+        <navigation
+            android:id="@+id/not_logged_media"
+            app:startDestination="@id/mediaFragment">
+
+            <fragment
+                android:id="@+id/mediaFragment"
+                android:name="com.safetyheads.akademiaandroida.presentation.ui.fragments.media.MediaFragment"
+                android:label="MediaFragment"
+                tools:layout="@layout/fragment_media" />
+        </navigation>
+
+        <navigation
+            android:id="@+id/not_logged_career"
+            app:startDestination="@id/careerFragment">
+
+            <fragment
+                android:id="@+id/careerFragment"
+                android:name="com.safetyheads.akademiaandroida.presentation.ui.career.CareerFragment"
+                android:label="CareerFragment"
+                tools:layout="@layout/fragment_career" />
+        </navigation>
+
+        <navigation
+            android:id="@+id/not_logged_contact"
+            app:startDestination="@id/contactUsFragment">
+
+            <fragment
+                android:id="@+id/contactUsFragment"
+                android:name="com.safetyheads.akademiaandroida.presentation.ui.fragments.contact.ContactFragment"
+                android:label="ContactUsFragment"
+                tools:layout="@layout/fragment_contact" />
+        </navigation>
+
+    </navigation>
 </navigation>
