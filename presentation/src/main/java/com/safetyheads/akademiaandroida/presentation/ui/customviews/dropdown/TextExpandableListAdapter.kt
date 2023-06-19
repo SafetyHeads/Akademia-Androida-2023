@@ -27,9 +27,14 @@ class TextExpandableListAdapter(
         convertView: View?,
         parent: ViewGroup
     ): View {
-        val view = LayoutInflater.from(context).inflate(R.layout.dropdown_list_parent_item, parent,false)
+        var view = convertView
         val listTitle = getGroup(parentPosition)
-        val listTitleTextView = view.findViewById<TextView>(R.id.dropdown_list_title)
+        if (view == null) {
+            val layoutInflater =
+                this.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+            view = layoutInflater.inflate(R.layout.dropdown_list_parent_item, parent, false)
+        }
+        val listTitleTextView = view!!.findViewById<TextView>(R.id.dropdown_list_title)
         listTitleTextView.text = listTitle.name
         return view
     }
@@ -41,10 +46,15 @@ class TextExpandableListAdapter(
         convertView: View?,
         parent: ViewGroup
     ): View {
-        val view = LayoutInflater.from(context).inflate(R.layout.dropdown_list_child_item, parent,false)
-        val expandedListText = getChild(parentPosition, childPosition)
-        val expandedListTextView = view.findViewById<TextView>(R.id.itemList)
-        expandedListTextView.text = expandedListText.name
+        var view = convertView
+        val listTitle = getChild(parentPosition, childPosition)
+        if (view == null) {
+            val layoutInflater =
+                this.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+            view = layoutInflater.inflate(R.layout.dropdown_list_child_item, parent, false)
+        }
+        val listTitleTextView = view!!.findViewById<TextView>(R.id.itemList)
+        listTitleTextView.text = listTitle.name
         return view
     }
 
