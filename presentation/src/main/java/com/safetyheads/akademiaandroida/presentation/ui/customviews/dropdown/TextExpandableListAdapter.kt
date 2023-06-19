@@ -27,12 +27,16 @@ class TextExpandableListAdapter(
         convertView: View?,
         parent: ViewGroup
     ): View {
-        val parentInfo = getGroup(parentPosition)
-
-        return convertView ?: LayoutInflater.from(context)
-            .inflate(R.layout.dropdown_list_parent_item, null).apply {
-                findViewById<TextView>(R.id.dropdown_list_title).text = parentInfo.name
-            }
+        var view = convertView
+        val listTitle = getGroup(parentPosition)
+        if (view == null) {
+            val layoutInflater =
+                this.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+            view = layoutInflater.inflate(R.layout.dropdown_list_parent_item, parent, false)
+        }
+        val listTitleTextView = view!!.findViewById<TextView>(R.id.dropdown_list_title)
+        listTitleTextView.text = listTitle.name
+        return view
     }
 
     override fun getChildView(
@@ -42,12 +46,16 @@ class TextExpandableListAdapter(
         convertView: View?,
         parent: ViewGroup
     ): View {
-        val childInfo = getChild(parentPosition, childPosition)
-
-        return convertView ?: LayoutInflater.from(context)
-            .inflate(R.layout.dropdown_list_child_item, null).apply {
-                findViewById<TextView>(R.id.itemList).text = childInfo.name
-            }
+        var view = convertView
+        val listTitle = getChild(parentPosition, childPosition)
+        if (view == null) {
+            val layoutInflater =
+                this.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+            view = layoutInflater.inflate(R.layout.dropdown_list_child_item, parent, false)
+        }
+        val listTitleTextView = view!!.findViewById<TextView>(R.id.itemList)
+        listTitleTextView.text = listTitle.name
+        return view
     }
 
     override fun getGroupCount() = parentModels.size

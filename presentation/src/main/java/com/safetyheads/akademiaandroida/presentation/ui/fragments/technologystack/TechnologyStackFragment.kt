@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.view.children
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import com.google.android.material.tabs.TabLayout
@@ -63,6 +64,16 @@ class TechnologyStackFragment : Fragment() {
         binding.technologyStackTab.addOnTabSelectedListener(object :
             TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab) {
+                binding.expendableListView.children.forEachIndexed { index, view ->
+                    context?.let {
+                        view.findViewById<TextView>(R.id.dropdown_list_title)?.setTextColor(
+                            it.getColor(R.color.s_60)
+                        )
+                    }
+                    view.findViewById<ImageView>(R.id.arrow)?.rotation = 0f
+
+                    binding.expendableListView.collapseGroup(index)
+                }
                 when (tab.position) {
                     0 -> technologyStackViewModel.tabSelected(TechnologyStackTab.Mobile)
                     1 -> technologyStackViewModel.tabSelected(TechnologyStackTab.Web)

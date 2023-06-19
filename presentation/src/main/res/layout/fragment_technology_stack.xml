@@ -20,10 +20,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/size_3x"
-        android:layout_marginBottom="@dimen/size"
-        app:tabIndicatorColor="@color/p_60"
-        app:tabMode="scrollable"
-        app:tabSelectedTextColor="@color/p_60">
+        android:layout_marginTop="@dimen/size_2x"
+        style="@style/tabLayout"
+        app:tabTextAppearance="@style/tabLabelText">
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
@@ -45,10 +44,16 @@
 
     </com.google.android.material.tabs.TabLayout>
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/n_60"/>
+
     <ExpandableListView
         android:id="@+id/expendableListView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/size_3x"
         android:groupIndicator="@null"
         android:transcriptMode="alwaysScroll" />
 
