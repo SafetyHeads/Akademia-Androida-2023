@@ -27,7 +27,7 @@
 
         <fragment
             android:id="@+id/contactUsFragment"
-            android:name="com.safetyheads.akademiaandroida.presentation.ui.fragments.contact.ContactFragment"
+            android:name="com.safetyheads.akademiaandroida.presentation.ui.fragments.contactwithus.ContactFragment"
             android:label="ContactUsFragment"
             tools:layout="@layout/fragment_contact"/>
     </navigation>

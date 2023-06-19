@@ -1,4 +1,4 @@
-package com.safetyheads.akademiaandroida.presentation.ui.fragments.contact
+package com.safetyheads.akademiaandroida.presentation.ui.fragments.contactwithus
 
 import android.app.AlertDialog
 import android.app.Dialog

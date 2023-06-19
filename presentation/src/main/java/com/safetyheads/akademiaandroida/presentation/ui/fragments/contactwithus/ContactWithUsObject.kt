@@ -1,4 +1,4 @@
-package com.safetyheads.akademiaandroida.presentation.ui.fragments.contact
+package com.safetyheads.akademiaandroida.presentation.ui.fragments.contactwithus
 
 object ContactWithUsObject {
     const val facebookPackage = "com.facebook.katana"
