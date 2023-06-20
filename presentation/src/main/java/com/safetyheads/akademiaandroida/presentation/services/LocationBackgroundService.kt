@@ -8,15 +8,17 @@ import android.app.Service
 import android.content.Context
 import android.content.Intent
 import android.graphics.Color
-import android.location.Location
 import android.os.Build
 import android.os.IBinder
 import android.util.Log
 import androidx.annotation.RequiresApi
 import androidx.core.app.NotificationCompat
 import com.google.android.gms.location.LocationServices
+import com.google.firebase.firestore.GeoPoint
+import com.safetyheads.akademiaandroida.domain.entities.LocationType
 import com.safetyheads.akademiaandroida.domain.usecases.ChangeLocationUseCase
 import com.safetyheads.akademiaandroida.presentation.R
+import com.safetyheads.akademiaandroida.presentation.services.location.LocationObjects
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
@@ -24,13 +26,12 @@ import kotlinx.coroutines.cancel
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
-import kotlinx.coroutines.withContext
 import org.koin.android.ext.android.inject
 
-class LocationService : Service() {
+class LocationBackgroundService : Service() {
 
     private val serviceScope = CoroutineScope(SupervisorJob() + Dispatchers.IO)
-    private lateinit var locationForegroundClient: LocationClient
+
     private lateinit var locationBackgroundClient: LocationClient
     private val changeLocationUseCase: ChangeLocationUseCase by inject()
 
@@ -40,11 +41,6 @@ class LocationService : Service() {
 
     override fun onCreate() {
         super.onCreate()
-        locationForegroundClient = DefaultLocationClient(
-            applicationContext,
-            LocationServices.getFusedLocationProviderClient(applicationContext),
-            LocationType.Foreground
-        )
         locationBackgroundClient = DefaultLocationClient(
             applicationContext,
             LocationServices.getFusedLocationProviderClient(applicationContext),
@@ -61,11 +57,12 @@ class LocationService : Service() {
     }
 
     private fun start() {
+        Log.i(TAG, LocationObjects.SERVICE_BACKGROUND_START)
         val channelId =
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                createNotificationChannel("my_service", "My Background Service")
+                createNotificationChannel()
             } else {
-                ""
+                LocationObjects.EMPTY_NOTIFICATION
             }
 
         val notificationBuilder = NotificationCompat.Builder(this, channelId)
@@ -75,19 +72,28 @@ class LocationService : Service() {
             .setCategory(Notification.CATEGORY_SERVICE)
             .build()
 
-        locationForegroundClient
-            .getLocationUpdates(5 * 1000L)
-            .catch { e -> e.printStackTrace() }
-            .onEach { location ->
-                changeLocalization(location)
-            }
-            .launchIn(serviceScope)
-
         locationBackgroundClient
-            .getLocationUpdates(5 * 60 * 1000L)
-            .catch { e -> e.printStackTrace() }
+            .getLocationUpdates(LocationObjects.FIVE_MINUTES)
+            .catch { e ->
+                e.printStackTrace()
+            }
             .onEach { location ->
-                changeLocalization(location)
+                val mapChange: Map<String, Any> = mapOf(
+                    "currentLocation" to GeoPoint(
+                        location.latitude,
+                        location.longitude
+                    ),
+                )
+                changeLocationUseCase.invoke(
+                    ChangeLocationUseCase.Param(
+                        mapChange
+                    )
+                ).collect { changeLocationResult ->
+                    if (changeLocationResult.isSuccess)
+                        Log.i(TAG, LocationObjects.UPDATE_LOCATION)
+                    else
+                        stop()
+                }
             }
             .launchIn(serviceScope)
 
@@ -95,43 +101,21 @@ class LocationService : Service() {
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
-    private fun createNotificationChannel(channelId: String, channelName: String): String {
+    private fun createNotificationChannel(): String {
         val chan = NotificationChannel(
-            channelId,
-            channelName, NotificationManager.IMPORTANCE_NONE
+            LocationObjects.CHANNEL_ID,
+            LocationObjects.CHANNEL_NAME,
+            NotificationManager.IMPORTANCE_NONE
         )
         chan.lightColor = Color.BLUE
         chan.lockscreenVisibility = Notification.VISIBILITY_PRIVATE
         val service = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         service.createNotificationChannel(chan)
-        return channelId
-    }
-
-    private suspend fun changeLocalization(localization: Location) {
-        withContext(Dispatchers.IO) {
-            val mapChange: Map<String, Any> = mapOf(
-                "currentLocation" to localization
-            )
-
-            changeLocationUseCase.invoke(
-                ChangeLocationUseCase.Param(
-                    mapChange,
-                    "changeCurrentLocation"
-                )
-            ).collect { locationResult ->
-                if (locationResult.isSuccess) {
-                    Log.i("LocationService", locationResult.getOrNull().toString())
-                } else {
-                    Log.i(
-                        "LocationService",
-                        locationResult.exceptionOrNull()?.message.orEmpty()
-                    )
-                }
-            }
-        }
+        return LocationObjects.CHANNEL_ID
     }
 
     private fun stop() {
+        Log.i(TAG, LocationObjects.SERVICE_BACKGROUND_STOP)
         stopForeground(true)
         stopSelf()
     }
@@ -142,6 +126,7 @@ class LocationService : Service() {
     }
 
     companion object {
+        const val TAG = "LocationBackgroundService"
         const val ACTION_START = "ACTION_START"
         const val ACTION_STOP = "ACTION_STOP"
     }

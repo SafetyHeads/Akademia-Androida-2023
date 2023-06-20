@@ -10,12 +10,11 @@ import androidx.core.content.ContextCompat
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
-import com.safetyheads.akademiaandroida.domain.usecases.ChangeLocationUseCase
-import com.safetyheads.akademiaandroida.presentation.services.LocationService
+import com.safetyheads.akademiaandroida.presentation.services.LocationForegroundService
 import com.safetyheads.akademiaandroida.presentation.R
 import com.safetyheads.akademiaandroida.presentation.databinding.ActivityDashboardBinding
+import com.safetyheads.akademiaandroida.presentation.services.LocationBackgroundService
 import com.safetyheads.akademiaandroida.presentation.ui.viewmodels.DashboardViewModel
-import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class DashboardActivity : AppCompatActivity() {
@@ -45,8 +44,14 @@ class DashboardActivity : AppCompatActivity() {
             )
         }
 
-        Intent(this, LocationService::class.java).apply {
-            action = LocationService.ACTION_START
+        Intent(this, LocationForegroundService::class.java).apply {
+            action = LocationForegroundService.ACTION_START
+        }.let { intent ->
+            ContextCompat.startForegroundService(this, intent)
+        }
+
+        Intent(this, LocationBackgroundService::class.java).apply {
+            action = LocationBackgroundService.ACTION_START
         }.let { intent ->
             ContextCompat.startForegroundService(this, intent)
         }

@@ -102,7 +102,7 @@ class LoginFragment : Fragment() {
     private fun setupInputValidation() {
 
         EmailValidator.attach(binding.eTextEmailAddress)
-        //PasswordValidator.attach(binding.eTextPassword, requireContext())
+        PasswordValidator.attach(binding.eTextPassword, requireContext())
 
         binding.eTextPassword.addTextChangedListener {
             binding.buttonSignIn.isEnabled = isValidInput()

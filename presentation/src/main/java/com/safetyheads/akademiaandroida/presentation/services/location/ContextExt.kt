@@ -1,4 +1,4 @@
-package com.safetyheads.akademiaandroida.presentation.services
+package com.safetyheads.akademiaandroida.presentation.services.location
 
 import android.Manifest
 import android.content.Context

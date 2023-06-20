@@ -1,45 +1,43 @@
 package com.safetyheads.akademiaandroida.domain.usecases
 
-import com.safetyheads.akademiaandroida.domain.entities.location.ChangeLocation
 import com.safetyheads.akademiaandroida.domain.repositories.UserRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
 class ChangeLocationUseCase(
-    private val repository: UserRepository,
-    private val changeLocation: ChangeLocation,
-) : BaseUseCase<ChangeLocationUseCase.Param, String> {
+    private val userRepository: UserRepository,
+    private val isLoggedInUseCase: IsLoggedInUseCase,
+    private val getSessionUseCase: GetSessionUseCase,
+) : BaseUseCase<ChangeLocationUseCase.Param, Boolean> {
 
     class Param(
-        val mapChange: Map<String, Any>,
-        val functionTag: String,
+        val mapChange: Map<String, Any>
     ) : BaseUseCase.Params
 
-    override suspend fun invoke(parameter: Param): Flow<Result<String>> {
+    override suspend fun invoke(parameter: Param): Flow<Result<Boolean>> {
         return flow {
             try {
-                if (changeLocation.sessionIsActive()) {
-                    repository.changeUser(
-                        parameter.mapChange,
-                        parameter.functionTag,
-                        changeLocation.sessionInformation().userUUID
-                    ).collect { result ->
-                        if (result.isSuccess)
-                            emit(result)
-                        else
-                            emit(
-                                Result.failure(
-                                    result.exceptionOrNull()
-                                        ?: Exception("Firebase Firestore Change!")
-                                )
-                            )
+                isLoggedInUseCase.invoke().collect { isLogged ->
+                    if (isLogged.isSuccess && isLogged.getOrNull() == true) {
+                        getSessionUseCase.invoke().collect { session ->
+                            if (session.isSuccess && session.getOrNull()?.userUUID?.isNotEmpty() == true) {
+                                userRepository.changeUser(
+                                    parameter.mapChange,
+                                    "LocationChange",
+                                    session.getOrNull()?.userUUID.orEmpty()
+                                ).collect { changeLocationResult ->
+                                    if (changeLocationResult.isSuccess)
+                                        emit(Result.success(true))
+                                    else
+                                        emit(Result.success(false))
+                                }
+                            } else {
+                                emit(Result.failure(Exception("Session closed!")))
+                            }
+                        }
+                    } else {
+                        emit(Result.failure(Exception("User is Unlogged!")))
                     }
-                } else {
-                    emit(
-                        Result.failure(
-                            Exception("Firebase Firestore Change!")
-                        )
-                    )
                 }
             } catch (error: IllegalStateException) {
                 emit(Result.failure(error))

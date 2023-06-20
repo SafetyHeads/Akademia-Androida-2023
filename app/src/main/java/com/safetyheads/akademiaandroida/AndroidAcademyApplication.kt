@@ -50,6 +50,7 @@ import com.safetyheads.akademiaandroida.domain.usecases.GetJobOfferUseCase
 import com.safetyheads.akademiaandroida.domain.usecases.GetPlayListItemsUseCase
 import com.safetyheads.akademiaandroida.domain.usecases.GetPlayListsUseCase
 import com.safetyheads.akademiaandroida.domain.usecases.GetProfileInformationUseCase
+import com.safetyheads.akademiaandroida.domain.usecases.GetSessionUseCase
 import com.safetyheads.akademiaandroida.domain.usecases.GetSocialUseCase
 import com.safetyheads.akademiaandroida.domain.usecases.GetTechnologyStackUseCase
 import com.safetyheads.akademiaandroida.domain.usecases.GetVideoUseCase
@@ -61,7 +62,6 @@ import com.safetyheads.akademiaandroida.domain.usecases.RegisterUseCase
 import com.safetyheads.akademiaandroida.domain.usecases.RemoveImageFromStorage
 import com.safetyheads.akademiaandroida.domain.usecases.RemoveImageFromUserProfile
 import com.safetyheads.akademiaandroida.domain.usecases.ResetPasswordUseCase
-import com.safetyheads.akademiaandroida.presentation.services.LocationService
 import com.safetyheads.akademiaandroida.presentation.ui.activities.splashscreen.SplashScreenViewModel
 import com.safetyheads.akademiaandroida.presentation.ui.career.CareerRepositoryImpl
 import com.safetyheads.akademiaandroida.presentation.ui.career.CareerViewModel
@@ -181,6 +181,8 @@ class AndroidAcademyApplication : Application() {
         single { ProfileDeleteAccountUseCase(get()) }
         single { ProfileLogOutUseCase(get()) }
         single { LoginUseCase(get()) }
+        single { GetSessionUseCase(get()) }
+        single { ChangeLocationUseCase(get(), get(), get()) }
         factory { IsLoggedInUseCase(get()) }
 
         //viewmodels
@@ -198,8 +200,6 @@ class AndroidAcademyApplication : Application() {
         viewModel { FaqViewModel(get(), get()) }
         viewModel { LoginViewModel(get()) }
         viewModel { DashboardViewModel(get()) }
-
-        single { ChangeLocationUseCase(get(), get()) }
     }
 
     private val networkModule = module {

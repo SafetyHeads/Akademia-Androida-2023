@@ -88,7 +88,12 @@
         </service>
 
         <service
-            android:name=".presentation.services.LocationService"
+            android:name=".presentation.services.LocationForegroundService"
+            android:foregroundServiceType="location" >
+        </service>
+
+        <service
+            android:name=".presentation.services.LocationBackgroundService"
             android:foregroundServiceType="location" >
         </service>
 
