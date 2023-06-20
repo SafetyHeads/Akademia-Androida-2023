@@ -11,7 +11,7 @@
 
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/contactUsSection"
-            android:name="com.safetyheads.akademiaandroida.presentation.ui.fragments.contact.ContactUsFragment"
+            android:name="com.safetyheads.akademiaandroida.presentation.ui.fragments.contactwithus.ContactUsFragment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 

@@ -1,4 +1,4 @@
-package com.safetyheads.akademiaandroida.presentation.ui.fragments.contact
+package com.safetyheads.akademiaandroida.presentation.ui.fragments.contactwithus
 
 enum class SocialEnumClass(
     val applicationPackage: String,
