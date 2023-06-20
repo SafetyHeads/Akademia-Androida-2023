@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -9,7 +8,11 @@
         android:id="@+id/homeFragment"
         android:name="com.safetyheads.akademiaandroida.presentation.ui.fragments.home.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_homeFragment_to_notLoggedCareer"
+            app:destination="@id/not_logged_career" />
+    </fragment>
 
     <navigation
         android:id="@+id/not_logged_career"
@@ -31,5 +34,12 @@
             android:label="ContactUsFragment"
             tools:layout="@layout/fragment_contact"/>
     </navigation>
+
+    <fragment
+        android:id="@+id/weAreHiringFragment"
+        android:name="com.safetyheads.akademiaandroida.presentation.ui.fragments.wearehiring.WeAreHiringFragment"
+        android:label="WeAreHiringFragment"
+        tools:layout="@layout/fragment_we_are_hiring">
+    </fragment>
 
 </navigation>
