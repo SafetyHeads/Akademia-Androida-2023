@@ -1,0 +1,27 @@
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/constraintLayout_main"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/n_60">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/contactUsSection"
+            android:name="com.safetyheads.akademiaandroida.presentation.ui.fragments.contactwithus.ContactUsFragment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/LetsMeetSection"
+            android:name="com.safetyheads.akademiaandroida.presentation.ui.fragments.letsmeet.LetsMeetInWroclawFragment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+</androidx.core.widget.NestedScrollView>
+

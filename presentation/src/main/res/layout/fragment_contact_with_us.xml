@@ -1,17 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
+
+    <com.safetyheads.akademiaandroida.presentation.ui.components.H2View
+        android:id="@+id/check_our_social_media"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/size_0.5x"
+        android:layout_marginTop="@dimen/size_2x"
+        android:layout_marginBottom="@dimen/size_3x"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:text="@string/contact_us_social_text"
+        tools:layout_editor_absoluteY="20dp" />
 
     <ImageView
         android:id="@+id/facebook_fill"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/size_3x"
-        android:layout_marginTop="@dimen/size_3x"
+        android:layout_marginTop="@dimen/size_6x"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toTopOf="@id/check_our_social_media"
         app:srcCompat="@drawable/facebook_fill" />
 
     <ImageView
@@ -19,9 +32,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/size_2x"
-        android:layout_marginTop="@dimen/size_3x"
+        android:layout_marginTop="@dimen/size_6x"
         app:layout_constraintStart_toEndOf="@+id/facebook_fill"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toTopOf="@id/check_our_social_media"
         app:srcCompat="@drawable/linkedin_fill" />
 
     <ImageView
@@ -29,9 +42,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/size_2x"
-        android:layout_marginTop="@dimen/size_3x"
+        android:layout_marginTop="@dimen/size_6x"
         app:layout_constraintStart_toEndOf="@+id/linkedin_fill"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toTopOf="@id/check_our_social_media"
         app:srcCompat="@drawable/instagram_fill" />
 
     <ImageView
@@ -39,8 +52,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/size_2x"
-        android:layout_marginTop="@dimen/size_3x"
+        android:layout_marginTop="@dimen/size_6x"
         app:layout_constraintStart_toEndOf="@+id/instagram_fill"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toTopOf="@id/check_our_social_media"
         app:srcCompat="@drawable/youtube_fill" />
 </androidx.constraintlayout.widget.ConstraintLayout>

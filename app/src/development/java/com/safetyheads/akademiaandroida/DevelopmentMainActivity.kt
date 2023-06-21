@@ -21,7 +21,7 @@ import com.safetyheads.akademiaandroida.presentation.ui.MainActivity
 import com.safetyheads.akademiaandroida.presentation.ui.activities.splashscreen.SplashScreenViewModel
 import com.safetyheads.akademiaandroida.presentation.ui.activitieslist.ListActivity
 import com.safetyheads.akademiaandroida.presentation.ui.components.Footer
-import com.safetyheads.akademiaandroida.presentation.ui.fragments.contactwithus.ContactUsFragment
+import com.safetyheads.akademiaandroida.presentation.ui.fragments.contactwithus.ContactFragment
 import com.safetyheads.akademiaandroida.presentation.ui.fragments.fontstyle.FontSylesFragment
 import com.safetyheads.akademiaandroida.presentation.ui.fragments.map.MapFragment
 import com.safetyheads.akademiaandroida.presentation.ui.fragments.wearehiring.WeAreHiringFragment
@@ -111,7 +111,7 @@ class DevelopmentMainActivity : AppCompatActivity() {
         }
 
         binding.contactWithUs.setOnClickListener {
-            openFragment(ContactUsFragment())
+            openFragment(ContactFragment())
             hideButtons()
         }
 

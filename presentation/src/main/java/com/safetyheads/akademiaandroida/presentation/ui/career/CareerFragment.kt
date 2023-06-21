@@ -52,8 +52,8 @@ class CareerFragment : Fragment() {
         val shouldSendNotifications = viewModel.readSetting()
         binding.notificationView.setSwitchButton(shouldSendNotifications)
 
-        binding.notificationView.switchButtonListener {
-            viewModel.writeSetting(it)
+        binding.notificationView.switchButtonListener { isChecked  ->
+            viewModel.writeSetting(isChecked )
         }
     }
 

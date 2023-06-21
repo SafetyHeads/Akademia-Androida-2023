@@ -13,7 +13,7 @@ To use this validator you have to add to your code:
  */
 object PasswordValidator {
     private val PasswordRegex =
-        Regex("[a-zA-Z0-9][a-zA-Z0-9!@#$%^&*()_+\\-=\\[\\]{};':\"\\\\|,.<>/?]{11,}$")
+        Regex("[a-zA-Z0-9][a-zA-Z0-9!@#$%^&*()_+\\-=\\[\\]{};':\"\\\\|,.<>/?]{7,}$")
 
     fun attach(editText: EditText, context: Context) {
         editText.addTextChangedListener {
@@ -29,7 +29,7 @@ object PasswordValidator {
         }
     }
 
-    private fun isValid(password: String): Boolean {
+    fun isValid(password: String): Boolean {
         return PasswordRegex.matches(password)
     }
 }

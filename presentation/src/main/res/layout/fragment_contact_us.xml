@@ -1,26 +1,31 @@
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/constraintLayout_main"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/n_60"
-    tools:context="com.safetyheads.presentation.fragments.contact_with_us.ContactUsFragment">
+    tools:context=".ui.fragments.contactwithus.ContactUsFragment">
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/card_view_layout"
-        android:layout_width="0dp"
-        style="@style/default_card_style"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent">
+        android:layout_width="match_parent"
+        style="@style/default_card_style"
+        android:layout_marginBottom="@dimen/size_1.5x">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout_bottom"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:minHeight="500dp">
+            android:layout_height="match_parent">
+
+            <com.safetyheads.akademiaandroida.presentation.ui.components.H2View
+                android:id="@+id/textView_main"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/size_4.5x"
+                app:drawableStartCompat="@drawable/h2_view_line_greater_size"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:text="@string/contact_us_main_text" />
 
             <ImageView
                 android:id="@+id/imageView_at_sign"
@@ -52,16 +57,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/imageView_phone_symbol"
                 app:srcCompat="@drawable/contact_us_pin" />
 
-            <com.safetyheads.akademiaandroida.presentation.ui.components.H2View
-                android:id="@+id/textView_main"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/size_3x"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:text="@string/contact_us_main_text" />
+
 
             <TextView
                 android:id="@+id/textView_email"
@@ -123,22 +119,15 @@
                 android:layout_marginLeft="@dimen/size_3x"
                 android:layout_marginTop="@dimen/size_4.5x"
                 android:layout_marginRight="@dimen/size_3x"
+                android:layout_marginBottom="@dimen/size_3x"
                 android:text="@string/contact_us_fill_form_button_text"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView_address" />
 
-            <com.safetyheads.akademiaandroida.presentation.ui.components.H2View
-                android:id="@+id/textView_social"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/size_9x"
-                android:paddingEnd="@dimen/size"
-                app:text="@string/contact_us_social_text"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/button_fill_form" />
         </androidx.constraintlayout.widget.ConstraintLayout>
+
     </androidx.cardview.widget.CardView>
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>

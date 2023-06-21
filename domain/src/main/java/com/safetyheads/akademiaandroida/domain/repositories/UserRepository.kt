@@ -13,4 +13,8 @@ interface UserRepository {
     suspend fun logOut(): Flow<Result<Boolean>>
     suspend fun deleteAccount(userUUID: String): Flow<Result<String>>
     suspend fun changeUser(mapChange: Map<String, Any>, functionTag: String, userUUID: String): Flow<Result<String>>
+    suspend fun updateFcmToken(userUUID: String, token: String): Flow<Result<Unit>>
+    suspend fun anonymousLogIn(): Flow<Result<String>>
+    suspend fun changePassword(oldPassword: String, newPassword: String): Flow<Result<Unit>>
+
 }

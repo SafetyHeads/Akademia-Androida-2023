@@ -1,10 +1,12 @@
 package com.safetyheads.akademiaandroida.presentation.ui
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.safetyheads.akademiaandroida.databinding.ActivityMainBinding
+import com.safetyheads.akademiaandroida.presentation.ui.activities.DashboardActivity
 import com.safetyheads.akademiaandroida.presentation.ui.activities.splashscreen.SplashScreenViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -22,6 +24,7 @@ class MainActivity : AppCompatActivity() {
         observeConfigChanges()
 
         super.onCreate(savedInstanceState)
+        splashScreenViewModel.checkLoggedIn()
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
@@ -44,6 +47,14 @@ class MainActivity : AppCompatActivity() {
                 Toast.LENGTH_LONG
             )
                 .show()
+        }
+
+        splashScreenViewModel.isLoggedIn.observe(this) { isLoggedIn ->
+            if(isLoggedIn) {
+                val intent = Intent(this, DashboardActivity::class.java)
+                startActivity(intent)
+                finish()
+            }
         }
     }
 }
