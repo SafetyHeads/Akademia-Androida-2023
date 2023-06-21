@@ -8,6 +8,7 @@ class SessionGenerator(private val firebaseAuth: FirebaseAuth) {
 
     fun generateNewSession(): Session {
         val email = firebaseAuth.currentUser?.email ?: ""
-        return Session(email)
+        val userUUID = firebaseAuth.currentUser?.uid ?: ""
+        return Session(email, userUUID)
     }
 }

@@ -25,4 +25,9 @@ internal fun Koin.reloadSessionScope(session: Session?) {
     session?.let {
         getSessionScope().declare(it)
     }
+    getSessionScope().getKoin().getAll<Session>()
+}
+
+internal fun Koin.getSessionInfo(): Session {
+    return getSessionScope().getKoin().getAll<Session>()[0]
 }

@@ -1,6 +1,10 @@
 package com.safetyheads.akademiaandroida
 
 import android.app.Application
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.content.Context
+import android.os.Build
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.messaging.FirebaseMessaging
@@ -15,6 +19,7 @@ import com.safetyheads.akademiaandroida.data.network.repository.UserRepositoryIm
 import com.safetyheads.akademiaandroida.data.network.repository.settings.SettingRepositoryImpl
 import com.safetyheads.akademiaandroida.data.network.retrofit.ApiClient
 import com.safetyheads.akademiaandroida.domain.entities.Session
+import com.safetyheads.akademiaandroida.domain.entities.location.ChangeLocation
 import com.safetyheads.akademiaandroida.domain.repositories.CareerRepository
 import com.safetyheads.akademiaandroida.domain.repositories.ChannelRepository
 import com.safetyheads.akademiaandroida.domain.repositories.CompanyInfoRepository
@@ -32,6 +37,7 @@ import com.safetyheads.akademiaandroida.domain.usecases.AddImageToBitmapStorage
 import com.safetyheads.akademiaandroida.domain.usecases.AddImageToUriStorage
 import com.safetyheads.akademiaandroida.domain.usecases.AddImageToUserProfile
 import com.safetyheads.akademiaandroida.domain.usecases.AddQuestionUseCase
+import com.safetyheads.akademiaandroida.domain.usecases.ChangeLocationUseCase
 import com.safetyheads.akademiaandroida.domain.usecases.AnonymousLoginUseCase
 import com.safetyheads.akademiaandroida.domain.usecases.ChangeUserUseCase
 import com.safetyheads.akademiaandroida.domain.usecases.DateUseCase
@@ -50,6 +56,7 @@ import com.safetyheads.akademiaandroida.domain.usecases.GetMessagingTokenUseCase
 import com.safetyheads.akademiaandroida.domain.usecases.GetPlayListItemsUseCase
 import com.safetyheads.akademiaandroida.domain.usecases.GetPlayListsUseCase
 import com.safetyheads.akademiaandroida.domain.usecases.GetProfileInformationUseCase
+import com.safetyheads.akademiaandroida.domain.usecases.GetSessionUseCase
 import com.safetyheads.akademiaandroida.domain.usecases.GetSocialUseCase
 import com.safetyheads.akademiaandroida.domain.usecases.GetTechnologyStackUseCase
 import com.safetyheads.akademiaandroida.domain.usecases.GetVideoUseCase
@@ -79,6 +86,7 @@ import com.safetyheads.akademiaandroida.presentation.ui.signup.SignUpViewModel
 import com.safetyheads.akademiaandroida.presentation.ui.viewmodels.DashboardViewModel
 import com.safetyheads.akademiaandroida.presentation.ui.viewmodels.MediaViewModel
 import com.safetyheads.akademiaandroida.presentation.ui.viewmodels.ProfileViewModel
+import com.safetyheads.akademiaandroida.usersessionmanager.ChangeLocationImpl
 import com.safetyheads.akademiaandroida.presentation.ui.viewmodels.LaunchScreenViewModel
 import com.safetyheads.akademiaandroida.token.FirebaseTokenRepository
 import com.safetyheads.akademiaandroida.usersessionmanager.LoggedSessionManager
@@ -118,6 +126,20 @@ class AndroidAcademyApplication : Application() {
             androidLogger()
             androidContext(this@AndroidAcademyApplication)
             modules(listOf(appModule, networkModule, sessionModule))
+            localization()
+        }
+    }
+
+    private fun localization() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            val channel = NotificationChannel(
+                "location",
+                "location",
+                NotificationManager.IMPORTANCE_DEFAULT
+            )
+            val notificationManager =
+                getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+            notificationManager.createNotificationChannel(channel)
         }
     }
 
@@ -143,6 +165,7 @@ class AndroidAcademyApplication : Application() {
         single<TokenRepository> { FirebaseTokenRepository(get()) }
 
         //usecases
+        single<ChangeLocation> { ChangeLocationImpl() }
         single { AddImageToUriStorage(get()) }
         single { AnonymousLoginUseCase(get()) }
         single { AddImageToBitmapStorage(get()) }
@@ -173,6 +196,8 @@ class AndroidAcademyApplication : Application() {
         single { ProfileDeleteAccountUseCase(get()) }
         single { ProfileLogOutUseCase(get()) }
         single { LoginUseCase(get()) }
+        single { GetSessionUseCase(get()) }
+        single { ChangeLocationUseCase(get(), get(), get()) }
         factory { IsLoggedInUseCase(get()) }
         single { UpdateProfileFcmUseCase(get()) }
         single { GetMessagingTokenUseCase(get()) }
@@ -203,7 +228,12 @@ class AndroidAcademyApplication : Application() {
 
         single { ApiClient(BuildConfig.DEBUG) }
         //YouTubeService Singleton
-        single { get<ApiClient>().create(YouTubeApiConsts.YOUTUBE_API_BASE_URL, YouTubeService::class.java) }
+        single {
+            get<ApiClient>().create(
+                YouTubeApiConsts.YOUTUBE_API_BASE_URL,
+                YouTubeService::class.java
+            )
+        }
 
         //mapper
         single { ChannelMapper() }
