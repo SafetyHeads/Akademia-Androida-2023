@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingVertical="@dimen/size_4x"
+    tools:context=".ui.fragments.company.AboutFragment">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingLeft="@dimen/size_7_5x"
+        android:paddingRight="@dimen/size_7_5x"
+        style="@style/Poppins_regular_14"
+        android:gravity="center"
+        android:text="@string/synopsis_about" />
+
+</LinearLayout>

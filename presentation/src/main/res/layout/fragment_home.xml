@@ -23,7 +23,7 @@
 
             <androidx.fragment.app.FragmentContainerView
                 android:id="@+id/company"
-                android:name="com.safetyheads.akademiaandroida.presentation.ui.uistate.CompanyTabs"
+                android:name="com.safetyheads.akademiaandroida.presentation.ui.fragments.company.CompanyFragment"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="@dimen/size_2x" />
