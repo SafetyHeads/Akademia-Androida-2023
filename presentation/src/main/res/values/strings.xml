@@ -183,4 +183,8 @@
     <string name="error_connecting_to_the_server">Error connecting to the server!</string>
     <string name="clients">Clients</string>
     <string name="password_rules">Your password must have at least 8 characters and contain at least two of the following:\n - uppercase letters\n - lowercase letters\n - numbers\n - symbols</string>
+    <string name="about">About</string>
+    <string name="in_numbers">In numbers</string>
+    <string name="synopsis_about"><![CDATA[We are an innovation technology & consulting company focused on software development, as well as support and maintenance of digital products. We specialises in IT outsourcing, apps development, and cybersecurity.]]></string>
+    <string name="logo_with_company_name">Logo with company name</string>
 </resources>
